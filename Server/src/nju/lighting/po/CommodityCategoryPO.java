@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 public class CommodityCategoryPO {
 
+    private String categoryName;
+    private ArrayList<CommodityCategoryPO> subCategories;
+    private ArrayList<CommodityPO> subCommodities;
+    private boolean isLowestLeverCategory;
+
     public String getCategoryName() {
         return categoryName;
     }
@@ -11,14 +16,6 @@ public class CommodityCategoryPO {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-
-    private String categoryName;
-
-    private ArrayList<CommodityCategoryPO> subCategories;
-
-    private ArrayList<CommodityPO> subCommodities;
-
-    private boolean isLowestLeverCategory;
 
     public ArrayList<CommodityCategoryPO> getSubCategories() {
         return subCategories;

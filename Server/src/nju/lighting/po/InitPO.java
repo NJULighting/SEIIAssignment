@@ -5,6 +5,6 @@ package nju.lighting.po;
  * Description:
  * @author Liao
  */
-public enum Identity {
-    GENERAL, FINANCE, REPOSITORY, SALE, SYSTEM_ADMIN;
+public class InitPO {
+    
 }

@@ -10,7 +10,7 @@ public class UserPO {
     private String password;
     private String jobNumber;
     private Identity identity;
-    private String authority;
+    private boolean authority;
 
     public UserPO(String username, String password, String jobNumber, Identity identity) {
 
@@ -22,11 +22,11 @@ public class UserPO {
 
     }
 
-    public String getAuthority() {
+    public boolean getAuthority() {
         return authority;
     }
 
-    public void setAuthority(String authority) {
+    public void setAuthority(boolean authority) {
         this.authority = authority;
     }
 
@@ -54,11 +54,11 @@ public class UserPO {
         this.jobNumber = jobNumber;
     }
 
-    public String getIdentity() {
+    public Identity getIdentity() {
         return identity;
     }
 
-    public void setIdentity(String identity) {
+    public void setIdentity(Identity identity) {
         this.identity = identity;
     }
 }

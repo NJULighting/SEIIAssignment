@@ -1,5 +1,5 @@
 package nju.lighting.po;
 
-public class StockReturnDocPO extends StockDocPO {
+public class StockReturnDocPO extends StockTypeDocPO {
 
 }

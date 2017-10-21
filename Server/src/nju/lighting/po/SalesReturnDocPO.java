@@ -14,18 +14,18 @@ public class SalesReturnDocPO extends DocPO{
     private double voucher = 0;
     private double finalAmount =0;
 
-    public SalesReturnDocPO(String id,CustomerPO c,String s,String r,UserPO o,CommodityListPO co,String re,double beA,double dis,double v,double fiA){
-        ID =id;
-        customer=c;
-        salesman=s;
-        repository =re;
-        operator=o;
-        commodityList =co;
-        remarks=re;
-        beforeDiscountAmount=beA;
-        discount=dis;
-        voucher=v;
-        finalAmount=fiA;
+    public SalesReturnDocPO(String ID,CustomerPO customer,String salesman,String repository,UserPO operator,CommodityListPO commodityList,String remarks,double beforeDiscountAmount,double discount,double voucher,double finalAmount){
+        this.ID =ID;
+        this.customer=customer;
+        this.salesman=salesman;
+        this.repository =repository;
+        this.operator=operator;
+        this.commodityList =commodityList;
+        this.remarks=remarks;
+        this.beforeDiscountAmount=beforeDiscountAmount;
+        this.discount=discount;
+        this.voucher=voucher;
+        this.finalAmount=finalAmount;
     }
     private void updateFinalAmount(){
         finalAmount = beforeDiscountAmount -discount -voucher;

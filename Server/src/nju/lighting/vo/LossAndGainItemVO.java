@@ -2,6 +2,20 @@ package nju.lighting.vo;
 
 public class LossAndGainItemVO extends DocItemVO {
 
+    public static final String LOSS = "LOSS";
+
+    public static final String GAIN = "GAIN";
+
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     private String commodityId;
 
     private int count;
@@ -22,8 +36,9 @@ public class LossAndGainItemVO extends DocItemVO {
         this.count = count;
     }
 
-    public LossAndGainItemVO(String commodityId, int count) {
+    public LossAndGainItemVO(String commodityId, int count, String type) {
         this.commodityId = commodityId;
         this.count = count;
+        this.type = type;
     }
 }

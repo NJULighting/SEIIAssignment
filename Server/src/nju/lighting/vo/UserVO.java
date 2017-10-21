@@ -1,6 +1,6 @@
 package nju.lighting.vo;
 
-import nju.lighting.po.Identity;
+import nju.lighting.vo.Identity;
 
 /**
  * Created on 2017/10/21.

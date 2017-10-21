@@ -41,4 +41,11 @@ public class HistoryDocVO {
     public void setApprovalOpinion(String approvalOpinion) {
         this.approvalOpinion = approvalOpinion;
     }
+
+    public HistoryDocVO(DocVO doc, boolean hasBeenChecked, boolean hasBeenApproved, String approvalOpinion) {
+        this.doc = doc;
+        this.hasBeenChecked = hasBeenChecked;
+        this.hasBeenApproved = hasBeenApproved;
+        this.approvalOpinion = approvalOpinion;
+    }
 }

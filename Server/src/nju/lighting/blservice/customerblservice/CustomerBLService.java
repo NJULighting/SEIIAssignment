@@ -1,4 +1,4 @@
-package nju.lighting.businesslogicservice.customerblservice;
+package nju.lighting.blservice.customerblservice;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

@@ -1,19 +1,19 @@
-package nju.lighting.po;
+package nju.lighting.vo;
 
 import java.util.ArrayList;
 
 /**
- * Created on 2017/10/17.
+ * Created on 2017/10/21.
  * Description:
  * @author Liao
  */
-public class InitPO {
+public class InitVO {
     private ArrayList<String> commodityCategories;
     private ArrayList<String> commodities;
     private ArrayList<String> customers;
     private ArrayList<String> accounts;
 
-    public InitPO(ArrayList<String> commodityCategories, ArrayList<String> commodities, ArrayList<String> customers, ArrayList<String> accounts) {
+    public InitVO(ArrayList<String> commodityCategories, ArrayList<String> commodities, ArrayList<String> customers, ArrayList<String> accounts) {
         this.commodityCategories = commodityCategories;
         this.commodities = commodities;
         this.customers = customers;

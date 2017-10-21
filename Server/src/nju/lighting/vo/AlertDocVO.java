@@ -1,18 +1,18 @@
-package nju.lighting.po;
+package nju.lighting.vo;
 
 import java.util.ArrayList;
 
-public class AlertDocPO extends DocPO{
+public class AlertDocVO extends DocVO{
 
-    private ArrayList<AlertDocItemPO> alertDocItems;
+    private ArrayList<AlertDocItemVO> alertDocItems;
 
     private String reason;
 
-    public ArrayList<AlertDocItemPO> getAlertDocItems() {
+    public ArrayList<AlertDocItemVO> getAlertDocItems() {
         return alertDocItems;
     }
 
-    public void setAlertDocItems(ArrayList<AlertDocItemPO> alertDocItems) {
+    public void setAlertDocItems(ArrayList<AlertDocItemVO> alertDocItems) {
         this.alertDocItems = alertDocItems;
     }
 
@@ -24,7 +24,7 @@ public class AlertDocPO extends DocPO{
         this.reason = reason;
     }
 
-    public AlertDocPO(ArrayList<AlertDocItemPO> alertDocItems, String reason) {
+    public AlertDocVO(ArrayList<AlertDocItemVO> alertDocItems, String reason) {
         this.alertDocItems = alertDocItems;
         this.reason = reason;
     }

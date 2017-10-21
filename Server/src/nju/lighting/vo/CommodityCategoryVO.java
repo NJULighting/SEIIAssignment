@@ -1,12 +1,12 @@
-package nju.lighting.po;
+package nju.lighting.vo;
 
 import java.util.ArrayList;
 
-public class CommodityCategoryPO {
+public class CommodityCategoryVO {
 
     private String categoryName;
-    private ArrayList<CommodityCategoryPO> subCategories;
-    private ArrayList<CommodityPO> subCommodities;
+    private ArrayList<CommodityCategoryVO> subCategories;
+    private ArrayList<CommodityVO> subCommodities;
     private boolean isLowestLeverCategory;
 
     public String getCategoryName() {
@@ -17,19 +17,19 @@ public class CommodityCategoryPO {
         this.categoryName = categoryName;
     }
 
-    public ArrayList<CommodityCategoryPO> getSubCategories() {
+    public ArrayList<CommodityCategoryVO> getSubCategories() {
         return subCategories;
     }
 
-    public void setSubCategories(ArrayList<CommodityCategoryPO> subCategories) {
+    public void setSubCategories(ArrayList<CommodityCategoryVO> subCategories) {
         this.subCategories = subCategories;
     }
 
-    public ArrayList<CommodityPO> getSubCommodities() {
+    public ArrayList<CommodityVO> getSubCommodities() {
         return subCommodities;
     }
 
-    public void setSubCommodities(ArrayList<CommodityPO> subCommodities) {
+    public void setSubCommodities(ArrayList<CommodityVO> subCommodities) {
         this.subCommodities = subCommodities;
     }
 
@@ -41,7 +41,7 @@ public class CommodityCategoryPO {
         isLowestLeverCategory = lowestLeverCategory;
     }
 
-    public CommodityCategoryPO(String categoryName, ArrayList<CommodityCategoryPO> subCategories, ArrayList<CommodityPO> subCommodities, boolean isLowestLeverCategory) {
+    public CommodityCategoryVO(String categoryName, ArrayList<CommodityCategoryVO> subCategories, ArrayList<CommodityVO> subCommodities, boolean isLowestLeverCategory) {
         this.categoryName = categoryName;
         this.subCategories = subCategories;
         this.subCommodities = subCommodities;

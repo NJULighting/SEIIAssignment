@@ -1,6 +1,11 @@
-package nju.lighting.po;
+package nju.lighting.vo;
 
-public class SalesTypeDocPO extends DocPO{
+import nju.lighting.po.CommodityListPO;
+import nju.lighting.po.CustomerPO;
+import nju.lighting.po.DocPO;
+import nju.lighting.po.UserPO;
+
+public class SalesReturnDocVO extends DocPO{
 
     private String ID;
     private CustomerPO customer;
@@ -14,6 +19,19 @@ public class SalesTypeDocPO extends DocPO{
     private double voucher = 0;
     private double finalAmount =0;
 
+    public SalesReturnDocVO(String id, CustomerPO c, String s, String r, UserPO o, CommodityListPO co, String re, double beA, double dis, double v, double fiA){
+        ID =id;
+        customer=c;
+        salesman=s;
+        repository =re;
+        operator=o;
+        commodityList =co;
+        remarks=re;
+        beforeDiscountAmount=beA;
+        discount=dis;
+        voucher=v;
+        finalAmount=fiA;
+    }
     private void updateFinalAmount(){
         finalAmount = beforeDiscountAmount -discount -voucher;
     }

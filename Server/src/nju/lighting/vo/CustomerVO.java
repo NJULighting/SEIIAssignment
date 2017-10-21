@@ -1,6 +1,9 @@
-package nju.lighting.po;
+package nju.lighting.vo;
 
-public class CustomerPO {
+import nju.lighting.po.CustomerGrade;
+import nju.lighting.po.CustomerType;
+
+public class CustomerVO {
 
     private int ID;
 
@@ -26,7 +29,7 @@ public class CustomerPO {
 
     private String salesman;
 
-    public CustomerPO(int i,CustomerType t,CustomerGrade g,String n,String te,String ad,String po,String em,double reL,double re,double pay,String sa){
+    public CustomerVO(int i, CustomerType t, CustomerGrade g, String n, String te, String ad, String po, String em, double reL, double re, double pay, String sa){
         ID =i;
         type =t;
         grade=g;

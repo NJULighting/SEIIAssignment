@@ -1,8 +1,8 @@
 package nju.lighting.businesslogicservice.documentblservice;
 
-import nju.lighting.po.AccountIODocPO;
-import nju.lighting.po.AccountPO;
 import nju.lighting.po.CustomerPO;
+import nju.lighting.vo.AccountIODocVO;
+import nju.lighting.vo.AccountVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -13,10 +13,15 @@ import java.util.ArrayList;
  * @author Liao
  */
 public interface AccountIODocBLService {
-    AccountPO createAccountInOut() throws RemoteException;
-    void commitDoc(AccountIODocPO docPO) throws RemoteException;
+    AccountVO createAccountInOut() throws RemoteException;
+
+    void commitDoc(AccountIODocVO docVO) throws RemoteException;
+
     String getState(String id) throws RemoteException;
-    AccountIODocPO getHistoryDoc(String id) throws RemoteException;
+
+    AccountIODocVO getHistoryDoc(String id) throws RemoteException;
+
     ArrayList<CustomerPO> getCustomerList() throws RemoteException;
-    ArrayList<AccountPO> getAccountList() throws RemoteException;
+
+    ArrayList<AccountVO> getAccountList() throws RemoteException;
 }

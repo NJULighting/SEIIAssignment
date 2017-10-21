@@ -6,6 +6,16 @@ public class RepositoryChangeVO {
 
     public static final String SELL = "SELL";
 
+    private long time;
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
     private String changeType = BUY;
 
     private int count;
@@ -46,10 +56,11 @@ public class RepositoryChangeVO {
         this.amount = amount;
     }
 
-    public RepositoryChangeVO(String changeType, int count, String commodityId, double amount) {
+    public RepositoryChangeVO(String changeType, int count, String commodityId, double amount, long time) {
         this.changeType = changeType;
         this.count = count;
         this.commodityId = commodityId;
+        this.time = time;
         this.amount = amount;
     }
 }

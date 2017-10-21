@@ -6,10 +6,10 @@ import nju.lighting.po.ResultMessage;
 
 import java.rmi.RemoteException;
 
-public class LossAndGainDoc implements LossAndGainDocBLService {
+public class LossAndGainDocBLService_Stub implements LossAndGainDocBLService {
 
     @Override
     public ResultMessage addLossAndGainDoc(LossAndGainDocPO lossAndGainDocPO) throws RemoteException {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 }

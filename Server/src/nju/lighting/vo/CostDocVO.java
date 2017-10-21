@@ -1,22 +1,22 @@
-package nju.lighting.po;
+package nju.lighting.vo;
 
-import nju.lighting.utility.TwoTuple;
+import nju.lighting.po.AccountPO;
+import nju.lighting.po.CostDocItemList;
 
 import java.util.List;
-import java.util.Map;
 
 /**
- * Created on 2017/10/18.
+ * Created on 2017/10/21.
  * Description:
  * @author Liao
  */
-public class CostDocPO extends DocPO{
+public class CostDocVO {
     private String costDocID;
-    private List<AccountPO> accounts;
+    private List<String> accounts;
     private CostDocItemList itemList;
     private int total;
 
-    public CostDocPO(String costDocID, List<AccountPO> accounts, CostDocItemList itemList, int total) {
+    public CostDocVO(String costDocID, List<String> accounts, CostDocItemList itemList, int total) {
         this.costDocID = costDocID;
         this.accounts = accounts;
         this.itemList = itemList;
@@ -31,11 +31,11 @@ public class CostDocPO extends DocPO{
         this.costDocID = costDocID;
     }
 
-    public List<AccountPO> getAccounts() {
+    public List<String> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(List<AccountPO> accounts) {
+    public void setAccounts(List<String> accounts) {
         this.accounts = accounts;
     }
 

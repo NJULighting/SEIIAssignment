@@ -9,7 +9,7 @@ public class StockTypeDocPO extends DocPO {
     private CommodityListPO commodityList;
     private String remarks;
     private double totalAmount = 0;
-    private boolean isChecked = false;
+
 
     public void setID(String id){
         ID = id;
@@ -30,9 +30,6 @@ public class StockTypeDocPO extends DocPO {
     public void setRemarks(String remarks){
         this.remarks = remarks;
     }
-    public void setIsChecked(boolean isChecked){
-        this.isChecked = isChecked;
-    }
 
     public String getID(){return  ID;}
     public CustomerPO getSupplier(){return supplier;}
@@ -41,6 +38,6 @@ public class StockTypeDocPO extends DocPO {
     public CommodityListPO getCommodityList(){return  commodityList;}
     public String getRemarks(){return remarks;}
     public double getTotalAmount(){return totalAmount;}
-    public boolean isChecked(){return isChecked;}
+
 
 }

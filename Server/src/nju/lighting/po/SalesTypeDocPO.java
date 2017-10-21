@@ -13,7 +13,6 @@ public class SalesTypeDocPO extends DocPO{
     private double discount = 0;
     private double voucher = 0;
     private double finalAmount =0;
-    private boolean isChecked = false;
 
     private void updateFinalAmount(){
         finalAmount = beforeDiscountAmount -discount -voucher;
@@ -39,9 +38,6 @@ public class SalesTypeDocPO extends DocPO{
     public void setRemarks(String remarks){
         this.remarks = remarks;
     }
-    public void setIsChecked(boolean isChecked){
-        this.isChecked = isChecked;
-    }
     public void setDiscount(double discount){
         this.discount = discount;
         updateFinalAmount();;
@@ -62,6 +58,5 @@ public class SalesTypeDocPO extends DocPO{
     public double getDiscount(){return discount;}
     public double getVoucher(){return voucher;}
     public double getFinalAmount(){return finalAmount;}
-    public boolean isChecked(){return isChecked;}
 
 }

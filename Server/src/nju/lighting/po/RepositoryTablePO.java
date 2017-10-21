@@ -13,4 +13,8 @@ public class RepositoryTablePO {
     public void setCommodities(ArrayList<RepositoryTableItemPO> commodities) {
         this.commodities = commodities;
     }
+
+    public RepositoryTablePO(ArrayList<RepositoryTableItemPO> commodities) {
+        this.commodities = commodities;
+    }
 }

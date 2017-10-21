@@ -1,6 +1,8 @@
-package nju.lighting.po;
+package nju.lighting.vo;
 
-public abstract class DocPO {
+import nju.lighting.po.DocType;
+
+public abstract class DocVO {
 
     private long time;
 

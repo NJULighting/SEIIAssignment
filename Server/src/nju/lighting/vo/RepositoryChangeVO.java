@@ -1,6 +1,6 @@
-package nju.lighting.po;
+package nju.lighting.vo;
 
-public class RepositoryChangePO {
+public class RepositoryChangeVO {
 
     public static final String BUY = "BUY";
 
@@ -46,7 +46,7 @@ public class RepositoryChangePO {
         this.amount = amount;
     }
 
-    public RepositoryChangePO(String changeType, int count, String commodityId, double amount) {
+    public RepositoryChangeVO(String changeType, int count, String commodityId, double amount) {
         this.changeType = changeType;
         this.count = count;
         this.commodityId = commodityId;

@@ -1,6 +1,6 @@
-package nju.lighting.po;
+package nju.lighting.vo;
 
-public class LossAndGainItemPO extends DocItemPO {
+public class AlertDocItemVO extends DocItemVO{
 
     private String commodityId;
 
@@ -18,12 +18,13 @@ public class LossAndGainItemPO extends DocItemPO {
         return count;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public LossAndGainItemPO(String commodityId, int count) {
+    public AlertDocItemVO(String commodityId, int count) {
         this.commodityId = commodityId;
         this.count = count;
     }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 }
+

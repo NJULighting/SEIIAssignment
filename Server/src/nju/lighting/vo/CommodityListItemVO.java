@@ -1,6 +1,8 @@
-package nju.lighting.po;
+package nju.lighting.vo;
 
-public class CommodityListItemPO {
+import nju.lighting.po.CommodityPO;
+
+public class CommodityListItemVO {
 
     private CommodityPO commodity;
     private String commodityID;

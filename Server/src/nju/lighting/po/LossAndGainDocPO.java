@@ -23,4 +23,9 @@ public class LossAndGainDocPO extends DocPO {
     public void setReason(String reason) {
         this.reason = reason;
     }
+
+    public LossAndGainDocPO(ArrayList<LossAndGainItemPO> lossAndGains, String reason) {
+        this.lossAndGains = lossAndGains;
+        this.reason = reason;
+    }
 }

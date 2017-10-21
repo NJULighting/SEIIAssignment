@@ -18,6 +18,11 @@ public class AlertDocItemPO extends DocItemPO{
         return count;
     }
 
+    public AlertDocItemPO(String commodityId, int count) {
+        this.commodityId = commodityId;
+        this.count = count;
+    }
+
     public void setCount(int count) {
         this.count = count;
     }

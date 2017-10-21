@@ -1,7 +1,7 @@
 package nju.lighting.po;
 
 import java.util.ArrayList;
-import java.util.Date;
+
 
 /**
  * Created on 2017/10/19.
@@ -19,13 +19,15 @@ public class PromotionPO {
 
     private double total;  //针对不同总价的促销策略中的总价
 
-    private ArrayList<CommodityPO> goods;  //组合商品
+    private ArrayList<String> goods;  //组合商品
 
-    private ArrayList<CommodityPO> gifts;   //赠品列表
+    private ArrayList<String> gifts;   //赠品列表
 
     private double off;  //折让金额
 
-    private ArrayList<VoucherPO> vouchers; //代金券
+    private double vouchers; //代金券
+
+    private long vouchersEndDate;  //代金券截止日期
 
     public PromotionPO(int tag,long startDate,long endDate){
         this.tag=tag;
@@ -53,15 +55,22 @@ public class PromotionPO {
         this.off=off;
     }
 
+    public void setVouchers(double vouchers){
+        this.vouchers=vouchers;
+    }
+
+    public void setVouchersEndDate(long vouchersEndDate) {
+        this.vouchersEndDate = vouchersEndDate;
+    }
     public void setGoods(ArrayList goods){
         this.goods=goods;
     }
 
-    public void addGood(CommodityPO good){
+    public void addGood(String good){
         goods.add(good);
     }
 
-    public void removeGood(CommodityPO good){
+    public void removeGood(String good){
         goods.remove(good);
     }
 
@@ -69,11 +78,11 @@ public class PromotionPO {
         this.gifts=gifts;
     }
 
-    public void addGift(CommodityPO gift){
+    public void addGift(String gift){
         gifts.add(gift);
     }
 
-    public void removeGift(CommodityPO gift){
+    public void removeGift(String gift){
         gifts.remove(gift);
     }
 
@@ -105,21 +114,12 @@ public class PromotionPO {
 
     public long getEndDate(){return  endDate;}
 
-    public ArrayList<VoucherPO> getVouchers(){
+    public double getVouchers(){
         return vouchers;
     }
 
-    public void setVouchers(ArrayList vouchers){
-        this.vouchers=vouchers;
+    public long getVouchersEndDate() {
+        return vouchersEndDate;
     }
-
-    public void addVoucher(VoucherPO voucher){
-        vouchers.add(voucher);
-    }
-
-    public void removeVoucher(VoucherPO voucher){
-        vouchers.remove(voucher);
-    }
-
 
 }

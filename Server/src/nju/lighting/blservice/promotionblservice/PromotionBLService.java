@@ -1,4 +1,4 @@
-package nju.lighting.blservice;
+package nju.lighting.blservice.promotionblservice;
 
 import com.sun.org.apache.regexp.internal.RE;
 import nju.lighting.vo.PromotionVO;

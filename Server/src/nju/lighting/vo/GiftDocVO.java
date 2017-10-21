@@ -1,8 +1,6 @@
 package nju.lighting.vo;
 
-import nju.lighting.po.CommodityPO;
-import nju.lighting.po.CustomerPO;
-import nju.lighting.po.DocPO;
+
 
 import java.util.ArrayList;
 
@@ -12,24 +10,24 @@ import java.util.ArrayList;
  *
  * @author 陈俊宇
  */
-public class GiftDocVO extends DocPO {
-    private ArrayList<CommodityPO> gifts;
+public class GiftDocVO extends DocVO {
+    private ArrayList<CommodityVO> gifts;
 
     private String ID;
 
-    private CustomerPO customer;
+    private CustomerVO customer;
 
     private String repository;
 
-    public ArrayList<CommodityPO> getGifts(){return gifts;}
+    public ArrayList<CommodityVO> getGifts(){return gifts;}
 
     public String getID(){return ID;}
 
     public String getRepository(){return ID;}
 
-    public CustomerPO getCustomer(){return customer;}
+    public CustomerVO getCustomer(){return customer;}
 
-    public void setGifts(ArrayList<CommodityPO> gifts){
+    public void setGifts(ArrayList<CommodityVO> gifts){
         this.gifts=gifts;
     }
 
@@ -41,7 +39,7 @@ public class GiftDocVO extends DocPO {
         this.repository=repository;
     }
 
-    public void setCustomer(CustomerPO customer){
+    public void setCustomer(CustomerVO customer){
         this.customer=customer;
     }
 }

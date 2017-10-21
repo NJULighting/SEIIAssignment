@@ -1,6 +1,11 @@
-package nju.lighting.po;
+package nju.lighting.vo;
 
-public class SalesReturnDocPO extends DocPO{
+import nju.lighting.po.CommodityListPO;
+import nju.lighting.po.CustomerPO;
+import nju.lighting.po.DocPO;
+import nju.lighting.po.UserPO;
+
+public class SalesDocVO extends DocPO{
 
     private String ID;
     private CustomerPO customer;
@@ -14,7 +19,7 @@ public class SalesReturnDocPO extends DocPO{
     private double voucher = 0;
     private double finalAmount =0;
 
-    public SalesReturnDocPO(String id,CustomerPO c,String s,String r,UserPO o,CommodityListPO co,String re,double beA,double dis,double v,double fiA){
+    public SalesDocVO(String id, CustomerPO c, String s, String r, UserPO o, CommodityListPO co, String re, double beA, double dis, double v, double fiA){
         ID =id;
         customer=c;
         salesman=s;

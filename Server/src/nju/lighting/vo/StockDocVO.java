@@ -1,6 +1,11 @@
-package nju.lighting.po;
+package nju.lighting.vo;
 
-public class StockTypeDocPO extends DocPO {
+import nju.lighting.po.CommodityListPO;
+import nju.lighting.po.CustomerPO;
+import nju.lighting.po.DocPO;
+import nju.lighting.po.UserPO;
+
+public class StockDocVO extends DocPO {
 
     private String ID;
     private CustomerPO supplier;
@@ -10,6 +15,15 @@ public class StockTypeDocPO extends DocPO {
     private String remarks;
     private double totalAmount = 0;
 
+    public StockDocVO(String id, CustomerPO su, String re, UserPO u, CommodityListPO com, String rem, double toA){
+        ID =id;
+        supplier =su;
+        repository=re;
+        operator=u;
+        commodityList =com;
+        remarks =rem;
+        totalAmount =toA;
+    }
 
     public void setID(String id){
         ID = id;

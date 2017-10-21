@@ -26,19 +26,19 @@ public class CustomerPO {
 
     private String salesman;
 
-    public CustomerPO(int i,CustomerType t,CustomerGrade g,String n,String te,String ad,String po,String em,double reL,double re,double pay,String sa){
-        ID =i;
-        type =t;
-        grade=g;
-        name=n;
-        telephone=te;
-        address=ad;
-        postage=po;
-        email=em;
-        receivableLimit=reL;
-        receivable=re;
-        payable=pay;
-        salesman =sa;
+    public CustomerPO(int ID,CustomerType type,CustomerGrade grade,String name,String telephone,String address,String postage,String email,double receivableLimit,double receivable,double payable,String salesman){
+        this.ID =ID;
+        this.type =type;
+        this.grade=grade;
+        this.name=name;
+        this.telephone=telephone;
+        this.address=address;
+        this.postage=postage;
+        this.email=email;
+        this.receivableLimit=receivableLimit;
+        this.receivable=receivable;
+        this.payable=payable;
+        this.salesman =salesman;
     }
 
     public int getID(){ return ID;}

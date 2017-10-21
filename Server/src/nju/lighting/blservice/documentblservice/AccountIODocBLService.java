@@ -1,4 +1,4 @@
-package nju.lighting.businesslogicservice.documentblservice;
+package nju.lighting.blservice.documentblservice;
 
 import nju.lighting.po.CustomerPO;
 import nju.lighting.vo.AccountIODocVO;

@@ -1,4 +1,4 @@
-package nju.lighting.businesslogicservice.accountblservice;
+package nju.lighting.blservice.accountblservice;
 
 /**
  * Created on 2017/10/20.

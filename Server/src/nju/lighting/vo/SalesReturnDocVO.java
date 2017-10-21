@@ -1,36 +1,36 @@
 package nju.lighting.vo;
 
-import nju.lighting.po.CommodityListPO;
-import nju.lighting.po.CustomerPO;
-import nju.lighting.po.DocPO;
-import nju.lighting.po.UserPO;
+import nju.lighting.vo.CommodityListVO;
+import nju.lighting.vo.CustomerVO;
+import nju.lighting.vo.DocVO;
+import nju.lighting.vo.UserVO;
 
-public class SalesReturnDocVO extends DocPO{
+public class SalesReturnDocVO extends DocVO{
 
     private String ID;
-    private CustomerPO customer;
+    private CustomerVO customer;
     private String salesman;
     private String repository;
-    private UserPO operator;
-    private CommodityListPO commodityList;
+    private UserVO operator;
+    private CommodityListVO commodityList;
     private String remarks;
     private double beforeDiscountAmount = 0;
     private double discount = 0;
     private double voucher = 0;
     private double finalAmount =0;
 
-    public SalesReturnDocVO(String id, CustomerPO c, String s, String r, UserPO o, CommodityListPO co, String re, double beA, double dis, double v, double fiA){
-        ID =id;
-        customer=c;
-        salesman=s;
-        repository =re;
-        operator=o;
-        commodityList =co;
-        remarks=re;
-        beforeDiscountAmount=beA;
-        discount=dis;
-        voucher=v;
-        finalAmount=fiA;
+    public SalesReturnDocVO(String ID,CustomerVO customer,String salesman,String repository,UserVO operator,CommodityListVO commodityList,String remarks,double beforeDiscountAmount,double discount,double voucher,double finalAmount){
+        this.ID =ID;
+        this.customer=customer;
+        this.salesman=salesman;
+        this.repository =repository;
+        this.operator=operator;
+        this.commodityList =commodityList;
+        this.remarks=remarks;
+        this.beforeDiscountAmount=beforeDiscountAmount;
+        this.discount=discount;
+        this.voucher=voucher;
+        this.finalAmount=finalAmount;
     }
     private void updateFinalAmount(){
         finalAmount = beforeDiscountAmount -discount -voucher;
@@ -39,17 +39,17 @@ public class SalesReturnDocVO extends DocPO{
     public void setID(String id){
         ID = id;
     }
-    public void setCustomer(CustomerPO customer){
+    public void setCustomer(CustomerVO customer){
         this.customer = customer;
         this.salesman = customer.getSalesman();
     }
     public void setRepository(String repository){
         this.repository = repository;
     }
-    public void setOperator(UserPO user){
+    public void setOperator(UserVO user){
         operator = user;
     }
-    public void setCommodityList(CommodityListPO commodityList){
+    public void setCommodityList(CommodityListVO commodityList){
         this.commodityList = commodityList;
         beforeDiscountAmount = commodityList.getTotalAmount();
     }
@@ -66,11 +66,11 @@ public class SalesReturnDocVO extends DocPO{
     }
 
     public String getID(){return  ID;}
-    public CustomerPO getCustomer(){return customer;}
+    public CustomerVO getCustomer(){return customer;}
     public String getSalesman(){return salesman;}
     public String getRepository(){return  repository;}
-    public UserPO getOperator(){return  operator;}
-    public CommodityListPO getCommodityList(){return  commodityList;}
+    public UserVO getOperator(){return  operator;}
+    public CommodityListVO getCommodityList(){return  commodityList;}
     public String getRemarks(){return remarks;}
     public double getBeforeDiscountAmount(){return beforeDiscountAmount;}
     public double getDiscount(){return discount;}

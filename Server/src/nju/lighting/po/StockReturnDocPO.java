@@ -10,14 +10,14 @@ public class StockReturnDocPO extends DocPO {
     private String remarks;
     private double totalAmount = 0;
 
-    public StockReturnDocPO(String id,CustomerPO su,String re,UserPO u,CommodityListPO com,String rem,double toA){
-        ID =id;
-        supplier =su;
-        repository=re;
-        operator=u;
-        commodityList =com;
-        remarks =rem;
-        totalAmount =toA;
+    public StockReturnDocPO(String ID,CustomerPO supplier,String repository,UserPO operator,CommodityListPO commodityList,String remarks,double totalAmount){
+        this.ID =ID;
+        this.supplier =supplier;
+        this.repository=repository;
+        this.operator=operator;
+        this. commodityList =commodityList;
+        this.remarks =remarks;
+        this.totalAmount =totalAmount;
     }
 
     public void setID(String id){

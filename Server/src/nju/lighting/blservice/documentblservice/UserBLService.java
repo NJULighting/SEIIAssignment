@@ -24,5 +24,5 @@ public interface UserBLService {
 
     String generateJobNum(UserVO vo);
 
-    
+
 }

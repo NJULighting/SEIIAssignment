@@ -1,6 +1,7 @@
 package nju.lighting.blservice.documentblservice;
 
 import nju.lighting.po.CustomerPO;
+import nju.lighting.po.ResultMessage;
 import nju.lighting.vo.AccountIODocVO;
 import nju.lighting.vo.AccountVO;
 
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 public interface AccountIODocBLService {
     AccountVO createAccountInOut() throws RemoteException;
 
-    void commitDoc(AccountIODocVO docVO) throws RemoteException;
+    ResultMessage commitDoc(AccountIODocVO docVO) throws RemoteException;
 
     String getState(String id) throws RemoteException;
 

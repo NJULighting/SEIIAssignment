@@ -1,5 +1,6 @@
 package nju.lighting.blservice.documentblservice;
 
+import nju.lighting.po.ResultMessage;
 import nju.lighting.vo.InitVO;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 public interface InitializationBLService {
     InitVO getInitInfo();
 
-    void commit(InitVO vo);
+    ResultMessage commit(InitVO vo);
 
     ArrayList<InitVO> getHistoryInfo();
 }

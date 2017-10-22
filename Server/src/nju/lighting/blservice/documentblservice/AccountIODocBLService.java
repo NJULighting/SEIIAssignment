@@ -4,6 +4,7 @@ import nju.lighting.po.CustomerPO;
 import nju.lighting.po.ResultMessage;
 import nju.lighting.vo.AccountIODocVO;
 import nju.lighting.vo.AccountVO;
+import nju.lighting.vo.CustomerVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  * @author Liao
  */
 public interface AccountIODocBLService {
-    AccountVO createAccountInOut() throws RemoteException;
+    AccountIODocVO createAccountInOut() throws RemoteException;
 
     ResultMessage commitDoc(AccountIODocVO docVO) throws RemoteException;
 
@@ -22,7 +23,7 @@ public interface AccountIODocBLService {
 
     AccountIODocVO getHistoryDoc(String id) throws RemoteException;
 
-    ArrayList<CustomerPO> getCustomerList() throws RemoteException;
+    ArrayList<CustomerVO> getCustomerList() throws RemoteException;
 
     ArrayList<AccountVO> getAccountList() throws RemoteException;
 }

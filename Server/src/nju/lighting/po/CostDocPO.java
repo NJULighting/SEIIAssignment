@@ -1,9 +1,7 @@
 package nju.lighting.po;
 
-import nju.lighting.utility.TwoTuple;
-
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created on 2017/10/18.
@@ -13,10 +11,10 @@ import java.util.Map;
 public class CostDocPO extends DocPO{
     private String costDocID;
     private List<AccountPO> accounts;
-    private CostDocItemList itemList;
+    private ArrayList<CostDocItem> itemList;
     private int total;
 
-    public CostDocPO(String costDocID, List<AccountPO> accounts, CostDocItemList itemList, int total) {
+    public CostDocPO(String costDocID, List<AccountPO> accounts, ArrayList<CostDocItem> itemList, int total) {
         this.costDocID = costDocID;
         this.accounts = accounts;
         this.itemList = itemList;
@@ -39,11 +37,11 @@ public class CostDocPO extends DocPO{
         this.accounts = accounts;
     }
 
-    public CostDocItemList getItemList() {
+    public ArrayList<CostDocItem> getItemList() {
         return itemList;
     }
 
-    public void setItemList(CostDocItemList itemList) {
+    public void setItemList(ArrayList<CostDocItem> itemList) {
         this.itemList = itemList;
     }
 

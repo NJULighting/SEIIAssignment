@@ -1,6 +1,7 @@
 package nju.lighting.dataservice.documentdataservice;
 
 import nju.lighting.po.DocPO;
+import nju.lighting.po.InitPO;
 import nju.lighting.po.ResultMessage;
 
 import java.rmi.RemoteException;
@@ -18,4 +19,11 @@ public interface DocDataService {
 
     ArrayList<DocPO> findByTime(long start, long end) throws RemoteException;
 
+    ResultMessage newAccount(InitPO po) throws RemoteException;
+
+    ArrayList<InitPO> getInitInfo() throws RemoteException;
+
+    void init() throws RemoteException;
+
+    void finish() throws RemoteException;
 }

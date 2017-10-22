@@ -6,21 +6,21 @@ package nju.lighting.po;
  * @author Liao
  */
 public class AccountTransferList {
-    private AccountPO account;
+    private String account;
     private int amount;
     private String comments;
 
-    public AccountTransferList(AccountPO account, int amount, String comments) {
+    public AccountTransferList(String account, int amount, String comments) {
         this.account = account;
         this.amount = amount;
         this.comments = comments;
     }
 
-    public AccountPO getAccount() {
+    public String getAccount() {
         return account;
     }
 
-    public void setAccount(AccountPO account) {
+    public void setAccount(String account) {
         this.account = account;
     }
 

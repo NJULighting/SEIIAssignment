@@ -3,6 +3,7 @@ package nju.lighting.blservice.documentblservice;
 import nju.lighting.po.ResultMessage;
 import nju.lighting.vo.InitVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -11,9 +12,9 @@ import java.util.ArrayList;
  * @author Liao
  */
 public interface InitializationBLService {
-    InitVO getInitInfo();
+    InitVO getInitInfo() throws RemoteException;
 
-    ResultMessage commit(InitVO vo);
+    ResultMessage commit(InitVO vo) throws RemoteException;
 
-    ArrayList<InitVO> getHistoryInfo();
+    ArrayList<InitVO> getHistoryInfo() throws RemoteException;
 }

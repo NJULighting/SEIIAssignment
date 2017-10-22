@@ -8,16 +8,28 @@ import nju.lighting.po.DocType;
  *
  * @author 陈俊宇
  */
-public class BusinessHistoryVO {
+public class BusinessHistoryItemVO {
 
     private long date;
 
     private DocType type;
 
+    private DocVO docVO;
+
+    private String salesman;
+
     private String customer;
 
     private String repository;
 
+    public BusinessHistoryItemVO(long date, DocType type, DocVO docVO, String customer,String salesman, String repository) {
+        this.date = date;
+        this.type = type;
+        this.docVO = docVO;
+        this.customer = customer;
+        this.repository = repository;
+        this.salesman=salesman;
+    }
 
     public long getDate(){return date;}
 
@@ -27,6 +39,14 @@ public class BusinessHistoryVO {
 
     public String getRepository(){return repository;}
 
+    public DocVO getDocVO() {
+        return docVO;
+    }
+
+    public void setDocVO(DocVO docVO) {
+        this.docVO = docVO;
+    }
+
     public void setDate(long date){this.date=date;}
 
     public void setType(DocType type){this.type=type;}
@@ -35,4 +55,11 @@ public class BusinessHistoryVO {
 
     public void setRepository(String repository){this.repository=repository;}
 
+    public String getSalesman() {
+        return salesman;
+    }
+
+    public void setSalesman(String salesman) {
+        this.salesman = salesman;
+    }
 }

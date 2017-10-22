@@ -28,6 +28,21 @@ public class RevenueAndExpenditureVO {
     private double profit;
 
 
+    public RevenueAndExpenditureVO(double salesRevenue, double commodityGainRevenue, double costAdjustRevenue, double spreadRevenue,
+                                   double voucherCausedRevenue, double salesRevenueOff, double costExpenditure, double commodityLossExpenditure,
+                                   double giftExpenditure, double profit) {
+        this.salesRevenue = salesRevenue;
+        this.commodityGainRevenue = commodityGainRevenue;
+        this.costAdjustRevenue = costAdjustRevenue;
+        this.spreadRevenue = spreadRevenue;
+        this.voucherCausedRevenue = voucherCausedRevenue;
+        this.salesRevenueOff = salesRevenueOff;
+        this.costExpenditure = costExpenditure;
+        this.commodityLossExpenditure = commodityLossExpenditure;
+        this.giftExpenditure = giftExpenditure;
+        this.profit = profit;
+    }
+
     public double getSalesRevenue(){return salesRevenue;}
 
     public double getCommodityGainRevenue(){return commodityGainRevenue;}

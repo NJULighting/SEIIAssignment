@@ -16,7 +16,6 @@ import java.util.ArrayList;
 public interface GiftDocBLService {
     ResultMessage createGiftDoc (GiftDocVO vo) throws RemoteException;
 
-    ArrayList<PromotionVO> getBenefitsPlan(int customerLevel, ArrayList<String> CommodityList, double total) throws RemoteException; //得到满足条件的销售策略
     
 }
 

@@ -40,7 +40,7 @@ public class UserDataService_Stub implements UserDataService {
 
     @Override
     public UserPO get(String ID) {
-        return ID.isEmpty() ? null : new UserPO("Frog", "Excited", "0000", Identity.GENERAL);;
+        return ID.isEmpty() ? null : new UserPO("Frog", "Excited", "0000", Identity.GENERAL);
     }
 
     @Override

@@ -13,12 +13,12 @@ import java.util.ArrayList;
 public class DocDataService_Stub implements DocDataService {
 
     @Override
-    public ResultMessage insert(DocPO doc) throws RemoteException {
+    public ResultMessage insert(DocPO doc) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ArrayList<DocPO> findByUser(String user) throws RemoteException {
+    public ArrayList<DocPO> findByUser(String user) {
         LossAndGainItemPO lossAndGainItemVO1 = new LossAndGainItemPO("xx002001", 100, LossAndGainItemPO.LOSS);
         LossAndGainItemPO lossAndGainItemVO2 = new LossAndGainItemPO("xx002002", 1000, LossAndGainItemPO.LOSS);
         ArrayList<LossAndGainItemPO> itemVOS = new ArrayList<>();
@@ -31,7 +31,7 @@ public class DocDataService_Stub implements DocDataService {
     }
 
     @Override
-    public DocPO find(String id) throws RemoteException {
+    public DocPO find(String id) {
         LossAndGainItemPO lossAndGainItemVO1 = new LossAndGainItemPO("xx002001", 100, LossAndGainItemPO.LOSS);
         LossAndGainItemPO lossAndGainItemVO2 = new LossAndGainItemPO("xx002002", 1000, LossAndGainItemPO.LOSS);
         ArrayList<LossAndGainItemPO> itemVOS = new ArrayList<>();
@@ -42,12 +42,12 @@ public class DocDataService_Stub implements DocDataService {
     }
 
     @Override
-    public ResultMessage update(DocPO doc) throws RemoteException {
+    public ResultMessage update(DocPO doc) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ArrayList<DocPO> findByTime(long start, long end) throws RemoteException {
+    public ArrayList<DocPO> findByTime(long start, long end) {
         LossAndGainItemPO lossAndGainItemVO1 = new LossAndGainItemPO("xx002071", 100, LossAndGainItemPO.LOSS);
         LossAndGainItemPO lossAndGainItemVO2 = new LossAndGainItemPO("xx002072", 1000, LossAndGainItemPO.LOSS);
         ArrayList<LossAndGainItemPO> itemVOS = new ArrayList<>();
@@ -60,7 +60,7 @@ public class DocDataService_Stub implements DocDataService {
     }
 
     @Override
-    public ResultMessage newAccount(InitPO po) throws RemoteException {
+    public ResultMessage newAccount(InitPO po) {
 
         return po == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
     }
@@ -91,12 +91,12 @@ public class DocDataService_Stub implements DocDataService {
     }
 
     @Override
-    public void init() throws RemoteException {
+    public void init() {
 
     }
 
     @Override
-    public void finish() throws RemoteException {
+    public void finish() {
 
     }
 }

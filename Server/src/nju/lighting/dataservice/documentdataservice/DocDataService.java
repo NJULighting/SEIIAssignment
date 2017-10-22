@@ -21,7 +21,7 @@ public interface DocDataService {
 
     ResultMessage newAccount(InitPO po);
 
-    ArrayList<InitPO> getInitInfo();
+    ArrayList<InitPO> getInitInfo() throws RemoteException;
 
     void init();
 

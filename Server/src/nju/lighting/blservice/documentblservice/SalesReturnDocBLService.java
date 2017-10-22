@@ -1,6 +1,6 @@
 package nju.lighting.blservice.documentblservice;
 
-import nju.lighting.po.ResultMessage;
+import nju.lighting.vo.ResultMessage;
 import nju.lighting.vo.SalesReturnDocVO;
 
 import java.rmi.RemoteException;

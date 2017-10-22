@@ -2,7 +2,7 @@ package nju.lighting.bl.documentbl;
 
 import nju.lighting.bl.accountbl.AccountBLService_Stub;
 import nju.lighting.blservice.accountblservice.AccountBLService;
-import nju.lighting.blservice.customerblservice.CustomerBLService_Stub;
+import nju.lighting.bl.customerbl.CustomerBLService_Stub;
 import nju.lighting.blservice.documentblservice.AccountIODocBLService;
 import nju.lighting.po.AccountIODocType;
 import nju.lighting.po.AccountTransferList;
@@ -13,7 +13,6 @@ import nju.lighting.vo.CustomerVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Optional;
 
 /**
  * Created on 2017/10/22.

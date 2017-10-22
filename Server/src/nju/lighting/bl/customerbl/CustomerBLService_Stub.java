@@ -1,25 +1,27 @@
-package nju.lighting.blservice.customerblservice;
+package nju.lighting.bl.customerbl;
 
 import nju.lighting.vo.*;
+import nju.lighting.blservice.customerblservice.CustomerBLService;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class CustomerBLService_Stub implements CustomerBLService{
 
     ArrayList<CustomerVO> customerAll;
     int id;
-    public CustomerBLService_Stub(CustomerVO customer){
+    public CustomerBLService_Stub(CustomerVO customer) throws RemoteException {
         customerAll.add(customer);
         id = customer.getID();
     }
 
     //得到客户列表
-    public ArrayList<CustomerVO> getCustomerList () {
+    public ArrayList<CustomerVO> getCustomerList () throws RemoteException {
         return customerAll;
     }
 
     //增加客户
-    public ResultMessage addCustomer(CustomerVO customer){
+    public ResultMessage addCustomer(CustomerVO customer) throws RemoteException{
         if(customer.getID() == id){
             return ResultMessage.FAILURE;
         }
@@ -27,7 +29,7 @@ public class CustomerBLService_Stub implements CustomerBLService{
     }
 
     //查找客户
-    public ArrayList<CustomerVO> findCustomer(String keyword){
+    public ArrayList<CustomerVO> findCustomer(String keyword) throws RemoteException{
         if(keyword.equals(String.valueOf(id))){
             return customerAll;
         }
@@ -35,7 +37,7 @@ public class CustomerBLService_Stub implements CustomerBLService{
     }
 
     //删除客户
-    public ResultMessage deleteCustomer(CustomerVO customer){
+    public ResultMessage deleteCustomer(CustomerVO customer) throws RemoteException{
         if(customer.getID() == id){
             return ResultMessage.SUCCESS;
         }
@@ -43,7 +45,7 @@ public class CustomerBLService_Stub implements CustomerBLService{
     }
 
     //更改客户信息
-    public ResultMessage modifyCustomer(CustomerVO customer){
+    public ResultMessage modifyCustomer(CustomerVO customer) throws RemoteException{
         if(customer.getID() == id){
             return ResultMessage.SUCCESS;
         }
@@ -51,7 +53,7 @@ public class CustomerBLService_Stub implements CustomerBLService{
     }
 
     //结束客户管理
-    public void endCustomerManage(){
+    public void endCustomerManage() throws RemoteException{
         System.out.println("End the management of customer!");
     }
 }

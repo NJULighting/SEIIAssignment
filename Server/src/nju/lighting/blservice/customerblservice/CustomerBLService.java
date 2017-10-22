@@ -24,5 +24,5 @@ public interface CustomerBLService {
     public ResultMessage modifyCustomer(CustomerVO customer) throws RemoteException;
 
     //结束客户管理
-    public void endCustomerManage();
+    public void endCustomerManage() throws RemoteException;
 }

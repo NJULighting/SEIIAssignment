@@ -16,4 +16,8 @@ public interface LogDataService {
     ArrayList<LogPO> findByTime(long from, long to);
 
     LogPO find(String ID);
+
+    void init();
+
+    void finish();
 }

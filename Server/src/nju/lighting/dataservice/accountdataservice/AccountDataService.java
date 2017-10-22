@@ -12,19 +12,19 @@ import java.util.ArrayList;
  * @author Liao
  */
 public interface AccountDataService {
-    ResultMessage insert(AccountPO po) throws RemoteException;
+    ResultMessage insert(AccountPO po);
 
-    ArrayList<AccountPO> find(String keyword) throws RemoteException;
+    ArrayList<AccountPO> find(String keyword);
 
-    AccountPO get(String id) throws RemoteException;
+    AccountPO get(String id);
 
-    ArrayList<AccountPO> getAll() throws RemoteException;
+    ArrayList<AccountPO> getAll();
 
-    ResultMessage delete(AccountPO po) throws RemoteException;
+    ResultMessage delete(AccountPO po);
 
-    void finish() throws RemoteException;
+    void finish();
 
-    void init() throws RemoteException;
+    void init();
 
-    ResultMessage update(AccountPO po) throws RemoteException;
+    ResultMessage update(AccountPO po);
 }

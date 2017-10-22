@@ -41,4 +41,11 @@ public class HistoryDocPO {
     public void setApprovalOpinion(String approvalOpinion) {
         this.approvalOpinion = approvalOpinion;
     }
+
+    public HistoryDocPO(DocPO doc, boolean hasBeenChecked, boolean hasBeenApproved, String approvalOpinion) {
+        this.doc = doc;
+        this.hasBeenChecked = hasBeenChecked;
+        this.hasBeenApproved = hasBeenApproved;
+        this.approvalOpinion = approvalOpinion;
+    }
 }

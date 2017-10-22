@@ -15,7 +15,7 @@ public class PromotionPO {
 
     private long endDate;  //截止日期
 
-    private int level; //针对不同级别用户中用户的级别
+    private CustomerGrade level; //针对不同级别用户中用户的级别
 
     private double total;  //针对不同总价的促销策略中的总价
 
@@ -29,10 +29,18 @@ public class PromotionPO {
 
     private long vouchersEndDate;  //代金券截止日期
 
-    public PromotionPO(int tag,long startDate,long endDate){
-        this.tag=tag;
-        this.startDate=startDate;
-        this.endDate=endDate;
+    public PromotionPO(int tag, long startDate, long endDate, CustomerGrade level,
+                       double total, ArrayList<String> goods, ArrayList<String> gifts, double off, double vouchers, long vouchersEndDate) {
+        this.tag = tag;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.level = level;
+        this.total = total;
+        this.goods = goods;
+        this.gifts = gifts;
+        this.off = off;
+        this.vouchers = vouchers;
+        this.vouchersEndDate = vouchersEndDate;
     }
 
     public void setStartDate(long startDate){
@@ -43,7 +51,7 @@ public class PromotionPO {
         this.endDate=endDate;
     }
 
-    public void setLevel(int level){
+    public void setLevel(CustomerGrade level){
         this.level=level;
     }
 
@@ -90,7 +98,7 @@ public class PromotionPO {
         return tag;
     }
 
-    public int getLevel(){
+    public CustomerGrade getLevel(){
         return  level;
     }
 

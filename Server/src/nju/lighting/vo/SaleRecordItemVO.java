@@ -6,7 +6,7 @@ package nju.lighting.vo;
  *
  * @author 陈俊宇
  */
-public class SaleRecordVO {
+public class SaleRecordItemVO {
     private long date;
 
     private String commodityName;
@@ -18,6 +18,18 @@ public class SaleRecordVO {
     private double salePrice;
 
     private double totalAmount;
+
+    private DocVO doc;
+
+    public SaleRecordItemVO(long date, String commodityName, String commodityType, int number, double salePrice, double totalAmount,DocVO docVO) {
+        this.date = date;
+        this.commodityName = commodityName;
+        this.commodityType = commodityType;
+        this.number = number;
+        this.salePrice = salePrice;
+        this.totalAmount = totalAmount;
+        this.doc=docVO;
+    }
 
     public long getDate(){return date;}
 
@@ -49,11 +61,12 @@ public class SaleRecordVO {
         this.totalAmount = totalAmount;
     }
 
-    public void setCommodityName(String commodityName) {
-        this.commodityName = commodityName;
+
+    public DocVO getDoc() {
+        return doc;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setDoc(DocVO doc) {
+        this.doc = doc;
     }
 }

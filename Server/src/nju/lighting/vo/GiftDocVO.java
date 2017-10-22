@@ -1,7 +1,6 @@
 package nju.lighting.vo;
 
 
-
 import java.util.ArrayList;
 
 /**
@@ -11,24 +10,33 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public class GiftDocVO extends DocVO {
-    private ArrayList<CommodityVO> gifts;
+    private ArrayList<GiftItemVO> giftItemVOs;
 
     private String ID;
 
-    private CustomerVO customer;
+    private String customer;
 
     private String repository;
 
-    public ArrayList<CommodityVO> getGifts(){return gifts;}
+    public GiftDocVO(ArrayList<GiftItemVO> giftItemVOs, String ID, String customer, String reVOsitory) {
+        this.giftItemVOs = giftItemVOs;
+        this.ID = ID;
+        this.customer = customer;
+        this.repository = reVOsitory;
+        this.setTime(100000000);
+    }
+
+
+    public ArrayList<GiftItemVO> getGifts(){return giftItemVOs;}
 
     public String getID(){return ID;}
 
     public String getRepository(){return ID;}
 
-    public CustomerVO getCustomer(){return customer;}
+    public String getCustomer(){return customer;}
 
-    public void setGifts(ArrayList<CommodityVO> gifts){
-        this.gifts=gifts;
+    public void setGifts(ArrayList<GiftItemVO> giftItemVOs){
+        this.giftItemVOs=giftItemVOs;
     }
 
     public void setID(String ID){
@@ -39,7 +47,7 @@ public class GiftDocVO extends DocVO {
         this.repository=repository;
     }
 
-    public void setCustomer(CustomerVO customer){
+    public void setCustomer(String customer){
         this.customer=customer;
     }
 }

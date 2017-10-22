@@ -1,6 +1,9 @@
 package nju.lighting.vo;
 
 
+import nju.lighting.po.*;
+import nju.lighting.po.CustomerGrade;
+
 import java.util.ArrayList;
 
 /**
@@ -15,13 +18,13 @@ public class PromotionVO {
 
     private long endDate;  //截止日期
 
-    private int level; //针对不同级别用户中用户的级别
+    private nju.lighting.po.CustomerGrade level; //针对不同级别用户中用户的级别
 
     private double total;  //针对不同总价的促销策略中的总价
 
     private ArrayList<CommodityVO> goods;  //组合商品
 
-    private ArrayList<CommodityVO> gifts;   //赠品列表
+    private ArrayList<GiftItemVO> gifts;   //赠品列表
 
     private double off;  //折让金额
 
@@ -29,10 +32,18 @@ public class PromotionVO {
 
     private long voucherEndDate;  //代金券截止日期
 
-    public PromotionVO(int tag, long startDate, long endDate){
-        this.tag=tag;
-        this.startDate=startDate;
-        this.endDate=endDate;
+    public PromotionVO(int tag, long startDate, long endDate, CustomerGrade level, double total,
+                       ArrayList<CommodityVO> goods, ArrayList<GiftItemVO> gifts, double off, double vouchers, long voucherEndDate) {
+        this.tag = tag;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.level = level;
+        this.total = total;
+        this.goods = goods;
+        this.gifts = gifts;
+        this.off = off;
+        this.vouchers = vouchers;
+        this.voucherEndDate = voucherEndDate;
     }
 
     public void setStartDate(long startDate){
@@ -43,7 +54,7 @@ public class PromotionVO {
         this.endDate=endDate;
     }
 
-    public void setLevel(int level){
+    public void setLevel(CustomerGrade level){
         this.level=level;
     }
 
@@ -75,15 +86,15 @@ public class PromotionVO {
         goods.remove(good);
     }
 
-    public void setGifts(ArrayList<CommodityVO> gifts){
+    public void setGifts(ArrayList<GiftItemVO> gifts){
         this.gifts=gifts;
     }
 
-    public void addGift(CommodityVO gift){
+    public void addGift(GiftItemVO gift){
         gifts.add(gift);
     }
 
-    public void removeGift(CommodityVO gift){
+    public void removeGift(GiftItemVO gift){
         gifts.remove(gift);
     }
 
@@ -91,7 +102,7 @@ public class PromotionVO {
         return tag;
     }
 
-    public int getLevel(){
+    public CustomerGrade getLevel(){
         return  level;
     }
 
@@ -103,11 +114,11 @@ public class PromotionVO {
         return  off;
     }
 
-    public  ArrayList getGoods(){
+    public  ArrayList<CommodityVO> getGoods(){
         return  goods;
     }
 
-    public ArrayList getGifts(){
+    public ArrayList<GiftItemVO> getGifts(){
         return gifts;
     }
 

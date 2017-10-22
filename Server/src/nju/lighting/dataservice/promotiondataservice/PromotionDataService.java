@@ -12,6 +12,9 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public interface PromotionDataService {
+
+    ArrayList<PromotionPO> getBenefitsPlan(int customerLevel, ArrayList<String> commodityList, double total);
+
     ArrayList<PromotionPO> getPromotionList();
 
     ResultMessage insert(PromotionPO po);

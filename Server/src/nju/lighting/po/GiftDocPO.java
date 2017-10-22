@@ -9,24 +9,33 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public class GiftDocPO extends DocPO {
-    private ArrayList<CommodityPO> gifts;
+    private ArrayList<GiftItemPO> giftItemPOs;
 
     private String ID;
 
-    private CustomerPO customer;
+    private String customer;
 
     private String repository;
 
-    public ArrayList<CommodityPO> getGifts(){return gifts;}
+    public GiftDocPO(ArrayList<GiftItemPO> giftItemPOs, String ID, String customer, String repository) {
+        this.giftItemPOs = giftItemPOs;
+        this.ID = ID;
+        this.customer = customer;
+        this.repository = repository;
+        this.setTime(100000000);
+    }
+
+
+    public ArrayList<GiftItemPO> getGifts(){return giftItemPOs;}
 
     public String getID(){return ID;}
 
     public String getRepository(){return ID;}
 
-    public CustomerPO getCustomer(){return customer;}
+    public String getCustomer(){return customer;}
 
-    public void setGifts(ArrayList<CommodityPO> gifts){
-        this.gifts=gifts;
+    public void setGifts(ArrayList<GiftItemPO> giftItemPOs){
+        this.giftItemPOs=giftItemPOs;
     }
 
     public void setID(String ID){
@@ -37,7 +46,7 @@ public class GiftDocPO extends DocPO {
         this.repository=repository;
     }
 
-    public void setCustomer(CustomerPO customer){
+    public void setCustomer(String customer){
         this.customer=customer;
     }
 }

@@ -2,6 +2,7 @@ package nju.lighting.blservice.promotionblservice;
 
 import com.sun.org.apache.regexp.internal.RE;
 import nju.lighting.vo.PromotionVO;
+import nju.lighting.vo.ResultMessage;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -13,11 +14,14 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public interface PromotionBLService {
+
+    ArrayList<PromotionVO> getBenefitsPlan(int customerLevel, ArrayList<String> CommodityList, double total) throws RemoteException; //得到满足条件的销售策略
+
     ArrayList<PromotionVO> getPromotionList () throws RemoteException;
 
-    boolean newAndSave (PromotionVO vo) throws RemoteException;
+    ResultMessage newAndSave (PromotionVO vo) throws RemoteException;
 
-    boolean modifyAndSave(PromotionVO vo) throws RemoteException;
+    ResultMessage modifyAndSave(PromotionVO vo) throws RemoteException;
 
-    boolean delete(PromotionVO vo) throws RemoteException;
+    ResultMessage delete(PromotionVO vo) throws RemoteException;
 }

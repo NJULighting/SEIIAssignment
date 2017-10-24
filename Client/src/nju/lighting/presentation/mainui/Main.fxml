@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.Main">
+   <children>
+      <GridPane layoutX="139.0" layoutY="200.0" prefHeight="159.0" prefWidth="296.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="200.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="142.0" minWidth="10.0" prefWidth="90.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="237.0" minWidth="10.0" prefWidth="206.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField promptText="用户名" GridPane.columnIndex="1" />
+            <TextField promptText="密码" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="用户名" />
+            <Label text="密码" GridPane.rowIndex="1" />
+            <Label text="登陆结果" textFill="#d73636" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <Label layoutX="135.0" layoutY="56.0" prefHeight="84.0" prefWidth="330.0" text="灯具照明进销存系统" AnchorPane.bottomAnchor="260.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="56.0">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

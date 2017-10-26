@@ -35,7 +35,7 @@
       </HBox>
       <ImageView fitHeight="44.0" fitWidth="66.0" layoutX="19.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../IMG_1607.JPG" />
+            <Image url="@../../../../../../../IMG_1607.JPG" />
          </image>
       </ImageView>
       <VBox layoutX="76.0" layoutY="12.0" prefHeight="27.0" prefWidth="144.0">

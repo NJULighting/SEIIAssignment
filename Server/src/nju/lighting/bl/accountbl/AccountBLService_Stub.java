@@ -29,7 +29,7 @@ public class AccountBLService_Stub implements AccountBLService {
     }
 
     @Override
-    public ArrayList<AccountVO> findAccount(String keyword) throws RemoteException {
+    public ArrayList<AccountVO> findAccounts(String keyword) throws RemoteException {
         if (keyword.isEmpty()) return null;
         else return getAccountList();
     }
@@ -52,8 +52,8 @@ public class AccountBLService_Stub implements AccountBLService {
     }
 
     @Override
-    public ResultMessage modifyAccount(AccountVO vo) throws RemoteException {
-        if (vo.getName().equals("Test Account 0") || vo.getName().equals("Test Account 1"))
+    public ResultMessage modifyAccount(String oldName, String newName) throws RemoteException {
+        if (!oldName.equals(newName))
             return ResultMessage.SUCCESS;
         return ResultMessage.FAILURE;
     }

@@ -16,11 +16,11 @@ public interface AccountBLService {
 
     ResultMessage addAccount(String name, String amount) throws RemoteException;
 
-    ArrayList<AccountVO> findAccount(String keyword) throws RemoteException;
+    ArrayList<AccountVO> findAccounts(String keyword) throws RemoteException;
 
     AccountVO getAccount(String id) throws RemoteException;
 
     ResultMessage deleteAccount(String id) throws RemoteException;
 
-    ResultMessage modifyAccount(AccountVO vo) throws RemoteException;
+    ResultMessage modifyAccount(String oldName, String newName) throws RemoteException;
 }

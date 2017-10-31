@@ -10,13 +10,13 @@ import java.util.ArrayList;
 public class AccountPO {
     private final String id;
     private String name;
-    private long money;
+    private long amount;
     private ArrayList<String> changeLog;
 
-    public AccountPO(String id, String name, long money, ArrayList<String> changeLog, int key) {
+    public AccountPO(String id, String name, long amount, ArrayList<String> changeLog, int key) {
         this.id = id;
         this.name = name;
-        this.money = money;
+        this.amount = amount;
         this.changeLog = changeLog;
     }
 
@@ -32,12 +32,12 @@ public class AccountPO {
         this.name = name;
     }
 
-    public long getMoney() {
-        return money;
+    public long getAmount() {
+        return amount;
     }
 
-    public void setMoney(long money) {
-        this.money = money;
+    public void setAmount(long amount) {
+        this.amount = amount;
     }
 
     public ArrayList<String> getChangeLog() {

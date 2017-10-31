@@ -15,7 +15,7 @@ public interface UserBLService {
 
     ResultMessage addUser(UserVO vo);
 
-    ArrayList<UserVO> findUser(String keyword);
+    ArrayList<UserVO> findUsers(String keyword);
 
     UserVO getUser(String id);
 

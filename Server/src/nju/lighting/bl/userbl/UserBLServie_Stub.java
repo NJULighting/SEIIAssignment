@@ -28,7 +28,7 @@ public class UserBLServie_Stub implements UserBLService{
     }
 
     @Override
-    public ArrayList<UserVO> findUser(String keyword) {
+    public ArrayList<UserVO> findUsers(String keyword) {
 
         return getUserList();
     }
@@ -36,9 +36,9 @@ public class UserBLServie_Stub implements UserBLService{
     @Override
     public UserVO getUser(String id) {
         if (id.equals("0"))
-            return new UserVO("Frog 0", "Excited", "0000", Identity.GENERAL, true);
+            return new UserVO("Frog 0", "Excited", "0000", Identity.GENERAL.toString(), true);
         else if (id.equals("1"))
-            return new UserVO("Frog 1", "Naive", "0001", Identity.REPOSITORY, false);
+            return new UserVO("Frog 1", "Naive", "0001", Identity.REPOSITORY.toString(), false);
         return null;
     }
 

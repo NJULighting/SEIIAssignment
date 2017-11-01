@@ -7,11 +7,13 @@ package nju.lighting.vo;
  */
 public class LogVO {
     private long time;
-    private String content;
+    private String behavior;
+    private String creator;
+    private Identity identity;
 
-    public LogVO(long time, String content) {
+    public LogVO(long time, String behavior) {
         this.time = time;
-        this.content = content;
+        this.behavior = behavior;
     }
 
     public long getTime() {
@@ -22,11 +24,11 @@ public class LogVO {
         this.time = time;
     }
 
-    public String getContent() {
-        return content;
+    public String getBehavior() {
+        return behavior;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setBehavior(String behavior) {
+        this.behavior = behavior;
     }
 }

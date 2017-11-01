@@ -1,8 +1,8 @@
 package nju.lighting.blservice.logblservice;
 
-import nju.lighting.po.ResultMessage;
 import nju.lighting.vo.LogVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -11,9 +11,9 @@ import java.util.ArrayList;
  * @author Liao
  */
 public interface LogBLService {
-    ArrayList<LogVO> getLogListByTime(long from, long to);
+    ArrayList<LogVO> getLogListByTime(long from, long to) throws RemoteException;
 
-    LogVO getLog(String id);
+    LogVO getLog(String id) throws RemoteException;
 
-    ResultMessage addLog(LogVO vo);
+    ArrayList<LogVO> findLogs(LogFilter filter) throws RemoteException;
 }

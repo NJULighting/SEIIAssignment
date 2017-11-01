@@ -1,9 +1,10 @@
 package nju.lighting.bl.logblservice;
 
 import nju.lighting.blservice.logblservice.LogBLService;
-import nju.lighting.po.ResultMessage;
+import nju.lighting.blservice.logblservice.LogFilter;
 import nju.lighting.vo.LogVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -11,10 +12,10 @@ import java.util.ArrayList;
  * Description:
  * @author Liao
  */
-public class LogBLService_Stub implements LogBLService{
+public class LogBLService_Stub implements LogBLService {
 
     @Override
-    public ArrayList<LogVO> getLogListByTime(long from, long to) {
+    public ArrayList<LogVO> getLogListByTime(long from, long to) throws RemoteException {
         LogVO logVO0 = new LogVO(1234567, "Too young");
         LogVO logVO1 = new LogVO(1234568, "Too simple");
         ArrayList<LogVO> logs = new ArrayList<>();
@@ -24,13 +25,13 @@ public class LogBLService_Stub implements LogBLService{
     }
 
     @Override
-    public LogVO getLog(String id) {
+    public LogVO getLog(String id) throws RemoteException {
         if (id.isEmpty()) return null;
         return new LogVO(1234567, "Excited");
     }
 
     @Override
-    public ResultMessage addLog(LogVO vo) {
-        return vo == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
+    public ArrayList<LogVO> findLogs(LogFilter filter) throws RemoteException {
+        return getLogListByTime(1, 2);
     }
 }

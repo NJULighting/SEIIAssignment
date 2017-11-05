@@ -7,25 +7,15 @@ import java.util.ArrayList;
  * Description:
  * @author Liao
  */
-public class CostDocPO extends DocPO{
-    private String costDocID;
+public class CostDocPO extends DocPO {
     private String accountID;
     private ArrayList<CostDocItemPO> itemList;
     private int total;
 
-    public CostDocPO(String costDocID, String accountID, ArrayList<CostDocItemPO> itemList, int total) {
-        this.costDocID = costDocID;
+    public CostDocPO(String accountID, ArrayList<CostDocItemPO> itemList, int total) {
         this.accountID = accountID;
         this.itemList = itemList;
         this.total = total;
-    }
-
-    public String getCostDocID() {
-        return costDocID;
-    }
-
-    public void setCostDocID(String costDocID) {
-        this.costDocID = costDocID;
     }
 
     public String getAccountID() {

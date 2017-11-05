@@ -5,6 +5,6 @@ package nju.lighting.po;
  * Description:
  * @author Liao
  */
-public enum  AccountChangeType {
+public enum AccountChangeType {
     IN, OUT;
 }

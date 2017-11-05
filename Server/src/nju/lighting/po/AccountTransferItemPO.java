@@ -10,6 +10,7 @@ public class AccountTransferItemPO {
     private String accountID;
     private int amount;
     private String comments;
+
     public AccountTransferItemPO(String accountID, int amount, String comments) {
         this.accountID = accountID;
         this.amount = amount;

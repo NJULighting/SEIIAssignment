@@ -26,7 +26,7 @@ public class CostDocBLService_Stub implements CostDocBLService {
         accounts.add("account1");
         ArrayList<CostDocItemPO> items = new ArrayList<>();
         CostDocItemPO item0 = new CostDocItemPO(CostDocItemType.ACCOMMODATION, 1000, "Excited!");
-        CostDocItemPO item1 = new CostDocItemPO(CostDocItemType.TRANSPOTATION, 1500, "I'm angry");
+        CostDocItemPO item1 = new CostDocItemPO(CostDocItemType.TRANSPORTATION, 1500, "I'm angry");
         items.add(item0);
         items.add(item1);
         return new CostDocVO("0000", accounts, items, 2500);

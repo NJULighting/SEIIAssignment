@@ -20,6 +20,17 @@ public class CommodityPO {
 
     private ArrayList<Double> recentTenSalePrice;
 
+    public CommodityPO(String name, String commodityType, String id, int count, double recentCostPrice, ArrayList<Double> recentTenCostPrice, double recentSalePrice, ArrayList<Double> recentTenSalePrice) {
+        this.name = name;
+        this.commodityType = commodityType;
+        this.id = id;
+        this.count = count;
+        this.recentCostPrice = recentCostPrice;
+        this.recentTenCostPrice = recentTenCostPrice;
+        this.recentSalePrice = recentSalePrice;
+        this.recentTenSalePrice = recentTenSalePrice;
+    }
+
     public String getName() {
         return name;
     }
@@ -81,17 +92,6 @@ public class CommodityPO {
     }
 
     public void setRecentTenSalePrice(ArrayList<Double> recentTenSalePrice) {
-        this.recentTenSalePrice = recentTenSalePrice;
-    }
-
-    public CommodityPO(String name, String commodityType, String id, int count, double recentCostPrice, ArrayList<Double> recentTenCostPrice, double recentSalePrice, ArrayList<Double> recentTenSalePrice) {
-        this.name = name;
-        this.commodityType = commodityType;
-        this.id = id;
-        this.count = count;
-        this.recentCostPrice = recentCostPrice;
-        this.recentTenCostPrice = recentTenCostPrice;
-        this.recentSalePrice = recentSalePrice;
         this.recentTenSalePrice = recentTenSalePrice;
     }
 }

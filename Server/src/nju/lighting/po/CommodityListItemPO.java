@@ -11,51 +11,72 @@ public class CommodityListItemPO {
     private double totalAmount = 0;
     private String remarks = "";
 
-    public void setCommodity(CommodityPO commodity){
-        this.commodity = commodity;
-        commodityID = commodity.getId();
-        name = commodity.getName();
-        commodityType = commodity.getCommodityType();
-        salePrice = commodity.getRecentSalePrice();
-    }
-    public void setNumber(int number){
-        this.number = number;
-        totalAmount = number*salePrice;
-    }
-    public void setRemarks(String remarks){
-        this.remarks = remarks;
-    }
-
-    public String getCommodityID(){ return commodityID;}
-    public String getName(){return name;}
-    public String getCommodityType(){return commodityType;}
-    public int getNumber(){return number;}
-    public double getSalePrice(){ return salePrice;}
-    public double getTotalAmount(){return totalAmount;}
-
-    public CommodityPO getCommodity() {
-        return commodity;
+    public String getCommodityID() {
+        return commodityID;
     }
 
     public void setCommodityID(String commodityID) {
         this.commodityID = commodityID;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCommodityType() {
+        return commodityType;
     }
 
     public void setCommodityType(String commodityType) {
         this.commodityType = commodityType;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+        totalAmount = number * salePrice;
+    }
+
+    public double getSalePrice() {
+        return salePrice;
+    }
+
     public void setSalePrice(double salePrice) {
         this.salePrice = salePrice;
+    }
+
+    public double getTotalAmount() {
+        return totalAmount;
     }
 
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
 
-    public String getRemarks(){return remarks; }
+    public CommodityPO getCommodity() {
+        return commodity;
+    }
+
+    public void setCommodity(CommodityPO commodity) {
+        this.commodity = commodity;
+        commodityID = commodity.getId();
+        name = commodity.getName();
+        commodityType = commodity.getCommodityType();
+        salePrice = commodity.getRecentSalePrice();
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 }

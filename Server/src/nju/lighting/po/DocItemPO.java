@@ -2,6 +2,8 @@ package nju.lighting.po;
 
 public class DocItemPO {
 
+    private long docItemID;
+
     public long getDocItemID() {
         return docItemID;
     }
@@ -9,7 +11,5 @@ public class DocItemPO {
     public void setDocItemID(long docItemID) {
         this.docItemID = docItemID;
     }
-
-    private long docItemID;
 
 }

@@ -9,16 +9,7 @@ public abstract class DocPO {
     private String creatorId;
 
     private String docId;
-
-    public String getDocNumber() {
-        return docNumber;
-    }
-
-    public void setDocNumber(String docNumber) {
-        this.docNumber = docNumber;
-    }
-
-    private String docNumber;
+    private DocType type;
 
     public Date getTime() {
         return time;
@@ -51,8 +42,6 @@ public abstract class DocPO {
     public void setType(DocType type) {
         this.type = type;
     }
-
-    private DocType type;
 
 
 }

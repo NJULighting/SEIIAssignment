@@ -8,19 +8,21 @@ public class CommodityListPO {
 
     private double totalAmount = 0;
 
-    public void addCommoditysListItem(CommodityListItemPO commodityListItem){
+    public void addCommoditysListItem(CommodityListItemPO commodityListItem) {
 
         totalAmount = totalAmount + commodityListItem.getTotalAmount();
         commodityList.add(commodityListItem);
 
     }
-    public void removeCommoditysListItem(CommodityListItemPO commodityListItem){
+
+    public void removeCommoditysListItem(CommodityListItemPO commodityListItem) {
 
         totalAmount = totalAmount - commodityListItem.getTotalAmount();
         commodityList.remove(commodityListItem);
 
     }
-    public double getTotalAmount(){
+
+    public double getTotalAmount() {
         return totalAmount;
     }
 }

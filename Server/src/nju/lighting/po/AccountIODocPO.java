@@ -7,28 +7,19 @@ import java.util.ArrayList;
  * Description:
  * @author Liao
  */
-public class AccountIODocPO extends DocPO{
-    private String ioDocID;
+public class AccountIODocPO extends DocPO {
     private AccountIODocType type;
     private String customerID;
     private ArrayList<AccountTransferItemPO> transferAccountList;
     private int total;
 
-    public AccountIODocPO(String ioDocID, AccountIODocType type, String customerID, ArrayList<AccountTransferItemPO> transferAccountList, int total) {
-        this.ioDocID = ioDocID;
+    public AccountIODocPO(AccountIODocType type, String customerID, ArrayList<AccountTransferItemPO> transferAccountList, int total) {
         this.type = type;
         this.customerID = customerID;
         this.transferAccountList = transferAccountList;
         this.total = total;
     }
 
-    public String getIoDocID() {
-        return ioDocID;
-    }
-
-    public void setIoDocID(String ioDocID) {
-        this.ioDocID = ioDocID;
-    }
 
     public AccountIODocType getAccountIODocType() {
         return type;

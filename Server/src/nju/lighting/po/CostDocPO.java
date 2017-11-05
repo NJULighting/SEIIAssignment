@@ -1,47 +1,36 @@
 package nju.lighting.po;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created on 2017/10/18.
  * Description:
  * @author Liao
  */
-public class CostDocPO extends DocPO{
-    private String costDocID;
-    private List<AccountPO> accounts;
-    private ArrayList<CostDocItem> itemList;
+public class CostDocPO extends DocPO {
+    private String accountID;
+    private ArrayList<CostDocItemPO> itemList;
     private int total;
 
-    public CostDocPO(String costDocID, List<AccountPO> accounts, ArrayList<CostDocItem> itemList, int total) {
-        this.costDocID = costDocID;
-        this.accounts = accounts;
+    public CostDocPO(String accountID, ArrayList<CostDocItemPO> itemList, int total) {
+        this.accountID = accountID;
         this.itemList = itemList;
         this.total = total;
     }
 
-    public String getCostDocID() {
-        return costDocID;
+    public String getAccountID() {
+        return accountID;
     }
 
-    public void setCostDocID(String costDocID) {
-        this.costDocID = costDocID;
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
     }
 
-    public List<AccountPO> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(List<AccountPO> accounts) {
-        this.accounts = accounts;
-    }
-
-    public ArrayList<CostDocItem> getItemList() {
+    public ArrayList<CostDocItemPO> getItemList() {
         return itemList;
     }
 
-    public void setItemList(ArrayList<CostDocItem> itemList) {
+    public void setItemList(ArrayList<CostDocItemPO> itemList) {
         this.itemList = itemList;
     }
 

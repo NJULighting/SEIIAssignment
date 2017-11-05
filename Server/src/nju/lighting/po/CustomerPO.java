@@ -26,69 +26,116 @@ public class CustomerPO {
 
     private String salesman;
 
-    public CustomerPO(int ID,CustomerType type,CustomerGrade grade,String name,String telephone,String address,String postage,String email,double receivableLimit,double receivable,double payable,String salesman){
-        this.ID =ID;
-        this.type =type;
-        this.grade=grade;
-        this.name=name;
-        this.telephone=telephone;
-        this.address=address;
-        this.postage=postage;
-        this.email=email;
-        this.receivableLimit=receivableLimit;
-        this.receivable=receivable;
-        this.payable=payable;
-        this.salesman =salesman;
+    public CustomerPO(int ID, CustomerType type, CustomerGrade grade, String name, String telephone, String address, String postage, String email, double receivableLimit, double receivable, double payable, String salesman) {
+        this.ID = ID;
+        this.type = type;
+        this.grade = grade;
+        this.name = name;
+        this.telephone = telephone;
+        this.address = address;
+        this.postage = postage;
+        this.email = email;
+        this.receivableLimit = receivableLimit;
+        this.receivable = receivable;
+        this.payable = payable;
+        this.salesman = salesman;
     }
 
-    public int getID(){ return ID;}
+    public int getID() {
+        return ID;
+    }
 
-    public CustomerType getType(){ return type;}
+    public void setID(int id) {
+        ID = id;
+    }
 
-    public CustomerGrade getGrade(){ return grade;}
+    public CustomerType getType() {
+        return type;
+    }
 
-    public String getName(){ return name;}
+    public void setType(CustomerType type) {
+        this.type = type;
+    }
 
-    public String getTelephone(){ return telephone;}
+    public CustomerGrade getGrade() {
+        return grade;
+    }
 
-    public String getAddress(){ return address;}
+    public void setGrade(CustomerGrade grade) {
+        this.grade = grade;
+    }
 
-    public String getPostage(){ return postage;}
+    public String getName() {
+        return name;
+    }
 
-    public String getEmail() { return email;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public double getReceivableLimit(){ return receivableLimit;}
+    public String getTelephone() {
+        return telephone;
+    }
 
-    public double getReceivable(){ return receivable;}
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
 
-    public double getPayable(){ return payable;}
+    public String getAddress() {
+        return address;
+    }
 
-    public String getSalesman(){ return salesman;}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
+    public String getPostage() {
+        return postage;
+    }
 
-    public void setID(int id){ ID = id;}
+    public void setPostage(String postage) {
+        this.postage = postage;
+    }
 
-    public void setType(CustomerType type){ this.type = type;}
+    public String getEmail() {
+        return email;
+    }
 
-    public void setGrade(CustomerGrade grade){ this.grade = grade;}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public void setName(String name){ this.name = name;}
+    public double getReceivableLimit() {
+        return receivableLimit;
+    }
 
-    public void setTelephone(String telephone){ this.telephone = telephone;}
+    public void setReceivableLimit(double receivableLimit) {
+        this.receivableLimit = receivableLimit;
+    }
 
-    public void setAddress(String address){ this.address = address;}
+    public double getReceivable() {
+        return receivable;
+    }
 
-    public void setPostage(String postage){ this.postage = postage;}
+    public void setReceivable(double receivable) {
+        this.receivable = receivable;
+    }
 
-    public void setEmail(String email) { this.email = email;}
+    public double getPayable() {
+        return payable;
+    }
 
-    public void setReceivableLimit(double receivableLimit){ this.receivableLimit = receivableLimit;}
+    public void setPayable(double payable) {
+        this.payable = payable;
+    }
 
-    public void setReceivable(double receivable){this.receivable = receivable;}
+    public String getSalesman() {
+        return salesman;
+    }
 
-    public void setPayable(double payable){ this.payable = payable;}
-
-    public void setSalesman(String salesman){ this.salesman = salesman;}
+    public void setSalesman(String salesman) {
+        this.salesman = salesman;
+    }
 
 
 }

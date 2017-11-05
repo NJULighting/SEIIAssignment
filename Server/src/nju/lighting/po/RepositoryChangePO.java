@@ -14,6 +14,13 @@ public class RepositoryChangePO {
 
     private double amount;
 
+    public RepositoryChangePO(String changeType, int count, String commodityId, double amount) {
+        this.changeType = changeType;
+        this.count = count;
+        this.commodityId = commodityId;
+        this.amount = amount;
+    }
+
     public String getChangeType() {
         return changeType;
     }
@@ -43,13 +50,6 @@ public class RepositoryChangePO {
     }
 
     public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public RepositoryChangePO(String changeType, int count, String commodityId, double amount) {
-        this.changeType = changeType;
-        this.count = count;
-        this.commodityId = commodityId;
         this.amount = amount;
     }
 }

@@ -1,11 +1,7 @@
 package nju.lighting.vo;
 
 import nju.lighting.po.AccountIODocType;
-import nju.lighting.po.AccountPO;
-import nju.lighting.po.AccountTransferList;
-import nju.lighting.utility.TwoTuple;
-
-import java.util.Map;
+import nju.lighting.po.AccountTransferItemPO;
 
 /**
  * Created on 2017/10/21.
@@ -16,10 +12,10 @@ public class AccountIODocVO extends DocVO{
     private String ioDocID;
     private AccountIODocType type;
     private String customer;
-    private AccountTransferList transferAccountList;
+    private AccountTransferItemPO transferAccountList;
     private int total;
 
-    public AccountIODocVO(String ioDocID, AccountIODocType type, String customer, AccountTransferList transferAccountList, int total) {
+    public AccountIODocVO(String ioDocID, AccountIODocType type, String customer, AccountTransferItemPO transferAccountList, int total) {
         this.ioDocID = ioDocID;
         this.type = type;
         this.customer = customer;
@@ -51,11 +47,11 @@ public class AccountIODocVO extends DocVO{
         this.customer = customer;
     }
 
-    public AccountTransferList getTransferAccountList() {
+    public AccountTransferItemPO getTransferAccountList() {
         return transferAccountList;
     }
 
-    public void setTransferAccountList(AccountTransferList transferAccountList) {
+    public void setTransferAccountList(AccountTransferItemPO transferAccountList) {
         this.transferAccountList = transferAccountList;
     }
 

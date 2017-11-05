@@ -1,28 +1,30 @@
 package nju.lighting.po;
 
+import java.util.Date;
+
 /**
  * Created on 2017/10/31.
  * Description:
  * @author Liao
  */
-public class AccountLog {
-    private long time;
+public class AccountLogPO {
+    private Date time;
     private int delta;
     private int amount;
     private AccountChangeType type;
 
-    public AccountLog(long time, int delta, int amount, AccountChangeType type) {
+    public AccountLogPO(Date time, int delta, int amount, AccountChangeType type) {
         this.time = time;
         this.delta = delta;
         this.amount = amount;
         this.type = type;
     }
 
-    public long getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

@@ -5,12 +5,12 @@ package nju.lighting.po;
  * Description:
  * @author Liao
  */
-public class CostDocItem {
+public class CostDocItemPO {
     private CostDocItemType type;
     private int amount;
     private String comment;
 
-    public CostDocItem(CostDocItemType type, int amount, String comment) {
+    public CostDocItemPO(CostDocItemType type, int amount, String comment) {
         this.type = type;
         this.amount = amount;
         this.comment = comment;

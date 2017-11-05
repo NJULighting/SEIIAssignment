@@ -5,7 +5,6 @@ import java.util.ArrayList;
 /**
  * Created on 2017/10/19.
  * Description
- *
  * @author 陈俊宇
  */
 public class GiftDocPO extends DocPO {
@@ -26,27 +25,35 @@ public class GiftDocPO extends DocPO {
     }
 
 
-    public ArrayList<GiftItemPO> getGifts(){return giftItemPOs;}
-
-    public String getID(){return ID;}
-
-    public String getRepository(){return ID;}
-
-    public String getCustomer(){return customer;}
-
-    public void setGifts(ArrayList<GiftItemPO> giftItemPOs){
-        this.giftItemPOs=giftItemPOs;
+    public ArrayList<GiftItemPO> getGifts() {
+        return giftItemPOs;
     }
 
-    public void setID(String ID){
-        this.ID=ID;
+    public void setGifts(ArrayList<GiftItemPO> giftItemPOs) {
+        this.giftItemPOs = giftItemPOs;
     }
 
-    public void setRepository(String repository){
-        this.repository=repository;
+    public String getID() {
+        return ID;
     }
 
-    public void setCustomer(String customer){
-        this.customer=customer;
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public String getRepository() {
+        return ID;
+    }
+
+    public void setRepository(String repository) {
+        this.repository = repository;
+    }
+
+    public String getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
     }
 }

@@ -9,6 +9,13 @@ public class CommodityCategoryPO {
     private ArrayList<CommodityPO> subCommodities;
     private boolean isLowestLeverCategory;
 
+    public CommodityCategoryPO(String categoryName, ArrayList<CommodityCategoryPO> subCategories, ArrayList<CommodityPO> subCommodities, boolean isLowestLeverCategory) {
+        this.categoryName = categoryName;
+        this.subCategories = subCategories;
+        this.subCommodities = subCommodities;
+        this.isLowestLeverCategory = isLowestLeverCategory;
+    }
+
     public String getCategoryName() {
         return categoryName;
     }
@@ -39,12 +46,5 @@ public class CommodityCategoryPO {
 
     public void setLowestLeverCategory(boolean lowestLeverCategory) {
         isLowestLeverCategory = lowestLeverCategory;
-    }
-
-    public CommodityCategoryPO(String categoryName, ArrayList<CommodityCategoryPO> subCategories, ArrayList<CommodityPO> subCommodities, boolean isLowestLeverCategory) {
-        this.categoryName = categoryName;
-        this.subCategories = subCategories;
-        this.subCommodities = subCommodities;
-        this.isLowestLeverCategory = isLowestLeverCategory;
     }
 }

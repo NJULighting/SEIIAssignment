@@ -3,7 +3,6 @@ package nju.lighting.po;
 /**
  * Created on 2017/10/22.
  * Description
- *
  * @author 陈俊宇
  */
 public class GiftItemPO {

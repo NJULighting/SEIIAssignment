@@ -1,10 +1,15 @@
 package nju.lighting.po;
 
-public class AlertDocItemPO extends DocItemPO{
+public class AlertDocItemPO extends DocItemPO {
 
     private String commodityId;
 
     private int count;
+
+    public AlertDocItemPO(String commodityId, int count) {
+        this.commodityId = commodityId;
+        this.count = count;
+    }
 
     public String getCommodityId() {
         return commodityId;
@@ -16,11 +21,6 @@ public class AlertDocItemPO extends DocItemPO{
 
     public int getCount() {
         return count;
-    }
-
-    public AlertDocItemPO(String commodityId, int count) {
-        this.commodityId = commodityId;
-        this.count = count;
     }
 
     public void setCount(int count) {

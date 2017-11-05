@@ -5,7 +5,7 @@ import nju.lighting.blservice.accountblservice.AccountBLService;
 import nju.lighting.bl.customerbl.CustomerBLService_Stub;
 import nju.lighting.blservice.documentblservice.AccountIODocBLService;
 import nju.lighting.po.AccountIODocType;
-import nju.lighting.po.AccountTransferList;
+import nju.lighting.po.AccountTransferItemPO;
 import nju.lighting.po.ResultMessage;
 import nju.lighting.vo.AccountIODocVO;
 import nju.lighting.vo.AccountVO;
@@ -23,7 +23,7 @@ public class AcccountIODocBLService_Stub implements AccountIODocBLService {
     @Override
     public AccountIODocVO createAccountInOut() throws RemoteException {
         AccountBLService_Stub stub = new AccountBLService_Stub();
-        AccountTransferList transferList = new AccountTransferList("Test Account", 10000, "Naive!");
+        AccountTransferItemPO transferList = new AccountTransferItemPO("Test Account", 10000, "Naive!");
         return new AccountIODocVO("0000", AccountIODocType.IN, "Customer", transferList, 10000);
     }
 
@@ -39,7 +39,7 @@ public class AcccountIODocBLService_Stub implements AccountIODocBLService {
 
     @Override
     public AccountIODocVO getHistoryDoc(String id) throws RemoteException {
-        AccountTransferList transferList = new AccountTransferList("Test Account", 10000, "Naive!");
+        AccountTransferItemPO transferList = new AccountTransferItemPO("Test Account", 10000, "Naive!");
         return new AccountIODocVO("0001", AccountIODocType.IN, "Customer", transferList, 100);
     }
 

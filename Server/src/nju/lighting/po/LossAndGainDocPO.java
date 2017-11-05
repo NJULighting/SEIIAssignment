@@ -8,6 +8,11 @@ public class LossAndGainDocPO extends DocPO {
 
     private String reason;
 
+    public LossAndGainDocPO(ArrayList<LossAndGainItemPO> lossAndGains, String reason) {
+        this.lossAndGains = lossAndGains;
+        this.reason = reason;
+    }
+
     public ArrayList<LossAndGainItemPO> getLossAndGains() {
         return lossAndGains;
     }
@@ -21,11 +26,6 @@ public class LossAndGainDocPO extends DocPO {
     }
 
     public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public LossAndGainDocPO(ArrayList<LossAndGainItemPO> lossAndGains, String reason) {
-        this.lossAndGains = lossAndGains;
         this.reason = reason;
     }
 }

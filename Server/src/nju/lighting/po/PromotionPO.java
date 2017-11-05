@@ -43,91 +43,96 @@ public class PromotionPO {
         this.vouchersEndDate = vouchersEndDate;
     }
 
-    public void setStartDate(long startDate){
-        this.startDate=startDate;
-    }
-
-    public void setEndDate(long endDate){
-        this.endDate=endDate;
-    }
-
-    public void setLevel(CustomerGrade level){
-        this.level=level;
-    }
-
-    public void setTotal(double total){
-        this.total=total;
-    }
-
-    public void setOff(double off){
-        this.off=off;
-    }
-
-    public void setVouchers(double vouchers){
-        this.vouchers=vouchers;
-    }
-
-    public void setVouchersEndDate(long vouchersEndDate) {
-        this.vouchersEndDate = vouchersEndDate;
-    }
-    public void setGoods(ArrayList goods){
-        this.goods=goods;
-    }
-
-    public void addGood(String good){
+    public void addGood(String good) {
         goods.add(good);
     }
 
-    public void removeGood(String good){
+    public void removeGood(String good) {
         goods.remove(good);
     }
 
-    public void setGifts(ArrayList gifts){
-        this.gifts=gifts;
-    }
-
-    public void addGift(String gift){
+    public void addGift(String gift) {
         gifts.add(gift);
     }
 
-    public void removeGift(String gift){
+    public void removeGift(String gift) {
         gifts.remove(gift);
     }
 
-    public int getTag(){
+    public int getTag() {
         return tag;
     }
 
-    public CustomerGrade getLevel(){
-        return  level;
+    public CustomerGrade getLevel() {
+        return level;
     }
 
-    public double getTotal(){
+    public void setLevel(CustomerGrade level) {
+        this.level = level;
+    }
+
+    public double getTotal() {
         return total;
     }
 
-    public double getOff(){
-        return  off;
+    public void setTotal(double total) {
+        this.total = total;
     }
 
-    public  ArrayList getGoods(){
-        return  goods;
+    public double getOff() {
+        return off;
     }
 
-    public ArrayList getGifts(){
+    public void setOff(double off) {
+        this.off = off;
+    }
+
+    public ArrayList getGoods() {
+        return goods;
+    }
+
+    public void setGoods(ArrayList goods) {
+        this.goods = goods;
+    }
+
+    public ArrayList getGifts() {
         return gifts;
     }
 
-    public long getStartDate(){return  startDate;}
+    public void setGifts(ArrayList gifts) {
+        this.gifts = gifts;
+    }
 
-    public long getEndDate(){return  endDate;}
+    public long getStartDate() {
+        return startDate;
+    }
 
-    public double getVouchers(){
+    public void setStartDate(long startDate) {
+        this.startDate = startDate;
+    }
+
+    public long getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(long endDate) {
+        this.endDate = endDate;
+    }
+
+    public double getVouchers() {
         return vouchers;
+    }
+
+    public void setVouchers(double vouchers) {
+        this.vouchers = vouchers;
     }
 
     public long getVouchersEndDate() {
         return vouchersEndDate;
+    }
+
+    public void setVouchersEndDate(long vouchersEndDate) {
+        this.vouchersEndDate = vouchersEndDate;
     }
 
 }

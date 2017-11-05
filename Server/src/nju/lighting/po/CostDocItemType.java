@@ -6,5 +6,5 @@ package nju.lighting.po;
  * @author Liao
  */
 public enum CostDocItemType {
-    ACCOMMODATION, TRANSPOTATION;
+    ACCOMMODATION, TRANSPORTATION;
 }

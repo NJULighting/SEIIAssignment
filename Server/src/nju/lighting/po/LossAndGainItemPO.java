@@ -7,6 +7,14 @@ public class LossAndGainItemPO extends DocItemPO {
     public static final String GAIN = "GAIN";
 
     private String type;
+    private String commodityId;
+    private int count;
+
+    public LossAndGainItemPO(String commodityId, int count, String type) {
+        this.commodityId = commodityId;
+        this.count = count;
+        this.type = type;
+    }
 
     public String getType() {
         return type;
@@ -15,10 +23,6 @@ public class LossAndGainItemPO extends DocItemPO {
     public void setType(String type) {
         this.type = type;
     }
-
-    private String commodityId;
-
-    private int count;
 
     public String getCommodityId() {
         return commodityId;
@@ -34,11 +38,5 @@ public class LossAndGainItemPO extends DocItemPO {
 
     public void setCount(int count) {
         this.count = count;
-    }
-
-    public LossAndGainItemPO(String commodityId, int count, String type) {
-        this.commodityId = commodityId;
-        this.count = count;
-        this.type = type;
     }
 }

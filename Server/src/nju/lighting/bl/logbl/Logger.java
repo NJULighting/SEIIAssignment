@@ -1,7 +1,5 @@
 package nju.lighting.bl.logbl;
 
-import nju.lighting.vo.UserVO;
-
 /**
  * Created on 2017/11/5.
  * Description:
@@ -10,5 +8,5 @@ import nju.lighting.vo.UserVO;
 public interface Logger {
     void add(OPType type, String itemName, String id);
 
-    void add(DocDescription description);
+    void add(OPType type, Describable description);
 }

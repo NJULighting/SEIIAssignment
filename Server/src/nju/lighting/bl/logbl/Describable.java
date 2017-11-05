@@ -5,5 +5,5 @@ package nju.lighting.bl.logbl;
  * Description:
  * @author Liao
  */
-public interface DocDescription {
+public interface Describable {
 }

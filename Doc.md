@@ -18,3 +18,9 @@
 |                               | 语法   | `public RevenueAndExpenditureVO findRevenueAndExpenditure(long StartDate,long endDate)` |
 | Doc.findRevenueAndExpenditure | 前置条件 | 用户已输入正确的筛选条件并确认                          |
 |                               | 后置条件 | 返回所输入时间段内的收支情况的值对象                       |
+|                               | 语法   | `public ResultMessage redflush(DocVO target) throws RemoteException` |
+| Doc.redflush                  | 前置条件 | 传入有效的DocVO对象                             |
+|                               | 后置条件 | 将对应红冲单据入账，更新持久化存储，更新显示                   |
+|                               | 语法   | `public DocVO redflushAndCopy(DocVO target) throws RemoteException` |
+| Doc.redflushAndCopy           | 前置条件 | 传入有效的DocVO对象                             |
+|                               | 后置条件 | 返回各属性取负后的相应的DocVO对象                      |

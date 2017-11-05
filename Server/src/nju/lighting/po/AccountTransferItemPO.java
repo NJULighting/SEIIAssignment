@@ -5,23 +5,31 @@ package nju.lighting.po;
  * Description:
  * @author Liao
  */
-public class AccountTransferList {
-    private String account;
+public class AccountTransferItemPO {
+    private String id;
+    private String accountID;
     private int amount;
     private String comments;
-
-    public AccountTransferList(String account, int amount, String comments) {
-        this.account = account;
+    public AccountTransferItemPO(String accountID, int amount, String comments) {
+        this.accountID = accountID;
         this.amount = amount;
         this.comments = comments;
     }
 
-    public String getAccount() {
-        return account;
+    public String getId() {
+        return id;
     }
 
-    public void setAccount(String account) {
-        this.account = account;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getAccountID() {
+        return accountID;
+    }
+
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
     }
 
     public int getAmount() {

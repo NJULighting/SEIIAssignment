@@ -1,7 +1,6 @@
 package nju.lighting.po;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created on 2017/10/18.
@@ -10,13 +9,13 @@ import java.util.List;
  */
 public class CostDocPO extends DocPO{
     private String costDocID;
-    private List<AccountPO> accounts;
-    private ArrayList<CostDocItem> itemList;
+    private String accountID;
+    private ArrayList<CostDocItemPO> itemList;
     private int total;
 
-    public CostDocPO(String costDocID, List<AccountPO> accounts, ArrayList<CostDocItem> itemList, int total) {
+    public CostDocPO(String costDocID, String accountID, ArrayList<CostDocItemPO> itemList, int total) {
         this.costDocID = costDocID;
-        this.accounts = accounts;
+        this.accountID = accountID;
         this.itemList = itemList;
         this.total = total;
     }
@@ -29,19 +28,19 @@ public class CostDocPO extends DocPO{
         this.costDocID = costDocID;
     }
 
-    public List<AccountPO> getAccounts() {
-        return accounts;
+    public String getAccountID() {
+        return accountID;
     }
 
-    public void setAccounts(List<AccountPO> accounts) {
-        this.accounts = accounts;
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
     }
 
-    public ArrayList<CostDocItem> getItemList() {
+    public ArrayList<CostDocItemPO> getItemList() {
         return itemList;
     }
 
-    public void setItemList(ArrayList<CostDocItem> itemList) {
+    public void setItemList(ArrayList<CostDocItemPO> itemList) {
         this.itemList = itemList;
     }
 

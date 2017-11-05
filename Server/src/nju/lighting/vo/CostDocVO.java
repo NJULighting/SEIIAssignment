@@ -1,6 +1,6 @@
 package nju.lighting.vo;
 
-import nju.lighting.po.CostDocItem;
+import nju.lighting.po.CostDocItemPO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +13,10 @@ import java.util.List;
 public class CostDocVO {
     private String costDocID;
     private List<String> accounts;
-    private ArrayList<CostDocItem> itemList;
+    private ArrayList<CostDocItemPO> itemList;
     private int total;
 
-    public CostDocVO(String costDocID, List<String> accounts, ArrayList<CostDocItem> itemList, int total) {
+    public CostDocVO(String costDocID, List<String> accounts, ArrayList<CostDocItemPO> itemList, int total) {
         this.costDocID = costDocID;
         this.accounts = accounts;
         this.itemList = itemList;
@@ -39,11 +39,11 @@ public class CostDocVO {
         this.accounts = accounts;
     }
 
-    public ArrayList<CostDocItem> getItemList() {
+    public ArrayList<CostDocItemPO> getItemList() {
         return itemList;
     }
 
-    public void setItemList(ArrayList<CostDocItem> itemList) {
+    public void setItemList(ArrayList<CostDocItemPO> itemList) {
         this.itemList = itemList;
     }
 

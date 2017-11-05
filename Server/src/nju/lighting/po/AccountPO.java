@@ -11,13 +11,13 @@ public class AccountPO {
     private final String id;
     private String name;
     private long amount;
-    private ArrayList<String> changeLog;
+    private ArrayList<AccountLogPO> changeLogs;
 
-    public AccountPO(String id, String name, long amount, ArrayList<String> changeLog, int key) {
+    public AccountPO(String id, String name, long amount, ArrayList<AccountLogPO> changeLogs) {
         this.id = id;
         this.name = name;
         this.amount = amount;
-        this.changeLog = changeLog;
+        this.changeLogs = changeLogs;
     }
 
     public String getId() {
@@ -40,11 +40,11 @@ public class AccountPO {
         this.amount = amount;
     }
 
-    public ArrayList<String> getChangeLog() {
-        return changeLog;
+    public ArrayList<AccountLogPO> getChangeLogs() {
+        return changeLogs;
     }
 
-    public void setChangeLog(ArrayList<String> changeLog) {
-        this.changeLog = changeLog;
+    public void setChangeLogs(ArrayList<AccountLogPO> changeLogs) {
+        this.changeLogs = changeLogs;
     }
 }

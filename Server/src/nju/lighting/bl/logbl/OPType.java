@@ -6,5 +6,5 @@ package nju.lighting.bl.logbl;
  * @author Liao
  */
 public enum OPType {
-    ADD, DELETE, MODIFY, Approve;
+    ADD, DELETE, MODIFY, APPROVE;
 }

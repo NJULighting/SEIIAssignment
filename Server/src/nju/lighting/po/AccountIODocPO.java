@@ -1,8 +1,6 @@
 package nju.lighting.po;
 
-import nju.lighting.utility.TwoTuple;
-
-import java.util.Map;
+import java.util.ArrayList;
 
 /**
  * Created on 2017/10/18.
@@ -12,14 +10,14 @@ import java.util.Map;
 public class AccountIODocPO extends DocPO{
     private String ioDocID;
     private AccountIODocType type;
-    private String customer;
-    private AccountTransferList transferAccountList;
+    private String customerID;
+    private ArrayList<AccountTransferItemPO> transferAccountList;
     private int total;
 
-    public AccountIODocPO(String ioDocID, AccountIODocType type, String customer, AccountTransferList transferAccountList, int total) {
+    public AccountIODocPO(String ioDocID, AccountIODocType type, String customerID, ArrayList<AccountTransferItemPO> transferAccountList, int total) {
         this.ioDocID = ioDocID;
         this.type = type;
-        this.customer = customer;
+        this.customerID = customerID;
         this.transferAccountList = transferAccountList;
         this.total = total;
     }
@@ -40,19 +38,19 @@ public class AccountIODocPO extends DocPO{
         this.type = type;
     }
 
-    public String getCustomer() {
-        return customer;
+    public String getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomer(String customer) {
-        this.customer = customer;
+    public void setCustomerID(String customerID) {
+        this.customerID = customerID;
     }
 
-    public AccountTransferList getTransferAccountList() {
+    public ArrayList<AccountTransferItemPO> getTransferAccountList() {
         return transferAccountList;
     }
 
-    public void setTransferAccountList(AccountTransferList transferAccountList) {
+    public void setTransferAccountList(ArrayList<AccountTransferItemPO> transferAccountList) {
         this.transferAccountList = transferAccountList;
     }
 

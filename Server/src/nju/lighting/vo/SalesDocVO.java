@@ -1,9 +1,9 @@
 package nju.lighting.vo;
 
 
-public class SalesReturnDocVO extends SalesTypeDocVO{
+public class SalesDocVO extends SalesTypeDocVO{
 
-    public SalesReturnDocVO(String ID, CustomerVO customer, String repository, UserVO operator, CommodityListVO commodityList, String remarks, double discount, double voucher){
+    public SalesDocVO(String ID, CustomerVO customer, String repository, UserVO operator, CommodityListVO commodityList, String remarks, double discount, double voucher){
         this.setID(ID);
         this.setCustomer(customer);
         this.setRepository(repository);

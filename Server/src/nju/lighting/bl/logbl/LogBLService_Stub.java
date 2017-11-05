@@ -1,4 +1,4 @@
-package nju.lighting.bl.logblservice;
+package nju.lighting.bl.logbl;
 
 import nju.lighting.blservice.logblservice.LogBLService;
 import nju.lighting.blservice.logblservice.LogFilter;

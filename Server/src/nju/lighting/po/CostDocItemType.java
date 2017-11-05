@@ -6,5 +6,5 @@ package nju.lighting.po;
  * @author Liao
  */
 public enum CostDocItemType {
-    ACCOMMODATION, TRANSPORTATION;
+    ACCOMMODATION, TRANSPORTATION, RECEPTOIN, COMMUNICATION, MEETING, BUSINESS_TRIP, OFFICE, MEAL, OTHER;
 }

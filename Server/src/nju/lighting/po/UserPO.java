@@ -6,36 +6,35 @@ package nju.lighting.po;
  * @author Liao
  */
 public class UserPO {
-    private String username;
+    private String name;
     private String password;
-    private String jobNumber;
+    private String id;
     private Identity identity;
-    private boolean authority;
+    private boolean authorized;
 
-    public UserPO(String username, String password, String jobNumber, Identity identity) {
+    public UserPO(String name, String password, String id, Identity identity, boolean authorized) {
 
-        this.username = username;
+        this.name = name;
         this.password = password;
-        this.jobNumber = jobNumber;
+        this.id = id;
         this.identity = identity;
-        this.authority = authority;
-
+        this.authorized = authorized;
     }
 
-    public boolean getAuthority() {
-        return authority;
+    public boolean getAuthorized() {
+        return authorized;
     }
 
-    public void setAuthority(boolean authority) {
-        this.authority = authority;
+    public void setAuthorized(boolean authorized) {
+        this.authorized = authorized;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -46,12 +45,12 @@ public class UserPO {
         this.password = password;
     }
 
-    public String getJobNumber() {
-        return jobNumber;
+    public String getId() {
+        return id;
     }
 
-    public void setJobNumber(String jobNumber) {
-        this.jobNumber = jobNumber;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Identity getIdentity() {

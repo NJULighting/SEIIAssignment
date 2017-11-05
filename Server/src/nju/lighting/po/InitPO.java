@@ -1,6 +1,7 @@
 package nju.lighting.po;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created on 2017/10/17.
@@ -8,6 +9,9 @@ import java.util.ArrayList;
  * @author Liao
  */
 public class InitPO {
+    private String id;
+    private Date time;
+    private String userID;
     private ArrayList<String> commodityCategories;
     private ArrayList<String> commodities;
     private ArrayList<String> customers;

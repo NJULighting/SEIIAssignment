@@ -21,7 +21,7 @@ public class ViewTableDataService_Stub implements ViewTablesDataService {
         UserPO userVO=new UserPO("ml","0000","0000", Identity.FINANCE);
 
 
-        SalesDocPO salesDocVO1=new SalesDocPO("XSD-20171022-00001",customerVO,"xl","NO.1",userVO,null,"",
+        SalesTypeDocPO salesDocVO1=new SalesTypeDocPO("XSD-20171022-00001",customerVO,"xl","NO.1",userVO,null,"",
                 100,10,5,85);
 
         ArrayList<DocPO> salesDocPOS=new ArrayList<>();

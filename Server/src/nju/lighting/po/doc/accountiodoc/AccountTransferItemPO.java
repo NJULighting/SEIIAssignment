@@ -1,4 +1,4 @@
-package nju.lighting.po;
+package nju.lighting.po.doc.accountiodoc;
 
 /**
  * Created on 2017/10/21.
@@ -8,13 +8,24 @@ package nju.lighting.po;
 public class AccountTransferItemPO {
     private String id;
     private String accountID;
+    private String accountIODocID;
     private double amount;
     private String comments;
 
-    public AccountTransferItemPO(String accountID, int amount, String comments) {
+    public AccountTransferItemPO(String id, String accountID, String accountIODocID, double amount, String comments) {
+        this.id = id;
         this.accountID = accountID;
+        this.accountIODocID = accountIODocID;
         this.amount = amount;
         this.comments = comments;
+    }
+
+    public String getAccountIODocID() {
+        return accountIODocID;
+    }
+
+    public void setAccountIODocID(String accountIODocID) {
+        this.accountIODocID = accountIODocID;
     }
 
     public String getId() {

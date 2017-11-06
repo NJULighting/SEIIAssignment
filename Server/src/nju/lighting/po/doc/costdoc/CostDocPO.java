@@ -1,8 +1,10 @@
-package nju.lighting.po;
+package nju.lighting.po.doc.costdoc;
 
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.DocType;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created on 2017/10/18.
@@ -14,7 +16,9 @@ public class CostDocPO extends DocPO {
     private ArrayList<CostDocItemPO> itemList;
     private double total;
 
-    public CostDocPO(String accountID, ArrayList<CostDocItemPO> itemList, int total) {
+    public CostDocPO(String id, DocType docType, String userId, Date time
+            , String accountID, ArrayList<CostDocItemPO> itemList, double total) {
+        super(id, docType, userId, time);
         this.accountID = accountID;
         this.itemList = itemList;
         this.total = total;

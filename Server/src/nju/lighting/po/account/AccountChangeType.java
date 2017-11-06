@@ -1,4 +1,4 @@
-package nju.lighting.po;
+package nju.lighting.po.account;
 
 /**
  * Created on 2017/10/31.
@@ -6,5 +6,5 @@ package nju.lighting.po;
  * @author Liao
  */
 public enum AccountChangeType {
-    IN, OUT;
+    IN, OUT
 }

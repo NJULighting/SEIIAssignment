@@ -1,8 +1,10 @@
-package nju.lighting.po;
+package nju.lighting.po.doc.accountiodoc;
 
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.DocType;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created on 2017/10/18.
@@ -10,25 +12,26 @@ import java.util.ArrayList;
  * @author Liao
  */
 public class AccountIODocPO extends DocPO {
-    private AccountIODocType type;
+    private AccountIODocType ioType;
     private String customerID;
     private ArrayList<AccountTransferItemPO> transferAccountList;
     private double total;
 
-    public AccountIODocPO(AccountIODocType type, String customerID, ArrayList<AccountTransferItemPO> transferAccountList, int total) {
-        this.type = type;
+    public AccountIODocPO(String id, DocType docType, String userId, Date time
+            , AccountIODocType ioType, String customerID, ArrayList<AccountTransferItemPO> transferAccountList, double total) {
+        super(id, docType, userId, time);
+        this.ioType = ioType;
         this.customerID = customerID;
         this.transferAccountList = transferAccountList;
         this.total = total;
     }
 
-
-    public AccountIODocType getAccountIODocType() {
-        return type;
+    public AccountIODocType getIOType() {
+        return ioType;
     }
 
-    public void setAccountIODocType(AccountIODocType type) {
-        this.type = type;
+    public void setIOType(AccountIODocType ioType) {
+        this.ioType = ioType;
     }
 
     public String getCustomerID() {

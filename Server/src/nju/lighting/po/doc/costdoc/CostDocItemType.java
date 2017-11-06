@@ -1,4 +1,4 @@
-package nju.lighting.po;
+package nju.lighting.po.doc.costdoc;
 
 /**
  * Created on 2017/10/18.

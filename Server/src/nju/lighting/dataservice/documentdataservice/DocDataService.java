@@ -1,7 +1,7 @@
 package nju.lighting.dataservice.documentdataservice;
 
 import nju.lighting.po.doc.DocPO;
-import nju.lighting.po.InitPO;
+import nju.lighting.po.init.InitPO;
 import nju.lighting.po.ResultMessage;
 
 import java.rmi.RemoteException;

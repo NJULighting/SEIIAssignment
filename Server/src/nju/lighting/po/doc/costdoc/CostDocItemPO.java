@@ -1,4 +1,4 @@
-package nju.lighting.po;
+package nju.lighting.po.doc.costdoc;
 
 /**
  * Created on 2017/10/21.
@@ -7,13 +7,23 @@ package nju.lighting.po;
  */
 public class CostDocItemPO {
     private CostDocItemType type;
+    private String costDocID;
     private double amount;
     private String comment;
 
-    public CostDocItemPO(CostDocItemType type, int amount, String comment) {
+    public CostDocItemPO(CostDocItemType type, String costDocID, double amount, String comment) {
         this.type = type;
+        this.costDocID = costDocID;
         this.amount = amount;
         this.comment = comment;
+    }
+
+    public String getCostDocID() {
+        return costDocID;
+    }
+
+    public void setCostDocID(String costDocID) {
+        this.costDocID = costDocID;
     }
 
     public CostDocItemType getType() {

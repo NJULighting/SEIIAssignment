@@ -1,4 +1,4 @@
-package nju.lighting.po;
+package nju.lighting.po.account;
 
 import java.util.Date;
 
@@ -11,9 +11,11 @@ public class AccountLogPO {
     private Date time;
     private double delta;
     private double amount;
+    private String accountID;
     private AccountChangeType type;
 
-    public AccountLogPO(Date time, int delta, int amount, AccountChangeType type) {
+    public AccountLogPO(Date time, int delta, int amount, AccountChangeType type, String accountID) {
+        this.accountID = accountID;
         this.time = time;
         this.delta = delta;
         this.amount = amount;
@@ -50,5 +52,13 @@ public class AccountLogPO {
 
     public void setType(AccountChangeType type) {
         this.type = type;
+    }
+
+    public String getAccountID() {
+        return accountID;
+    }
+
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
     }
 }

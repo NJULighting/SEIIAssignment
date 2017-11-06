@@ -21,8 +21,8 @@ public class LogDataService_Stub implements LogDataService {
 
     @Override
     public ArrayList<LogPO> findByTime(Date from, Date to) {
-        LogPO log0 = new LogPO(123452, "001", "Excited");
-        LogPO log1 = new LogPO(123456, "001", "Too Simple");
+        LogPO log0 = new LogPO(new Date(), "001", "Excited", "12345");
+        LogPO log1 = new LogPO(new Date(), "001", "Too Simple","12345");
         ArrayList<LogPO> logs = new ArrayList<>();
         logs.add(log0);
         logs.add(log1);
@@ -31,8 +31,8 @@ public class LogDataService_Stub implements LogDataService {
 
     @Override
     public LogPO find(LogFilter filter) {
-        LogPO log = new LogPO(123452, "001", "Excited");
-        return filter.isEmpty() ? null : log;
+        LogPO log = new LogPO(new Date(), "001", "Excited", "12345");
+        return filter == null ? null : log;
     }
 
     @Override

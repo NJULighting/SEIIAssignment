@@ -1,4 +1,4 @@
-package nju.lighting.po;
+package nju.lighting.po.init;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,11 +17,38 @@ public class InitPO {
     private ArrayList<String> customers;
     private ArrayList<String> accounts;
 
-    public InitPO(ArrayList<String> commodityCategories, ArrayList<String> commodities, ArrayList<String> customers, ArrayList<String> accounts) {
+    public InitPO(String id, Date time, String userID, ArrayList<String> commodityCategories, ArrayList<String> commodities, ArrayList<String> customers, ArrayList<String> accounts) {
+        this.id = id;
+        this.time = time;
+        this.userID = userID;
         this.commodityCategories = commodityCategories;
         this.commodities = commodities;
         this.customers = customers;
         this.accounts = accounts;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public ArrayList<String> getCommodityCategories() {

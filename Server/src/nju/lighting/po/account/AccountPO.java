@@ -1,4 +1,4 @@
-package nju.lighting.po;
+package nju.lighting.po.account;
 
 import java.util.ArrayList;
 

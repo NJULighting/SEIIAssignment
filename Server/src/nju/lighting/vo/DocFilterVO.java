@@ -1,6 +1,6 @@
 package nju.lighting.vo;
 
-import nju.lighting.po.DocType;
+import nju.lighting.po.doc.DocType;
 
 /**
  * Created on 2017/10/21.

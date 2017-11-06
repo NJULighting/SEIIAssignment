@@ -1,5 +1,7 @@
 package nju.lighting.po;
 
+import nju.lighting.po.doc.GeneralDocPO;
+
 import java.util.ArrayList;
 
 /**
@@ -7,7 +9,7 @@ import java.util.ArrayList;
  * Description:
  * @author Liao
  */
-public class CostDocPO extends DocPO {
+public class CostDocPO extends GeneralDocPO {
     private String accountID;
     private ArrayList<CostDocItemPO> itemList;
     private double total;

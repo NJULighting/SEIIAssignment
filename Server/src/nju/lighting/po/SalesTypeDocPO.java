@@ -1,6 +1,8 @@
 package nju.lighting.po;
 
-public class SalesTypeDocPO extends DocPO {
+import nju.lighting.po.doc.GeneralDocPO;
+
+public class SalesTypeDocPO extends GeneralDocPO {
 
     private String ID;
     private CustomerPO customer;

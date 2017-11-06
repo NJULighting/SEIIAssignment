@@ -1,25 +1,27 @@
 package nju.lighting.po;
 
+import nju.lighting.po.commodity.CommodityItemPO;
+
 /**
  * Created on 2017/10/22.
  * Description
  * @author 陈俊宇
  */
 public class GiftItemPO {
-    private CommodityPO commodity;
+    private CommodityItemPO commodity;
 
     private int count;
 
-    public GiftItemPO(CommodityPO commodity, int count) {
+    public GiftItemPO(CommodityItemPO commodity, int count) {
         this.commodity = commodity;
         this.count = count;
     }
 
-    public CommodityPO getCommodity() {
+    public CommodityItemPO getCommodity() {
         return commodity;
     }
 
-    public void setCommodityName(CommodityPO commodity) {
+    public void setCommodityName(CommodityItemPO commodity) {
         this.commodity = commodity;
     }
 

@@ -4,8 +4,10 @@ import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.po.*;
+import nju.lighting.po.doc.GeneralDocPO;
+import nju.lighting.po.doc.lossandgaindoc.LossAndGainDocPO;
+import nju.lighting.po.doc.lossandgaindoc.LossAndGainItemPO;
 import nju.lighting.vo.CommodityVO;
-import nju.lighting.vo.InitVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -13,25 +15,25 @@ import java.util.ArrayList;
 public class DocDataService_Stub implements DocDataService {
 
     @Override
-    public ResultMessage insert(DocPO doc) {
+    public ResultMessage insert(GeneralDocPO doc) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ArrayList<DocPO> findByUser(String user) {
+    public ArrayList<GeneralDocPO> findByUser(String user) {
         LossAndGainItemPO lossAndGainItemVO1 = new LossAndGainItemPO("xx002001", 100, LossAndGainItemPO.LOSS);
         LossAndGainItemPO lossAndGainItemVO2 = new LossAndGainItemPO("xx002002", 1000, LossAndGainItemPO.LOSS);
         ArrayList<LossAndGainItemPO> itemVOS = new ArrayList<>();
         itemVOS.add(lossAndGainItemVO1);
         itemVOS.add(lossAndGainItemVO2);
         LossAndGainDocPO lossAndGainDocPO = new LossAndGainDocPO(itemVOS, "不小心压坏了！");
-        ArrayList<DocPO> docs = new ArrayList<>();
+        ArrayList<GeneralDocPO> docs = new ArrayList<>();
         docs.add(lossAndGainDocPO);
         return docs;
     }
 
     @Override
-    public DocPO find(String id) {
+    public GeneralDocPO find(String id) {
         LossAndGainItemPO lossAndGainItemVO1 = new LossAndGainItemPO("xx002001", 100, LossAndGainItemPO.LOSS);
         LossAndGainItemPO lossAndGainItemVO2 = new LossAndGainItemPO("xx002002", 1000, LossAndGainItemPO.LOSS);
         ArrayList<LossAndGainItemPO> itemVOS = new ArrayList<>();
@@ -42,19 +44,19 @@ public class DocDataService_Stub implements DocDataService {
     }
 
     @Override
-    public ResultMessage update(DocPO doc) {
+    public ResultMessage update(GeneralDocPO doc) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ArrayList<DocPO> findByTime(long start, long end) {
+    public ArrayList<GeneralDocPO> findByTime(long start, long end) {
         LossAndGainItemPO lossAndGainItemVO1 = new LossAndGainItemPO("xx002071", 100, LossAndGainItemPO.LOSS);
         LossAndGainItemPO lossAndGainItemVO2 = new LossAndGainItemPO("xx002072", 1000, LossAndGainItemPO.LOSS);
         ArrayList<LossAndGainItemPO> itemVOS = new ArrayList<>();
         itemVOS.add(lossAndGainItemVO1);
         itemVOS.add(lossAndGainItemVO2);
         LossAndGainDocPO lossAndGainDocPO = new LossAndGainDocPO(itemVOS, "不小心压坏了！");
-        ArrayList<DocPO> docs = new ArrayList<>();
+        ArrayList<GeneralDocPO> docs = new ArrayList<>();
         docs.add(lossAndGainDocPO);
         return docs;
     }

@@ -1,7 +1,7 @@
 package nju.lighting.data.repositorydata;
 
 import nju.lighting.dataservice.repositorydataservice.RepositoryDataService;
-import nju.lighting.po.RepositoryChangePO;
+import nju.lighting.po.repository.RepositoryChangePO;
 
 import java.util.ArrayList;
 

@@ -1,11 +1,11 @@
 package nju.lighting.po.doc.alertdoc;
 
 import nju.lighting.po.doc.DocType;
-import nju.lighting.po.doc.GeneralDocPO;
+import nju.lighting.po.doc.DocPO;
 
 import java.util.Date;
 
-public class AlertDocPO extends GeneralDocPO {
+public class AlertDocPO extends DocPO {
 
     private String comment;
 

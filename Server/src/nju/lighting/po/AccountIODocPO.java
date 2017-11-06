@@ -1,6 +1,6 @@
 package nju.lighting.po;
 
-import nju.lighting.po.doc.GeneralDocPO;
+import nju.lighting.po.doc.DocPO;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Description:
  * @author Liao
  */
-public class AccountIODocPO extends GeneralDocPO {
+public class AccountIODocPO extends DocPO {
     private AccountIODocType type;
     private String customerID;
     private ArrayList<AccountTransferItemPO> transferAccountList;

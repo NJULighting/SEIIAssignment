@@ -1,6 +1,6 @@
 package nju.lighting.po;
 
-import nju.lighting.po.doc.GeneralDocPO;
+import nju.lighting.po.doc.DocPO;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Description
  * @author 陈俊宇
  */
-public class GiftDocPO extends GeneralDocPO {
+public class GiftDocPO extends DocPO {
     private ArrayList<GiftItemPO> giftItemPOs;
 
     private String ID;

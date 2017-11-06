@@ -1,6 +1,6 @@
 package nju.lighting.dataservice.documentdataservice;
 
-import nju.lighting.po.doc.GeneralDocPO;
+import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.InitPO;
 import nju.lighting.po.ResultMessage;
 
@@ -9,15 +9,15 @@ import java.util.ArrayList;
 
 public interface DocDataService {
 
-    ResultMessage insert(GeneralDocPO doc);
+    ResultMessage insert(DocPO doc);
 
-    ArrayList<GeneralDocPO> findByUser(String user);
+    ArrayList<DocPO> findByUser(String user);
 
-    GeneralDocPO find(String id);
+    DocPO find(String id);
 
-    ResultMessage update(GeneralDocPO doc);
+    ResultMessage update(DocPO doc);
 
-    ArrayList<GeneralDocPO> findByTime(long start, long end);
+    ArrayList<DocPO> findByTime(long start, long end);
 
     ResultMessage newAccount(InitPO po);
 

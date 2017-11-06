@@ -1,11 +1,11 @@
 package nju.lighting.po.doc.lossandgaindoc;
 
 import nju.lighting.po.doc.DocType;
-import nju.lighting.po.doc.GeneralDocPO;
+import nju.lighting.po.doc.DocPO;
 
 import java.util.Date;
 
-public class LossAndGainDocPO extends GeneralDocPO {
+public class LossAndGainDocPO extends DocPO {
 
     private String comment;
 

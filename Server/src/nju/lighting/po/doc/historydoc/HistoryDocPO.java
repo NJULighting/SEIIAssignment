@@ -1,5 +1,6 @@
 package nju.lighting.po.doc.historydoc;
 
+import shared.HistoryDocType;
 
 public class HistoryDocPO {
 

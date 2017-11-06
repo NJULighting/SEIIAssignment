@@ -1,7 +1,7 @@
 package nju.lighting.dataservice.documentdataservice;
 
-import nju.lighting.po.DocPO;
-import nju.lighting.po.DocType;
+import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.DocType;
 
 import java.util.ArrayList;
 

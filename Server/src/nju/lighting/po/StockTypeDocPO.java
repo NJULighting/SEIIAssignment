@@ -1,5 +1,7 @@
 package nju.lighting.po;
 
+import nju.lighting.po.doc.DocPO;
+
 public class StockTypeDocPO extends DocPO {
 
     private String ID;

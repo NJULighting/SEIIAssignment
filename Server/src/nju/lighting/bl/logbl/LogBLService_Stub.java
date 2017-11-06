@@ -6,6 +6,7 @@ import nju.lighting.vo.LogVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created on 2017/10/22.
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 public class LogBLService_Stub implements LogBLService {
 
     @Override
-    public ArrayList<LogVO> getLogListByTime(long from, long to) throws RemoteException {
+    public ArrayList<LogVO> getLogListByTime(Date from, Date to) throws RemoteException {
         LogVO logVO0 = new LogVO(1234567, "Too young");
         LogVO logVO1 = new LogVO(1234568, "Too simple");
         ArrayList<LogVO> logs = new ArrayList<>();
@@ -24,14 +25,11 @@ public class LogBLService_Stub implements LogBLService {
         return logs;
     }
 
-    @Override
-    public LogVO getLog(String id) throws RemoteException {
-        if (id.isEmpty()) return null;
-        return new LogVO(1234567, "Excited");
-    }
 
     @Override
     public ArrayList<LogVO> findLogs(LogFilter filter) throws RemoteException {
-        return getLogListByTime(1, 2);
+        Date date1 = new Date();
+        Date date2 = new Date(System.currentTimeMillis());
+        return getLogListByTime(date1, date2);
     }
 }

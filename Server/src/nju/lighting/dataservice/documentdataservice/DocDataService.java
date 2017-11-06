@@ -1,6 +1,6 @@
 package nju.lighting.dataservice.documentdataservice;
 
-import nju.lighting.po.DocPO;
+import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.InitPO;
 import nju.lighting.po.ResultMessage;
 

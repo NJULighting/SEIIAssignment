@@ -1,5 +1,7 @@
 package nju.lighting.po;
 
+import nju.lighting.po.doc.DocPO;
+
 public class SalesTypeDocPO extends DocPO {
 
     private String ID;

@@ -1,9 +1,11 @@
 package nju.lighting.dataservice.logdataservice;
 
+import nju.lighting.blservice.logblservice.LogFilter;
 import nju.lighting.po.LogPO;
 import nju.lighting.po.ResultMessage;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created on 2017/10/22.
@@ -13,9 +15,9 @@ import java.util.ArrayList;
 public interface LogDataService {
     ResultMessage insert(LogPO po);
 
-    ArrayList<LogPO> findByTime(long from, long to);
+    ArrayList<LogPO> findByTime(Date from, Date to);
 
-    LogPO find(String ID);
+    LogPO find(LogFilter filter);
 
     void init();
 

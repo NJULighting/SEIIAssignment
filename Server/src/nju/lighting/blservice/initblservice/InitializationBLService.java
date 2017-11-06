@@ -1,4 +1,4 @@
-package nju.lighting.blservice.documentblservice;
+package nju.lighting.blservice.initblservice;
 
 import nju.lighting.po.ResultMessage;
 import nju.lighting.vo.InitVO;

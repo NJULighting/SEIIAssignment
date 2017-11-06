@@ -1,8 +1,8 @@
-package nju.lighting.bl.documentbl;
+package nju.lighting.bl.initbl;
 
 import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
-import nju.lighting.blservice.documentblservice.InitializationBLService;
+import nju.lighting.blservice.initblservice.InitializationBLService;
 import nju.lighting.po.ResultMessage;
 import nju.lighting.vo.CommodityVO;
 import nju.lighting.vo.InitVO;

@@ -6,7 +6,7 @@ public abstract class GeneralDocPO extends DocPO {
 
     private String userId;
 
-    private String time;
+    private Date time;
 
     public String getUserId() {
         return userId;
@@ -16,15 +16,15 @@ public abstract class GeneralDocPO extends DocPO {
         this.userId = userId;
     }
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
-    public GeneralDocPO(String id, DocType docType, String userId, String time) {
+    public GeneralDocPO(String id, DocType docType, String userId, Date time) {
         super(id, docType);
         this.userId = userId;
         this.time = time;

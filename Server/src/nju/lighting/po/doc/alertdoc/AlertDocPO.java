@@ -3,6 +3,8 @@ package nju.lighting.po.doc.alertdoc;
 import nju.lighting.po.doc.DocType;
 import nju.lighting.po.doc.GeneralDocPO;
 
+import java.util.Date;
+
 public class AlertDocPO extends GeneralDocPO {
 
     private String comment;
@@ -35,7 +37,7 @@ public class AlertDocPO extends GeneralDocPO {
         this.expired = expired;
     }
 
-    public AlertDocPO(String id, DocType docType, String userId, String time, String comment, boolean triggered, boolean expired) {
+    public AlertDocPO(String id, DocType docType, String userId, Date time, String comment, boolean triggered, boolean expired) {
         super(id, docType, userId, time);
         this.comment = comment;
         this.triggered = triggered;

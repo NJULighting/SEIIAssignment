@@ -3,6 +3,8 @@ package nju.lighting.po.doc.lossandgaindoc;
 import nju.lighting.po.doc.DocType;
 import nju.lighting.po.doc.GeneralDocPO;
 
+import java.util.Date;
+
 public class LossAndGainDocPO extends GeneralDocPO {
 
     private String comment;
@@ -16,7 +18,7 @@ public class LossAndGainDocPO extends GeneralDocPO {
     }
 
     public LossAndGainDocPO(String id, DocType docType, String userId,
-                            String time, String comment) {
+                            Date time, String comment) {
         super(id, docType, userId, time);
         this.comment = comment;
     }

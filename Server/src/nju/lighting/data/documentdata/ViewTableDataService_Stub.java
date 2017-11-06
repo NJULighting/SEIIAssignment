@@ -2,8 +2,6 @@ package nju.lighting.data.documentdata;
 
 import nju.lighting.dataservice.documentdataservice.ViewTablesDataService;
 import nju.lighting.po.*;
-import nju.lighting.po.doc.DocType;
-import nju.lighting.po.doc.DocPO;
 
 
 import java.util.ArrayList;

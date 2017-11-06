@@ -3,10 +3,8 @@ package nju.lighting.data.documentdata;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.po.*;
-import nju.lighting.po.doc.DocPO;
-import nju.lighting.po.doc.lossandgaindoc.LossAndGainDocPO;
-import nju.lighting.po.doc.lossandgaindoc.LossAndGainItemPO;
 import nju.lighting.vo.CommodityVO;
+import nju.lighting.vo.InitVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

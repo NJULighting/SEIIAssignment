@@ -2,7 +2,7 @@ package nju.lighting.bl.documentbl;
 
 
 import nju.lighting.blservice.documentblservice.ViewTablesBLService;
-import nju.lighting.po.doc.DocType;
+import nju.lighting.po.DocType;
 import nju.lighting.vo.*;
 
 import java.rmi.RemoteException;

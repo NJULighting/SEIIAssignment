@@ -1,19 +1,14 @@
-package nju.lighting.po.doc.alertdoc;
+package nju.lighting.po;
 
-public class AlertDocItemPO {
-
-    private String alertDocId;
+public class AlertDocItemPO extends DocItemPO {
 
     private String commodityId;
 
     private int count;
 
-    public String getAlertDocId() {
-        return alertDocId;
-    }
-
-    public void setAlertDocId(String alertDocId) {
-        this.alertDocId = alertDocId;
+    public AlertDocItemPO(String commodityId, int count) {
+        this.commodityId = commodityId;
+        this.count = count;
     }
 
     public String getCommodityId() {

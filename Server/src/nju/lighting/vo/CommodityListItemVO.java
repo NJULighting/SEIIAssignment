@@ -1,10 +1,10 @@
 package nju.lighting.vo;
 
-import nju.lighting.po.commodity.CommodityItemPO;
+import nju.lighting.po.CommodityPO;
 
 public class CommodityListItemVO {
 
-    private CommodityItemPO commodity;
+    private CommodityPO commodity;
     private String commodityID;
     private String name;
     private String commodityType;
@@ -13,7 +13,7 @@ public class CommodityListItemVO {
     private double totalAmount = 0;
     private String remarks = "";
 
-    public void setCommodity(CommodityItemPO commodity){
+    public void setCommodity(CommodityPO commodity){
         this.commodity = commodity;
         commodityID = commodity.getId();
         name = commodity.getName();
@@ -35,7 +35,7 @@ public class CommodityListItemVO {
     public double getSalePrice(){ return salePrice;}
     public double getTotalAmount(){return totalAmount;}
 
-    public CommodityItemPO getCommodity() {
+    public CommodityPO getCommodity() {
         return commodity;
     }
 

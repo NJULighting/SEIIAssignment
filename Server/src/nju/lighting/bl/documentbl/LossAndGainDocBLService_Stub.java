@@ -1,7 +1,7 @@
 package nju.lighting.bl.documentbl;
 
 import nju.lighting.blservice.documentblservice.LossAndGainDocBLService;
-import nju.lighting.po.doc.lossandgaindoc.LossAndGainDocPO;
+import nju.lighting.po.LossAndGainDocPO;
 import nju.lighting.po.ResultMessage;
 
 import java.rmi.RemoteException;

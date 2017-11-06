@@ -1,10 +1,8 @@
 package nju.lighting.po;
 
-import nju.lighting.po.commodity.CommodityItemPO;
-
 public class CommodityListItemPO {
 
-    private CommodityItemPO commodity;
+    private CommodityPO commodity;
     private String commodityID;
     private String name;
     private String commodityType;
@@ -62,11 +60,11 @@ public class CommodityListItemPO {
         this.totalAmount = totalAmount;
     }
 
-    public CommodityItemPO getCommodity() {
+    public CommodityPO getCommodity() {
         return commodity;
     }
 
-    public void setCommodity(CommodityItemPO commodity) {
+    public void setCommodity(CommodityPO commodity) {
         this.commodity = commodity;
         commodityID = commodity.getId();
         name = commodity.getName();

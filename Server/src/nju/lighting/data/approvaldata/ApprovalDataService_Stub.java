@@ -2,8 +2,6 @@ package nju.lighting.data.approvaldata;
 
 import nju.lighting.dataservice.approvaldataservice.ApprovalDataService;
 import nju.lighting.po.*;
-import nju.lighting.po.commodity.CommodityItemPO;
-import nju.lighting.po.doc.historydoc.HistoryDocPO;
 
 import java.util.ArrayList;
 
@@ -16,11 +14,11 @@ import java.util.ArrayList;
 public class ApprovalDataService_Stub implements ApprovalDataService{
     @Override
     public ArrayList<HistoryDocPO> getDocumentList() {
-        CommodityItemPO commodityVO1 = new CommodityItemPO("日本LED无障碍灯泡", "LED", "xx0002222",
+        CommodityPO commodityVO1 = new CommodityPO("日本LED无障碍灯泡", "LED", "xx0002222",
                 100, 100, new ArrayList<Double>(), 150.0, new ArrayList<Double>());
-        CommodityItemPO commodityVO2 = new CommodityItemPO("日本LED无障碍灯泡" + "-b", "LED", "xx0002223",
+        CommodityPO commodityVO2 = new CommodityPO("日本LED无障碍灯泡" + "-b", "LED", "xx0002223",
                 100, 100, new ArrayList<Double>(), 170.0, new ArrayList<Double>());
-        CommodityItemPO commodityVO3 = new CommodityItemPO("日本LED无障碍灯泡" + "-c", "LED", "xx0002224",
+        CommodityPO commodityVO3 = new CommodityPO("日本LED无障碍灯泡" + "-c", "LED", "xx0002224",
                 100, 100, new ArrayList<Double>(), 130.0, new ArrayList<Double>());
 
         GiftItemPO giftItemVO1=new GiftItemPO(commodityVO1,3);

@@ -1,15 +1,16 @@
 package nju.lighting.blservice.repositoryblservice;
 
-import java.rmi.Remote;
-import nju.lighting.vo.RepositoryChangeVO;
-import nju.lighting.vo.RepositoryTableVO;
+import nju.lighting.vo.repository.RepositoryChangeVO;
+import nju.lighting.vo.repository.RepositoryTableVO;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public interface RepositoryBLService extends Remote{
 
-    ArrayList<RepositoryChangeVO> getRepositoryChanges (long startTime, long endTime) throws  RemoteException;
+    ArrayList<RepositoryChangeVO> getRepositoryChanges(Date startDate, Date endDate) throws RemoteException;
 
     RepositoryTableVO getRepositoryTable() throws RemoteException;
 

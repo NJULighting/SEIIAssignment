@@ -1,6 +1,5 @@
 package nju.lighting.bl.documentbl;
 
-import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.blservice.documentblservice.InitializationBLService;
 import nju.lighting.po.ResultMessage;

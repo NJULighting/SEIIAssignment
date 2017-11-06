@@ -1,8 +1,6 @@
 package nju.lighting.po.doc.historydoc;
 
 
-import nju.lighting.po.doc.DocType;
-
 public class HistoryDocPO {
 
     private String docId;

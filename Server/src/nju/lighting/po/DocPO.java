@@ -1,5 +1,7 @@
 package nju.lighting.po;
 
+import nju.lighting.po.doc.DocType;
+
 import java.util.Date;
 
 public abstract class DocPO {

@@ -4,7 +4,6 @@ import nju.lighting.data.accountdata.AccountDataService_Stub;
 import nju.lighting.data.approvaldata.ApprovalDataService_Stub;
 import nju.lighting.data.commoditydata.CommodityDataService_Stub;
 import nju.lighting.data.customerdata.CustomerDataService_Stub;
-import nju.lighting.data.documentdata.DocDataService_Stub;
 import nju.lighting.data.logdata.LogDataService_Stub;
 import nju.lighting.data.promotiondata.PromotionDataService_Stub;
 import nju.lighting.data.repositorydata.RepositoryDataService_Stub;

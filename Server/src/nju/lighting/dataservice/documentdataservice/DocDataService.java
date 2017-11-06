@@ -1,29 +1,34 @@
 package nju.lighting.dataservice.documentdataservice;
 
+import nju.lighting.bl.documentbl.DocumentFilter;
+import nju.lighting.bl.documentbl.SaleRecordFilter;
+import nju.lighting.po.BusinessHistoryItemPO;
+import nju.lighting.po.RevenueAndExpenditurePO;
+import nju.lighting.po.doc.DocFilter;
 import nju.lighting.po.doc.DocPO;
+<<<<<<< HEAD
 import nju.lighting.po.init.InitPO;
+=======
+>>>>>>> 5b3f1742e46a77e053b522a2d8a46079947fcaa0
 import nju.lighting.po.ResultMessage;
+import nju.lighting.po.doc.DocType;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public interface DocDataService {
 
-    ResultMessage insert(DocPO doc);
+    String create(DocType type);
 
-    ArrayList<DocPO> findByUser(String user);
+    ResultMessage commitDoc(DocPO doc);
 
-    DocPO find(String id);
+    ArrayList<DocPO> getDocs(DocFilter filter);
 
-    ResultMessage update(DocPO doc);
+    ArrayList<DocPO> findSaleRecords(SaleRecordFilter filter);
 
-    ArrayList<DocPO> findByTime(long start, long end);
+    ArrayList<BusinessHistoryItemPO> findDocuments(DocumentFilter filter);
 
-    ResultMessage newAccount(InitPO po);
+    RevenueAndExpenditurePO findRevenueAndExpenditure(Date startDate, Date endDate);
 
-    ArrayList<InitPO> getInitInfo() throws RemoteException;
 
-    void init();
-
-    void finish();
 }

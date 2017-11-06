@@ -1,4 +1,4 @@
-package nju.lighting.po.doc;
+package shared;
 
 import java.util.Date;
 

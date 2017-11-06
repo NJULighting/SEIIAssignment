@@ -1,4 +1,4 @@
-package nju.lighting.bl.logbl;
+package shared;
 
 /**
  * Created on 2017/11/5.

@@ -4,7 +4,7 @@ import nju.lighting.bl.accountbl.AccountBLService_Stub;
 import nju.lighting.blservice.accountblservice.AccountBLService;
 import nju.lighting.blservice.documentblservice.CostDocBLService;
 import nju.lighting.po.doc.costdoc.CostDocItemPO;
-import nju.lighting.po.doc.costdoc.CostDocItemType;
+import shared.CostDocItemType;
 import nju.lighting.po.doc.costdoc.CostDocPO;
 import nju.lighting.po.ResultMessage;
 import nju.lighting.vo.AccountVO;

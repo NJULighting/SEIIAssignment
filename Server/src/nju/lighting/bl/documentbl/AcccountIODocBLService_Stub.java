@@ -4,7 +4,7 @@ import nju.lighting.bl.accountbl.AccountBLService_Stub;
 import nju.lighting.blservice.accountblservice.AccountBLService;
 import nju.lighting.bl.customerbl.CustomerBLService_Stub;
 import nju.lighting.blservice.documentblservice.AccountIODocBLService;
-import nju.lighting.po.doc.accountiodoc.AccountIODocType;
+import shared.AccountIODocType;
 import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import nju.lighting.po.ResultMessage;
 import nju.lighting.vo.AccountIODocVO;

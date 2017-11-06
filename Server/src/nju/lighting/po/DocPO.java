@@ -1,6 +1,6 @@
 package nju.lighting.po;
 
-import nju.lighting.po.doc.DocType;
+import shared.DocType;
 
 import java.util.Date;
 

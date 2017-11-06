@@ -1,4 +1,4 @@
-package nju.lighting.po.doc.accountiodoc;
+package shared;
 
 /**
  * Created on 2017/10/18.

@@ -1,7 +1,8 @@
 package nju.lighting.po.doc.accountiodoc;
 
 import nju.lighting.po.doc.DocPO;
-import nju.lighting.po.doc.DocType;
+import shared.AccountIODocType;
+import shared.DocType;
 
 import java.util.ArrayList;
 import java.util.Date;

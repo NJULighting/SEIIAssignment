@@ -1,5 +1,7 @@
 package nju.lighting.po.doc.costdoc;
 
+import shared.CostDocItemType;
+
 /**
  * Created on 2017/10/21.
  * Description:

@@ -1,6 +1,6 @@
 package nju.lighting.po.doc.lossandgaindoc;
 
-import nju.lighting.po.doc.DocType;
+import shared.DocType;
 import nju.lighting.po.doc.DocPO;
 
 import java.util.Date;

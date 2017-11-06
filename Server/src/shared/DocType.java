@@ -1,4 +1,4 @@
-package nju.lighting.po.doc;
+package shared;
 
 public enum DocType {
     LOSS_AND_GAIN,

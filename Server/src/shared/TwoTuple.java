@@ -1,4 +1,4 @@
-package nju.lighting.utility;
+package shared;
 
 public class TwoTuple<T, R> {
 

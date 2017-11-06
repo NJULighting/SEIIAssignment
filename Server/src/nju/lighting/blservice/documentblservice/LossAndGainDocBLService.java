@@ -1,6 +1,5 @@
 package nju.lighting.blservice.documentblservice;
 
-import nju.lighting.po.LossAndGainDocPO;
 import nju.lighting.po.ResultMessage;
 
 import java.rmi.Remote;

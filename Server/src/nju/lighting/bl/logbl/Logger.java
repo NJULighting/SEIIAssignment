@@ -1,5 +1,7 @@
 package nju.lighting.bl.logbl;
 
+import shared.OPType;
+
 /**
  * Created on 2017/11/5.
  * Description:

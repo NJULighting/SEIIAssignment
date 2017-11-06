@@ -4,6 +4,7 @@ import nju.lighting.vo.LogVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created on 2017/10/21.
@@ -11,9 +12,7 @@ import java.util.ArrayList;
  * @author Liao
  */
 public interface LogBLService {
-    ArrayList<LogVO> getLogListByTime(long from, long to) throws RemoteException;
-
-    LogVO getLog(String id) throws RemoteException;
+    ArrayList<LogVO> getLogListByTime(Date from, Date to) throws RemoteException;
 
     ArrayList<LogVO> findLogs(LogFilter filter) throws RemoteException;
 }

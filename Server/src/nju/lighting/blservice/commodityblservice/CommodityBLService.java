@@ -13,20 +13,20 @@ public interface CommodityBLService extends Remote {
 
     CommodityTreeVO getCommodityTree() throws RemoteException;
 
-    ResultMessage addCommodity(CommodityItemVO newCommodity);
+    ResultMessage addCommodity(CommodityItemVO newCommodity) throws RemoteException;
 
-    ArrayList<CommodityItemVO> findCommodityByName(String commodityName);
+    ArrayList<CommodityItemVO> findCommodityByName(String commodityName) throws RemoteException;
 
-    CommodityItemVO findCommodityById(String id);
+    CommodityItemVO findCommodityById(String id) throws RemoteException;
 
-    ResultMessage deleteCommodity(String id);
+    ResultMessage deleteCommodity(String id) throws RemoteException;
 
-    ResultMessage modifyCommodity(CommodityItemVO commodity);
+    ResultMessage modifyCommodity(CommodityItemVO commodity) throws RemoteException;
 
-    ResultMessage addCategory(CommodityCategoryItemVO newCategory);
+    ResultMessage addCategory(CommodityCategoryItemVO newCategory) throws RemoteException;
 
-    ResultMessage deleteCategory(int id);
+    ResultMessage deleteCategory(int id) throws RemoteException;
 
-    ResultMessage modifyCategory(CommodityCategoryItemVO categoryItemVO);
+    ResultMessage modifyCategory(CommodityCategoryItemVO categoryItemVO) throws RemoteException;
 
 }

@@ -1,4 +1,4 @@
-package nju.lighting.blservice.commodityblservice;
+package nju.lighting.bl.commoditybl;
 
 import nju.lighting.po.ResultMessage;
 import nju.lighting.vo.commodity.CommodityCategoryItemVO;

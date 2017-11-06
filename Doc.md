@@ -9,13 +9,13 @@
 |                               | 语法   | `public ArrayList<DocVO> getDoc(DocFilter filter) throws RemotionException` |
 | Doc.getDoc                    | 前置条件 | 传入一个非空DocFilter                          |
 |                               | 后置条件 | 返回符合DocFilter的所有Doc                      |
-|                               | 语法   | `public ArrayList<SaleRecordItemVO> findSaleRecords(saleRecordFilterVO vo)` |
+|                               | 语法   | `public ArrayList<SaleRecordItemVO> findSaleRecords(SaleRecordFilter filter)` |
 | Doc.findSaleRecords           | 前置条件 | 用户已输入正确的筛选条件并确认                          |
 |                               | 后置条件 | 返回符合筛选条件的所有销售记录的值对象                      |
-|                               | 语法   | `public ArrayList<BussinessHitoryItemVO> findDocuments(documentFilterVO vo)` |
+|                               | 语法   | `public ArrayList<BussinessHitoryItemVO> findDocuments(DocumentFilter filter)` |
 | Doc.findDocuments             | 前置条件 | 用户已输入正确的筛选条件并确认                          |
 |                               | 后置条件 | 返回符合筛选条件的所有单据的值对象                        |
-|                               | 语法   | `public RevenueAndExpenditureVO findRevenueAndExpenditure(long StartDate,long endDate)` |
+|                               | 语法   | `public RevenueAndExpenditureVO findRevenueAndExpenditure(Date StartDate,Date endDate)` |
 | Doc.findRevenueAndExpenditure | 前置条件 | 用户已输入正确的筛选条件并确认                          |
 |                               | 后置条件 | 返回所输入时间段内的收支情况的值对象                       |
 |                               | 语法   | `public ResultMessage redflush(DocVO target) throws RemoteException` |
@@ -24,3 +24,4 @@
 |                               | 语法   | `public DocVO redflushAndCopy(DocVO target) throws RemoteException` |
 | Doc.redflushAndCopy           | 前置条件 | 传入有效的DocVO对象                             |
 |                               | 后置条件 | 返回各属性取负后的相应的DocVO对象                      |
+

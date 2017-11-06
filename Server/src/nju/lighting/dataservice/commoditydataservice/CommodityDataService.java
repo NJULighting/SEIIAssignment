@@ -1,24 +1,29 @@
 package nju.lighting.dataservice.commoditydataservice;
 
-import nju.lighting.po.CommodityPO;
 import nju.lighting.po.ResultMessage;
+import nju.lighting.po.commodity.CommodityCategoryPO;
+import nju.lighting.po.commodity.CommodityItemPO;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public interface CommodityDataService extends Remote{
+public interface CommodityDataService {
 
-    ArrayList<CommodityPO> getAll() throws RemoteException;
+    ArrayList<CommodityItemPO> getAllCommodity();
 
-    ResultMessage insert(CommodityPO pp) throws RemoteException;
+    CommodityItemPO findById(String id);
 
-    ArrayList<CommodityPO> findByName(String commodityName) throws RemoteException;
+    ResultMessage add(CommodityItemPO commodityItemPO);
 
-    CommodityPO find(String id) throws RemoteException;
+    ResultMessage update(CommodityItemPO commodityItemPO);
 
-    ResultMessage delete(String id) throws RemoteException;
+    ResultMessage deleteCommodity(String id);
 
-    ResultMessage update(CommodityPO commodity);
+    ResultMessage findBuName(String name);
+
+    ArrayList<CommodityCategoryPO> getAllCommodityCategory();
+
+    ResultMessage add(CommodityCategoryPO commodityCategoryPO);
+
+    ResultMessage deleteCategory(int id);
 
 }

@@ -1,5 +1,7 @@
 package nju.lighting.po;
 
+import shared.Identity;
+
 /**
  * Created on 2017/10/17.
  * Description:

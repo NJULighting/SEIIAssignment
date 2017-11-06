@@ -1,7 +1,7 @@
 package nju.lighting.data.userdata;
 
 import nju.lighting.dataservice.userdataservice.UserDataService;
-import nju.lighting.po.Identity;
+import shared.Identity;
 import nju.lighting.po.ResultMessage;
 import nju.lighting.po.UserPO;
 

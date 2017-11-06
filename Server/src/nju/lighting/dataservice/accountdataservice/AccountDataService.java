@@ -1,9 +1,8 @@
 package nju.lighting.dataservice.accountdataservice;
 
-import nju.lighting.po.AccountPO;
+import nju.lighting.po.account.AccountPO;
 import nju.lighting.po.ResultMessage;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**

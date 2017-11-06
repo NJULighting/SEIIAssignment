@@ -1,6 +1,6 @@
 package nju.lighting.vo;
 
-import nju.lighting.po.DocType;
+import shared.DocType;
 
 public abstract class DocVO {
 

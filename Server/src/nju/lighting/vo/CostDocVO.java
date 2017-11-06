@@ -1,6 +1,6 @@
 package nju.lighting.vo;
 
-import nju.lighting.po.CostDocItemPO;
+import nju.lighting.po.doc.costdoc.CostDocItemPO;
 
 import java.util.ArrayList;
 import java.util.List;

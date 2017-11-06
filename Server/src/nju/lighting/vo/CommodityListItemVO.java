@@ -1,7 +1,5 @@
 package nju.lighting.vo;
 
-import nju.lighting.po.CommodityPO;
-
 public class CommodityListItemVO {
 
     private CommodityPO commodity;

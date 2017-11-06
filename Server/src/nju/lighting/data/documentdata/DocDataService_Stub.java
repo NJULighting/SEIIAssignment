@@ -1,11 +1,10 @@
 package nju.lighting.data.documentdata;
 
-import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.po.*;
+import nju.lighting.po.init.InitPO;
 import nju.lighting.vo.CommodityVO;
-import nju.lighting.vo.InitVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

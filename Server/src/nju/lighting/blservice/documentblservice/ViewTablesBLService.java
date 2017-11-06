@@ -23,6 +23,6 @@ public interface ViewTablesBLService {
 
     ArrayList<BusinessHistoryItemVO> findDocuments(long startDate, long endDate, DocType type, String customer, String user, String repository) throws RemoteException;
 
-    ArrayList<RevenueAndExpenditureVO> findRevenueAndExpenditure(long startDate, long endDate) throws RemoteException;
+    RevenueAndExpenditureVO findRevenueAndExpenditure(long startDate, long endDate) throws RemoteException;
 
 }

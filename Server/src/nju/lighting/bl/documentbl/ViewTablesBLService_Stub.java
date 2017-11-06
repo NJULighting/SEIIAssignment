@@ -22,15 +22,13 @@ public class ViewTablesBLService_Stub implements ViewTablesBLService {
 
         CustomerVO customerVO=new CustomerVO(0001,CustomerType.SALESPERSON,CustomerGrade.FIVE,"张三","111","xxx","1213"
                 ,"213213@qq.com",200,0,300,"xl");
-        UserVO userVO=new UserVO("ml","0000","0000",Identity.FINANCE,false);
 
 
-        SalesDocVO salesDocVO1=new SalesDocVO("XSD-20171022-00001",customerVO,"xl","NO.1",userVO,null,"",
-                100,10,5,85);
 
 
         ArrayList<SaleRecordItemVO> saleRecordItemVOs=new ArrayList<>();
-        saleRecordItemVOs.add(new SaleRecordItemVO(1000,"灯泡","-a",3,20,60,salesDocVO1) );
+        saleRecordItemVOs.add(new SaleRecordItemVO(1000,"灯泡","-a",3,20,60,null
+        ) );
 
         return saleRecordItemVOs;
     }
@@ -60,18 +58,12 @@ public class ViewTablesBLService_Stub implements ViewTablesBLService {
     }
 
     @Override
-    public ArrayList<RevenueAndExpenditureVO> findRevenueAndExpenditure(long startDate, long endDate) throws RemoteException {
+    public RevenueAndExpenditureVO findRevenueAndExpenditure(long startDate, long endDate) throws RemoteException {
 
         RevenueAndExpenditureVO vo1=new RevenueAndExpenditureVO(100,100,100,0,
                 2, 5,15,10,50,217);
 
-        RevenueAndExpenditureVO v02=new RevenueAndExpenditureVO(0,0,0,0,
-                0,0,0,0,0,0);
 
-        ArrayList<RevenueAndExpenditureVO> revenueAndExpenditureVOs=new ArrayList<>();
-        revenueAndExpenditureVOs.add(vo1);
-        revenueAndExpenditureVOs.add(v02);
-
-        return revenueAndExpenditureVOs;
+        return vo1;
     }
 }

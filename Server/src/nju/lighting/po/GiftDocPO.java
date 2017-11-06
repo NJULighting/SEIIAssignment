@@ -1,6 +1,7 @@
 package nju.lighting.po;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created on 2017/10/19.
@@ -10,18 +11,17 @@ import java.util.ArrayList;
 public class GiftDocPO extends DocPO {
     private ArrayList<GiftItemPO> giftItemPOs;
 
-    private String ID;
+    private String customerID;
 
-    private String customer;
+    private String repositoryID;
 
-    private String repository;
+    private double total;
+
 
     public GiftDocPO(ArrayList<GiftItemPO> giftItemPOs, String ID, String customer, String repository) {
         this.giftItemPOs = giftItemPOs;
-        this.ID = ID;
-        this.customer = customer;
-        this.repository = repository;
-        this.setTime(100000000);
+        this.customerID = customer;
+        this.repositoryID = repository;
     }
 
 
@@ -33,27 +33,27 @@ public class GiftDocPO extends DocPO {
         this.giftItemPOs = giftItemPOs;
     }
 
-    public String getID() {
-        return ID;
+    public String getRepositoryID() {
+        return repositoryID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setRepositoryID(String repository) {
+        this.repositoryID = repository;
     }
 
-    public String getRepository() {
-        return ID;
+    public String getCustomerID() {
+        return customerID;
     }
 
-    public void setRepository(String repository) {
-        this.repository = repository;
+    public void setCustomerID(String customer) {
+        this.customerID = customer;
     }
 
-    public String getCustomer() {
-        return customer;
+    public double getTotal() {
+        return total;
     }
 
-    public void setCustomer(String customer) {
-        this.customer = customer;
+    public void setTotal(double total) {
+        this.total = total;
     }
 }

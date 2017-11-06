@@ -6,21 +6,24 @@ package nju.lighting.po;
  * @author 陈俊宇
  */
 public class GiftItemPO {
-    private CommodityPO commodity;
+    private String commodityID;
 
     private int count;
 
-    public GiftItemPO(CommodityPO commodity, int count) {
-        this.commodity = commodity;
+    private double subtotal;
+
+
+    public GiftItemPO(String commodity, int count) {
+        this.commodityID = commodity;
         this.count = count;
     }
 
-    public CommodityPO getCommodity() {
-        return commodity;
+    public String getCommodity() {
+        return commodityID;
     }
 
-    public void setCommodityName(CommodityPO commodity) {
-        this.commodity = commodity;
+    public void setCommodityID(String commodity) {
+        this.commodityID = commodity;
     }
 
     public int getCount() {
@@ -29,5 +32,13 @@ public class GiftItemPO {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
     }
 }

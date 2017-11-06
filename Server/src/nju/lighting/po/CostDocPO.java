@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class CostDocPO extends DocPO {
     private String accountID;
     private ArrayList<CostDocItemPO> itemList;
-    private int total;
+    private double total;
 
     public CostDocPO(String accountID, ArrayList<CostDocItemPO> itemList, int total) {
         this.accountID = accountID;
@@ -34,11 +34,11 @@ public class CostDocPO extends DocPO {
         this.itemList = itemList;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 }

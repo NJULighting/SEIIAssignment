@@ -11,7 +11,7 @@ public class AccountIODocPO extends DocPO {
     private AccountIODocType type;
     private String customerID;
     private ArrayList<AccountTransferItemPO> transferAccountList;
-    private int total;
+    private double total;
 
     public AccountIODocPO(AccountIODocType type, String customerID, ArrayList<AccountTransferItemPO> transferAccountList, int total) {
         this.type = type;
@@ -45,11 +45,11 @@ public class AccountIODocPO extends DocPO {
         this.transferAccountList = transferAccountList;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 }

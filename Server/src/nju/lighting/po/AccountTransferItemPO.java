@@ -8,7 +8,7 @@ package nju.lighting.po;
 public class AccountTransferItemPO {
     private String id;
     private String accountID;
-    private int amount;
+    private double amount;
     private String comments;
 
     public AccountTransferItemPO(String accountID, int amount, String comments) {
@@ -33,11 +33,11 @@ public class AccountTransferItemPO {
         this.accountID = accountID;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

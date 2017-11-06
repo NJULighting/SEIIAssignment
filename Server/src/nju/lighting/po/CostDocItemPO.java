@@ -7,7 +7,7 @@ package nju.lighting.po;
  */
 public class CostDocItemPO {
     private CostDocItemType type;
-    private int amount;
+    private double amount;
     private String comment;
 
     public CostDocItemPO(CostDocItemType type, int amount, String comment) {
@@ -24,11 +24,11 @@ public class CostDocItemPO {
         this.type = type;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

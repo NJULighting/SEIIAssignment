@@ -8,9 +8,9 @@ import java.util.ArrayList;
  * @author Liao
  */
 public class AccountPO {
-    private final String id;
+    private String id;
     private String name;
-    private long amount;
+    private double amount;
     private ArrayList<AccountLogPO> changeLogs;
 
     public AccountPO(String id, String name, long amount, ArrayList<AccountLogPO> changeLogs) {
@@ -32,11 +32,11 @@ public class AccountPO {
         this.name = name;
     }
 
-    public long getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(long amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

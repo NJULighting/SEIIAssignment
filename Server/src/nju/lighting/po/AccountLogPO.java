@@ -9,8 +9,8 @@ import java.util.Date;
  */
 public class AccountLogPO {
     private Date time;
-    private int delta;
-    private int amount;
+    private double delta;
+    private double amount;
     private AccountChangeType type;
 
     public AccountLogPO(Date time, int delta, int amount, AccountChangeType type) {
@@ -28,19 +28,19 @@ public class AccountLogPO {
         this.time = time;
     }
 
-    public int getDelta() {
+    public double getDelta() {
         return delta;
     }
 
-    public void setDelta(int delta) {
+    public void setDelta(double delta) {
         this.delta = delta;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

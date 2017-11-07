@@ -2,29 +2,22 @@ package nju.lighting.vo;
 
 import shared.DocType;
 
+import java.util.Date;
+
 public abstract class DocVO {
 
-    private long time;
+    private Date time;
 
     private String creatorId;
 
-    private int docId;
+    private String docId;
+    private DocType type;
 
-    public String getDocNumber() {
-        return docNumber;
-    }
-
-    public void setDocNumber(String docNumber) {
-        this.docNumber = docNumber;
-    }
-
-    private String docNumber;
-
-    public long getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
@@ -36,11 +29,11 @@ public abstract class DocVO {
         this.creatorId = creatorId;
     }
 
-    public int getDocId() {
+    public String getDocId() {
         return docId;
     }
 
-    public void setDocId(int docId) {
+    public void setDocId(String docId) {
         this.docId = docId;
     }
 
@@ -52,7 +45,10 @@ public abstract class DocVO {
         this.type = type;
     }
 
-    private DocType type;
-
-
+    public DocVO(Date time, String creatorId, String docId, DocType type) {
+        this.time = time;
+        this.creatorId = creatorId;
+        this.docId = docId;
+        this.type = type;
+    }
 }

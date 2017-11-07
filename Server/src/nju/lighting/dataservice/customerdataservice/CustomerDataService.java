@@ -1,17 +1,19 @@
 package nju.lighting.dataservice.customerdataservice;
-
+import nju.lighting.po.customer.CustomerPO;
 import java.util.ArrayList;
 
 public interface CustomerDataService {
 
-    public ArrayList<CustomerPO> getAll();
+     ArrayList<CustomerPO> getAllCustomer();
 
-    public CustomerPO find(String keyword);
+     CustomerPO findCustomer(String keyword);
 
-    public void insert(CustomerPO po);
+     void insertCustomer(CustomerPO po);
 
-    public void delete(CustomerPO po);
+     void deleteCustomer(CustomerPO po);
 
-    public void update(CustomerPO po);
+     void updateCustomer(CustomerPO po);
+
+     int getNextCustomerID();
 
 }

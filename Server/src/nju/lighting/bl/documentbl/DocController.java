@@ -33,7 +33,7 @@ public class DocController implements DocBLService {
     }
 
     @Override
-    public ArrayList<BusinessHistoryItemVO> findDocuments(DocumentFilter filter) throws RemoteException {
+    public ArrayList<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) throws RemoteException {
         return null;
     }
 

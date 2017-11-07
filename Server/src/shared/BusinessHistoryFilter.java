@@ -1,4 +1,4 @@
-package nju.lighting.vo;
+package shared;
 
 import shared.DocType;
 
@@ -8,7 +8,7 @@ import shared.DocType;
  *
  * @author 陈俊宇
  */
-public class DocFilterVO {
+public class BusinessHistoryFilter {
     private long startDate;
 
     private long endDate;

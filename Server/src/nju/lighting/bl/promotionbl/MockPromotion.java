@@ -17,11 +17,9 @@ public class MockPromotion extends Promotion{
    public ArrayList<PromotionVO> getBenefitsPlan(){
 
       Calendar c=Calendar.getInstance();
-      PromotionVO A =new PromotionVO(PromotionType.Combo,null,null,null);
+      PromotionVO A =new PromotionVO(PromotionType.Combo,null,null,null,null,150,null,20,0,null);
       ArrayList<PromotionVO> promotions=new ArrayList<>();
-
       promotions.add(A);
-
       return promotions;
    };
 }

@@ -1,11 +1,13 @@
 package nju.lighting.bl.promotionbl;
 
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
+import shared.CustomerGrade;
 import shared.PromotionType;
 import nju.lighting.vo.CommodityVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.promotion.PromotionVO;
-import nju.lighting.vo.ResultMessage;
+import shared.ResultMessage;
+
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

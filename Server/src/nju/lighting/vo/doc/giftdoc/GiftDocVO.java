@@ -1,4 +1,4 @@
-package nju.lighting.vo.giftdoc;
+package nju.lighting.vo.doc.giftdoc;
 
 
 import nju.lighting.vo.DocVO;

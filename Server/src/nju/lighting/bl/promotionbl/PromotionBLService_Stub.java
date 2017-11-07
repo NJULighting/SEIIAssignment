@@ -3,7 +3,7 @@ package nju.lighting.bl.promotionbl;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import shared.PromotionType;
 import nju.lighting.vo.CommodityVO;
-import nju.lighting.vo.giftdoc.GiftItemVO;
+import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import nju.lighting.vo.ResultMessage;
 

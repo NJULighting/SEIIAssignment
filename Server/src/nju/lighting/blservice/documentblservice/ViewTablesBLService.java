@@ -2,9 +2,9 @@ package nju.lighting.blservice.documentblservice;
 
 
 import shared.DocType;
-import nju.lighting.vo.BusinessHistoryItemVO;
-import nju.lighting.vo.RevenueAndExpenditureVO;
-import nju.lighting.vo.SaleRecordItemVO;
+import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
+import nju.lighting.vo.viewtables.RevenueAndExpenditureVO;
+import nju.lighting.vo.viewtables.SaleRecordItemVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

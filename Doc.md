@@ -12,7 +12,7 @@
 |                               | 语法   | `public ArrayList<SaleRecordItemVO> findSaleRecords(SaleRecordFilter filter)` |
 | Doc.findSaleRecords           | 前置条件 | 用户已输入正确的筛选条件并确认                          |
 |                               | 后置条件 | 返回符合筛选条件的所有销售记录的值对象                      |
-|                               | 语法   | `public ArrayList<BussinessHitoryItemVO> findDocuments(DocFilter filter)` |
+|                               | 语法   | `public ArrayList<BussinessHitoryItemVO> findDocuments(DocumentFilter filter)` |
 | Doc.findDocuments             | 前置条件 | 用户已输入正确的筛选条件并确认                          |
 |                               | 后置条件 | 返回符合筛选条件的所有单据的值对象                        |
 |                               | 语法   | `public RevenueAndExpenditureVO findRevenueAndExpenditure(Date StartDate,Date endDate)` |

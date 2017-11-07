@@ -1,7 +1,7 @@
 package nju.lighting.blservice.documentblservice;
 
 import shared.ResultMessage;
-import nju.lighting.vo.GiftDocVO;
+import nju.lighting.vo.giftdoc.GiftDocVO;
 
 import java.rmi.RemoteException;
 

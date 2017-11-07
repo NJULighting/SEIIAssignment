@@ -3,8 +3,21 @@ package nju.lighting.bl.documentbl;
 
 import nju.lighting.blservice.documentblservice.ViewTablesBLService;
 import nju.lighting.vo.*;
+<<<<<<< HEAD
+<<<<<<< HEAD
+import nju.lighting.vo.giftdoc.GiftDocVO;
+import nju.lighting.vo.giftdoc.GiftItemVO;
+import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
+import nju.lighting.vo.viewtables.RevenueAndExpenditureVO;
+import nju.lighting.vo.viewtables.SaleRecordItemVO;
+=======
 import shared.CustomerGrade;
 import shared.CustomerType;
+>>>>>>> 4f84987ca2f7f5dd04190be0b6f3ae85b88084a1
+=======
+import shared.CustomerGrade;
+import shared.CustomerType;
+>>>>>>> 4f84987ca2f7f5dd04190be0b6f3ae85b88084a1
 import shared.DocType;
 
 import java.rmi.RemoteException;

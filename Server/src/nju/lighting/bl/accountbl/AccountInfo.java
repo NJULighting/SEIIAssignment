@@ -6,5 +6,5 @@ package nju.lighting.bl.accountbl;
  * @author Liao
  */
 public interface AccountInfo {
-    
+
 }

@@ -1,7 +1,7 @@
 package nju.lighting.dataservice.promotiondataservice;
 
 import nju.lighting.po.PromotionPO;
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 

@@ -2,7 +2,7 @@ package nju.lighting.bl.initbl;
 
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.blservice.initblservice.InitializationBLService;
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import nju.lighting.vo.CommodityVO;
 import nju.lighting.vo.InitVO;
 

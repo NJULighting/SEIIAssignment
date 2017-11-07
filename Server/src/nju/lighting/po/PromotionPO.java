@@ -1,5 +1,7 @@
 package nju.lighting.po;
 
+import shared.PromotionType;
+
 import java.util.ArrayList;
 import java.util.Date;
 

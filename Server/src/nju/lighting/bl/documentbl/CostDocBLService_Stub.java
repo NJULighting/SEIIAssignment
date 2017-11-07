@@ -6,7 +6,7 @@ import nju.lighting.blservice.documentblservice.CostDocBLService;
 import nju.lighting.po.doc.costdoc.CostDocItemPO;
 import shared.CostDocItemType;
 import nju.lighting.po.doc.costdoc.CostDocPO;
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import nju.lighting.vo.AccountVO;
 import nju.lighting.vo.CostDocVO;
 

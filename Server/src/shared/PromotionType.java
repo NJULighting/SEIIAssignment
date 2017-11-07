@@ -1,4 +1,4 @@
-package nju.lighting.po;
+package shared;
 
 /**
  * Created on 2017/11/6.

@@ -3,7 +3,7 @@ package nju.lighting.data.promotiondata;
 import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
 import nju.lighting.po.CustomerGrade;
 import nju.lighting.po.PromotionPO;
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 

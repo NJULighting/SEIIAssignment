@@ -7,7 +7,7 @@ import nju.lighting.po.RevenueAndExpenditurePO;
 import shared.DocFilter;
 import nju.lighting.po.doc.DocPO;
 
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import shared.DocType;
 
 import java.util.ArrayList;

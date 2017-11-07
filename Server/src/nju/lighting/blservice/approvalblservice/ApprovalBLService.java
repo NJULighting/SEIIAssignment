@@ -2,7 +2,7 @@ package nju.lighting.blservice.approvalblservice;
 
 
 
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import nju.lighting.vo.HistoryDocVO;
 
 import java.rmi.RemoteException;

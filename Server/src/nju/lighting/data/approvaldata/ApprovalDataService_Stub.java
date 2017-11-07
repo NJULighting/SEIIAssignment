@@ -2,6 +2,7 @@ package nju.lighting.data.approvaldata;
 
 import nju.lighting.dataservice.approvaldataservice.ApprovalDataService;
 import nju.lighting.po.*;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 

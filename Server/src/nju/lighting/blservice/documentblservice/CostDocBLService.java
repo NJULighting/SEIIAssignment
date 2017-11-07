@@ -1,7 +1,7 @@
 package nju.lighting.blservice.documentblservice;
 
 import nju.lighting.po.doc.costdoc.CostDocPO;
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import nju.lighting.vo.AccountVO;
 import nju.lighting.vo.CostDocVO;
 

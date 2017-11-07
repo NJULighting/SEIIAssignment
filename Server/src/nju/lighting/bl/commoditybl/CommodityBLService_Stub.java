@@ -9,7 +9,7 @@ import nju.lighting.vo.commodity.CommodityTreeVO;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public class CommodityController implements CommodityBLService {
+public class CommodityBLService_Stub implements CommodityBLService {
 
     @Override
     public CommodityTreeVO getCommodityTree() throws RemoteException {
@@ -52,7 +52,7 @@ public class CommodityController implements CommodityBLService {
     }
 
     @Override
-    public ResultMessage modifyCategory(CommodityCategoryItemVO categoryItemVO) {
+    public ResultMessage modifyCategory(CommodityCategoryItemVO categoryItemVO) throws RemoteException {
         return null;
     }
 }

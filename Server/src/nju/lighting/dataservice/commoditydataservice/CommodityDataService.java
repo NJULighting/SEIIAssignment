@@ -1,6 +1,6 @@
 package nju.lighting.dataservice.commoditydataservice;
 
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 

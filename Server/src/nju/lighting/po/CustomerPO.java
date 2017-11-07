@@ -1,5 +1,7 @@
 package nju.lighting.po;
 
+import shared.CustomerType;
+
 public class CustomerPO {
 
     private int ID;

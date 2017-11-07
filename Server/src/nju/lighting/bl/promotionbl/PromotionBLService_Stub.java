@@ -2,14 +2,13 @@ package nju.lighting.bl.promotionbl;
 
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.po.CustomerGrade;
-import nju.lighting.po.PromotionType;
+import shared.PromotionType;
 import nju.lighting.vo.CommodityVO;
 import nju.lighting.vo.GiftItemVO;
 import nju.lighting.vo.PromotionVO;
 import nju.lighting.vo.ResultMessage;
 
 import java.rmi.RemoteException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 

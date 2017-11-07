@@ -1,7 +1,7 @@
 package nju.lighting.bl.approvalbl;
 
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import nju.lighting.vo.CommodityVO;
 import nju.lighting.vo.GiftDocVO;
 import nju.lighting.vo.GiftItemVO;

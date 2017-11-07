@@ -2,7 +2,7 @@ package nju.lighting.data.userdata;
 
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import shared.Identity;
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import nju.lighting.po.UserPO;
 
 import java.util.ArrayList;

@@ -1,8 +1,7 @@
 package nju.lighting.blservice.documentblservice;
 
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import nju.lighting.vo.AlertDocVO;
-import nju.lighting.vo.HistoryDocVO;
 import nju.lighting.vo.RepositoryChangeVO;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package nju.lighting.dataservice.approvaldataservice;
 
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 
 
 import java.util.ArrayList;

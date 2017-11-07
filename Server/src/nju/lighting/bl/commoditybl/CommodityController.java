@@ -2,7 +2,6 @@ package nju.lighting.bl.commoditybl;
 
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import shared.ResultMessage;
-import nju.lighting.vo.commodity.CommodityCategoryItemVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.CommodityTreeVO;
 

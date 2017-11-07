@@ -2,7 +2,7 @@ package nju.lighting.vo.commodity;
 
 import shared.CommodityTreeNode;
 
-public class CommodityTreeVO {
+public class BasicCommodityTreeVO {
 
     private CommodityTreeNode root;
 
@@ -14,7 +14,7 @@ public class CommodityTreeVO {
         this.root = root;
     }
 
-    public CommodityTreeVO(CommodityTreeNode root) {
+    public BasicCommodityTreeVO(CommodityTreeNode root) {
         this.root = root;
     }
 }

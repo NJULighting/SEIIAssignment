@@ -1,6 +1,9 @@
 package nju.lighting.po.doc.salesdoc;
 
-import nju.lighting.po.DocPO;
+import nju.lighting.po.doc.DocPO;
+import shared.DocType;
+
+import java.util.Date;
 
 public class SalesTypeDocPO extends DocPO {
 
@@ -43,4 +46,17 @@ public class SalesTypeDocPO extends DocPO {
     public double getVoucher(){return voucher;}
     public double getFinalAmount(){return finalAmount;}
 
+    public SalesTypeDocPO(String id, DocType docType, String userId, Date time, String salesTypeDocID,
+                          String customerId, String repository, String userId1,
+                          String remarks, double discount, double voucher, double finalAmount) {
+        super(id, docType, userId, time);
+        this.salesTypeDocID = salesTypeDocID;
+        this.customerId = customerId;
+        this.repository = repository;
+        this.userId = userId1;
+        this.remarks = remarks;
+        this.discount = discount;
+        this.voucher = voucher;
+        this.finalAmount = finalAmount;
+    }
 }

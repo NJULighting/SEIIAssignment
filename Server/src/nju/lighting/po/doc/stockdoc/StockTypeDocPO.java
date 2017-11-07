@@ -1,6 +1,9 @@
 package nju.lighting.po.doc.stockdoc;
 
-import nju.lighting.po.DocPO;
+import nju.lighting.po.doc.DocPO;
+import shared.DocType;
+
+import java.util.Date;
 
 public class StockTypeDocPO extends DocPO {
 
@@ -33,4 +36,15 @@ public class StockTypeDocPO extends DocPO {
     public String getRemarks(){return remarks;}
     public double getTotalAmount(){return totalAmount;}
 
+    public StockTypeDocPO(String id, DocType docType, String userId, Date time,
+                          String stockTypeDocID, String customerId, String repository,
+                          String userId1, String remarks, double totalAmount) {
+        super(id, docType, userId, time);
+        this.stockTypeDocID = stockTypeDocID;
+        this.customerId = customerId;
+        this.repository = repository;
+        this.userId = userId1;
+        this.remarks = remarks;
+        this.totalAmount = totalAmount;
+    }
 }

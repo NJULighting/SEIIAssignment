@@ -1,5 +1,9 @@
 package nju.lighting.vo;
 
+import shared.DocType;
+
+import java.util.Date;
+
 public class StockTypeDocVO extends DocVO{
 
     private String stockTypeDocID;
@@ -31,4 +35,15 @@ public class StockTypeDocVO extends DocVO{
     public String getRemarks(){return remarks;}
     public double getTotalAmount(){return totalAmount;}
 
+    public StockTypeDocVO(Date time, String creatorId, String docId, DocType type,
+                          String stockTypeDocID, String customerId, String repository,
+                          String userId, String remarks, double totalAmount) {
+        super(time, creatorId, docId, type);
+        this.stockTypeDocID = stockTypeDocID;
+        this.customerId = customerId;
+        this.repository = repository;
+        this.userId = userId;
+        this.remarks = remarks;
+        this.totalAmount = totalAmount;
+    }
 }

@@ -1,5 +1,9 @@
 package nju.lighting.vo;
 
+import shared.DocType;
+
+import java.util.Date;
+
 public class SalesTypeDocVO extends DocVO{
 
     private String salesTypeDocID;
@@ -45,4 +49,21 @@ public class SalesTypeDocVO extends DocVO{
     public double getVoucher(){return voucher;}
     public double getFinalAmount(){return finalAmount;}
 
+    public SalesTypeDocVO(Date time, String creatorId, String docId, DocType type,
+                          String salesTypeDocID, String customerId, String salesman,
+                          String repository, String userId, String remarks,
+                          double beforeDiscountAmount, double discount,
+                          double voucher, double finalAmount) {
+        super(time, creatorId, docId, type);
+        this.salesTypeDocID = salesTypeDocID;
+        this.customerId = customerId;
+        this.salesman = salesman;
+        this.repository = repository;
+        this.userId = userId;
+        this.remarks = remarks;
+        this.beforeDiscountAmount = beforeDiscountAmount;
+        this.discount = discount;
+        this.voucher = voucher;
+        this.finalAmount = finalAmount;
+    }
 }

@@ -29,11 +29,12 @@ public class SalesDocItemPO {
      * 此条商品条目中的备注
      */
     public SalesDocItemPO(int id, String SalesDocID, String commodityID,
-                          int number, String remarks){
+                          int number, double totalAmount,String remarks){
         this.id = id;
         this.salesDocID = SalesDocID;
         this.commodityID=commodityID;
         this.number=number;
+        this.totalAmount = totalAmount;
         this.remarks=remarks;
     }
 

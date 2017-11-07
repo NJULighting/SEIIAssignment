@@ -1,7 +1,8 @@
 package nju.lighting.blservice.promotionblservice;
 
 import nju.lighting.vo.promotion.PromotionVO;
-import nju.lighting.vo.ResultMessage;
+import shared.ResultMessage;
+
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

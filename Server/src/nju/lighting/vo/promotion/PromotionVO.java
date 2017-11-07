@@ -1,14 +1,12 @@
 package nju.lighting.vo.promotion;
 
 
-<<<<<<< HEAD:Server/src/nju/lighting/vo/promotion/PromotionVO.java
-<<<<<<< HEAD:Server/src/nju/lighting/vo/promotion/PromotionVO.java
-import nju.lighting.po.CustomerGrade;
-import nju.lighting.vo.giftdoc.GiftItemVO;
-=======
->>>>>>> 4f84987ca2f7f5dd04190be0b6f3ae85b88084a1:Server/src/nju/lighting/vo/PromotionVO.java
-=======
->>>>>>> 4f84987ca2f7f5dd04190be0b6f3ae85b88084a1:Server/src/nju/lighting/vo/PromotionVO.java
+
+
+import nju.lighting.vo.doc.giftdoc.GiftItemVO;
+
+
+import shared.CustomerGrade;
 import shared.PromotionType;
 
 import java.util.ArrayList;

@@ -1,4 +1,6 @@
-package nju.lighting.po;
+package nju.lighting.po.doc.salesdoc;
+
+import nju.lighting.po.UserPO;
 
 public class SalesDocPO extends SalesTypeDocPO {
 

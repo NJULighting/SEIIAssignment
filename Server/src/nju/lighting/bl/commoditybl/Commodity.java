@@ -3,6 +3,7 @@ package nju.lighting.bl.commoditybl;
 import shared.ResultMessage;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.CommodityTreeVO;
+import nju.lighting.vo.commodity.CommodityCategoryVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class Commodity {
         return null;
     }
 
-    public ResultMessage addCategory(CommodityCategoryItemVO newCategory) {
+    public ResultMessage addCategory(CommodityCategoryVO newCategory) {
         return null;
     }
 
@@ -41,7 +42,7 @@ public class Commodity {
         return null;
     }
 
-    public ResultMessage modifyCategory(CommodityCategoryItemVO categoryItemVO) {
+    public ResultMessage modifyCategory(CommodityCategoryVO categoryItemVO) {
         return null;
     }
 }

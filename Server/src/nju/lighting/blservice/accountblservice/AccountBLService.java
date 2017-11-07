@@ -1,6 +1,6 @@
 package nju.lighting.blservice.accountblservice;
 
-import nju.lighting.vo.AccountVO;
+import nju.lighting.vo.account.AccountVO;
 import nju.lighting.vo.ResultMessage;
 
 import java.rmi.RemoteException;

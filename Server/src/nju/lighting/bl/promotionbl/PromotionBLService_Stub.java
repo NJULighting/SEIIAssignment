@@ -1,7 +1,6 @@
 package nju.lighting.bl.promotionbl;
 
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
-import nju.lighting.po.CustomerGrade;
 import shared.PromotionType;
 import nju.lighting.vo.CommodityVO;
 import nju.lighting.vo.GiftItemVO;

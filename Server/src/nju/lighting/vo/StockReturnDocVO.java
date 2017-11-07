@@ -1,14 +1,16 @@
 package nju.lighting.vo;
 
+import nju.lighting.vo.StockTypeDocVO;
+
 public class StockReturnDocVO extends StockTypeDocVO {
 
-    public StockReturnDocVO(String ID, CustomerVO supplier, String repository, UserVO operator, CommodityListVO commodityList, String remarks){
-        this.setID(ID);
-        this.setSupplier(supplier);
+    public StockReturnDocVO(String stockTypeDocID, String customerId, String repository, String userId, String remarks, double totalAmount) {
+        this.setStockTypeDocID(stockTypeDocID);
+        this.setCustomerId(customerId);
         this.setRepository(repository);
-        this.setOperator(operator);
-        this.setCommodityList(commodityList);
+        this.setUserId(userId);
         this.setRemarks(remarks);
+        this.setTotalAmount(totalAmount);
     }
 
 }

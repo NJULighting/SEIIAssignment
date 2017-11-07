@@ -1,9 +1,9 @@
-package nju.lighting.vo;
+package nju.lighting.po.customer;
 
 import shared.CustomerGrade;
 import shared.CustomerType;
 
-public class CustomerVO {
+public class CustomerPO {
 
     private int ID;
 
@@ -30,7 +30,7 @@ public class CustomerVO {
     private String salesman;
 
 
-    public CustomerVO(int ID,CustomerType type,CustomerGrade grade,String name,String telephone,String address,String postage,String email,double receivableLimit,double receivable,double payable,String salesman){
+    public CustomerPO(int ID, CustomerType type, CustomerGrade grade, String name, String telephone, String address, String postage, String email, double receivableLimit, double receivable, double payable, String salesman){
         this.ID =ID;
         this.type =type;
         this.grade=grade;

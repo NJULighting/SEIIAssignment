@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import nju.lighting.vo.ResultMessage;
 import nju.lighting.vo.CustomerVO;
-import nju.lighting.vo.CustomerType;
+import shared.CustomerType;
 
 public interface CustomerBLService {
 

@@ -2,6 +2,7 @@ package nju.lighting.bl.customerbl;
 
 import nju.lighting.vo.*;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
+import shared.CustomerType;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

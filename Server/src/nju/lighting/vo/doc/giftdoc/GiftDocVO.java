@@ -18,13 +18,10 @@ public class GiftDocVO extends DocVO {
 
     private String customer;
 
-    private String repository;
-
-    public GiftDocVO(ArrayList<GiftItemVO> giftItemVOs, String ID, String customer, String reVOsitory) {
+    public GiftDocVO(ArrayList<GiftItemVO> giftItemVOs, String ID, String customer) {
         this.giftItemVOs = giftItemVOs;
         this.ID = ID;
         this.customer = customer;
-        this.repository = reVOsitory;
         this.setTime(100000000);
     }
 
@@ -32,8 +29,6 @@ public class GiftDocVO extends DocVO {
     public ArrayList<GiftItemVO> getGifts(){return giftItemVOs;}
 
     public String getID(){return ID;}
-
-    public String getRepository(){return ID;}
 
     public String getCustomer(){return customer;}
 
@@ -43,10 +38,6 @@ public class GiftDocVO extends DocVO {
 
     public void setID(String ID){
         this.ID=ID;
-    }
-
-    public void setRepository(String repository){
-        this.repository=repository;
     }
 
     public void setCustomer(String customer){

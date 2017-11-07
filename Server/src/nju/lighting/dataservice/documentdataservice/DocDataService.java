@@ -1,6 +1,5 @@
 package nju.lighting.dataservice.documentdataservice;
 
-import shared.SaleRecordFilter;
 import shared.DocumentFilter;
 import nju.lighting.po.doc.DocPO;
 

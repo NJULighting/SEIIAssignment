@@ -1,8 +1,6 @@
 package nju.lighting.vo;
 
-import nju.lighting.po.DocPO;
-
-public class StockTypeDocVO extends DocPO {
+public class StockTypeDocVO extends DocVO{
 
     private String stockTypeDocID;
     private String customerId;

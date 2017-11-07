@@ -7,5 +7,9 @@ public enum DocType {
     ACCOUNT_IN,
     ACCOUNT_OUT,
     COST,
-    GIFT;
+    GIFT,
+    SALES,
+    SALES_RETURN,
+    STOCK,
+    STOCK_RETURN;
 }

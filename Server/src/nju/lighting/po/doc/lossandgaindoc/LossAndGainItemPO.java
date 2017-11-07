@@ -1,5 +1,7 @@
 package nju.lighting.po.doc.lossandgaindoc;
 
+import shared.LossAndGainItemType;
+
 public class LossAndGainItemPO {
 
     private String lossAndGainDocId;

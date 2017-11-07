@@ -6,6 +6,8 @@ package nju.lighting.po;
  * @author Liao
  */
 public enum ResultMessage {
+
+
     SUCCESS, FAILURE;
 
     private String detail = "No detail";

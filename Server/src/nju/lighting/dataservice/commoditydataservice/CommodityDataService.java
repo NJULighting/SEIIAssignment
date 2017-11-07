@@ -18,7 +18,7 @@ public interface CommodityDataService {
 
     ResultMessage deleteCommodity(String id);
 
-    ResultMessage findBuName(String name);
+    ArrayList<CommodityItemPO> findByName(String name);
 
     ArrayList<CommodityCategoryPO> getAllCommodityCategory();
 

@@ -6,5 +6,6 @@ public enum DocType {
     HISTORY,
     ACCOUNT_IN,
     ACCOUNT_OUT,
-    COST
+    COST,
+    GIFT;
 }

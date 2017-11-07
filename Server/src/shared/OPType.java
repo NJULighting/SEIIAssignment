@@ -6,5 +6,5 @@ package shared;
  * @author Liao
  */
 public enum OPType {
-    ADD, DELETE, MODIFY, APPROVE;
+    ADD, DELETE, MODIFY, APPROVE,REJECT;
 }

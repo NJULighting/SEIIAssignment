@@ -2,8 +2,10 @@ package nju.lighting.vo.doc.giftdoc;
 
 
 import nju.lighting.vo.DocVO;
+import shared.DocType;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created on 2017/10/21.
@@ -18,13 +20,13 @@ public class GiftDocVO extends DocVO {
 
     private String customer;
 
-    public GiftDocVO(ArrayList<GiftItemVO> giftItemVOs, String ID, String customer) {
+
+    public GiftDocVO(Date time, String creatorId, String docId, DocType type, ArrayList<GiftItemVO> giftItemVOs, String ID, String customer) {
+        super(time, creatorId, docId, type);
         this.giftItemVOs = giftItemVOs;
         this.ID = ID;
         this.customer = customer;
-        this.setTime(100000000);
     }
-
 
     public ArrayList<GiftItemVO> getGifts(){return giftItemVOs;}
 

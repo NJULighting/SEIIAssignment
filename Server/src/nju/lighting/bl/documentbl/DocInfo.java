@@ -1,0 +1,18 @@
+package nju.lighting.bl.documentbl;
+
+import nju.lighting.vo.DocVO;
+import nju.lighting.vo.HistoryDocVO;
+
+import java.util.ArrayList;
+
+/**
+ * Created on 2017/11/7.
+ * Description
+ *
+ * @author 陈俊宇
+ */
+public interface DocInfo {
+    ArrayList<HistoryDocVO> findUnapprovedDoc();
+}
+
+

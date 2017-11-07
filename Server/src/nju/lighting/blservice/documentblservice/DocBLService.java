@@ -17,8 +17,6 @@ public interface DocBLService {
 
     ResultMessage commitDoc(DocVO doc) throws RemoteException;
 
-    ArrayList<DocVO> getDoc(DocumentFilter filter) throws RemoteException;
-
     ArrayList<SaleRecordItemVO> findSaleRecords(SaleRecordFilter filter) throws RemoteException;
 
     ArrayList<BusinessHistoryItemVO> findDocuments(DocumentFilter filter) throws RemoteException;

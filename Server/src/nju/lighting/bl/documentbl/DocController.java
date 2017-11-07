@@ -28,11 +28,6 @@ public class DocController implements DocBLService {
     }
 
     @Override
-    public ArrayList<DocVO> getDoc(DocumentFilter filter) throws RemoteException {
-        return null;
-    }
-
-    @Override
     public ArrayList<SaleRecordItemVO> findSaleRecords(SaleRecordFilter filter) throws RemoteException {
         return null;
     }

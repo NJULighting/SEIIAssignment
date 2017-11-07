@@ -19,7 +19,7 @@ public interface DocBLService {
 
     ArrayList<SaleRecordItemVO> findSaleRecords(SaleRecordFilter filter) throws RemoteException;
 
-    ArrayList<BusinessHistoryItemVO> findDocuments(DocumentFilter filter) throws RemoteException;
+    ArrayList<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) throws RemoteException;
 
     RevenueAndExpenditureVO findRevenueAndExpenditure(Date startDate, Date endDate) throws RemoteException;
 

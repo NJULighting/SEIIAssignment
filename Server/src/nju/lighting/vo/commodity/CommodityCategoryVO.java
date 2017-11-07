@@ -51,4 +51,9 @@ public class CommodityCategoryVO implements CommodityTreeNode {
         this.id = id;
         this.name = name;
     }
+
+    @Override
+    public boolean isCommodity() {
+        return false;
+    }
 }

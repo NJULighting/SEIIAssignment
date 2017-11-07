@@ -74,4 +74,8 @@ public class BasicCommodityItemVO implements CommodityTreeNode {
         this.recentSellPrice = recentSellPrice;
     }
 
+    @Override
+    public boolean isCommodity() {
+        return true;
+    }
 }

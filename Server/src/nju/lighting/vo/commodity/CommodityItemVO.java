@@ -151,4 +151,8 @@ public class CommodityItemVO implements CommodityTreeNode {
         return new BasicCommodityItemVO(id, name, category, repCount, recentInPrice, recentSellPrice);
     }
 
+    @Override
+    public boolean isCommodity() {
+        return true;
+    }
 }

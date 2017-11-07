@@ -1,7 +1,7 @@
 package nju.lighting.bl.documentbl;
 
 import nju.lighting.blservice.documentblservice.AlertDocBLService;
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import nju.lighting.vo.AlertDocItemVO;
 import nju.lighting.vo.AlertDocVO;
 import nju.lighting.vo.RepositoryChangeVO;

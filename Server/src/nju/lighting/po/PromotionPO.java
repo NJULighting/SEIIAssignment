@@ -1,6 +1,9 @@
 package nju.lighting.po;
 
+import shared.PromotionType;
+
 import java.util.ArrayList;
+import java.util.Date;
 
 
 /**
@@ -9,11 +12,13 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public class PromotionPO {
-    private int tag;  //促销策略类型
+    private PromotionType type;  //促销策略类型
 
-    private long startDate;  //起始日期
+    private Date startDate;  //起始日期
 
-    private long endDate;  //截止日期
+    private Date endDate;  //截止日期
+
+    private Date time; //创建时间
 
     private CustomerGrade level; //针对不同级别用户中用户的级别
 
@@ -21,23 +26,21 @@ public class PromotionPO {
 
     private ArrayList<String> goods;  //组合商品
 
-    private ArrayList<String> gifts;   //赠品列表
 
     private double off;  //折让金额
 
-    private double vouchers; //代金券
+    private double vouchers; //代金券金额
 
     private long vouchersEndDate;  //代金券截止日期
 
-    public PromotionPO(int tag, long startDate, long endDate, CustomerGrade level,
-                       double total, ArrayList<String> goods, ArrayList<String> gifts, double off, double vouchers, long vouchersEndDate) {
-        this.tag = tag;
+    public PromotionPO(PromotionType type, Date startDate, Date endDate, CustomerGrade level,
+                       double total, ArrayList<String> goods, double off, double vouchers, long vouchersEndDate) {
+        this.type = type;
         this.startDate = startDate;
         this.endDate = endDate;
         this.level = level;
         this.total = total;
         this.goods = goods;
-        this.gifts = gifts;
         this.off = off;
         this.vouchers = vouchers;
         this.vouchersEndDate = vouchersEndDate;
@@ -51,16 +54,8 @@ public class PromotionPO {
         goods.remove(good);
     }
 
-    public void addGift(String gift) {
-        gifts.add(gift);
-    }
-
-    public void removeGift(String gift) {
-        gifts.remove(gift);
-    }
-
-    public int getTag() {
-        return tag;
+    public PromotionType getType() {
+        return type;
     }
 
     public CustomerGrade getLevel() {
@@ -95,28 +90,29 @@ public class PromotionPO {
         this.goods = goods;
     }
 
-    public ArrayList getGifts() {
-        return gifts;
-    }
 
-    public void setGifts(ArrayList gifts) {
-        this.gifts = gifts;
-    }
-
-    public long getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(long startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public long getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(long endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     public double getVouchers() {

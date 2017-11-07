@@ -6,7 +6,7 @@ import nju.lighting.bl.customerbl.CustomerBLService_Stub;
 import nju.lighting.blservice.documentblservice.AccountIODocBLService;
 import shared.AccountIODocType;
 import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import nju.lighting.vo.AccountIODocVO;
 import nju.lighting.vo.AccountVO;
 import nju.lighting.vo.CustomerVO;

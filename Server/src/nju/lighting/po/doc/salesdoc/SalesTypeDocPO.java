@@ -1,12 +1,12 @@
-package nju.lighting.vo;
+package nju.lighting.po.doc.salesdoc;
 /**
  * LastEditTime: 2017/11/7
  * Description:
  * @author GaoMengting
  */
-import java.util.ArrayList;
+import nju.lighting.po.DocPO;
 
-public class SalesTypeDocVO extends DocVO{
+public class SalesTypeDocPO extends DocPO{
 
     private String SalesTypeDocID;
     private String customerId;
@@ -39,14 +39,14 @@ public class SalesTypeDocVO extends DocVO{
     public void setBeforeDiscountAmount(double beforeDiscountAmount){ this.beforeDiscountAmount = beforeDiscountAmount;}
     public void setDiscount(double discount){
         this.discount = discount;
-        updateFinalAmount();
+        updateFinalAmount();;
     }
     public void setVoucher(double voucher){
         this.voucher = voucher;
-        updateFinalAmount();
+        updateFinalAmount();;
     }
 
-    public String getSalesTypeDocID(){ return  SalesTypeDocID;}
+    public String getSalesTypeDocID(){return SalesTypeDocID;}
     public String getCustomerId(){return customerId;}
     public String getSalesman(){return salesman;}
     public String getRepository(){return  repository;}

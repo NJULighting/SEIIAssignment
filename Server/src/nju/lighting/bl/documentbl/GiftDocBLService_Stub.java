@@ -1,15 +1,10 @@
 package nju.lighting.bl.documentbl;
 
 import nju.lighting.blservice.documentblservice.GiftDocBLService;
-import nju.lighting.po.CustomerGrade;
-import nju.lighting.po.ResultMessage;
-import nju.lighting.vo.CommodityVO;
+import shared.ResultMessage;
 import nju.lighting.vo.GiftDocVO;
-import nju.lighting.vo.GiftItemVO;
-import nju.lighting.vo.PromotionVO;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 /**
  * Created on 2017/10/21.

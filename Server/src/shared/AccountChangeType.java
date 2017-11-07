@@ -1,4 +1,4 @@
-package nju.lighting.po.account;
+package shared;
 
 /**
  * Created on 2017/10/31.

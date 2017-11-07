@@ -1,5 +1,7 @@
 package nju.lighting.po.account;
 
+import shared.AccountChangeType;
+
 import java.util.Date;
 
 /**

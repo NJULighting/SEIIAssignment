@@ -1,4 +1,4 @@
-package nju.lighting.po;
+package shared;
 
 public enum CustomerType {
     SUPPLIER, SALESPERSON;

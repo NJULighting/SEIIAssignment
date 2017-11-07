@@ -1,6 +1,6 @@
 package nju.lighting.blservice.userblservice;
 
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import nju.lighting.vo.UserVO;
 
 import java.util.ArrayList;

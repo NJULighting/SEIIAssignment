@@ -1,7 +1,7 @@
 package nju.lighting.bl.userbl;
 
 import nju.lighting.blservice.userblservice.UserBLService;
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import nju.lighting.vo.Identity;
 import nju.lighting.vo.UserVO;
 

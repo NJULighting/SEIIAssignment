@@ -2,7 +2,7 @@ package nju.lighting.dataservice.logdataservice;
 
 import nju.lighting.blservice.logblservice.LogFilter;
 import nju.lighting.po.LogPO;
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 import java.util.Date;

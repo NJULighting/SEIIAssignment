@@ -1,4 +1,4 @@
-package nju.lighting.po;
+package shared;
 
 /**
  * Created on 2017/10/21.
@@ -6,6 +6,8 @@ package nju.lighting.po;
  * @author Liao
  */
 public enum ResultMessage {
+
+
     SUCCESS, FAILURE;
 
     private String detail = "No detail";

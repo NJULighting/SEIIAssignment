@@ -5,6 +5,7 @@ import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.po.*;
 import nju.lighting.po.init.InitPO;
 import nju.lighting.vo.CommodityVO;
+import shared.ResultMessage;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

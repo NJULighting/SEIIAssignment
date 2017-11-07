@@ -1,7 +1,7 @@
 package nju.lighting.dataservice.accountdataservice;
 
 import nju.lighting.po.account.AccountPO;
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 

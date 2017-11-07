@@ -1,6 +1,6 @@
 package nju.lighting.blservice.initblservice;
 
-import nju.lighting.po.ResultMessage;
+import shared.ResultMessage;
 import nju.lighting.vo.InitVO;
 
 import java.rmi.RemoteException;

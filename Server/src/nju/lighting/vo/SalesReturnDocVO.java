@@ -1,8 +1,6 @@
 package nju.lighting.vo;
 
-import nju.lighting.vo.SalesTypeDocVO;
-
-public class SalesReturnDocVO extends SalesTypVeDocO {
+public class SalesReturnDocVO extends SalesTypeDocVO {
 
     public SalesReturnDocVO(){}
 

@@ -17,24 +17,7 @@ import java.util.ArrayList;
 public class InitializationBLService_Stub implements InitializationBLService {
     @Override
     public InitVO getInitInfo() throws RemoteException {
-        CommodityBLService commodityBLService = new CommodityBLService_Stub();
-        ArrayList<CommodityVO> commodityVOS = commodityBLService.getCommodityList();
-        ArrayList<String> commodities = new ArrayList<>();
-        ArrayList<String> commotityTypes = new ArrayList<>();
-        for (CommodityVO vo : commodityVOS) {
-            commodities.add(vo.getName());
-            commotityTypes.add(vo.getCommodityType());
-        }
-        // Customers
-        ArrayList<String> customers = new ArrayList<>();
-        customers.add("Frog0");
-        customers.add("Frog1");
-        // Accounts
-        ArrayList<String> accounts = new ArrayList<>();
-        accounts.add("Account0");
-        accounts.add("Account1");
-        InitVO initVO = new InitVO(commotityTypes, commodities, customers, accounts);
-        return initVO;
+        return null;
     }
 
     @Override

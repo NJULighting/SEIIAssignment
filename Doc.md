@@ -6,9 +6,6 @@
 |                               | 语法   | `public ResultMessage commitDoc(DocVO doc) throws RemoteException` |
 | Doc.commitDoc                 | 前置条件 | 传入对象不为null，且包含信息正确有效                     |
 |                               | 后置条件 | 提交Doc                                    |
-|                               | 语法   | `public ArrayList<DocVO> getDoc(DocFilter filter) throws RemotionException` |
-| Doc.getDoc                    | 前置条件 | 传入一个非空DocFilter                          |
-|                               | 后置条件 | 返回符合DocFilter的所有Doc                      |
 |                               | 语法   | `public ArrayList<SaleRecordItemVO> findSaleRecords(SaleRecordFilter filter)` |
 | Doc.findSaleRecords           | 前置条件 | 用户已输入正确的筛选条件并确认                          |
 |                               | 后置条件 | 返回符合筛选条件的所有销售记录的值对象                      |

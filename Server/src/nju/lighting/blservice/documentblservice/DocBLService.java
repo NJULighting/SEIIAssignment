@@ -1,9 +1,10 @@
 package nju.lighting.blservice.documentblservice;
 
-import nju.lighting.vo.BusinessHistoryItemVO;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.RevenueAndExpenditureVO;
-import nju.lighting.vo.SaleRecordItemVO;
+
+import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
+import nju.lighting.vo.viewtables.RevenueAndExpenditureVO;
+import nju.lighting.vo.viewtables.SaleRecordItemVO;
 import shared.*;
 
 import java.rmi.RemoteException;
@@ -15,8 +16,6 @@ public interface DocBLService {
     DocVO createDoc(DocType type) throws RemoteException;
 
     ResultMessage commitDoc(DocVO doc) throws RemoteException;
-
-    ArrayList<DocVO> getDoc(DocFilter filter) throws RemoteException;
 
     ArrayList<SaleRecordItemVO> findSaleRecords(SaleRecordFilter filter) throws RemoteException;
 

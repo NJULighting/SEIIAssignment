@@ -1,6 +1,7 @@
 package nju.lighting.po.promotion;
 
-import nju.lighting.po.CustomerGrade;
+
+import shared.CustomerGrade;
 import shared.PromotionType;
 
 import java.util.ArrayList;

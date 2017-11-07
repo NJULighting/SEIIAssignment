@@ -1,7 +1,7 @@
 package nju.lighting.dataservice.documentdataservice;
 
 import shared.SaleRecordFilter;
-import shared.DocFilter;
+import shared.DocumentFilter;
 import nju.lighting.po.doc.DocPO;
 
 import shared.ResultMessage;
@@ -15,7 +15,7 @@ public interface DocDataService {
 
     ResultMessage commitDoc(DocPO doc);
 
-    ArrayList<DocPO> getDocs(DocFilter filter);
+    ArrayList<DocPO> getDocs(DocumentFilter filter);
 
     ArrayList<DocPO> findSaleRecords(SaleRecordFilter filter);
 

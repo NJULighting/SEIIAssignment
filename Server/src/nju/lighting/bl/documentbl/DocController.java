@@ -6,7 +6,6 @@ import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.RevenueAndExpenditureVO;
 import nju.lighting.vo.viewtables.SaleRecordItemVO;
 import shared.*;
-import shared.DocumentFilter;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class DocController implements DocBLService {
     }
 
     @Override
-    public ArrayList<DocVO> getDoc(DocFilter filter) throws RemoteException {
+    public ArrayList<DocVO> getDoc(DocumentFilter filter) throws RemoteException {
         return null;
     }
 

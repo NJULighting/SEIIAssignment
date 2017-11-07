@@ -5,7 +5,10 @@ import java.util.ArrayList;
 
 import nju.lighting.vo.ResultMessage;
 import nju.lighting.vo.CustomerVO;
-import nju.lighting.vo.CustomerType;
+<<<<<<< HEAD
+import shared.CustomerType;
+=======
+>>>>>>> parent of fd44cc5... 改代码，改文档，SalesTypeDoc相关
 
 public interface CustomerBLService {
 
@@ -24,10 +27,6 @@ public interface CustomerBLService {
     //更改客户信息
     public ResultMessage modifyCustomer(CustomerVO customer) throws RemoteException;
 
-    //根据客户ID寻找客户
-    public CustomerVO findCustomerByID(int id) throws RemoteException;
-
-    //根据客户类型寻找客户
-    public ArrayList<CustomerVO> findCustomerByType(CustomerType type) throws RemoteException;
-
+    //结束客户管理
+    public void endCustomerManage() throws RemoteException;
 }

@@ -3,6 +3,21 @@ package nju.lighting.bl.documentbl;
 
 import nju.lighting.blservice.documentblservice.ViewTablesBLService;
 import nju.lighting.vo.*;
+<<<<<<< HEAD
+<<<<<<< HEAD
+import nju.lighting.vo.giftdoc.GiftDocVO;
+import nju.lighting.vo.giftdoc.GiftItemVO;
+import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
+import nju.lighting.vo.viewtables.RevenueAndExpenditureVO;
+import nju.lighting.vo.viewtables.SaleRecordItemVO;
+=======
+import shared.CustomerGrade;
+import shared.CustomerType;
+>>>>>>> 4f84987ca2f7f5dd04190be0b6f3ae85b88084a1
+=======
+import shared.CustomerGrade;
+import shared.CustomerType;
+>>>>>>> 4f84987ca2f7f5dd04190be0b6f3ae85b88084a1
 import shared.DocType;
 
 import java.rmi.RemoteException;
@@ -20,7 +35,7 @@ public class ViewTablesBLService_Stub implements ViewTablesBLService {
     @Override
     public ArrayList<SaleRecordItemVO> findSaleRecords(long startDate, long endDate, String Commodity, String customer, String user, String repository) throws RemoteException {
 
-        CustomerVO customerVO=new CustomerVO(0001,CustomerType.SALESPERSON,CustomerGrade.FIVE,"张三","111","xxx","1213"
+        CustomerVO customerVO=new CustomerVO(0001, CustomerType.SALESPERSON, CustomerGrade.FIVE,"张三","111","xxx","1213"
                 ,"213213@qq.com",200,0,300,"xl");
 
 

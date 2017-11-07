@@ -1,9 +1,6 @@
 package nju.lighting.dataservice.documentdataservice;
 
-import shared.DocumentFilter;
 import shared.SaleRecordFilter;
-import nju.lighting.po.BusinessHistoryItemPO;
-import nju.lighting.po.RevenueAndExpenditurePO;
 import shared.DocFilter;
 import nju.lighting.po.doc.DocPO;
 
@@ -11,7 +8,6 @@ import shared.ResultMessage;
 import shared.DocType;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public interface DocDataService {
 
@@ -23,9 +19,8 @@ public interface DocDataService {
 
     ArrayList<DocPO> findSaleRecords(SaleRecordFilter filter);
 
-    ArrayList<BusinessHistoryItemPO> findDocuments(DocumentFilter filter);
 
-    RevenueAndExpenditurePO findRevenueAndExpenditure(Date startDate, Date endDate);
+
 
 
 }

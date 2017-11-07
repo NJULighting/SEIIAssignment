@@ -2,6 +2,7 @@ package nju.lighting.bl.customerbl;
 
 import nju.lighting.vo.*;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
+import shared.CustomerType;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -9,10 +10,8 @@ import java.util.ArrayList;
 public class CustomerBLService_Stub implements CustomerBLService{
 
     ArrayList<CustomerVO> customerAll;
-    CustomerVO customer;
     int id;
     public CustomerBLService_Stub(CustomerVO customer) throws RemoteException {
-        this.customer = customer;
         customerAll.add(customer);
         id = customer.getID();
     }
@@ -54,20 +53,8 @@ public class CustomerBLService_Stub implements CustomerBLService{
         else return ResultMessage.FAILURE;
     }
 
-
-    //根据客户ID寻找客户
-    public CustomerVO findCustomerByID(int id) throws RemoteException{
-        if(id==customer.getID())
-            return customer;
-        else
-            return null;
+    //结束客户管理
+    public void endCustomerManage() throws RemoteException{
+        System.out.println("End the management of customer!");
     }
-
-    //根据客户类型寻找客户
-    public ArrayList<CustomerVO> findCustomerByType(CustomerType type) throws RemoteException{
-        if(type==customer.getType())
-            return customerAll;
-        else return null;
-    }
-
 }

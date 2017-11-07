@@ -1,5 +1,7 @@
-package nju.lighting.vo;
+package nju.lighting.vo.giftdoc;
 
+
+import nju.lighting.vo.DocVO;
 
 import java.util.ArrayList;
 

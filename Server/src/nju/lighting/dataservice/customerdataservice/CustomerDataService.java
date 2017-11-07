@@ -1,7 +1,5 @@
 package nju.lighting.dataservice.customerdataservice;
 
-import nju.lighting.po.CustomerPO;
-
 import java.util.ArrayList;
 
 public interface CustomerDataService {

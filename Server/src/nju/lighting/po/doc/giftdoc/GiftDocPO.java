@@ -1,6 +1,7 @@
-package nju.lighting.po;
+package nju.lighting.po.doc.giftdoc;
 
 import nju.lighting.po.doc.DocPO;
+import shared.DocType;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,12 +21,13 @@ public class GiftDocPO extends DocPO {
     private double total;
 
 
-    public GiftDocPO(ArrayList<GiftItemPO> giftItemPOs, String ID, String customer, String repository) {
+    public GiftDocPO(String id, DocType docType, String userId, Date time, ArrayList<GiftItemPO> giftItemPOs, String customerID, String repositoryID, double total) {
+        super(id, docType, userId, time);
         this.giftItemPOs = giftItemPOs;
-        this.customerID = customer;
-        this.repositoryID = repository;
+        this.customerID = customerID;
+        this.repositoryID = repositoryID;
+        this.total = total;
     }
-
 
     public ArrayList<GiftItemPO> getGifts() {
         return giftItemPOs;

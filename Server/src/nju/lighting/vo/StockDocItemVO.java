@@ -4,7 +4,7 @@ package nju.lighting.vo;
  * Description:
  * @author GaoMengting
  */
-public class SalesDocItemVO {
+public class StockDocItemVO {
 
     private int id;
     private String SalesDocID;
@@ -20,9 +20,9 @@ public class SalesDocItemVO {
         totalAmount = number*salePrice;
     }
 
-    public SalesDocItemVO(){};
-    public SalesDocItemVO(int id,String SalesDocID,String commodityID,String commodityName,String commodityType,
-                          int number,double salePrice,String remarks){
+    public StockDocItemVO(){};
+    public StockDocItemVO(int id, String SalesDocID, String commodityID, String commodityName, String commodityType,
+                          int number, double salePrice, String remarks){
         this.id = id;
         this.SalesDocID = SalesDocID;
         this.commodityID=commodityID;

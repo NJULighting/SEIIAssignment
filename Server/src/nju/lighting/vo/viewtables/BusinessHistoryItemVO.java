@@ -1,5 +1,6 @@
-package nju.lighting.vo;
+package nju.lighting.vo.viewtables;
 
+import nju.lighting.vo.DocVO;
 import shared.DocType;
 
 /**

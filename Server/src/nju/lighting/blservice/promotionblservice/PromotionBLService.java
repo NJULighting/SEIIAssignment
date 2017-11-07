@@ -1,7 +1,6 @@
 package nju.lighting.blservice.promotionblservice;
 
-import com.sun.org.apache.regexp.internal.RE;
-import nju.lighting.vo.PromotionVO;
+import nju.lighting.vo.promotion.PromotionVO;
 import nju.lighting.vo.ResultMessage;
 
 import java.rmi.RemoteException;

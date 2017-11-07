@@ -1,8 +1,15 @@
 package nju.lighting.data.promotiondata;
 
 import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
+<<<<<<< HEAD
+<<<<<<< HEAD
 import nju.lighting.po.CustomerGrade;
+import nju.lighting.po.promotion.PromotionPO;
+=======
+=======
+>>>>>>> 4f84987ca2f7f5dd04190be0b6f3ae85b88084a1
 import nju.lighting.po.PromotionPO;
+>>>>>>> 4f84987ca2f7f5dd04190be0b6f3ae85b88084a1
 import shared.ResultMessage;
 
 import java.util.ArrayList;

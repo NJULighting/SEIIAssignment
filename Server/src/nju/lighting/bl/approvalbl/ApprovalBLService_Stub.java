@@ -3,8 +3,8 @@ package nju.lighting.bl.approvalbl;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import shared.ResultMessage;
 import nju.lighting.vo.CommodityVO;
-import nju.lighting.vo.GiftDocVO;
-import nju.lighting.vo.GiftItemVO;
+import nju.lighting.vo.giftdoc.GiftDocVO;
+import nju.lighting.vo.giftdoc.GiftItemVO;
 import nju.lighting.vo.HistoryDocVO;
 
 import java.rmi.RemoteException;

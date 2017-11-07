@@ -1,4 +1,6 @@
-package nju.lighting.vo;
+package nju.lighting.vo.viewtables;
+
+import nju.lighting.vo.DocVO;
 
 /**
  * Created on 2017/10/21.

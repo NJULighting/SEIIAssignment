@@ -1,4 +1,4 @@
-package nju.lighting.vo;
+package shared;
 
 public enum CustomerGrade {
     ONE,TWO,THREE,FOUR,FIVE;

@@ -1,10 +1,10 @@
-package nju.lighting.po.doc.salesdoc;
+package nju.lighting.po.doc.stockdoc;
 /**
  * LastEditTime: 2017/11/7
  * Description:
  * @author GaoMengting
  */
-public class SalesDocItemPO {
+public class StockDocItemPO {
 
     private int id;
     private String SalesDocID;
@@ -20,7 +20,7 @@ public class SalesDocItemPO {
         totalAmount = number*salePrice;
     }
 
-    public SalesDocItemPO(){}
+    public StockDocItemPO(){}
 
     /**
      *
@@ -41,7 +41,7 @@ public class SalesDocItemPO {
      * @param remarks
      * 此条商品条目中的备注
      */
-    public SalesDocItemPO(int id, String SalesDocID, String commodityID, String commodityName, String commodityType,
+    public StockDocItemPO(int id, String SalesDocID, String commodityID, String commodityName, String commodityType,
                           int number, double salePrice, String remarks){
         this.id = id;
         this.SalesDocID = SalesDocID;

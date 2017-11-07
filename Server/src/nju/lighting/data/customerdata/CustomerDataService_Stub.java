@@ -1,7 +1,6 @@
 package nju.lighting.data.customerdata;
 
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
-import nju.lighting.po.CustomerPO;
 
 import java.util.ArrayList;
 

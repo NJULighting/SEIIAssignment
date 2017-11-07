@@ -1,4 +1,4 @@
-package nju.lighting.vo;
+package nju.lighting.vo.viewtables;
 
 /**
  * Created on 2017/10/21.

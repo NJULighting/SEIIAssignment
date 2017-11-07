@@ -6,4 +6,5 @@ package nju.lighting.po.init;
  * @author Liao
  */
 public class InitCommodityPO {
+
 }

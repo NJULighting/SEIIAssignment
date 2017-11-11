@@ -2,6 +2,7 @@ package nju.lighting.blservice.commodityblservice;
 
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.CommodityTreeVO;
+import nju.lighting.vo.commodity.CommodityCategoryVO;
 import shared.ResultMessage;
 
 import java.rmi.Remote;
@@ -22,10 +23,10 @@ public interface CommodityBLService extends Remote {
 
     ResultMessage modifyCommodity(CommodityItemVO commodity) throws RemoteException;
 
-    ResultMessage addCategory(CommodityCategoryItemVO newCategory) throws RemoteException;
+    ResultMessage addCategory(CommodityCategoryVO newCategory) throws RemoteException;
 
     ResultMessage deleteCategory(int id) throws RemoteException;
 
-    ResultMessage modifyCategory(CommodityCategoryItemVO categoryItemVO) throws RemoteException;
+    ResultMessage modifyCategory(CommodityCategoryVO categoryItemVO) throws RemoteException;
 
 }

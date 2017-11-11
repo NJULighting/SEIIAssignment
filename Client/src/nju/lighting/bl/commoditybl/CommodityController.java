@@ -1,7 +1,7 @@
 package nju.lighting.bl.commoditybl;
 
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
-import nju.lighting.vo.commodity.CommodityCategoryItemVO;
+import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.CommodityTreeVO;
 import shared.ResultMessage;
@@ -52,7 +52,7 @@ public class CommodityController implements CommodityBLService {
     }
 
     @Override
-    public ResultMessage modifyCategory(CommodityCategoryItemVO categoryItemVO) {
+    public ResultMessage modifyCategory(CommodityCategoryVO categoryItemVO) {
         return null;
     }
 }

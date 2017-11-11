@@ -2,6 +2,9 @@ package nju.lighting.bl.documentbl;
 
 import nju.lighting.po.DocPO;
 import nju.lighting.vo.DocVO;
+import shared.DocType;
+
+import java.util.Date;
 
 /**
  * Created on 2017/11/11.
@@ -9,6 +12,13 @@ import nju.lighting.vo.DocVO;
  * @author Liao
  */
 public abstract class Doc {
+    protected String id;
+
+    protected DocType docType;
+
+    protected String userId;
+
+    protected Date time;
     /**
      * 审批单据
      */

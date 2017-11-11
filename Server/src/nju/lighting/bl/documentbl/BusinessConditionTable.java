@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Description: 处理经营情况表相关业务
  * @author Liao
  */
-public class BusinessSituationTable {
+public class BusinessConditionTable {
     /**
      * 查找所有的销售出货单据记录，生成销售明细列表
      * @param filter 对销售记录的筛选条件

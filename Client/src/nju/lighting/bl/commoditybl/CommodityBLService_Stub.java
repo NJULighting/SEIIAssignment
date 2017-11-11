@@ -3,6 +3,8 @@ package nju.lighting.bl.commoditybl;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.CommodityTreeVO;
+import nju.lighting.vo.commodity.CommodityCategoryVO;
+
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
@@ -41,7 +43,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public ResultMessage addCategory(CommodityCategoryItemVO newCategory) throws RemoteException {
+    public ResultMessage addCategory(CommodityCategoryVO newCategory) throws RemoteException {
         return null;
     }
 
@@ -51,7 +53,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public ResultMessage modifyCategory(CommodityCategoryItemVO categoryItemVO) throws RemoteException {
+    public ResultMessage modifyCategory(CommodityCategoryVO categoryItemVO) throws RemoteException {
         return null;
     }
 }

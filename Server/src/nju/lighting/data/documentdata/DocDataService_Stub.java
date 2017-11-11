@@ -2,7 +2,7 @@ package nju.lighting.data.documentdata;
 
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
-import nju.lighting.po.*;
+import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.init.InitPO;
 import nju.lighting.vo.CommodityVO;
 import shared.ResultMessage;

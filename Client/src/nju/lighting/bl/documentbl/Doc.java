@@ -1,10 +1,7 @@
 package nju.lighting.bl.documentbl;
 
-import nju.lighting.po.DocPO;
 import nju.lighting.vo.DocVO;
-import shared.DocType;
-
-import java.util.Date;
+import nju.lighting.po.doc.DocPO;
 
 /**
  * Created on 2017/11/11.
@@ -12,13 +9,6 @@ import java.util.Date;
  * @author Liao
  */
 public abstract class Doc {
-    protected String id;
-
-    protected DocType docType;
-
-    protected String userId;
-
-    protected Date time;
     /**
      * 审批单据
      */

@@ -9,8 +9,9 @@ import java.util.ArrayList;
  * Description
  * @author 陈俊宇
  */
+
 public interface DocInfo {
-    ArrayList<HistoryDocVO> findUnapprovedDoc();
+    ArrayList<HistoryDocVO> findUnCheckedDoc();
 }
 
 

@@ -1,45 +1,28 @@
 package nju.lighting.bl.documentbl;
 
+import nju.lighting.po.DocPO;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
-import shared.DocType;
-import shared.DocumentFilter;
-import shared.ResultMessage;
-
-import java.util.ArrayList;
 
 /**
- * Created on 2017/11/7.
- * Description: 处理单据提交、创建、查找业务
+ * Created on 2017/11/11.
+ * Description:
  * @author Liao
  */
-public class Doc {
+public abstract class Doc {
+    /**
+     * 审批单据
+     */
+    abstract void approve();
 
     /**
-     * 根据传入的单据类型进行单据的创建
-     * @param type 单据类型
-     * @return 相应类型的单据
+     * 创建相应的VO对象
+     * @return 对应的<code>DocVO</code>
      */
-    public DocVO createDoc(DocType type) {
-
-        return null;
-    }
+    abstract DocVO createVO();
 
     /**
-     * 提交单据
-     * @param doc 需要提交的单据
-     * @return 提交的结果（成功或失败）
+     * 创建响应的PO对象
+     * @return 对应的<code>DocPO</code>
      */
-    public ResultMessage commitDoc(DocVO doc) {
-        return null;
-    }
-
-    /**
-     * 查找单据
-     * @param filter 相应的筛选器<code>DocumentFilter</code>
-     * @return 根据筛选条件得到的历史单据
-     */
-    public ArrayList<BusinessHistoryItemVO> findDocuments(DocumentFilter filter) {
-        return null;
-    }
+    abstract DocPO createPO();
 }

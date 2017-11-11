@@ -10,18 +10,16 @@ public class StockTypeDocPO extends DocPO {
     private String stockTypeDocID;
     private String customerId;
     private String repository;
-    private String userId;
     private String remarks = "";
     private double totalAmount = 0;
 
     public StockTypeDocPO(String id, DocType docType, String userId, Date time,
                           String stockTypeDocID, String customerId, String repository,
-                          String userId1, String remarks, double totalAmount) {
+                          String remarks, double totalAmount) {
         super(id, docType, userId, time);
         this.stockTypeDocID = stockTypeDocID;
         this.customerId = customerId;
         this.repository = repository;
-        this.userId = userId1;
         this.remarks = remarks;
         this.totalAmount = totalAmount;
     }
@@ -48,14 +46,6 @@ public class StockTypeDocPO extends DocPO {
 
     public void setRepository(String repository) {
         this.repository = repository;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getRemarks() {

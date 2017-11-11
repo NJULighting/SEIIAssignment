@@ -10,29 +10,24 @@ public class SalesTypeDocPO extends DocPO {
     private String salesTypeDocID;
     private String customerId;
     private String repository;
-    private String userId;
     private String remarks;
     private double discount = 0;
     private double voucher = 0;
     private double finalAmount = 0;
 
     public SalesTypeDocPO(String id, DocType docType, String userId, Date time, String salesTypeDocID,
-                          String customerId, String repository, String userId1,
+                          String customerId, String repository,
                           String remarks, double discount, double voucher, double finalAmount) {
         super(id, docType, userId, time);
         this.salesTypeDocID = salesTypeDocID;
         this.customerId = customerId;
         this.repository = repository;
-        this.userId = userId1;
         this.remarks = remarks;
         this.discount = discount;
         this.voucher = voucher;
         this.finalAmount = finalAmount;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
     public String getSalesTypeDocID() {
         return salesTypeDocID;
@@ -56,10 +51,6 @@ public class SalesTypeDocPO extends DocPO {
 
     public void setRepository(String repository) {
         this.repository = repository;
-    }
-
-    public String getUserID() {
-        return userId;
     }
 
     public String getRemarks() {

@@ -10,7 +10,6 @@ public class SalesTypeDocVO extends DocVO {
     private String customerId;
     private String salesman;
     private String repository;
-    private String userId;
     private String remarks;
     private double beforeDiscountAmount = 0;
     private double discount = 0;
@@ -19,7 +18,7 @@ public class SalesTypeDocVO extends DocVO {
 
     public SalesTypeDocVO(Date time, String creatorId, String docId, DocType type,
                           String salesTypeDocID, String customerId, String salesman,
-                          String repository, String userId, String remarks,
+                          String repository, String remarks,
                           double beforeDiscountAmount, double discount,
                           double voucher, double finalAmount) {
         super(time, creatorId, docId, type);
@@ -27,7 +26,6 @@ public class SalesTypeDocVO extends DocVO {
         this.customerId = customerId;
         this.salesman = salesman;
         this.repository = repository;
-        this.userId = userId;
         this.remarks = remarks;
         this.beforeDiscountAmount = beforeDiscountAmount;
         this.discount = discount;
@@ -65,14 +63,6 @@ public class SalesTypeDocVO extends DocVO {
 
     public void setRepository(String repository) {
         this.repository = repository;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getRemarks() {

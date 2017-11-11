@@ -1,7 +1,7 @@
 package nju.lighting.bl.documentbl;
 
-import nju.lighting.po.DocPO;
 import nju.lighting.vo.DocVO;
+import nju.lighting.po.doc.DocPO;
 
 /**
  * Created on 2017/11/11.

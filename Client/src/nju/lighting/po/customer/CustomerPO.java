@@ -29,6 +29,8 @@ public class CustomerPO {
 
     private String salesman;
 
+    public CustomerPO(){
+    }
 
     public CustomerPO(int ID, CustomerType type, CustomerGrade grade, String name, String telephone, String address, String postage, String email, double receivableLimit, double receivable, double payable, String salesman) {
         this.ID = ID;

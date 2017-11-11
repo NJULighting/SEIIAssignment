@@ -1,0 +1,20 @@
+package nju.lighting.blservice.initblservice;
+
+import nju.lighting.vo.InitVO;
+import shared.ResultMessage;
+
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+/**
+ * Created on 2017/10/21.
+ * Description:
+ * @author Liao
+ */
+public interface InitializationBLService {
+    InitVO getInitInfo() throws RemoteException;
+
+    ResultMessage commit(InitVO vo) throws RemoteException;
+
+    ArrayList<InitVO> getHistoryInfo() throws RemoteException;
+}

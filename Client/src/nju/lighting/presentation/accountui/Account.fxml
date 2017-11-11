@@ -1,86 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.shape.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.Finance">
-   <children>
-      <ImageView fitHeight="70.0" fitWidth="64.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../../Desktop/avatar/avatar.jpg" />
-         </image>
-      </ImageView>
-      <VBox layoutX="87.0" layoutY="19.0" prefHeight="54.0" prefWidth="100.0">
-         <children>
-            <Label prefHeight="23.0" prefWidth="71.0" text="身份：XXX" />
-            <Label prefHeight="28.0" prefWidth="77.0" text="工号：XXX" />
-         </children>
-      </VBox>
-      <HBox alignment="TOP_CENTER" layoutX="322.0" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="63.0" prefWidth="929.0" spacing="10.0">
-         <children>
-            <Button mnemonicParsing="false" text="历史单据" />
-            <Button mnemonicParsing="false" text="账户管理" />
-            <Button mnemonicParsing="false" text="制定收付款单" />
-            <Button mnemonicParsing="false" text="制定现金费用单" />
-            <Button mnemonicParsing="false" text="经营情况表" />
-            <Button mnemonicParsing="false" text="销售明细表" />
-            <Button mnemonicParsing="false" text="经营历程表" />
-            <Button mnemonicParsing="false" text="期初建账" />
-            <Button mnemonicParsing="false" text="日志" />
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </padding>
-      </HBox>
-      <Button layoutX="238.0" layoutY="683.0" mnemonicParsing="false" text="增加" />
-      <Pane layoutX="11.0" layoutY="91.0" prefHeight="619.0" prefWidth="1259.0">
-         <children>
-            <TableView layoutX="14.0" layoutY="211.0" prefHeight="376.0" prefWidth="257.0">
-              <columns>
-                <TableColumn prefWidth="129.0" text="账户名" />
-                  <TableColumn prefWidth="132.0" text="金额" />
-              </columns>
-            </TableView>
-            <Label layoutX="490.0" layoutY="55.0" text="账户管理">
-               <font>
-                  <Font size="50.0" />
-               </font>
-            </Label>
-            <TableView layoutX="286.0" layoutY="135.0" prefHeight="452.0" prefWidth="946.0">
-              <columns>
-                <TableColumn prefWidth="165.0" text="时间" />
-                <TableColumn prefWidth="177.0" text="变动" />
-                  <TableColumn prefWidth="184.0" text="余额" />
-                  <TableColumn prefWidth="419.0" text="备注" />
-              </columns>
-            </TableView>
-            <HBox layoutX="4.0" layoutY="135.0" prefHeight="48.0" prefWidth="278.0">
-               <children>
-                  <Label text="查找账户">
-                     <padding>
-                        <Insets top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField prefHeight="23.0" prefWidth="211.0" promptText="查找" />
-               </children>
-               <opaqueInsets>
-                  <Insets top="10.0" />
-               </opaqueInsets>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </HBox>
-         </children>
-      </Pane>
-   </children>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="nju.lighting.presentation.mainui.Finance">
+    <children>
+        <ImageView fitHeight="70.0" fitWidth="64.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../../../../../../../../Desktop/avatar/avatar.jpg"/>
+            </image>
+        </ImageView>
+        <VBox layoutX="87.0" layoutY="19.0" prefHeight="54.0" prefWidth="100.0">
+            <children>
+                <Label prefHeight="23.0" prefWidth="71.0" text="身份：XXX"/>
+                <Label prefHeight="28.0" prefWidth="77.0" text="工号：XXX"/>
+            </children>
+        </VBox>
+        <HBox alignment="TOP_CENTER" layoutX="322.0" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="63.0"
+              prefWidth="929.0" spacing="10.0">
+            <children>
+                <Button mnemonicParsing="false" text="历史单据"/>
+                <Button mnemonicParsing="false" text="账户管理"/>
+                <Button mnemonicParsing="false" text="制定收付款单"/>
+                <Button mnemonicParsing="false" text="制定现金费用单"/>
+                <Button mnemonicParsing="false" text="经营情况表"/>
+                <Button mnemonicParsing="false" text="销售明细表"/>
+                <Button mnemonicParsing="false" text="经营历程表"/>
+                <Button mnemonicParsing="false" text="期初建账"/>
+                <Button mnemonicParsing="false" text="日志"/>
+            </children>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+        </HBox>
+        <Button layoutX="238.0" layoutY="683.0" mnemonicParsing="false" text="增加"/>
+        <Pane layoutX="11.0" layoutY="91.0" prefHeight="619.0" prefWidth="1259.0">
+            <children>
+                <TableView layoutX="14.0" layoutY="211.0" prefHeight="376.0" prefWidth="257.0">
+                    <columns>
+                        <TableColumn prefWidth="129.0" text="账户名"/>
+                        <TableColumn prefWidth="132.0" text="金额"/>
+                    </columns>
+                </TableView>
+                <Label layoutX="490.0" layoutY="55.0" text="账户管理">
+                    <font>
+                        <Font size="50.0"/>
+                    </font>
+                </Label>
+                <TableView layoutX="286.0" layoutY="135.0" prefHeight="452.0" prefWidth="946.0">
+                    <columns>
+                        <TableColumn prefWidth="165.0" text="时间"/>
+                        <TableColumn prefWidth="177.0" text="变动"/>
+                        <TableColumn prefWidth="184.0" text="余额"/>
+                        <TableColumn prefWidth="419.0" text="备注"/>
+                    </columns>
+                </TableView>
+                <HBox layoutX="4.0" layoutY="135.0" prefHeight="48.0" prefWidth="278.0">
+                    <children>
+                        <Label text="查找账户">
+                            <padding>
+                                <Insets top="5.0"/>
+                            </padding>
+                        </Label>
+                        <TextField prefHeight="23.0" prefWidth="211.0" promptText="查找"/>
+                    </children>
+                    <opaqueInsets>
+                        <Insets top="10.0"/>
+                    </opaqueInsets>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                </HBox>
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>

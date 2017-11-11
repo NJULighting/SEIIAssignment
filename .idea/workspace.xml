@@ -2,15 +2,214 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cce0cfee-2af1-4d7f-b2ed-64210b9b20f4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/Client.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService_Driver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/nju/lighting/businesslogicservice/documentblservice.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/SEIIAssignment.iml" afterPath="$PROJECT_DIR$/.idea/SEIIAssignment.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/commodity/CommodityCategoryItemVO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/shared/BusinessHistoryFilter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/shared/CustomerGrade.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/shared/CustomerType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/shared/SaleRecordFilter.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService_Driver.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/CommodityCategoryVO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/shared/BusinessHistoryFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/shared/CustomerGrade.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/shared/CustomerType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/shared/Identity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/shared/ResultMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/shared/SaleRecordFilter.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/accountbl/AccountBLService_Stub.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/accountbl/AccountBLService_Stub.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/accountbl/AccountController.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/accountbl/AccountController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/accountbl/AccountInfo.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/accountbl/AccountInfo.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/accountbl/AccountManage.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/accountbl/AccountManage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/approvalbl/ApprovalBLService_Stub.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/approvalbl/ApprovalBLService_Stub.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/commoditybl/Commodity.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/commoditybl/Commodity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/commoditybl/CommodityBLService_Stub.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/commoditybl/CommodityBLService_Stub.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/commoditybl/CommodityCategoryItem.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/commoditybl/CommodityCategoryItem.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/commoditybl/CommodityController.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/commoditybl/CommodityController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/commoditybl/CommodityInfo.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/commoditybl/CommodityInfo.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/commoditybl/CommodityItem.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/commoditybl/CommodityItem.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/commoditybl/CommodityTree.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/commoditybl/CommodityTree.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/commoditybl/MockCommodity.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/commoditybl/MockCommodity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/commoditybl/MockCommodityTest.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/commoditybl/MockCommodityTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/customerbl/CustomerBLService_Stub.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/customerbl/CustomerBLService_Stub.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/customerbl/CustomerController.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/customerbl/CustomerController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/customerbl/customer.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/customerbl/Customer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/documentbl/AccountIODoc.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/documentbl/AccountIODoc.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/documentbl/AlertDoc.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/documentbl/AlertDoc.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/documentbl/BusinessSituationTable.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/documentbl/BusinessSituationTable.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/documentbl/CostDoc.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/documentbl/CostDoc.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/documentbl/Doc.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/documentbl/Doc.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/documentbl/DocController.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/documentbl/DocController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/documentbl/DocInfo.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/documentbl/DocInfo.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/documentbl/LossAndGainDoc.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/documentbl/LossAndGainDoc.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/documentbl/RedFlush.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/documentbl/RedFlush.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/documentbl/SalesDetailTable.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/documentbl/SalesDetailTable.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/initbl/InitializationBLService_Stub.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/initbl/InitializationBLService_Stub.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/logbl/Describable.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/logbl/Describable.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/logbl/DocLogger.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/logbl/DocLogger.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/logbl/Log.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/logbl/Log.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/logbl/LogBLService_Stub.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/logbl/LogBLService_Stub.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/logbl/LogController.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/logbl/LogController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/logbl/Logger.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/logbl/Logger.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/logbl/MockLogger.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/logbl/MockLogger.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/logbl/OtherLogger.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/logbl/OtherLogger.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/logbl/SimppleLogger.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/logbl/SimppleLogger.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/promotionbl/MockPromotion.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/promotionbl/MockPromotion.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/promotionbl/Promotion.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/promotionbl/Promotion.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/promotionbl/PromotionBLService_Stub.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/promotionbl/PromotionBLService_Stub.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/promotionbl/PromotionController.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/promotionbl/PromotionController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/promotionbl/getBenefitsPlan.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/promotionbl/getBenefitsPlan.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/repositorybl/MockRepository.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/repositorybl/MockRepository.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/repositorybl/MockRepositoryChange.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/repositorybl/MockRepositoryChange.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/repositorybl/MockRepositoryTable.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/repositorybl/MockRepositoryTable.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/repositorybl/Repository.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/repositorybl/Repository.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/repositorybl/RepositoryChange.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/repositorybl/RepositoryChange.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/repositorybl/RepositoryController.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/repositorybl/RepositoryController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/repositorybl/RepositoryTable.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/repositorybl/RepositoryTable.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/userbl/LoginHelper.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/userbl/LoginHelper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/userbl/UserBLServie_Stub.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/userbl/UserBLServie_Stub.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/userbl/UserController.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/userbl/UserController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/bl/userbl/UserManage.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/bl/userbl/UserManage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/blservice/accountblservice/AccountBLService.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/blservice/accountblservice/AccountBLService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/blservice/approvalblservice/ApprovalBLService.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/blservice/approvalblservice/ApprovalBLService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/blservice/commodityblservice/CommodityBLService.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/blservice/commodityblservice/CommodityBLService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/blservice/customerblservice/CustomerBLService.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/blservice/customerblservice/CustomerBLService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/blservice/documentblservice/DocBLService.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/blservice/documentblservice/DocBLService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/blservice/initblservice/InitializationBLService.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/blservice/initblservice/InitializationBLService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/blservice/logblservice/LogBLService.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/blservice/logblservice/LogBLService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/blservice/logblservice/LogFilter.java" afterPath="$PROJECT_DIR$/Client/src/shared/LogFilter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/blservice/promotionblservice/PromotionBLService.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/blservice/promotionblservice/PromotionBLService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/blservice/repositoryblservice/RepositoryBLService.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/blservice/repositoryblservice/RepositoryBLService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/blservice/userblservice/UserBLService.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/blservice/userblservice/UserBLService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/DocItemPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/DocItemPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/DocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/DocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/LogPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/LogPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/UserPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/UserPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/account/AccountLogPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/account/AccountLogPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/account/AccountPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/account/AccountPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/commodity/CommodityCategoryPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/commodity/CommodityCategoryPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/commodity/CommodityItemPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/commodity/CommodityItemPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/customer/CustomerPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/customer/CustomerPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/DocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/DocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/accountiodoc/AccountIODocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/accountiodoc/AccountIODocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/accountiodoc/AccountTransferItemPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/accountiodoc/AccountTransferItemPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/alertdoc/AlertDocItemPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/alertdoc/AlertDocItemPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/alertdoc/AlertDocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/alertdoc/AlertDocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/costdoc/CostDocItemPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/costdoc/CostDocItemPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/costdoc/CostDocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/costdoc/CostDocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/giftdoc/GiftDocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/giftdoc/GiftDocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/giftdoc/GiftItemPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/giftdoc/GiftItemPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/historydoc/HistoryDocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/historydoc/HistoryDocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/lossandgaindoc/LossAndGainDocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/lossandgaindoc/LossAndGainDocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/lossandgaindoc/LossAndGainItemPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/lossandgaindoc/LossAndGainItemPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/salesdoc/SalesDocItemPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/salesdoc/SalesDocItemPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/salesdoc/SalesDocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/salesdoc/SalesDocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/salesdoc/SalesReturnDocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/salesdoc/SalesReturnDocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/salesdoc/SalesTypeDocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/salesdoc/SalesTypeDocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/stockdoc/StockDocItemPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/stockdoc/StockDocItemPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/stockdoc/StockDocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/stockdoc/StockDocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/stockdoc/StockReturnDocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/stockdoc/StockReturnDocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/doc/stockdoc/StockTypeDocPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/doc/stockdoc/StockTypeDocPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/init/InitAccountPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/init/InitAccountPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/init/InitCommodityPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/init/InitCommodityPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/init/InitPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/init/InitPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/promotion/PromotionPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/promotion/PromotionPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/repository/RepositoryChangePO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/repository/RepositoryChangePO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/repository/RepositoryTableItemPO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/repository/RepositoryTableItemPO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/po/repository/RepositoryTablePO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/po/repository/RepositoryTablePO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/AccountIODocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/AccountIODocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/AlertDocItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/AlertDocItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/AlertDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/AlertDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/CommodityVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/CommodityVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/CostDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/CostDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/CustomerVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/CustomerVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/DocItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/DocItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/DocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/DocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/HistoryDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/HistoryDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/Identity.java" afterPath="$PROJECT_DIR$/Client/src/shared/Identity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/InitVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/InitVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/LogVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/LogVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/LossAndGainDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/LossAndGainDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/LossAndGainItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/LossAndGainItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/RepositoryChangeVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/RepositoryChangeVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/RepositoryTableItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/RepositoryTableItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/RepositoryTableVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/RepositoryTableVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/ResultMessage.java" afterPath="$PROJECT_DIR$/Client/src/shared/ResultMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/SalesDocItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/SalesDocItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/SalesDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/SalesDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/SalesReturnDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/SalesReturnDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/SalesTypeDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/SalesTypeDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/StockDocItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/StockDocItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/StockDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/StockDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/StockReturnDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/StockReturnDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/StockTypeDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/StockTypeDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/UserVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/UserVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/account/AccountLogVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/account/AccountLogVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/account/AccountVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/account/AccountVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/commodity/BasicCommodityItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/commodity/BasicCommodityItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/commodity/BasicCommodityTreeVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/commodity/BasicCommodityTreeVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/commodity/CommodityCategoryVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/commodity/CommodityCategoryVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/commodity/CommodityItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/commodity/CommodityItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/commodity/CommodityTreeVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/commodity/CommodityTreeVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/doc/alertdoc/AlertDocItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/doc/alertdoc/AlertDocItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/doc/alertdoc/AlertDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/doc/alertdoc/AlertDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/doc/giftdoc/GiftDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/doc/giftdoc/GiftDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/doc/giftdoc/GiftItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/doc/giftdoc/GiftItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/doc/historydoc/HistoryDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/doc/historydoc/HistoryDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/doc/lossandgaindoc/LossAndGainDocItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/doc/lossandgaindoc/LossAndGainDocItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/doc/lossandgaindoc/LossAndGainDocVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/doc/lossandgaindoc/LossAndGainDocVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/promotion/PromotionVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/promotion/PromotionVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/repository/RepositoryChangeVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/repository/RepositoryChangeVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/repository/RepositoryTableItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/repository/RepositoryTableItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/repository/RepositoryTableVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/repository/RepositoryTableVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/viewtables/BusinessHistoryItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/viewtables/BusinessHistoryItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/viewtables/RevenueAndExpenditureVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/viewtables/RevenueAndExpenditureVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/vo/viewtables/SaleRecordItemVO.java" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/vo/viewtables/SaleRecordItemVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/shared/AccountChangeType.java" afterPath="$PROJECT_DIR$/Client/src/shared/AccountChangeType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/shared/AccountIODocType.java" afterPath="$PROJECT_DIR$/Client/src/shared/AccountIODocType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/shared/CommodityTreeNode.java" afterPath="$PROJECT_DIR$/Client/src/shared/CommodityTreeNode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/shared/CostDocItemType.java" afterPath="$PROJECT_DIR$/Client/src/shared/CostDocItemType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/shared/DocType.java" afterPath="$PROJECT_DIR$/Client/src/shared/DocType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/shared/DocumentFilter.java" afterPath="$PROJECT_DIR$/Client/src/shared/DocumentFilter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/shared/HistoryDocType.java" afterPath="$PROJECT_DIR$/Client/src/shared/HistoryDocType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/shared/LossAndGainItemType.java" afterPath="$PROJECT_DIR$/Client/src/shared/LossAndGainItemType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/shared/OPType.java" afterPath="$PROJECT_DIR$/Client/src/shared/OPType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/shared/PromotionType.java" afterPath="$PROJECT_DIR$/Client/src/shared/PromotionType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/shared/RepositoryChangeType.java" afterPath="$PROJECT_DIR$/Client/src/shared/RepositoryChangeType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server/src/shared/TwoTuple.java" afterPath="$PROJECT_DIR$/Client/src/shared/TwoTuple.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Client.iml" afterPath="$PROJECT_DIR$/Client/Client.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/accountui/Account.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/accountui/Account.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/approvalui/Approval.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/approvalui/Approval.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/commodityui/CommodityUI.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/commodityui/CommodityUI.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/customerui/CustomerManageUI.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/customerui/CustomerManageUI.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/AlertDocUI.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/AlertDocUI.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/CostDoc.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/CostDoc.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/Initialization.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/Initialization.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/LossAndGainDocUI.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/LossAndGainDocUI.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/RevenueAndExpenditure.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/RevenueAndExpenditure.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/SaleRecord.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/SaleRecord.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/SalesDoc.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/SalesDoc.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/SalesReturnDoc.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/SalesReturnDoc.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/StockDoc.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/StockDoc.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/StockReturnDoc.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/documentui/StockReturnDoc.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/logui/Log.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/logui/Log.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/mainui/GeneralManger.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/mainui/GeneralManger.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/mainui/Main.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/mainui/Main.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/mainui/RepositoryManagerMainUI.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/mainui/RepositoryManagerMainUI.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/mainui/SalesManager.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/mainui/SalesManager.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/promotionui/Promotion.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/promotionui/Promotion.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/repositoryui/RepositoryCountingUI.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/repositoryui/RepositoryCountingUI.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/repositoryui/RepositoryViewUI.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/repositoryui/RepositoryViewUI.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/userui/User.fxml" afterPath="$PROJECT_DIR$/Client/src/nju/lighting/presentation/userui/User.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/Server.iml" afterPath="$PROJECT_DIR$/Server/Server.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/data/DataFactory.java" afterPath="$PROJECT_DIR$/Server/src/nju/lighting/data/DataFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/data/logdata/LogDataService_Stub.java" afterPath="$PROJECT_DIR$/Server/src/nju/lighting/data/logdata/LogDataService_Stub.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/data/userdata/UserDataService_Stub.java" afterPath="$PROJECT_DIR$/Server/src/nju/lighting/data/userdata/UserDataService_Stub.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/dataservice/approvaldataservice/ApprovalDataService.java" afterPath="$PROJECT_DIR$/Server/src/nju/lighting/dataservice/approvaldataservice/ApprovalDataService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/dataservice/commoditydataservice/CommodityDataService.java" afterPath="$PROJECT_DIR$/Server/src/nju/lighting/dataservice/commoditydataservice/CommodityDataService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/dataservice/documentdataservice/DocDataService.java" afterPath="$PROJECT_DIR$/Server/src/nju/lighting/dataservice/documentdataservice/DocDataService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/dataservice/logdataservice/LogDataService.java" afterPath="$PROJECT_DIR$/Server/src/nju/lighting/dataservice/logdataservice/LogDataService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/dataservice/repositorydataservice/RepositoryDataService.java" afterPath="$PROJECT_DIR$/Server/src/nju/lighting/dataservice/repositorydataservice/RepositoryDataService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/nju/lighting/dataservice/userdataservice/UserDataService.java" afterPath="$PROJECT_DIR$/Server/src/nju/lighting/dataservice/userdataservice/UserDataService.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,143 +221,101 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserPO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/UserPO.java">
+      <file leaf-file-name="AccountBLService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/blservice/accountblservice/AccountBLService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="28" column="21" lean-forward="false" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-              <folding>
-                <element signature="e#656#657#0" expanded="true" />
-                <element signature="e#698#699#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AccountIODocBLService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountIODocBLService_Driver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService_Driver.java">
+      <file leaf-file-name="UserBLService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/blservice/userblservice/UserBLService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+            <state relative-caret-position="180">
+              <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="documentblservice.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/businesslogicservice/documentblservice.java">
+      <file leaf-file-name="AccountLogPO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/po/account/AccountLogPO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+            <state relative-caret-position="180">
+              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountIODocBLService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService.java">
+      <file leaf-file-name="AccountPO.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/po/account/AccountPO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" column="3" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+            <state relative-caret-position="180">
+              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountIODocPO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountIODocPO.java">
+      <file leaf-file-name="CommodityBLService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/blservice/commodityblservice/CommodityBLService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="19" column="75" lean-forward="false" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#777#778#0" expanded="true" />
-                <element signature="e#807#808#0" expanded="true" />
-                <element signature="e#853#854#0" expanded="true" />
-                <element signature="e#891#892#0" expanded="true" />
-                <element signature="e#934#935#0" expanded="true" />
-                <element signature="e#961#962#0" expanded="true" />
-                <element signature="e#1013#1014#0" expanded="true" />
-                <element signature="e#1045#1046#0" expanded="true" />
-                <element signature="e#1084#1085#0" expanded="true" />
-                <element signature="e#1115#1116#0" expanded="true" />
-                <element signature="e#1167#1168#0" expanded="true" />
-                <element signature="e#1207#1208#0" expanded="true" />
-                <element signature="e#1288#1289#0" expanded="true" />
-                <element signature="e#1330#1331#0" expanded="true" />
-                <element signature="e#1526#1527#0" expanded="true" />
-                <element signature="e#1554#1555#0" expanded="true" />
-                <element signature="e#1593#1594#0" expanded="true" />
-                <element signature="e#1627#1628#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LogPO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/LogPO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-              <folding>
-                <element signature="e#385#386#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CostDocPO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocPO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#730#731#0" expanded="true" />
-                <element signature="e#780#781#0" expanded="true" />
-                <element signature="e#822#823#0" expanded="true" />
-                <element signature="e#866#867#0" expanded="true" />
-                <element signature="e#897#898#0" expanded="true" />
-                <element signature="e#954#955#0" expanded="true" />
-                <element signature="e#994#995#0" expanded="true" />
-                <element signature="e#1070#1071#0" expanded="true" />
-                <element signature="e#1101#1102#0" expanded="true" />
-                <element signature="e#1190#1191#0" expanded="true" />
-                <element signature="e#1230#1231#0" expanded="true" />
-                <element signature="e#1259#1260#0" expanded="true" />
-                <element signature="e#1287#1288#0" expanded="true" />
-                <element signature="e#1326#1327#0" expanded="true" />
-                <element signature="e#1360#1361#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CostDocItemType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocItemType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+            <state relative-caret-position="80">
+              <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwoTuple.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/utility/TwoTuple.java">
+      <file leaf-file-name="CustomerBLService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/blservice/customerblservice/CustomerBLService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="15" lean-forward="false" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+            <state relative-caret-position="80">
+              <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DocBLService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/blservice/documentblservice/DocBLService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InitializationBLService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/blservice/initblservice/InitializationBLService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogBLService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/blservice/logblservice/LogBLService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PromotionBLService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/blservice/promotionblservice/PromotionBLService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -209,9 +366,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="width" value="1932" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -228,6 +386,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -236,6 +396,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="SEIIAssignment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -275,30 +445,12 @@
               <option name="myItemId" value="lighting" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SEIIAssignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemId" value="dataservice" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lighting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="businesslogicservice" />
+              <option name="myItemId" value="userdataservice" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -324,7 +476,829 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="businesslogicservice" />
+              <option name="myItemId" value="dataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repositorydataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="promotiondataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logdataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="documentdataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customerdataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commoditydataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="approvaldataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="accountdataservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="userdata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repositorydata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="promotiondata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logdata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="documentdata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customerdata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commoditydata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="approvaldata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="accountdata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="po" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="po" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="account" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="userblservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repositoryblservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="promotionblservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logblservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="initblservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blservice" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -332,11 +1306,429 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customerblservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commodityblservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="approvalblservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="accountblservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="userbl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repositorybl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="promotionbl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logbl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="initbl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="documentbl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customerbl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commoditybl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="approvalbl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEIIAssignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="accountbl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -783,39 +2175,62 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7171000" />
+    <option name="totallyTimeSpent" value="7179000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1932" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20093946" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20052083" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20093946" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -833,539 +2248,106 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/InitPO.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/blservice/logblservice/LogBLService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="68" lean-forward="false" selection-start-line="23" selection-start-column="68" selection-end-line="23" selection-end-column="68" />
-          <folding>
-            <element signature="e#807#808#0" expanded="true" />
-            <element signature="e#1017#1018#0" expanded="true" />
-            <element signature="e#1051#1052#0" expanded="true" />
-            <element signature="e#1121#1122#0" expanded="true" />
-            <element signature="e#1167#1168#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1248#1249#0" expanded="true" />
-            <element signature="e#1311#1312#0" expanded="true" />
-            <element signature="e#1351#1352#0" expanded="true" />
-            <element signature="e#1400#1401#0" expanded="true" />
-            <element signature="e#1431#1432#0" expanded="true" />
-            <element signature="e#1493#1494#0" expanded="true" />
-            <element signature="e#1533#1534#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountIODocPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="19" column="75" lean-forward="false" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#777#778#0" expanded="true" />
-            <element signature="e#807#808#0" expanded="true" />
-            <element signature="e#853#854#0" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#934#935#0" expanded="true" />
-            <element signature="e#961#962#0" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-            <element signature="e#1045#1046#0" expanded="true" />
-            <element signature="e#1084#1085#0" expanded="true" />
-            <element signature="e#1115#1116#0" expanded="true" />
-            <element signature="e#1167#1168#0" expanded="true" />
-            <element signature="e#1207#1208#0" expanded="true" />
-            <element signature="e#1288#1289#0" expanded="true" />
-            <element signature="e#1330#1331#0" expanded="true" />
-            <element signature="e#1526#1527#0" expanded="true" />
-            <element signature="e#1554#1555#0" expanded="true" />
-            <element signature="e#1593#1594#0" expanded="true" />
-            <element signature="e#1627#1628#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/LogPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding>
-            <element signature="e#385#386#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#730#731#0" expanded="true" />
-            <element signature="e#780#781#0" expanded="true" />
-            <element signature="e#822#823#0" expanded="true" />
-            <element signature="e#866#867#0" expanded="true" />
-            <element signature="e#897#898#0" expanded="true" />
-            <element signature="e#954#955#0" expanded="true" />
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#1101#1102#0" expanded="true" />
-            <element signature="e#1190#1191#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-            <element signature="e#1259#1260#0" expanded="true" />
-            <element signature="e#1287#1288#0" expanded="true" />
-            <element signature="e#1326#1327#0" expanded="true" />
-            <element signature="e#1360#1361#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocItemType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+        <state relative-caret-position="180">
+          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/utility/TwoTuple.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/blservice/promotionblservice/PromotionBLService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="15" lean-forward="false" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        <state relative-caret-position="180">
+          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CustomerPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountIODocType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/DocPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/UserPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-          <folding>
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#698#699#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/InitPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="68" lean-forward="false" selection-start-line="23" selection-start-column="68" selection-end-line="23" selection-end-column="68" />
-          <folding>
-            <element signature="e#807#808#0" expanded="true" />
-            <element signature="e#1017#1018#0" expanded="true" />
-            <element signature="e#1051#1052#0" expanded="true" />
-            <element signature="e#1121#1122#0" expanded="true" />
-            <element signature="e#1167#1168#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1248#1249#0" expanded="true" />
-            <element signature="e#1311#1312#0" expanded="true" />
-            <element signature="e#1351#1352#0" expanded="true" />
-            <element signature="e#1400#1401#0" expanded="true" />
-            <element signature="e#1431#1432#0" expanded="true" />
-            <element signature="e#1493#1494#0" expanded="true" />
-            <element signature="e#1533#1534#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountIODocPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="19" column="75" lean-forward="false" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#777#778#0" expanded="true" />
-            <element signature="e#807#808#0" expanded="true" />
-            <element signature="e#853#854#0" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#934#935#0" expanded="true" />
-            <element signature="e#961#962#0" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-            <element signature="e#1045#1046#0" expanded="true" />
-            <element signature="e#1084#1085#0" expanded="true" />
-            <element signature="e#1115#1116#0" expanded="true" />
-            <element signature="e#1167#1168#0" expanded="true" />
-            <element signature="e#1207#1208#0" expanded="true" />
-            <element signature="e#1288#1289#0" expanded="true" />
-            <element signature="e#1330#1331#0" expanded="true" />
-            <element signature="e#1526#1527#0" expanded="true" />
-            <element signature="e#1554#1555#0" expanded="true" />
-            <element signature="e#1593#1594#0" expanded="true" />
-            <element signature="e#1627#1628#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/LogPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding>
-            <element signature="e#385#386#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#730#731#0" expanded="true" />
-            <element signature="e#780#781#0" expanded="true" />
-            <element signature="e#822#823#0" expanded="true" />
-            <element signature="e#866#867#0" expanded="true" />
-            <element signature="e#897#898#0" expanded="true" />
-            <element signature="e#954#955#0" expanded="true" />
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#1101#1102#0" expanded="true" />
-            <element signature="e#1190#1191#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-            <element signature="e#1259#1260#0" expanded="true" />
-            <element signature="e#1287#1288#0" expanded="true" />
-            <element signature="e#1326#1327#0" expanded="true" />
-            <element signature="e#1360#1361#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocItemType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/utility/TwoTuple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="15" lean-forward="false" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CustomerPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountIODocType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/DocPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/UserPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-          <folding>
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#698#699#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/UserPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="28" column="36" lean-forward="false" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
-          <folding>
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#698#699#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/LogPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding>
-            <element signature="e#385#386#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/Identity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="53" lean-forward="false" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/DocPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/InitPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#807#808#0" expanded="true" />
-            <element signature="e#1017#1018#0" expanded="true" />
-            <element signature="e#1051#1052#0" expanded="true" />
-            <element signature="e#1121#1122#0" expanded="true" />
-            <element signature="e#1167#1168#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1248#1249#0" expanded="true" />
-            <element signature="e#1311#1312#0" expanded="true" />
-            <element signature="e#1351#1352#0" expanded="true" />
-            <element signature="e#1400#1401#0" expanded="true" />
-            <element signature="e#1431#1432#0" expanded="true" />
-            <element signature="e#1493#1494#0" expanded="true" />
-            <element signature="e#1533#1534#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/Identity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="53" lean-forward="false" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CommodityCategoryPO.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/blservice/customerblservice/CustomerBLService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CommodityPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/InitPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="68" lean-forward="false" selection-start-line="23" selection-start-column="68" selection-end-line="23" selection-end-column="68" />
-          <folding>
-            <element signature="e#807#808#0" expanded="true" />
-            <element signature="e#1017#1018#0" expanded="true" />
-            <element signature="e#1051#1052#0" expanded="true" />
-            <element signature="e#1121#1122#0" expanded="true" />
-            <element signature="e#1167#1168#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1248#1249#0" expanded="true" />
-            <element signature="e#1311#1312#0" expanded="true" />
-            <element signature="e#1351#1352#0" expanded="true" />
-            <element signature="e#1400#1401#0" expanded="true" />
-            <element signature="e#1431#1432#0" expanded="true" />
-            <element signature="e#1493#1494#0" expanded="true" />
-            <element signature="e#1533#1534#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/DocPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountIODocType.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/blservice/accountblservice/AccountBLService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        <state relative-caret-position="180">
+          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CustomerPO.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/blservice/userblservice/UserBLService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="180">
+          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/utility/TwoTuple.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/po/account/AccountLogPO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="15" lean-forward="false" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        <state relative-caret-position="180">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocItemType.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/po/account/AccountPO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+        <state relative-caret-position="180">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountIODocPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="19" column="75" lean-forward="false" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#777#778#0" expanded="true" />
-            <element signature="e#807#808#0" expanded="true" />
-            <element signature="e#853#854#0" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#934#935#0" expanded="true" />
-            <element signature="e#961#962#0" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-            <element signature="e#1045#1046#0" expanded="true" />
-            <element signature="e#1084#1085#0" expanded="true" />
-            <element signature="e#1115#1116#0" expanded="true" />
-            <element signature="e#1167#1168#0" expanded="true" />
-            <element signature="e#1207#1208#0" expanded="true" />
-            <element signature="e#1288#1289#0" expanded="true" />
-            <element signature="e#1330#1331#0" expanded="true" />
-            <element signature="e#1526#1527#0" expanded="true" />
-            <element signature="e#1554#1555#0" expanded="true" />
-            <element signature="e#1593#1594#0" expanded="true" />
-            <element signature="e#1627#1628#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#730#731#0" expanded="true" />
-            <element signature="e#780#781#0" expanded="true" />
-            <element signature="e#822#823#0" expanded="true" />
-            <element signature="e#866#867#0" expanded="true" />
-            <element signature="e#897#898#0" expanded="true" />
-            <element signature="e#954#955#0" expanded="true" />
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#1101#1102#0" expanded="true" />
-            <element signature="e#1190#1191#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-            <element signature="e#1259#1260#0" expanded="true" />
-            <element signature="e#1287#1288#0" expanded="true" />
-            <element signature="e#1326#1327#0" expanded="true" />
-            <element signature="e#1360#1361#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/LogPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding>
-            <element signature="e#385#386#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/UserPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="28" column="21" lean-forward="false" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-          <folding>
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#698#699#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService_Driver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/businesslogicservice/documentblservice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="3" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/InitPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountIODocPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/LogPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocItemType.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/utility/TwoTuple.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CustomerPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountIODocType.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/DocPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/UserPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/InitPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountIODocPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/LogPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocItemType.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/utility/TwoTuple.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CustomerPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountIODocType.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/DocPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/UserPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/UserPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/LogPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/Identity.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/DocPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/InitPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/Identity.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CommodityCategoryPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CommodityPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/InitPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/DocPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountIODocType.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CustomerPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/utility/TwoTuple.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocItemType.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/AccountIODocPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/CostDocPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/LogPO.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/po/UserPO.java" />
+    <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService.java" />
+    <entry file="file://$PROJECT_DIR$/Client/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService_Driver.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/businesslogicservice/documentblservice.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/nju/lighting/businesslogicservice/documentblservice/AccountIODocBLService.java" />
   </component>
   <component name="masterDetails">
     <states>

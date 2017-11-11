@@ -5,6 +5,7 @@ import nju.lighting.po.doc.DocPO;
 
 import shared.ResultMessage;
 import shared.DocType;
+import shared.SaleRecordFilter;
 
 import java.util.ArrayList;
 

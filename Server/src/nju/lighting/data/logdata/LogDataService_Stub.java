@@ -1,6 +1,6 @@
 package nju.lighting.data.logdata;
 
-import nju.lighting.blservice.logblservice.LogFilter;
+import shared.LogFilter;
 import nju.lighting.dataservice.logdataservice.LogDataService;
 import nju.lighting.po.LogPO;
 import shared.ResultMessage;

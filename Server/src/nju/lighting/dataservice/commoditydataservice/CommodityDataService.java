@@ -1,8 +1,8 @@
 package nju.lighting.dataservice.commoditydataservice;
 
-import shared.ResultMessage;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 

@@ -1,9 +1,9 @@
 package nju.lighting.data.userdata;
 
 import nju.lighting.dataservice.userdataservice.UserDataService;
+import nju.lighting.po.UserPO;
 import shared.Identity;
 import shared.ResultMessage;
-import nju.lighting.po.UserPO;
 
 import java.util.ArrayList;
 
@@ -30,8 +30,8 @@ public class UserDataService_Stub implements UserDataService {
 
     @Override
     public ArrayList<UserPO> find(String keyword) {
-        UserPO frog = new UserPO("Frog", "Excited", "0000", Identity.GENERAL);
-        UserPO journalist = new UserPO("Journalist", "Naive", "0001", Identity.SALE);
+        UserPO frog = new UserPO("Frog", "Excited", "0000", Identity.GENERAL, false);
+        UserPO journalist = new UserPO("Journalist", "Naive", "0001", Identity.SALE, false);
         ArrayList<UserPO> users = new ArrayList<>();
         users.add(frog);
         users.add(journalist);
@@ -40,7 +40,7 @@ public class UserDataService_Stub implements UserDataService {
 
     @Override
     public UserPO get(String ID) {
-        return ID.isEmpty() ? null : new UserPO("Frog", "Excited", "0000", Identity.GENERAL);
+        return ID.isEmpty() ? null : new UserPO("Frog", "Excited", "0000", Identity.GENERAL, false);
     }
 
     @Override

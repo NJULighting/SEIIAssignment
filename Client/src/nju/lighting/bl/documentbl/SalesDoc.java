@@ -90,7 +90,6 @@ public class SalesDoc extends Doc{
 
     public int getCommodityListNumber(){return commodityListNumber;}
 
-    public void setCommodityListNumber
 
     public void setSalesTypeDocID(String salesTypeDocID) {
         this.salesTypeDocID = salesTypeDocID;

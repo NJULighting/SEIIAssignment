@@ -1,6 +1,7 @@
 package nju.lighting.blservice.documentblservice;
 
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.RevenueAndExpenditureVO;
 import nju.lighting.vo.viewtables.SaleRecordItemVO;
@@ -17,6 +18,8 @@ public interface DocBLService {
     DocVO createDoc(DocType type) ;
 
     ResultMessage commitDoc(DocVO doc) ;
+
+    ArrayList<HistoryDocVO> findDocuments(DocumentFilter filter);
 
     ArrayList<SaleRecordItemVO> findSaleRecords(SaleRecordFilter filter) ;
 

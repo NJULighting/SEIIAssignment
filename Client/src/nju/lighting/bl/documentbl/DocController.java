@@ -2,10 +2,14 @@ package nju.lighting.bl.documentbl;
 
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.RevenueAndExpenditureVO;
 import nju.lighting.vo.viewtables.SaleRecordItemVO;
-import shared.*;
+import shared.DocType;
+import shared.DocumentFilter;
+import shared.ResultMessage;
+import shared.SaleRecordFilter;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,6 +30,10 @@ public class DocController implements DocBLService {
         return null;
     }
 
+    @Override
+    public ArrayList<HistoryDocVO> findDocuments(DocumentFilter filter) {
+        return null;
+    }
 
     @Override
     public ArrayList<SaleRecordItemVO> findSaleRecords(SaleRecordFilter filter) {

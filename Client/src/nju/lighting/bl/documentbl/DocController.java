@@ -7,7 +7,6 @@ import nju.lighting.vo.viewtables.RevenueAndExpenditureVO;
 import nju.lighting.vo.viewtables.SaleRecordItemVO;
 import shared.*;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -18,37 +17,38 @@ import java.util.Date;
  */
 public class DocController implements DocBLService {
     @Override
-    public DocVO createDoc(DocType type) throws RemoteException {
+    public DocVO createDoc(DocType type) {
         return null;
     }
 
     @Override
-    public ResultMessage commitDoc(DocVO doc) throws RemoteException {
+    public ResultMessage commitDoc(DocVO doc) {
+        return null;
+    }
+
+
+    @Override
+    public ArrayList<SaleRecordItemVO> findSaleRecords(SaleRecordFilter filter) {
         return null;
     }
 
     @Override
-    public ArrayList<SaleRecordItemVO> findSaleRecords(SaleRecordFilter filter) throws RemoteException {
+    public ArrayList<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) {
         return null;
     }
 
     @Override
-    public ArrayList<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) throws RemoteException {
+    public RevenueAndExpenditureVO findRevenueAndExpenditure(Date startDate, Date endDate) {
         return null;
     }
 
     @Override
-    public RevenueAndExpenditureVO findRevenueAndExpenditure(Date startDate, Date endDate) throws RemoteException {
+    public ResultMessage redFlush(DocVO docVO) {
         return null;
     }
 
     @Override
-    public ResultMessage redFlush(DocVO docVO) throws RemoteException {
-        return null;
-    }
-
-    @Override
-    public DocVO redFlushAndCopy(DocVO target) throws RemoteException {
+    public DocVO redFlushAndCopy(DocVO target) {
         return null;
     }
 }

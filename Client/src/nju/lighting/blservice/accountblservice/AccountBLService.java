@@ -1,9 +1,8 @@
 package nju.lighting.blservice.accountblservice;
 
-import shared.ResultMessage;
 import nju.lighting.vo.account.AccountVO;
+import shared.ResultMessage;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -12,15 +11,15 @@ import java.util.ArrayList;
  * @author Liao
  */
 public interface AccountBLService {
-    ArrayList<AccountVO> getAccountList() throws RemoteException;
+    ArrayList<AccountVO> getAccountList() ;
 
-    ResultMessage addAccount(String name, String amount) throws RemoteException;
+    ResultMessage addAccount(String name, String amount) ;
 
-    ArrayList<AccountVO> findAccounts(String keyword) throws RemoteException;
+    ArrayList<AccountVO> findAccounts(String keyword) ;
 
-    AccountVO getAccount(String id) throws RemoteException;
+    AccountVO getAccount(String id) ;
 
-    ResultMessage deleteAccount(String id) throws RemoteException;
+    ResultMessage deleteAccount(String id) ;
 
-    ResultMessage modifyAccount(String oldName, String newName) throws RemoteException;
+    ResultMessage modifyAccount(String oldName, String newName) ;
 }

@@ -6,20 +6,18 @@ import shared.DocumentFilter;
 import shared.ResultMessage;
 import shared.SaleRecordFilter;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public interface DocDataService {
 
-    String create(DocType type);
+    String create(DocType type) throws RemoteException;
 
-    ResultMessage commitDoc(DocPO doc);
+    ResultMessage commitDoc(DocPO doc) throws RemoteException;
 
-    ArrayList<DocPO> getDocs(DocumentFilter filter);
+    ArrayList<DocPO> getDocs(DocumentFilter filter) throws RemoteException;
 
-    ArrayList<DocPO> findSaleRecords(SaleRecordFilter filter);
-
-
-
+    ArrayList<DocPO> findSaleRecords(SaleRecordFilter filter) throws RemoteException;
 
 
 }

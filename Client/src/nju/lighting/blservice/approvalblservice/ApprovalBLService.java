@@ -4,7 +4,6 @@ package nju.lighting.blservice.approvalblservice;
 import nju.lighting.vo.HistoryDocVO;
 import shared.ResultMessage;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -13,15 +12,15 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public interface ApprovalBLService {
-    ArrayList<HistoryDocVO> getDocumentList() throws RemoteException;
+    ArrayList<HistoryDocVO> getDocumentList() ;
 
-    ResultMessage approve(HistoryDocVO vo) throws RemoteException;
+    ResultMessage approve(HistoryDocVO vo) ;
 
-    ResultMessage approveAll(ArrayList<HistoryDocVO> voList) throws RemoteException;
+    ResultMessage approveAll(ArrayList<HistoryDocVO> voList) ;
 
-    ResultMessage reject(HistoryDocVO vo) throws RemoteException;
+    ResultMessage reject(HistoryDocVO vo) ;
 
-    ResultMessage save(HistoryDocVO vo) throws RemoteException;
+    ResultMessage save(HistoryDocVO vo) ;
 
-    ResultMessage saveAndApprove(HistoryDocVO vo) throws RemoteException;
+    ResultMessage saveAndApprove(HistoryDocVO vo) ;
 }

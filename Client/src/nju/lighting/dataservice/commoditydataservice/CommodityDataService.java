@@ -4,26 +4,27 @@ import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 import shared.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public interface CommodityDataService {
 
-    ArrayList<CommodityItemPO> getAllCommodity();
+    ArrayList<CommodityItemPO> getAllCommodity() throws RemoteException;
 
-    CommodityItemPO findById(String id);
+    CommodityItemPO findById(String id) throws RemoteException;
 
-    ResultMessage add(CommodityItemPO commodityItemPO);
+    ResultMessage add(CommodityItemPO commodityItemPO) throws RemoteException;
 
-    ResultMessage update(CommodityItemPO commodityItemPO);
+    ResultMessage update(CommodityItemPO commodityItemPO) throws RemoteException;
 
-    ResultMessage deleteCommodity(String id);
+    ResultMessage deleteCommodity(String id) throws RemoteException;
 
-    ArrayList<CommodityItemPO> findByName(String name);
+    ArrayList<CommodityItemPO> findByName(String name) throws RemoteException;
 
-    ArrayList<CommodityCategoryPO> getAllCommodityCategory();
+    ArrayList<CommodityCategoryPO> getAllCommodityCategory() throws RemoteException;
 
-    ResultMessage add(CommodityCategoryPO commodityCategoryPO);
+    ResultMessage add(CommodityCategoryPO commodityCategoryPO) throws RemoteException;
 
-    ResultMessage deleteCategory(int id);
+    ResultMessage deleteCategory(int id) throws RemoteException;
 
 }

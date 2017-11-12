@@ -4,6 +4,7 @@ import nju.lighting.po.LogPO;
 import shared.LogFilter;
 import shared.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,13 +14,13 @@ import java.util.Date;
  * @author Liao
  */
 public interface LogDataService {
-    ResultMessage insert(LogPO po);
+    ResultMessage insert(LogPO po) throws RemoteException;
 
-    ArrayList<LogPO> findByTime(Date from, Date to);
+    ArrayList<LogPO> findByTime(Date from, Date to) throws RemoteException;
 
-    LogPO find(LogFilter filter);
+    LogPO find(LogFilter filter) throws RemoteException;
 
-    void init();
+    void init() throws RemoteException;
 
-    void finish();
+    void finish() throws RemoteException;
 }

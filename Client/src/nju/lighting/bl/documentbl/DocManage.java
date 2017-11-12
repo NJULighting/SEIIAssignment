@@ -1,6 +1,7 @@
 package nju.lighting.bl.documentbl;
 
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import shared.DocType;
 import shared.DocumentFilter;
@@ -39,7 +40,7 @@ public class DocManage {
      * @param filter 相应的筛选器<code>DocumentFilter</code>
      * @return 根据筛选条件得到的历史单据
      */
-    public ArrayList<BusinessHistoryItemVO> findDocuments(DocumentFilter filter) {
+    public ArrayList<HistoryDocVO> findDocuments(DocumentFilter filter) {
         return null;
     }
 }

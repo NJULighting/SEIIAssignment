@@ -3,6 +3,7 @@ package nju.lighting.dataservice.userdataservice;
 import nju.lighting.po.UserPO;
 import shared.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -11,23 +12,23 @@ import java.util.ArrayList;
  * @author Liao
  */
 public interface UserDataService {
-    void init();
+    void init() throws RemoteException;
 
-    void finish();
+    void finish() throws RemoteException;
 
-    ResultMessage insert(UserPO po);
+    ResultMessage insert(UserPO po) throws RemoteException;
 
-    ArrayList<UserPO> find(String keyword);
+    ArrayList<UserPO> find(String keyword) throws RemoteException;
 
-    UserPO get(String ID);
+    UserPO get(String ID) throws RemoteException;
 
-    ResultMessage update(UserPO po);
+    ResultMessage update(UserPO po) throws RemoteException;
 
-    ResultMessage delete(UserPO po);
+    ResultMessage delete(UserPO po) throws RemoteException;
 
-    ArrayList<UserPO> getAll();
+    ArrayList<UserPO> getAll() throws RemoteException;
 
-    ResultMessage logIn(UserPO po);
+    ResultMessage logIn(UserPO po) throws RemoteException;
 
-    ResultMessage logOut(UserPO po);
+    ResultMessage logOut(UserPO po) throws RemoteException;
 }

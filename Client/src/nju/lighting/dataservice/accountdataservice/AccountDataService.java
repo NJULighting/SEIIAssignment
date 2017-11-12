@@ -3,6 +3,7 @@ package nju.lighting.dataservice.accountdataservice;
 import nju.lighting.po.account.AccountPO;
 import shared.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -11,19 +12,19 @@ import java.util.ArrayList;
  * @author Liao
  */
 public interface AccountDataService {
-    ResultMessage insert(AccountPO po);
+    ResultMessage insert(AccountPO po) throws RemoteException;
 
-    ArrayList<AccountPO> find(String keyword);
+    ArrayList<AccountPO> find(String keyword) throws RemoteException;
 
-    AccountPO get(String id);
+    AccountPO get(String id) throws RemoteException;
 
-    ArrayList<AccountPO> getAll();
+    ArrayList<AccountPO> getAll() throws RemoteException;
 
-    ResultMessage delete(AccountPO po);
+    ResultMessage delete(AccountPO po) throws RemoteException;
 
-    void finish();
+    void finish() throws RemoteException;
 
-    void init();
+    void init() throws RemoteException;
 
-    ResultMessage update(AccountPO po);
+    ResultMessage update(AccountPO po) throws RemoteException;
 }

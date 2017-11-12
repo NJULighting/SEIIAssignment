@@ -18,7 +18,7 @@ public abstract class Doc {
     protected String userId;
     protected Date time;
 
-    Doc(String id, DocType docType, String userId, Date time) {
+    protected Doc(String id, DocType docType, String userId, Date time) {
         this.id = id;
         this.docType = docType;
         this.userId = userId;
@@ -26,19 +26,19 @@ public abstract class Doc {
     }
 
     /**
-     * 审批单据
+     * 审批单据，该方法应在审批单据通过时调用
      */
-    abstract void approve();
+    abstract public void approve();
 
     /**
      * 创建相应的VO对象
      * @return 对应的<code>DocVO</code>
      */
-    abstract DocVO createVO();
+    abstract public DocVO createVO();
 
     /**
      * 创建响应的PO对象
      * @return 对应的<code>DocPO</code>
      */
-    abstract DocPO createPO();
+    abstract public DocPO createPO();
 }

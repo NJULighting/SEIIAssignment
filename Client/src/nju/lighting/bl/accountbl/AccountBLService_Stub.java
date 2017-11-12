@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class AccountBLService_Stub implements AccountBLService {
 
     @Override
-    public ArrayList<AccountVO> getAccountList() throws RemoteException {
+    public ArrayList<AccountVO> getAccountList() {
         ArrayList<AccountVO> accountVOS = new ArrayList<>();
         accountVOS.add(getAccount("0"));
         accountVOS.add(getAccount("1"));
@@ -23,36 +23,36 @@ public class AccountBLService_Stub implements AccountBLService {
     }
 
     @Override
-    public ResultMessage addAccount(String name, String amount) throws RemoteException {
+    public ResultMessage addAccount(String name, String amount) {
         if (name.equals("existed")) return ResultMessage.FAILURE;
         else return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ArrayList<AccountVO> findAccounts(String keyword) throws RemoteException {
+    public ArrayList<AccountVO> findAccounts(String keyword) {
         if (keyword.isEmpty()) return null;
         else return getAccountList();
     }
 
     @Override
-    public AccountVO getAccount(String id) throws RemoteException {
+    public AccountVO getAccount(String id) {
         AccountVO accountVO;
         if (id.equals("0"))
-            accountVO = new AccountVO("Test Account 0", 100000);
+            accountVO = new AccountVO("Test Account 0", 100000, null);
         else
-            accountVO = new AccountVO("Test Account 1", 1000000);
+            accountVO = new AccountVO("Test Account 1", 1000000, null);
         return accountVO;
     }
 
     @Override
-    public ResultMessage deleteAccount(String id) throws RemoteException {
+    public ResultMessage deleteAccount(String id) {
         if (id.equals("0") || id.equals("1"))
             return ResultMessage.SUCCESS;
         return ResultMessage.FAILURE;
     }
 
     @Override
-    public ResultMessage modifyAccount(String oldName, String newName) throws RemoteException {
+    public ResultMessage modifyAccount(String oldName, String newName) {
         if (!oldName.equals(newName))
             return ResultMessage.SUCCESS;
         return ResultMessage.FAILURE;

@@ -16,9 +16,9 @@ public class CostDocPO extends DocPO {
     private ArrayList<CostDocItemPO> itemList;
     private double total;
 
-    public CostDocPO(String id, DocType docType, String userId, Date time
+    public CostDocPO(String id, String userId, Date time
             , String accountID, ArrayList<CostDocItemPO> itemList, double total) {
-        super(id, docType, userId, time);
+        super(id, DocType.COST, userId, time);
         this.accountID = accountID;
         this.itemList = itemList;
         this.total = total;

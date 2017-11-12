@@ -11,12 +11,12 @@ import java.util.Date;
 public class RepositoryController implements RepositoryBLService {
 
     @Override
-    public ArrayList<RepositoryChangeVO> getRepositoryChanges(Date startDate, Date endDate) throws RemoteException {
+    public ArrayList<RepositoryChangeVO> getRepositoryChanges(Date startDate, Date endDate) {
         return null;
     }
 
     @Override
-    public RepositoryTableVO getRepositoryTable() throws RemoteException {
+    public RepositoryTableVO getRepositoryTable() {
         return null;
     }
 }

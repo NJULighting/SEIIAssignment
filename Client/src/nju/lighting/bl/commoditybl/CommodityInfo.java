@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 public interface CommodityInfo {
 
-    CommodityTreeVO getCommodityTree();
+    CommodityTree getCommodityTree();
 
-    BasicCommodityTreeVO getBasicCommodityTree();
+    BasicCommodityTree getBasicCommodityTree();
 
-    ArrayList<BasicCommodityItemVO> getBasicCommodityItems(ArrayList<String> ids);
+    ArrayList<BasicCommodityItem> getBasicCommodityItems(ArrayList<String> ids);
 
-    ArrayList<CommodityItemVO> getCommodityItems(ArrayList<String> ids);
+    ArrayList<CommodityItem> getCommodityItems(ArrayList<String> ids);
 
 }

@@ -5,18 +5,17 @@ import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.CommodityTreeVO;
 import shared.ResultMessage;
 
-import java.rmi.Remote;
 import java.util.ArrayList;
 
-public interface CommodityBLService extends Remote {
+public interface CommodityBLService {
 
-    CommodityTreeVO getCommodityTree() ;
+    CommodityTreeVO getCommodityTreeVO() ;
 
     ResultMessage addCommodity(CommodityItemVO newCommodity) ;
 
-    ArrayList<CommodityItemVO> findCommodityByName(String commodityName) ;
+    ArrayList<CommodityItemVO> findCommodityVOByName(String commodityName) ;
 
-    CommodityItemVO findCommodityById(String id) ;
+    CommodityItemVO findCommodityVOById(String id) ;
 
     ResultMessage deleteCommodity(String id) ;
 

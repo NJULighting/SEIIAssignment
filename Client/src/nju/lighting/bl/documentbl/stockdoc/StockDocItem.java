@@ -1,11 +1,10 @@
-package nju.lighting.vo;
+package nju.lighting.bl.documentbl.stockdoc;
 
 /**
- * LastEditTime: 2017/11/7
  * Description:
- * @author GaoMengting
+ * 进货类单据里的商品条目
  */
-public class StockDocItemVO {
+public class StockDocItem {
 
     private int id;
     private String stockDocID;
@@ -13,31 +12,27 @@ public class StockDocItemVO {
     private String commodityName;
     private String commodityType;
     private int number = 0;
-    private double price = 0;
+    private double salePrice = 0;
     private double totalAmount = 0;
     private String remarks = "";
 
-    public StockDocItemVO() {
+    public StockDocItem() {
     }
 
-    public StockDocItemVO(int id, String stockDocID, String commodityID, String commodityName, String commodityType,
-                          int number, double price, String remarks) {
+    public StockDocItem(int id, String stockDocID, String commodityID, String commodityName, String commodityType,
+                        int number, double salePrice, String remarks) {
         this.id = id;
         this.stockDocID = stockDocID;
         this.commodityID = commodityID;
         this.commodityName = commodityName;
         this.commodityType = commodityType;
         this.number = number;
-        this.price = price;
+        this.salePrice = salePrice;
         this.remarks = remarks;
     }
 
     private void updateTotalAmount() {
-        totalAmount = number * price;
-    }
-
-    public void setSalesDocID(String salesDocID) {
-        this.stockDocID = stockDocID;
+        totalAmount = number * salePrice;
     }
 
     public int getId() {
@@ -50,6 +45,10 @@ public class StockDocItemVO {
 
     public String getStockDocID() {
         return stockDocID;
+    }
+
+    public void setStockDocID(String salesDocID) {
+        this.stockDocID = stockDocID;
     }
 
     public String getCommodityID() {
@@ -85,12 +84,12 @@ public class StockDocItemVO {
         updateTotalAmount();
     }
 
-    public double getPrice() {
-        return price;
+    public double getSalePrice() {
+        return salePrice;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setSalePrice(double salePrice) {
+        this.salePrice = salePrice;
         updateTotalAmount();
     }
 

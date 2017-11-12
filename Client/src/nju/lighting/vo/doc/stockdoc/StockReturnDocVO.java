@@ -1,4 +1,4 @@
-package nju.lighting.vo;
+package nju.lighting.vo.doc.stockdoc;
 
 import shared.DocType;
 

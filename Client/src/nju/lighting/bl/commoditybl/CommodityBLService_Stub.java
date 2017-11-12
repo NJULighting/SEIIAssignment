@@ -7,53 +7,52 @@ import nju.lighting.vo.commodity.CommodityCategoryVO;
 
 import shared.ResultMessage;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class CommodityBLService_Stub implements CommodityBLService {
 
     @Override
-    public CommodityTreeVO getCommodityTree() throws RemoteException {
+    public CommodityTreeVO getCommodityTreeVO() {
         return null;
     }
 
     @Override
-    public ResultMessage addCommodity(CommodityItemVO newCommodity) throws RemoteException {
+    public ResultMessage addCommodity(CommodityItemVO newCommodity) {
         return null;
     }
 
     @Override
-    public ArrayList<CommodityItemVO> findCommodityByName(String commodityName) throws RemoteException {
+    public ArrayList<CommodityItemVO> findCommodityVOByName(String commodityName)  {
         return null;
     }
 
     @Override
-    public CommodityItemVO findCommodityById(String id) throws RemoteException {
+    public CommodityItemVO findCommodityVOById(String id) {
         return null;
     }
 
     @Override
-    public ResultMessage deleteCommodity(String id) throws RemoteException {
+    public ResultMessage deleteCommodity(String id) {
         return null;
     }
 
     @Override
-    public ResultMessage modifyCommodity(CommodityItemVO commodity) throws RemoteException {
+    public ResultMessage modifyCommodity(CommodityItemVO commodity) {
         return null;
     }
 
     @Override
-    public ResultMessage addCategory(CommodityCategoryVO newCategory) throws RemoteException {
+    public ResultMessage addCategory(CommodityCategoryVO newCategory){
         return null;
     }
 
     @Override
-    public ResultMessage deleteCategory(int id) throws RemoteException {
+    public ResultMessage deleteCategory(int id) {
         return null;
     }
 
     @Override
-    public ResultMessage modifyCategory(CommodityCategoryVO categoryItemVO) throws RemoteException {
+    public ResultMessage modifyCategory(CommodityCategoryVO categoryItemVO) {
         return null;
     }
 }

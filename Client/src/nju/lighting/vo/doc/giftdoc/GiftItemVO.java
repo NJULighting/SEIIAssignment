@@ -1,7 +1,7 @@
 package nju.lighting.vo.doc.giftdoc;
 
 
-import nju.lighting.vo.CommodityVO;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
 
 /**
  * Created on 2017/10/22.
@@ -10,22 +10,18 @@ import nju.lighting.vo.CommodityVO;
  */
 public class GiftItemVO {
 
-    private CommodityVO commodity;
+    private BasicCommodityItemVO commodity;
 
     private int count;
 
 
-    public GiftItemVO(CommodityVO commodity, int count) {
+    public GiftItemVO(BasicCommodityItemVO commodity, int count) {
         this.commodity = commodity;
         this.count = count;
     }
 
-    public CommodityVO getCommodity() {
+    public BasicCommodityItemVO getCommodity() {
         return commodity;
-    }
-
-    public void setCommodity(CommodityVO commodity) {
-        this.commodity = commodity;
     }
 
     public int getCount() {

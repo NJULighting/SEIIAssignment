@@ -162,7 +162,7 @@ public class SalesDoc extends Doc{
     /**
      * 审批单据
      */
-    void approve(){
+    public void approve(){
         
     }
 
@@ -170,7 +170,7 @@ public class SalesDoc extends Doc{
      * 创建相应的VO对象
      * @return 对应的<code>DocVO</code>
      */
-    DocVO createVO(){
+    public DocVO createVO(){
         return new SalesDocVO(time,userId,id,docType,salesTypeDocID,customerId
                 ,salesman,repository,remarks,beforeDiscountAmount,discount,voucher,finalAmount);
     }
@@ -179,7 +179,7 @@ public class SalesDoc extends Doc{
      * 创建响应的PO对象
      * @return 对应的<code>DocPO</code>
      */
-    DocPO createPO(){
+    public DocPO createPO(){
         return new SalesDocPO(id,docType,userId,time,salesTypeDocID,customerId,repository,remarks,discount,voucher,finalAmount);
     }
 }

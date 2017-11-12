@@ -1,7 +1,7 @@
 package nju.lighting.blservice.approvalblservice;
 
 
-import nju.lighting.vo.HistoryDocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.ResultMessage;
 
 import java.util.ArrayList;

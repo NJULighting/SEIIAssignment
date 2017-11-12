@@ -16,7 +16,7 @@ import java.util.Date;
 public class LogBLService_Stub implements LogBLService {
 
     @Override
-    public ArrayList<LogVO> getLogListByTime(Date from, Date to) throws RemoteException {
+    public ArrayList<LogVO> getLogListByTime(Date from, Date to)  {
         LogVO logVO0 = new LogVO(1234567, "Too young");
         LogVO logVO1 = new LogVO(1234568, "Too simple");
         ArrayList<LogVO> logs = new ArrayList<>();
@@ -27,7 +27,7 @@ public class LogBLService_Stub implements LogBLService {
 
 
     @Override
-    public ArrayList<LogVO> findLogs(LogFilter filter) throws RemoteException {
+    public ArrayList<LogVO> findLogs(LogFilter filter)  {
         Date date1 = new Date();
         Date date2 = new Date(System.currentTimeMillis());
         return getLogListByTime(date1, date2);

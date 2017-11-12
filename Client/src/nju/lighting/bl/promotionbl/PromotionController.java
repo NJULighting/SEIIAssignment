@@ -14,27 +14,27 @@ import java.util.ArrayList;
  */
 public class PromotionController implements PromotionBLService {
     @Override
-    public ArrayList<PromotionVO> getBenefitsPlan(int customerLevel, ArrayList<String> CommodityList, double total) throws RemoteException {
+    public ArrayList<PromotionVO> getBenefitsPlan(int customerLevel, ArrayList<String> CommodityList, double total)  {
         return null;
     }
 
     @Override
-    public ArrayList<PromotionVO> getPromotionList() throws RemoteException {
+    public ArrayList<PromotionVO> getPromotionList()  {
         return null;
     }
 
     @Override
-    public ResultMessage newAndSave(PromotionVO vo) throws RemoteException {
+    public ResultMessage newAndSave(PromotionVO vo)  {
         return null;
     }
 
     @Override
-    public ResultMessage modifyAndSave(PromotionVO vo) throws RemoteException {
+    public ResultMessage modifyAndSave(PromotionVO vo)  {
         return null;
     }
 
     @Override
-    public ResultMessage delete(PromotionVO vo) throws RemoteException {
+    public ResultMessage delete(PromotionVO vo)  {
         return null;
     }
 }

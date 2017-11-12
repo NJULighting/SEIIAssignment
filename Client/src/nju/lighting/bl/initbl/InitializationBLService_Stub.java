@@ -14,17 +14,17 @@ import java.util.ArrayList;
  */
 public class InitializationBLService_Stub implements InitializationBLService {
     @Override
-    public InitVO getInitInfo() throws RemoteException {
+    public InitVO getInitInfo()  {
         return null;
     }
 
     @Override
-    public ResultMessage commit(InitVO vo) throws RemoteException {
+    public ResultMessage commit(InitVO vo)  {
         return vo == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
     }
 
     @Override
-    public ArrayList<InitVO> getHistoryInfo() throws RemoteException {
+    public ArrayList<InitVO> getHistoryInfo()  {
         ArrayList<InitVO> initVOS = new ArrayList<>();
         initVOS.add(getInitInfo());
         return initVOS;

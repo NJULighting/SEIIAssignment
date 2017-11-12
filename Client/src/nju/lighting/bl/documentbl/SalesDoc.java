@@ -178,9 +178,8 @@ public class SalesDoc extends Doc{
      * @return 对应的<code>DocVO</code>
      */
     DocVO createVO(){
-        SalesDocVO salesDocVO = new SalesDocVO(time,userId,id,docType,salesTypeDocID,customerId
+        return new SalesDocVO(time,userId,id,docType,salesTypeDocID,customerId
                 ,salesman,repository,remarks,beforeDiscountAmount,discount,voucher,finalAmount);
-        return salesDocVO;
     }
 
     /**
@@ -188,7 +187,6 @@ public class SalesDoc extends Doc{
      * @return 对应的<code>DocPO</code>
      */
     DocPO createPO(){
-        SalesDocPO salesDocPO = new SalesDocPO(id,docType,userId,time,salesTypeDocID,customerId,repository,remarks,discount,voucher,finalAmount);
-        return salesDocPO;
+        return new SalesDocPO(id,docType,userId,time,salesTypeDocID,customerId,repository,remarks,discount,voucher,finalAmount);
     }
 }

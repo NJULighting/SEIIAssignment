@@ -4,6 +4,7 @@ import nju.lighting.po.LogPO;
 import shared.LogFilter;
 import shared.ResultMessage;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +14,7 @@ import java.util.Date;
  * Description:
  * @author Liao
  */
-public interface LogDataService {
+public interface LogDataService extends Remote {
     ResultMessage insert(LogPO po) throws RemoteException;
 
     ArrayList<LogPO> findByTime(Date from, Date to) throws RemoteException;

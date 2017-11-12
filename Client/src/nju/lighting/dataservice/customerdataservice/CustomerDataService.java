@@ -2,10 +2,11 @@ package nju.lighting.dataservice.customerdataservice;
 
 import nju.lighting.po.customer.CustomerPO;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public interface CustomerDataService {
+public interface CustomerDataService extends Remote {
 
      ArrayList<CustomerPO> getAllCustomer() throws RemoteException;
 

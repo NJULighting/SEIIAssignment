@@ -3,6 +3,7 @@ package nju.lighting.dataservice.promotiondataservice;
 import nju.lighting.po.promotion.PromotionPO;
 import shared.ResultMessage;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author 陈俊宇
  */
-public interface PromotionDataService {
+public interface PromotionDataService extends Remote {
 
     ArrayList<PromotionPO> getBenefitsPlan(int customerLevel, ArrayList<String> commodityList, double total) throws RemoteException;
 

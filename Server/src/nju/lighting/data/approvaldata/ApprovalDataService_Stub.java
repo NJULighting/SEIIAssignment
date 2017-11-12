@@ -3,6 +3,7 @@ package nju.lighting.data.approvaldata;
 import nju.lighting.dataservice.approvaldataservice.ApprovalDataService;
 import nju.lighting.po.doc.giftdoc.GiftDocPO;
 import nju.lighting.po.doc.giftdoc.GiftItemPO;
+import nju.lighting.po.doc.historydoc.HistoryDocPO;
 import shared.ResultMessage;
 
 import java.util.ArrayList;

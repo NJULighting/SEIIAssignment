@@ -1,7 +1,7 @@
 package nju.lighting.bl.documentbl;
 
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.HistoryDocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import shared.DocType;
 import shared.DocumentFilter;

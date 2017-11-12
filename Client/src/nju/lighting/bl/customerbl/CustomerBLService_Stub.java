@@ -14,25 +14,25 @@ public class CustomerBLService_Stub implements CustomerBLService {
     CustomerVO customer;
     int id;
 
-    public CustomerBLService_Stub(CustomerVO customer) throws RemoteException {
+    public CustomerBLService_Stub(CustomerVO customer)  {
         customerAll.add(customer);
         this.customer = customer;
         id = customer.getID();
     }
 
     //得到客户列表
-    public ArrayList<CustomerVO> getCustomerList() throws RemoteException {
+    public ArrayList<CustomerVO> getCustomerList()  {
         return customerAll;
     }
 
     //请求增加客户，得到是否可修改应收额度
-    public boolean askForCreateCustomer(String userId) throws RemoteException {
+    public boolean askForCreateCustomer(String userId)  {
         return true;
     }
 
 
     //增加客户
-    public ResultMessage createCustomer(CustomerVO vo) throws RemoteException {
+    public ResultMessage createCustomer(CustomerVO vo)  {
         if (vo.getID() != id)
             return ResultMessage.SUCCESS;
         else
@@ -40,46 +40,46 @@ public class CustomerBLService_Stub implements CustomerBLService {
     }
 
     //查找客户
-    public ArrayList<CustomerVO> findCustomer(String keyword) throws RemoteException {
+    public ArrayList<CustomerVO> findCustomer(String keyword)  {
         if (keyword.equals(String.valueOf(id))) {
             return customerAll;
         } else return null;
     }
 
     //删除客户
-    public ResultMessage deleteCustomer(CustomerVO customer) throws RemoteException {
+    public ResultMessage deleteCustomer(CustomerVO customer)  {
         if (customer.getID() == id) {
             return ResultMessage.SUCCESS;
         } else return ResultMessage.FAILURE;
     }
 
     //请求修改客户，得到是否可修改应收额度
-    public boolean askForModifyCustomer(String userId) throws RemoteException {
+    public boolean askForModifyCustomer(String userId)  {
         return true;
     }
 
     //更改客户信息
-    public ResultMessage modifyCustomer(CustomerVO customer) throws RemoteException {
+    public ResultMessage modifyCustomer(CustomerVO customer)  {
         if (customer.getID() == id) {
             return ResultMessage.SUCCESS;
         } else return ResultMessage.FAILURE;
     }
 
     //获取下一位客户编号
-    public int getNextCustomerID() throws RemoteException {
+    public int getNextCustomerID()  {
         return id + 1;
     }
 
 
     //根据客户ID寻找客户
-    public CustomerVO findCustomerByID(int id) throws RemoteException {
+    public CustomerVO findCustomerByID(int id)  {
         if (id == this.id) {
             return customer;
         } else return null;
     }
 
     //根据客户类型寻找客户
-    public ArrayList<CustomerVO> findCustomerByType(CustomerType type) throws RemoteException {
+    public ArrayList<CustomerVO> findCustomerByType(CustomerType type)  {
         if (type == customer.getType()) {
             return customerAll;
         } else return null;

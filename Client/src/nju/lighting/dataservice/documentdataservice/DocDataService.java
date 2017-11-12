@@ -6,10 +6,11 @@ import shared.DocumentFilter;
 import shared.ResultMessage;
 import shared.SaleRecordFilter;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public interface DocDataService {
+public interface DocDataService extends Remote {
 
     String create(DocType type) throws RemoteException;
 

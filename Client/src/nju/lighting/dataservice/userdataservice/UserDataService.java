@@ -3,6 +3,7 @@ package nju.lighting.dataservice.userdataservice;
 import nju.lighting.po.UserPO;
 import shared.ResultMessage;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * Description:
  * @author Liao
  */
-public interface UserDataService {
+public interface UserDataService extends Remote {
     void init() throws RemoteException;
 
     void finish() throws RemoteException;

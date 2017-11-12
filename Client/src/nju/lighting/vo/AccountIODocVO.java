@@ -2,6 +2,9 @@ package nju.lighting.vo;
 
 import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import shared.AccountIODocType;
+import shared.DocType;
+
+import java.util.Date;
 
 /**
  * Created on 2017/10/21.
@@ -9,26 +12,18 @@ import shared.AccountIODocType;
  * @author Liao
  */
 public class AccountIODocVO extends DocVO {
-    private String ioDocID;
     private AccountIODocType type;
     private String customer;
     private AccountTransferItemPO transferAccountList;
     private int total;
 
-    public AccountIODocVO(String ioDocID, AccountIODocType type, String customer, AccountTransferItemPO transferAccountList, int total) {
-        this.ioDocID = ioDocID;
+    public AccountIODocVO(Date time, String creatorId, String docId, AccountIODocType type
+            , String customer, AccountTransferItemPO transferAccountList, int total) {
+        super(time, creatorId, docId, DocType.ACCOUNT_INOUT);
         this.type = type;
         this.customer = customer;
         this.transferAccountList = transferAccountList;
         this.total = total;
-    }
-
-    public String getIoDocID() {
-        return ioDocID;
-    }
-
-    public void setIoDocID(String ioDocID) {
-        this.ioDocID = ioDocID;
     }
 
     public AccountIODocType getAccountIODdocType() {

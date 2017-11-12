@@ -4,10 +4,11 @@ import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 import shared.ResultMessage;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public interface CommodityDataService {
+public interface CommodityDataService extends Remote {
 
     ArrayList<CommodityItemPO> getAllCommodity() throws RemoteException;
 

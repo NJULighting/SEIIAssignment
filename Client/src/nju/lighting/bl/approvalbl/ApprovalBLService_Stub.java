@@ -2,9 +2,9 @@ package nju.lighting.bl.approvalbl;
 
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import nju.lighting.vo.CommodityVO;
-import nju.lighting.vo.HistoryDocVO;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;

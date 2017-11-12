@@ -3,6 +3,7 @@ package nju.lighting.dataservice.accountdataservice;
 import nju.lighting.po.account.AccountPO;
 import shared.ResultMessage;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * Description:
  * @author Liao
  */
-public interface AccountDataService {
+public interface AccountDataService extends Remote {
     ResultMessage insert(AccountPO po) throws RemoteException;
 
     ArrayList<AccountPO> find(String keyword) throws RemoteException;

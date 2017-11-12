@@ -1,7 +1,7 @@
 package nju.lighting.blservice.documentblservice;
 
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.HistoryDocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.RevenueAndExpenditureVO;
 import nju.lighting.vo.viewtables.SaleRecordItemVO;

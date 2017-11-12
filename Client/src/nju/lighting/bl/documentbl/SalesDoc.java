@@ -17,11 +17,6 @@ import java.util.Date;
  */
 public class SalesDoc extends Doc{
 
-    private String id;
-    private DocType docType = DocType.SALES;
-    private String userId;
-    private Date time;
-
     private String salesTypeDocID;
     private String customerId;
     private String salesman;
@@ -36,13 +31,12 @@ public class SalesDoc extends Doc{
 
     private void updateFinalAmount(){finalAmount = beforeDiscountAmount - discount - voucher;}
 
-    public SalesDoc(Date time,String userId,String id,String salesTypeDocID, String customerId, String salesman,
-                          String repository, String remarks,
-                          double beforeDiscountAmount, double discount,
-                          double voucher) {
-        this.time = time;
-        this.userId = userId;
-        this.id = id;
+
+    public SalesDoc(Date time, String userId, String id, String salesTypeDocID, String customerId, String salesman,
+                    String repository, String remarks,
+                    double beforeDiscountAmount, double discount,
+                    double voucher) {
+        super(id, DocType.SALES, userId, time);
         this.salesTypeDocID = salesTypeDocID;
         this.customerId = customerId;
         this.salesman = salesman;

@@ -1,9 +1,7 @@
-package nju.lighting.bl.documentbl;
+package nju.lighting.bl.documentbl.salesdoc;
 
-import nju.lighting.dataservice.customerdataservice.CustomerDataService;
-import nju.lighting.po.doc.salesdoc.SalesDocPO;
+import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.SalesDocVO;
 import nju.lighting.po.doc.DocPO;
 import shared.DocType;
 
@@ -13,9 +11,10 @@ import java.util.Date;
 /**
  * Created on 2017/11/11.
  * Description:
- * @author Gao
+ * 销售类单据，是销售单和销售退货单的父类
+ * @author 高梦婷
  */
-public class SalesDoc extends Doc{
+public class SalesTypeDoc extends Doc {
 
     private String salesTypeDocID;
     private String customerId;
@@ -32,49 +31,41 @@ public class SalesDoc extends Doc{
     private void updateFinalAmount(){finalAmount = beforeDiscountAmount - discount - voucher;}
 
 
-    public SalesDoc(Date time, String userId, String id, String salesTypeDocID, String customerId, String salesman,
-                    String repository, String remarks,
-                    double beforeDiscountAmount, double discount,
-                    double voucher) {
-        super(id, DocType.SALES, userId, time);
+    public SalesTypeDoc(String id, DocType docType, String userId, Date time, String salesTypeDocID,
+                        String customerId, String salesman, String repository, String remarks,
+                        double discount, double voucher, double finalAmount) {
+        super(id, docType, userId, time);
         this.salesTypeDocID = salesTypeDocID;
         this.customerId = customerId;
         this.salesman = salesman;
         this.repository = repository;
-        this.userId = userId;
         this.remarks = remarks;
-        this.beforeDiscountAmount = beforeDiscountAmount;
         this.discount = discount;
         this.voucher = voucher;
+        this.finalAmount = finalAmount;
     }
-
-    public void setId(String id){this.id = id;}
-    public String getId(){return id;}
-    public void setTime(Date time){this.time = time;}
-    public Date getTime(){return time;}
-    public void setUserId(String userId){this.userId = userId;}
-    public String getUserrId(){return userId;}
-
-    public DocType getDocType(){return docType;}
-
 
     /**
      * 在商品列表里面增加一个商品项
      * @param salesDocItem
      */
-    public void addCommodityList(SalesDocItem salesDocItem){
+    public void addCommodityListItem(SalesDocItem salesDocItem){
+        beforeDiscountAmount = beforeDiscountAmount+salesDocItem.getTotalAmount();
         commodityList.add(salesDocItem);
         commodityListNumber++;
+        updateFinalAmount();
     }
 
     /**
      * 根据商品项的索引删除商品项，第一项的索引为0
      * @param index
      */
-    public void deleteCommodityList(int index){
+    public void deleteCommodityListItem(int index){
         if(commodityListNumber!=0){
+            beforeDiscountAmount = beforeDiscountAmount-commodityList.get(index).getTotalAmount();
             commodityList.remove(index);
             commodityListNumber--;
+            updateFinalAmount();
         }
     }
 
@@ -83,13 +74,14 @@ public class SalesDoc extends Doc{
      * @param index
      * @return SalesDocItem
      */
-    public SalesDocItem getCommodityList(int index){
+    public SalesDocItem getCommodityListItem(int index){
         return commodityList.get(index);
     }
 
 
     public int getCommodityListNumber(){return commodityListNumber;}
 
+    public String getSalesTypeDocID(){return salesTypeDocID;}
 
     public void setSalesTypeDocID(String salesTypeDocID) {
         this.salesTypeDocID = salesTypeDocID;
@@ -131,11 +123,6 @@ public class SalesDoc extends Doc{
         return beforeDiscountAmount;
     }
 
-    public void setBeforeDiscountAmount(double beforeDiscountAmount) {
-        this.beforeDiscountAmount = beforeDiscountAmount;
-        updateFinalAmount();
-    }
-
     public double getDiscount() {
         return discount;
     }
@@ -160,26 +147,24 @@ public class SalesDoc extends Doc{
 
 
     /**
-     * 审批单据
+     * 审批单据，具体方法由其子类实现
      */
     public void approve(){
-        
     }
 
     /**
-     * 创建相应的VO对象
+     * 由其子类创建相应的VO对象
      * @return 对应的<code>DocVO</code>
      */
     public DocVO createVO(){
-        return new SalesDocVO(time,userId,id,docType,salesTypeDocID,customerId
-                ,salesman,repository,remarks,beforeDiscountAmount,discount,voucher,finalAmount);
+        return null;
     }
 
     /**
-     * 创建响应的PO对象
+     * 由其子类创建响应的PO对象
      * @return 对应的<code>DocPO</code>
      */
     public DocPO createPO(){
-        return new SalesDocPO(id,docType,userId,time,salesTypeDocID,customerId,repository,remarks,discount,voucher,finalAmount);
+        return null;
     }
 }

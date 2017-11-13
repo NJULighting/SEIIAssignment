@@ -4,12 +4,12 @@ import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
-import nju.lighting.vo.viewtables.RevenueAndExpenditureVO;
-import nju.lighting.vo.viewtables.SaleRecordItemVO;
+import nju.lighting.vo.viewtables.SalesDetailVO;
+import nju.lighting.vo.viewtables.BusinessConditionItemVO;
 import shared.DocType;
 import shared.DocumentFilter;
 import shared.ResultMessage;
-import shared.SaleRecordFilter;
+import shared.BusinessConditionFilter;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,7 +36,7 @@ public class DocController implements DocBLService {
     }
 
     @Override
-    public ArrayList<SaleRecordItemVO> findSaleRecords(SaleRecordFilter filter) {
+    public ArrayList<BusinessConditionItemVO> findSaleRecords(BusinessConditionFilter filter) {
         return null;
     }
 
@@ -46,7 +46,7 @@ public class DocController implements DocBLService {
     }
 
     @Override
-    public RevenueAndExpenditureVO findRevenueAndExpenditure(Date startDate, Date endDate) {
+    public SalesDetailVO findRevenueAndExpenditure(Date startDate, Date endDate) {
         return null;
     }
 

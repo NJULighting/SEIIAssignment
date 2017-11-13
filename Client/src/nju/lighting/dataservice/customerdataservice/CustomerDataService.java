@@ -10,7 +10,7 @@ public interface CustomerDataService extends Remote {
 
      ArrayList<CustomerPO> getAllCustomer() throws RemoteException;
 
-     CustomerPO findCustomer(String keyword) throws RemoteException;
+     ArrayList<CustomerPO> findCustomer(String keyword) throws RemoteException;
 
      void insertCustomer(CustomerPO po) throws RemoteException;
 
@@ -24,12 +24,12 @@ public interface CustomerDataService extends Remote {
       * 若增加客户应收，amount为正数，反之为负
       * @param amount
       */
-     void changeReceivable(double amount) throws RemoteException;
+     void changeReceivable(String customerId,double amount) throws RemoteException;
 
      /**
       * 若增加客户应付，amount为正数，反之为负
       * @param amount
       */
-     void changePayable(double amount) throws RemoteException;
+     void changePayable(String customerId,double amount) throws RemoteException;
 
 }

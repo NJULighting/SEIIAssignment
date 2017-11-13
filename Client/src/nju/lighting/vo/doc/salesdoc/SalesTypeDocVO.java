@@ -1,5 +1,6 @@
-package nju.lighting.vo;
+package nju.lighting.vo.doc.salesdoc;
 
+import nju.lighting.vo.DocVO;
 import shared.DocType;
 
 import java.util.Date;

@@ -1,6 +1,11 @@
-package nju.lighting.bl.documentbl;
+package nju.lighting.vo.doc.salesdoc;
 
-public class SalesDocItem {
+/**
+ * LastEditTime: 2017/11/7
+ * Description:
+ * @author GaoMengting
+ */
+public class SalesDocItemVO {
 
     private int id;
     private String SalesDocID;
@@ -12,10 +17,10 @@ public class SalesDocItem {
     private double totalAmount = 0;
     private String remarks = "";
 
-    public SalesDocItem() {
+    public SalesDocItemVO() {
     }
 
-    public SalesDocItem(int id, String SalesDocID, String commodityID, String commodityName, String commodityType,
+    public SalesDocItemVO(int id, String SalesDocID, String commodityID, String commodityName, String commodityType,
                           int number, double salePrice, String remarks) {
         this.id = id;
         this.SalesDocID = SalesDocID;

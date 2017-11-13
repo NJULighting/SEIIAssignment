@@ -15,15 +15,13 @@ import java.util.Date;
 public class GiftDocVO extends DocVO {
     private ArrayList<GiftItemVO> giftItemVOs;
 
-    private String ID;
 
     private String customer;
 
 
-    public GiftDocVO(Date time, String creatorId, String docId, DocType type, ArrayList<GiftItemVO> giftItemVOs, String ID, String customer) {
+    public GiftDocVO(Date time, String creatorId, String docId, DocType type, ArrayList<GiftItemVO> giftItemVOs, String customer) {
         super(time, creatorId, docId, type);
         this.giftItemVOs = giftItemVOs;
-        this.ID = ID;
         this.customer = customer;
     }
 
@@ -35,13 +33,7 @@ public class GiftDocVO extends DocVO {
         this.giftItemVOs = giftItemVOs;
     }
 
-    public String getID() {
-        return ID;
-    }
 
-    public void setID(String ID) {
-        this.ID = ID;
-    }
 
     public String getCustomer() {
         return customer;

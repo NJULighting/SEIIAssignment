@@ -4,7 +4,7 @@ import nju.lighting.po.doc.DocPO;
 import shared.DocType;
 import shared.DocumentFilter;
 import shared.ResultMessage;
-import shared.SaleRecordFilter;
+import shared.BusinessConditionFilter;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -18,7 +18,7 @@ public interface DocDataService extends Remote {
 
     ArrayList<DocPO> getDocs(DocumentFilter filter) throws RemoteException;
 
-    ArrayList<DocPO> findSaleRecords(SaleRecordFilter filter) throws RemoteException;
+    ArrayList<DocPO> findSaleRecords(BusinessConditionFilter filter) throws RemoteException;
 
 
 }

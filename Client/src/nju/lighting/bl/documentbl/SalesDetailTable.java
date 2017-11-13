@@ -1,6 +1,6 @@
 package nju.lighting.bl.documentbl;
 
-import nju.lighting.vo.viewtables.RevenueAndExpenditureVO;
+import nju.lighting.vo.viewtables.SalesDetailVO;
 
 import java.util.Date;
 
@@ -17,7 +17,7 @@ public class SalesDetailTable {
      * @param endDate   结束时间（包含）
      * @return 相对应的经营情况表的值对象
      */
-    public RevenueAndExpenditureVO findRevenueAndExpenditure(Date startDate, Date endDate) {
+    public SalesDetailVO findSalesDetailTable(Date startDate, Date endDate) {
         return null;
     }
 }

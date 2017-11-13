@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public interface ApprovalBLService {
-    ArrayList<HistoryDocVO> getDocumentList() ;
+        ArrayList<HistoryDocVO> getDocumentList() ;
 
     ResultMessage approve(HistoryDocVO vo) ;
 

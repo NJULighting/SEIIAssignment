@@ -5,7 +5,7 @@ package shared;
  * Description
  * @author 陈俊宇
  */
-public class SaleRecordFilter {
+public class BusinessConditionFilter {
     private long startDate;
 
     private long endDate;

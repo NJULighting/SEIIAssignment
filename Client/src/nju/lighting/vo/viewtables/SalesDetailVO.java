@@ -5,7 +5,7 @@ package nju.lighting.vo.viewtables;
  * Description
  * @author 陈俊宇
  */
-public class RevenueAndExpenditureVO {
+public class SalesDetailVO {
     private double salesRevenue; //销售收入
 
     private double commodityGainRevenue; //商品报溢收入
@@ -27,9 +27,9 @@ public class RevenueAndExpenditureVO {
     private double profit;
 
 
-    public RevenueAndExpenditureVO(double salesRevenue, double commodityGainRevenue, double costAdjustRevenue, double spreadRevenue,
-                                   double voucherCausedRevenue, double salesRevenueOff, double costExpenditure, double commodityLossExpenditure,
-                                   double giftExpenditure, double profit) {
+    public SalesDetailVO(double salesRevenue, double commodityGainRevenue, double costAdjustRevenue, double spreadRevenue,
+                         double voucherCausedRevenue, double salesRevenueOff, double costExpenditure, double commodityLossExpenditure,
+                         double giftExpenditure, double profit) {
         this.salesRevenue = salesRevenue;
         this.commodityGainRevenue = commodityGainRevenue;
         this.costAdjustRevenue = costAdjustRevenue;

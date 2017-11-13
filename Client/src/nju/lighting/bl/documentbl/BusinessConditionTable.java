@@ -1,7 +1,7 @@
 package nju.lighting.bl.documentbl;
 
-import nju.lighting.vo.viewtables.SaleRecordItemVO;
-import shared.SaleRecordFilter;
+import nju.lighting.vo.viewtables.BusinessConditionItemVO;
+import shared.BusinessConditionFilter;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ public class BusinessConditionTable {
      * @param filter 对销售记录的筛选条件
      * @return 相对应的销售记录列表
      */
-    public ArrayList<SaleRecordItemVO> findSaleRecords(SaleRecordFilter filter) {
+    public ArrayList<BusinessConditionItemVO> getBusinessConditionTable(BusinessConditionFilter filter) {
         return null;
     }
 }

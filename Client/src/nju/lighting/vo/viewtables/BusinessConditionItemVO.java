@@ -7,7 +7,7 @@ import nju.lighting.vo.DocVO;
  * Description
  * @author 陈俊宇
  */
-public class SaleRecordItemVO {
+public class BusinessConditionItemVO {
     private long date;
 
     private String commodityName;
@@ -22,7 +22,7 @@ public class SaleRecordItemVO {
 
     private DocVO doc;
 
-    public SaleRecordItemVO(long date, String commodityName, String commodityType, int number, double salePrice, double totalAmount, DocVO docVO) {
+    public BusinessConditionItemVO(long date, String commodityName, String commodityType, int number, double salePrice, double totalAmount, DocVO docVO) {
         this.date = date;
         this.commodityName = commodityName;
         this.commodityType = commodityType;

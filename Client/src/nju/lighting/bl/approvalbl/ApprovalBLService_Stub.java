@@ -1,10 +1,12 @@
 package nju.lighting.bl.approvalbl;
 
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
-import nju.lighting.vo.CommodityVO;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
+import shared.DocType;
+import shared.HistoryDocType;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
@@ -17,13 +19,13 @@ import java.util.ArrayList;
  */
 public class ApprovalBLService_Stub implements ApprovalBLService {
     @Override
-    public ArrayList<HistoryDocVO> getDocumentList() throws RemoteException {
-        CommodityVO commodityVO1 = new CommodityVO("日本LED无障碍灯泡", "LED", "xx0002222",
-                100, 100, new ArrayList<Double>(), 150.0, new ArrayList<Double>());
-        CommodityVO commodityVO2 = new CommodityVO("日本LED无障碍灯泡" + "-b", "LED", "xx0002223",
-                100, 100, new ArrayList<Double>(), 170.0, new ArrayList<Double>());
-        CommodityVO commodityVO3 = new CommodityVO("日本LED无障碍灯泡" + "-c", "LED", "xx0002224",
-                100, 100, new ArrayList<Double>(), 130.0, new ArrayList<Double>());
+    public ArrayList<HistoryDocVO> getDocumentList() {
+        BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222","日本LED无障碍灯泡", null,
+                100, 100,100);
+        BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223","日本LED无障碍灯泡" + "-b", null,
+                100, 100,100);
+        BasicCommodityItemVO commodityVO3 = new BasicCommodityItemVO("xx0002224","日本LED无障碍灯泡" + "-c", null,
+                100, 100, 100);
 
         GiftItemVO giftItemVO1 = new GiftItemVO(commodityVO1, 3);
         GiftItemVO giftItemVO2 = new GiftItemVO(commodityVO2, 1);
@@ -38,12 +40,12 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         gifts2.add(giftItemVO3);
 
 
-        GiftDocVO vo1 = new GiftDocVO(gifts1, "ZPD-20171021-0001", "甲方", "N0.1");
-        GiftDocVO vo2 = new GiftDocVO(gifts2, "ZPD-20171021-0010", "甲方", "N0.1");
+        GiftDocVO vo1 = new GiftDocVO(null,"00001", "ZPD-20171021-0009",DocType.GIFT,gifts1,"hiahia");
+        GiftDocVO vo2 = new GiftDocVO(null,"00001", "ZPD-20171021-0010",DocType.GIFT, gifts2, "N0.1");
 
         ArrayList<HistoryDocVO> historyDocVOs = new ArrayList<>();
-        historyDocVOs.add(new HistoryDocVO(vo1, false, false, ""));
-        historyDocVOs.add(new HistoryDocVO(vo2, false, false, ""));
+        historyDocVOs.add(new HistoryDocVO(null,"","",DocType.GIFT,vo1, "", HistoryDocType.UN_CHECKED));
+        historyDocVOs.add(new HistoryDocVO(null,"","",DocType.GIFT,vo2, "", HistoryDocType.UN_CHECKED));
 
         return historyDocVOs;
 
@@ -51,27 +53,27 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
     }
 
     @Override
-    public ResultMessage approve(HistoryDocVO vo) throws RemoteException {
+    public ResultMessage approve(HistoryDocVO vo) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ResultMessage approveAll(ArrayList<HistoryDocVO> voList) throws RemoteException {
+    public ResultMessage approveAll(ArrayList<HistoryDocVO> voList) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ResultMessage reject(HistoryDocVO vo) throws RemoteException {
+    public ResultMessage reject(HistoryDocVO vo) {
         return ResultMessage.FAILURE;
     }
 
     @Override
-    public ResultMessage save(HistoryDocVO vo) throws RemoteException {
+    public ResultMessage save(HistoryDocVO vo) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ResultMessage saveAndApprove(HistoryDocVO vo) throws RemoteException {
+    public ResultMessage saveAndApprove(HistoryDocVO vo) {
         return ResultMessage.SUCCESS;
     }
 }

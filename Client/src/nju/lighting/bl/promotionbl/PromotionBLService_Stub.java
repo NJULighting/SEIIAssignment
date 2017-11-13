@@ -1,7 +1,7 @@
 package nju.lighting.bl.promotionbl;
 
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
-import nju.lighting.vo.CommodityVO;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerGrade;
@@ -20,11 +20,11 @@ import java.util.Calendar;
 public class PromotionBLService_Stub implements PromotionBLService {
 
     @Override
-    public ArrayList<PromotionVO> getBenefitsPlan(int customerLevel, ArrayList<String> CommodityList, double total) throws RemoteException {
-        CommodityVO commodityVO1 = new CommodityVO("日本LED无障碍灯泡", "LED", "xx0002222",
-                100, 100, new ArrayList<Double>(), 150.0, new ArrayList<Double>());
-        CommodityVO commodityVO2 = new CommodityVO("日本LED无障碍灯泡" + "-b", "LED", "xx0002223",
-                100, 100, new ArrayList<Double>(), 170.0, new ArrayList<Double>());
+    public ArrayList<PromotionVO> getBenefitsPlan(int customerLevel, ArrayList<String> CommodityList, double total)  {
+        BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222","日本LED无障碍灯泡", null,
+                100, 100,100);
+        BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223","日本LED无障碍灯泡" + "-b", null,
+                100, 100,100);
 
         ArrayList<GiftItemVO> gifts1 = new ArrayList<>();
 
@@ -48,7 +48,7 @@ public class PromotionBLService_Stub implements PromotionBLService {
     }
 
     @Override
-    public ArrayList<PromotionVO> getPromotionList() throws RemoteException {
+    public ArrayList<PromotionVO> getPromotionList() {
 
         Calendar c = Calendar.getInstance();
 
@@ -65,17 +65,17 @@ public class PromotionBLService_Stub implements PromotionBLService {
     }
 
     @Override
-    public ResultMessage newAndSave(PromotionVO vo) throws RemoteException {
+    public ResultMessage newAndSave(PromotionVO vo) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ResultMessage modifyAndSave(PromotionVO vo) throws RemoteException {
+    public ResultMessage modifyAndSave(PromotionVO vo) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ResultMessage delete(PromotionVO vo) throws RemoteException {
+    public ResultMessage delete(PromotionVO vo) {
         return ResultMessage.FAILURE;
     }
 }

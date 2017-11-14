@@ -12,7 +12,7 @@ public interface CustomerBLService {
     ArrayList<CustomerVO> getCustomerList() ;
 
     //请求增加客户，得到是否可修改应收额度
-    boolean askForCreateCustomer(String userId) ;
+    boolean hasModifyLimitAuthority(String userId) ;
 
     //增加客户
     ResultMessage createCustomer(CustomerVO vo) ;
@@ -35,6 +35,4 @@ public interface CustomerBLService {
     //获取下一位客户编号
     int getNextCustomerID() ;
 
-    //请求修改客户，得到是否可修改应收额度
-    boolean askForModifyCustomer(String userId) ;
 }

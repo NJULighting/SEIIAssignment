@@ -22,7 +22,7 @@ import nju.lighting.dataservice.userdataservice.UserDataService;
 public abstract class DataFactory {
 
 
-    public static RepositoryDataService getRepositoryDataService() {
+    public static RepositoryDataService getRepositoryDataService () {
         return new RepositoryDataService_Stub();
     }
 
@@ -30,8 +30,9 @@ public abstract class DataFactory {
         return new CommodityDataService_Stub();
     }
 
-    public static AccountDataService getAccountDataService() {
-        return new AccountDataService_Stub();
+    public static AccountDataService getAccountDataService () {
+        //return new AccountDataService_Stub();
+        return null;
     }
 
     public static ApprovalDataService getApprovalDataService() {

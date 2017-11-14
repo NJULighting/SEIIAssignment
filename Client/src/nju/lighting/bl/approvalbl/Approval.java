@@ -1,6 +1,7 @@
 package nju.lighting.bl.approvalbl;
 
 import nju.lighting.bl.documentbl.Doc;
+import nju.lighting.bl.documentbl.DocInfo;
 import nju.lighting.bl.documentbl.DocManage;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Approval {
     ArrayList<Doc> docs;
 
     public Approval(){
-        DocManage docManage=new DocManage();
+
     //    this.docs=docManage.findDocuments(null);
     }
 }

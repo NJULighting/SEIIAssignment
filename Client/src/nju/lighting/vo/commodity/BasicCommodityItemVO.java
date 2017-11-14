@@ -4,7 +4,6 @@ import shared.CommodityTreeNode;
 
 public class BasicCommodityItemVO implements CommodityTreeNode {
 
-
     private String id;
 
     private String name;

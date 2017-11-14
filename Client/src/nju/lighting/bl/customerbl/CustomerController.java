@@ -17,7 +17,7 @@ public class CustomerController implements CustomerBLService {
     }
 
     //请求增加客户，得到是否可修改应收额度
-    public boolean askForCreateCustomer(String userId)  {
+    public boolean hasModifyLimitAuthority(String userId)  {
         return true;
     }
 
@@ -56,9 +56,5 @@ public class CustomerController implements CustomerBLService {
         return 000001;
     }
 
-    //请求修改客户，得到是否可修改应收额度
-    public boolean askForModifyCustomer(String userId)  {
-        return true;
-    }
 
 }

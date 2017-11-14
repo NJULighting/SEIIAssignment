@@ -1,14 +1,13 @@
-package nju.lighting.data;
+package nju.lightingServer.data;
 
-import nju.lighting.data.accountdata.AccountDataService_Stub;
-import nju.lighting.data.approvaldata.ApprovalDataService_Stub;
-import nju.lighting.data.commoditydata.CommodityDataService_Stub;
-import nju.lighting.data.customerdata.CustomerDataService_Stub;
-import nju.lighting.data.documentdata.DocDataService_Stub;
-import nju.lighting.data.logdata.LogDataService_Stub;
-import nju.lighting.data.promotiondata.PromotionDataService_Stub;
-import nju.lighting.data.repositorydata.RepositoryDataService_Stub;
-import nju.lighting.data.userdata.UserDataService_Stub;
+import nju.lightingServer.data.approvaldata.ApprovalDataService_Stub;
+import nju.lightingServer.data.commoditydata.CommodityDataService_Stub;
+import nju.lightingServer.data.customerdata.CustomerDataService_Stub;
+import nju.lightingServer.data.documentdata.DocDataService_Stub;
+import nju.lightingServer.data.logdata.LogDataService_Stub;
+import nju.lightingServer.data.promotiondata.PromotionDataService_Stub;
+import nju.lightingServer.data.repositorydata.RepositoryDataService_Stub;
+import nju.lightingServer.data.userdata.UserDataService_Stub;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.dataservice.approvaldataservice.ApprovalDataService;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;

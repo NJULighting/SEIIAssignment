@@ -1,4 +1,4 @@
-package nju.lighting.data.documentdata;
+package nju.lightingServer.data.documentdata;
 
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.dataservice.documentdataservice.DocDataService;

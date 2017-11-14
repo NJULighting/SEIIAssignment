@@ -1,4 +1,4 @@
-package nju.lighting.data.userdata;
+package nju.lightingServer.data.userdata;
 
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.UserPO;

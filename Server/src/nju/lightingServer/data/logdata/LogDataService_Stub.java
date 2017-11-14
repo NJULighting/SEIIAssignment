@@ -1,4 +1,4 @@
-package nju.lighting.data.logdata;
+package nju.lightingServer.data.logdata;
 
 import shared.LogFilter;
 import nju.lighting.dataservice.logdataservice.LogDataService;

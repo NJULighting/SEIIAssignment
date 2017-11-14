@@ -1,4 +1,4 @@
-package nju.lighting.data.promotiondata;
+package nju.lightingServer.data.promotiondata;
 
 import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
 

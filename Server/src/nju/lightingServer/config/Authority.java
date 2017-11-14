@@ -1,4 +1,4 @@
-package nju.lighting.config;
+package nju.lightingServer.config;
 
 public interface Authority {
 

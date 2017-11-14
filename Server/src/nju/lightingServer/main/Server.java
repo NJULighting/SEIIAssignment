@@ -1,6 +1,6 @@
-package nju.lighting.main;
+package nju.lightingServer.main;
 
-import nju.lighting.data.accountdata.AccountDataService_Stub;
+import nju.lightingServer.data.accountdata.AccountDataService_Stub;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 
 import javax.naming.Context;

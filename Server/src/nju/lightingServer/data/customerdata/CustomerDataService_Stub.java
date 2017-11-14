@@ -1,4 +1,4 @@
-package nju.lighting.data.customerdata;
+package nju.lightingServer.data.customerdata;
 
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
 import nju.lighting.po.customer.CustomerPO;

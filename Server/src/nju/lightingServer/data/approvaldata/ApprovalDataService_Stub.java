@@ -1,4 +1,4 @@
-package nju.lighting.data.approvaldata;
+package nju.lightingServer.data.approvaldata;
 
 import nju.lighting.dataservice.approvaldataservice.ApprovalDataService;
 import nju.lighting.po.doc.giftdoc.GiftDocPO;

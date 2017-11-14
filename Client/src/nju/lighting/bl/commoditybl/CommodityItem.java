@@ -140,6 +140,10 @@ public class CommodityItem implements CommodityTreeNode {
         basicCommodityItem.setRecentSellPrice(recentSellPrice);
     }
 
+    public BasicCommodityItem toBasicCommodityItem() {
+        return basicCommodityItem;
+    }
+
     @Override
     public boolean isCommodity() {
         return true;

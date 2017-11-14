@@ -73,13 +73,25 @@ public class MockCommodity implements CommodityInfo {
 
     @Override
     public ArrayList<BasicCommodityItem> getBasicCommodityItems(ArrayList<String> ids) {
-        ArrayList<BasicCommodityItem> items = new ArrayList<>();
-
-        return null;
+        ArrayList<BasicCommodityItem> comItems = new ArrayList<>();
+        for (String id: ids) {
+            for (CommodityItem item : items) {
+                if (item.getId().equals(id))
+                    comItems.add(item.toBasicCommodityItem());
+            }
+        }
+        return comItems;
     }
 
     @Override
     public ArrayList<CommodityItem> getCommodityItems(ArrayList<String> ids) {
-        return null;
+        ArrayList<CommodityItem> comItems = new ArrayList<>();
+        for (String id: ids) {
+            for (CommodityItem item : items) {
+                if (item.getId().equals(id))
+                    comItems.add(item);
+            }
+        }
+        return comItems;
     }
 }

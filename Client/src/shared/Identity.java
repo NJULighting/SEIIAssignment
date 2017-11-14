@@ -6,5 +6,5 @@ package shared;
  * @author Liao
  */
 public enum Identity {
-    GENERAL, FINANCE, REPOSITORY, SALE, SYSTEM_ADMIN
+    GENERAL, FINANCE, REPOSITORY, SALE, SALE_MANAGER, SYSTEM_ADMIN
 }

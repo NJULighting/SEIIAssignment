@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class MockAccountInfo implements AccountInfo {
     @Override
-    public ArrayList<AccountVO> getAccountList() {
+    public ArrayList<Account> getAccountList() {
         ArrayList<AccountVO> res = new ArrayList<>();
         res.add(new AccountVO("Account0", 1000, null));
         res.add(new AccountVO("Account1", 2000, null));

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author Liao
  */
 public interface AccountInfo {
-    ArrayList<AccountVO> getAccountList();
+    ArrayList<Account> getAccountList();
 
     ResultMessage updateAmount(String targetName, double total);
 }

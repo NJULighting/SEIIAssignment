@@ -1,5 +1,7 @@
 package nju.lighting.bl.customerbl;
 
+import java.util.ArrayList;
+
 /**
  * Create on 11/12
  * Description:
@@ -17,4 +19,10 @@ public interface CustomerInfo {
      * @param amount
      */
     public void changePayable(String customerId,double amount);
+
+    /**
+     * 得到包含所有客户的列表
+     * @return 对应的客户列表
+     */
+    ArrayList<Customer> getCustomerList();
 }

@@ -10,9 +10,10 @@ import java.util.ArrayList;
  */
 public class MockDocManage  implements DocInfo{
     @Override
-    public ArrayList<HistoryDoc> findUnCheckedDoc() {
-        ArrayList<HistoryDoc> historyDocs = new ArrayList<>();
+    public ArrayList<Doc> findUnCheckedDoc() {
+        ArrayList<Doc> uncheckedDocs = new ArrayList<>();
 
-        return  historyDocs;
+
+        return  uncheckedDocs;
     }
 }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 
 public interface DocInfo {
-    ArrayList<HistoryDoc> findUnCheckedDoc();
+    ArrayList<Doc> findUnCheckedDoc();
 }
 
 

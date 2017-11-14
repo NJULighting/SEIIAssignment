@@ -12,8 +12,6 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public class Promotion implements getBenefitsPlan {
-    boolean valid;
-
 
     public ArrayList<PromotionVO> getPromotionList() {
         return null;

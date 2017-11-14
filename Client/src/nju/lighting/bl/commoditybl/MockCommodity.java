@@ -82,40 +82,22 @@ public class MockCommodity implements CommodityInfo {
 
 
     @Override
-    public CommodityTreeVO getCommodityTree() {
-        return commodityTree;
+    public CommodityTree getCommodityTree() {
+        return null;
     }
 
     @Override
-    public BasicCommodityTreeVO getBasicCommodityTree() {
-        return basicCommodityTree;
+    public BasicCommodityTree getBasicCommodityTree() {
+        return null;
     }
 
     @Override
-    public ArrayList<BasicCommodityItemVO> getBasicCommodityItems(ArrayList<String> ids) {
-        ArrayList<BasicCommodityItemVO> coms = new ArrayList<>();
-        for (String s : ids) {
-            for (int i = 0; i < commodityItems.size(); i++) {
-                if (ids.equals(commodityItems.get(i).getId())) {
-                    coms.add(commodityItems.get(i).toBasicCommodityItem());
-                    break;
-                }
-            }
-        }
-        return coms;
+    public ArrayList<BasicCommodityItem> getBasicCommodityItems(ArrayList<String> ids) {
+        return null;
     }
 
     @Override
-    public ArrayList<CommodityItemVO> getCommodityItems(ArrayList<String> ids) {
-        ArrayList<CommodityItemVO> coms = new ArrayList<>();
-        for (String s : ids) {
-            for (int i = 0; i < commodityItems.size(); i++) {
-                if (ids.equals(commodityItems.get(i).getId())) {
-                    coms.add(commodityItems.get(i));
-                    break;
-                }
-            }
-        }
-        return coms;
+    public ArrayList<CommodityItem> getCommodityItems(ArrayList<String> ids) {
+        return null;
     }
 }

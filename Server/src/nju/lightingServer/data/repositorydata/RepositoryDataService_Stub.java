@@ -1,4 +1,4 @@
-package nju.lighting.data.repositorydata;
+package nju.lightingServer.data.repositorydata;
 
 import nju.lighting.dataservice.repositorydataservice.RepositoryDataService;
 import nju.lighting.po.repository.RepositoryChangePO;

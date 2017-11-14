@@ -1,4 +1,4 @@
-package nju.lighting.data.accountdata;
+package nju.lightingServer.data.accountdata;
 
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.po.account.AccountPO;

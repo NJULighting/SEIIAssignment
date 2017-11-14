@@ -1,4 +1,4 @@
-package nju.lighting.data.commoditydata;
+package nju.lightingServer.data.commoditydata;
 
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import shared.ResultMessage;

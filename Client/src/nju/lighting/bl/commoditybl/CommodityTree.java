@@ -3,27 +3,33 @@ package nju.lighting.bl.commoditybl;
 import nju.lighting.vo.commodity.CommodityTreeVO;
 import shared.CommodityTreeNode;
 
+import java.util.ArrayList;
+
 /**
  * 商品全部信息组成的商品树
  */
 public class CommodityTree {
 
 
-    private CommodityTreeNode root;
+    private ArrayList<CommodityTreeNode> roots;
 
-    public CommodityTree(CommodityTreeNode root) {
-        this.root = root;
+    public CommodityTree(ArrayList<CommodityTreeNode> roots) {
+        this.roots = roots;
     }
 
-    public CommodityTreeNode getRoot() {
-        return root;
+    public ArrayList<CommodityTreeNode> getRoots() {
+        return roots;
     }
 
-    public void setRoot(CommodityTreeNode root) {
-        this.root = root;
+    public void setRoots(ArrayList<CommodityTreeNode> roots) {
+        this.roots = roots;
     }
 
     public CommodityTreeVO toVO() {
+        return null;
+    }
+
+    public BasicCommodityTree toBasicCommodityTree() {
         return null;
     }
 

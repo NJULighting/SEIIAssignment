@@ -92,6 +92,54 @@ public class CommodityItem implements CommodityTreeNode {
         return null;
     }
 
+    public String getId() {
+        return basicCommodityItem.getId();
+    }
+
+    public void setId(String id) {
+        this.basicCommodityItem.setId(id);
+    }
+
+    public String getName() {
+        return basicCommodityItem.getName();
+    }
+
+    public void setName(String name) {
+        basicCommodityItem.setName(name);
+    }
+
+    public CommodityCategoryItem getCategory() {
+        return basicCommodityItem.getCategory();
+    }
+
+    public void setCategory(CommodityCategoryItem category) {
+        basicCommodityItem.setCategory(category);
+    }
+
+    public int getRepCount() {
+        return basicCommodityItem.getRepCount();
+    }
+
+    public void setRepCount(int repCount) {
+        basicCommodityItem.setRepCount(repCount);
+    }
+
+    public double getRecentInPrice() {
+        return basicCommodityItem.getRecentInPrice();
+    }
+
+    public void setRecentInPrice(double recentInPrice) {
+        basicCommodityItem.setRecentInPrice(recentInPrice);
+    }
+
+    public double getRecentSellPrice() {
+        return basicCommodityItem.getRecentSellPrice();
+    }
+
+    public void setRecentSellPrice(double recentSellPrice) {
+        basicCommodityItem.setRecentSellPrice(recentSellPrice);
+    }
+
     @Override
     public boolean isCommodity() {
         return true;

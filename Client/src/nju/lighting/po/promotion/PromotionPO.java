@@ -11,9 +11,12 @@ import java.util.Date;
 /**
  * Created on 2017/10/19.
  * Description:
+ *
  * @author 陈俊宇
  */
 public class PromotionPO {
+    private String name; //促销策略名称
+
     private PromotionType type;  //促销策略类型
 
     private Date startDate;  //起始日期
@@ -28,15 +31,15 @@ public class PromotionPO {
 
     private ArrayList<String> goods;  //组合商品
 
-
     private double off;  //折让金额
 
     private double vouchers; //代金券金额
 
     private long vouchersEndDate;  //代金券截止日期
 
-    public PromotionPO(PromotionType type, Date startDate, Date endDate, CustomerGrade level,
+    public PromotionPO(String name, PromotionType type, Date startDate, Date endDate, CustomerGrade level,
                        double total, ArrayList<String> goods, double off, double vouchers, long vouchersEndDate) {
+        this.name = name;
         this.type = type;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -46,6 +49,14 @@ public class PromotionPO {
         this.off = off;
         this.vouchers = vouchers;
         this.vouchersEndDate = vouchersEndDate;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void addGood(String good) {

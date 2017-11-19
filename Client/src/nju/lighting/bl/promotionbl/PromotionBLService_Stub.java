@@ -15,16 +15,17 @@ import java.util.Calendar;
 /**
  * Created on 2017/10/21.
  * Description
+ *
  * @author 陈俊宇
  */
 public class PromotionBLService_Stub implements PromotionBLService {
 
     @Override
-    public ArrayList<PromotionVO> getBenefitsPlan(int customerLevel, ArrayList<String> CommodityList, double total)  {
-        BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222","日本LED无障碍灯泡", null,
-                100, 100,100);
-        BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223","日本LED无障碍灯泡" + "-b", null,
-                100, 100,100);
+    public ArrayList<PromotionVO> getBenefitsPlan(int customerLevel, ArrayList<String> CommodityList, double total) {
+        BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222", "日本LED无障碍灯泡", null,
+                100, 100, 100);
+        BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223", "日本LED无障碍灯泡" + "-b", null,
+                100, 100, 100);
 
         ArrayList<GiftItemVO> gifts1 = new ArrayList<>();
 
@@ -37,7 +38,7 @@ public class PromotionBLService_Stub implements PromotionBLService {
         Calendar c = Calendar.getInstance();
         PromotionVO promotionVo1 = new PromotionVO(PromotionType.CustomerOriented, c.getTime(), c.getTime(), c.getTime(), CustomerGrade.THREE,
                 0, gifts1, 0, 0, c.getTime());
-        PromotionVO promotionVo2 = new PromotionVO(PromotionType.TotalOriented, c.getTime(), c.getTime(), c.getTime(), null, 399,
+        PromotionVO promotionVo2 = new PromotionVO(PromotionType.PriceOriented, c.getTime(), c.getTime(), c.getTime(), null, 399,
                 null, 30, 0, c.getTime());
 
         ArrayList<PromotionVO> promotionVOs = new ArrayList<>();
@@ -54,7 +55,7 @@ public class PromotionBLService_Stub implements PromotionBLService {
 
         PromotionVO vo1 = new PromotionVO(PromotionType.CustomerOriented, c.getTime(), c.getTime(), c.getTime(), CustomerGrade.THREE,
                 0, null, 0, 0, c.getTime());
-        PromotionVO vo2 = new PromotionVO(PromotionType.TotalOriented, c.getTime(), c.getTime(), c.getTime(), null, 399,
+        PromotionVO vo2 = new PromotionVO(PromotionType.PriceOriented, c.getTime(), c.getTime(), c.getTime(), null, 399,
                 null, 30, 0, c.getTime());
 
         ArrayList<PromotionVO> promotionVOs = new ArrayList<>();

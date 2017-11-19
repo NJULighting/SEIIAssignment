@@ -6,5 +6,5 @@ package shared;
  * @author 陈俊宇
  */
 public enum PromotionType {
-    CustomerOriented, Combo, TotalOriented
+    CustomerOriented, Combo, PriceOriented
 }

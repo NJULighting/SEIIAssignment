@@ -1,6 +1,7 @@
 package nju.lighting.bl.promotionbl;
 
 import nju.lighting.vo.promotion.PromotionVO;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 
@@ -13,8 +14,8 @@ import java.util.ArrayList;
 public class PromotionManage {
     ArrayList<Promotion> promotions;
 
-    public PromotionManage(){
-        this.promotions=getPromotionList();
+    public PromotionManage() {
+        this.promotions = getPromotionList();
     }
 
     public ArrayList<Promotion> getPromotionList() {
@@ -22,6 +23,10 @@ public class PromotionManage {
     }
 
     public ArrayList<Promotion> getBenefitsPlan() {
+        return null;
+    }
+
+    public ResultMessage create() {
         return null;
     }
 }

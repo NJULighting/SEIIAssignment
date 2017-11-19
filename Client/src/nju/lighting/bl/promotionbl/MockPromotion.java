@@ -9,6 +9,7 @@ import java.util.Calendar;
 /**
  * Created on 2017/11/7.
  * Description
+ *
  * @author 陈俊宇
  */
 public class MockPromotion extends Promotion {

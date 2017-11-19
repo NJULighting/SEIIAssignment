@@ -11,13 +11,9 @@ import java.util.ArrayList;
  *
  * @author 陈俊宇
  */
-public class PromotionManage {
-    ArrayList<Promotion> promotions;
-
-    public PromotionManage() {
-        this.promotions = getPromotionList();
-    }
-
+public class PromotionManage implements getBenefitsPlan{
+    public ArrayList<Promotion> promotions;
+    
     public ArrayList<Promotion> getPromotionList() {
         return null;
     }

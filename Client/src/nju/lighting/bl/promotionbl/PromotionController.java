@@ -1,6 +1,7 @@
 package nju.lighting.bl.promotionbl;
 
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
+import nju.lighting.vo.commodity.BasicCommodityTreeVO;
 import shared.ResultMessage;
 import nju.lighting.vo.promotion.PromotionVO;
 
@@ -25,14 +26,20 @@ public class PromotionController implements PromotionBLService {
     }
 
     @Override
-    public ResultMessage newAndSave(PromotionVO vo) {
+    public BasicCommodityTreeVO create() {
         return null;
     }
 
     @Override
-    public ResultMessage modifyAndSave(PromotionVO vo) {
+    public ResultMessage commit(PromotionVO vo) {
         return null;
     }
+
+    @Override
+    public ResultMessage modify(PromotionVO vo) {
+        return null;
+    }
+
 
     @Override
     public ResultMessage delete(PromotionVO vo) {

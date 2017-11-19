@@ -2,7 +2,10 @@ package nju.lighting.bl.promotionbl;
 
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
+import nju.lighting.vo.commodity.BasicCommodityTreeVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
+import nju.lighting.vo.promotion.ComboPromotionVO;
+import nju.lighting.vo.promotion.CustomerOrientedPromotionVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerGrade;
 import shared.PromotionType;
@@ -35,11 +38,11 @@ public class PromotionBLService_Stub implements PromotionBLService {
         gifts1.add(giftItemVO1);
         gifts1.add(giftItemVO2);
 
-        Calendar c = Calendar.getInstance();
-        PromotionVO promotionVo1 = new PromotionVO(PromotionType.CustomerOriented, c.getTime(), c.getTime(), c.getTime(), CustomerGrade.THREE,
-                0, gifts1, 0, 0, c.getTime());
-        PromotionVO promotionVo2 = new PromotionVO(PromotionType.PriceOriented, c.getTime(), c.getTime(), c.getTime(), null, 399,
-                null, 30, 0, c.getTime());
+
+        PromotionVO promotionVo1 = new CustomerOrientedPromotionVO("店庆酬宾",PromotionType.CustomerOriented,
+                null,null,CustomerGrade.FIVE,gifts1,0,0,null);
+        PromotionVO promotionVo2 = new ComboPromotionVO("店庆酬宾",PromotionType.Combo,null,null,
+                gifts1,300,50);
 
         ArrayList<PromotionVO> promotionVOs = new ArrayList<>();
         promotionVOs.add(promotionVo1);
@@ -53,10 +56,10 @@ public class PromotionBLService_Stub implements PromotionBLService {
 
         Calendar c = Calendar.getInstance();
 
-        PromotionVO vo1 = new PromotionVO(PromotionType.CustomerOriented, c.getTime(), c.getTime(), c.getTime(), CustomerGrade.THREE,
-                0, null, 0, 0, c.getTime());
-        PromotionVO vo2 = new PromotionVO(PromotionType.PriceOriented, c.getTime(), c.getTime(), c.getTime(), null, 399,
-                null, 30, 0, c.getTime());
+        PromotionVO vo1 =new CustomerOrientedPromotionVO("店庆酬宾",PromotionType.CustomerOriented,
+                null,null,CustomerGrade.FIVE,null,30,0,null);
+        PromotionVO vo2 =  new ComboPromotionVO("店庆酬宾",PromotionType.PriceOriented,null,null,
+                null,300,100);
 
         ArrayList<PromotionVO> promotionVOs = new ArrayList<>();
         promotionVOs.add(vo1);
@@ -66,13 +69,18 @@ public class PromotionBLService_Stub implements PromotionBLService {
     }
 
     @Override
-    public ResultMessage newAndSave(PromotionVO vo) {
-        return ResultMessage.SUCCESS;
+    public BasicCommodityTreeVO create() {
+        return null;
     }
 
     @Override
-    public ResultMessage modifyAndSave(PromotionVO vo) {
-        return ResultMessage.SUCCESS;
+    public ResultMessage commit(PromotionVO vo) {
+        return null;
+    }
+
+    @Override
+    public ResultMessage modify(PromotionVO vo) {
+        return null;
     }
 
     @Override

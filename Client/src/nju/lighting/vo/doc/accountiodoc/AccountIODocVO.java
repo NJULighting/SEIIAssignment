@@ -1,6 +1,7 @@
-package nju.lighting.vo;
+package nju.lighting.vo.doc.accountiodoc;
 
 import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
+import nju.lighting.vo.DocVO;
 import shared.AccountIODocType;
 import shared.DocType;
 

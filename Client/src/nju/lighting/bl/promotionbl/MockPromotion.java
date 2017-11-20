@@ -1,24 +1,19 @@
 package nju.lighting.bl.promotionbl;
 
-import nju.lighting.vo.promotion.PromotionVO;
 import shared.PromotionType;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
 /**
- * Created on 2017/11/7.
+ * Created on 2017/11/19.
  * Description
+ *
  * @author 陈俊宇
  */
 public class MockPromotion extends Promotion {
+    double voucher;
+    PromotionType type;
 
-    public ArrayList<PromotionVO> getBenefitsPlan() {
-
-        Calendar c = Calendar.getInstance();
-        PromotionVO A = new PromotionVO(PromotionType.Combo, null, null, null, null, 150, null, 20, 0, null);
-        ArrayList<PromotionVO> promotions = new ArrayList<>();
-        promotions.add(A);
-        return promotions;
+    public MockPromotion(double voucher, PromotionType type) {
+        this.voucher = voucher;
+        this.type = type;
     }
 }

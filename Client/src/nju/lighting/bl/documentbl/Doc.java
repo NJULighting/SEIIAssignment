@@ -3,6 +3,7 @@ package nju.lighting.bl.documentbl;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
+import shared.ResultMessage;
 
 import java.util.Date;
 
@@ -26,10 +27,20 @@ public abstract class Doc {
     }
 
     /**
-     * 审批单据，该方法应在审批单据通过时调用
+     * 通过单据，该方法应在审批单据时调用
      */
     abstract public void approve();
 
+    /**
+     *驳回单据，该方法在审批单据时调用
+     */
+    abstract public ResultMessage reject();
+
+    /**
+     *保存修改后的单据，该方法在审批单据时调用
+     */
+
+    abstract public ResultMessage modify();
     /**
      * 创建相应的VO对象
      * @return 对应的<code>DocVO</code>

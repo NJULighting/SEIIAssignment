@@ -1,6 +1,7 @@
 package nju.lighting.bl.promotionbl;
 
 
+import nju.lighting.bl.commoditybl.BasicCommodityTree;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.ResultMessage;
 
@@ -11,29 +12,21 @@ import java.util.ArrayList;
  * Description
  * @author 陈俊宇
  */
-public class Promotion implements getBenefitsPlan {
+public class Promotion  {
 
-    public ArrayList<PromotionVO> getPromotionList() {
+    public BasicCommodityTree create() {
         return null;
     }
 
-    public ArrayList<PromotionVO> getBenefitsPlan() {
+    public ResultMessage commit() {
         return null;
     }
 
-    public PromotionVO create() {
+    public ResultMessage modify() {
         return null;
     }
 
-    public ResultMessage commit(PromotionVO vo) {
-        return null;
-    }
-
-    public ResultMessage modify(PromotionVO vo) {
-        return null;
-    }
-
-    public ResultMessage delete(PromotionVO vo) {
+    public ResultMessage delete() {
         return null;
     }
 

@@ -10,5 +10,5 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public interface getBenefitsPlan {
-    ArrayList<PromotionVO> getBenefitsPlan();
+    ArrayList<Promotion> getBenefitsPlan();
 }

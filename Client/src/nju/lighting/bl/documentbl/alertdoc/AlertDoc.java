@@ -38,6 +38,16 @@ public class AlertDoc extends Doc {
     }
 
     @Override
+    public ResultMessage reject() {
+        return null;
+    }
+
+    @Override
+    public ResultMessage modify() {
+        return null;
+    }
+
+    @Override
     public DocVO createVO() {
         return null;
     }

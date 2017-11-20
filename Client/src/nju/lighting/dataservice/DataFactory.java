@@ -14,6 +14,6 @@ import javax.naming.NamingException;
 public class DataFactory {
     public static AccountDataService getAccountDataBase() throws NamingException {
         Context namingContext = new InitialContext();
-        return (AccountDataService) namingContext.lookup("rmi://localhost/accountDataService)");
+        return (AccountDataService) namingContext.lookup("rmi://localhost:8888/accountDataService");
     }
 }

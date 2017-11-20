@@ -9,6 +9,7 @@ import nju.lighting.vo.doc.costdoc.CostDocItemVO;
 import nju.lighting.vo.doc.costdoc.CostDocVO;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,6 +51,16 @@ public class CostDoc extends Doc {
     public void approve() {
         AccountInfo accountInfo = new MockAccountInfo();
         accountInfo.updateAmount(chosenAccount, totalAmount);
+    }
+
+    @Override
+    public ResultMessage reject() {
+        return null;
+    }
+
+    @Override
+    public ResultMessage modify() {
+        return null;
     }
 
     @Override

@@ -4,6 +4,7 @@ import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.vo.DocVO;
 import nju.lighting.po.doc.DocPO;
 import shared.DocType;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -150,6 +151,16 @@ public class SalesTypeDoc extends Doc {
      * 审批单据，具体方法由其子类实现
      */
     public void approve(){
+    }
+
+    @Override
+    public ResultMessage reject() {
+        return null;
+    }
+
+    @Override
+    public ResultMessage modify() {
+        return null;
     }
 
     /**

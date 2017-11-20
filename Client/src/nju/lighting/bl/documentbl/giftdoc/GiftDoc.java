@@ -5,6 +5,7 @@ import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,6 +43,16 @@ public class GiftDoc extends Doc {
     @Override
     public void approve() {
 
+    }
+
+    @Override
+    public ResultMessage reject() {
+        return null;
+    }
+
+    @Override
+    public ResultMessage modify() {
+        return null;
     }
 
     @Override

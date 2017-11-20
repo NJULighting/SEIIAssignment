@@ -25,6 +25,11 @@ public class CustomerBLService_Stub implements CustomerBLService {
         return customerAll;
     }
 
+    @Override
+    public boolean hasModifyLimitAuthority(String userId) {
+        return false;
+    }
+
     //请求增加客户，得到是否可修改应收额度
     public boolean askForCreateCustomer(String userId)  {
         return true;

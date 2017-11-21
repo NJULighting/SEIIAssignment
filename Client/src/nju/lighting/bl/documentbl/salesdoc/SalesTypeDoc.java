@@ -79,7 +79,10 @@ public class SalesTypeDoc extends Doc {
         return commodityList.get(index);
     }
 
-
+    /**
+     * 返回目前商品项的个数
+     * @return commodityListNumber
+     */
     public int getCommodityListNumber(){return commodityListNumber;}
 
     public String getSalesTypeDocID(){return salesTypeDocID;}

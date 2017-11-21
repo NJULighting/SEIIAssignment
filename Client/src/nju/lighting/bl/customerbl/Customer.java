@@ -29,7 +29,7 @@ public class Customer {
 
     private String salesman;
 
-    public Customer(){}
+
 
     public Customer(int ID, CustomerType type, CustomerGrade grade, String name, String telephone, String address, String postage, String email, double receivableLimit, double receivable, double payable, String salesman) {
         this.ID = ID;

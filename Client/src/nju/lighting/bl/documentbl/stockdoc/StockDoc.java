@@ -27,7 +27,7 @@ public class StockDoc extends StockTypeDoc{
      */
     public void approve(){
         CustomerInfo info = new CustomerManage();
-        info.changePayable(this.getCustomerId(),this.getTotalAmount());
+        info.changeReceivable(this.getCustomerId(),this.getTotalAmount());
     }
 
     /**

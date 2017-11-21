@@ -37,22 +37,13 @@ public class SalesDoc extends SalesTypeDoc{
         //增加客户应收
         CustomerInfo info = new MockCustomer();
         info.changePayable(this.getCustomerId(),this.getFinalAmount());
-
-        CommodityInfo commodityInfo = new MockCommodity();
         //减少商品数量
-        ArrayList<String> ids = new ArrayList<String>();
-        ArrayList<Integer> nums = new ArrayList<Integer>();
+        CommodityInfo commodityInfo = new MockCommodity();
         int listNum = this.getCommodityListNumber();
-
         for(int i=0;i<listNum;i++){
-            ids.add(this.getCommodityListItem(i).getCommodityID());
-            nums.add(this.getCommodityListItem(i).getNumber());
+            commodityInfo.subCommodityItem(this.getCommodityListItem(i).getCommodityID(),this.getCommodityListItem(i).getNumber());
         }
-        ArrayList<BasicCommodityItem> basicCommodityItems =  commodityInfo.getBasicCommodityItems(ids);
 
-        for(int i=0;i<listNum;i++){
-            //....
-        }
     }
 
     /**

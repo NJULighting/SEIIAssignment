@@ -31,6 +31,31 @@ public class Account {
         this.id = id;
         this.amount = amount;
         this.name = name;
+
+    }
+
+    /**
+     * Convert account model to PO
+     * @return relative po
+     */
+    public AccountPO toPO() {
+        return new AccountPO(id, name, amount, logList.toPOLogList());
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public AccountChangeLogList getLogList() {
+        return logList;
     }
 
     /**

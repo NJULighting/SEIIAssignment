@@ -13,7 +13,7 @@ public class AccountPO {
     private double amount;
     private ArrayList<AccountLogPO> changeLogs;
 
-    public AccountPO(String id, String name, long amount, ArrayList<AccountLogPO> changeLogs) {
+    public AccountPO(String id, String name, double amount, ArrayList<AccountLogPO> changeLogs) {
         this.id = id;
         this.name = name;
         this.amount = amount;

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public interface AccountBLService {
     ArrayList<AccountVO> getAccountList() ;
 
-    ResultMessage addAccount(String name, String amount) ;
+    ResultMessage addAccount(String name, double amount, String id);
 
     ArrayList<AccountVO> findAccounts(String keyword) ;
 

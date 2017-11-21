@@ -15,8 +15,6 @@ import java.util.ArrayList;
 public interface AccountDataService extends Remote {
     ResultMessage insert(AccountPO po) throws RemoteException;
 
-    ArrayList<AccountPO> find(String keyword) throws RemoteException;
-
     AccountPO get(String id) throws RemoteException;
 
     ArrayList<AccountPO> getAll() throws RemoteException;

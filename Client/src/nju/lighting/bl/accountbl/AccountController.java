@@ -12,14 +12,16 @@ import java.util.ArrayList;
  * @author Liao
  */
 public class AccountController implements AccountBLService{
+    private AccountManager accountManager = AccountManager.getAccountManager();
+
     @Override
     public ArrayList<AccountVO> getAccountList() {
         return null;
     }
 
     @Override
-    public ResultMessage addAccount(String name, String amount) {
-        return null;
+    public ResultMessage addAccount(String name, double amount, String id) {
+        return accountManager.addAccount(id, name, amount);
     }
 
     @Override

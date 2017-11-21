@@ -23,8 +23,7 @@ public class AccountDataService_Stub extends UnicastRemoteObject implements Acco
         return po == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
     }
 
-    @Override
-    public ArrayList<AccountPO> find(String keyword) throws RemoteException {
+    private ArrayList<AccountPO> find(String keyword) throws RemoteException {
         if (keyword.isEmpty()) return null;
         AccountPO accountPO0 = new AccountPO("0000", "Test Account", 10000, null);
         AccountPO accountPO1 = new AccountPO("0001", "Frog Account", 20000, null);

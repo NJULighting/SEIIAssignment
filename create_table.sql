@@ -188,7 +188,7 @@ CREATE TABLE INIT_ACCOUNT_INFO (
 	NAME varchar(20) not null,
 	AMOUNT float(8) not null,
 	INIT_ID varchar(5) not null,
-	primary key(ID)
+	primary key(ID, INIT_ID)
 );
 
 
@@ -200,7 +200,7 @@ CREATE TABLE INIT_COMMODITY_INFO (
 	SELL_PRICE float(8) not null,
 	IN_PRICE float(8) not null,
 	INIT_ID varchar(5) not null,
-	primary key(ID)
+	primary key(ID, INIT_ID)
 );
 
 
@@ -209,7 +209,7 @@ CREATE TABLE INIT_COMMODITY_CATEGORY_INFO (
 	NAME varchar(40) not null,
 	UPPER_CATEGORY_ID integer,
 	INIT_ID varchar(5) not null,
-	primary key(ID)
+	primary key(ID, INIT_ID)
 );
 
 
@@ -235,8 +235,125 @@ CREATE TABLE GIFT_DOC_ITEM (
 );
 
 
-CREATE TABLE PROMOTION (
-
+CREATE TABLE CUSTOMER (
+	ID varchar(20),
+	CUSTOMER_TYPE varchar(10) not null,
+	CUSTOMER_GRADE varchar(10) not null,
+	NAME varchar(20) not null,
+	TELEPHONE varchar(20),
+	ADDRESS varchar(20),
+	POSTAGE varchar(20),
+	EMAIL varchar(40),
+	RECEIVABLE_LIMIT float(8) not null,
+	RECEIVE_AMOUNT float(8) not null,
+	PAY_AMOUNT float(8) not NULL,
+	SALES_MAN varchar(20),
+	primary key(ID)
 );
 
 
+CREATE TABLE INIT_CUSTOMER_INFO (
+	ID varchar(20),
+	CUSTOMER_TYPE varchar(10) not null,
+	CUSTOMER_GRADE varchar(10) not null,
+	NAME varchar(20) not null,
+	TELEPHONE varchar(20),
+	ADDRESS varchar(20),
+	POSTAGE varchar(20),
+	EMAIL varchar(40),
+	RECEIVABLE_LIMIT float(8) not null,
+	RECEIVE_AMOUNT float(8) not null,
+	PAY_AMOUNT float(8) not NULL,
+	SALES_MAN varchar(20),
+	INIT_ID varchar(5) not null,
+	primary key(ID, INIT_ID)
+);
+
+CREATE TABLE PROMOTION (
+	ID varchar(20),
+	NAME varchar(36) not null,
+	PROMOTION_TYPE varchar(20) NOT NULL,
+	CREATE_TIME DATETIME NOT NULL,
+	START_TIME DATETIME NOT NULL,
+	END_TIME DATETIME NOT NULL,
+	CUSTOMER_GRADE varchar(10) not null,
+	TOTAL float(8) NOT NULL,
+	OFF float(8) NOT NULL,
+	VOUCHER float(8) NOT NULL,
+	VOUCHER_END_DATE DATETIME NOT NULL,
+	primary key(ID)
+);
+
+
+CREATE TABLE SALES_DOC (
+	ID varchar(36) NOT NULL,
+	CUSTOMER_ID varchar(20) NOT NULL,
+	SALES_MAN varchar(20),
+	REPOSITORY_ID varchar(5),
+	USER_ID varchar(20) NOT NULL, 
+	REMARKS varchar(300),
+	BEFORE_DISCOUNT_AMOUNT float(8) NOT NULL, 
+	DISCOUNT float(8) NOT NULL, 
+	VOUCHER float(8),
+	FINAL_AMOUNT float(8) NOT NULL,
+	primary key(ID)
+);
+
+
+CREATE TABLE SALES_RETURN_DOC (
+	ID varchar(36) NOT NULL,
+	CUSTOMER_ID varchar(20) NOT NULL,
+	SALES_MAN varchar(20),
+	REPOSITORY_ID varchar(5),
+	USER_ID varchar(20) NOT NULL, 
+	REMARKS varchar(300),
+	BEFORE_DISCOUNT_AMOUNT float(8) NOT NULL, 
+	DISCOUNT float(8) NOT NULL, 
+	VOUCHER float(8),
+	FINAL_AMOUNT float(8) NOT NULL,
+	primary key(ID)
+);
+
+
+CREATE TABLE STOCK_DOC (
+	ID varchar(36) NOT NULL,
+	CUSTOMER_ID varchar(20) NOT NULL,
+	REPOSITORY_ID varchar(5),
+	USER_ID varchar(20) NOT NULL, 
+	REMARKS varchar(300),
+	TOTAL_AMOUNT float(8) NOT NULL,
+	primary key(ID)
+);
+
+
+CREATE TABLE STOCK_RETURN_DOC (
+	ID varchar(36) NOT NULL,
+	CUSTOMER_ID varchar(20) NOT NULL,
+	REPOSITORY_ID varchar(5),
+	USER_ID varchar(20) NOT NULL, 
+	REMARKS varchar(300),
+	TOTAL_AMOUNT float(8) NOT NULL,
+	primary key(ID)
+);
+
+
+CREATE TABLE STOCK_DOC_ITEM (
+	ID varchar(36),
+	STOCK_DOC_ID varchar(36) NOT NULL,
+	COMMODITY_ID varchar(36) NOT NULL,
+	COUNT integer NOT NULL,
+	TOTAL_AMOUNT float(8) NOT null,
+	REMARKS varchar(300),
+	primary key(ID)
+);
+
+
+CREATE TABLE SALES_DOC_ITEM (
+	ID varchar(36),
+	SALES_DOC_ID varchar(36) NOT NULL,
+	COMMODITY_ID varchar(36) NOT NULL,
+	COUNT integer NOT NULL,
+	TOTAL_AMOUNT float(8) NOT null,
+	REMARKS varchar(300),
+	primary key(ID)
+);

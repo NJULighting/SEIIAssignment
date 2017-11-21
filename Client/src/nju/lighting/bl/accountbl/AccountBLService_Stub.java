@@ -23,7 +23,7 @@ public class AccountBLService_Stub implements AccountBLService {
     }
 
     @Override
-    public ResultMessage addAccount(String name, String amount) {
+    public ResultMessage addAccount(String id, double amount, String name) {
         if (name.equals("existed")) return ResultMessage.FAILURE;
         else return ResultMessage.SUCCESS;
     }

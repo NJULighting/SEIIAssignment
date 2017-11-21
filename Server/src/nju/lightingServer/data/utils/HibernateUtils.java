@@ -53,8 +53,4 @@ public class HibernateUtils {
         sesson.set(null);
     }
 
-
-
-
-
 }

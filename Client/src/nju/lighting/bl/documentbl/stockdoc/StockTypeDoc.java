@@ -65,7 +65,10 @@ public class StockTypeDoc extends Doc {
      */
     public StockDocItem getCommodityListItem(int index){return commodityList.get(index);}
 
-
+    /**
+     * 返回目前商品项的个数
+     * @return commodityListNumber
+     */
     public int getCommodityListNumber(){return commodityListNumber;}
 
     public String getStockTypeDocID(){return stockTypeDocID;}

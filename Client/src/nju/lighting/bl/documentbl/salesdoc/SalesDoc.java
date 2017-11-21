@@ -1,7 +1,12 @@
 package nju.lighting.bl.documentbl.salesdoc;
 
+import nju.lighting.bl.commoditybl.BasicCommodityItem;
+import nju.lighting.bl.commoditybl.CommodityInfo;
+import nju.lighting.bl.commoditybl.CommodityManager;
+import nju.lighting.bl.commoditybl.MockCommodity;
 import nju.lighting.bl.customerbl.CustomerInfo;
 import nju.lighting.bl.customerbl.CustomerManage;
+import nju.lighting.bl.customerbl.MockCustomer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.salesdoc.SalesDocPO;
 import nju.lighting.vo.DocVO;
@@ -29,8 +34,16 @@ public class SalesDoc extends SalesTypeDoc{
      * 审批单据，增加客户应付
      */
     public void approve(){
-        CustomerInfo info = new CustomerManage();
+        //增加客户应收
+        CustomerInfo info = new MockCustomer();
         info.changePayable(this.getCustomerId(),this.getFinalAmount());
+        //减少商品数量
+        CommodityInfo commodityInfo = new MockCommodity();
+        int listNum = this.getCommodityListNumber();
+        for(int i=0;i<listNum;i++){
+            commodityInfo.subCommodityItem(this.getCommodityListItem(i).getCommodityID(),this.getCommodityListItem(i).getNumber());
+        }
+
     }
 
     /**

@@ -1,5 +1,7 @@
 package nju.lighting.bl.documentbl.stockdoc;
 
+import nju.lighting.bl.commoditybl.CommodityInfo;
+import nju.lighting.bl.commoditybl.MockCommodity;
 import nju.lighting.bl.customerbl.CustomerInfo;
 import nju.lighting.bl.customerbl.CustomerManage;
 import nju.lighting.po.doc.DocPO;
@@ -26,7 +28,13 @@ public class StockReturnDoc extends StockTypeDoc{
      */
     public void approve(){
         CustomerInfo info = new CustomerManage();
-        info.changePayable(this.getCustomerId(),0-this.getTotalAmount());
+        info.changeReceivable(this.getCustomerId(),0-this.getTotalAmount());
+        //减少商品数量
+        CommodityInfo commodityInfo = new MockCommodity();
+        int listNum = this.getCommodityListNumber();
+        for(int i=0;i<listNum;i++){
+            commodityInfo.subCommodityItem(this.getCommodityListItem(i).getCommodityID(),this.getCommodityListItem(i).getNumber());
+        }
     }
 
     /**

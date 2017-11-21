@@ -30,11 +30,6 @@ public class CustomerBLService_Stub implements CustomerBLService {
         return false;
     }
 
-    //请求增加客户，得到是否可修改应收额度
-    public boolean askForCreateCustomer(String userId)  {
-        return true;
-    }
-
 
     //增加客户
     public ResultMessage createCustomer(CustomerVO vo)  {
@@ -56,11 +51,6 @@ public class CustomerBLService_Stub implements CustomerBLService {
         if (customer.getID() == id) {
             return ResultMessage.SUCCESS;
         } else return ResultMessage.FAILURE;
-    }
-
-    //请求修改客户，得到是否可修改应收额度
-    public boolean askForModifyCustomer(String userId)  {
-        return true;
     }
 
     //更改客户信息

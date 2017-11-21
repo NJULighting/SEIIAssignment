@@ -17,4 +17,8 @@ public interface CommodityInfo {
 
     ArrayList<CommodityItem> getCommodityItems(ArrayList<String> ids);
 
+    boolean addCommodityItem(String id, int count);
+
+    boolean subCommodityItem(String id, int count);
+
 }

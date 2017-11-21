@@ -106,4 +106,14 @@ public class CommodityManager implements CommodityInfo {
     public ResultMessage modifyCategory(CommodityCategoryVO categoryItemVO) {
         return null;
     }
+
+    @Override
+    public boolean addCommodityItem(String id, int count) {
+        return false;
+    }
+
+    @Override
+    public boolean subCommodityItem(String id, int count) {
+        return false;
+    }
 }

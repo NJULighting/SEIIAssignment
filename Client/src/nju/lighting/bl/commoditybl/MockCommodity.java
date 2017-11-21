@@ -94,4 +94,14 @@ public class MockCommodity implements CommodityInfo {
         }
         return comItems;
     }
+
+    @Override
+    public boolean addCommodityItem(String id, int count) {
+        return false;
+    }
+
+    @Override
+    public boolean subCommodityItem(String id, int count) {
+        return false;
+    }
 }

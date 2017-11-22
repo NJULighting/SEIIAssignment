@@ -1,6 +1,7 @@
 package nju.lighting.bl.accountbl;
 
 import nju.lighting.po.account.AccountLogPO;
+import nju.lighting.vo.account.AccountLogVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,5 +24,9 @@ public class AccountChangeLogList {
 
     public ArrayList<AccountLogPO> toPOLogList() {
         return null; // TODO: 2017/11/21 add code here
+    }
+
+    public ArrayList<AccountLogVO> toVOLogList() {
+        return null; // TODO: 2017/11/22 to vo log list
     }
 }

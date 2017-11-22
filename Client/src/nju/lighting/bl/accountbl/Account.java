@@ -2,6 +2,7 @@ package nju.lighting.bl.accountbl;
 
 import nju.lighting.po.account.AccountLogPO;
 import nju.lighting.po.account.AccountPO;
+import nju.lighting.vo.account.AccountVO;
 
 import java.util.ArrayList;
 
@@ -38,8 +39,12 @@ public class Account {
      * Convert account model to PO
      * @return relative po
      */
-    public AccountPO toPO() {
+    AccountPO toPO() {
         return new AccountPO(id, name, amount, logList.toPOLogList());
+    }
+
+    AccountVO toVO() {
+        return new AccountVO(name, amount, logList.toVOLogList());
     }
 
     public String getId() {

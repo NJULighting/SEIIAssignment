@@ -1,5 +1,6 @@
 package nju.lighting.po.account;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * Description:
  * @author Liao
  */
-public class AccountPO {
+public class AccountPO implements Serializable {
     private String id;
     private String name;
     private double amount;

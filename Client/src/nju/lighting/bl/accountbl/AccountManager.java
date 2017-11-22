@@ -3,6 +3,7 @@ package nju.lighting.bl.accountbl;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.po.account.AccountPO;
+import nju.lighting.vo.account.AccountVO;
 import shared.ResultMessage;
 
 import javax.naming.NamingException;
@@ -15,7 +16,7 @@ import java.util.Optional;
  * @author Liao
  */
 public class AccountManager {
-    // Singleton
+    /* Singleton */
     private static AccountManager accountManager;
     private AccountDataService accountDataService;
     public static AccountManager getAccountManager() {
@@ -56,5 +57,20 @@ public class AccountManager {
             e.printStackTrace();
             return ResultMessage.NETWORK_FAIL;
         }
+    }
+
+    AccountVO getAccount(String id) {
+        try {
+            AccountPO po = accountDataService.get(id);
+            // If not found
+            if (po == null)
+                return null;
+            // Create Account object
+            Account target = new Account(po);
+            return target.toVO();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

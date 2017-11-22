@@ -9,10 +9,10 @@ import java.util.ArrayList;
  */
 public class AccountVO {
     private String name;
-    private int amount;
+    private double amount;
     private ArrayList<AccountLogVO> accountLogs;
 
-    public AccountVO(String name, int amount, ArrayList<AccountLogVO> accountLogs) {
+    public AccountVO(String name, double amount, ArrayList<AccountLogVO> accountLogs) {
         this.name = name;
         this.amount = amount;
         this.accountLogs = accountLogs;
@@ -26,7 +26,7 @@ public class AccountVO {
         return name;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 }

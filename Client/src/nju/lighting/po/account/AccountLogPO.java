@@ -11,6 +11,7 @@ import java.util.Date;
  * @author Liao
  */
 public class AccountLogPO implements Serializable{
+    private static final long serialVersionUID = 21314312314L;
     private Date time;
     private double delta;
     private double amount;

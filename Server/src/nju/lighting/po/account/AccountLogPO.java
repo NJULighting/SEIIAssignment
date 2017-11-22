@@ -2,6 +2,7 @@ package nju.lighting.po.account;
 
 import shared.AccountChangeType;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,7 +10,8 @@ import java.util.Date;
  * Description:
  * @author Liao
  */
-public class AccountLogPO {
+public class AccountLogPO implements Serializable{
+    private static final long serialVersionUID = 21314312314L;
     private Date time;
     private double delta;
     private double amount;

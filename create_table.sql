@@ -6,7 +6,7 @@ USE njult;
 
 
 CREATE TABLE COMMODITY_CATEGORY (
-	ID integer not null,
+	ID integer,
 	NAME varchar(40) not null,
 	UPPER_CATEGORY_ID integer,
 	primary key(ID)

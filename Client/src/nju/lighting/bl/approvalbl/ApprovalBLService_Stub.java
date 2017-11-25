@@ -1,6 +1,7 @@
 package nju.lighting.bl.approvalbl;
 
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
+import nju.lighting.vo.DocVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  */
 public class ApprovalBLService_Stub implements ApprovalBLService {
     @Override
-    public ArrayList<HistoryDocVO> getDocumentList() {
+    public ArrayList<DocVO> getDocumentList() {
         BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222","日本LED无障碍灯泡", null,
                 100, 100,100);
         BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223","日本LED无障碍灯泡" + "-b", null,
@@ -43,11 +44,11 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         GiftDocVO vo1 = new GiftDocVO(null,"00001", "ZPD-20171021-0009",DocType.GIFT,gifts1,"hiahia");
         GiftDocVO vo2 = new GiftDocVO(null,"00001", "ZPD-20171021-0010",DocType.GIFT, gifts2, "N0.1");
 
-        ArrayList<HistoryDocVO> historyDocVOs = new ArrayList<>();
-        historyDocVOs.add(new HistoryDocVO(null,"","",DocType.GIFT,vo1, "", HistoryDocType.UN_CHECKED));
-        historyDocVOs.add(new HistoryDocVO(null,"","",DocType.GIFT,vo2, "", HistoryDocType.UN_CHECKED));
+        ArrayList<DocVO> DocVOs = new ArrayList<>();
+        DocVOs.add(vo1);
+        DocVOs.add(vo2);
 
-        return historyDocVOs;
+        return DocVOs;
 
 
     }

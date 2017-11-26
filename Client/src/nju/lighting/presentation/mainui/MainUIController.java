@@ -1,8 +1,6 @@
 package nju.lighting.presentation.mainui;
 
-import com.sun.javafx.robot.impl.FXRobotHelper;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +15,6 @@ import shared.ResultMessage;
 
 
 import java.io.IOException;
-import java.util.Stack;
 
 /**
  * Created on 2017/11/21.
@@ -45,8 +42,8 @@ public class MainUIController extends Application {
     @FXML
     public void login() throws IOException {
         userBLService=new UserBLServie_Stub();
-        System.out.println(userBLService.logIn(account.getText(),password.getText()));
-        if(userBLService.logIn(account.getText(),password.getText()).equals(ResultMessage.SUCCESS)){
+        System.out.println(userBLService.login(account.getText(),password.getText()));
+        if(userBLService.login(account.getText(),password.getText()).equals(ResultMessage.SUCCESS)){
             new GeneralMainUI();
         }
 

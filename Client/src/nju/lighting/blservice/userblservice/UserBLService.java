@@ -1,7 +1,10 @@
 package nju.lighting.blservice.userblservice;
 
+import nju.lighting.po.UserPO;
 import nju.lighting.vo.UserVO;
+import shared.LoginReturnState;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.util.ArrayList;
 
@@ -25,7 +28,8 @@ public interface UserBLService {
 
     String generateJobNum(UserVO vo);
 
-    ResultMessage logIn(String username, String password);
+    // id 是登录者的工号
+    TwoTuple<UserPO, LoginReturnState> login(String id, String password);
 
     ResultMessage logOut(UserVO vo);
 }

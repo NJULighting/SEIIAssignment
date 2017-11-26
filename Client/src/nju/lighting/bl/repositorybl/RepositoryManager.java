@@ -3,11 +3,12 @@ package nju.lighting.bl.repositorybl;
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.vo.repository.RepositoryChangeVO;
 import nju.lighting.vo.repository.RepositoryTableVO;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-public class RepositoryManager {
+public class RepositoryManager implements RepositoryInfo {
 
     /**
      * 库存变化情况
@@ -37,7 +38,7 @@ public class RepositoryManager {
     }
 
     /**
-     * 判断服务器端数据是否发生变化
+     * 判断服务器端数据是否发生变化，八成会被遗弃
      */
     private boolean hasChanged() {
         return false;
@@ -67,6 +68,16 @@ public class RepositoryManager {
     }
 
     public RepositoryTableVO getRepositoryTable() {
+        return null;
+    }
+
+    /**
+     *提供给其他模块用于变更库存信息
+     * @param change
+     * @return
+     */
+    @Override
+    public ResultMessage changeRepository(RepositoryChange change) {
         return null;
     }
 }

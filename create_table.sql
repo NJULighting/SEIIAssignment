@@ -6,7 +6,7 @@ USE njult;
 
 
 CREATE TABLE COMMODITY_CATEGORY (
-	ID integer not null,
+	ID integer,
 	NAME varchar(40) not null,
 	UPPER_CATEGORY_ID integer,
 	primary key(ID)
@@ -90,14 +90,14 @@ CREATE TABLE LOSS_AND_GAIN_DOC_ITEM (
 
 CREATE TABLE ACCOUNT (
 	ID varchar(20) not null,
-	NAME varchar(20) not null,
+	NAME varchar(40) not null,
 	AMOUNT float(8) not null,
 	primary key(ID)
 );
 
 
 CREATE TABLE ACCOUNT_CHANGE (
-	ID varchar(36),
+	ID integer,
 	ACCOUNT_ID varchar(20) not null,
 	ACCOUNT_CHANGE_TYPE varchar(20) not null,
 	CHANGE_TIME DATETIME not null,
@@ -357,3 +357,7 @@ CREATE TABLE SALES_DOC_ITEM (
 	REMARKS varchar(300),
 	primary key(ID)
 );
+
+#部分修改
+alter table COMMODITY_CATEGORY modify column ID int auto_increment;
+alter table REPOSITORY_CHANGE modify column ID int auto_increment;

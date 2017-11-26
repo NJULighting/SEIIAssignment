@@ -1,6 +1,7 @@
 package nju.lighting.blservice.approvalblservice;
 
 
+import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.ResultMessage;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public interface ApprovalBLService {
-        ArrayList<HistoryDocVO> getDocumentList() ;
+    ArrayList<DocVO> getDocumentList() ;
 
     ResultMessage approve(HistoryDocVO vo) ;
 

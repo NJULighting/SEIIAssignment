@@ -7,16 +7,21 @@
 
     <session-factory>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/njult?serverTimezone=GMT%2B8</property>
+        <property name="connection.url">
+            <![CDATA[jdbc:mysql://localhost:3306/njult?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8]]>
+        </property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">false</property>
+        <property name="hibernate.id.new_generator_mappings">false</property>
 
         <mapping class="nju.lighting.po.commodity.CommodityItemPO" />
         <mapping class="nju.lighting.po.commodity.CommodityCategoryPO" />
         <mapping class="nju.lighting.po.repository.RepositoryChangePO" />
         <mapping class="nju.lighting.po.repository.RepositoryTableItemPO" />
+        <mapping class="nju.lighting.po.account.AccountPO" />
+        <mapping class="nju.lighting.po.account.AccountLogPO" />
 
     </session-factory>
 

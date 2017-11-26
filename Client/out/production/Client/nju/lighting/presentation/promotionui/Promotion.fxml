@@ -1,158 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111">
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="610.0" minWidth="-Infinity" prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Circle fill="#fffefe" layoutX="46.0" layoutY="46.0" radius="42.0" stroke="#b9b3b3" strokeType="INSIDE"/>
-        <ImageView fitHeight="45.0" fitWidth="63.0" layoutX="14.0" layoutY="23.0">
-            <image>
-                <Image url="@../../../../../../../../Desktop/NXV@%25ZS@23WXNHAX)PN(57Y.png"/>
-            </image>
-        </ImageView>
-        <VBox alignment="CENTER_LEFT" layoutX="99.0" layoutY="23.0" prefHeight="45.0" prefWidth="100.0" spacing="12.0">
+        <Pane layoutY="51.0" minHeight="600.0" prefHeight="600.0" prefWidth="1280.0">
             <children>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="身份：总经理" wrappingWidth="88.0"/>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID：XXXX" wrappingWidth="88.0"/>
-            </children>
-        </VBox>
-        <HBox layoutX="216.0" layoutY="34.0" spacing="40.0">
-            <children>
-                <Button mnemonicParsing="false" prefWidth="140.0" text="审批单据"/>
-                <Button mnemonicParsing="false" prefWidth="140.0" text="管理促销策略"/>
-                <Button mnemonicParsing="false" prefWidth="140.0" text="查看经营历程表"/>
-                <Button mnemonicParsing="false" prefWidth="140.0" text="查看经营情况表"/>
-                <Button mnemonicParsing="false" prefWidth="140.0" text="查看销售情况表"/>
-                <Button mnemonicParsing="false" prefWidth="140.0" text="查询日志"/>
-            </children>
-        </HBox>
-        <Pane layoutY="120.0" prefHeight="600.0" prefWidth="1280.0">
-            <children>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffefe" height="75.0" stroke="#c4c4c4"
-                           strokeType="INSIDE" width="1280.0"/>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffbfb" height="75.0" layoutY="75.0" stroke="#c4c4c4"
-                           strokeType="INSIDE" width="1280.0"/>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e9e7e7" height="75.0" layoutY="150.0" stroke="#c4c4c4"
-                           strokeType="INSIDE" width="1280.0"/>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffbfb" height="75.0" layoutY="225.0" stroke="#c4c4c4"
-                           strokeType="INSIDE" width="1280.0"/>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffbfb" height="75.0" layoutY="300.0" stroke="#c4c4c4"
-                           strokeType="INSIDE" width="1280.0"/>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffbfb" height="75.0" layoutY="375.0" stroke="#c4c4c4"
-                           strokeType="INSIDE" width="1280.0"/>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffbfb" height="75.0" layoutY="450.0" stroke="#c4c4c4"
-                           strokeType="INSIDE" width="1280.0"/>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffbfb" height="75.0" layoutY="525.0" stroke="#c4c4c4"
-                           strokeType="INSIDE" width="1280.0"/>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffefe" height="75.0" stroke="#c4c4c4" strokeType="INSIDE" width="1280.0" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffbfb" height="75.0" layoutY="75.0" stroke="#c4c4c4" strokeType="INSIDE" width="1280.0" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e9e7e7" height="75.0" layoutY="150.0" stroke="#c4c4c4" strokeType="INSIDE" width="1280.0" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffbfb" height="75.0" layoutY="225.0" stroke="#c4c4c4" strokeType="INSIDE" width="1280.0" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffbfb" height="75.0" layoutY="300.0" stroke="#c4c4c4" strokeType="INSIDE" width="1280.0" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffbfb" height="75.0" layoutY="375.0" stroke="#c4c4c4" strokeType="INSIDE" width="1280.0" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffbfb" height="75.0" layoutY="450.0" stroke="#c4c4c4" strokeType="INSIDE" width="1280.0" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffbfb" height="75.0" layoutY="525.0" stroke="#c4c4c4" strokeType="INSIDE" width="1280.0" />
                 <Text layoutX="42.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="国庆大促销">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="42.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="国庆大促销">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="42.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="国庆大促销">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="42.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="店庆大促销">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="42.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="店庆大促销">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="42.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="店庆大促销">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="322.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="针对用户级别">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="322.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="针对用户级别">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="322.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="针对商品总价">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="322.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="针对商品总价">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="350.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="特价包">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="350.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="特价包">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="619.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2017.10.1-2017.10.8">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="619.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2017.10.1-2017.10.8">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="619.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2017.10.1-2017.10.8">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="625.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2017.9.6-2017.9.26">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="625.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2017.9.6-2017.9.26">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text layoutX="624.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2017.9.6-2017.9.26">
                     <font>
-                        <Font size="19.0"/>
+                        <Font size="19.0" />
                     </font>
                 </Text>
                 <Text fill="#27aff3" layoutX="1067.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="打开">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Text>
                 <Text fill="#27aff3" layoutX="1152.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="删除">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Text>
             </children>
         </Pane>
-        <Button layoutX="1212.0" layoutY="87.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" text="新建"/>
+        <Button layoutX="1222.0" layoutY="14.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" text="新建" />
     </children>
 </Pane>

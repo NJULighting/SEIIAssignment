@@ -1,12 +1,36 @@
 package nju.lighting.po.commodity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "COMMODITY_CATEGORY")
 public class CommodityCategoryPO {
 
     private int id;
 
     private String name;
 
-    private int upperCategoryId = -1;
+    private Integer upperCategoryId = -1;
+
+    public CommodityCategoryPO() {
+
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(id);
+        builder.append(" ");
+        builder.append(name);
+        builder.append(" ");
+        builder.append(upperCategoryId);
+        return builder.toString();
+    }
+
+    public CommodityCategoryPO(String name, int upperCategoryId) {
+        this.name = name;
+        this.upperCategoryId = upperCategoryId;
+    }
 
     public CommodityCategoryPO(int id, String name, int upperCategoryId) {
         this.id = id;
@@ -14,6 +38,9 @@ public class CommodityCategoryPO {
         this.upperCategoryId = upperCategoryId;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     public int getId() {
         return id;
     }
@@ -22,6 +49,7 @@ public class CommodityCategoryPO {
         this.id = id;
     }
 
+    @Column(name = "NAME", nullable = false, length = 40)
     public String getName() {
         return name;
     }
@@ -30,11 +58,12 @@ public class CommodityCategoryPO {
         this.name = name;
     }
 
-    public int getUpperCategoryId() {
+    @Column(name = "UPPER_CATEGORY_ID")
+    public Integer getUpperCategoryId() {
         return upperCategoryId;
     }
 
-    public void setUpperCategoryId(int upperCategoryId) {
+    public void setUpperCategoryId(Integer upperCategoryId) {
         this.upperCategoryId = upperCategoryId;
     }
 }

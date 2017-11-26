@@ -62,7 +62,7 @@ public class UserBLServie_Stub implements UserBLService {
     @Override
     public ResultMessage logIn(String username, String password) {
         if ((username.equals("Frog 0") && password.equals("Excited"))
-                || (username.equals("Frog 1") && password.equals("Naive")))
+                || (username.equals("Frog1") && password.equals("Naive")))
             return ResultMessage.SUCCESS;
         return ResultMessage.FAILURE;
     }

@@ -197,7 +197,7 @@ public class CommodityItemPO {
         this.batchNumber = batchNumber;
     }
 
-    @Column(name = "DATA_OF_PRODUCTION", length = 40, nullable = false)
+    @Column(name = "DATA_OF_PRODUCTION", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     public Date getDateOfProduction() {
         return dateOfProduction;

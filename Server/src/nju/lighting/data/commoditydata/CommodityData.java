@@ -11,6 +11,11 @@ import shared.ResultMessage;
 import java.rmi.RemoteException;
 import java.util.List;
 
+/**
+ * Created on 2017/11/26.
+ * Description: 商品模块数据层实现
+ * @author iznauy
+ */
 public class CommodityData implements CommodityDataService {
 
     public CommodityData() {

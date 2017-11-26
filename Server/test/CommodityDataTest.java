@@ -10,6 +10,13 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+/**
+ * Created on 2017/11/26.
+ * Description: Commodity模块测试代码
+ * @author iznauy
+ * 测试通过情况：全部通过
+ * 最后测试时间：2017/11/26
+ */
 public class CommodityDataTest {
 
     private CommodityData commodityData = new CommodityData();

@@ -22,6 +22,7 @@
         <mapping class="nju.lighting.po.repository.RepositoryTableItemPO" />
         <mapping class="nju.lighting.po.account.AccountPO" />
         <mapping class="nju.lighting.po.account.AccountLogPO" />
+        <mapping class="nju.lighting.po.UserPO" />
 
     </session-factory>
 

@@ -29,7 +29,7 @@ public interface UserBLService {
     String generateJobNum(UserVO vo);
 
     // id 是登录者的工号
-    TwoTuple<UserPO, LoginReturnState> login(String id, String password);
+    TwoTuple<UserVO, LoginReturnState> login(String id, String password);
 
     ResultMessage logOut(UserVO vo);
 }

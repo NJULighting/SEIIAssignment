@@ -39,6 +39,16 @@ public class AccountPO implements Serializable {
         this.changeLogs = changeLogs;
     }
 
+    @Override
+    public String toString() {
+        return "AccountPO{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", amount=" + amount +
+                ", changeLogs=" + changeLogs +
+                '}';
+    }
+
     @Id
     @Column(name = "ID", nullable = false, length = 20)
     public String getId() {

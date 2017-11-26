@@ -21,7 +21,4 @@ public interface LogDataService extends Remote {
 
     LogPO find(LogFilter filter) throws RemoteException;
 
-    void init() throws RemoteException;
-
-    void finish() throws RemoteException;
 }

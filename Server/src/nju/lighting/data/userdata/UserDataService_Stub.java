@@ -3,8 +3,11 @@ package nju.lighting.data.userdata;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.UserPO;
 import shared.Identity;
+import shared.LoginReturnState;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -13,29 +16,10 @@ import java.util.ArrayList;
  * @author Liao
  */
 public class UserDataService_Stub implements UserDataService {
-    @Override
-    public void init() {
-        System.out.println("init");
-    }
-
-    @Override
-    public void finish() {
-        System.out.println("finish");
-    }
 
     @Override
     public ResultMessage insert(UserPO po) {
         return po == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
-    }
-
-    @Override
-    public ArrayList<UserPO> find(String keyword) {
-        UserPO frog = new UserPO("Frog", "Excited", "0000", Identity.GENERAL, false);
-        UserPO journalist = new UserPO("Journalist", "Naive", "0001", Identity.SALE, false);
-        ArrayList<UserPO> users = new ArrayList<>();
-        users.add(frog);
-        users.add(journalist);
-        return keyword.isEmpty() ? null : users;
     }
 
     @Override
@@ -49,8 +33,8 @@ public class UserDataService_Stub implements UserDataService {
     }
 
     @Override
-    public ResultMessage delete(UserPO po) {
-        return po == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
+    public ResultMessage delete(String id) throws RemoteException {
+        return null;
     }
 
     @Override
@@ -59,12 +43,7 @@ public class UserDataService_Stub implements UserDataService {
     }
 
     @Override
-    public ResultMessage logIn(UserPO po) {
-        return po == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
-    }
-
-    @Override
-    public ResultMessage logOut(UserPO po) {
-        return po == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
+    public TwoTuple<UserPO, LoginReturnState> login(String id, String password) throws RemoteException {
+        return null;
     }
 }

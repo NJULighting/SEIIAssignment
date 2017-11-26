@@ -1,12 +1,8 @@
 package nju.lighting.presentation.mainui;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,15 +13,15 @@ import java.io.IOException;
  *
  * @author 陈俊宇
  */
-public class GeneralMainUI {
+public class MainUI {
     /**
      * 总经理主界面的初始化
      * @throws IOException
      */
-    public GeneralMainUI() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("GeneralManager.fxml"));
+    public MainUI(String url) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
         Pane temp= loader.load();
-        GeneralManagerController controller = loader.getController();
+        MainUIController controller = loader.getController();
 
         controller.up =temp;
         controller.root.getChildren().add(controller.up);
@@ -34,7 +30,7 @@ public class GeneralMainUI {
         controller.jumpTo(0);
         Stage stage=new Stage();
         stage.setScene(controller.scene);
-        MainUIController.setPrimaryStage(stage);
+        LoginController.setPrimaryStage(stage);
 
     }
 }

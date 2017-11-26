@@ -64,10 +64,21 @@ public class UserBLServie_Stub implements UserBLService {
     @Override
     public TwoTuple<UserVO, LoginReturnState> login(String id, String password) {
         TwoTuple<UserVO, LoginReturnState> res = new TwoTuple<>();
-        if (id.equals("0000")) {
+        if (id.equals("zjl")) {
             // Password right
-            if (password.equals("Excited")) {
+            if (password.equals("1")) {
                 res.t = getUser("0");
+                res.r = LoginReturnState.SUCCESS;
+                return res;
+            } else {
+                // Password wrong
+                res.r = LoginReturnState.INVALID_PASSWORD;
+                return res;
+            }
+        }else if(id.equals("kc")){
+            // Password right
+            if (password.equals("1")) {
+                res.t = getUser("1");
                 res.r = LoginReturnState.SUCCESS;
                 return res;
             } else {

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="200.0" onMouseDragged="#Drag" onMousePressed="#getOffSet" prefHeight="330.0" prefWidth="430.0" style="-fx-background-radius: 10px;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.MainUIController">
+<AnchorPane minHeight="200.0" onMouseDragged="#Drag" onMousePressed="#getOffSet" prefHeight="330.0" prefWidth="430.0" style="-fx-background-radius: 10px;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.LoginController">
    <children>
       <JFXTextField fx:id="account" focusColor="#5599ff" layoutX="133.0" layoutY="109.0" prefHeight="23.0" prefWidth="162.0" />
       <JFXPasswordField fx:id="password" focusColor="#5599ff" layoutX="133.0" layoutY="150.0" onKeyPressed="#loginByEnter" prefHeight="23.0" prefWidth="162.0" />

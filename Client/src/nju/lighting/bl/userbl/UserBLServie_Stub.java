@@ -1,9 +1,11 @@
 package nju.lighting.bl.userbl;
 
 import nju.lighting.blservice.userblservice.UserBLService;
-import shared.Identity;
 import nju.lighting.vo.UserVO;
+import shared.Identity;
+import shared.LoginReturnState;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.util.ArrayList;
 
@@ -60,11 +62,23 @@ public class UserBLServie_Stub implements UserBLService {
     }
 
     @Override
-    public ResultMessage login(String id, String password) {
-        if ((id.equals("Frog 0") && password.equals("Excited"))
-                || (id.equals("Frog1") && password.equals("Naive")))
-            return ResultMessage.SUCCESS;
-        return ResultMessage.FAILURE;
+    public TwoTuple<UserVO, LoginReturnState> login(String id, String password) {
+        TwoTuple<UserVO, LoginReturnState> res = new TwoTuple<>();
+        if (id.equals("0000")) {
+            // Password right
+            if (password.equals("Excited")) {
+                res.t = getUser("0");
+                res.r = LoginReturnState.SUCCESS;
+                return res;
+            } else {
+                // Password wrong
+                res.r = LoginReturnState.INVALID_PASSWORD;
+                return res;
+            }
+        }
+        // User not existed
+        res.r = LoginReturnState.INVALID_USER_NAME;
+        return res;
     }
 
     @Override

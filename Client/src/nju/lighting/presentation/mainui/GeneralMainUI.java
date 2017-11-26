@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -29,12 +28,9 @@ public class GeneralMainUI {
 
         controller.up =temp;
         controller.root.getChildren().add(controller.up);
-
         controller.scene = new Scene(controller.root);
         controller.jumpTo(0);
-        Stage stage=new Stage();
-        stage.setScene(controller.scene);
-        MainUIController.setPrimaryStage(stage);
+
 
     }
 }

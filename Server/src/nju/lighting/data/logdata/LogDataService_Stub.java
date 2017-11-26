@@ -35,13 +35,4 @@ public class LogDataService_Stub implements LogDataService {
         return filter == null ? null : log;
     }
 
-    @Override
-    public void init() {
-        System.out.println("init");
-    }
-
-    @Override
-    public void finish() {
-        System.out.println("finish");
-    }
 }

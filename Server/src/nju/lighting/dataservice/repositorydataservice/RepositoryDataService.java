@@ -15,6 +15,6 @@ public interface RepositoryDataService extends Remote {
 
     RepositoryTablePO getRepositoryTable() throws RemoteException;
 
-    ResultMessage changeRepository(RepositoryChangePO changePO);
+    ResultMessage changeRepository(RepositoryChangePO changePO) throws RemoteException;
 
 }

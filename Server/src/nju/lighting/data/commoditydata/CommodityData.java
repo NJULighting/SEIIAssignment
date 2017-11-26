@@ -9,7 +9,6 @@ import org.hibernate.query.Query;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CommodityData implements CommodityDataService {
@@ -44,7 +43,7 @@ public class CommodityData implements CommodityDataService {
         List<CommodityCategoryPO> categoryPOS = null;
         try {
             session.getTransaction().begin();
-            String sql = "select comC form " + CommodityCategoryPO.class.getName() + " comC ";
+            String sql = "select comC from " + CommodityCategoryPO.class.getName() + " comC ";
             Query<CommodityCategoryPO> query = session.createQuery(sql);
             categoryPOS = query.getResultList();
             session.getTransaction().commit();
@@ -119,7 +118,17 @@ public class CommodityData implements CommodityDataService {
 
     @Override
     public ResultMessage update(CommodityItemPO commodityItemPO) throws RemoteException {
-        return null;
+        Session session = HibernateUtils.getCurrentSession();
+        try {
+            session.getTransaction().begin();
+
+        } catch (Exception e) {
+            session.getTransaction().rollback();;
+            return ResultMessage.FAILURE;
+        } finally {
+            HibernateUtils.closeSession();
+        }
+        return ResultMessage.SUCCESS;
     }
 
     @Override

@@ -18,7 +18,7 @@ public class AccountLogPO implements Serializable{
     private String accountID;
     private AccountChangeType type;
 
-    public AccountLogPO(Date time, int delta, int amount, AccountChangeType type, String accountID) {
+    public AccountLogPO(Date time, double delta, double amount, AccountChangeType type, String accountID) {
         this.accountID = accountID;
         this.time = time;
         this.delta = delta;

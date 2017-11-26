@@ -8,7 +8,7 @@
     <session-factory>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">
-            <![CDATA[jdbc:mysql://localhost:3306/njult?useUnicode=true&characterEncoding=utf8]]>
+            <![CDATA[jdbc:mysql://localhost:3306/njult?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8]]>
         </property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
@@ -20,6 +20,8 @@
         <mapping class="nju.lighting.po.commodity.CommodityCategoryPO" />
         <mapping class="nju.lighting.po.repository.RepositoryChangePO" />
         <mapping class="nju.lighting.po.repository.RepositoryTableItemPO" />
+        <mapping class="nju.lighting.po.account.AccountPO" />
+        <mapping class="nju.lighting.po.account.AccountLogPO" />
 
     </session-factory>
 

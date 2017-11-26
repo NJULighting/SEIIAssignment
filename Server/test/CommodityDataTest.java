@@ -54,7 +54,7 @@ public class CommodityDataTest {
 
     @Test
     public void add() throws Exception {
-        CommodityItemPO po = new CommodityItemPO("2-0002", "美国大燃油灯", 2, "燃油",
+        CommodityItemPO po = new CommodityItemPO("2-0006", "美国大燃油灯", 2, "燃油",
                 100, 100, 1000,
                 1000, 1000, "第三批", "003", new Date());
         ResultMessage message = commodityData.add(po);

@@ -23,6 +23,10 @@ public class AccountChangeLogList {
     }
 
     public ArrayList<AccountLogPO> toPOLogList() {
+        ArrayList<AccountLogPO> res = new ArrayList<>();
+        for (AccountChangeLog log : logList) {
+            res.add()
+        }
         return null; // TODO: 2017/11/21 add code here
     }
 

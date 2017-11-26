@@ -31,4 +31,8 @@ public class AccountChangeLog {
     public AccountChangeLog(AccountLogPO po) {
         this(po.getTime(), po.getDelta(), po.getAmount(), po.getType());
     }
+
+    public AccountLogPO toPO(String accountID) {
+        return new AccountLogPO(time, delta, amount, type, accountID);
+    }
 }

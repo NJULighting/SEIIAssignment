@@ -1,6 +1,7 @@
 package nju.lighting.data.accountdata;
 
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
+import nju.lighting.po.account.AccountLogPO;
 import nju.lighting.po.account.AccountPO;
 import shared.ResultMessage;
 
@@ -44,22 +45,17 @@ public class AccountDataService_Stub extends UnicastRemoteObject implements Acco
     }
 
     @Override
-    public ResultMessage delete(AccountPO po) throws RemoteException {
-        return po == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
-    }
-
-    @Override
-    public void finish() throws RemoteException {
-        System.out.println("Finish");
-    }
-
-    @Override
-    public void init() throws RemoteException {
-        System.out.println("Init");
+    public ResultMessage delete(String id) throws RemoteException {
+        return id == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
     }
 
     @Override
     public ResultMessage update(AccountPO po) throws RemoteException {
         return po == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
+    }
+
+    @Override
+    public ResultMessage add(AccountLogPO logPO) {
+        return null;
     }
 }

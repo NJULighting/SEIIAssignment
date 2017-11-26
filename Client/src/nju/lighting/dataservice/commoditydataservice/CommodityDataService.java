@@ -6,11 +6,11 @@ import shared.ResultMessage;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface CommodityDataService extends Remote {
 
-    ArrayList<CommodityItemPO> getAllCommodity() throws RemoteException;
+    List<CommodityItemPO> getAllCommodity() throws RemoteException;
 
     CommodityItemPO findById(String id) throws RemoteException;
 
@@ -20,9 +20,9 @@ public interface CommodityDataService extends Remote {
 
     ResultMessage deleteCommodity(String id) throws RemoteException;
 
-    ArrayList<CommodityItemPO> findByName(String name) throws RemoteException;
+    List<CommodityItemPO> findByName(String name) throws RemoteException;
 
-    ArrayList<CommodityCategoryPO> getAllCommodityCategory() throws RemoteException;
+    List<CommodityCategoryPO> getAllCommodityCategory() throws RemoteException;
 
     ResultMessage add(CommodityCategoryPO commodityCategoryPO) throws RemoteException;
 

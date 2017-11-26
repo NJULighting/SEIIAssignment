@@ -114,6 +114,7 @@ public class CommodityData implements CommodityDataService {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+            e.printStackTrace();
             return ResultMessage.FAILURE;
         } finally {
             HibernateUtils.closeSession();
@@ -143,7 +144,7 @@ public class CommodityData implements CommodityDataService {
         try {
             session.getTransaction().begin();
             String sql = "delete " + CommodityItemPO.class.getName()
-                    + " where id=:id ";;
+                    + " com where com.id=:id ";;
             Query query = session.createQuery(sql);
             query.setParameter("id", id);
             query.executeUpdate();

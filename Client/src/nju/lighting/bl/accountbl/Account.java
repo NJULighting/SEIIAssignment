@@ -32,7 +32,7 @@ public class Account {
         this.id = id;
         this.amount = amount;
         this.name = name;
-
+        logList = new AccountChangeLogList();
     }
 
     /**

@@ -31,8 +31,52 @@ public class CommodityItemPO {
 
     private Date dateOfProduction;
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(id);
+        builder.append(" ");
+        builder.append(name);
+        builder.append(" ");
+        builder.append(categoryId);
+        builder.append(" ");
+        builder.append(modelNumber);
+        builder.append(" ");
+        builder.append(repCount);
+        builder.append(" ");
+        builder.append(inPrice);
+        builder.append(" ");
+        builder.append(sellPrice);
+        builder.append(" ");
+        builder.append(recentInPrice);
+        builder.append(" ");
+        builder.append(recentSellPrice);
+        builder.append(" ");
+        builder.append(batch);
+        builder.append(" ");
+        builder.append(batchNumber);
+        builder.append(" ");
+        builder.append(dateOfProduction);
+        return builder.toString();
+    }
+
+
     public CommodityItemPO() {
 
+    }
+
+    public void copy(CommodityItemPO commodityItemPO) { //拷贝函数
+        this.name = commodityItemPO.name;
+        this.categoryId = commodityItemPO.categoryId;
+        this.modelNumber = commodityItemPO.modelNumber;
+        this.repCount = commodityItemPO.repCount;
+        this.inPrice = commodityItemPO.inPrice;
+        this.sellPrice = commodityItemPO.sellPrice;
+        this.recentInPrice = commodityItemPO.recentInPrice;
+        this.recentSellPrice = commodityItemPO.recentSellPrice;
+        this.batch = commodityItemPO.batch;
+        this.batchNumber = commodityItemPO.batchNumber;
+        this.dateOfProduction = commodityItemPO.dateOfProduction;
     }
 
     public CommodityItemPO(String id, String name, int categoryId, String modelNumber,

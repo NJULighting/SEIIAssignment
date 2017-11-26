@@ -10,10 +10,21 @@ public class CommodityCategoryPO {
 
     private String name;
 
-    private int upperCategoryId = -1;
+    private Integer upperCategoryId = -1;
 
     public CommodityCategoryPO() {
 
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(id);
+        builder.append(" ");
+        builder.append(name);
+        builder.append(" ");
+        builder.append(upperCategoryId);
+        return builder.toString();
     }
 
     public CommodityCategoryPO(int id, String name, int upperCategoryId) {
@@ -43,11 +54,11 @@ public class CommodityCategoryPO {
     }
 
     @Column(name = "UPPER_CATEGORY_ID")
-    public int getUpperCategoryId() {
+    public Integer getUpperCategoryId() {
         return upperCategoryId;
     }
 
-    public void setUpperCategoryId(int upperCategoryId) {
+    public void setUpperCategoryId(Integer upperCategoryId) {
         this.upperCategoryId = upperCategoryId;
     }
 }

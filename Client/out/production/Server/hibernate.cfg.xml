@@ -20,6 +20,8 @@
         <mapping class="nju.lighting.po.commodity.CommodityCategoryPO" />
         <mapping class="nju.lighting.po.repository.RepositoryChangePO" />
         <mapping class="nju.lighting.po.repository.RepositoryTableItemPO" />
+        <mapping class="nju.lighting.po.account.AccountPO" />
+        <mapping class="nju.lighting.po.account.AccountLogPO" />
 
     </session-factory>
 

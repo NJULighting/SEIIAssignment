@@ -1,5 +1,6 @@
 package nju.lighting.dataservice.accountdataservice;
 
+import nju.lighting.po.account.AccountLogPO;
 import nju.lighting.po.account.AccountPO;
 import shared.ResultMessage;
 
@@ -20,7 +21,9 @@ public interface AccountDataService extends Remote {
 
     List<AccountPO> getAll() throws RemoteException;
 
-    ResultMessage delete(AccountPO po) throws RemoteException;
+    ResultMessage delete(String id) throws RemoteException;
 
     ResultMessage update(AccountPO po) throws RemoteException;
+
+    ResultMessage add(AccountLogPO logPO);
 }

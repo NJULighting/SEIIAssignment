@@ -4,7 +4,9 @@ import nju.lighting.dataservice.customerdataservice.CustomerDataService;
 import nju.lighting.po.customer.CustomerPO;
 import shared.CustomerGrade;
 import shared.CustomerType;
+import shared.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class CustomerDataService_Stub implements CustomerDataService {
@@ -12,13 +14,13 @@ public class CustomerDataService_Stub implements CustomerDataService {
     ArrayList<CustomerPO> customerList = new ArrayList<CustomerPO>();
 
     public CustomerDataService_Stub(){
-        CustomerPO customer = new CustomerPO(000001, CustomerType.SALESPERSON, CustomerGrade.ONE,"许瑞"
+        CustomerPO customer = new CustomerPO("000001", CustomerType.SALESPERSON, CustomerGrade.ONE,"许瑞"
                 ,"17015235309","江苏南京","210008","257649998@164.com"
                 ,1000,230,0,"黄海");
 
         customerList.add(customer);
 
-        customer = new CustomerPO(000002, CustomerType.SUPPLIER, CustomerGrade.FIVE,"韩杨"
+        customer = new CustomerPO("000002", CustomerType.SUPPLIER, CustomerGrade.FIVE,"韩杨"
                 ,"18445238801","江苏苏州","215002","1036496770@164.com"
                 ,1000,20,900,"黄海");
 
@@ -53,34 +55,38 @@ public class CustomerDataService_Stub implements CustomerDataService {
 
     }
 
-    public void insertCustomer(CustomerPO po){
-        System.out.println("Insert Succeed!\n");
+    @Override
+    public ResultMessage insertCustomer(CustomerPO po) throws RemoteException {
+        return null;
     }
 
-    public void deleteCustomer(CustomerPO po){
-        System.out.println("Delete Succeed!\n");
+    @Override
+    public ResultMessage deleteCustomer(String id) throws RemoteException {
+        return null;
     }
 
-    public void updateCustomer(CustomerPO po){
-        System.out.println("Update Succeed!\n");
+    @Override
+    public ResultMessage updateCustomer(CustomerPO po) throws RemoteException {
+        return null;
     }
 
-    public int getNextCustomerID() { return 000003; }
-
-    /**
-     * 若增加客户应收，amount为正数，反之为负
-     * @param amount
-     */
-    public void changeReceivable(String customerId,double amount){
-        System.out.println("Change Receivable Succeed!\n");
+    @Override
+    public CustomerPO getCustomerById(String id) throws RemoteException {
+        return null;
     }
 
-    /**
-     * 若增加客户应付，amount为正数，反之为负
-     * @param amount
-     */
-    public void changePayable(String customerId,double amount){
-        System.out.println("Change Payable Succeed!\n");
+    @Override
+    public ResultMessage changeReceivable(String customerId, double amount) throws RemoteException {
+        return null;
     }
 
+    @Override
+    public ResultMessage changePayable(String customerId, double amount) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ResultMessage changeReceivableLimit(String customerId, double amount) throws RemoteException {
+        return null;
+    }
 }

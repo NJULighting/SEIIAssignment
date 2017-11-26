@@ -23,6 +23,7 @@
         <mapping class="nju.lighting.po.account.AccountPO" />
         <mapping class="nju.lighting.po.account.AccountLogPO" />
         <mapping class="nju.lighting.po.UserPO" />
+        <mapping class="nju.lighting.po.customer.CustomerPO" />
 
     </session-factory>
 

@@ -1,35 +1,36 @@
 package nju.lighting.dataservice.customerdataservice;
 
 import nju.lighting.po.customer.CustomerPO;
+import shared.ResultMessage;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface CustomerDataService extends Remote {
 
-     ArrayList<CustomerPO> getAllCustomer() throws RemoteException;
+     List<CustomerPO> getAllCustomer() throws RemoteException;
 
-     ArrayList<CustomerPO> findCustomer(String keyword) throws RemoteException;
+     ResultMessage insertCustomer(CustomerPO po) throws RemoteException;
 
-     void insertCustomer(CustomerPO po) throws RemoteException;
+     ResultMessage deleteCustomer(String id) throws RemoteException;
 
-     void deleteCustomer(CustomerPO po) throws RemoteException;
+     ResultMessage updateCustomer(CustomerPO po) throws RemoteException;
 
-     void updateCustomer(CustomerPO po) throws RemoteException;
-
-     int getNextCustomerID() throws RemoteException;
+     CustomerPO getCustomerById(String id) throws RemoteException;
 
      /**
       * 若增加客户应收，amount为正数，反之为负
       * @param amount
       */
-     void changeReceivable(String customerId, double amount) throws RemoteException;
+     ResultMessage changeReceivable(String customerId, double amount) throws RemoteException;
+
+     ResultMessage changeReceivableLimit(String customerId, double amount) throws RemoteException;
 
      /**
       * 若增加客户应付，amount为正数，反之为负
       * @param amount
       */
-     void changePayable(String customerId, double amount) throws RemoteException;
+     ResultMessage changePayable(String customerId, double amount) throws RemoteException;
 
 }

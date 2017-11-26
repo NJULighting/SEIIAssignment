@@ -27,6 +27,11 @@ public class CommodityCategoryPO {
         return builder.toString();
     }
 
+    public CommodityCategoryPO(String name, int upperCategoryId) {
+        this.name = name;
+        this.upperCategoryId = upperCategoryId;
+    }
+
     public CommodityCategoryPO(int id, String name, int upperCategoryId) {
         this.id = id;
         this.name = name;
@@ -34,7 +39,7 @@ public class CommodityCategoryPO {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     public int getId() {
         return id;

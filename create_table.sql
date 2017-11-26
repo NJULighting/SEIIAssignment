@@ -357,3 +357,6 @@ CREATE TABLE SALES_DOC_ITEM (
 	REMARKS varchar(300),
 	primary key(ID)
 );
+
+#部分修改
+alter table COMMODITY_CATEGORY modify column ID int auto_increment;

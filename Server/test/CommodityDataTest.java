@@ -51,7 +51,37 @@ public class CommodityDataTest {
                 100, 100, 1000,
                 1000, 1000, "第三批", "003", new Date());
         ResultMessage message = commodityData.add(po);
-        assertEquals(message, ResultMessage.SUCCESS);
+        assertEquals(ResultMessage.SUCCESS, message);
+    }
+
+    @Test
+    public void update() throws Exception {
+        CommodityItemPO po = new CommodityItemPO("2-0001", "美国燃油灯", 2, "燃油",
+                1000, 1000, 1000,
+                1000, 1000, "第三批", "003", new Date());
+        ResultMessage message = commodityData.update(po);
+        assertEquals(ResultMessage.SUCCESS, message);
+    }
+
+    @Test
+    public void deleteCommodity() throws Exception {
+        String id = "2-0001";
+        ResultMessage message = commodityData.deleteCommodity(id);
+        assertEquals(ResultMessage.SUCCESS, message);
+    }
+
+    @Test
+    public void addCategory() throws Exception {
+        CommodityCategoryPO categoryPO = new CommodityCategoryPO ("意大利炮", -1);
+        ResultMessage message = commodityData.add(categoryPO);
+        assertEquals(ResultMessage.SUCCESS, message);
+    }
+
+    @Test
+    public void deleteCategory() throws Exception {
+        int id = 5;
+        ResultMessage message = commodityData.deleteCategory(id);
+        assertEquals(ResultMessage.SUCCESS, message);
     }
 
 }

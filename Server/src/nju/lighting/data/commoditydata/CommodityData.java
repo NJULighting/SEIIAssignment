@@ -121,7 +121,8 @@ public class CommodityData implements CommodityDataService {
         Session session = HibernateUtils.getCurrentSession();
         try {
             session.getTransaction().begin();
-
+            session.update(commodityItemPO);
+            session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();;
             return ResultMessage.FAILURE;
@@ -133,7 +134,23 @@ public class CommodityData implements CommodityDataService {
 
     @Override
     public ResultMessage deleteCommodity(String id) throws RemoteException {
-        return null;
+        Session session = HibernateUtils.getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            String sql = "delete " + CommodityItemPO.class.getName()
+                    + " where id=:id ";;
+            Query query = session.createQuery(sql);
+            query.setParameter("id", id);
+            query.executeUpdate();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+            return ResultMessage.FAILURE;
+        } finally {
+            HibernateUtils.closeSession();
+        }
+        return ResultMessage.SUCCESS;
     }
 
     @Override
@@ -156,6 +173,22 @@ public class CommodityData implements CommodityDataService {
 
     @Override
     public ResultMessage deleteCategory(int id) throws RemoteException {
-        return null;
+        Session session = HibernateUtils.getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            String sql = "delete " + CommodityCategoryPO.class.getName()
+                    + " where id=:id ";
+            Query query = session.createQuery(sql);
+            query.setParameter("id", id);
+            query.executeUpdate();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+            return ResultMessage.FAILURE;
+        } finally {
+            HibernateUtils.closeSession();
+        }
+        return ResultMessage.SUCCESS;
     }
 }

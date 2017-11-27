@@ -22,17 +22,21 @@ class AccountChangeLogList {
     }
 
     public AccountChangeLogList(List<AccountLogPO> changeLogs) {
-        for (AccountLogPO po : changeLogs) {
-            logList.add(new AccountChangeLog(po));
-        }
+        // Check null
+        if (changeLogs == null)
+            logList = new ArrayList<>();
+        else
+            for (AccountLogPO po : changeLogs) {
+                logList.add(new AccountChangeLog(po));
+            }
     }
 
     /**
      * Add a account log
-     * @param time time of log
-     * @param delta delta of amount
+     * @param time   time of log
+     * @param delta  delta of amount
      * @param amount amount after changed
-     * @param type type of this change
+     * @param type   type of this change
      */
     void addLog(Date time, double delta, double amount, AccountChangeType type) {
         logList.add(new AccountChangeLog(time, delta, amount, type));

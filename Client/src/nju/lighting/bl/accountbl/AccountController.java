@@ -31,7 +31,7 @@ public class AccountController implements AccountBLService {
 
     @Override
     public AccountVO getAccount(String id) {
-        return null;
+        return accountManager.getAccount(id);
     }
 
     @Override

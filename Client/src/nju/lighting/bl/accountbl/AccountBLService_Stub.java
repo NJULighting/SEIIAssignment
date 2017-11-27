@@ -37,9 +37,9 @@ public class AccountBLService_Stub implements AccountBLService {
     public AccountVO getAccount(String id) {
         AccountVO accountVO;
         if (id.equals("0"))
-            accountVO = new AccountVO("Test Account 0", 100000, null);
+            accountVO = new AccountVO("0001", "Test Account 0", 100000, null);
         else
-            accountVO = new AccountVO("Test Account 1", 1000000, null);
+            accountVO = new AccountVO("0002", "Test Account 1", 1000000, null);
         return accountVO;
     }
 

@@ -60,6 +60,12 @@ public class AccountManager {
         }
     }
 
+    /**
+     * Get account with the id input
+     * @param id id of the account
+     * @return <code>null</code> if no account has this id<br>
+     *     account with this id if it exists
+     */
     AccountVO getAccount(String id) {
         try {
             AccountPO po = accountDataService.get(id);

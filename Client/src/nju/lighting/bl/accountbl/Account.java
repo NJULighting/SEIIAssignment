@@ -26,16 +26,17 @@ public class Account {
 
     /**
      * Create a new account
-     * @param id id of account
+     * @param id     id of account
      * @param amount initial amount
-     * @param name account's name
+     * @param name   account's name
      */
     public Account(String id, double amount, String name) {
         this.id = id;
         this.amount = amount;
         this.name = name;
         logList = new AccountChangeLogList();
-        logList.addLog(Calendar.getInstance().getTime(), amount, amount, AccountChangeType.IN);
+        if (amount != 0)
+            logList.addLog(Calendar.getInstance().getTime(), amount, amount, AccountChangeType.IN);
     }
 
     /**
@@ -51,7 +52,7 @@ public class Account {
      * @return account vo
      */
     AccountVO toVO() {
-        return new AccountVO(name, amount, logList.toVOLogList());
+        return new AccountVO(id, name, amount, logList.toVOLogList());
     }
 
     public String getId() {

@@ -1,6 +1,7 @@
 package nju.lighting.bl.accountbl;
 
 import nju.lighting.po.account.AccountPO;
+import nju.lighting.vo.account.AccountVO;
 import org.junit.Ignore;
 import org.junit.Test;
 import shared.ResultMessage;
@@ -30,8 +31,15 @@ public class AccountManagerTest {
     }
 
     @Test
-    public void getAccount() throws Exception {
-
+    public void getAccountFailedTest() throws Exception {
+        assertNull(manager.getAccount("not found"));
     }
 
+    @Test
+    public void getAccountSucceedTest() throws Exception {
+        AccountVO target = manager.getAccount("0001");
+        assertEquals("0001", target.getId());
+        assertEquals("Frog Account", target.getName());
+        assertTrue(target.getAccountLogs().isEmpty());
+    }
 }

@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/11/26.
- * Description
+ * Description  库存管理人员的主界面
  *
  * @author 陈俊宇
  */
@@ -31,11 +31,7 @@ public class RepositoryManagerMainUIController extends MainUIController{
     public void initialize(URL location, ResourceBundle resources) {
         buttons = new Button[]{HistoryBtn,CommodityBtn,miniBtn,closeBtn};
         urls = new String[]{"../documentui/HistoryDoc.fxml","../commodityui/CommodityUI.fxml"};
-
         MAIN_BUTTON_SIZE = 2;
-        bottoms = new Pane[MAIN_BUTTON_SIZE];
-        root = new VBox();
-
         super.initialize(location, resources);
     }
 }

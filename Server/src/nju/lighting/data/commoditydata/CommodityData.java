@@ -1,5 +1,6 @@
 package nju.lighting.data.commoditydata;
 
+import nju.lighting.data.utils.CommonOperation;
 import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
@@ -18,68 +19,28 @@ import java.util.List;
  */
 public class CommodityData implements CommodityDataService {
 
-    public CommodityData() {
+    private CommonOperation<CommodityItemPO> commodityItemPOCommonOperation;
 
+    private CommonOperation<CommodityCategoryPO> categoryPOCommonOperation;
+
+    public CommodityData() {
+        this.commodityItemPOCommonOperation = new CommonOperation<>(CommodityItemPO.class.getName());
+        this.categoryPOCommonOperation = new CommonOperation<>(CommodityCategoryPO.class.getName());
     }
 
     @Override
     public List<CommodityItemPO> getAllCommodity() throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        List<CommodityItemPO> commodityItemPOs = null;
-        try {
-            session.getTransaction().begin();
-            String sql = "select com from " + CommodityItemPO.class.getName()
-                    + " com ";
-            Query<CommodityItemPO> query = session.createQuery(sql);
-            commodityItemPOs = query.getResultList();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return commodityItemPOs;
+        return commodityItemPOCommonOperation.getAll();
     }
 
     @Override
     public List<CommodityCategoryPO> getAllCommodityCategory() throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        List<CommodityCategoryPO> categoryPOS = null;
-        try {
-            session.getTransaction().begin();
-            String sql = "select comC from " + CommodityCategoryPO.class.getName() + " comC ";
-            Query<CommodityCategoryPO> query = session.createQuery(sql);
-            categoryPOS = query.getResultList();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return categoryPOS;
+        return categoryPOCommonOperation.getAll();
     }
 
     @Override
     public CommodityItemPO findById(String id) throws RemoteException {
-        CommodityItemPO commodityItemPO = null;
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            String sql = "select com from " + CommodityItemPO.class.getName()
-                    + " com where com.id=:id";
-            Query<CommodityItemPO> query = session.createQuery(sql);
-            query.setParameter("id", id);
-            commodityItemPO = query.getSingleResult();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return commodityItemPO;
+        return commodityItemPOCommonOperation.getBySingleField("id", id);
     }
 
     @Override
@@ -106,75 +67,22 @@ public class CommodityData implements CommodityDataService {
 
     @Override
     public ResultMessage add(CommodityItemPO commodityItemPO) throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            session.persist(commodityItemPO);
-            session.flush();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return ResultMessage.FAILURE;
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return ResultMessage.SUCCESS;
+        return commodityItemPOCommonOperation.add(commodityItemPO);
     }
 
     @Override
     public ResultMessage update(CommodityItemPO commodityItemPO) throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            session.update(commodityItemPO);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            session.getTransaction().rollback();;
-            return ResultMessage.FAILURE;
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return ResultMessage.SUCCESS;
+        return commodityItemPOCommonOperation.update(commodityItemPO);
     }
 
     @Override
     public ResultMessage deleteCommodity(String id) throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            String sql = "delete " + CommodityItemPO.class.getName()
-                    + " com where com.id=:id ";;
-            Query query = session.createQuery(sql);
-            query.setParameter("id", id);
-            query.executeUpdate();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return ResultMessage.FAILURE;
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return ResultMessage.SUCCESS;
+        return commodityItemPOCommonOperation.deleteBySingleField("id", id);
     }
 
     @Override
     public ResultMessage add(CommodityCategoryPO commodityCategoryPO) throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            session.persist(commodityCategoryPO);
-            session.flush();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return ResultMessage.FAILURE;
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return ResultMessage.SUCCESS;
+        return categoryPOCommonOperation.add(commodityCategoryPO);
     }
 
     @Override

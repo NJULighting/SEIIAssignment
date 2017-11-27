@@ -1,5 +1,6 @@
 package nju.lighting.data.userdata;
 
+import nju.lighting.data.utils.CommonOperation;
 import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.UserPO;
@@ -16,111 +17,47 @@ import java.util.List;
 /**
  * Created on 2017/11/26.
  * Description: User的数据层模块
- *
+ * 11.26日完成，27日重构 通过全部测试
  * @author iznauy
  */
 public class UserData implements UserDataService {
 
     /**
+     * 聚合一个CommonOperation
+     */
+    private CommonOperation<UserPO> commonOperation = null;
+
+    /**
      * 无参构造器
      */
-    public UserData() {}
+    public UserData() {
+        this.commonOperation = new CommonOperation<>(UserPO.class.getName());
+    }
 
 
     @Override
     public ResultMessage insert(UserPO po) throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            session.persist(po);
-            session.flush();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-            return ResultMessage.FAILURE;
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return ResultMessage.SUCCESS;
+        return commonOperation.add(po);
     }
 
     @Override
     public UserPO get(String id) throws RemoteException {
-        UserPO userPO = null;
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            String sql = "select user from " + UserPO.class.getName()
-                    + " user where user.id=:id";
-            Query<UserPO> query = session.createQuery(sql);
-            query.setParameter("id", id);
-            userPO = query.getSingleResult();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return userPO;
+        return commonOperation.getBySingleField("id", id);
     }
 
     @Override
     public ResultMessage update(UserPO po) throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            session.update(po);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            session.getTransaction().rollback();;
-            return ResultMessage.FAILURE;
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return ResultMessage.SUCCESS;
+        return commonOperation.update(po);
     }
 
     @Override
     public ResultMessage delete(String id) throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            String sql = "delete " + UserPO.class.getName()
-                    + " user where user.id=:id ";;
-            Query query = session.createQuery(sql);
-            query.setParameter("id", id);
-            query.executeUpdate();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return ResultMessage.FAILURE;
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return ResultMessage.SUCCESS;
+        return commonOperation.deleteBySingleField("id", id);
     }
 
     @Override
     public List<UserPO> getAll() throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        List<UserPO> userPOs = null;
-        try {
-            session.getTransaction().begin();
-            String sql = "select user from " + UserPO.class.getName()
-                    + " user ";
-            Query<UserPO> query = session.createQuery(sql);
-            userPOs = query.getResultList();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return userPOs;
+        return commonOperation.getAll();
     }
 
     @Override

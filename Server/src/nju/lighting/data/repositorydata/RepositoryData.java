@@ -1,6 +1,7 @@
 package nju.lighting.data.repositorydata;
 
 import nju.lighting.data.commoditydata.CommodityData;
+import nju.lighting.data.utils.CommonOperation;
 import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.dataservice.repositorydataservice.RepositoryDataService;
 import nju.lighting.po.commodity.CommodityItemPO;
@@ -18,15 +19,18 @@ import java.util.List;
 /**
  * Created on 2017/11/26.
  * Description: 库存模块数据层实现
+ * 11.26完成，27日重构
  * @author iznauy
  */
 public class RepositoryData implements RepositoryDataService {
+
+    private CommonOperation<RepositoryChangePO> changePOCommonOperation;
 
     /**
      * 无参数构造器
      */
     public RepositoryData() {
-
+        this.changePOCommonOperation = new CommonOperation<>(RepositoryChangePO.class.getName());
     }
 
     /**
@@ -84,19 +88,6 @@ public class RepositoryData implements RepositoryDataService {
      */
     @Override
     public ResultMessage changeRepository(RepositoryChangePO repositoryChangePO) throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            session.persist(repositoryChangePO);
-            session.flush();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-            return ResultMessage.FAILURE;
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return ResultMessage.SUCCESS;
+        return changePOCommonOperation.add(repositoryChangePO);
     }
 }

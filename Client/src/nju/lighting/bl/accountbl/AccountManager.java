@@ -8,6 +8,8 @@ import shared.ResultMessage;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -78,6 +80,22 @@ public class AccountManager {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    List<AccountVO> getAccountList() {
+        try {
+            List<AccountPO> poList = accountDataService.getAll();
+            // Transform
+            List<AccountVO> res = new ArrayList<>();
+            for (AccountPO po : poList) {
+                res.add(new Account(po).toVO());
+            }
+            return res;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        // Error happen
         return null;
     }
 }

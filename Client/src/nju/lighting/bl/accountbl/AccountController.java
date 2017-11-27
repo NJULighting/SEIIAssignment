@@ -4,7 +4,7 @@ import nju.lighting.blservice.accountblservice.AccountBLService;
 import nju.lighting.vo.account.AccountVO;
 import shared.ResultMessage;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/11/6.
@@ -15,8 +15,8 @@ public class AccountController implements AccountBLService {
     private AccountManager accountManager = AccountManager.getAccountManager();
 
     @Override
-    public ArrayList<AccountVO> getAccountList() {
-        return null;
+    public List<AccountVO> getAccountList() {
+        return accountManager.getAccountList();
     }
 
     @Override
@@ -25,7 +25,7 @@ public class AccountController implements AccountBLService {
     }
 
     @Override
-    public ArrayList<AccountVO> findAccounts(String keyword) {
+    public List<AccountVO> findAccounts(String keyword) {
         return null;
     }
 

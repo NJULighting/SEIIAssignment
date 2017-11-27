@@ -5,6 +5,7 @@ import nju.lighting.vo.account.AccountVO;
 import shared.ResultMessage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/10/22.
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 public class AccountBLService_Stub implements AccountBLService {
 
     @Override
-    public ArrayList<AccountVO> getAccountList() {
+    public List<AccountVO> getAccountList() {
         ArrayList<AccountVO> accountVOS = new ArrayList<>();
         accountVOS.add(getAccount("0"));
         accountVOS.add(getAccount("1"));
@@ -28,7 +29,7 @@ public class AccountBLService_Stub implements AccountBLService {
     }
 
     @Override
-    public ArrayList<AccountVO> findAccounts(String keyword) {
+    public List<AccountVO> findAccounts(String keyword) {
         if (keyword.isEmpty()) return null;
         else return getAccountList();
     }

@@ -6,6 +6,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 import shared.ResultMessage;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -17,7 +19,11 @@ public class AccountManagerTest {
     private AccountManager manager = AccountManager.getAccountManager();
 
     @Test
-    public void getAccountManager() throws Exception {
+    public void getAllAccounts() throws Exception {
+        List<AccountVO> voList = manager.getAccountList();
+        assertEquals(voList.size(), 2);
+        assertNotNull(voList.get(0).getAccountLogs());
+        assertEquals(voList.get(1).getName(), "Frog Account");
     }
 
     @Test

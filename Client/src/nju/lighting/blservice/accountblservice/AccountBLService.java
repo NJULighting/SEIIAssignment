@@ -3,7 +3,7 @@ package nju.lighting.blservice.accountblservice;
 import nju.lighting.vo.account.AccountVO;
 import shared.ResultMessage;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/10/20.
@@ -11,11 +11,11 @@ import java.util.ArrayList;
  * @author Liao
  */
 public interface AccountBLService {
-    ArrayList<AccountVO> getAccountList() ;
+    List<AccountVO> getAccountList() ;
 
     ResultMessage addAccount(String name, double amount, String id);
 
-    ArrayList<AccountVO> findAccounts(String keyword) ;
+    List<AccountVO> findAccounts(String keyword) ;
 
     AccountVO getAccount(String id) ;
 

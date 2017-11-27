@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 /**
  * Created on 2017/11/27.
  * Description: CustomerData模块测试代码
- * 测试未完全通过
+ * 测试通过 （只能用于第一次测试，之后主键会递增的）
  * @author iznauy
  */
 public class CustomerDataTest {

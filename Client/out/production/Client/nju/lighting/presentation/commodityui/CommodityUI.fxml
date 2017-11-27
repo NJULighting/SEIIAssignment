@@ -1,66 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8"
-            fx:controller="nju.lighting.presentation.mainui.Finance">
-    <children>
-        <HBox alignment="TOP_CENTER" layoutX="382.0" layoutY="7.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="63.0"
-              prefWidth="872.0" spacing="10.0">
-            <children>
-                <Button mnemonicParsing="false" text="历史单据"/>
-                <Button mnemonicParsing="false" text="商品"/>
-                <Button mnemonicParsing="false" text="库存"/>
-                <Button mnemonicParsing="false" text="报损报溢单"/>
-                <Button mnemonicParsing="false" text="报警单"/>
-            </children>
-            <opaqueInsets>
-                <Insets/>
-            </opaqueInsets>
-            <padding>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-            </padding>
-        </HBox>
-        <ImageView fitHeight="44.0" fitWidth="66.0" layoutX="19.0" layoutY="7.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <image>
-                <Image url="@../../../../../../../IMG_1607.JPG"/>
-            </image>
-        </ImageView>
-        <VBox layoutX="76.0" layoutY="12.0" prefHeight="27.0" prefWidth="144.0">
-            <children>
-                <Label prefHeight="17.0" prefWidth="131.0" text="身份：库存管理人员"/>
-                <Label text="工号：161250220"/>
-            </children>
-        </VBox>
-        <Pane layoutX="143.0" layoutY="83.0" prefHeight="565.0" prefWidth="958.0" AnchorPane.topAnchor="83.0">
-            <padding>
-                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0"/>
-            </padding>
-            <children>
-                <TableView layoutX="95.0" layoutY="94.0" prefHeight="465.0" prefWidth="725.0">
-                    <columns>
-                        <TableColumn prefWidth="65.9945068359375" text="勾选"/>
-                        <TableColumn prefWidth="84.0054931640625" text="商品编号"/>
-                        <TableColumn prefWidth="100.45654296875" text="商品名称"/>
-                        <TableColumn prefWidth="68.54345703125" text="型号"/>
-                        <TableColumn prefWidth="97.72991943359375" text="库存数量"/>
-                        <TableColumn minWidth="0.0" prefWidth="67.69488525390625" text="进价"/>
-                        <TableColumn prefWidth="51.30499267578125" text="零售价"/>
-                        <TableColumn prefWidth="86.299560546875" text="最近进价"/>
-                        <TableColumn minWidth="0.0" prefWidth="98.0" text="最近零售价"/>
-                    </columns>
-                </TableView>
-                <Label layoutX="563.0" layoutY="76.0"/>
-                <Button layoutX="873.0" layoutY="290.0" mnemonicParsing="false" text="删除"/>
-                <Button layoutX="872.0" layoutY="356.0" mnemonicParsing="false" text="添加"/>
-                <Label layoutX="245.0" layoutY="43.0" text="查询:"/>
-                <Button layoutX="662.0" layoutY="38.0" mnemonicParsing="false" text="确定"/>
-                <TextField layoutX="374.0" layoutY="38.0"/>
-            </children>
-        </Pane>
-    </children>
-</AnchorPane>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+
+  <Pane prefHeight="610.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+      <padding>
+          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+      </padding>
+      <children>
+          <TableView layoutX="95.0" layoutY="94.0" prefHeight="465.0" prefWidth="725.0">
+              <columns>
+                  <TableColumn prefWidth="65.9945068359375" text="勾选" />
+                  <TableColumn prefWidth="84.0054931640625" text="商品编号" />
+                  <TableColumn prefWidth="100.45654296875" text="商品名称" />
+                  <TableColumn prefWidth="68.54345703125" text="型号" />
+                  <TableColumn prefWidth="97.72991943359375" text="库存数量" />
+                  <TableColumn minWidth="0.0" prefWidth="67.69488525390625" text="进价" />
+                  <TableColumn prefWidth="51.30499267578125" text="零售价" />
+                  <TableColumn prefWidth="86.299560546875" text="最近进价" />
+                  <TableColumn minWidth="0.0" prefWidth="98.0" text="最近零售价" />
+              </columns>
+          </TableView>
+          <Label layoutX="563.0" layoutY="76.0" />
+          <Button layoutX="873.0" layoutY="290.0" mnemonicParsing="false" text="删除" />
+          <Button layoutX="872.0" layoutY="356.0" mnemonicParsing="false" text="添加" />
+          <Label layoutX="245.0" layoutY="43.0" text="查询:" />
+          <Button layoutX="662.0" layoutY="38.0" mnemonicParsing="false" text="确定" />
+          <TextField layoutX="374.0" layoutY="38.0" />
+      </children>
+  </Pane>

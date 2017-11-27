@@ -19,9 +19,6 @@ public class AccountManager {
     /* Singleton */
     private static AccountManager accountManager;
     private AccountDataService accountDataService;
-    public static AccountManager getAccountManager() {
-        return Optional.ofNullable(accountManager).orElseGet(AccountManager::new);
-    }
 
     private AccountManager() {
         try {
@@ -31,14 +28,18 @@ public class AccountManager {
         }
     }
 
+    public static AccountManager getAccountManager() {
+        return Optional.ofNullable(accountManager).orElseGet(AccountManager::new);
+    }
+
     /**
      * Add new account
-     * @param id id of account(银行账号）
-     * @param name name of account(Whatever)
+     * @param id     id of account(银行账号）
+     * @param name   name of account(Whatever)
      * @param amount initial amount of this account
      * @return <code>ResultMessage.SUCCESS</code> if add account successfull <br>
-     *     <code>ResultMessage.FAILURE</code> if find id repeated <br>
-     *         <code>ResultMessage.NETWORK_FAIL</code> if network failed
+     * <code>ResultMessage.FAILURE</code> if find id repeated <br>
+     * <code>ResultMessage.NETWORK_FAIL</code> if network failed
      */
     ResultMessage addAccount(String id, String name, double amount) {
         try {

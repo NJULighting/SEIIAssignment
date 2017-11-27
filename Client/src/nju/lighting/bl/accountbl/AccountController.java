@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Description:
  * @author Liao
  */
-public class AccountController implements AccountBLService{
+public class AccountController implements AccountBLService {
     private AccountManager accountManager = AccountManager.getAccountManager();
 
     @Override

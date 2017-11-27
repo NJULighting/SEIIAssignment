@@ -14,7 +14,7 @@ import java.util.Date;
 public class AccountChangeLog {
     private Date time;
     private double delta;
-    private double amount;
+    private double amount; // After change
     private AccountChangeType type;
 
     public AccountChangeLog(Date time, double delta, double amount, AccountChangeType type) {
@@ -32,7 +32,16 @@ public class AccountChangeLog {
         this(po.getTime(), po.getDelta(), po.getAmount(), po.getType());
     }
 
+    /**
+     * Convert account change log model to PO, need account's id as a parameter
+     * @param accountID id of the account which the log belongs to
+     * @return corresponding <code>AccountLogVO</code>
+     */
     public AccountLogPO toPO(String accountID) {
         return new AccountLogPO(time, delta, amount, type, accountID);
+    }
+
+    public AccountLogVO toVO() {
+        return new AccountLogVO(time, delta, amount, type);
     }
 }

@@ -1,10 +1,9 @@
 package nju.lighting.bl.accountbl;
 
 import nju.lighting.blservice.accountblservice.AccountBLService;
-import shared.ResultMessage;
 import nju.lighting.vo.account.AccountVO;
+import shared.ResultMessage;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**

@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#Drag" onMousePressed="#getOffSet" prefHeight="110.0" prefWidth="1280.0" style="-fx-background-color: #5599FF;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.GeneralManagerController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#Drag" onMousePressed="#getOffSet" prefHeight="110.0" prefWidth="1280.0" style="-fx-background-color: #5599FF;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.GeneralManagerUIController">
     <children>
         <Circle fill="#fffefe" layoutX="46.0" layoutY="46.0" radius="42.0" stroke="#b9b3b3" strokeType="INSIDE" />
         <VBox alignment="CENTER_LEFT" layoutX="99.0" layoutY="23.0" prefHeight="45.0" prefWidth="100.0" spacing="12.0">

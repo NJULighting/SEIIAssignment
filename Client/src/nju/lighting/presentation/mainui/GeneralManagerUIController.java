@@ -49,8 +49,6 @@ public class GeneralManagerUIController extends MainUIController {
                 "../documentui/BusinessConditionTable.fxml", "../documentui/SaleConditionTable.fxml",
                 "../logui/log.fxml"};
         MAIN_BUTTON_SIZE = 5;
-        bottoms = new Pane[5];
-        root = new VBox();
         super.initialize(location, resources);
     }
 }

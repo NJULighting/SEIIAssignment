@@ -1,10 +1,7 @@
 package nju.lighting.presentation.mainui;
 
 
-import javafx.application.Platform;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -17,28 +14,25 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/11/26.
- * Description
+ * Description 四种 MainUI 的抽象父类，提供了下部分界面跳转等方法
  *
  * @author 陈俊宇
  */
 
-public abstract class MainUIController implements Initializable {
-    Button[] buttons;
-    String[] urls;
-    private double XOffset;
-    private double YOffSet;
-    public VBox root;
-    public Pane up;
-    public Scene scene;
-    public Pane[] bottoms;
-    final Button[] currentBtn = new Button[1];
-    final Double MISS_OPACITY = 0.45;
-    int MAIN_BUTTON_SIZE;
+public abstract class MainUIController extends CommonFather {
 
+    String[] urls;
+    final Button[] currentBtn = new Button[1];
+    int MAIN_BUTTON_SIZE;
+    MainUI mainUI;  //MainUiController的持有者，因为界面跳转需要控制 mainUI的bottom部分；
+
+    void setMainUI(MainUI mainUI){this.mainUI=mainUI;}
+
+    //界面跳转
     void jumpTo(int index) {
         Pane bottom;
         String url = urls[index];
-        bottom = bottoms[index];
+        bottom = mainUI.bottoms[index];
 
         //设置下半部分界面
         if (bottom == null) {
@@ -48,14 +42,14 @@ public abstract class MainUIController implements Initializable {
                 e.printStackTrace();
             }
 
-            bottoms[index] = bottom;
+            mainUI.bottoms[index]=bottom;
         }
 
 
-        if (root.getChildren().size() > 1) {
-            root.getChildren().remove(1);
+        if (mainUI.root.getChildren().size() > 1) {
+            mainUI.root.getChildren().remove(1);
         }
-        root.getChildren().add(bottom);
+        mainUI.root.getChildren().add(bottom);
 
         //高光
         if (currentBtn[0] != null) {
@@ -66,75 +60,29 @@ public abstract class MainUIController implements Initializable {
         currentBtn[0] = buttons[index];
     }
 
-    //关闭程序
-    @FXML
-    void close() {
-        Platform.exit();
-        System.out.println("close");
-    }
-
-    //窗口最小化
-    @FXML
-    void mini() {
-        LoginController.primaryStage.setIconified(true);
-    }
-
-
-    public void mouseEnter(MouseEvent event) {
-        ((Button) event.getSource()).setOpacity(1);
-    }
-
-
     public void mouseExit(MouseEvent event) {
-        if (currentBtn[0] != (Button) event.getSource())
-            ((Button) event.getSource()).setOpacity(MISS_OPACITY);
+        if (!((Button) event.getSource()).equals(currentBtn[0]))
+        ((Button) event.getSource()).setOpacity(MISS_OPACITY);
     }
-
-    @FXML
-    public void getOffSet(MouseEvent event) {
-        event.consume();
-        XOffset = event.getSceneX();
-        YOffSet = event.getSceneY();
-    }
-
-    @FXML
-    public void Drag(MouseEvent event) {
-        event.consume();
-        LoginController.primaryStage.setX(event.getScreenX() - XOffset);
-        LoginController.primaryStage.setY(event.getScreenY() - YOffSet);
-
-    }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        for (int i = 0; i < buttons.length; i++) {
+        for (int i = 0; i < MAIN_BUTTON_SIZE; i++) {
 
-                if (i < MAIN_BUTTON_SIZE) {
-                    int index = i;
-                    buttons[i].setOpacity(MISS_OPACITY);
+            int index = i;
+            buttons[i].setOpacity(MISS_OPACITY);
 
-                    buttons[i].setOnAction(e -> {
+            buttons[i].setOnAction(e -> {
 
-                        jumpTo(index);
-                        LoginController.setScene(scene);
-                    });
-                }
+                jumpTo(index);
+                Client.setScene(mainUI.scene);
+            });
 
-                //鼠标经过按钮时高光
-                buttons[i].setOnMouseEntered(e -> {
-                    mouseEnter(e);
-                });
-                buttons[i].setOnMouseExited(e -> {
-                    mouseExit(e);
-                });
-            }
+            super.initialize(location, resources);
 
 
-
-
-
+        }
     }
 }

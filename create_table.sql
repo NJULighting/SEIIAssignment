@@ -179,6 +179,7 @@ CREATE TABLE INIT_INFO (
 	ID varchar(5),
 	USER_ID varchar(20) not null, 
 	CREATE_TIME DATETIME not null,
+	URL varchar(255) not null,
 	primary key(ID)
 );
 

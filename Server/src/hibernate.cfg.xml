@@ -25,6 +25,7 @@
         <mapping class="nju.lighting.po.UserPO" />
         <mapping class="nju.lighting.po.customer.CustomerPO" />
         <mapping class="nju.lighting.po.promotion.PromotionPO" />
+        <mapping class="nju.lighting.po.promotion.PromotionPackageItemPO" />
 
     </session-factory>
 

@@ -79,6 +79,44 @@ public class CommonOperation<T> {
         return t;
     }
 
+    public List<T> getListBySingleField(String fieldName, String target) {
+        List<T> ts = null;
+        Session session = HibernateUtils.getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            String sql = "select t from " + className + " t where t." + fieldName + "=:field";
+            Query<T> query = session.createQuery(sql);
+            query.setParameter("field", target);
+            ts = query.getResultList();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            HibernateUtils.closeSession();
+        }
+        return ts;
+    }
+
+    public List<T> getListBySingleField(String fieldName, int target) {
+        List<T> ts = null;
+        Session session = HibernateUtils.getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            String sql = "select t from " + className + " t where t." + fieldName + "=:field";
+            Query<T> query = session.createQuery(sql);
+            query.setParameter("field", target);
+            ts = query.getResultList();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            HibernateUtils.closeSession();
+        }
+        return ts;
+    }
+
     public ResultMessage add(T t) {
         Session session = HibernateUtils.getCurrentSession();
         try {
@@ -133,6 +171,26 @@ public class CommonOperation<T> {
         }
         return ResultMessage.SUCCESS;
     }
+
+    public ResultMessage addList(List<T> ts) {
+        Session session = HibernateUtils.getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            for (T t: ts) {
+                session.persist(t);
+            }
+            session.flush();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+            return ResultMessage.FAILURE;
+        } finally {
+            HibernateUtils.closeSession();
+        }
+        return ResultMessage.SUCCESS;
+    }
+
 
     public ResultMessage update(T tpo) {
         Session session = HibernateUtils.getCurrentSession();

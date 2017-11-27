@@ -35,7 +35,7 @@ public class PromotionPO {
 
     private double total;  //针对不同总价的促销策略中的总价
 
-    private List<String> goods;  //组合商品
+    private List<PromotionPackageItemPO> goods; //组合特价包裹
 
     private double off;  //折让金额
 
@@ -46,7 +46,7 @@ public class PromotionPO {
     public PromotionPO() {}
 
     public PromotionPO(String name, PromotionType type, Date startDate, Date endDate, CustomerGrade level,
-                       double total, List<String> goods, double off, double vouchers, Date vouchersEndDate) {
+                       double total, List<PromotionPackageItemPO> goods, double off, double vouchers, Date vouchersEndDate) {
         this.name = name;
         this.type = type;
         this.startDate = startDate;
@@ -68,11 +68,11 @@ public class PromotionPO {
         this.name = name;
     }
 
-    public void addGood(String good) {
+    public void addGood(PromotionPackageItemPO good) {
         goods.add(good);
     }
 
-    public void removeGood(String good) {
+    public void removeGood(PromotionPackageItemPO good) {
         goods.remove(good);
     }
 
@@ -126,11 +126,11 @@ public class PromotionPO {
     }
 
     @Transient
-    public List<String> getGoods() {
+    public List<PromotionPackageItemPO> getGoods() {
         return goods;
     }
 
-    public void setGoods(List<String> goods) {
+    public void setGoods(List<PromotionPackageItemPO> goods) {
         this.goods = goods;
     }
 

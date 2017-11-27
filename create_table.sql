@@ -236,9 +236,9 @@ CREATE TABLE GIFT_DOC_ITEM (
 
 
 CREATE TABLE CUSTOMER (
-	ID varchar(20),
-	CUSTOMER_TYPE varchar(10) not null,
-	CUSTOMER_GRADE varchar(10) not null,
+	ID integer,
+	CUSTOMER_TYPE varchar(20) not null,
+	CUSTOMER_GRADE varchar(20) not null,
 	NAME varchar(20) not null,
 	TELEPHONE varchar(20),
 	ADDRESS varchar(20),
@@ -358,7 +358,8 @@ CREATE TABLE SALES_DOC_ITEM (
 	primary key(ID)
 );
 
-#部分修改
+#部分修改 
 alter table COMMODITY_CATEGORY modify column ID int auto_increment;
 alter table REPOSITORY_CHANGE modify column ID int auto_increment;
 alter table ACCOUNT_CHANGE modify column ID int auto_increment;
+alter table CUSTOMER modify column ID int auto_increment;

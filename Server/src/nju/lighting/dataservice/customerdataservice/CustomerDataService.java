@@ -13,24 +13,24 @@ public interface CustomerDataService extends Remote {
 
      ResultMessage insertCustomer(CustomerPO po) throws RemoteException;
 
-     ResultMessage deleteCustomer(String id) throws RemoteException;
+     ResultMessage deleteCustomer(int id) throws RemoteException;
 
      ResultMessage updateCustomer(CustomerPO po) throws RemoteException;
 
-     CustomerPO getCustomerById(String id) throws RemoteException;
+     CustomerPO getCustomerById(int id) throws RemoteException;
 
      /**
       * 若增加客户应收，amount为正数，反之为负
       * @param amount
       */
-     ResultMessage changeReceivable(String customerId, double amount) throws RemoteException;
+     ResultMessage changeReceivable(int customerId, double amount) throws RemoteException;
 
-     ResultMessage changeReceivableLimit(String customerId, double amount) throws RemoteException;
+     ResultMessage changeReceivableLimit(int customerId, double amount) throws RemoteException;
 
      /**
       * 若增加客户应付，amount为正数，反之为负
       * @param amount
       */
-     ResultMessage changePayable(String customerId, double amount) throws RemoteException;
+     ResultMessage changePayable(int customerId, double amount) throws RemoteException;
 
 }

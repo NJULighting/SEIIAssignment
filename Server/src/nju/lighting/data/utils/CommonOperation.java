@@ -60,6 +60,25 @@ public class CommonOperation<T> {
         return t;
     }
 
+    public T getBySingleField(String fieldName, int target) {
+        T t = null;
+        Session session = HibernateUtils.getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            String sql = "select t from " + className + " t where t." + fieldName + "=:field";
+            Query<T> query = session.createQuery(sql);
+            query.setParameter("field", target);
+            t = query.getSingleResult();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            HibernateUtils.closeSession();
+        }
+        return t;
+    }
+
     public ResultMessage add(T t) {
         Session session = HibernateUtils.getCurrentSession();
         try {
@@ -78,6 +97,25 @@ public class CommonOperation<T> {
     }
 
     public ResultMessage deleteBySingleField(String fieldName, String target) {
+        Session session = HibernateUtils.getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            String sql = "delete from " + className + " t where t." + fieldName + "=:field";
+            Query<T> query = session.createQuery(sql);
+            query.setParameter("field", target);
+            query.executeUpdate();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+            return ResultMessage.FAILURE;
+        } finally {
+            HibernateUtils.closeSession();
+        }
+        return ResultMessage.SUCCESS;
+    }
+
+    public ResultMessage deleteBySingleField(String fieldName, int target) {
         Session session = HibernateUtils.getCurrentSession();
         try {
             session.getTransaction().begin();

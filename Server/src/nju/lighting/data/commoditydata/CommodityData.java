@@ -87,22 +87,6 @@ public class CommodityData implements CommodityDataService {
 
     @Override
     public ResultMessage deleteCategory(int id) throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            String sql = "delete " + CommodityCategoryPO.class.getName()
-                    + " where id=:id ";
-            Query query = session.createQuery(sql);
-            query.setParameter("id", id);
-            query.executeUpdate();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return ResultMessage.FAILURE;
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return ResultMessage.SUCCESS;
+        return categoryPOCommonOperation.deleteBySingleField("id", id);
     }
 }

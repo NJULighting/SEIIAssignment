@@ -24,6 +24,7 @@
         <mapping class="nju.lighting.po.account.AccountLogPO" />
         <mapping class="nju.lighting.po.UserPO" />
         <mapping class="nju.lighting.po.customer.CustomerPO" />
+        <mapping class="nju.lighting.po.promotion.PromotionPO" />
 
     </session-factory>
 

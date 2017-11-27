@@ -60,7 +60,6 @@ public class CommodityItemPO {
         return builder.toString();
     }
 
-
     public CommodityItemPO() {
 
     }

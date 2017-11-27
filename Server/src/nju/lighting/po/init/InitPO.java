@@ -9,29 +9,27 @@ import java.util.Date;
  * @author Liao
  */
 public class InitPO {
-    private String id;
-    private Date time;
-    private String userID;
-    private ArrayList<String> commodityCategories;
-    private ArrayList<String> commodities;
-    private ArrayList<String> customers;
-    private ArrayList<String> accounts;
 
-    public InitPO(String id, Date time, String userID, ArrayList<String> commodityCategories, ArrayList<String> commodities, ArrayList<String> customers, ArrayList<String> accounts) {
+    private int id;
+
+    private Date time;
+
+    private String userID;
+
+    private String url;
+
+    public InitPO(int id, Date time, String userID, String url) {
         this.id = id;
         this.time = time;
         this.userID = userID;
-        this.commodityCategories = commodityCategories;
-        this.commodities = commodities;
-        this.customers = customers;
-        this.accounts = accounts;
+        this.url = url;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -51,35 +49,11 @@ public class InitPO {
         this.userID = userID;
     }
 
-    public ArrayList<String> getCommodityCategories() {
-        return commodityCategories;
+    public String getUrl() {
+        return url;
     }
 
-    public void setCommodityCategories(ArrayList<String> commodityCategories) {
-        this.commodityCategories = commodityCategories;
-    }
-
-    public ArrayList<String> getCommodities() {
-        return commodities;
-    }
-
-    public void setCommodities(ArrayList<String> commodities) {
-        this.commodities = commodities;
-    }
-
-    public ArrayList<String> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(ArrayList<String> customers) {
-        this.customers = customers;
-    }
-
-    public ArrayList<String> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(ArrayList<String> accounts) {
-        this.accounts = accounts;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

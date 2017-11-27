@@ -1,44 +1,49 @@
 package nju.lighting.data.promotiondata;
 
+import nju.lighting.data.utils.CommonOperation;
 import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
-
 import nju.lighting.po.promotion.PromotionPO;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created on 2017/10/22.
- * Description
+ * Created on 2017/11/27.
+ * Description: Promotion的数据层模块
  *
- * @author 陈俊宇
+ * @author iznauy
  */
-public class PromotionDataService_Stub implements PromotionDataService {
+public class PromotionData implements PromotionDataService {
+
+    private CommonOperation<PromotionPO> commonOperation;
+
+    public PromotionData() {
+        commonOperation = new CommonOperation<>(PromotionPO.class.getName());
+    }
 
     @Override
     public List<PromotionPO> getPromotionList() throws RemoteException {
-        return null;
+        return commonOperation.getAll();
     }
 
     @Override
     public ResultMessage insert(PromotionPO po) throws RemoteException {
-        return null;
+        return commonOperation.add(po);
     }
 
     @Override
     public ResultMessage update(PromotionPO po) throws RemoteException {
-        return null;
+        return commonOperation.update(po);
     }
 
     @Override
     public ResultMessage delete(int id) throws RemoteException {
-        return null;
+        return commonOperation.deleteBySingleField("id", id);
     }
 
     @Override
     public PromotionPO getPromotionById(int id) throws RemoteException {
-        return null;
+        return commonOperation.getBySingleField("id", id);
     }
 }

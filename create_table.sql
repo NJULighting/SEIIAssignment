@@ -157,7 +157,7 @@ CREATE TABLE COST_DOC_ITEM (
 
 
 CREATE TABLE LOG (
-	ID varchar(36),
+	ID integer,
 	CREATE_TIME DATETIME not null,
 	CONTENT varchar(300) not null,
 	USER_ID varchar(20) not null,
@@ -179,37 +179,8 @@ CREATE TABLE INIT_INFO (
 	ID varchar(5),
 	USER_ID varchar(20) not null, 
 	CREATE_TIME DATETIME not null,
+	URL varchar(255),
 	primary key(ID)
-);
-
-
-CREATE TABLE INIT_ACCOUNT_INFO (
-	ID varchar(20) not null,
-	NAME varchar(20) not null,
-	AMOUNT float(8) not null,
-	INIT_ID varchar(5) not null,
-	primary key(ID, INIT_ID)
-);
-
-
-CREATE TABLE INIT_COMMODITY_INFO (
-	ID varchar(36) not null,
-	NAME varchar(50) not null,
-	CATEGORY_ID integer,
-	MODEL_NUMBER varchar(36) not null,
-	SELL_PRICE float(8) not null,
-	IN_PRICE float(8) not null,
-	INIT_ID varchar(5) not null,
-	primary key(ID, INIT_ID)
-);
-
-
-CREATE TABLE INIT_COMMODITY_CATEGORY_INFO (
-	ID integer not null,
-	NAME varchar(40) not null,
-	UPPER_CATEGORY_ID integer,
-	INIT_ID varchar(5) not null,
-	primary key(ID, INIT_ID)
 );
 
 
@@ -252,35 +223,25 @@ CREATE TABLE CUSTOMER (
 );
 
 
-CREATE TABLE INIT_CUSTOMER_INFO (
-	ID varchar(20),
-	CUSTOMER_TYPE varchar(10) not null,
-	CUSTOMER_GRADE varchar(10) not null,
-	NAME varchar(20) not null,
-	TELEPHONE varchar(20),
-	ADDRESS varchar(20),
-	POSTAGE varchar(20),
-	EMAIL varchar(40),
-	RECEIVABLE_LIMIT float(8) not null,
-	RECEIVE_AMOUNT float(8) not null,
-	PAY_AMOUNT float(8) not NULL,
-	SALES_MAN varchar(20),
-	INIT_ID varchar(5) not null,
-	primary key(ID, INIT_ID)
-);
-
 CREATE TABLE PROMOTION (
-	ID varchar(20),
+	ID integer,
 	NAME varchar(36) not null,
 	PROMOTION_TYPE varchar(20) NOT NULL,
 	CREATE_TIME DATETIME NOT NULL,
 	START_TIME DATETIME NOT NULL,
 	END_TIME DATETIME NOT NULL,
-	CUSTOMER_GRADE varchar(10) not null,
+	CUSTOMER_GRADE varchar(20) not null,
 	TOTAL float(8) NOT NULL,
 	OFF float(8) NOT NULL,
 	VOUCHER float(8) NOT NULL,
 	VOUCHER_END_DATE DATETIME NOT NULL,
+	primary key(ID)
+);
+
+CREATE TABLE PROMOTION_COMMODITY (
+	ID integer,
+	PROMOTION_ID integer,
+	GOOD_ID varchar(36),
 	primary key(ID)
 );
 
@@ -363,3 +324,6 @@ alter table COMMODITY_CATEGORY modify column ID int auto_increment;
 alter table REPOSITORY_CHANGE modify column ID int auto_increment;
 alter table ACCOUNT_CHANGE modify column ID int auto_increment;
 alter table CUSTOMER modify column ID int auto_increment;
+alter table PROMOTION modify column ID int auto_increment;
+alter table INIT_INFO modify column ID int auto_increment;
+alter table LOG modify column ID int auto_increment;

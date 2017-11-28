@@ -34,5 +34,6 @@
     <orderEntry type="library" name="mysql:mysql-connector-java:6.0.6" level="project" />
     <orderEntry type="library" name="junit:junit:4.12" level="project" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="ant" level="project" />
   </component>
 </module>

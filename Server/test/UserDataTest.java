@@ -1,6 +1,6 @@
 
 import nju.lighting.data.userdata.UserData;
-import nju.lighting.po.UserPO;
+import nju.lighting.po.user.UserPO;
 import org.junit.Test;
 import shared.Identity;
 import shared.LoginReturnState;

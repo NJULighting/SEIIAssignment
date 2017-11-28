@@ -1,5 +1,6 @@
 package nju.lighting.po.customer;
 
+import shared.CSVable;
 import shared.CustomerGrade;
 import shared.CustomerType;
 
@@ -7,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "CUSTOMER")
-public class CustomerPO {
+public class CustomerPO implements CSVable {
 
     private int ID;
 
@@ -32,6 +33,13 @@ public class CustomerPO {
     private double payable;
 
     private String salesman;
+
+    @Override
+    public String toCSV() {
+        return ID + "," + type + "," + grade + "," + name + ","
+                + telephone + "," + address + "," + postage + "," + email + ","
+                 + receivableLimit + "," + receivable + "," + payable + "," + salesman;
+    }
 
     @Override
     public String toString() {

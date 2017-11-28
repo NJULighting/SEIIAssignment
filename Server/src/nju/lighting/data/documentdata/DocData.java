@@ -9,7 +9,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DocDataService_Stub implements DocDataService {
+/**
+ * Created on 2017/11/27.
+ * Description: 用于DocData模块请求的分发
+ *
+ * @author iznauy
+ */
+public class DocData implements DocDataService{
 
     @Override
     public String create(DocType type) throws RemoteException {

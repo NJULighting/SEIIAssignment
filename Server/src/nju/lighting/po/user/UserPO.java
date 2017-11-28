@@ -1,4 +1,4 @@
-package nju.lighting.po;
+package nju.lighting.po.user;
 
 
 import org.hibernate.annotations.Type;

@@ -5,7 +5,9 @@ import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
 import nju.lighting.po.promotion.PromotionPO;
 import shared.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/10/22.
@@ -14,35 +16,29 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public class PromotionDataService_Stub implements PromotionDataService {
+
     @Override
-    public ArrayList<PromotionPO> getBenefitsPlan(int customerLevel, ArrayList<String> commodityList, double total) {
+    public List<PromotionPO> getPromotionList() throws RemoteException {
         return null;
     }
 
     @Override
-    public ArrayList<PromotionPO> getPromotionList() {
-//
-//        PromotionPO po1=new PromotionPO(1,10000,20000, CustomerGrade.THREE,0,null,null,
-//                10,0,0);
-//
-//        ArrayList<PromotionPO> promotionPOs=new ArrayList<>();
-//        promotionPOs.add(po1);
-//        return promotionPOs;
+    public ResultMessage insert(PromotionPO po) throws RemoteException {
         return null;
     }
 
     @Override
-    public ResultMessage insert(PromotionPO po) {
-        return ResultMessage.SUCCESS;
+    public ResultMessage update(PromotionPO po) throws RemoteException {
+        return null;
     }
 
     @Override
-    public ResultMessage update(PromotionPO po) {
-        return ResultMessage.SUCCESS;
+    public ResultMessage delete(int id) throws RemoteException {
+        return null;
     }
 
     @Override
-    public ResultMessage delete(PromotionPO po) {
-        return ResultMessage.SUCCESS;
+    public PromotionPO getPromotionById(int id) throws RemoteException {
+        return null;
     }
 }

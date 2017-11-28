@@ -1,6 +1,6 @@
 package shared;
 
-public enum HistoryDocType {
+public enum DocState {
 
     UN_CHECKED,
     DISAPPROVAL,

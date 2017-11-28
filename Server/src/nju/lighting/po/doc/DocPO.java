@@ -3,8 +3,11 @@ package nju.lighting.po.doc;
 import shared.DocState;
 import shared.DocType;
 
+import javax.persistence.*;
 import java.util.Date;
 
+
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class DocPO {
 
     private String id;
@@ -55,6 +58,8 @@ public abstract class DocPO {
                 '}';
     }
 
+    @Id
+    @Column(name = "ID", nullable = false, length = 20)
     public String getId() {
         return id;
     }
@@ -63,6 +68,7 @@ public abstract class DocPO {
         this.id = id;
     }
 
+    @Transient
     public DocType getDocType() {
         return docType;
     }
@@ -71,6 +77,7 @@ public abstract class DocPO {
         this.docType = docType;
     }
 
+    @Column(nullable = false, name = "CHECKER_ID", length = 20)
     public String getUserId() {
         return userId;
     }

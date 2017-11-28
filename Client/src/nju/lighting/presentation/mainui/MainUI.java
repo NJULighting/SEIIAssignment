@@ -44,6 +44,7 @@ public class MainUI {
         controller.jumpTo(0);
         Stage stage=new Stage();
         stage.setScene(scene);
+        stage.getScene().getStylesheets().add(Client.class.getResource("../custom.css").toExternalForm());
         Client.setPrimaryStage(stage);
 
     }

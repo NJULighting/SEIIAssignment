@@ -15,7 +15,6 @@ root {
 .jfx-hamburger {
 
     -fx-spacing: 5;
-
     -fx-cursor: hand;
 
 }
@@ -65,7 +64,6 @@ root {
     -fx-max-width: 300;
 
 }
-
 
 
 .jfx-decorator {
@@ -220,7 +218,13 @@ root {
 
     -fx-font-size: 14px;
 
+
 }
+.button:filled:hover{
+    -fx-background-color: #44B449;
+}
+
+.button{}
 
 
 
@@ -340,11 +344,15 @@ root {
 
 
 
-.jfx-list-cell:odd:selected > .jfx-rippler > StackPane, .jfx-list-cell:even:selected > .jfx-rippler > StackPane {
+.jfx-list-cell:selected > .jfx-rippler > StackPane, .jfx-list-cell:even:selected > .jfx-rippler > StackPane {
 
-    -fx-background-color:gray;
+    -fx-background-color:#DCDCDC;
 
 }
+.jfx-list-cell:filled:hover{
+    -fx-background-color: #DCDCDC;
+}
+
 
 
 
@@ -358,19 +366,21 @@ root {
 
 
 
-.jfx-list-cell:odd, .jfx-list-cell:even {
+.jfx-list-cell:odd {
 
-    -fx-background-color: WHITE;
+    -fx-background-color: #F5F5F5;
 
+}
+
+
+
+.jfx-list-cell:even{
+    -fx-background-color: #F5F5F5;
 }
 
 
 
-.jfx-list-cell:filled:hover {
 
-    -fx-text-fill: black;
-
-}
 
 
 
@@ -386,15 +396,15 @@ root {
 
     -fx-background-insets: 0;
 
-    -jfx-cell-horizontal-margin: 0.0;
+    /*-jfx-cell-horizontal-margin: 0.0;*/
 
-    -jfx-cell-vertical-margin: 5.0;
+    /*-jfx-cell-vertical-margin: 5.0;*/
 
-    -jfx-vertical-gap: 10;
+    /*-jfx-vertical-gap: 10;*/
 
-    -jfx-expanded: false;
+    /*-jfx-expanded: false;*/
 
-    -fx-pref-width: 200;
+    /*-fx-pref-width: 200;*/
 
 }
 

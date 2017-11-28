@@ -1,11 +1,20 @@
 package nju.lighting.po.doc.giftdoc;
 
+import com.sun.tools.javah.Gen;
+
+import javax.persistence.*;
+
 /**
  * Created on 2017/10/22.
  * Description
  * @author 陈俊宇
  */
+@Entity
+@Table(name = "GIFT_DOC_ITEM")
 public class GiftItemPO {
+
+    private int id;
+
     private String commodityID;
 
     private int count;
@@ -13,12 +22,36 @@ public class GiftItemPO {
     private double subtotal;
 
 
-    public GiftItemPO(String commodity, int count) {
-        this.commodityID = commodity;
-        this.count = count;
+    public GiftItemPO() {
+
     }
 
-    public String getCommodity() {
+    public GiftItemPO(int id, String commodityID, int count, double subtotal) {
+        this.id = id;
+        this.commodityID = commodityID;
+        this.count = count;
+        this.subtotal = subtotal;
+    }
+
+    public GiftItemPO(String commodityID, int count, double subtotal) {
+        this.commodityID = commodityID;
+        this.count = count;
+        this.subtotal = subtotal;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID", nullable = false)
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Column(name = "COMMODITY_ID", length = 36, nullable = false)
+    public String getCommodityID() {
         return commodityID;
     }
 
@@ -26,6 +59,7 @@ public class GiftItemPO {
         this.commodityID = commodity;
     }
 
+    @Column(name = "COUNT", nullable = false)
     public int getCount() {
         return count;
     }
@@ -34,6 +68,7 @@ public class GiftItemPO {
         this.count = count;
     }
 
+    @Column(name = "SUB_TOTAL", nullable = false)
     public double getSubtotal() {
         return subtotal;
     }

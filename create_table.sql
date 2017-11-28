@@ -57,7 +57,7 @@ CREATE TABLE ALERT_DOC (
 
 
 CREATE TABLE ALERT_DOC_ITEM (
-	ID varchar(36),
+	ID int,
 	ALERT_DOC_ID varchar(20) not null,
 	COMMODITY_ID varchar(36) not null,
 	COUNT integer not null,
@@ -79,7 +79,7 @@ CREATE TABLE LOSS_AND_GAIN_DOC (
 
 
 CREATE TABLE LOSS_AND_GAIN_DOC_ITEM (
-	ID varchar(36),
+	ID int,
 	LOSS_AND_GAIN_DOC_ID varchar(20) not null,
 	COMMODITY_ID varchar(36) not null,
 	COUNT integer not null,
@@ -123,8 +123,8 @@ CREATE TABLE ACCOUNT_IO_DOC (
 
 
 CREATE TABLE ACCOUNT_TRANSFER (
-	ID varchar(36),
-	ACCOUNT_ID_DOC_ID varchar(36) not null,
+	ID int,
+	ACCOUNT_IO_DOC_ID varchar(36) not null,
 	ACCOUNT_ID varchar(20) not null,
 	AMOUNT float(8) not null,
 	COMMENT varchar(300),
@@ -147,7 +147,7 @@ CREATE TABLE COST_DOC (
 
 
 CREATE TABLE COST_DOC_ITEM (
-	ID varchar(36),
+	ID int,
 	COST_DOC_ID varchar(36) not null,
 	TYPE varchar(20) not null,
 	AMOUNT float(8) not null,
@@ -186,19 +186,22 @@ CREATE TABLE INIT_INFO (
 
 CREATE TABLE GIFT_DOC (
 	ID varchar(20) not null,
-	PROMOTION_ID varchar(20) not null,
-	CREATE_ID varchar(20) not null,
-	REPOSITORY_ID varchar(5),
-	TOTAL float(8) not null,
+	USER_ID varchar(20) not null,
+	CHECKER_ID varchar(20),
+	STATE varchar(20) not null,
+	CHECKER_COMMENT varchar(300),
+	CHECK_TIME DATETIME,
 	CREATE_TIME DATETIME not null,
-	COMMENT varchar(300),
+	PROMOTION_ID int not null,
+	REPOSITORY_ID varchar(5),
+	CUSTOMER_ID int not null,
+	TOTAL float(8) not null,
 	primary key(ID)
 );
 
 
 CREATE TABLE GIFT_DOC_ITEM (
-	ID varchar(36),
-	PROMOTION_ID varchar(20) not null,
+	ID int,
 	COMMODITY_ID varchar(36) not null,
 	COUNT integer not null,
 	SUB_TOTAL float(8) not null,
@@ -327,3 +330,8 @@ alter table CUSTOMER modify column ID int auto_increment;
 alter table PROMOTION modify column ID int auto_increment;
 alter table INIT_INFO modify column ID int auto_increment;
 alter table LOG modify column ID int auto_increment;
+alter table ALERT_DOC_ITEM modify column ID int auto_increment;
+alter table COST_DOC_ITEM modify column ID int auto_increment;
+alter table GIFT_DOC_ITEM modify column ID int auto_increment;
+alter table LOSS_AND_GAIN_DOC_ITEM modify column ID int auto_increment;
+alter table ACCOUNT_TRANSFER modify column ID int auto_increment;

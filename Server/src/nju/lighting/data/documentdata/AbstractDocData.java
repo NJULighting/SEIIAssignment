@@ -7,6 +7,7 @@ import shared.ResultMessage;
 import shared.TwoTuple;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,20 +48,32 @@ public abstract class AbstractDocData<T extends DocPO> {
         return docDataCommonOperation.update(doc);
     }
 
-    public List<T> getAll() {
-        return docDataCommonOperation.getAll();
+    public List<DocPO> getAll() {
+        List<T> list = docDataCommonOperation.getAll();
+        List<DocPO> resultList = new ArrayList<>();
+        resultList.addAll(list);
+        return resultList;
     }
 
-    public List<T> getByTime(Date from, Date to) {
-        return docDataCommonOperation.getDataBetweenTime(from, to, TIME_NAME);
+    public List<DocPO> getByTime(Date from, Date to) {
+        List<T> list = docDataCommonOperation.getDataBetweenTime(from, to, TIME_NAME);
+        List<DocPO> resultList = new ArrayList<>();
+        resultList.addAll(list);
+        return resultList;
     }
 
-    public List<T> findByUserId(String id) {
-        return docDataCommonOperation.getListBySingleField("id", id);
+    public List<DocPO> findByUserId(String id) {
+        List<T> list = docDataCommonOperation.getListBySingleField("id", id);
+        List<DocPO> resultList = new ArrayList<>();
+        resultList.addAll(list);
+        return resultList;
     }
 
-    public List<T> findByState(DocState docState) {
-        return docDataCommonOperation.getListBySingleField("state", docState);
+    public List<DocPO> findByState(DocState docState) {
+        List<T> list =  docDataCommonOperation.getListBySingleField("state", docState);
+        List<DocPO> resultList = new ArrayList<>();
+        resultList.addAll(list);
+        return resultList;
     }
 
     protected abstract String getDocName();

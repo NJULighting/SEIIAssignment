@@ -37,6 +37,11 @@ public class AccountManagerTest {
     }
 
     @Test
+    public void addAccountInvalidNameTest() throws Exception {
+        assertEquals(manager.addAccount("0001", "$jsdf", 11.1), ResultMessage.FAILURE);
+    }
+
+    @Test
     public void getAccountFailedTest() throws Exception {
         assertNull(manager.getAccount("not found"));
     }
@@ -47,5 +52,26 @@ public class AccountManagerTest {
         assertEquals("0001", target.getId());
         assertEquals("Frog Account", target.getName());
         assertTrue(target.getAccountLogs().isEmpty());
+    }
+
+    @Test
+    public void deleteFailTest() throws Exception {
+        assertEquals(manager.delete(""), ResultMessage.FAILURE);
+        assertEquals(manager.delete("Excited"), ResultMessage.SUCCESS);
+    }
+
+    @Test
+    public void renameTest1() throws Exception {
+        assertEquals(manager.rename("0001", "%sj@ "), ResultMessage.FAILURE);
+    }
+
+    @Test
+    public void renameTest2() throws Exception {
+        assertEquals(manager.rename("0001", "Frog Account"), ResultMessage.FAILURE);
+    }
+
+    @Test
+    public void renameTest3() throws Exception {
+        assertEquals(manager.rename("0001", "Excited"), ResultMessage.SUCCESS);
     }
 }

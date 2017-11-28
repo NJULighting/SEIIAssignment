@@ -11,15 +11,15 @@ import java.util.List;
  * @author Liao
  */
 public interface AccountBLService {
-    List<AccountVO> getAccountList() ;
+    List<AccountVO> getAccountList();
 
     ResultMessage addAccount(String name, double amount, String id);
 
-    List<AccountVO> findAccounts(String keyword) ;
+    List<AccountVO> findAccounts(String keyword);
 
-    AccountVO getAccount(String id) ;
+    AccountVO getAccount(String id);
 
-    ResultMessage deleteAccount(String id) ;
+    ResultMessage deleteAccount(String id);
 
-    ResultMessage modifyAccount(String oldName, String newName) ;
+    ResultMessage modifyAccount(String accountID, String newName);
 }

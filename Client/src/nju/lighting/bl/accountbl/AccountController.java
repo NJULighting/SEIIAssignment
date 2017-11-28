@@ -36,11 +36,11 @@ public class AccountController implements AccountBLService {
 
     @Override
     public ResultMessage deleteAccount(String id) {
-        return null;
+        return accountManager.delete(id);
     }
 
     @Override
-    public ResultMessage modifyAccount(String oldName, String newName) {
-        return null;
+    public ResultMessage modifyAccount(String accountID, String newName) {
+        return accountManager.rename(accountID, newName);
     }
 }

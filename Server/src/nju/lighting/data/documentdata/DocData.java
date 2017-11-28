@@ -15,15 +15,56 @@ import java.util.List;
  *
  * @author iznauy
  */
-public class DocData implements DocDataService{
+public class DocData implements DocDataService {
 
-    @Override
-    public String create(DocType type) throws RemoteException {
-        return null;
+    private AccountIODocData accountIODocData;
+
+    private AlertDocData alertDocData;
+
+    private CostDocData costDocData;
+
+    private GiftDocData giftDocData;
+
+    private LossAndGainDocData lossAndGainDocData;
+
+    public DocData() {
+
     }
 
+    private AccountIODocData getAccountIODocData() {
+        if (accountIODocData == null)
+            accountIODocData = new AccountIODocData();
+        return accountIODocData;
+    }
+
+    private AlertDocData getAlertDocData() {
+        if (alertDocData == null)
+            alertDocData = new AlertDocData();
+        return alertDocData;
+    }
+
+    private CostDocData getCostDocData() {
+        if (costDocData == null)
+            costDocData = new CostDocData();
+        return costDocData;
+    }
+
+    private GiftDocData getGiftDocData() {
+        if (giftDocData == null)
+            giftDocData = new GiftDocData();
+        return giftDocData;
+    }
+
+    private LossAndGainDocData getLossAndGainDocData() {
+        if (lossAndGainDocData == null)
+            lossAndGainDocData = new LossAndGainDocData();
+        return lossAndGainDocData;
+    }
+
+
+
     @Override
-    public ResultMessage commitDoc(DocPO doc) throws RemoteException {
+    public TwoTuple<ResultMessage, String> commitDoc(DocPO doc) throws RemoteException {
         return null;
     }
 

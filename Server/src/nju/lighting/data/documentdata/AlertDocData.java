@@ -1,8 +1,6 @@
 package nju.lighting.data.documentdata;
 
-import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.alertdoc.AlertDocPO;
-import shared.ResultMessage;
 
 /**
  * Created on 2017/11/28.
@@ -10,18 +8,16 @@ import shared.ResultMessage;
  *
  * @author iznauy
  */
-public class AlertDocData {
+public class AlertDocData extends AbstractDocData<AlertDocPO> {
 
-    /**
-     * 生成单据编号
-     * @return
-     */
-    public String create() {
-        return null;
+    private String docName = "BJD";
+
+    public AlertDocData() {
+        super(AlertDocPO.class);
     }
 
-    public ResultMessage commitDoc(AlertDocPO doc) {
-        return null;
+    @Override
+    protected String getDocName() {
+        return docName;
     }
-
 }

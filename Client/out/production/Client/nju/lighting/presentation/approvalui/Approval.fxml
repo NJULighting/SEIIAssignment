@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Pane layoutX="4.0" layoutY="7.0">
+            <children>
+                <TableView cache="true" prefHeight="551.0" prefWidth="218.0">
+                    <columns>
+                        <TableColumn prefWidth="217.0" text="待审批的单据" />
+                    </columns>
+                </TableView>
+                <Pane layoutX="221.0" layoutY="-1.0" prefHeight="613.0" prefWidth="1051.0">
+                    <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="603.0" layoutX="-4.0" layoutY="1.0" stroke="#c1c1c1" strokeType="INSIDE" width="1051.0" />
+                        <Text layoutX="364.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="选中单据的具体内容" wrappingWidth="253.99998092651367">
+                            <font>
+                                <Font size="19.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </Pane>
+                <Button layoutY="574.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="218.0" text="批量审批单据" />
+                <Button layoutY="551.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="108.0" text="同意" />
+                <Button layoutX="109.0" layoutY="551.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="109.0" text="驳回" />
+            </children>
+        </Pane>
+    </children>
+</Pane>

@@ -4,6 +4,7 @@ import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.po.doc.DocPO;
 import shared.*;
 
+import javax.print.Doc;
 import java.rmi.RemoteException;
 import java.util.*;
 
@@ -25,14 +26,6 @@ public class DocData implements DocDataService {
 
     private LossAndGainDocData lossAndGainDocData;
 
-    private SaleDocData saleDocData;
-
-    private SaleReturnDocData saleReturnDocData;
-
-    private StockReturnData stockReturnData;
-
-    private StockDocData stockDocData;
-
     private HashMap<DocType, AbstractDocData> locateDataService;
 
     public DocData() {
@@ -41,19 +34,10 @@ public class DocData implements DocDataService {
         costDocData = new CostDocData();
         giftDocData = new GiftDocData();
         lossAndGainDocData = new LossAndGainDocData();
-        saleDocData = new SaleDocData();
-        saleReturnDocData = new SaleReturnDocData();
-        stockDocData = new StockDocData();
-        stockReturnData = new StockReturnData();
-        locateDataService = new HashMap<>();
         locateDataService.put(DocType.ACCOUNT_INOUT, accountIODocData);
         locateDataService.put(DocType.ALERT, alertDocData);
         locateDataService.put(DocType.COST, costDocData);
         locateDataService.put(DocType.GIFT, giftDocData);
-        locateDataService.put(DocType.SALES, saleDocData);
-        locateDataService.put(DocType.SALES_RETURN, saleReturnDocData);
-        locateDataService.put(DocType.STOCK, stockDocData);
-        locateDataService.put(DocType.STOCK_RETURN, stockReturnData);
         locateDataService.put(DocType.LOSS_AND_GAIN, lossAndGainDocData);
     }
 

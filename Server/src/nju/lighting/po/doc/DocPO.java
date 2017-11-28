@@ -15,14 +15,24 @@ public abstract class DocPO {
 
     private Date time;
 
-    private String comment;
+    private String approvalComment;
 
-    private DocState state;
+    private DocState state = DocState.UN_CHECKED;
 
     private String approvalId;
 
     public DocPO() {
 
+    }
+
+    public DocPO(String id, DocType docType, String userId, Date time, String approvalComment, DocState state, String approvalId) {
+        this.id = id;
+        this.docType = docType;
+        this.userId = userId;
+        this.time = time;
+        this.approvalComment = approvalComment;
+        this.state = state;
+        this.approvalId = approvalId;
     }
 
     public DocPO(String id, DocType docType, String userId, Date time) {
@@ -32,16 +42,6 @@ public abstract class DocPO {
         this.time = time;
     }
 
-    public DocPO(String id, DocType docType, String userId, Date time, String comment, DocState state, String approvalId) {
-        this.id = id;
-        this.docType = docType;
-        this.userId = userId;
-        this.time = time;
-        this.comment = comment;
-        this.state = state;
-        this.approvalId = approvalId;
-    }
-
     @Override
     public String toString() {
         return "DocPO{" +
@@ -49,7 +49,7 @@ public abstract class DocPO {
                 ", docType=" + docType +
                 ", userId='" + userId + '\'' +
                 ", time=" + time +
-                ", comment='" + comment + '\'' +
+                ", approvalComment='" + approvalComment + '\'' +
                 ", state=" + state +
                 ", approvalId='" + approvalId + '\'' +
                 '}';
@@ -87,12 +87,12 @@ public abstract class DocPO {
         this.time = time;
     }
 
-    public String getComment() {
-        return comment;
+    public String getApprovalComment() {
+        return approvalComment;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setApprovalComment(String approvalComment) {
+        this.approvalComment = approvalComment;
     }
 
     public DocState getState() {

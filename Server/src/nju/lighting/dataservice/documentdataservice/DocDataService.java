@@ -14,6 +14,8 @@ public interface DocDataService extends Remote {
 
     ResultMessage commitDoc(DocPO doc) throws RemoteException;
 
+    ResultMessage updateDoc(DocPO doc) throws RemoteException;
+
     List<DocPO> findByUserId(String id) throws RemoteException;
 
     List<DocPO> findByState(DocState docState) throws RemoteException;

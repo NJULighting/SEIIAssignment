@@ -28,6 +28,11 @@ public class DocData implements DocDataService{
     }
 
     @Override
+    public ResultMessage updateDoc(DocPO doc) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public List<DocPO> findByUserId(String id) throws RemoteException {
         return null;
     }

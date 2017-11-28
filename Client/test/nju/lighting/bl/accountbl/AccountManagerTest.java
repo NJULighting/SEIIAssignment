@@ -20,9 +20,9 @@ public class AccountManagerTest {
     public void getAllAccounts() throws Exception {
         List<AccountVO> voList = manager.getAccountList();
         assert voList != null;
-        assertEquals(voList.size(), 2);
+        assertEquals(5, voList.size());
         assertNotNull(voList.get(0).getAccountLogs());
-        assertEquals(voList.get(1).getName(), "Frog Account");
+        assertEquals("BbidA的校园卡", voList.get(1).getName());
     }
 
     @Test

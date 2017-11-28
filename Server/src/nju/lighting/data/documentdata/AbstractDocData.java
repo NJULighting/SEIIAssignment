@@ -19,7 +19,7 @@ import java.util.List;
  */
 public abstract class AbstractDocData<T extends DocPO> {
 
-    public static final String TIME_NAME = "time";
+    public static final String TIME_NAME = "createTime";
 
     private CommonOperation<T> docDataCommonOperation;
 
@@ -38,7 +38,7 @@ public abstract class AbstractDocData<T extends DocPO> {
         if (count == -1)
             return new TwoTuple<>(ResultMessage.FAILURE, null);
         id += count;
-        doc.setTime(now);
+        doc.setCreateTime(now);
         doc.setId(id);
         ResultMessage resultMessage = docDataCommonOperation.add(doc);
         return new TwoTuple<>(resultMessage, id);

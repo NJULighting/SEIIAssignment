@@ -8,10 +8,15 @@ package nju.lighting.po.doc.stockdoc;
 public class StockDocItemPO {
 
     private int id;
+
     private String SalesDocID;
+
     private String commodityID;
+
     private int number = 0;
+
     private double totalAmount = 0;
+    
     private String remarks = "";
 
     public StockDocItemPO(int id, String SalesDocID, String commodityID,

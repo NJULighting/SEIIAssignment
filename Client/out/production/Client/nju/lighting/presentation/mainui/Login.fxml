@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
-<?import com.jfoenix.controls.JFXDialog?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Button?>
@@ -12,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" minHeight="200.0" onMouseDragged="#Drag" onMousePressed="#getOffSet" prefHeight="330.0" prefWidth="430.0" style="-fx-background-radius: 10px;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.LoginController">
+<AnchorPane minHeight="200.0" onMouseDragged="#Drag" onMousePressed="#getOffSet" prefHeight="330.0" prefWidth="430.0" style="-fx-background-radius: 10px;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.LoginController">
    <children>
       <JFXTextField fx:id="account" focusColor="#5599ff" layoutX="133.0" layoutY="109.0" prefHeight="23.0" prefWidth="162.0" />
       <JFXPasswordField fx:id="password" focusColor="#5599ff" layoutX="133.0" layoutY="150.0" onKeyPressed="#loginByEnter" prefHeight="23.0" prefWidth="162.0" />
@@ -23,7 +22,7 @@
       </JFXButton>
       <HBox layoutX="134.0" layoutY="205.0" spacing="18.0">
          <children>
-            <JFXCheckBox fx:id="test" checkedColor="#5599ff" text="保存密码" />
+            <JFXCheckBox checkedColor="#5599ff" text="保存密码" />
             <JFXCheckBox checkedColor="#5599ff" text="自动登录" />
          </children>
       </HBox>
@@ -45,6 +44,5 @@
             </ImageView>
          </graphic>
       </Button>
-      <JFXDialog fx:id="dialog" layoutX="108.0" layoutY="85.0" />
    </children>
 </AnchorPane>

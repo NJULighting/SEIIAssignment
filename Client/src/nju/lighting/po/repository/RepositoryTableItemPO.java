@@ -1,12 +1,8 @@
 package nju.lighting.po.repository;
 
-import nju.lighting.po.commodity.CommodityItemPO;
-
 import java.util.Date;
 
 public class RepositoryTableItemPO {
-
-    private String name;
 
     private String commodityId;
 
@@ -22,31 +18,7 @@ public class RepositoryTableItemPO {
 
     private Date dateOfProduction;
 
-    /**
-     * 用于测试时打印
-     * @return
-     */
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(name);
-        builder.append(" ");
-        builder.append(modelNumber);
-        builder.append(" ");
-        builder.append(repCount);
-        builder.append(" ");
-        builder.append(recentInPrice);
-        builder.append(" ");
-        builder.append(batch);
-        builder.append(" ");
-        builder.append(batchNumber);
-        builder.append(" ");
-        builder.append(dateOfProduction);
-        return builder.toString();
-    }
-
-    public RepositoryTableItemPO(String name, String commodityId, String modelNumber, int repCount, double recentInPrice, String batch, String batchNumber, Date dateOfProduction) {
-        this.name = name;
+    public RepositoryTableItemPO(String commodityId, String modelNumber, int repCount, double recentInPrice, String batch, String batchNumber, Date dateOfProduction) {
         this.commodityId = commodityId;
         this.modelNumber = modelNumber;
         this.repCount = repCount;
@@ -54,25 +26,6 @@ public class RepositoryTableItemPO {
         this.batch = batch;
         this.batchNumber = batchNumber;
         this.dateOfProduction = dateOfProduction;
-    }
-
-    public RepositoryTableItemPO(CommodityItemPO commodityItemPO) {
-        this.name = commodityItemPO.getName();
-        this.commodityId = commodityItemPO.getId();
-        this.modelNumber = commodityItemPO.getModelNumber();
-        this.repCount = commodityItemPO.getRepCount();
-        this.recentInPrice = commodityItemPO.getRecentInPrice();
-        this.batch = commodityItemPO.getBatch();
-        this.batch = commodityItemPO.getBatchNumber();
-        this.dateOfProduction = commodityItemPO.getDateOfProduction();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getCommodityId() {

@@ -22,12 +22,8 @@
         <mapping class="nju.lighting.po.repository.RepositoryTableItemPO" />
         <mapping class="nju.lighting.po.account.AccountPO" />
         <mapping class="nju.lighting.po.account.AccountLogPO" />
-        <mapping class="nju.lighting.po.user.UserPO" />
+        <mapping class="nju.lighting.po.UserPO" />
         <mapping class="nju.lighting.po.customer.CustomerPO" />
-        <mapping class="nju.lighting.po.promotion.PromotionPO" />
-        <mapping class="nju.lighting.po.promotion.PromotionPackageItemPO" />
-        <mapping class="nju.lighting.po.init.InitPO" />
-        <mapping class="nju.lighting.po.log.LogPO" />
 
     </session-factory>
 

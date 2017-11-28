@@ -5,7 +5,7 @@ import shared.ResultMessage;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created on 2017/10/21.
@@ -15,14 +15,14 @@ import java.util.List;
  */
 public interface PromotionDataService extends Remote {
 
-    List<PromotionPO> getPromotionList() throws RemoteException;
+    ArrayList<PromotionPO> getBenefitsPlan(int customerLevel, ArrayList<String> commodityList, double total) throws RemoteException;
+
+    ArrayList<PromotionPO> getPromotionList() throws RemoteException;
 
     ResultMessage insert(PromotionPO po) throws RemoteException;
 
     ResultMessage update(PromotionPO po) throws RemoteException;
 
-    ResultMessage delete(int id) throws RemoteException;
-
-    PromotionPO getPromotionById(int id) throws RemoteException;
+    ResultMessage delete(PromotionPO po) throws RemoteException;
 
 }

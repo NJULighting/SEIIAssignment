@@ -4,9 +4,8 @@ package nju.lighting.po.promotion;
 import shared.CustomerGrade;
 import shared.PromotionType;
 
-import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -15,12 +14,7 @@ import java.util.List;
  *
  * @author 陈俊宇
  */
-@Entity
-@Table(name = "PROMOTION")
 public class PromotionPO {
-
-    private int id; //id
-
     private String name; //促销策略名称
 
     private PromotionType type;  //促销策略类型
@@ -35,18 +29,16 @@ public class PromotionPO {
 
     private double total;  //针对不同总价的促销策略中的总价
 
-    private List<PromotionPackageItemPO> goods; //组合特价包裹
+    private ArrayList<String> goods;  //组合商品
 
     private double off;  //折让金额
 
     private double vouchers; //代金券金额
 
-    private Date vouchersEndDate;  //代金券截止日期
-
-    public PromotionPO() {}
+    private long vouchersEndDate;  //代金券截止日期
 
     public PromotionPO(String name, PromotionType type, Date startDate, Date endDate, CustomerGrade level,
-                       double total, List<PromotionPackageItemPO> goods, double off, double vouchers, Date vouchersEndDate) {
+                       double total, ArrayList<String> goods, double off, double vouchers, long vouchersEndDate) {
         this.name = name;
         this.type = type;
         this.startDate = startDate;
@@ -59,7 +51,6 @@ public class PromotionPO {
         this.vouchersEndDate = vouchersEndDate;
     }
 
-    @Column(name = "NAME", length = 36, nullable = false)
     public String getName() {
         return name;
     }
@@ -68,30 +59,18 @@ public class PromotionPO {
         this.name = name;
     }
 
-    public void addGood(PromotionPackageItemPO good) {
+    public void addGood(String good) {
         goods.add(good);
     }
 
-    public void removeGood(PromotionPackageItemPO good) {
+    public void removeGood(String good) {
         goods.remove(good);
     }
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "PROMOTION_TYPE", length = 20, nullable = false)
     public PromotionType getType() {
         return type;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setType(PromotionType type) {
-        this.type = type;
-    }
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20, name = "CUSTOMER_GRADE")
     public CustomerGrade getLevel() {
         return level;
     }
@@ -100,7 +79,6 @@ public class PromotionPO {
         this.level = level;
     }
 
-    @Column(name = "TOTAL", nullable = false)
     public double getTotal() {
         return total;
     }
@@ -109,7 +87,6 @@ public class PromotionPO {
         this.total = total;
     }
 
-    @Column(nullable = false, name = "OFF")
     public double getOff() {
         return off;
     }
@@ -118,24 +95,15 @@ public class PromotionPO {
         this.off = off;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    public int getId() {
-        return id;
-    }
-
-    @Transient
-    public List<PromotionPackageItemPO> getGoods() {
+    public ArrayList getGoods() {
         return goods;
     }
 
-    public void setGoods(List<PromotionPackageItemPO> goods) {
+    public void setGoods(ArrayList goods) {
         this.goods = goods;
     }
 
-    @Column(name = "START_TIME", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+
     public Date getStartDate() {
         return startDate;
     }
@@ -144,8 +112,6 @@ public class PromotionPO {
         this.startDate = startDate;
     }
 
-    @Column(name = "END_TIME", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     public Date getEndDate() {
         return endDate;
     }
@@ -154,8 +120,6 @@ public class PromotionPO {
         this.endDate = endDate;
     }
 
-    @Column(name = "CREATE_TIME", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     public Date getTime() {
         return time;
     }
@@ -164,7 +128,6 @@ public class PromotionPO {
         this.time = time;
     }
 
-    @Column(name = "VOUCHER", nullable = false)
     public double getVouchers() {
         return vouchers;
     }
@@ -173,13 +136,11 @@ public class PromotionPO {
         this.vouchers = vouchers;
     }
 
-    @Column(name = "VOUCHER_END_DATE", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    public Date getVouchersEndDate() {
+    public long getVouchersEndDate() {
         return vouchersEndDate;
     }
 
-    public void setVouchersEndDate(Date vouchersEndDate) {
+    public void setVouchersEndDate(long vouchersEndDate) {
         this.vouchersEndDate = vouchersEndDate;
     }
 

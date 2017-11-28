@@ -144,8 +144,7 @@ public enum AccountManager {
      * @return <code>ResultMessage.SUCCESS</code> if the name is valid<br>
      * <code>ResultMessage.DUPLICATE</code> if name repeated<br>
      * <code>ResultMessage.NETWORK_FAIL</code> if network failed<br>
-     *     <code>ResultMessage.INVALID_NAME</code> if name's invalid<br>
-     *         <code>ResultMessage.FAILURE</code> if id not exists
+     *     <cdoe>ResultMessage.INVALID_NAME</cdoe> if name's invalid
      */
     ResultMessage rename(String id, String newName) {
         // Check new name's form using regex
@@ -154,9 +153,6 @@ public enum AccountManager {
 
         try {
             AccountPO target = accountDataService.get(id);
-            // Check empty
-            if (target == null)
-                return ResultMessage.FAILURE;
             if (target.getName().equals(newName))
                 return ResultMessage.DUPLICATE; // Repeated
             // Rename succeed

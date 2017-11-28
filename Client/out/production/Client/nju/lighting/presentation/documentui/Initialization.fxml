@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="nju.lighting.presentation.documentui.Initialization">
+    <children>
+        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="720.0" prefWidth="1280.0">
+            <children>
+                <ImageView fitHeight="70.0" fitWidth="64.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../../../../../Desktop/avatar/avatar.jpg"/>
+                    </image>
+                </ImageView>
+                <VBox layoutX="87.0" layoutY="19.0" prefHeight="54.0" prefWidth="100.0">
+                    <children>
+                        <Label prefHeight="23.0" prefWidth="71.0" text="身份：XXX"/>
+                        <Label prefHeight="28.0" prefWidth="77.0" text="工号：XXX"/>
+                    </children>
+                </VBox>
+                <HBox alignment="TOP_CENTER" layoutX="322.0" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT"
+                      prefHeight="63.0" prefWidth="929.0" spacing="10.0">
+                    <children>
+                        <Button mnemonicParsing="false" text="历史单据"/>
+                        <Button mnemonicParsing="false" text="账户管理"/>
+                        <Button mnemonicParsing="false" text="制定收付款单"/>
+                        <Button mnemonicParsing="false" text="制定现金费用单"/>
+                        <Button mnemonicParsing="false" text="经营情况表"/>
+                        <Button mnemonicParsing="false" text="销售明细表"/>
+                        <Button mnemonicParsing="false" text="经营历程表"/>
+                        <Button mnemonicParsing="false" text="期初建账"/>
+                        <Button mnemonicParsing="false" text="日志"/>
+                    </children>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                    </padding>
+                </HBox>
+                <Pane layoutX="11.0" layoutY="91.0" prefHeight="619.0" prefWidth="1259.0">
+                    <children>
+                        <Label layoutX="486.0" layoutY="28.0" text="期初建账">
+                            <font>
+                                <Font size="50.0"/>
+                            </font>
+                        </Label>
+                        <Button layoutX="1122.0" layoutY="583.0" mnemonicParsing="false" text="构建"/>
+                        <Button layoutX="1205.0" layoutY="583.0" mnemonicParsing="false" text="提交"/>
+                        <TableView layoutX="22.0" layoutY="137.0" prefHeight="457.0" prefWidth="608.0">
+                            <columns>
+                                <TableColumn prefWidth="98.0" text="商品分类"/>
+                                <TableColumn prefWidth="89.0" text="商品名称"/>
+                                <TableColumn prefWidth="86.0" text="类别"/>
+                                <TableColumn prefWidth="108.0" text="型号"/>
+                                <TableColumn prefWidth="105.0" text="进价"/>
+                                <TableColumn prefWidth="121.0" text="售价"/>
+                            </columns>
+                        </TableView>
+                        <TableView layoutX="639.0" layoutY="137.0" prefHeight="186.0" prefWidth="608.0">
+                            <columns>
+                                <TableColumn prefWidth="300.0" text="名称"/>
+                                <TableColumn prefWidth="307.0" text="余额"/>
+                            </columns>
+                        </TableView>
+                        <TableView layoutX="639.0" layoutY="366.0" prefHeight="210.0" prefWidth="608.0">
+                            <columns>
+                                <TableColumn prefWidth="90.0" text="客户分类"/>
+                                <TableColumn prefWidth="102.0" text="客户名称"/>
+                                <TableColumn prefWidth="156.0" text="联系方式"/>
+                                <TableColumn prefWidth="121.0" text="应收"/>
+                                <TableColumn prefWidth="138.0" text="应付"/>
+                            </columns>
+                        </TableView>
+                        <Label layoutX="22.0" layoutY="104.0" text="商品信息"/>
+                        <Label layoutX="639.0" layoutY="112.0" text="账户信息"/>
+                        <Label layoutX="639.0" layoutY="343.0" text="客户信息"/>
+                    </children>
+                </Pane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

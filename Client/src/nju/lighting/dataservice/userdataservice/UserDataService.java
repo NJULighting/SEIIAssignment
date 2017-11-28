@@ -1,13 +1,11 @@
 package nju.lighting.dataservice.userdataservice;
 
-import nju.lighting.po.user.UserPO;
-import shared.LoginReturnState;
+import nju.lighting.po.UserPO;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created on 2017/10/22.
@@ -15,17 +13,23 @@ import java.util.List;
  * @author Liao
  */
 public interface UserDataService extends Remote {
+    void init() throws RemoteException;
+
+    void finish() throws RemoteException;
 
     ResultMessage insert(UserPO po) throws RemoteException;
 
-    UserPO get(String id) throws RemoteException;
+    ArrayList<UserPO> find(String keyword) throws RemoteException;
+
+    UserPO get(String ID) throws RemoteException;
 
     ResultMessage update(UserPO po) throws RemoteException;
 
-    ResultMessage delete(String id) throws RemoteException;
+    ResultMessage delete(UserPO po) throws RemoteException;
 
-    List<UserPO> getAll() throws RemoteException;
+    ArrayList<UserPO> getAll() throws RemoteException;
 
-    TwoTuple<UserPO, LoginReturnState> login(String id, String password) throws RemoteException;
+    ResultMessage logIn(UserPO po) throws RemoteException;
 
+    ResultMessage logOut(UserPO po) throws RemoteException;
 }

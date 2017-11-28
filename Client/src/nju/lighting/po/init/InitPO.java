@@ -1,6 +1,6 @@
 package nju.lighting.po.init;
 
-import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -8,46 +8,33 @@ import java.util.Date;
  * Description:
  * @author Liao
  */
-@Entity
-@Table(name = "INIT_INFO")
 public class InitPO {
-
-    private int id;
-
+    private String id;
     private Date time;
-
     private String userID;
+    private ArrayList<String> commodityCategories;
+    private ArrayList<String> commodities;
+    private ArrayList<String> customers;
+    private ArrayList<String> accounts;
 
-    private String url;
-
-    public InitPO() {}
-
-    public InitPO(Date time, String userID, String url) {
-        this.time = time;
-        this.userID = userID;
-        this.url = url;
-    }
-
-    public InitPO(int id, Date time, String userID, String url) {
+    public InitPO(String id, Date time, String userID, ArrayList<String> commodityCategories, ArrayList<String> commodities, ArrayList<String> customers, ArrayList<String> accounts) {
         this.id = id;
         this.time = time;
         this.userID = userID;
-        this.url = url;
+        this.commodityCategories = commodityCategories;
+        this.commodities = commodities;
+        this.customers = customers;
+        this.accounts = accounts;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "CREATE_TIME", nullable = false)
     public Date getTime() {
         return time;
     }
@@ -56,7 +43,6 @@ public class InitPO {
         this.time = time;
     }
 
-    @Column(name = "USER_ID", length = 20, nullable = false)
     public String getUserID() {
         return userID;
     }
@@ -65,12 +51,35 @@ public class InitPO {
         this.userID = userID;
     }
 
-    @Column(name = "URL", length = 255)
-    public String getUrl() {
-        return url;
+    public ArrayList<String> getCommodityCategories() {
+        return commodityCategories;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setCommodityCategories(ArrayList<String> commodityCategories) {
+        this.commodityCategories = commodityCategories;
+    }
+
+    public ArrayList<String> getCommodities() {
+        return commodities;
+    }
+
+    public void setCommodities(ArrayList<String> commodities) {
+        this.commodities = commodities;
+    }
+
+    public ArrayList<String> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(ArrayList<String> customers) {
+        this.customers = customers;
+    }
+
+    public ArrayList<String> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(ArrayList<String> accounts) {
+        this.accounts = accounts;
     }
 }

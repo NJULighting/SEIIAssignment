@@ -1,6 +1,5 @@
 package nju.lighting.po.doc;
 
-import shared.DocState;
 import shared.DocType;
 
 import java.util.Date;
@@ -15,44 +14,12 @@ public abstract class DocPO {
 
     private Date time;
 
-    private String approvalComment;
-
-    private DocState state = DocState.UN_CHECKED;
-
-    private String approvalId;
-
-    public DocPO() {
-
-    }
-
-    public DocPO(String id, DocType docType, String userId, Date time, String approvalComment, DocState state, String approvalId) {
-        this.id = id;
-        this.docType = docType;
-        this.userId = userId;
-        this.time = time;
-        this.approvalComment = approvalComment;
-        this.state = state;
-        this.approvalId = approvalId;
-    }
 
     public DocPO(String id, DocType docType, String userId, Date time) {
         this.id = id;
         this.docType = docType;
         this.userId = userId;
         this.time = time;
-    }
-
-    @Override
-    public String toString() {
-        return "DocPO{" +
-                "id='" + id + '\'' +
-                ", docType=" + docType +
-                ", userId='" + userId + '\'' +
-                ", time=" + time +
-                ", approvalComment='" + approvalComment + '\'' +
-                ", state=" + state +
-                ", approvalId='" + approvalId + '\'' +
-                '}';
     }
 
     public String getId() {
@@ -85,29 +52,5 @@ public abstract class DocPO {
 
     public void setTime(Date time) {
         this.time = time;
-    }
-
-    public String getApprovalComment() {
-        return approvalComment;
-    }
-
-    public void setApprovalComment(String approvalComment) {
-        this.approvalComment = approvalComment;
-    }
-
-    public DocState getState() {
-        return state;
-    }
-
-    public void setState(DocState state) {
-        this.state = state;
-    }
-
-    public String getApprovalId() {
-        return approvalId;
-    }
-
-    public void setApprovalId(String approvalId) {
-        this.approvalId = approvalId;
     }
 }

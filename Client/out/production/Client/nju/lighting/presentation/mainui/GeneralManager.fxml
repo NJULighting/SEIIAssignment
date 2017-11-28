@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#Drag" onMousePressed="#getOffSet" prefHeight="110.0" prefWidth="1280.0" style="-fx-background-color: #5599FF;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.GeneralManagerUIController">
+    <children>
+        <Circle fill="#fffefe" layoutX="46.0" layoutY="46.0" radius="42.0" stroke="#b9b3b3" strokeType="INSIDE" />
+        <VBox alignment="CENTER_LEFT" layoutX="99.0" layoutY="23.0" prefHeight="45.0" prefWidth="100.0" spacing="12.0">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="身份：总经理" wrappingWidth="88.0" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID：XXXX" wrappingWidth="88.0" />
+            </children>
+        </VBox>
+        <HBox layoutX="436.0" layoutY="26.0" spacing="5.0">
+            <children>
+                <Button fx:id="approvalBtn" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT; -fx-background-radius: 3px; -fx-background-insets: 0px;">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../images/审批.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="promotionManageBtn" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT; -fx-background-radius: 3px; -fx-background-insets: 0px;">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../images/促销策略.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="BusinessHistoryBtn" mnemonicParsing="false" opacity="0.45" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT; -fx-background-radius: 3px; -fx-background-insets: 0px;">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../images/经营历程表.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="BusinessConditionBtn" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT; -fx-background-radius: 3px; -fx-background-insets: 0px;">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../images/经营情况表.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="SalesConditionBtn" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT; -fx-background-radius: 3px; -fx-background-insets: 0px;">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../images/销售情况表.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="logBtn" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT; -fx-background-radius: 3px; -fx-background-insets: 0px;">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../images/日志.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            </children>
+        </HBox>
+      <HBox layoutX="1159.0" layoutY="36.0">
+         <children>
+            <Button fx:id="miniBtn" mnemonicParsing="false" onAction="#mini" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT; -fx-background-radius: 3px; -fx-background-insets: 0px;">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="45.0">
+                     <image>
+                        <Image url="@../../../../images/subtract_gray.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="closeBtn" mnemonicParsing="false" onAction="#close" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT; -fx-background-radius: 3px; -fx-background-insets: 0px;">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../../../../images/close_gray.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+    </children>
+</Pane>

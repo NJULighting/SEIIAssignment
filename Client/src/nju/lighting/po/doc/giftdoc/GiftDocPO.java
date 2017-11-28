@@ -12,7 +12,6 @@ import java.util.Date;
  * @author 陈俊宇
  */
 public class GiftDocPO extends DocPO {
-
     private ArrayList<GiftItemPO> giftItemPOs;
 
     private String customerID;

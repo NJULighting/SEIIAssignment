@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXPasswordField?>
@@ -11,15 +17,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="200.0" onMouseDragged="#Drag" onMousePressed="#getOffSet" prefHeight="330.0" prefWidth="430.0" style="-fx-background-radius: 10px;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.LoginController">
+<AnchorPane minHeight="200.0" onMouseDragged="#Drag" onMousePressed="#getOffSet" prefHeight="330.0" prefWidth="430.0" style="-fx-background-radius: 10px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.LoginController">
    <children>
       <JFXTextField fx:id="account" focusColor="#5599ff" layoutX="133.0" layoutY="109.0" prefHeight="23.0" prefWidth="162.0" />
       <JFXPasswordField fx:id="password" focusColor="#5599ff" layoutX="133.0" layoutY="150.0" onKeyPressed="#loginByEnter" prefHeight="23.0" prefWidth="162.0" />
-      <JFXButton fx:id="loginBtn" layoutX="133.0" layoutY="242.0" onAction="#login" opacity="0.83" prefHeight="23.0" prefWidth="162.0" style="-fx-background-color: #5599FF; -fx-background-radius: 5px;" text="登录" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </JFXButton>
+      <JFXButton fx:id="loginBtn" layoutX="133.0" layoutY="242.0" onAction="#login" opacity="0.83" prefHeight="23.0" prefWidth="162.0" style="-fx-background-color: #5599FF; -fx-background-radius: 5px;" text="登录" textFill="WHITE" />
       <HBox layoutX="134.0" layoutY="205.0" spacing="18.0">
          <children>
             <JFXCheckBox checkedColor="#5599ff" text="保存密码" />
@@ -44,5 +46,24 @@
             </ImageView>
          </graphic>
       </Button>
+      <Pane fx:id="dialogPane" layoutY="289.0" prefHeight="41.0" prefWidth="438.0" style="-fx-background-color: DDDDDD;" visible="false">
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="6.0">
+               <image>
+                  <Image url="@../../../../../../../../Desktop/提示-fill.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="dialogLabel" layoutX="60.0" layoutY="11.0" text="错误信息" />
+            <Button fx:id="closeDialogBtn" layoutX="391.0" layoutY="6.0" mnemonicParsing="false" onAction="#close" opacity="0.5" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0">
+                     <image>
+                        <Image url="@../../../../images/close.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

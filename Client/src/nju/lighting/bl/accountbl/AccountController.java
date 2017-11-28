@@ -12,7 +12,8 @@ import java.util.List;
  * @author Liao
  */
 public class AccountController implements AccountBLService {
-    private AccountManager accountManager = AccountManager.getAccountManager();
+    // TODO: 2017/11/28 Replace real logger 
+    private AccountManager accountManager = AccountManager.getInstance();
 
     @Override
     public List<AccountVO> getAccountList() {
@@ -27,6 +28,7 @@ public class AccountController implements AccountBLService {
     @Override
     public List<AccountVO> findAccounts(String keyword) {
         return null;
+        // TODO: 2017/11/28 wait for data level
     }
 
     @Override

@@ -13,7 +13,6 @@ import javax.naming.NamingException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,13 +21,16 @@ import java.util.regex.Pattern;
  * Description:
  * @author Liao
  */
-public class AccountManager {
-    /* Singleton */
-    private static AccountManager accountManager;
+public enum AccountManager {
+    /**
+     * Singleton
+     */
+    INSTANCE;
+
     private AccountDataService accountDataService;
     private Logger logger;
 
-    private AccountManager() {
+    AccountManager() {
         try {
             accountDataService = DataFactory.getAccountDataBase();
             logger = new MockLogger();
@@ -37,8 +39,8 @@ public class AccountManager {
         }
     }
 
-    public static AccountManager getAccountManager() {
-        return Optional.ofNullable(accountManager).orElseGet(AccountManager::new);
+    public static AccountManager getInstance() {
+        return INSTANCE;
     }
 
     /**
@@ -46,8 +48,9 @@ public class AccountManager {
      * @param id     id of account(银行账号）
      * @param name   name of account(Whatever)
      * @param amount initial amount of this account
-     * @return <code>ResultMessage.SUCCESS</code> if add account successfull <br>
-     * <code>ResultMessage.FAILURE</code> if find id repeated or name invalid <br>
+     * @return <code>ResultMessage.SUCCESS</code> if add account successfully <br>
+     *     <cdoe>ResultMessage.DUPLICATE</cdoe> if id duplicated<br>
+     * <code>ResultMessage.INVALID_NAME</code> if find id repeated or name invalid <br>
      * <code>ResultMessage.NETWORK_FAIL</code> if network failed
      */
     ResultMessage addAccount(String id, String name, double amount) {
@@ -55,13 +58,13 @@ public class AccountManager {
             // Check duplication
             AccountPO po = accountDataService.get(id);
             if (po != null) // Find Duplicated
-                return ResultMessage.FAILURE;
+                return ResultMessage.DUPLICATE;
         } catch (RemoteException e) {
             e.printStackTrace();
         }
 
         // Check name's correctness
-        if (!validName(name)) return ResultMessage.FAILURE;
+        if (!validName(name)) return ResultMessage.INVALID_NAME;
 
         // Create new account and insert to the database
         Account account = new Account(id, amount, name);
@@ -134,16 +137,24 @@ public class AccountManager {
         }
     }
 
-
+    /**
+     * Rename an account
+     * @param id      id of the account
+     * @param newName new name of the account
+     * @return <code>ResultMessage.SUCCESS</code> if the name is valid<br>
+     * <code>ResultMessage.DUPLICATE</code> if name repeated<br>
+     * <code>ResultMessage.NETWORK_FAIL</code> if network failed<br>
+     *     <cdoe>ResultMessage.INVALID_NAME</cdoe> if name's invalid
+     */
     ResultMessage rename(String id, String newName) {
         // Check new name's form using regex
         if (!validName(newName))
-            return ResultMessage.FAILURE;
+            return ResultMessage.INVALID_NAME;
 
         try {
             AccountPO target = accountDataService.get(id);
             if (target.getName().equals(newName))
-                return ResultMessage.FAILURE; // Repeated
+                return ResultMessage.DUPLICATE; // Repeated
             // Rename succeed
             target.setName(newName);
             logger.add(OPType.MODIFY, "Account Name", id);
@@ -154,6 +165,11 @@ public class AccountManager {
         }
     }
 
+    /**
+     * Check whether name's valid
+     * @param name name to be checked
+     * @return true if only contains number, Chinese character, letters
+     */
     private boolean validName(String name) {
         // Check emptiness
         if (name.trim().isEmpty()) return false;

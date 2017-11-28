@@ -12,6 +12,7 @@ import java.util.List;
  * Description:
  * @author Liao
  */
+@Deprecated
 public class AccountBLService_Stub implements AccountBLService {
 
     @Override

@@ -1,8 +1,6 @@
 package nju.lighting.bl.accountbl;
 
-import nju.lighting.po.account.AccountPO;
 import nju.lighting.vo.account.AccountVO;
-import org.junit.Ignore;
 import org.junit.Test;
 import shared.ResultMessage;
 
@@ -16,11 +14,12 @@ import static org.junit.Assert.*;
  * @author Liao
  */
 public class AccountManagerTest {
-    private AccountManager manager = AccountManager.getAccountManager();
+    private AccountManager manager = AccountManager.getInstance();
 
     @Test
     public void getAllAccounts() throws Exception {
         List<AccountVO> voList = manager.getAccountList();
+        assert voList != null;
         assertEquals(voList.size(), 2);
         assertNotNull(voList.get(0).getAccountLogs());
         assertEquals(voList.get(1).getName(), "Frog Account");
@@ -28,7 +27,7 @@ public class AccountManagerTest {
 
     @Test
     public void addAccountRepetitionTest() throws Exception {
-        assertEquals(manager.addAccount("0001", "whatever", 11.0), ResultMessage.FAILURE);
+        assertEquals(manager.addAccount("0001", "whatever", 11.0), ResultMessage.DUPLICATE);
     }
 
     @Test
@@ -38,7 +37,7 @@ public class AccountManagerTest {
 
     @Test
     public void addAccountInvalidNameTest() throws Exception {
-        assertEquals(manager.addAccount("0001", "$jsdf", 11.1), ResultMessage.FAILURE);
+        assertEquals(manager.addAccount("not found", "$jsdf", 11.1), ResultMessage.INVALID_NAME);
     }
 
     @Test
@@ -62,12 +61,12 @@ public class AccountManagerTest {
 
     @Test
     public void renameTest1() throws Exception {
-        assertEquals(manager.rename("0001", "%sj@ "), ResultMessage.FAILURE);
+        assertEquals(manager.rename("0001", "%sj@ "), ResultMessage.INVALID_NAME);
     }
 
     @Test
     public void renameTest2() throws Exception {
-        assertEquals(manager.rename("0001", "Frog Account"), ResultMessage.FAILURE);
+        assertEquals(manager.rename("0001", "Frog Account"), ResultMessage.DUPLICATE);
     }
 
     @Test

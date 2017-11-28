@@ -49,8 +49,6 @@ public class LoginController extends CommonFather{
     @FXML
     private PasswordField password;
 
-    @FXML
-    private JFXCheckBox test;
 
     @FXML
     private Button closeBtn;
@@ -60,7 +58,7 @@ public class LoginController extends CommonFather{
 
     @FXML
     private Button loginBtn;
-    
+
 
     @FXML
     public void login() throws IOException {
@@ -94,13 +92,5 @@ public class LoginController extends CommonFather{
     public void initialize(URL location, ResourceBundle resources) {
         buttons=new Button[]{closeBtn,miniBtn,loginBtn};
         super.initialize(location, resources);
-        test.setOnAction(e->{
-            System.out.println("1");
-            FXRobot fxRobot= FXRobotFactory.createRobot(Client.primaryStage.getScene());
-            fxRobot.keyPress(KeyCode.ALT);
-            fxRobot.keyPress(KeyCode.TAB);
-
-          //  fxRobot.keyRelease(KeyCode.SHIFT);
-        });
     }
 }

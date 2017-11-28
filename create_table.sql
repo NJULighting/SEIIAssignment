@@ -179,7 +179,7 @@ CREATE TABLE INIT_INFO (
 	ID varchar(5),
 	USER_ID varchar(20) not null, 
 	CREATE_TIME DATETIME not null,
-	URL varchar(255) not null,
+	URL varchar(255),
 	primary key(ID)
 );
 
@@ -325,3 +325,4 @@ alter table REPOSITORY_CHANGE modify column ID int auto_increment;
 alter table ACCOUNT_CHANGE modify column ID int auto_increment;
 alter table CUSTOMER modify column ID int auto_increment;
 alter table PROMOTION modify column ID int auto_increment;
+alter table INIT_INFO modify column ID int auto_increment;

@@ -1,5 +1,7 @@
 package nju.lighting.po.account;
 
+import shared.CSVable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,7 +18,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ACCOUNT")
-public class AccountPO implements Serializable {
+public class AccountPO implements Serializable, CSVable {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,6 +32,11 @@ public class AccountPO implements Serializable {
 
     public AccountPO() {
 
+    }
+
+    @Override
+    public String toCSV() {
+        return id + "," + name + "," + amount;
     }
 
     public AccountPO(String id, String name, double amount, List<AccountLogPO> changeLogs) {

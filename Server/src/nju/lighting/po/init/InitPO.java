@@ -1,5 +1,6 @@
 package nju.lighting.po.init;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,6 +9,8 @@ import java.util.Date;
  * Description:
  * @author Liao
  */
+@Entity
+@Table(name = "INIT_INFO")
 public class InitPO {
 
     private int id;
@@ -18,6 +21,14 @@ public class InitPO {
 
     private String url;
 
+    public InitPO() {}
+
+    public InitPO(Date time, String userID, String url) {
+        this.time = time;
+        this.userID = userID;
+        this.url = url;
+    }
+
     public InitPO(int id, Date time, String userID, String url) {
         this.id = id;
         this.time = time;
@@ -25,6 +36,9 @@ public class InitPO {
         this.url = url;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     public int getId() {
         return id;
     }
@@ -33,6 +47,8 @@ public class InitPO {
         this.id = id;
     }
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "CREATE_TIME", nullable = false)
     public Date getTime() {
         return time;
     }
@@ -41,6 +57,7 @@ public class InitPO {
         this.time = time;
     }
 
+    @Column(name = "USER_ID", length = 20, nullable = false)
     public String getUserID() {
         return userID;
     }
@@ -49,6 +66,7 @@ public class InitPO {
         this.userID = userID;
     }
 
+    @Column(name = "URL", length = 255)
     public String getUrl() {
         return url;
     }

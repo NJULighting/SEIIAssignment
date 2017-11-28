@@ -1,6 +1,5 @@
 package nju.lighting.bl.accountbl;
 
-import nju.lighting.vo.account.AccountVO;
 import shared.ResultMessage;
 
 import java.util.ArrayList;

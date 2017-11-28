@@ -1,5 +1,6 @@
 package nju.lighting.po.customer;
 
+import shared.CSVable;
 import shared.CustomerGrade;
 import shared.CustomerType;
 
@@ -7,9 +8,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "CUSTOMER")
-public class CustomerPO {
+public class CustomerPO implements CSVable {
 
-    private String ID;
+    private int ID;
 
     private CustomerType type;
 
@@ -32,6 +33,13 @@ public class CustomerPO {
     private double payable;
 
     private String salesman;
+
+    @Override
+    public String toCSV() {
+        return ID + "," + type + "," + grade + "," + name + ","
+                + telephone + "," + address + "," + postage + "," + email + ","
+                 + receivableLimit + "," + receivable + "," + payable + "," + salesman;
+    }
 
     @Override
     public String toString() {
@@ -69,7 +77,7 @@ public class CustomerPO {
         this.salesman = salesman;
     }
 
-    public CustomerPO(String ID, CustomerType type, CustomerGrade grade, String name, String telephone, String address, String postage, String email, double receivableLimit, double receivable, double payable, String salesman) {
+    public CustomerPO(int ID, CustomerType type, CustomerGrade grade, String name, String telephone, String address, String postage, String email, double receivableLimit, double receivable, double payable, String salesman) {
         this.ID = ID;
         this.type = type;
         this.grade = grade;
@@ -87,16 +95,16 @@ public class CustomerPO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String id) {
+    public void setID(int id) {
         ID = id;
     }
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "CUSTOMER_TYPE", length = 10, nullable = false)
+    @Column(name = "CUSTOMER_TYPE", length = 20, nullable = false)
     public CustomerType getType() {
         return type;
     }
@@ -106,7 +114,7 @@ public class CustomerPO {
     }
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "CUSTOMER_GRADE", length = 10, nullable = false)
+    @Column(name = "CUSTOMER_GRADE", length = 20, nullable = false)
     public CustomerGrade getGrade() {
         return grade;
     }
@@ -187,7 +195,7 @@ public class CustomerPO {
         this.payable = payable;
     }
 
-    @Column(name = "SALES_MAN", nullable = false, length = 40)
+    @Column(name = "SALES_MAN", length = 40)
     public String getSalesman() {
         return salesman;
     }

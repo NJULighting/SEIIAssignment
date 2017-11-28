@@ -1,21 +1,22 @@
 package nju.lighting.bl.accountbl;
 
 import nju.lighting.blservice.accountblservice.AccountBLService;
-import shared.ResultMessage;
 import nju.lighting.vo.account.AccountVO;
+import shared.ResultMessage;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/10/22.
  * Description:
  * @author Liao
  */
+@Deprecated
 public class AccountBLService_Stub implements AccountBLService {
 
     @Override
-    public ArrayList<AccountVO> getAccountList() {
+    public List<AccountVO> getAccountList() {
         ArrayList<AccountVO> accountVOS = new ArrayList<>();
         accountVOS.add(getAccount("0"));
         accountVOS.add(getAccount("1"));
@@ -29,7 +30,7 @@ public class AccountBLService_Stub implements AccountBLService {
     }
 
     @Override
-    public ArrayList<AccountVO> findAccounts(String keyword) {
+    public List<AccountVO> findAccounts(String keyword) {
         if (keyword.isEmpty()) return null;
         else return getAccountList();
     }
@@ -38,9 +39,9 @@ public class AccountBLService_Stub implements AccountBLService {
     public AccountVO getAccount(String id) {
         AccountVO accountVO;
         if (id.equals("0"))
-            accountVO = new AccountVO("Test Account 0", 100000, null);
+            accountVO = new AccountVO("0001", "Test Account 0", 100000, null);
         else
-            accountVO = new AccountVO("Test Account 1", 1000000, null);
+            accountVO = new AccountVO("0002", "Test Account 1", 1000000, null);
         return accountVO;
     }
 
@@ -52,8 +53,8 @@ public class AccountBLService_Stub implements AccountBLService {
     }
 
     @Override
-    public ResultMessage modifyAccount(String oldName, String newName) {
-        if (!oldName.equals(newName))
+    public ResultMessage modifyAccount(String accountID, String newName) {
+        if (!newName.isEmpty())
             return ResultMessage.SUCCESS;
         return ResultMessage.FAILURE;
     }

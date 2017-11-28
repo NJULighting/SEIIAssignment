@@ -32,6 +32,7 @@ public class AccountDataTest {
     @Test
     public void get() throws Exception {
         AccountPO accountPO = accountData.get("161250068");
+        System.out.println(accountPO == null);
         System.out.println(accountPO);
     }
 

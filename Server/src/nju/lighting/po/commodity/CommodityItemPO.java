@@ -1,11 +1,13 @@
 package nju.lighting.po.commodity;
 
+import shared.CSVable;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "COMMODITY")
-public class CommodityItemPO {
+public class CommodityItemPO implements CSVable {
 
     private String id;
 
@@ -30,6 +32,12 @@ public class CommodityItemPO {
     private String batchNumber;
 
     private Date dateOfProduction;
+
+    @Override
+    public String toCSV() {
+        return name + "," + categoryId + "," +  modelNumber + "," + inPrice + "," + sellPrice + "," + recentSellPrice;
+    }
+
 
     @Override
     public String toString() {
@@ -59,7 +67,6 @@ public class CommodityItemPO {
         builder.append(dateOfProduction);
         return builder.toString();
     }
-
 
     public CommodityItemPO() {
 

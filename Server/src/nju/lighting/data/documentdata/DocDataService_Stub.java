@@ -2,13 +2,12 @@ package nju.lighting.data.documentdata;
 
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.po.doc.DocPO;
-import shared.BusinessConditionFilter;
-import shared.DocType;
-import shared.DocumentFilter;
-import shared.ResultMessage;
+import shared.*;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class DocDataService_Stub implements DocDataService {
 
@@ -23,13 +22,32 @@ public class DocDataService_Stub implements DocDataService {
     }
 
     @Override
-    public ArrayList<DocPO> getDocs(DocumentFilter filter) throws RemoteException {
+    public ResultMessage updateDoc(DocPO doc) throws RemoteException {
         return null;
     }
 
     @Override
-    public ArrayList<DocPO> findSaleRecords(BusinessConditionFilter filter) throws RemoteException {
+    public List<DocPO> findByUserId(String id) throws RemoteException {
         return null;
     }
 
+    @Override
+    public List<DocPO> findByState(DocState docState) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<DocPO> findByType(DocType type) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<DocPO> findByTime(Date from, Date to) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<DocPO> findByTimeAndType(Date from, Date to, DocType type) throws RemoteException {
+        return null;
+    }
 }

@@ -6,7 +6,7 @@ package shared;
  * @author Liao
  */
 public enum ResultMessage {
-    SUCCESS, FAILURE, NETWORK_FAIL;
+    SUCCESS, FAILURE, NETWORK_FAIL, INVALID_NAME, DUPLICATE;
 
     private String detail = "No detail";
 

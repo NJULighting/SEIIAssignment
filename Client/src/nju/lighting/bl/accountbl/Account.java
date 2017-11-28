@@ -1,10 +1,10 @@
 package nju.lighting.bl.accountbl;
 
-import nju.lighting.po.account.AccountLogPO;
 import nju.lighting.po.account.AccountPO;
 import nju.lighting.vo.account.AccountVO;
+import shared.AccountChangeType;
 
-import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created on 2017/11/12.
@@ -18,21 +18,25 @@ public class Account {
     private AccountChangeLogList logList;
 
     public Account(AccountPO po) {
-        this(po.getId(), po.getAmount(), po.getName());
-        convertLogList(po.getChangeLogs());
+        id = po.getId();
+        amount = po.getAmount();
+        name = po.getName();
+        logList = new AccountChangeLogList(po.getChangeLogs());
     }
 
-    private void convertLogList(ArrayList<AccountLogPO> changeLogs) {
-        for (AccountLogPO log : changeLogs) {
-
-        }
-    }
-
+    /**
+     * Create a new account
+     * @param id     id of account
+     * @param amount initial amount
+     * @param name   account's name
+     */
     public Account(String id, double amount, String name) {
         this.id = id;
         this.amount = amount;
         this.name = name;
         logList = new AccountChangeLogList();
+        if (amount != 0)
+            logList.addLog(Calendar.getInstance().getTime(), amount, amount, AccountChangeType.IN);
     }
 
     /**
@@ -40,11 +44,15 @@ public class Account {
      * @return relative po
      */
     AccountPO toPO() {
-        return new AccountPO(id, name, amount, logList.toPOLogList());
+        return new AccountPO(id, name, amount, logList.toPOLogList(id));
     }
 
+    /**
+     * Convert account model to VO
+     * @return account vo
+     */
     AccountVO toVO() {
-        return new AccountVO(name, amount, logList.toVOLogList());
+        return new AccountVO(id, name, amount, logList.toVOLogList());
     }
 
     public String getId() {

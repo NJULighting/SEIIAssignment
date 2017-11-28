@@ -1,12 +1,13 @@
 package nju.lighting.dataservice.logdataservice;
 
-import nju.lighting.po.LogPO;
+import nju.lighting.po.log.LogPO;
+import shared.Identity;
 import shared.LogFilter;
 import shared.ResultMessage;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 
 /**
@@ -15,10 +16,17 @@ import java.util.Date;
  * @author Liao
  */
 public interface LogDataService extends Remote {
+
     ResultMessage insert(LogPO po) throws RemoteException;
 
-    ArrayList<LogPO> findByTime(Date from, Date to) throws RemoteException;
+    List<LogPO> findByTime(Date from, Date to) throws RemoteException;
 
-    LogPO find(LogFilter filter) throws RemoteException;
+    List<LogPO> findById(String id) throws RemoteException;
+
+    List<LogPO> findByIdentity(Identity identity) throws RemoteException;
+
+    List<LogPO> findByTimeAndId(Date from, Date to, String id) throws RemoteException;
+
+    List<LogPO> findByTimeAndIdentity(Date from, Date to, Identity identity) throws RemoteException;
 
 }

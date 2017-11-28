@@ -45,23 +45,7 @@ public class CommodityData implements CommodityDataService {
 
     @Override
     public List<CommodityItemPO> findByName(String name) throws RemoteException {
-        List<CommodityItemPO> itemPOS = null;
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            String sql = "select com from " + CommodityItemPO.class.getName()
-                    + " com where com.name=:name ";
-            Query<CommodityItemPO> query = session.createQuery(sql);
-            query.setParameter("name", name);
-            itemPOS = query.getResultList();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return itemPOS;
+        return commodityItemPOCommonOperation.getListBySingleField("name", name);
     }
 
 
@@ -87,22 +71,6 @@ public class CommodityData implements CommodityDataService {
 
     @Override
     public ResultMessage deleteCategory(int id) throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            String sql = "delete " + CommodityCategoryPO.class.getName()
-                    + " where id=:id ";
-            Query query = session.createQuery(sql);
-            query.setParameter("id", id);
-            query.executeUpdate();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return ResultMessage.FAILURE;
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return ResultMessage.SUCCESS;
+        return categoryPOCommonOperation.deleteBySingleField("id", id);
     }
 }

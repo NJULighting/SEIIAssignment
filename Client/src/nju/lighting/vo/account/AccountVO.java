@@ -8,11 +8,13 @@ import java.util.ArrayList;
  * @author Liao
  */
 public class AccountVO {
+    private String id;
     private String name;
     private double amount;
     private ArrayList<AccountLogVO> accountLogs;
 
-    public AccountVO(String name, double amount, ArrayList<AccountLogVO> accountLogs) {
+    public AccountVO(String id, String name, double amount, ArrayList<AccountLogVO> accountLogs) {
+        this.id = id;
         this.name = name;
         this.amount = amount;
         this.accountLogs = accountLogs;
@@ -24,6 +26,10 @@ public class AccountVO {
 
     public String getName() {
         return name;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public double getAmount() {

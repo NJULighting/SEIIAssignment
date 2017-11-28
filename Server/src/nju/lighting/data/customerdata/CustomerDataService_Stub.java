@@ -14,13 +14,13 @@ public class CustomerDataService_Stub implements CustomerDataService {
     ArrayList<CustomerPO> customerList = new ArrayList<CustomerPO>();
 
     public CustomerDataService_Stub(){
-        CustomerPO customer = new CustomerPO("000001", CustomerType.SALESPERSON, CustomerGrade.ONE,"许瑞"
+        CustomerPO customer = new CustomerPO(1, CustomerType.SALESPERSON, CustomerGrade.ONE,"许瑞"
                 ,"17015235309","江苏南京","210008","257649998@164.com"
                 ,1000,230,0,"黄海");
 
         customerList.add(customer);
 
-        customer = new CustomerPO("000002", CustomerType.SUPPLIER, CustomerGrade.FIVE,"韩杨"
+        customer = new CustomerPO(2, CustomerType.SUPPLIER, CustomerGrade.FIVE,"韩杨"
                 ,"18445238801","江苏苏州","215002","1036496770@164.com"
                 ,1000,20,900,"黄海");
 
@@ -61,7 +61,7 @@ public class CustomerDataService_Stub implements CustomerDataService {
     }
 
     @Override
-    public ResultMessage deleteCustomer(String id) throws RemoteException {
+    public ResultMessage deleteCustomer(int id) throws RemoteException {
         return null;
     }
 
@@ -71,22 +71,22 @@ public class CustomerDataService_Stub implements CustomerDataService {
     }
 
     @Override
-    public CustomerPO getCustomerById(String id) throws RemoteException {
+    public CustomerPO getCustomerById(int id) throws RemoteException {
         return null;
     }
 
     @Override
-    public ResultMessage changeReceivable(String customerId, double amount) throws RemoteException {
+    public ResultMessage changeReceivable(int customerId, double amount) throws RemoteException {
         return null;
     }
 
     @Override
-    public ResultMessage changePayable(String customerId, double amount) throws RemoteException {
+    public ResultMessage changePayable(int customerId, double amount) throws RemoteException {
         return null;
     }
 
     @Override
-    public ResultMessage changeReceivableLimit(String customerId, double amount) throws RemoteException {
+    public ResultMessage changeReceivableLimit(int customerId, double amount) throws RemoteException {
         return null;
     }
 }

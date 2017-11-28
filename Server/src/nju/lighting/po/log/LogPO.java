@@ -1,5 +1,6 @@
-package nju.lighting.po;
+package nju.lighting.po.log;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -7,27 +8,42 @@ import java.util.Date;
  * Description:
  * @author Liao
  */
+@Entity
+@Table(name = "LOG")
 public class LogPO {
-    private String id;
+
+    private int id;
+
     private Date time;
+
     private String userID;
+
     private String content;
 
-    public LogPO(Date time, String content, String id, String userID) {
+    public LogPO() {
+
+    }
+
+    public LogPO(Date time, String content, int id, String userID) {
         this.time = time;
         this.id = id;
         this.content = content;
         this.userID = userID;
     }
 
-    public String getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "CREATE_TIME", nullable = false)
     public Date getTime() {
         return time;
     }
@@ -36,6 +52,7 @@ public class LogPO {
         this.time = time;
     }
 
+    @Column(nullable = false, name = "CONTENT", length = 300)
     public String getContent() {
         return content;
     }
@@ -44,6 +61,7 @@ public class LogPO {
         this.content = content;
     }
 
+    @Column(nullable = false, length = 20)
     public String getUserID() {
         return userID;
     }

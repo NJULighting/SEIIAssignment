@@ -33,7 +33,7 @@ public class CustomerData implements CustomerDataService {
     }
 
     @Override
-    public ResultMessage deleteCustomer(String id) throws RemoteException {
+    public ResultMessage deleteCustomer(int id) throws RemoteException {
         return commonOperation.deleteBySingleField("id", id);
     }
 
@@ -43,26 +43,26 @@ public class CustomerData implements CustomerDataService {
     }
 
     @Override
-    public CustomerPO getCustomerById(String id) throws RemoteException {
+    public CustomerPO getCustomerById(int id) throws RemoteException {
         return commonOperation.getBySingleField("id", id);
     }
 
     @Override
-    public ResultMessage changeReceivable(String customerId, double amount) throws RemoteException {
+    public ResultMessage changeReceivable(int customerId, double amount) throws RemoteException {
         CustomerPO customerPO = getCustomerById(customerId);
         customerPO.setReceivable(amount);
         return updateCustomer(customerPO);
     }
 
     @Override
-    public ResultMessage changeReceivableLimit(String customerId, double amount) throws RemoteException {
+    public ResultMessage changeReceivableLimit(int customerId, double amount) throws RemoteException {
         CustomerPO customerPO = getCustomerById(customerId);
         customerPO.setReceivableLimit(amount);
         return updateCustomer(customerPO);
     }
 
     @Override
-    public ResultMessage changePayable(String customerId, double amount) throws RemoteException {
+    public ResultMessage changePayable(int customerId, double amount) throws RemoteException {
         CustomerPO customerPO = getCustomerById(customerId);
         customerPO.setPayable(amount);
         return updateCustomer(customerPO);

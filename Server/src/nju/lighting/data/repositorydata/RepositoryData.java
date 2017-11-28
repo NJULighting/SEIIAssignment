@@ -42,26 +42,7 @@ public class RepositoryData implements RepositoryDataService {
      */
     @Override
     public List<RepositoryChangePO> getRepositoryChanges(Date startDate, Date endDate) throws RemoteException {
-        Session session = HibernateUtils.getCurrentSession();
-        java.sql.Date start = new java.sql.Date(startDate.getTime());
-        java.sql.Date end = new java.sql.Date(endDate.getTime());
-        List<RepositoryChangePO> changePOS = null;
-        try {
-            session.getTransaction().begin();
-            String sql = "select change from " + RepositoryChangePO.class.getName() + " change  where change.date between '"
-                    + start.toString() + "' and '" + end.toString() + "' order by change.date";
-            System.out.println(sql);
-            Query<RepositoryChangePO> query = session.createQuery(sql);
-            changePOS = query.getResultList();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-            return null;
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return changePOS;
+        return changePOCommonOperation.getDataBetweenTime(startDate, endDate, "date");
     }
 
     /**

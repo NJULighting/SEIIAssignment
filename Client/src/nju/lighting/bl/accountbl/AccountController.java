@@ -4,19 +4,20 @@ import nju.lighting.blservice.accountblservice.AccountBLService;
 import nju.lighting.vo.account.AccountVO;
 import shared.ResultMessage;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/11/6.
  * Description:
  * @author Liao
  */
-public class AccountController implements AccountBLService{
-    private AccountManager accountManager = AccountManager.getAccountManager();
+public class AccountController implements AccountBLService {
+    // TODO: 2017/11/28 Replace real logger 
+    private AccountManager accountManager = AccountManager.getInstance();
 
     @Override
-    public ArrayList<AccountVO> getAccountList() {
-        return null;
+    public List<AccountVO> getAccountList() {
+        return accountManager.getAccountList();
     }
 
     @Override
@@ -25,22 +26,23 @@ public class AccountController implements AccountBLService{
     }
 
     @Override
-    public ArrayList<AccountVO> findAccounts(String keyword) {
+    public List<AccountVO> findAccounts(String keyword) {
         return null;
+        // TODO: 2017/11/28 wait for data level
     }
 
     @Override
     public AccountVO getAccount(String id) {
-        return null;
+        return accountManager.getAccount(id);
     }
 
     @Override
     public ResultMessage deleteAccount(String id) {
-        return null;
+        return accountManager.delete(id);
     }
 
     @Override
-    public ResultMessage modifyAccount(String oldName, String newName) {
-        return null;
+    public ResultMessage modifyAccount(String accountID, String newName) {
+        return accountManager.rename(accountID, newName);
     }
 }

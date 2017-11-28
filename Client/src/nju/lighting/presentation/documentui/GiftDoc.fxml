@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.GiftDocController">
+   <children>
+      <TableView fx:id="giftList" layoutX="120.0" layoutY="76.0" prefHeight="212.0" prefWidth="237.0" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+        <columns>
+          <TableColumn fx:id="commodityName" prefWidth="71.5" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" text="商品名" />
+          <TableColumn fx:id="count" prefWidth="92.5" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" text="数量" />
+            <TableColumn fx:id="subtotal" prefWidth="71.5" text="价值" />
+        </columns>
+      </TableView>
+      <Text layoutX="482.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GiftDoc" />
+   </children>
+</AnchorPane>

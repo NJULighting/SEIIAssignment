@@ -1,85 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4fdeba1f-edd5-4282-9c9f-d33d2c21df0f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/accountiodoc/AccountTransferItemPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/userdata/UserDataService_Stub.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/LogPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/salesdoc/SalesDocItemPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/documentdata/DocDataService_Stub.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/giftdoc/GiftDocPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/CommodityTreeNode.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/Server/CommodityDataTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/customerdata/CustomerDataService_Stub.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/costdoc/CostDocPO.class" afterPath="" />
+    <list default="true" id="974ede19-7326-40ed-bbe1-3563ed9320f0" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Client/nju/lighting/presentation/mainui/1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/OPType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/ResultMessage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/Server/RepositoryDataTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/utils/HibernateUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/accountdata/AccountData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/LogFilter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/logdata/LogDataService_Stub.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/promotion/PromotionPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/alertdoc/AlertDocPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/DocumentFilter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/DocPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/salesdoc/SalesReturnDocPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/CustomerType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/giftdoc/GiftItemPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/main/Server.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/dataservice/DataFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/AccountChangeType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/salesdoc/SalesTypeDocPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/lossandgaindoc/LossAndGainDocPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/alertdoc/AlertDocItemPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/DataFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/stockdoc/StockDocItemPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/PromotionType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/lossandgaindoc/LossAndGainItemPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/historydoc/HistoryDocPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/repositorydata/RepositoryData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/dataservice/promotiondataservice/PromotionDataService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/UserPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/salesdoc/SalesDocPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/DocType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/AccountIODocType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/dataservice/documentdataservice/DocDataService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/costdoc/CostDocItemPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/init/InitCommodityPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/CustomerGrade.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/stockdoc/StockReturnDocPO.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/config/Authority.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/commoditydata/CommodityData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/dataservice/logdataservice/LogDataService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/accountiodoc/AccountIODocPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/BusinessConditionFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/DataFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/accountdata/AccountData.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/approvaldata/ApprovalDataService_Stub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/commoditydata/CommodityData.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/customerdata/CustomerDataService_Stub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/documentdata/DocDataService_Stub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/logdata/LogDataService_Stub.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/promotiondata/PromotionDataService_Stub.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/HistoryDocType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/stockdoc/StockDocPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/init/InitAccountPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/init/InitPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/BusinessHistoryFilter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/DocItemPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/dataservice/customerdataservice/CustomerDataService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/RepositoryChangeType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/LossAndGainItemType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/CostDocItemType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/repositorydata/RepositoryData.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/userdata/UserDataService_Stub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/data/utils/HibernateUtils.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/dataservice/DataFactory.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/dataservice/approvaldataservice/ApprovalDataService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/Identity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/Server/AccountDataTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/customer/CustomerPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/stockdoc/StockTypeDocPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/TwoTuple.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/dataservice/customerdataservice/CustomerDataService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/dataservice/documentdataservice/DocDataService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/dataservice/logdataservice/LogDataService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/dataservice/promotiondataservice/PromotionDataService.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/dataservice/userdataservice/UserDataService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/main/Server.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/DocItemPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/LogPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/UserPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/customer/CustomerPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/DocPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/accountiodoc/AccountIODocPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/accountiodoc/AccountTransferItemPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/alertdoc/AlertDocItemPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/alertdoc/AlertDocPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/costdoc/CostDocItemPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/costdoc/CostDocPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/giftdoc/GiftDocPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/giftdoc/GiftItemPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/historydoc/HistoryDocPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/lossandgaindoc/LossAndGainDocPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/lossandgaindoc/LossAndGainItemPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/salesdoc/SalesDocItemPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/salesdoc/SalesDocPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/salesdoc/SalesReturnDocPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/salesdoc/SalesTypeDocPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/stockdoc/StockDocItemPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/stockdoc/StockDocPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/stockdoc/StockReturnDocPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/doc/stockdoc/StockTypeDocPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/init/InitAccountPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/init/InitCommodityPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/init/InitPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/nju/lighting/po/promotion/PromotionPO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/AccountChangeType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/AccountIODocType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/BusinessConditionFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/BusinessHistoryFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/CommodityTreeNode.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/CostDocItemType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/CustomerGrade.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/CustomerType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/DocType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/DocumentFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/HistoryDocType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/Identity.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/LogFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/LossAndGainItemType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/OPType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/PromotionType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/RepositoryChangeType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/ResultMessage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Server/shared/TwoTuple.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/Server/AccountDataTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/Server/CommodityDataTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/Server/RepositoryDataTest.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Server/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/out/production/Server/hibernate.cfg.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Client/nju/lighting/presentation/approvalui/Approval.fxml" afterPath="$PROJECT_DIR$/out/production/Client/nju/lighting/presentation/approvalui/Approval.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Client/nju/lighting/presentation/commodityui/CommodityUI.fxml" afterPath="$PROJECT_DIR$/out/production/Client/nju/lighting/presentation/commodityui/CommodityUI.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Client/nju/lighting/presentation/mainui/SalesManager.fxml" afterPath="$PROJECT_DIR$/out/production/Client/nju/lighting/presentation/mainui/SalesManager.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nju/lighting/presentation/mainui/LoginController.java" afterPath="$PROJECT_DIR$/src/nju/lighting/presentation/mainui/LoginController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Client/nju/lighting/presentation/mainui/Login.fxml" afterPath="$PROJECT_DIR$/out/production/Client/nju/lighting/presentation/mainui/Login.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Client/nju/lighting/presentation/mainui/SalesManager.fxml" afterPath="$PROJECT_DIR$/out/production/Client/nju/lighting/presentation/mainui/SalesManager.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Server/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/out/production/Server/hibernate.cfg.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nju/lighting/presentation/mainui/LoginController.java" afterPath="$PROJECT_DIR$/src/nju/lighting/presentation/mainui/LoginController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -89,6 +89,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
     <option name="GROUP_SCHEMA" value="true" />
@@ -128,10 +129,22 @@
                 <marker date="1511868126347" expanded="true" signature="1601:1958" ph="{...}" />
                 <marker date="1511868126347" expanded="true" signature="2009:2380" ph="{...}" />
               </folding>
+=======
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
+      <file leaf-file-name="GiftDocController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/documentui/GiftDocController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1237">
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+              <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="CommodityDataTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Server/test/CommodityDataTest.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -140,30 +153,55 @@
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
+=======
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/mainui/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+              <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="hibernate.cfg.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Server/src/hibernate.cfg.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="260">
               <caret line="13" column="45" lean-forward="false" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+=======
+      <file leaf-file-name="SalesDocPO.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/nju/lighting/po/doc/salesdoc/SalesDocPO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="2" column="26" lean-forward="false" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
               <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+=======
+      <file leaf-file-name="PromotionController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nju/lighting/bl/promotionbl/PromotionController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="3" column="32" lean-forward="false" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="AccountManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nju/lighting/bl/accountbl/AccountManager.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -178,20 +216,37 @@
                 <marker date="1511868126256" expanded="true" signature="5465:5620" ph="/**...*/" />
                 <marker date="1511868126256" expanded="true" signature="5664:6010" ph="{...}" />
               </folding>
+=======
+      <file leaf-file-name="GiftItemVO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nju/lighting/vo/doc/giftdoc/GiftItemVO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="426">
+              <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+              <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/77e278f0-ecfe-43c1-965f-160e4e459df3/console.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+      <file leaf-file-name="JFXBadge.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/jfoenix.jar!/com/jfoenix/controls/JFXBadge.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="InitPO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Server/src/nju/lighting/po/init/InitPO.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -230,11 +285,19 @@
           <provider editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+      <file leaf-file-name="JFXDialog$$Lambda$1.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/jfoenix.jar!/com/jfoenix/controls/JFXDialog$$Lambda$1.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Server/src/nju/lighting/main/Server.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -243,6 +306,16 @@
               <folding>
                 <element signature="imports" expanded="false" />
                 <marker date="1511868126342" expanded="true" signature="669:979" ph="{...}" />
+=======
+      <file leaf-file-name="JFXDialog.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/jfoenix.jar!/com/jfoenix/controls/JFXDialog.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6562">
+              <caret line="60" column="28" lean-forward="false" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="28" />
+              <folding>
+                <element signature="e#2232#2233#0" expanded="true" />
+                <element signature="e#2318#2319#0" expanded="true" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               </folding>
             </state>
           </provider>
@@ -269,6 +342,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/src/nju/lighting/bl/promotionbl/Promotion.java" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         <option value="$PROJECT_DIR$/src/nju/lighting/bl/promotionbl/MockPromotion.java" />
         <option value="$PROJECT_DIR$/src/nju/lighting/bl/promotionbl/getBenefitsPlan.java" />
         <option value="$PROJECT_DIR$/src/nju/lighting/bl/promotionbl/MockPromotionManager.java" />
@@ -319,7 +396,10 @@
         <option value="$PROJECT_DIR$/src/nju/lighting/presentation/documentui/GiftDocController.java" />
         <option value="$PROJECT_DIR$/src/nju/lighting/presentation/approvalui/ApprovalUIController.java" />
         <option value="$PROJECT_DIR$/src/nju/lighting/presentation/mainui/LoginController.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
       </list>
     </option>
   </component>
@@ -330,9 +410,19 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
     <option name="x" value="-7" />
     <option name="width" value="1932" />
     <option name="height" value="1047" />
+=======
+    <option name="x" value="-13" />
+    <option name="y" value="-13" />
+    <option name="width" value="3026" />
+    <option name="height" value="1946" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -349,9 +439,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
+=======
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -360,7 +453,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="Server" />
+=======
+              <option name="myItemId" value="Client" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -370,11 +467,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="Server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
+=======
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -384,31 +489,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="Server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
+=======
               <option name="myItemId" value="Client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Server" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
+=======
             <PATH_ELEMENT>
               <option name="myItemId" value="shared" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -416,7 +514,41 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="Server" />
+=======
+              <option name="myItemId" value="Client" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="shared" />
+=======
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vo" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="Server" />
+=======
+              <option name="myItemId" value="Client" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -428,7 +560,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="po" />
+=======
+              <option name="myItemId" value="vo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="doc" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -438,7 +578,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="Server" />
+=======
+              <option name="myItemId" value="Client" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -450,11 +594,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="po" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="init" />
+=======
+              <option name="myItemId" value="vo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="doc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="giftdoc" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -464,7 +620,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="Server" />
+=======
+              <option name="myItemId" value="Client" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -476,7 +636,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="main" />
+=======
+              <option name="myItemId" value="vo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="account" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -486,7 +654,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="Server" />
+=======
+              <option name="myItemId" value="Client" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -498,7 +670,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="dataservice" />
+=======
+              <option name="myItemId" value="presentation" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -508,7 +684,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="Server" />
+=======
+              <option name="myItemId" value="Client" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -520,7 +700,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="data" />
+=======
+              <option name="myItemId" value="presentation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mainui" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -530,7 +718,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="Server" />
+=======
+              <option name="myItemId" value="Client" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -542,11 +734,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="utils" />
+=======
+              <option name="myItemId" value="presentation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="documentui" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -556,7 +756,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="Server" />
+=======
+              <option name="myItemId" value="Client" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -567,6 +771,7 @@
               <option name="myItemId" value="lighting" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -575,6 +780,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Client" />
+=======
+            <PATH_ELEMENT>
+              <option name="myItemId" value="presentation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="approvalui" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -588,11 +801,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="accountbl" />
+=======
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -609,6 +830,21 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
+=======
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="userbl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -627,6 +863,13 @@
               <option name="myItemId" value="lighting" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
+=======
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -646,7 +889,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="po" />
+=======
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="promotionbl" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -660,6 +911,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -675,11 +927,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value=".idea" />
+=======
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lighting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="approvalbl" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1047,9 +1320,12 @@
       <envs />
       <method />
     </configuration>
+<<<<<<< HEAD
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
       <method />
     </configuration>
+=======
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -1108,6 +1384,7 @@
       <envs />
       <method />
     </configuration>
+<<<<<<< HEAD
     <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -1121,6 +1398,8 @@
       <recursive>false</recursive>
       <method />
     </configuration>
+=======
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
       <method />
     </configuration>
@@ -1186,6 +1465,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="129130000" />
   </component>
   <component name="ToolWindowManager">
@@ -1221,11 +1501,24 @@
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+=======
+    <option name="totallyTimeSpent" value="129088000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-13" y="-13" width="3026" height="1946" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="combo" />
+=======
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51276594" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1236,6 +1529,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32800475" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1247,6 +1541,23 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918888" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+=======
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33333334" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32622853" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39018533" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="combo" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918888" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1352,6 +1663,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -1370,6 +1685,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="11" column="378" lean-forward="false" selection-start-line="11" selection-start-column="378" selection-end-line="11" selection-end-column="378" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -1380,6 +1699,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -1396,7 +1719,18 @@
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/javafx-src.zip!/javafx/fxml/FXMLLoader.java" />
+=======
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="1773" column="0" lean-forward="false" selection-start-line="1773" selection-start-column="0" selection-end-line="1773" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
     <entry file="file://$PROJECT_DIR$/src/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -1414,7 +1748,17 @@
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/javafx-src.zip!/com/sun/javafx/collections/VetoableListDecorator.java" />
+=======
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/javafx-src.zip!/com/sun/javafx/collections/VetoableListDecorator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5236">
+          <caret line="205" column="0" lean-forward="false" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
     <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.173.141/HZ$D.173.142/qq/src/com/oim/ui/LoginFrame.java" />
     <entry file="file://$PROJECT_DIR$/src/nju/lighting/bl/userbl/UserBLServie_Stub.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1448,6 +1792,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
           <caret line="35" column="19" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2503#2504#0" expanded="false" />
+            <element signature="e#2530#2531#0" expanded="false" />
+            <element signature="e#2595#2596#0" expanded="false" />
+            <element signature="e#2622#2623#0" expanded="false" />
+            <element signature="e#2687#2688#0" expanded="false" />
+            <element signature="e#2714#2715#0" expanded="false" />
+            <element signature="e#2779#2780#0" expanded="false" />
+            <element signature="e#2823#2824#0" expanded="false" />
+          </folding>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1455,6 +1813,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1462,6 +1826,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1258">
           <caret line="49" column="70" lean-forward="false" selection-start-line="49" selection-start-column="70" selection-end-line="49" selection-end-column="70" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2492#2493#0" expanded="false" />
+            <element signature="e#2536#2537#0" expanded="false" />
+            <element signature="e#2621#2622#0" expanded="false" />
+            <element signature="e#2665#2666#0" expanded="false" />
+            <element signature="e#2731#2732#0" expanded="false" />
+            <element signature="e#2775#2776#0" expanded="false" />
+            <element signature="e#2839#2840#0" expanded="false" />
+            <element signature="e#2883#2884#0" expanded="false" />
+            <element signature="e#2957#2958#0" expanded="false" />
+            <element signature="e#3001#3002#0" expanded="false" />
+          </folding>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1469,6 +1849,10 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
@@ -1479,6 +1863,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
           <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1486,6 +1876,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="11" column="338" lean-forward="false" selection-start-line="11" selection-start-column="312" selection-end-line="11" selection-end-column="338" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <marker date="1511709631423" expanded="true" signature="5486:5498" ph="..." />
+          </folding>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -1496,6 +1892,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1462">
           <caret line="49" column="36" lean-forward="false" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1503,6 +1905,10 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
@@ -1513,6 +1919,10 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="14" column="45" lean-forward="false" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
@@ -1523,6 +1933,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
           <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1511756223795" expanded="true" signature="698:1212" ph="{...}" />
+          </folding>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1530,6 +1947,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2244">
           <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1537,14 +1960,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1208">
           <caret line="74" column="15" lean-forward="false" selection-start-line="74" selection-start-column="15" selection-end-line="74" selection-end-column="15" />
+<<<<<<< HEAD
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/custom.css" />
+=======
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2992">
+          <caret line="290" column="37" lean-forward="false" selection-start-line="290" selection-start-column="26" selection-end-line="290" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
     <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/mainui/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
           <caret line="58" column="24" lean-forward="false" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1552,29 +1994,85 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="15" column="295" lean-forward="false" selection-start-line="15" selection-start-column="295" selection-end-line="15" selection-end-column="295" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <marker date="1511863734011" expanded="true" signature="2635:2650" ph="..." />
+            <marker date="1511863734011" expanded="true" signature="2635:2664" ph="..." />
+          </folding>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/documentui/DocController.java" />
     <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/documentui/GiftDoc.fxml" />
-    <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/approvalui/Approval.fxml">
+=======
+    <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/documentui/DocController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="37" column="97" lean-forward="false" selection-start-line="37" selection-start-column="97" selection-end-line="37" selection-end-column="97" />
+        <state relative-caret-position="272">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/documentui/GiftDoc.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <marker date="1511861393876" expanded="true" signature="1133:1148" ph="..." />
+            <marker date="1511861393876" expanded="true" signature="1133:1162" ph="..." />
+          </folding>
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
     </entry>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
+    <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/approvalui/Approval.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="37" column="97" lean-forward="false" selection-start-line="37" selection-start-column="97" selection-end-line="37" selection-end-column="97" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <marker date="1511864471192" expanded="true" signature="1952:1978" ph="..." />
+            <marker date="1511864471192" expanded="true" signature="1952:1996" ph="..." />
+            <marker date="1511864471192" expanded="true" signature="1952:2455" ph="..." />
+            <marker date="1511864471192" expanded="true" signature="1952:2463" ph="..." />
+          </folding>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/approvalui/ApprovalUIController.java" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/approvalui/ApprovalUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="61" column="106" lean-forward="false" selection-start-line="61" selection-start-column="106" selection-end-line="61" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
     <entry file="file://$PROJECT_DIR$/src/nju/lighting/vo/doc/giftdoc/GiftItemVO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="426">
           <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1582,6 +2080,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1589,6 +2091,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1596,14 +2102,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6562">
           <caret line="60" column="28" lean-forward="false" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="28" />
+<<<<<<< HEAD
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/documentui/GiftDocController.java" />
+=======
+          <folding>
+            <element signature="e#2232#2233#0" expanded="true" />
+            <element signature="e#2318#2319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nju/lighting/presentation/documentui/GiftDocController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1237">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
     <entry file="file://$PROJECT_DIR$/src/nju/lighting/bl/promotionbl/PromotionController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="3" column="32" lean-forward="false" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1619,6 +2147,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="348">
           <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1626,6 +2158,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="3" column="30" lean-forward="false" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>
@@ -1633,6 +2169,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="2" column="26" lean-forward="false" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e415c57b9f48101542cddba33501eeee05b31b74
         </state>
       </provider>
     </entry>

@@ -1,5 +1,9 @@
 package nju.lighting.presentation.mainui;
 
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXDialog;
+import com.sun.javafx.robot.FXRobot;
+import com.sun.javafx.robot.FXRobotFactory;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import nju.lighting.bl.userbl.UserBLServie_Stub;
@@ -34,25 +41,23 @@ public class LoginController extends CommonFather{
     UserBLService userBLService;
 
 
-    static Parent root;
-
-    static Stage primaryStage;
-
+    @FXML
+    private AnchorPane root;
     @FXML
     private TextField account;
 
     @FXML
     private PasswordField password;
 
-    @FXML
-    private  Button closeBtn;
 
     @FXML
-    private Button loginBtn;
+    private Button closeBtn;
 
     @FXML
     private Button miniBtn;
 
+    @FXML
+    private Button loginBtn;
 
 
     @FXML
@@ -80,6 +85,7 @@ public class LoginController extends CommonFather{
         if (event.getCode()== KeyCode.ENTER)
             login();
     }
+
 
 
     @Override

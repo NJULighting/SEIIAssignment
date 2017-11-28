@@ -1,36 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.validation.NumberValidator?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.approvalui.ApprovalUIController">
     <children>
-        <Pane layoutX="4.0" layoutY="7.0">
-            <children>
-                <TableView cache="true" prefHeight="551.0" prefWidth="218.0">
-                    <columns>
-                        <TableColumn prefWidth="217.0" text="待审批的单据" />
-                    </columns>
-                </TableView>
-                <Pane layoutX="221.0" layoutY="-1.0" prefHeight="613.0" prefWidth="1051.0">
-                    <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="603.0" layoutX="-4.0" layoutY="1.0" stroke="#c1c1c1" strokeType="INSIDE" width="1051.0" />
-                        <Text layoutX="364.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="选中单据的具体内容" wrappingWidth="253.99998092651367">
-                            <font>
-                                <Font size="19.0" />
-                            </font>
-                        </Text>
-                    </children>
-                </Pane>
-                <Button layoutY="574.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="218.0" text="批量审批单据" />
-                <Button layoutY="551.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="108.0" text="同意" />
-                <Button layoutX="109.0" layoutY="551.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="109.0" text="驳回" />
-            </children>
-        </Pane>
+          <Pane layoutX="225.0" layoutY="6.0" prefHeight="613.0" prefWidth="1051.0">
+              <children>
+                  <Text fx:id="detailNum" layoutX="364.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="253.99998092651367">
+                      <font>
+                          <Font size="19.0" />
+                      </font>
+                  </Text>
+            <NumberValidator layoutX="135.0" layoutY="103.0" />
+            <Pane fx:id="detail" layoutY="2.0" prefHeight="601.0" prefWidth="744.0">
+               <children>
+                  <JFXCheckBox layoutX="230.0" layoutY="140.0" />
+                  <DialogPane layoutX="-108.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0">
+                      <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+                      </content>
+                      <expandableContent>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+                      </expandableContent>
+                  </DialogPane>
+               </children></Pane>
+              </children>
+          </Pane>
+      <JFXListView fx:id="docList" layoutX="-2.0" onMouseClicked="#clicked" prefHeight="537.0" prefWidth="224.0" />
+      <JFXButton layoutY="537.0" minHeight="0.0" prefHeight="36.0" prefWidth="109.0" text="同意" />
+      <JFXButton layoutX="110.0" layoutY="537.0" minHeight="0.0" prefHeight="36.0" prefWidth="109.0" text="驳回" />
+      <JFXButton layoutX="-2.0" layoutY="570.0" minHeight="0.0" prefHeight="36.0" prefWidth="224.0" text="批量通过" />
     </children>
 </Pane>

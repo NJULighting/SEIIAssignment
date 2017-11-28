@@ -1,6 +1,5 @@
 package nju.lighting.data;
 
-import nju.lighting.data.approvaldata.ApprovalDataService_Stub;
 import nju.lighting.data.commoditydata.CommodityDataService_Stub;
 import nju.lighting.data.customerdata.CustomerDataService_Stub;
 import nju.lighting.data.documentdata.DocDataService_Stub;
@@ -9,7 +8,6 @@ import nju.lighting.data.promotiondata.PromotionDataService_Stub;
 import nju.lighting.data.repositorydata.RepositoryDataService_Stub;
 import nju.lighting.data.userdata.UserDataService_Stub;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
-import nju.lighting.dataservice.approvaldataservice.ApprovalDataService;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
@@ -33,11 +31,6 @@ public abstract class DataFactory {
         //return new AccountDataService_Stub();
         return null;
     }
-
-    public static ApprovalDataService getApprovalDataService() {
-        return new ApprovalDataService_Stub();
-    }
-
     public static CustomerDataService getCustomerDataService() {
         return new CustomerDataService_Stub();
     }

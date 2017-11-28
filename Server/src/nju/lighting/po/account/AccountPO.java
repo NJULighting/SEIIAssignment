@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,8 +36,18 @@ public class AccountPO implements Serializable, CSVable {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof String && obj.equals(id)) ||
+                (obj instanceof AccountPO && ((AccountPO) obj).getId().equals(id));
+    }
+
+    @Override
     public String toCSV() {
         return id + "," + name + "," + amount;
+    }
+
+    public AccountPO(String id) {
+        this.id = id;
     }
 
     public AccountPO(String id, String name, double amount, List<AccountLogPO> changeLogs) {
@@ -89,6 +100,8 @@ public class AccountPO implements Serializable, CSVable {
     }
 
     public void addChangeLog(AccountLogPO accountLogPO) {
+        if (changeLogs == null)
+            changeLogs = new ArrayList<>();
         changeLogs.add(accountLogPO);
     }
 

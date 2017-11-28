@@ -157,7 +157,7 @@ CREATE TABLE COST_DOC_ITEM (
 
 
 CREATE TABLE LOG (
-	ID varchar(36),
+	ID integer,
 	CREATE_TIME DATETIME not null,
 	CONTENT varchar(300) not null,
 	USER_ID varchar(20) not null,
@@ -326,3 +326,4 @@ alter table ACCOUNT_CHANGE modify column ID int auto_increment;
 alter table CUSTOMER modify column ID int auto_increment;
 alter table PROMOTION modify column ID int auto_increment;
 alter table INIT_INFO modify column ID int auto_increment;
+alter table LOG modify column ID int auto_increment;

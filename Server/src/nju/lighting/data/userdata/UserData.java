@@ -1,17 +1,14 @@
 package nju.lighting.data.userdata;
 
 import nju.lighting.data.utils.CommonOperation;
-import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.dataservice.userdataservice.UserDataService;
-import nju.lighting.po.UserPO;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
+import nju.lighting.po.user.UserPO;
+import shared.Identity;
 import shared.LoginReturnState;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,6 +55,10 @@ public class UserData implements UserDataService {
     @Override
     public List<UserPO> getAll() throws RemoteException {
         return commonOperation.getAll();
+    }
+
+    public List<UserPO> getByIdentity(Identity identity) {
+        return commonOperation.getListBySingleField("identity", identity);
     }
 
     @Override

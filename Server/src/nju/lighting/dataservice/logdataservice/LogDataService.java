@@ -1,6 +1,6 @@
 package nju.lighting.dataservice.logdataservice;
 
-import nju.lighting.po.LogPO;
+import nju.lighting.po.log.LogPO;
 import shared.Identity;
 import shared.LogFilter;
 import shared.ResultMessage;
@@ -20,8 +20,6 @@ public interface LogDataService extends Remote {
     ResultMessage insert(LogPO po) throws RemoteException;
 
     List<LogPO> findByTime(Date from, Date to) throws RemoteException;
-
-    LogPO find(LogFilter filter) throws RemoteException;
 
     List<LogPO> findById(String id) throws RemoteException;
 

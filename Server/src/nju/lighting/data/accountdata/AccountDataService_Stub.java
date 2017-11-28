@@ -46,7 +46,7 @@ public class AccountDataService_Stub extends UnicastRemoteObject implements Acco
 
     @Override
     public ResultMessage delete(String id) throws RemoteException {
-        return id == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
+        return id.isEmpty() ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
     }
 
     @Override

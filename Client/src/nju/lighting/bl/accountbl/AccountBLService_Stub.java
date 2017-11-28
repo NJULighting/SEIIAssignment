@@ -52,8 +52,8 @@ public class AccountBLService_Stub implements AccountBLService {
     }
 
     @Override
-    public ResultMessage modifyAccount(String oldName, String newName) {
-        if (!oldName.equals(newName))
+    public ResultMessage modifyAccount(String accountID, String newName) {
+        if (!newName.isEmpty())
             return ResultMessage.SUCCESS;
         return ResultMessage.FAILURE;
     }

@@ -1,5 +1,7 @@
 package nju.lighting.presentation.mainui;
 
+import com.sun.javafx.robot.FXRobot;
+import com.sun.javafx.robot.FXRobotFactory;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -53,6 +55,7 @@ public class Client extends Application {
         primaryStage.hide();
         primaryStage=stage;
         primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.getScene().getStylesheets().add(Client.class.getResource("../custom.css").toExternalForm());
         primaryStage.show();
     }
 
@@ -63,10 +66,15 @@ public class Client extends Application {
 
         try{
             root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-            primaryStage.setScene(new Scene(root));
+            Scene scene=new Scene(root);
+
+            primaryStage.setScene(scene);
+
             primaryStage.setResizable(false);
             primaryStage.initStyle(StageStyle.TRANSPARENT);
             primaryStage.show();
+
+
 
         }catch (IOException e){
             e.printStackTrace();

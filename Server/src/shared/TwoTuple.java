@@ -10,4 +10,7 @@ public class TwoTuple<T, R> {
         this.t = t;
         this.r = r;
     }
+
+    public TwoTuple() {
+    }
 }

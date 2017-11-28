@@ -5,19 +5,13 @@ import nju.lighting.po.doc.DocPO;
 import shared.*;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class DocDataService_Stub implements DocDataService {
 
     @Override
-    public String create(DocType type) throws RemoteException {
-        return null;
-    }
-
-    @Override
-    public ResultMessage commitDoc(DocPO doc) throws RemoteException {
+    public TwoTuple<ResultMessage, String> commitDoc(DocPO doc) throws RemoteException {
         return null;
     }
 

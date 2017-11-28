@@ -1,6 +1,5 @@
 package nju.lighting.blservice.userblservice;
 
-import nju.lighting.po.UserPO;
 import nju.lighting.vo.UserVO;
 import shared.LoginReturnState;
 import shared.ResultMessage;

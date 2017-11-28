@@ -4,7 +4,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="da43f691-24d3-4f24-8428-667a13321ae9" />
+          <unit-entry name="hibernate.cfg.xml" value="77e278f0-ecfe-43c1-965f-160e4e459df3" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
@@ -34,6 +34,7 @@
     <orderEntry type="library" name="mysql:mysql-connector-java:6.0.6" level="project" />
     <orderEntry type="library" name="junit:junit:4.12" level="project" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="ant" level="project" />
     <orderEntry type="library" name="ant" level="project" />
   </component>
 </module>

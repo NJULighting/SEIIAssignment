@@ -19,5 +19,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="jfoenix" level="project" />
+    <orderEntry type="library" name="Hibernate 5.2.12-5.2.12" level="project" />
+    <orderEntry type="library" name="ant" level="project" />
   </component>
 </module>

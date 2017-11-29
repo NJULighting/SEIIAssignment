@@ -250,13 +250,17 @@ CREATE TABLE PROMOTION_COMMODITY (
 
 
 CREATE TABLE SALES_DOC (
-	ID varchar(36) NOT NULL,
+	ID varchar(20) not null,
+	USER_ID varchar(20) not null,
+	CHECKER_ID varchar(20),
+	STATE varchar(20) not null,
+	CHECKER_COMMENT varchar(300),
+	CHECK_TIME DATETIME,
+	CREATE_TIME DATETIME not null,
 	CUSTOMER_ID varchar(20) NOT NULL,
 	SALES_MAN varchar(20),
-	REPOSITORY_ID varchar(5),
-	USER_ID varchar(20) NOT NULL, 
+	REPOSITORY_ID varchar(5), 
 	REMARKS varchar(300),
-	BEFORE_DISCOUNT_AMOUNT float(8) NOT NULL, 
 	DISCOUNT float(8) NOT NULL, 
 	VOUCHER float(8),
 	FINAL_AMOUNT float(8) NOT NULL,
@@ -265,13 +269,17 @@ CREATE TABLE SALES_DOC (
 
 
 CREATE TABLE SALES_RETURN_DOC (
-	ID varchar(36) NOT NULL,
+	ID varchar(20) not null,
+	USER_ID varchar(20) not null,
+	CHECKER_ID varchar(20),
+	STATE varchar(20) not null,
+	CHECKER_COMMENT varchar(300),
+	CHECK_TIME DATETIME,
+	CREATE_TIME DATETIME not null,
 	CUSTOMER_ID varchar(20) NOT NULL,
 	SALES_MAN varchar(20),
-	REPOSITORY_ID varchar(5),
-	USER_ID varchar(20) NOT NULL, 
+	REPOSITORY_ID varchar(5), 
 	REMARKS varchar(300),
-	BEFORE_DISCOUNT_AMOUNT float(8) NOT NULL, 
 	DISCOUNT float(8) NOT NULL, 
 	VOUCHER float(8),
 	FINAL_AMOUNT float(8) NOT NULL,
@@ -280,10 +288,15 @@ CREATE TABLE SALES_RETURN_DOC (
 
 
 CREATE TABLE STOCK_DOC (
-	ID varchar(36) NOT NULL,
+	ID varchar(20) not null,
+	USER_ID varchar(20) not null,
+	CHECKER_ID varchar(20),
+	STATE varchar(20) not null,
+	CHECKER_COMMENT varchar(300),
+	CHECK_TIME DATETIME,
+	CREATE_TIME DATETIME not null,
 	CUSTOMER_ID varchar(20) NOT NULL,
-	REPOSITORY_ID varchar(5),
-	USER_ID varchar(20) NOT NULL, 
+	REPOSITORY_ID varchar(5), 
 	REMARKS varchar(300),
 	TOTAL_AMOUNT float(8) NOT NULL,
 	primary key(ID)
@@ -291,10 +304,15 @@ CREATE TABLE STOCK_DOC (
 
 
 CREATE TABLE STOCK_RETURN_DOC (
-	ID varchar(36) NOT NULL,
+	ID varchar(20) not null,
+	USER_ID varchar(20) not null,
+	CHECKER_ID varchar(20),
+	STATE varchar(20) not null,
+	CHECKER_COMMENT varchar(300),
+	CHECK_TIME DATETIME,
+	CREATE_TIME DATETIME not null,
 	CUSTOMER_ID varchar(20) NOT NULL,
-	REPOSITORY_ID varchar(5),
-	USER_ID varchar(20) NOT NULL, 
+	REPOSITORY_ID varchar(5), 
 	REMARKS varchar(300),
 	TOTAL_AMOUNT float(8) NOT NULL,
 	primary key(ID)
@@ -302,7 +320,7 @@ CREATE TABLE STOCK_RETURN_DOC (
 
 
 CREATE TABLE STOCK_DOC_ITEM (
-	ID varchar(36),
+	ID int,
 	STOCK_DOC_ID varchar(36) NOT NULL,
 	COMMODITY_ID varchar(36) NOT NULL,
 	COUNT integer NOT NULL,
@@ -313,7 +331,7 @@ CREATE TABLE STOCK_DOC_ITEM (
 
 
 CREATE TABLE SALES_DOC_ITEM (
-	ID varchar(36),
+	ID int,
 	SALES_DOC_ID varchar(36) NOT NULL,
 	COMMODITY_ID varchar(36) NOT NULL,
 	COUNT integer NOT NULL,
@@ -335,3 +353,5 @@ alter table COST_DOC_ITEM modify column ID int auto_increment;
 alter table GIFT_DOC_ITEM modify column ID int auto_increment;
 alter table LOSS_AND_GAIN_DOC_ITEM modify column ID int auto_increment;
 alter table ACCOUNT_TRANSFER modify column ID int auto_increment;
+alter table SALES_DOC_ITEM modify column ID int auto_increment;
+alter table STOCK_DOC_ITEM modify column ID int auto_increment;

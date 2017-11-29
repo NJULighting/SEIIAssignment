@@ -1,41 +1,62 @@
 package nju.lighting.po.doc.stockdoc;
 
 import nju.lighting.po.doc.DocPO;
+import shared.DocState;
 import shared.DocType;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
+import java.util.List;
 
+@Entity
+@Table(name = "STOCK_RETURN_DOC")
 public class StockReturnDocPO extends DocPO {
-
-    private String stockReturnDocID;
 
     private String customerId;
 
     private String repository;
 
-    private String remarks = "";
+    private String remarks;
 
     private double totalAmount = 0;
 
-    public StockReturnDocPO(String id, DocType docType, String userId, Date time,
-                            String stockReturnDocID, String customerId, String repository,
-                            String remarks, double totalAmount) {
-        super(id, docType, userId, time);
-        this.stockReturnDocID = stockReturnDocID;
+    private List<StockDocItemPO> itemPOS;
+
+    public StockReturnDocPO() {
+
+    }
+
+    public StockReturnDocPO(String id, DocType docType, String userId,
+                      Date createTime, String customerId,
+                      String repository, String remarks, double totalAmount,
+                      List<StockDocItemPO> itemPOS) {
+        super(id, docType, userId, createTime);
         this.customerId = customerId;
         this.repository = repository;
         this.remarks = remarks;
         this.totalAmount = totalAmount;
+        this.itemPOS = itemPOS;
     }
 
-    public String getStockReturnDocID() {
-        return stockReturnDocID;
+    public StockReturnDocPO(String id, DocType docType, String userId,
+                      Date createTime, Date checkTime,
+                      String approvalComment, DocState state,
+                      String approvalId, String customerId,
+                      String repository, String remarks, double totalAmount,
+                      List<StockDocItemPO> itemPOS) {
+        super(id, docType, userId, createTime, checkTime,
+                approvalComment, state, approvalId);
+        this.customerId = customerId;
+        this.repository = repository;
+        this.remarks = remarks;
+        this.totalAmount = totalAmount;
+        this.itemPOS = itemPOS;
     }
 
-    public void setStockReturnDocID(String stockReturnDocID) {
-        this.stockReturnDocID = stockReturnDocID;
-    }
-
+    @Column(name = "CUSTOMER_ID", nullable = false, length = 20)
     public String getCustomerId() {
         return customerId;
     }
@@ -44,6 +65,7 @@ public class StockReturnDocPO extends DocPO {
         this.customerId = customerId;
     }
 
+    @Column(name = "REPOSITORY_ID", length = 5)
     public String getRepository() {
         return repository;
     }
@@ -52,6 +74,7 @@ public class StockReturnDocPO extends DocPO {
         this.repository = repository;
     }
 
+    @Column(name = "REMARKS", length = 300)
     public String getRemarks() {
         return remarks;
     }
@@ -60,11 +83,21 @@ public class StockReturnDocPO extends DocPO {
         this.remarks = remarks;
     }
 
+    @Column(name = "TOTAL_AMOUNT", nullable = false)
     public double getTotalAmount() {
         return totalAmount;
     }
 
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    @Transient
+    public List<StockDocItemPO> getItemPOS() {
+        return itemPOS;
+    }
+
+    public void setItemPOS(List<StockDocItemPO> itemPOS) {
+        this.itemPOS = itemPOS;
     }
 }

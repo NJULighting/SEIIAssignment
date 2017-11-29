@@ -1,18 +1,31 @@
 package nju.lighting.po.doc.stockdoc;
 
+import javax.persistence.*;
+
 /**
  * LastEditTime: 2017/11/7
  * Description:
  * @author GaoMengting
  */
+@Entity
+@Table(name = "STOCK_DOC_ITEM")
 public class StockDocItemPO {
 
     private int id;
+
     private String SalesDocID;
+
     private String commodityID;
+
     private int number = 0;
+
     private double totalAmount = 0;
-    private String remarks = "";
+
+    private String remarks = null;
+
+    public StockDocItemPO() {
+
+    }
 
     public StockDocItemPO(int id, String SalesDocID, String commodityID,
                           int number, double totalAmount, String remarks) {
@@ -24,6 +37,9 @@ public class StockDocItemPO {
         this.remarks = remarks;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID", nullable = false)
     public int getId() {
         return id;
     }
@@ -32,6 +48,7 @@ public class StockDocItemPO {
         this.id = id;
     }
 
+    @Column(name = "STOCK_DOC_ID", nullable = false, length = 36)
     public String getSalesDocID() {
         return SalesDocID;
     }
@@ -40,6 +57,7 @@ public class StockDocItemPO {
         this.SalesDocID = salesDocID;
     }
 
+    @Column(name = "COMMODITY_ID", nullable = false, length = 36)
     public String getCommodityID() {
         return commodityID;
     }
@@ -48,6 +66,7 @@ public class StockDocItemPO {
         this.commodityID = commodityID;
     }
 
+    @Column(name = "COUNT", nullable = false)
     public int getNumber() {
         return number;
     }
@@ -56,6 +75,7 @@ public class StockDocItemPO {
         this.number = number;
     }
 
+    @Column(name = "TOTAL_AMOUNT", nullable = false)
     public double getTotalAmount() {
         return totalAmount;
     }
@@ -64,6 +84,7 @@ public class StockDocItemPO {
         this.totalAmount = totalAmount;
     }
 
+    @Column(name = "REMARKS", length = 300)
     public String getRemarks() {
         return remarks;
     }

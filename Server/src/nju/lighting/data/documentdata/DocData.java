@@ -118,7 +118,7 @@ public class DocData implements DocDataService {
         List<DocPO> original = abstractDocData.getAll();
         List<DocPO> result = new ArrayList<>();
         for (DocPO doc: original) {
-            Date time = doc.getTime();
+            Date time = doc.getCreateTime();
             if (time.compareTo(from) >= 0 && time.compareTo(to) < 0)
                 result.add(doc);
         }

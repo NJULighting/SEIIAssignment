@@ -8,14 +8,14 @@ public class AlertDocItemPO {
 
     private int id;
 
-    private String alertDocId;
+    private String docId;
 
     private String commodityId;
 
     private int count;
 
-    public AlertDocItemPO(String alertDocId, String commodityId, int count) {
-        this.alertDocId = alertDocId;
+    public AlertDocItemPO(String docId, String commodityId, int count) {
+        this.docId = docId;
         this.commodityId = commodityId;
         this.count = count;
     }
@@ -24,9 +24,9 @@ public class AlertDocItemPO {
 
     }
 
-    public AlertDocItemPO(int id, String alertDocId, String commodityId, int count) {
+    public AlertDocItemPO(int id, String docId, String commodityId, int count) {
         this.id = id;
-        this.alertDocId = alertDocId;
+        this.docId = docId;
         this.commodityId = commodityId;
         this.count = count;
     }
@@ -43,12 +43,12 @@ public class AlertDocItemPO {
     }
 
     @Column(name = "ALERT_DOC_ID", nullable = false, length = 20)
-    public String getAlertDocId() {
-        return alertDocId;
+    public String getDocId() {
+        return docId;
     }
 
-    public void setAlertDocId(String alertDocId) {
-        this.alertDocId = alertDocId;
+    public void setDocId(String alertDocId) {
+        this.docId = alertDocId;
     }
 
     @Column(name = "COMMODITY_ID", nullable = false, length = 36)

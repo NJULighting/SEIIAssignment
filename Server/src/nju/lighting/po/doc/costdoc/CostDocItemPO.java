@@ -17,7 +17,7 @@ public class CostDocItemPO {
 
     private CostDocItemType type;
 
-    private String costDocID;
+    private String docId;
 
     private double amount;
 
@@ -26,17 +26,17 @@ public class CostDocItemPO {
     public CostDocItemPO() {
     }
 
-    public CostDocItemPO(CostDocItemType type, String costDocID, double amount, String comment) {
+    public CostDocItemPO(CostDocItemType type, String docId, double amount, String comment) {
         this.type = type;
-        this.costDocID = costDocID;
+        this.docId = docId;
         this.amount = amount;
         this.comment = comment;
     }
 
-    public CostDocItemPO(int id, CostDocItemType type, String costDocID, double amount, String comment) {
+    public CostDocItemPO(int id, CostDocItemType type, String docId, double amount, String comment) {
         this.id = id;
         this.type = type;
-        this.costDocID = costDocID;
+        this.docId = docId;
         this.amount = amount;
         this.comment = comment;
     }
@@ -53,12 +53,12 @@ public class CostDocItemPO {
     }
 
     @Column(name = "COST_DOC_ID", nullable = false, length = 36)
-    public String getCostDocID() {
-        return costDocID;
+    public String getDocId() {
+        return docId;
     }
 
-    public void setCostDocID(String costDocID) {
-        this.costDocID = costDocID;
+    public void setDocId(String costDocID) {
+        this.docId = costDocID;
     }
 
     @Enumerated(EnumType.STRING)

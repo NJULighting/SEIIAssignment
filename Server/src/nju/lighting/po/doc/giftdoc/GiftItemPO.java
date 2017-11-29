@@ -1,7 +1,5 @@
 package nju.lighting.po.doc.giftdoc;
 
-import com.sun.tools.javah.Gen;
-
 import javax.persistence.*;
 
 /**
@@ -21,6 +19,16 @@ public class GiftItemPO {
 
     private double subtotal;
 
+    private String docId;
+
+    @Column(name = "GIFT_DOC_ID", nullable = false, length = 36)
+    public String getDocId() {
+        return docId;
+    }
+
+    public void setDocId(String docId) {
+        this.docId = docId;
+    }
 
     public GiftItemPO() {
 

@@ -13,7 +13,7 @@ public class SalesDocItemPO {
 
     private int id;
 
-    private String salesDocID;
+    private String docId;
 
     private String commodityID;
 
@@ -27,10 +27,10 @@ public class SalesDocItemPO {
 
     }
 
-    public SalesDocItemPO(int id, String salesDocID, String commodityID,
+    public SalesDocItemPO(int id, String docId, String commodityID,
                           int number, double totalAmount, String remarks) {
         this.id = id;
-        this.salesDocID = salesDocID;
+        this.docId = docId;
         this.commodityID = commodityID;
         this.number = number;
         this.totalAmount = totalAmount;
@@ -49,12 +49,12 @@ public class SalesDocItemPO {
     }
 
     @Column(name = "SALES_DOC_ID", nullable = false, length = 36)
-    public String getSalesDocID() {
-        return salesDocID;
+    public String getDocId() {
+        return docId;
     }
 
-    public void setSalesDocID(String salesDocID) {
-        this.salesDocID = salesDocID;
+    public void setDocId(String salesDocID) {
+        this.docId = salesDocID;
     }
 
     @Column(name = "COMMODITY_ID", nullable = false, length = 36)

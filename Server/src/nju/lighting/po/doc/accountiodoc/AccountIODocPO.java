@@ -5,6 +5,7 @@ import shared.AccountIODocType;
 import shared.DocType;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -73,5 +74,21 @@ public class AccountIODocPO extends DocPO {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    @Override
+    @Transient
+    public List<Object> getItems() {
+        List<Object> list = new ArrayList<>();
+        list.addAll(transferAccountList);
+        return list;
+    }
+
+    @Override
+    public void setItems(List<Object> list) {
+        transferAccountList = new ArrayList<>();
+        for (Object o: list) {
+            transferAccountList.add((AccountTransferItemPO)o);
+        }
     }
 }

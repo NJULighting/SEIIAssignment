@@ -5,6 +5,7 @@ import shared.DocState;
 import shared.DocType;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -133,5 +134,21 @@ public class SalesDocPO extends DocPO {
 
     public void setItemPOS(List<SalesDocItemPO> itemPOS) {
         this.itemPOS = itemPOS;
+    }
+
+    @Override
+    @Transient
+    public List<Object> getItems() {
+        List<Object> list = new ArrayList<>();
+        list.addAll(this.itemPOS);
+        return list;
+    }
+
+    @Override
+    public void setItems(List<Object> list) {
+        this.itemPOS = new ArrayList<>();
+        for (Object o: list) {
+            itemPOS.add((SalesDocItemPO)o);
+        }
     }
 }

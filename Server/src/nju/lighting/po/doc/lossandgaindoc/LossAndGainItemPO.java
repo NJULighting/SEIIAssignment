@@ -10,7 +10,7 @@ public class LossAndGainItemPO {
 
     private int id;
 
-    private String lossAndGainDocId;
+    private String docId;
 
     private String commodityId;
 
@@ -22,16 +22,16 @@ public class LossAndGainItemPO {
 
     }
 
-    public LossAndGainItemPO(String lossAndGainDocId, String commodityId, int count, LossAndGainItemType type) {
-        this.lossAndGainDocId = lossAndGainDocId;
+    public LossAndGainItemPO(String docId, String commodityId, int count, LossAndGainItemType type) {
+        this.docId = docId;
         this.commodityId = commodityId;
         this.count = count;
         this.type = type;
     }
 
-    public LossAndGainItemPO(int id, String lossAndGainDocId, String commodityId, int count, LossAndGainItemType type) {
+    public LossAndGainItemPO(int id, String docId, String commodityId, int count, LossAndGainItemType type) {
         this.id = id;
-        this.lossAndGainDocId = lossAndGainDocId;
+        this.docId = docId;
         this.commodityId = commodityId;
         this.count = count;
         this.type = type;
@@ -49,12 +49,12 @@ public class LossAndGainItemPO {
     }
 
     @Column(name = "LOSS_AND_GAIN_DOC_ID", nullable = false, length = 20)
-    public String getLossAndGainDocId() {
-        return lossAndGainDocId;
+    public String getDocId() {
+        return docId;
     }
 
-    public void setLossAndGainDocId(String lossAndGainDocId) {
-        this.lossAndGainDocId = lossAndGainDocId;
+    public void setDocId(String lossAndGainDocId) {
+        this.docId = lossAndGainDocId;
     }
 
     @Column(name = "COMMODITY_ID", nullable = false, length = 36)

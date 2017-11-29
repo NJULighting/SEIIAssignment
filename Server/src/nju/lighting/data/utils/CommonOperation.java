@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import shared.ResultMessage;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author iznauy
  */
-public class CommonOperation<T> {
+public class CommonOperation<T> implements Serializable {
 
     /**
      * 用于存储类的完全名称，通过T.class.getName方法获取

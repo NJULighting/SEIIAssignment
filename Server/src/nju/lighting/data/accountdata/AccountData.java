@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import shared.ResultMessage;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.TreeSet;
  * Description: 账户模块数据层实现
  * @author iznauy
  */
-public class AccountData implements AccountDataService {
+public class AccountData implements AccountDataService, Serializable {
 
     private CommonOperation<AccountPO> accountPOCommonOperation;
 

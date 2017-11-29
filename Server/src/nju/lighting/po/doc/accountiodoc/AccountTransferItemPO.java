@@ -15,7 +15,7 @@ public class AccountTransferItemPO {
 
     private String accountID;
 
-    private String accountIODocID;
+    private String docId;
 
     private double amount;
 
@@ -25,21 +25,21 @@ public class AccountTransferItemPO {
 
     }
 
-    public AccountTransferItemPO(int id, String accountID, String accountIODocID, double amount, String comments) {
+    public AccountTransferItemPO(int id, String accountID, String docId, double amount, String comments) {
         this.id = id;
         this.accountID = accountID;
-        this.accountIODocID = accountIODocID;
+        this.docId = docId;
         this.amount = amount;
         this.comments = comments;
     }
 
     @Column(name = "ACCOUNT_IO_DOC_ID", nullable = false, length = 36)
-    public String getAccountIODocID() {
-        return accountIODocID;
+    public String getDocId() {
+        return docId;
     }
 
-    public void setAccountIODocID(String accountIODocID) {
-        this.accountIODocID = accountIODocID;
+    public void setDocId(String accountIODocID) {
+        this.docId = accountIODocID;
     }
 
     @Id

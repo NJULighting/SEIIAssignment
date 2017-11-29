@@ -5,6 +5,7 @@ import shared.DocType;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @MappedSuperclass
@@ -29,6 +30,11 @@ public abstract class DocPO {
     public DocPO() {
 
     }
+
+    @Transient
+    public abstract List<Object> getItems();
+
+    public abstract void setItems(List<Object> list);
 
     public DocPO(String id, DocType docType, String userId, Date createTime) {
         this.id = id;
@@ -68,7 +74,7 @@ public abstract class DocPO {
         this.docType = docType;
     }
 
-    @Column(nullable = false, name = "CHECKER_ID", length = 20)
+    @Column(nullable = false, name = "USER_ID", length = 20)
     public String getUserId() {
         return userId;
     }

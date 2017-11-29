@@ -202,6 +202,7 @@ CREATE TABLE GIFT_DOC (
 
 CREATE TABLE GIFT_DOC_ITEM (
 	ID int,
+	GIFT_DOC_ID varchar(36) not null;
 	COMMODITY_ID varchar(36) not null,
 	COUNT integer not null,
 	SUB_TOTAL float(8) not null,

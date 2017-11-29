@@ -8,6 +8,8 @@ import shared.DocType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -72,6 +74,31 @@ public class AlertDocPO extends DocPO {
 
     public void setExpired(boolean expired) {
         this.expired = expired;
+    }
+
+    @Transient
+    public List<AlertDocItemPO> getItemPOS() {
+        return itemPOS;
+    }
+
+    public void setItemPOS(List<AlertDocItemPO> itemPOS) {
+        this.itemPOS = itemPOS;
+    }
+
+    @Override
+    @Transient
+    public List<Object> getItems() {
+        List<Object> list = new ArrayList<>();
+        list.addAll(itemPOS);
+        return list;
+    }
+
+    @Override
+    public void setItems(List<Object> list) {
+        itemPOS = new ArrayList<>();
+        for (Object o: list) {
+            itemPOS.add((AlertDocItemPO)o);
+        }
     }
 }
 

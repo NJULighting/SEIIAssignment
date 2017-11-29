@@ -22,6 +22,9 @@ public class AccountDataTest {
 
     private AccountData accountData = new AccountData();
 
+    public AccountDataTest() throws RemoteException {
+    }
+
     @Test
     public void insert() throws RemoteException {
         AccountPO accountPO = new AccountPO("161250068", "BbidA的校园卡", 2333, new ArrayList<>());

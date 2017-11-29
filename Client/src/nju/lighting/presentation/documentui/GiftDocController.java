@@ -44,12 +44,12 @@ public class GiftDocController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        commodityName.setCellValueFactory(cellData ->
-               cellData.getValue().commodityNameProperty());
-        count.setCellValueFactory(cellData->
-                cellData.getValue().countProperty());
-        subtotal.setCellValueFactory(cellData->
-        cellData.getValue().subtotalProperty());
+//        commodityName.setCellValueFactory(cellData ->
+//               cellData.getValue().commodityNameProperty());
+//        count.setCellValueFactory(cellData->
+//                cellData.getValue().countProperty());
+//        subtotal.setCellValueFactory(cellData->
+//        cellData.getValue().subtotalProperty());
 
         ObservableList gifts = FXCollections.observableArrayList();
 

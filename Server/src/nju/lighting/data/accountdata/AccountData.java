@@ -1,32 +1,28 @@
 package nju.lighting.data.accountdata;
 
 import nju.lighting.data.utils.CommonOperation;
-import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.po.account.AccountLogPO;
 import nju.lighting.po.account.AccountPO;
-import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.List;
-import java.util.TreeSet;
 
 /**
  * Created on 2017/11/26.
  * Description: 账户模块数据层实现
  * @author iznauy
  */
-public class AccountData implements AccountDataService {
+public class AccountData extends UnicastRemoteObject implements AccountDataService {
 
     private CommonOperation<AccountPO> accountPOCommonOperation;
 
     private CommonOperation<AccountLogPO> accountLogPOCommonOperation;
 
-    public AccountData() {
+    public AccountData() throws RemoteException {
         accountPOCommonOperation = new CommonOperation<>(AccountPO.class.getName());
         accountLogPOCommonOperation = new CommonOperation<>(AccountLogPO.class.getName());
     }
@@ -56,9 +52,9 @@ public class AccountData implements AccountDataService {
             return result;
         }
         HashMap<String, AccountPO> hashMap = new HashMap<>();
-        for (AccountPO accountPO: result)
+        for (AccountPO accountPO : result)
             hashMap.put(accountPO.getId(), accountPO);
-        for (AccountLogPO logPO: logPOS) {
+        for (AccountLogPO logPO : logPOS) {
             AccountPO po = hashMap.get(logPO.getAccountID());
             po.addChangeLog(logPO);
         }

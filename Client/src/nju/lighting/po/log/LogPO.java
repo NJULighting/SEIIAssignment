@@ -1,4 +1,4 @@
-package nju.lighting.po;
+package nju.lighting.po.log;
 
 import java.util.Date;
 

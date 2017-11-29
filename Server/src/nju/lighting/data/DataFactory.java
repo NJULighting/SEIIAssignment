@@ -47,8 +47,6 @@ public abstract class DataFactory {
         return new PromotionDataService_Stub();
     }
 
-    public static UserDataService getUserDataService() {
-        return new UserDataService_Stub();
-    }
+
 
 }

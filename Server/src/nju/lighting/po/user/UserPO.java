@@ -5,6 +5,7 @@ import org.hibernate.annotations.Type;
 import shared.Identity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created on 2017/10/17.
@@ -13,7 +14,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "USER_INFO")
-public class UserPO {
+public class UserPO implements Serializable {
+    private static final long serialVersionUID = 2418792659434004685L;
 
     private String name;
 

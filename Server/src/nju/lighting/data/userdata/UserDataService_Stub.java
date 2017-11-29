@@ -8,6 +8,7 @@ import shared.ResultMessage;
 import shared.TwoTuple;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,10 @@ import java.util.ArrayList;
  * Description:
  * @author Liao
  */
-public class UserDataService_Stub implements UserDataService {
+public class UserDataService_Stub extends UnicastRemoteObject implements UserDataService {
+
+    public UserDataService_Stub() throws RemoteException {
+    }
 
     @Override
     public ResultMessage insert(UserPO po) {

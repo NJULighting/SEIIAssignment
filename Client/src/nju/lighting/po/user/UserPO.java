@@ -1,14 +1,18 @@
-package nju.lighting.po;
+package nju.lighting.po.user;
 
 
 import shared.Identity;
+
+import java.io.Serializable;
 
 /**
  * Created on 2017/10/17.
  * Description:
  * @author Liao
  */
-public class UserPO {
+public class UserPO implements Serializable{
+
+    private static final long serialVersionUID = 2418792659434004685L;
     private String name;
     private String password;
     private String id;

@@ -1,5 +1,7 @@
 package nju.lighting.vo;
 
+import shared.Identity;
+
 /**
  * Created on 2017/10/21.
  * Description:
@@ -8,10 +10,10 @@ package nju.lighting.vo;
 public class UserVO {
     private String username;
     private String jobNumber;
-    private String identity;
+    private Identity identity;
     private boolean authority;
 
-    public UserVO(String username, String password, String jobNumber, String identity, boolean authority) {
+    public UserVO(String username, String jobNumber, Identity identity, boolean authority) {
         this.username = username;
         this.jobNumber = jobNumber;
         this.identity = identity;
@@ -34,11 +36,11 @@ public class UserVO {
         this.jobNumber = jobNumber;
     }
 
-    public String getIdentity() {
+    public Identity getIdentity() {
         return identity;
     }
 
-    public void setIdentity(String identity) {
+    public void setIdentity(Identity identity) {
         this.identity = identity;
     }
 

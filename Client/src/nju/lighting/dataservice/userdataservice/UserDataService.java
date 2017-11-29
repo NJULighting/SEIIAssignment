@@ -1,6 +1,6 @@
 package nju.lighting.dataservice.userdataservice;
 
-import nju.lighting.po.UserPO;
+import nju.lighting.po.user.UserPO;
 import shared.ResultMessage;
 
 import java.rmi.Remote;

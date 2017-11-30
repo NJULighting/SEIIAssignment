@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.approvalui.ApprovalUIController">
     <children>
-          <Pane layoutX="225.0" layoutY="6.0" prefHeight="613.0" prefWidth="1051.0">
+          <Pane layoutX="225.0" prefHeight="610.0" prefWidth="1051.0">
               <children>
                   <Text fx:id="detailNum" layoutX="364.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="253.99998092651367">
                       <font>
@@ -17,7 +17,7 @@
                       </font>
                   </Text>
             <NumberValidator layoutX="135.0" layoutY="103.0" />
-            <Pane fx:id="detail" layoutY="-6.0" prefHeight="610.0" prefWidth="1051.0" />
+            <Pane fx:id="detail" prefHeight="610.0" prefWidth="1051.0" style="-fx-background-color: white;" />
               </children>
           </Pane>
       <JFXListView fx:id="docList" layoutX="-2.0" onMouseClicked="#clicked" prefHeight="537.0" prefWidth="224.0" />

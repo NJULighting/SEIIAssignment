@@ -2,6 +2,7 @@ package nju.lighting.bl.userbl;
 
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.MockLogger;
+import nju.lighting.bl.utils.NameChecker;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
@@ -50,6 +51,12 @@ public enum UserManager {
     }
 
     public ResultMessage addUser(UserVO user, String password) {
+        // Check name
+        if (!NameChecker.validName(user.getUsername()))
+            return ResultMessage.INVALID_NAME;
+
+        // Check pass
+
         return null;
     }
 }

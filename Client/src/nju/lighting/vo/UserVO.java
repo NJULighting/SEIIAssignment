@@ -9,13 +9,13 @@ import shared.Identity;
  */
 public class UserVO {
     private String username;
-    private String jobNumber;
+    private String id;
     private Identity identity;
     private boolean authority;
 
     public UserVO(String username, String jobNumber, Identity identity, boolean authority) {
         this.username = username;
-        this.jobNumber = jobNumber;
+        this.id = jobNumber;
         this.identity = identity;
         this.authority = authority;
     }
@@ -28,12 +28,12 @@ public class UserVO {
         this.username = username;
     }
 
-    public String getJobNumber() {
-        return jobNumber;
+    public String getID() {
+        return id;
     }
 
-    public void setJobNumber(String jobNumber) {
-        this.jobNumber = jobNumber;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Identity getIdentity() {

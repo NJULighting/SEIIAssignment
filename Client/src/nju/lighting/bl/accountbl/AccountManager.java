@@ -2,6 +2,7 @@ package nju.lighting.bl.accountbl;
 
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.MockLogger;
+import nju.lighting.bl.utils.NameChecker;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.po.account.AccountPO;
@@ -13,8 +14,6 @@ import javax.naming.NamingException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created on 2017/11/6.
@@ -64,7 +63,7 @@ public enum AccountManager {
         }
 
         // Check name's correctness
-        if (!validName(name)) return ResultMessage.INVALID_NAME;
+        if (!NameChecker.validName(name)) return ResultMessage.INVALID_NAME;
 
         // Create new account and insert to the database
         Account account = new Account(id, amount, name);
@@ -148,7 +147,7 @@ public enum AccountManager {
      */
     ResultMessage rename(String id, String newName) {
         // Check new name's form using regex
-        if (!validName(newName))
+        if (!NameChecker.validName(newName))
             return ResultMessage.INVALID_NAME;
 
         try {
@@ -165,19 +164,5 @@ public enum AccountManager {
         }
     }
 
-    /**
-     * Check whether name's valid
-     * @param name name to be checked
-     * @return true if only contains number, Chinese character, letters
-     */
-    private boolean validName(String name) {
-        // Check emptiness
-        if (name.trim().isEmpty()) return false;
 
-        // Check whether contains illegal character
-        String regex = "[`~!@#$%^&*()+=|{}':;,\\[\\].<>/?！￥…（）—【】‘；：”“’。，、？]";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(name);
-        return !matcher.find();
-    }
 }

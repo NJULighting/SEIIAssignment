@@ -46,18 +46,11 @@ public enum LoginHelper {
      */
     public TwoTuple<UserVO, LoginReturnState> login(String id, String password) {
         try {
-            // Check id
-            UserPO po = userDataService.get(id);
-            if (po == null)
-                return new TwoTuple<>(null, LoginReturnState.INVALID_USER_NAME);
-            // Check password
-            User user = new User(po);
-            if (user.passwordRight(password)) {
-                return new TwoTuple<>(user.toVO(), LoginReturnState.SUCCESS);
-                // TODO: 2017/11/30 Log here
-            }
-            else
-                return new TwoTuple<>(null, LoginReturnState.INVALID_PASSWORD);
+            TwoTuple<UserPO, LoginReturnState> loginRes = userDataService.login(id, password);
+            if (loginRes.r != LoginReturnState.SUCCESS)
+                return new TwoTuple<>(null, loginRes.r);
+            // Login succeed
+            return new TwoTuple<>(new User(loginRes.t).toVO(), loginRes.r);
         } catch (RemoteException e) {
             e.printStackTrace();
             return new TwoTuple<>(null, LoginReturnState.UNKNOWN);

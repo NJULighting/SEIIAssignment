@@ -6,6 +6,8 @@ import org.junit.Test;
 import shared.LoginReturnState;
 import shared.TwoTuple;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -25,15 +27,22 @@ public class UserControllerTest {
 
     @Test
     public void loginInvalidPasswordTest() throws Exception {
-        TwoTuple<UserVO, LoginReturnState> res = userBLService.login("000", "NotExcited");
+        TwoTuple<UserVO, LoginReturnState> res = userBLService.login("161250068", "NotExcited");
         assertNull(res.t);
         assertEquals(LoginReturnState.INVALID_PASSWORD, res.r);
     }
 
     @Test
     public void loginSuccessfullyTest() throws Exception {
-        TwoTuple<UserVO, LoginReturnState> res = userBLService.login("0000", "Excited");
+        TwoTuple<UserVO, LoginReturnState> res = userBLService.login("161250068", "2333");
         assertNotNull(res.t);
         assertEquals(LoginReturnState.SUCCESS, res.r);
+    }
+
+    @Test
+    public void getUserListTest() throws Exception {
+        List<UserVO> vos = userBLService.getUserList();
+        assertEquals(3, vos.size());
+        assertEquals("161250068", vos.get(2).getID());
     }
 }

@@ -42,7 +42,7 @@ public class LogData extends UnicastRemoteObject implements LogDataService {
 
     @Override
     public List<LogPO> findById(String id) throws RemoteException {
-        return logPOCommonOperation.getListBySingleField("userId", id);
+        return logPOCommonOperation.getListBySingleField("userID", id);
     }
 
     @Override

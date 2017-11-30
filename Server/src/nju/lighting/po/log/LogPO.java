@@ -20,8 +20,24 @@ public class LogPO {
 
     private String content;
 
+    @Override
+    public String toString() {
+        return "LogPO{" +
+                "id=" + id +
+                ", time=" + time +
+                ", userID='" + userID + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
+
     public LogPO() {
 
+    }
+
+    public LogPO(Date time, String userID, String content) {
+        this.time = time;
+        this.userID = userID;
+        this.content = content;
     }
 
     public LogPO(Date time, String content, int id, String userID) {
@@ -61,7 +77,7 @@ public class LogPO {
         this.content = content;
     }
 
-    @Column(nullable = false, length = 20)
+    @Column(name = "USER_ID", nullable = false, length = 20)
     public String getUserID() {
         return userID;
     }

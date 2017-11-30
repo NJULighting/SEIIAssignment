@@ -38,6 +38,11 @@ public class CommodityItemPO implements CSVable {
         return name + "," + categoryId + "," +  modelNumber + "," + inPrice + "," + sellPrice + "," + recentSellPrice;
     }
 
+    @Override
+    @Transient
+    public String getClassDescription() {
+        return "名称,父分类,型号,进价,售价,最近售价";
+    }
 
     @Override
     public String toString() {

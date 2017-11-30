@@ -36,10 +36,13 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
 
     private void createCSVFile(String url) throws Exception {
         File file = new File(url);
-        if (file.exists())
+        if (file.exists()) {
+            System.out.println(url);
             return;
-        if (!file.createNewFile())
+        }
+        if (!file.mkdir())
             return;
+        System.out.println("---------------" + file.getAbsolutePath() + "-----------------");
         CommodityData commodityData = new CommodityData();
         List<CommodityItemPO> commodityItemPOS = commodityData.getAllCommodity();
         AccountData accountData = new AccountData();
@@ -53,13 +56,20 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
 
     private <T extends CSVable> void writeTData(String url, List<T> data) throws Exception {
         File tFile = new File(url);
-        if (tFile.createNewFile())
+        if (!tFile.createNewFile())
             throw new Exception();
         FileWriter fileWriter = new FileWriter(tFile);
+        boolean first = true;
         for (T t: data) {
+            if (first) {
+                fileWriter.write(t.getClassDescription());
+                fileWriter.write(System.lineSeparator());
+                first = false;
+            }
             fileWriter.write(t.toCSV());
             fileWriter.write(System.lineSeparator());
         }
+        fileWriter.close();
     }
 
     @Override
@@ -68,6 +78,7 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
         try {
             createCSVFile(url);
         } catch (Exception e) {
+            e.printStackTrace();
             File file = new File(url);
             if (file.exists())
                 file.delete();
@@ -75,6 +86,7 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
         }
         zip(new File(url), url + ".zip");
         InitPO initPO = new InitPO(date, userId, url + ".zip");
+        System.out.println("Before Return");
         return commonOperation.add(initPO);
     }
 

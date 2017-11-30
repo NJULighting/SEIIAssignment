@@ -6,6 +6,7 @@ import org.junit.Test;
 import shared.RepositoryChangeType;
 import shared.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +23,9 @@ import static org.junit.Assert.*;
 public class RepositoryDataTest {
 
     private RepositoryData repositoryData = new RepositoryData();
+
+    public RepositoryDataTest() throws RemoteException {
+    }
 
     @Test
     public void getRepositoryChanges() throws Exception {

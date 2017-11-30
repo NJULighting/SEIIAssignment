@@ -5,6 +5,7 @@ import nju.lighting.po.commodity.CommodityItemPO;
 import org.junit.Test;
 import shared.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +21,9 @@ import static org.junit.Assert.*;
 public class CommodityDataTest {
 
     private CommodityData commodityData = new CommodityData();
+
+    public CommodityDataTest() throws RemoteException {
+    }
 
     @Test
     public void getAllCommodities() throws Exception {

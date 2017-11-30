@@ -10,6 +10,7 @@ import org.hibernate.query.Query;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 /**
@@ -17,13 +18,13 @@ import java.util.List;
  * Description: 商品模块数据层实现
  * @author iznauy
  */
-public class CommodityData implements CommodityDataService {
+public class CommodityData extends UnicastRemoteObject implements CommodityDataService {
 
     private CommonOperation<CommodityItemPO> commodityItemPOCommonOperation;
 
     private CommonOperation<CommodityCategoryPO> categoryPOCommonOperation;
 
-    public CommodityData() {
+    public CommodityData() throws RemoteException {
         this.commodityItemPOCommonOperation = new CommonOperation<>(CommodityItemPO.class.getName());
         this.categoryPOCommonOperation = new CommonOperation<>(CommodityCategoryPO.class.getName());
     }

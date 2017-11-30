@@ -9,4 +9,6 @@ package shared;
 public interface CSVable {
 
     String toCSV();
+
+    String getClassDescription();
 }

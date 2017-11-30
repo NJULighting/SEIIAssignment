@@ -36,6 +36,12 @@ public class AccountPO implements Serializable, CSVable {
     }
 
     @Override
+    @Transient
+    public String getClassDescription() {
+        return "账号,账户名,余额";
+    }
+
+    @Override
     public boolean equals(Object obj) {
         return (obj instanceof String && obj.equals(id)) ||
                 (obj instanceof AccountPO && ((AccountPO) obj).getId().equals(id));

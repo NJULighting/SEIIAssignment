@@ -1,6 +1,6 @@
 package nju.lighting.po.doc.giftdoc;
 
-import com.sun.tools.javah.Gen;
+import shared.Item;
 
 import javax.persistence.*;
 
@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "GIFT_DOC_ITEM")
-public class GiftItemPO {
+public class GiftItemPO implements Item {
 
     private int id;
 
@@ -21,6 +21,16 @@ public class GiftItemPO {
 
     private double subtotal;
 
+    private String docId;
+
+    @Column(name = "GIFT_DOC_ID", nullable = false, length = 36)
+    public String getDocId() {
+        return docId;
+    }
+
+    public void setDocId(String docId) {
+        this.docId = docId;
+    }
 
     public GiftItemPO() {
 

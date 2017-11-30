@@ -1,39 +1,47 @@
 package nju.lighting.po.doc.salesdoc;
 
+import shared.Item;
+
+import javax.persistence.*;
+
 /**
  * LastEditTime: 2017/11/7
  * Description:
  * @author GaoMengting
  */
-public class SalesDocItemPO {
+@Entity
+@Table(name = "SALES_DOC_ITEM")
+public class SalesDocItemPO implements Item {
 
     private int id;
-    private String salesDocID;
+
+    private String docId;
+
     private String commodityID;
+
     private int number = 0;
+
     private double totalAmount = 0;
-    private String remarks = "";
+
+    private String remarks;
 
     public SalesDocItemPO() {
+
     }
 
-    /**
-     * @param id          销售类单据中一条商品条目的内部id
-     * @param SalesDocID  此条商品条目所属的显示类单据编号
-     * @param commodityID 此条商品条目中的商品ID
-     * @param number      此条商品条目中的商品数量
-     * @param remarks     此条商品条目中的备注
-     */
-    public SalesDocItemPO(int id, String SalesDocID, String commodityID,
+    public SalesDocItemPO(int id, String docId, String commodityID,
                           int number, double totalAmount, String remarks) {
         this.id = id;
-        this.salesDocID = SalesDocID;
+        this.docId = docId;
         this.commodityID = commodityID;
         this.number = number;
         this.totalAmount = totalAmount;
         this.remarks = remarks;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID", nullable = false)
     public int getId() {
         return id;
     }
@@ -42,14 +50,16 @@ public class SalesDocItemPO {
         this.id = id;
     }
 
-    public String getSalesDocID() {
-        return salesDocID;
+    @Column(name = "SALES_DOC_ID", nullable = false, length = 36)
+    public String getDocId() {
+        return docId;
     }
 
-    public void setSalesDocID(String salesDocID) {
-        this.salesDocID = salesDocID;
+    public void setDocId(String salesDocID) {
+        this.docId = salesDocID;
     }
 
+    @Column(name = "COMMODITY_ID", nullable = false, length = 36)
     public String getCommodityID() {
         return commodityID;
     }
@@ -58,6 +68,7 @@ public class SalesDocItemPO {
         this.commodityID = commodityID;
     }
 
+    @Column(name = "COUNT", nullable = false)
     public int getNumber() {
         return number;
     }
@@ -66,6 +77,7 @@ public class SalesDocItemPO {
         this.number = number;
     }
 
+    @Column(name = "TOTAL_AMOUNT", nullable = false)
     public double getTotalAmount() {
         return totalAmount;
     }
@@ -74,6 +86,7 @@ public class SalesDocItemPO {
         this.totalAmount = totalAmount;
     }
 
+    @Column(name = "REMARKS", length = 300)
     public String getRemarks() {
         return remarks;
     }

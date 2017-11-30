@@ -45,12 +45,46 @@ public class PromotionPO {
 
     public PromotionPO() {}
 
+    @Override
+    public String toString() {
+        return "PromotionPO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", time=" + time +
+                ", level=" + level +
+                ", total=" + total +
+                ", goods=" + goods +
+                ", off=" + off +
+                ", vouchers=" + vouchers +
+                ", vouchersEndDate=" + vouchersEndDate +
+                '}';
+    }
+
     public PromotionPO(String name, PromotionType type, Date startDate, Date endDate, CustomerGrade level,
                        double total, List<PromotionPackageItemPO> goods, double off, double vouchers, Date vouchersEndDate) {
         this.name = name;
         this.type = type;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.level = level;
+        this.total = total;
+        this.goods = goods;
+        this.off = off;
+        this.vouchers = vouchers;
+        this.vouchersEndDate = vouchersEndDate;
+    }
+
+    public PromotionPO(String name, PromotionType type, Date startDate, Date endDate,
+                       Date time, CustomerGrade level, double total, List<PromotionPackageItemPO> goods,
+                       double off, double vouchers, Date vouchersEndDate) {
+        this.name = name;
+        this.type = type;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.time = time;
         this.level = level;
         this.total = total;
         this.goods = goods;

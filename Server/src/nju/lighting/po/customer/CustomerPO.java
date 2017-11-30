@@ -42,6 +42,12 @@ public class CustomerPO implements CSVable {
     }
 
     @Override
+    @Transient
+    public String getClassDescription() {
+        return "ID,类型,等级,名称,电话,地址,邮编,邮箱,应收额度,应收,应付,默认销售员";
+    }
+
+    @Override
     public String toString() {
         return "CustomerPO{" +
                 "ID='" + ID + '\'' +

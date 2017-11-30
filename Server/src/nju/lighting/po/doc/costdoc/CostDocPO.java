@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created on 2017/10/18.
@@ -62,5 +63,21 @@ public class CostDocPO extends DocPO {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    @Override
+    @Transient
+    public List<Object> getItems() {
+        List<Object> list = new ArrayList<>();
+        list.addAll(itemList);
+        return list;
+    }
+
+    @Override
+    public void setItems(List<Object> list) {
+        this.itemList = new ArrayList<>();
+        for (Object o: list) {
+            itemList.add((CostDocItemPO)o);
+        }
     }
 }

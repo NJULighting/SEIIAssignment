@@ -6,6 +6,7 @@ import nju.lighting.po.customer.CustomerPO;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 /**
@@ -14,11 +15,11 @@ import java.util.List;
  *
  * @author iznauy
  */
-public class CustomerData implements CustomerDataService {
+public class CustomerData extends UnicastRemoteObject implements CustomerDataService {
 
     private CommonOperation<CustomerPO> commonOperation = null;
 
-    public CustomerData() {
+    public CustomerData() throws RemoteException {
         this.commonOperation = new CommonOperation<>(CustomerPO.class.getName());
     }
 

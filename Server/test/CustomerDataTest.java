@@ -5,6 +5,7 @@ import shared.CustomerGrade;
 import shared.CustomerType;
 import shared.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -18,6 +19,9 @@ import static org.junit.Assert.*;
 public class CustomerDataTest {
 
     private CustomerData customerData = new CustomerData();
+
+    public CustomerDataTest() throws RemoteException {
+    }
 
     @Test
     public void insertCustomer() throws Exception {

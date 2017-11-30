@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created on 2017/10/19.
@@ -98,5 +99,21 @@ public class GiftDocPO extends DocPO {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    @Override
+    @Transient
+    public List<Object> getItems() {
+        List<Object> list = new ArrayList<>();
+        list.addAll(giftItemPOs);
+        return list;
+    }
+
+    @Override
+    public void setItems(List<Object> list) {
+        this.giftItemPOs = new ArrayList<>();
+        for (Object o: list) {
+            giftItemPOs.add((GiftItemPO)o);
+        }
     }
 }

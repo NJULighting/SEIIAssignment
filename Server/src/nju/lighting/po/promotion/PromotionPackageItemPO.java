@@ -28,6 +28,26 @@ public class PromotionPackageItemPO {
         this.promotionId = promotionId;
     }
 
+    public PromotionPackageItemPO(String commodityId, int promotionId) {
+        this.commodityId = commodityId;
+        this.promotionId = promotionId;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "PromotionPackageItemPO{" +
+                "commodityId='" + commodityId + '\'' +
+                ", id=" + id +
+                ", promotionId=" + promotionId +
+                '}';
+    }
+
+    public PromotionPackageItemPO(String commodityId) {
+        this.commodityId = commodityId;
+    }
+
     @Column(name = "GOOD_ID", nullable = false, length = 36)
     public String getCommodityId() {
         return commodityId;

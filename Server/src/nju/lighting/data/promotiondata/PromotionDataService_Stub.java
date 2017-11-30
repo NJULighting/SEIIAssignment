@@ -4,6 +4,7 @@ import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
 
 import nju.lighting.po.promotion.PromotionPO;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -23,17 +24,12 @@ public class PromotionDataService_Stub implements PromotionDataService {
     }
 
     @Override
-    public ResultMessage insert(PromotionPO po) throws RemoteException {
+    public TwoTuple<ResultMessage, Integer> insert(PromotionPO po) throws RemoteException {
         return null;
     }
 
     @Override
     public ResultMessage update(PromotionPO po) throws RemoteException {
-        return null;
-    }
-
-    @Override
-    public ResultMessage delete(int id) throws RemoteException {
         return null;
     }
 

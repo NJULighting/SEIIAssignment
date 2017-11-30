@@ -10,6 +10,7 @@ import shared.LogFilter;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,11 +22,11 @@ import java.util.TreeSet;
  *
  * @author iznauy
  */
-public class LogData implements LogDataService {
+public class LogData extends UnicastRemoteObject implements LogDataService {
 
     private CommonOperation<LogPO> logPOCommonOperation;
 
-    public LogData() {
+    public LogData() throws RemoteException {
         logPOCommonOperation = new CommonOperation<>(LogPO.class.getName());
     }
 
@@ -41,7 +42,7 @@ public class LogData implements LogDataService {
 
     @Override
     public List<LogPO> findById(String id) throws RemoteException {
-        return logPOCommonOperation.getListBySingleField("userId", id);
+        return logPOCommonOperation.getListBySingleField("userID", id);
     }
 
     @Override

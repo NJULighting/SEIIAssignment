@@ -1,5 +1,7 @@
 package nju.lighting.po.doc.accountiodoc;
 
+import shared.Item;
+
 import javax.persistence.*;
 
 /**
@@ -9,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "ACCOUNT_TRANSFER")
-public class AccountTransferItemPO {
+public class AccountTransferItemPO implements Item {
 
     private int id;
 

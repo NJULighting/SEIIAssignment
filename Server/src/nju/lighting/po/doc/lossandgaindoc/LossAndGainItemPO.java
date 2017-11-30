@@ -1,12 +1,13 @@
 package nju.lighting.po.doc.lossandgaindoc;
 
+import shared.Item;
 import shared.LossAndGainItemType;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "LOSS_AND_GAIN_DOC_ITEM")
-public class LossAndGainItemPO {
+public class LossAndGainItemPO implements Item {
 
     private int id;
 

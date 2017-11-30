@@ -1,5 +1,7 @@
 package nju.lighting.po.doc.giftdoc;
 
+import shared.Item;
+
 import javax.persistence.*;
 
 /**
@@ -9,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "GIFT_DOC_ITEM")
-public class GiftItemPO {
+public class GiftItemPO implements Item {
 
     private int id;
 

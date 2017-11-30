@@ -21,10 +21,7 @@ import nju.lighting.po.doc.stockdoc.StockDocItemPO;
 import nju.lighting.po.doc.stockdoc.StockDocPO;
 import nju.lighting.po.doc.stockdoc.StockReturnDocPO;
 import org.hibernate.Session;
-import shared.DocState;
-import shared.DocType;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.*;
 
 import javax.print.Doc;
 import java.rmi.RemoteException;
@@ -71,7 +68,11 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
         ResultMessage resultMessage = docOperation.add(doc);
         if (resultMessage == ResultMessage.FAILURE)
             return new TwoTuple<>(ResultMessage.FAILURE, null);
-        ResultMessage result = docOperation.addItemsList(doc.getItems());
+        List<Object> items = doc.getItems();
+        for (Object o: items) {
+            ((Item) o).setDocId(id);
+        }
+        ResultMessage result = docOperation.addItemsList(items);
         return new TwoTuple<>(result, id);
     }
 

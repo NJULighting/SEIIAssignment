@@ -1,5 +1,7 @@
 package nju.lighting.po.doc.stockdoc;
 
+import shared.Item;
+
 import javax.persistence.*;
 
 /**
@@ -9,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "STOCK_DOC_ITEM")
-public class StockDocItemPO {
+public class StockDocItemPO implements Item {
 
     private int id;
 

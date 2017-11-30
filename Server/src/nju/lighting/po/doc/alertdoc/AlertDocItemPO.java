@@ -1,10 +1,12 @@
 package nju.lighting.po.doc.alertdoc;
 
+import shared.Item;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ALERT_DOC_ITEM")
-public class AlertDocItemPO {
+public class AlertDocItemPO implements Item {
 
     private int id;
 

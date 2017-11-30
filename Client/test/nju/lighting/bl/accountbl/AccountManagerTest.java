@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
 public class AccountManagerTest {
     private AccountManager manager = AccountManager.getInstance();
 
+    // TODO: 2017/11/30 Add authority test here
     @Test
     public void getAllAccounts() throws Exception {
         List<AccountVO> voList = manager.getAccountList();

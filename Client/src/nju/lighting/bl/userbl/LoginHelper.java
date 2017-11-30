@@ -25,6 +25,7 @@ public enum LoginHelper {
     INSTANCE;
 
     private UserDataService userDataService;
+    private User loggedUser; // Store the user
     private Logger logger;
 
     LoginHelper() {
@@ -49,11 +50,22 @@ public enum LoginHelper {
             TwoTuple<UserPO, LoginReturnState> loginRes = userDataService.login(id, password);
             if (loginRes.r != LoginReturnState.SUCCESS)
                 return new TwoTuple<>(null, loginRes.r);
+
             // Login succeed
-            return new TwoTuple<>(new User(loginRes.t).toVO(), loginRes.r);
+            loggedUser = new User(loginRes.t);
+            // TODO: 2017/11/30 Add log here
+            return new TwoTuple<>(loggedUser.toVO(), loginRes.r);
         } catch (RemoteException e) {
             e.printStackTrace();
             return new TwoTuple<>(null, LoginReturnState.UNKNOWN);
         }
+    }
+
+    /**
+     * Get the user who signed in
+     * @return user signed in
+     */
+    public User getSignedInUser() {
+        return loggedUser;
     }
 }

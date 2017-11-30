@@ -7,6 +7,7 @@ import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
 import nju.lighting.vo.UserVO;
+import shared.Identity;
 import shared.ResultMessage;
 
 import javax.naming.NamingException;
@@ -50,13 +51,38 @@ public enum UserManager {
         }
     }
 
-    public ResultMessage addUser(UserVO user, String password) {
-        // Check name
-        if (!NameChecker.validName(user.getUsername()))
-            return ResultMessage.INVALID_NAME;
+    /**
+     * Add a new user, the id, username, identity, authorized and password mustn't be null
+     * @param id         id of the user
+     * @param username   user's name
+     * @param identity   user's identity
+     * @param authorized this user whether be authorized
+     * @param password   user's password
+     * @return <code>ResultMessage.INVALID_ID</code> if id is incorrect<br>
+     * <code>ResultMessage.INVALID_NAME</code> if name is incorrect<br>
+     * <code>ResultMessage.DUPLICATE</code> if id repeats with others<br>
+     * <code>ResultMessage.SUCCESS</code> if add successfully<br>
+     * <code>ResultMessage.NETWORK_FAIL</code> if RemoteException was caught
+     */
+    public ResultMessage addUser(String id, String username, Identity identity, boolean authorized, String password) {
+        try {
+            // Check id correctness
+            if (!NameChecker.validID(id))
+                return ResultMessage.INVALID_ID;
 
-        // Check pass
+            // Check name
+            if (!NameChecker.validName(username))
+                return ResultMessage.INVALID_NAME;
 
-        return null;
+            // Try to add the user to database
+            User user = new User(username, password, id, identity, authorized);
+            ResultMessage res = userDataService.insert(user.toPO());
+            if (res == ResultMessage.FAILURE) // Duplicated id
+                return ResultMessage.DUPLICATE;
+            else return res; // SUCCESS
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return ResultMessage.NETWORK_FAIL;
+        }
     }
 }

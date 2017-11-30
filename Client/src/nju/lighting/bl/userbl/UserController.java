@@ -2,6 +2,7 @@ package nju.lighting.bl.userbl;
 
 import nju.lighting.blservice.userblservice.UserBLService;
 import nju.lighting.vo.UserVO;
+import shared.Identity;
 import shared.LoginReturnState;
 import shared.ResultMessage;
 import shared.TwoTuple;
@@ -23,7 +24,7 @@ public class UserController implements UserBLService{
     }
 
     @Override
-    public ResultMessage addUser(UserVO vo, String password) {
+    public ResultMessage addUser(String password, Identity identity, String username, boolean authorized) {
         return null;
     }
 

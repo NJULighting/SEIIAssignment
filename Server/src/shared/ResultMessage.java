@@ -6,15 +6,5 @@ package shared;
  * @author Liao
  */
 public enum ResultMessage {
-    SUCCESS, FAILURE;
-
-    private String detail = "No detail";
-
-    public String getDetail() {
-        return detail;
-    }
-
-    public void addDetail(String detail) {
-        this.detail = detail;
-    }
+    SUCCESS, FAILURE, NETWORK_FAIL, INVALID_NAME, INVALID_ID, DUPLICATE
 }

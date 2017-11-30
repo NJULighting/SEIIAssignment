@@ -16,12 +16,22 @@ public class NameChecker {
      */
     public static boolean validName(String name) {
         // Check emptiness
-        if (name.trim().isEmpty()) return false;
+        return !name.trim().isEmpty() && !matchRegex(name, "[`~!@#$%^&*()+=|{}':;,\\[\\].<>/?！￥…（）—【】‘；：”“’。，、？]");
+    }
 
-        // Check whether contains illegal character
-        String regex = "[`~!@#$%^&*()+=|{}':;,\\[\\].<>/?！￥…（）—【】‘；：”“’。，、？]";
+    /**
+     * Valid ID should only contains number or letters;
+     * @param id if to be checked
+     * @return true is not empty and only contains number and letter
+     */
+    public static boolean validID(String id) {
+        // TODO: 2017/11/30 Add checking length of id
+        return !id.trim().isEmpty() && matchRegex(id, "[a-zA-z0-9]");
+    }
+
+    private static boolean matchRegex(String target, String regex) {
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(name);
-        return !matcher.find();
+        Matcher matcher = pattern.matcher(target);
+        return matcher.find();
     }
 }

@@ -1,6 +1,7 @@
 package nju.lighting.blservice.userblservice;
 
 import nju.lighting.vo.UserVO;
+import shared.Identity;
 import shared.LoginReturnState;
 import shared.ResultMessage;
 import shared.TwoTuple;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 public interface UserBLService {
     ArrayList<UserVO> getUserList();
 
-    ResultMessage addUser(UserVO vo, String password);
+    ResultMessage addUser(String password, Identity identity, String username, boolean authorized);
 
     ArrayList<UserVO> findUsers(String keyword);
 

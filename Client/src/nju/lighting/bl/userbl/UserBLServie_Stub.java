@@ -25,8 +25,8 @@ public class UserBLServie_Stub implements UserBLService {
     }
 
     @Override
-    public ResultMessage addUser(UserVO vo, String password) {
-        return vo == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
+    public ResultMessage addUser(String password, Identity identity, String username, boolean authorized) {
+        return password.isEmpty() ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
     }
 
     @Override

@@ -15,10 +15,11 @@ import java.util.ArrayList;
  */
 public class UserController implements UserBLService{
     private LoginHelper loginHelper = LoginHelper.INSTANCE;
+    private UserManager userManager = UserManager.INSTANCE;
 
     @Override
     public ArrayList<UserVO> getUserList() {
-        return null;
+        return userManager.getUserList();
     }
 
     @Override

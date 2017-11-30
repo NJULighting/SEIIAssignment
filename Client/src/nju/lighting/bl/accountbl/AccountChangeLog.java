@@ -17,7 +17,7 @@ public class AccountChangeLog {
     private double amount; // After change
     private AccountChangeType type;
 
-    public AccountChangeLog(Date time, double delta, double amount, AccountChangeType type) {
+    AccountChangeLog(Date time, double delta, double amount, AccountChangeType type) {
         this.time = time;
         this.delta = delta;
         this.amount = amount;
@@ -28,7 +28,7 @@ public class AccountChangeLog {
         this(vo.getTime(), vo.getDelta(), vo.getAmount(), vo.getType());
     }
 
-    public AccountChangeLog(AccountLogPO po) {
+    AccountChangeLog(AccountLogPO po) {
         this(po.getTime(), po.getDelta(), po.getAmount(), po.getType());
     }
 
@@ -37,7 +37,7 @@ public class AccountChangeLog {
      * @param accountID id of the account which the log belongs to
      * @return corresponding <code>AccountLogVO</code>
      */
-    public AccountLogPO toPO(String accountID) {
+    AccountLogPO toPO(String accountID) {
         return new AccountLogPO(time, delta, amount, type, accountID);
     }
 

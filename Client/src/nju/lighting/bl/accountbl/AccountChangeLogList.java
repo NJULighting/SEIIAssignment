@@ -21,7 +21,7 @@ class AccountChangeLogList {
         logList = new ArrayList<>();
     }
 
-    public AccountChangeLogList(List<AccountLogPO> changeLogs) {
+    AccountChangeLogList(List<AccountLogPO> changeLogs) {
         // Check null
         if (changeLogs == null)
             logList = new ArrayList<>();

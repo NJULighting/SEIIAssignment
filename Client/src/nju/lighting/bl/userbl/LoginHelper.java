@@ -7,6 +7,7 @@ import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
 import nju.lighting.vo.UserVO;
 import shared.LoginReturnState;
+import shared.ResultMessage;
 import shared.TwoTuple;
 
 import javax.naming.NamingException;
@@ -51,8 +52,10 @@ public enum LoginHelper {
                 return new TwoTuple<>(null, LoginReturnState.INVALID_USER_NAME);
             // Check password
             User user = new User(po);
-            if (user.checkPassword(password))
+            if (user.passwordRight(password)) {
                 return new TwoTuple<>(user.toVO(), LoginReturnState.SUCCESS);
+                // TODO: 2017/11/30 Log here
+            }
             else
                 return new TwoTuple<>(null, LoginReturnState.INVALID_PASSWORD);
         } catch (RemoteException e) {

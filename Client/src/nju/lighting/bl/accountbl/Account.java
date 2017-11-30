@@ -17,7 +17,7 @@ public class Account {
     private String name;
     private AccountChangeLogList logList;
 
-    public Account(AccountPO po) {
+    Account(AccountPO po) {
         id = po.getId();
         amount = po.getAmount();
         name = po.getName();
@@ -30,7 +30,7 @@ public class Account {
      * @param amount initial amount
      * @param name   account's name
      */
-    public Account(String id, double amount, String name) {
+    Account(String id, double amount, String name) {
         this.id = id;
         this.amount = amount;
         this.name = name;

@@ -24,11 +24,15 @@ public class User {
         authorized = po.getAuthorized();
     }
 
-    boolean checkPassword(String password) {
+    boolean passwordRight(String password) {
         return this.password.equals(password);
     }
 
     UserVO toVO() {
         return new UserVO(name, id, identity, authorized);
+    }
+
+    UserPO toPO() {
+        return new UserPO(name, password, id, identity, authorized);
     }
 }

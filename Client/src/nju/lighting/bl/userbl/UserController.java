@@ -23,7 +23,7 @@ public class UserController implements UserBLService{
     }
 
     @Override
-    public ResultMessage addUser(UserVO vo) {
+    public ResultMessage addUser(UserVO vo, String password) {
         return null;
     }
 

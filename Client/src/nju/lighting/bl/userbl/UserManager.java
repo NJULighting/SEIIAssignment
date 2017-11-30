@@ -49,5 +49,7 @@ public enum UserManager {
         }
     }
 
-    public ResultMessage addUser()
+    public ResultMessage addUser(UserVO user, String password) {
+        return null;
+    }
 }

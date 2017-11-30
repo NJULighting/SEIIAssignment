@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public interface UserBLService {
     ArrayList<UserVO> getUserList();
 
-    ResultMessage addUser(UserVO vo);
+    ResultMessage addUser(UserVO vo, String password);
 
     ArrayList<UserVO> findUsers(String keyword);
 

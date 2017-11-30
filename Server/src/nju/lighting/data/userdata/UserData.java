@@ -9,6 +9,7 @@ import shared.ResultMessage;
 import shared.TwoTuple;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ import java.util.List;
  * 11.26日完成，27日重构 通过全部测试
  * @author iznauy
  */
-public class UserData implements UserDataService {
+public class UserData extends UnicastRemoteObject implements UserDataService {
 
     /**
      * 聚合一个CommonOperation
@@ -27,7 +28,7 @@ public class UserData implements UserDataService {
     /**
      * 无参构造器
      */
-    public UserData() {
+    public UserData() throws RemoteException {
         this.commonOperation = new CommonOperation<>(UserPO.class.getName());
     }
 

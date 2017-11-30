@@ -14,6 +14,7 @@ import shared.ResultMessage;
 
 import java.io.*;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
 import java.util.List;
 import org.apache.tools.zip.ZipEntry;
@@ -25,11 +26,11 @@ import org.apache.tools.zip.ZipOutputStream;
  *
  * @author iznauy
  */
-public class InitData implements InitDataService {
+public class InitData extends UnicastRemoteObject implements InitDataService {
 
     private CommonOperation<InitPO> commonOperation;
 
-    public InitData() {
+    public InitData() throws RemoteException {
         commonOperation = new CommonOperation<>(InitPO.class.getName());
     }
 

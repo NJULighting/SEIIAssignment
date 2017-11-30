@@ -7,6 +7,7 @@ import nju.lighting.po.promotion.PromotionPackageItemPO;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 /**
@@ -15,13 +16,13 @@ import java.util.List;
  *
  * @author iznauy
  */
-public class PromotionData implements PromotionDataService {
+public class PromotionData extends UnicastRemoteObject implements PromotionDataService {
 
     private CommonOperation<PromotionPO> commonOperation;
 
     private CommonOperation<PromotionPackageItemPO> itemPOCommonOperation;
 
-    public PromotionData() {
+    public PromotionData() throws RemoteException {
         commonOperation = new CommonOperation<>(PromotionPO.class.getName());
         itemPOCommonOperation = new CommonOperation<>(PromotionPackageItemPO.class.getName());
     }

@@ -12,6 +12,7 @@ import shared.ResultMessage;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeSet;
@@ -21,13 +22,13 @@ import java.util.TreeSet;
  * Description: 账户模块数据层实现
  * @author iznauy
  */
-public class AccountData implements AccountDataService, Serializable {
+public class AccountData extends UnicastRemoteObject implements AccountDataService {
 
     private CommonOperation<AccountPO> accountPOCommonOperation;
 
     private CommonOperation<AccountLogPO> accountLogPOCommonOperation;
 
-    public AccountData() {
+    public AccountData() throws RemoteException {
         accountPOCommonOperation = new CommonOperation<>(AccountPO.class.getName());
         accountLogPOCommonOperation = new CommonOperation<>(AccountLogPO.class.getName());
     }

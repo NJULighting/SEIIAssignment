@@ -1,9 +1,7 @@
 package nju.lighting.main;
 
 import nju.lighting.data.accountdata.AccountData;
-import nju.lighting.data.accountdata.AccountDataService_Stub;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
-import nju.lighting.po.user.UserPO;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;

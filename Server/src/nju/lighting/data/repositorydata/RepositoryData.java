@@ -13,6 +13,7 @@ import org.hibernate.query.Query;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
 import java.util.List;
 
@@ -22,14 +23,14 @@ import java.util.List;
  * 11.26完成，27日重构
  * @author iznauy
  */
-public class RepositoryData implements RepositoryDataService {
+public class RepositoryData extends UnicastRemoteObject implements RepositoryDataService {
 
     private CommonOperation<RepositoryChangePO> changePOCommonOperation;
 
     /**
      * 无参数构造器
      */
-    public RepositoryData() {
+    public RepositoryData() throws RemoteException {
         this.changePOCommonOperation = new CommonOperation<>(RepositoryChangePO.class.getName());
     }
 

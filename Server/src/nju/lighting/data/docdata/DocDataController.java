@@ -28,6 +28,7 @@ import shared.TwoTuple;
 
 import javax.print.Doc;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -39,7 +40,7 @@ import java.util.List;
  *
  * @author iznauy
  */
-public class DocDataController implements DocDataService {
+public class DocDataController extends UnicastRemoteObject implements DocDataService {
 
 
     protected static HashMap<DocType, TwoTuple<String, String>> typeToName = new HashMap<>();
@@ -58,7 +59,7 @@ public class DocDataController implements DocDataService {
 
     private DocOperation docOperation;
 
-    public DocDataController() {
+    public DocDataController() throws RemoteException {
         docOperation = new DocOperation();
     }
 

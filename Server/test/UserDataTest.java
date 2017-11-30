@@ -7,6 +7,7 @@ import shared.LoginReturnState;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -20,7 +21,11 @@ import static org.junit.Assert.*;
 public class UserDataTest {
 
     private UserData userData = new UserData();
-    
+
+    public UserDataTest() throws RemoteException {
+    }
+
+
     @Test
     public void insert() throws Exception {
         UserPO userPO = new UserPO("iznauy", "iznauy", "161250220", Identity.GENERAL, false);

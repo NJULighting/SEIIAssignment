@@ -2,7 +2,6 @@ package nju.lighting.data;
 
 import nju.lighting.data.commoditydata.CommodityDataService_Stub;
 import nju.lighting.data.customerdata.CustomerDataService_Stub;
-import nju.lighting.data.documentdata.DocDataService_Stub;
 import nju.lighting.data.logdata.LogDataService_Stub;
 import nju.lighting.data.promotiondata.PromotionDataService_Stub;
 import nju.lighting.data.repositorydata.RepositoryDataService_Stub;
@@ -33,10 +32,6 @@ public abstract class DataFactory {
     }
     public static CustomerDataService getCustomerDataService() {
         return new CustomerDataService_Stub();
-    }
-
-    public static DocDataService getDocDataService() {
-        return new DocDataService_Stub();
     }
 
     public static LogDataService getLogDataService() {

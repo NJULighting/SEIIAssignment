@@ -1,41 +1,61 @@
 package nju.lighting.po.doc.accountiodoc;
 
+import shared.Item;
+
+import javax.persistence.*;
+
 /**
  * Created on 2017/10/21.
  * Description:
  * @author Liao
  */
-public class AccountTransferItemPO {
-    private String id;
+@Entity
+@Table(name = "ACCOUNT_TRANSFER")
+public class AccountTransferItemPO implements Item {
+
+    private int id;
+
     private String accountID;
-    private String accountIODocID;
+
+    private String docId;
+
     private double amount;
+
     private String comments;
 
-    public AccountTransferItemPO(String id, String accountID, String accountIODocID, double amount, String comments) {
+    public AccountTransferItemPO() {
+
+    }
+
+    public AccountTransferItemPO(int id, String accountID, String docId, double amount, String comments) {
         this.id = id;
         this.accountID = accountID;
-        this.accountIODocID = accountIODocID;
+        this.docId = docId;
         this.amount = amount;
         this.comments = comments;
     }
 
-    public String getAccountIODocID() {
-        return accountIODocID;
+    @Column(name = "ACCOUNT_IO_DOC_ID", nullable = false, length = 36)
+    public String getDocId() {
+        return docId;
     }
 
-    public void setAccountIODocID(String accountIODocID) {
-        this.accountIODocID = accountIODocID;
+    public void setDocId(String accountIODocID) {
+        this.docId = accountIODocID;
     }
 
-    public String getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID", nullable = false)
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
+    @Column(name = "ACCOUNT_ID", nullable = false, length = 20)
     public String getAccountID() {
         return accountID;
     }
@@ -44,6 +64,7 @@ public class AccountTransferItemPO {
         this.accountID = accountID;
     }
 
+    @Column(name = "AMOUNT", nullable = false)
     public double getAmount() {
         return amount;
     }
@@ -52,6 +73,7 @@ public class AccountTransferItemPO {
         this.amount = amount;
     }
 
+    @Column(name = "COMMENT", length = 300)
     public String getComments() {
         return comments;
     }

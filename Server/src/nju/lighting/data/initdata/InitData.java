@@ -14,6 +14,7 @@ import shared.ResultMessage;
 
 import java.io.*;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
 import java.util.List;
 import org.apache.tools.zip.ZipEntry;
@@ -25,20 +26,23 @@ import org.apache.tools.zip.ZipOutputStream;
  *
  * @author iznauy
  */
-public class InitData implements InitDataService {
+public class InitData extends UnicastRemoteObject implements InitDataService {
 
     private CommonOperation<InitPO> commonOperation;
 
-    public InitData() {
+    public InitData() throws RemoteException {
         commonOperation = new CommonOperation<>(InitPO.class.getName());
     }
 
     private void createCSVFile(String url) throws Exception {
         File file = new File(url);
-        if (file.exists())
+        if (file.exists()) {
+            System.out.println(url);
             return;
-        if (!file.createNewFile())
+        }
+        if (!file.mkdir())
             return;
+        System.out.println("---------------" + file.getAbsolutePath() + "-----------------");
         CommodityData commodityData = new CommodityData();
         List<CommodityItemPO> commodityItemPOS = commodityData.getAllCommodity();
         AccountData accountData = new AccountData();
@@ -52,13 +56,20 @@ public class InitData implements InitDataService {
 
     private <T extends CSVable> void writeTData(String url, List<T> data) throws Exception {
         File tFile = new File(url);
-        if (tFile.createNewFile())
+        if (!tFile.createNewFile())
             throw new Exception();
         FileWriter fileWriter = new FileWriter(tFile);
+        boolean first = true;
         for (T t: data) {
+            if (first) {
+                fileWriter.write(t.getClassDescription());
+                fileWriter.write(System.lineSeparator());
+                first = false;
+            }
             fileWriter.write(t.toCSV());
             fileWriter.write(System.lineSeparator());
         }
+        fileWriter.close();
     }
 
     @Override
@@ -67,6 +78,7 @@ public class InitData implements InitDataService {
         try {
             createCSVFile(url);
         } catch (Exception e) {
+            e.printStackTrace();
             File file = new File(url);
             if (file.exists())
                 file.delete();
@@ -74,6 +86,7 @@ public class InitData implements InitDataService {
         }
         zip(new File(url), url + ".zip");
         InitPO initPO = new InitPO(date, userId, url + ".zip");
+        System.out.println("Before Return");
         return commonOperation.add(initPO);
     }
 

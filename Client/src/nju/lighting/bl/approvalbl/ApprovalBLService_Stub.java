@@ -32,21 +32,59 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         GiftItemVO giftItemVO2 = new GiftItemVO(commodityVO2, 1);
         GiftItemVO giftItemVO3 = new GiftItemVO(commodityVO3, 10);
 
+
+
+
         ArrayList<GiftItemVO> gifts1 = new ArrayList<>();
         ArrayList<GiftItemVO> gifts2 = new ArrayList<>();
 
         gifts1.add(giftItemVO1);
         gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO2);
+
+
         gifts2.add(giftItemVO2);
+        gifts2.add(giftItemVO3);
         gifts2.add(giftItemVO3);
 
 
         GiftDocVO vo1 = new GiftDocVO(null,"00001", "ZPD-20171021-0009",DocType.GIFT,gifts1,"hiahia");
         GiftDocVO vo2 = new GiftDocVO(null,"00001", "ZPD-20171021-0010",DocType.GIFT, gifts2, "N0.1");
-
+        GiftDocVO vo3 = new GiftDocVO(null,"00001", "ZPD-20171021-0011",DocType.GIFT, gifts2, "N0.1");
+        GiftDocVO vo4 = new GiftDocVO(null,"00001", "ZPD-20171021-0012",DocType.GIFT, gifts2, "N0.1");
+        GiftDocVO vo5 = new GiftDocVO(null,"00001", "ZPD-20171021-0013",DocType.GIFT, gifts2, "N0.1");
+        GiftDocVO vo6 = new GiftDocVO(null,"00001", "ZPD-20171021-0015",DocType.GIFT, gifts2, "N0.1");
         ArrayList<DocVO> DocVOs = new ArrayList<>();
         DocVOs.add(vo1);
         DocVOs.add(vo2);
+        DocVOs.add(vo3);
+        DocVOs.add(vo4);
+        DocVOs.add(vo5);
+        DocVOs.add(vo6);
 
         return DocVOs;
 

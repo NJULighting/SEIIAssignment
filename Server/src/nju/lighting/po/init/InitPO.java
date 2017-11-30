@@ -23,6 +23,16 @@ public class InitPO {
 
     public InitPO() {}
 
+    @Override
+    public String toString() {
+        return "InitPO{" +
+                "id=" + id +
+                ", time=" + time +
+                ", userID='" + userID + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
+
     public InitPO(Date time, String userID, String url) {
         this.time = time;
         this.userID = userID;

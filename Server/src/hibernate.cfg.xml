@@ -13,7 +13,7 @@
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="show_sql">false</property>
+        <property name="show_sql">true</property>
         <property name="hibernate.id.new_generator_mappings">false</property>
 
         <mapping class="nju.lighting.po.commodity.CommodityItemPO" />
@@ -28,6 +28,22 @@
         <mapping class="nju.lighting.po.promotion.PromotionPackageItemPO" />
         <mapping class="nju.lighting.po.init.InitPO" />
         <mapping class="nju.lighting.po.log.LogPO" />
+        <mapping class="nju.lighting.po.doc.alertdoc.AlertDocPO" />
+        <mapping class="nju.lighting.po.doc.alertdoc.AlertDocItemPO" />
+        <mapping class="nju.lighting.po.doc.accountiodoc.AccountIODocPO" />
+        <mapping class="nju.lighting.po.doc.accountiodoc.AccountTransferItemPO" />
+        <mapping class="nju.lighting.po.doc.costdoc.CostDocPO" />
+        <mapping class="nju.lighting.po.doc.costdoc.CostDocItemPO" />
+        <mapping class="nju.lighting.po.doc.giftdoc.GiftDocPO" />
+        <mapping class="nju.lighting.po.doc.giftdoc.GiftItemPO" />
+        <mapping class="nju.lighting.po.doc.lossandgaindoc.LossAndGainDocPO" />
+        <mapping class="nju.lighting.po.doc.lossandgaindoc.LossAndGainItemPO" />
+        <mapping class="nju.lighting.po.doc.salesdoc.SalesDocPO" />
+        <mapping class="nju.lighting.po.doc.salesdoc.SalesReturnDocPO" />
+        <mapping class="nju.lighting.po.doc.salesdoc.SalesDocItemPO" />
+        <mapping class="nju.lighting.po.doc.stockdoc.StockDocPO" />
+        <mapping class="nju.lighting.po.doc.stockdoc.StockReturnDocPO" />
+        <mapping class="nju.lighting.po.doc.stockdoc.StockDocItemPO" />
 
     </session-factory>
 

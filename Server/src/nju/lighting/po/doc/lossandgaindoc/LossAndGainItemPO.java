@@ -1,10 +1,17 @@
 package nju.lighting.po.doc.lossandgaindoc;
 
+import shared.Item;
 import shared.LossAndGainItemType;
 
-public class LossAndGainItemPO {
+import javax.persistence.*;
 
-    private String lossAndGainDocId;
+@Entity
+@Table(name = "LOSS_AND_GAIN_DOC_ITEM")
+public class LossAndGainItemPO implements Item {
+
+    private int id;
+
+    private String docId;
 
     private String commodityId;
 
@@ -12,21 +19,46 @@ public class LossAndGainItemPO {
 
     private LossAndGainItemType type;
 
-    public LossAndGainItemPO(String lossAndGainDocId, String commodityId, int count, LossAndGainItemType type) {
-        this.lossAndGainDocId = lossAndGainDocId;
+    public LossAndGainItemPO() {
+
+    }
+
+    public LossAndGainItemPO(String docId, String commodityId, int count, LossAndGainItemType type) {
+        this.docId = docId;
         this.commodityId = commodityId;
         this.count = count;
         this.type = type;
     }
 
-    public String getLossAndGainDocId() {
-        return lossAndGainDocId;
+    public LossAndGainItemPO(int id, String docId, String commodityId, int count, LossAndGainItemType type) {
+        this.id = id;
+        this.docId = docId;
+        this.commodityId = commodityId;
+        this.count = count;
+        this.type = type;
     }
 
-    public void setLossAndGainDocId(String lossAndGainDocId) {
-        this.lossAndGainDocId = lossAndGainDocId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID", nullable = false)
+    public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Column(name = "LOSS_AND_GAIN_DOC_ID", nullable = false, length = 20)
+    public String getDocId() {
+        return docId;
+    }
+
+    public void setDocId(String lossAndGainDocId) {
+        this.docId = lossAndGainDocId;
+    }
+
+    @Column(name = "COMMODITY_ID", nullable = false, length = 36)
     public String getCommodityId() {
         return commodityId;
     }
@@ -35,6 +67,7 @@ public class LossAndGainItemPO {
         this.commodityId = commodityId;
     }
 
+    @Column(name = "COUNT", nullable = false)
     public int getCount() {
         return count;
     }
@@ -43,6 +76,8 @@ public class LossAndGainItemPO {
         this.count = count;
     }
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "TYPE", nullable = false, length = 20)
     public LossAndGainItemType getType() {
         return type;
     }

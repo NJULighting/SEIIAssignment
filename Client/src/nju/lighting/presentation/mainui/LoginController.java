@@ -1,16 +1,25 @@
 package nju.lighting.presentation.mainui;
 
+import javafx.application.Platform;
+import javafx.beans.binding.*;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import nju.lighting.bl.userbl.UserBLServie_Stub;
 import nju.lighting.blservice.userblservice.UserBLService;
 import nju.lighting.vo.UserVO;
@@ -69,14 +78,16 @@ public class LoginController extends CommonFather{
 
             case INVALID_USER_NAME:
                 System.out.println("Invalid User Name!");
-                dialogLabel.setText("用户名错误！请尝试重新输入");
+                dialogLabel.setText("用户名错误！请尝试重新输入!");
                 dialogPane.setVisible(true);
+                account.requestFocus();
                 break;
 
             case INVALID_PASSWORD:
                 System.out.println("Invalid Password!");
-                dialogLabel.setText("密码错误！请尝试重新输入");
+                dialogLabel.setText("密码错误！请尝试重新输入!");
                 dialogPane.setVisible(true);
+                password.requestFocus();
                 break;
 
             case UNKNOWN:
@@ -111,7 +122,17 @@ public class LoginController extends CommonFather{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttons=new Button[]{closeBtn,miniBtn,loginBtn};
+        buttons=new Button[]{closeBtn,miniBtn};
         super.initialize(location, resources);
+
+        DoubleBinding loginBind= Bindings.createDoubleBinding(()->(loginBtn.disableProperty().get())?0.5:1);
+        //登录按钮是否高亮与disable绑定
+        loginBtn.opacityProperty()
+                .bind(loginBind);
+
+        //登录按钮是否可点与两textfield是否为空绑定
+        loginBtn.disableProperty()
+                .bind(account.textProperty().isEmpty()
+                .or(password.textProperty().isEmpty()));
     }
 }

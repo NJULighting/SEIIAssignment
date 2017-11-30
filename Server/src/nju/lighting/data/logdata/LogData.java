@@ -6,7 +6,6 @@ import nju.lighting.dataservice.logdataservice.LogDataService;
 import nju.lighting.po.log.LogPO;
 import nju.lighting.po.user.UserPO;
 import shared.Identity;
-import shared.LogFilter;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;

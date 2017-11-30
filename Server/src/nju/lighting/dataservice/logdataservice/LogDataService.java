@@ -2,7 +2,6 @@ package nju.lighting.dataservice.logdataservice;
 
 import nju.lighting.po.log.LogPO;
 import shared.Identity;
-import shared.LogFilter;
 import shared.ResultMessage;
 
 import java.rmi.Remote;

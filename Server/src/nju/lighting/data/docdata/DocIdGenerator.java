@@ -50,7 +50,7 @@ public class DocIdGenerator {
 
     public String generateId() {
         TwoTuple<String, String> twoTuple = typeToName.get(docType);
-        String id = twoTuple.r;
+        String id = twoTuple.t;
         Date now = new Date();
         SimpleDateFormat naiveFormat = new SimpleDateFormat("yyyyMMd");
         id += "-" + naiveFormat.format(now) + "-";
@@ -60,13 +60,13 @@ public class DocIdGenerator {
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
         Date begin = calendar.getTime();
-        calendar.set(Calendar.DAY_OF_MONTH, 1);
-        calendar.add(Calendar.SECOND, -1);
+        calendar.set(Calendar.HOUR_OF_DAY, 24);
         Date end = calendar.getTime();
         DocOperation docOperation = new DocOperation();
-        int count = docOperation.countByTypeAndDate(begin, end, twoTuple.t) + 1;
+        int count = docOperation.countByTypeAndDate(begin, end, twoTuple.r) + 1;
         String countString = format(count);
         id += countString;
+        System.out.println("生成的ID：————————> " + id);
         return id;
     }
 

@@ -27,6 +27,12 @@ public abstract class DocPO {
 
     private String approvalId;
 
+    public DocPO(DocType docType, String userId, Date createTime) {
+        this.docType = docType;
+        this.userId = userId;
+        this.createTime = createTime;
+    }
+
     public DocPO() {
 
     }
@@ -93,7 +99,7 @@ public abstract class DocPO {
         this.createTime = createTime;
     }
 
-    @Column(nullable = false, name = "CHECK_TIME")
+    @Column(name = "CHECK_TIME")
     @Temporal(TemporalType.TIMESTAMP)
     public Date getCheckTime() {
         return checkTime;
@@ -103,7 +109,7 @@ public abstract class DocPO {
         this.checkTime = checkTime;
     }
 
-    @Column(name = "CHECKER_COMMENT", nullable = false, length = 300)
+    @Column(name = "CHECKER_COMMENT", length = 300)
     public String getApprovalComment() {
         return approvalComment;
     }

@@ -2,6 +2,8 @@ package nju.lighting.bl.accountbl;
 
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.MockLogger;
+import nju.lighting.bl.userbl.UserInfo;
+import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.bl.utils.NameChecker;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
@@ -48,11 +50,17 @@ public enum AccountManager {
      * @param name   name of account(Whatever)
      * @param amount initial amount of this account
      * @return <code>ResultMessage.SUCCESS</code> if add account successfully <br>
-     *     <cdoe>ResultMessage.DUPLICATE</cdoe> if id duplicated<br>
+     * <cdoe>ResultMessage.DUPLICATE</cdoe> if id duplicated<br>
      * <code>ResultMessage.INVALID_NAME</code> if find id repeated or name invalid <br>
-     * <code>ResultMessage.NETWORK_FAIL</code> if network failed
+     * <code>ResultMessage.NETWORK_FAIL</code> if network failed<br>
+     * <code>ResultMessage.FAILURE</code> if user was not authorized
      */
     ResultMessage addAccount(String id, String name, double amount) {
+        // Check authority of current user
+        if (!currentUserAuthorized())
+            return ResultMessage.FAILURE;
+
+        // Check id, name's correctness
         try {
             // Check duplication
             AccountPO po = accountDataService.get(id);
@@ -124,10 +132,14 @@ public enum AccountManager {
      * Delete an account according to the id passed
      * @param id id of the account
      * @return <cdoe>SUCCESS</cdoe> if delete success<br>
-     * <code>FAILURE</code> if error happens in database<br>
+     * <code>FAILURE</code> if current user not authorized<br>
      * <code>NETWORK_FAIL</code> if network failed
      */
     ResultMessage delete(String id) {
+        // Check user's authority
+        if (!currentUserAuthorized())
+            return ResultMessage.FAILURE;
+
         try {
             return accountDataService.delete(id);
         } catch (RemoteException e) {
@@ -143,9 +155,14 @@ public enum AccountManager {
      * @return <code>ResultMessage.SUCCESS</code> if the name is valid<br>
      * <code>ResultMessage.DUPLICATE</code> if name repeated<br>
      * <code>ResultMessage.NETWORK_FAIL</code> if network failed<br>
-     *     <cdoe>ResultMessage.INVALID_NAME</cdoe> if name's invalid
+     * <cdoe>ResultMessage.INVALID_NAME</cdoe> if name's invalid<br>
+     * <code>FAILURE</code> if current user not authorized
      */
     ResultMessage rename(String id, String newName) {
+        // Check user's authority
+        if (!currentUserAuthorized())
+            return ResultMessage.FAILURE;
+
         // Check new name's form using regex
         if (!NameChecker.validName(newName))
             return ResultMessage.INVALID_NAME;
@@ -164,5 +181,8 @@ public enum AccountManager {
         }
     }
 
-
+    private boolean currentUserAuthorized() {
+        UserInfo userInfo = new UserInfoImpl();
+        return userInfo.authorized();
+    }
 }

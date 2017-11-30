@@ -5,5 +5,10 @@ package nju.lighting.bl.userbl;
  * Description:
  * @author Liao
  */
-public class UserInfo {
+public interface UserInfo {
+    /**
+     * Check current user's authority
+     * @return true only if user is authorized
+     */
+    boolean authorized();
 }

@@ -347,7 +347,7 @@ alter table REPOSITORY_CHANGE modify column ID int auto_increment;
 alter table ACCOUNT_CHANGE modify column ID int auto_increment;
 alter table CUSTOMER modify column ID int auto_increment;
 alter table PROMOTION modify column ID int auto_increment;
-alter table PROMOTION_ID modify column ID int auto_increment;
+alter table PROMOTION_COMMODITY modify column ID int auto_increment;
 alter table INIT_INFO modify column ID int auto_increment;
 alter table LOG modify column ID int auto_increment;
 alter table ALERT_DOC_ITEM modify column ID int auto_increment;

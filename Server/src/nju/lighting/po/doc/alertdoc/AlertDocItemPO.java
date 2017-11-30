@@ -16,14 +16,19 @@ public class AlertDocItemPO implements Item {
 
     private int count;
 
-    public AlertDocItemPO(String docId, String commodityId, int count) {
-        this.docId = docId;
+    public AlertDocItemPO() {
+
+    }
+
+    public AlertDocItemPO(String commodityId, int count) {
         this.commodityId = commodityId;
         this.count = count;
     }
 
-    public AlertDocItemPO() {
-
+    public AlertDocItemPO(String docId, String commodityId, int count) {
+        this.docId = docId;
+        this.commodityId = commodityId;
+        this.count = count;
     }
 
     public AlertDocItemPO(int id, String docId, String commodityId, int count) {
@@ -31,6 +36,16 @@ public class AlertDocItemPO implements Item {
         this.docId = docId;
         this.commodityId = commodityId;
         this.count = count;
+    }
+
+    @Override
+    public String toString() {
+        return "AlertDocItemPO{" +
+                "id=" + id +
+                ", docId='" + docId + '\'' +
+                ", commodityId='" + commodityId + '\'' +
+                ", count=" + count +
+                '}';
     }
 
     @Id
@@ -70,4 +85,5 @@ public class AlertDocItemPO implements Item {
     public void setCount(int count) {
         this.count = count;
     }
+
 }

@@ -88,10 +88,12 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
     public List<DocPO> findByUserId(String id) throws RemoteException {
         List<DocPO> docPOS = new ArrayList<>();
         for (TwoTuple<String, String> twoTuple: typeToName.values()) {
-            String className = twoTuple.r;
-            String itemClassName = twoTuple.t;
+            String className = twoTuple.t;
+            String itemClassName = twoTuple.r;
             DocOperation docOperation = new DocOperation();
             List<DocPO> docPOList = docOperation.getByUserId(className, id);
+            if (docPOList == null)
+                continue;
             for (DocPO docPO: docPOList) {
                 String docId = docPO.getId();
                 List<Object> items = docOperation.getItemList(itemClassName, docId);
@@ -106,8 +108,8 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
     public List<DocPO> findByState(DocState docState) throws RemoteException {
         List<DocPO> docPOS = new ArrayList<>();
         for (TwoTuple<String, String> twoTuple: typeToName.values()) {
-            String className = twoTuple.r;
-            String itemClassName = twoTuple.t;
+            String className = twoTuple.t;
+            String itemClassName = twoTuple.r;
             DocOperation docOperation = new DocOperation();
             List<DocPO> docPOList = docOperation.getByState(docState, className);
             for (DocPO docPO: docPOList) {
@@ -123,8 +125,8 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
     @Override
     public List<DocPO> findByType(DocType type) throws RemoteException {
         TwoTuple<String, String> target = typeToName.get(type);
-        String className = target.r;
-        String itemClassName = target.t;
+        String className = target.t;
+        String itemClassName = target.r;
         DocOperation docOperation = new DocOperation();
         List<DocPO> docPOList = docOperation.getAll(className);
         for (DocPO docPO: docPOList) {
@@ -139,8 +141,8 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
     public List<DocPO> findByTime(Date from, Date to) throws RemoteException {
         List<DocPO> docPOS = new ArrayList<>();
         for (TwoTuple<String, String> twoTuple: typeToName.values()) {
-            String className = twoTuple.r;
-            String itemClassName = twoTuple.t;
+            String className = twoTuple.t;
+            String itemClassName = twoTuple.r;
             DocOperation docOperation = new DocOperation();
             List<DocPO> docPOList = docOperation.getByDate(from, to, className);
             for (DocPO docPO: docPOList) {

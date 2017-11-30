@@ -25,12 +25,40 @@ public class AlertDocPO extends DocPO {
 
     private List<AlertDocItemPO> itemPOS;
 
+    @Override
+    public String toString() {
+        return "AlertDocPO{" +
+                "comment='" + comment + '\'' +
+                ", triggered=" + triggered +
+                ", expired=" + expired +
+                ", itemPOS=" + itemPOS +
+                '}';
+    }
+
     public AlertDocPO(String id, DocType docType, String userId, Date time,
                       String comment, boolean triggered, boolean expired) {
         super(id, docType, userId, time);
         this.comment = comment;
         this.triggered = triggered;
         this.expired = expired;
+    }
+
+    public AlertDocPO(DocType docType, String userId, Date createTime,
+                      String comment, boolean triggered, boolean expired, List<AlertDocItemPO> itemPOS) {
+        super(docType, userId, createTime);
+        this.comment = comment;
+        this.triggered = triggered;
+        this.expired = expired;
+        this.itemPOS = itemPOS;
+    }
+
+    public AlertDocPO(String id, DocType docType, String userId, Date createTime,
+                      String comment, boolean triggered, boolean expired, List<AlertDocItemPO> itemPOS) {
+        super(id, docType, userId, createTime);
+        this.comment = comment;
+        this.triggered = triggered;
+        this.expired = expired;
+        this.itemPOS = itemPOS;
     }
 
     public AlertDocPO(String id, DocType docType, String userId, Date createTime,

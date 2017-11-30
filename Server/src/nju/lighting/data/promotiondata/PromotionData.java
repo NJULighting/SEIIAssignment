@@ -5,6 +5,7 @@ import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
 import nju.lighting.po.promotion.PromotionPO;
 import nju.lighting.po.promotion.PromotionPackageItemPO;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -41,11 +42,18 @@ public class PromotionData extends UnicastRemoteObject implements PromotionDataS
     }
 
     @Override
-    public ResultMessage insert(PromotionPO po) throws RemoteException {
+    public TwoTuple<ResultMessage, Integer> insert(PromotionPO po) throws RemoteException {
         ResultMessage resultMessage =  commonOperation.add(po);
         if (resultMessage == ResultMessage.FAILURE)
-            return ResultMessage.FAILURE;
-        return itemPOCommonOperation.addList(po.getGoods());
+            return new TwoTuple<>(ResultMessage.FAILURE, -1);
+        List<PromotionPackageItemPO> itemPOS = po.getGoods();
+        int promotionId = po.getId();
+        if (itemPOS == null)
+            return new TwoTuple<>(ResultMessage.SUCCESS, promotionId);
+        for (PromotionPackageItemPO itemPO: itemPOS) {
+            itemPO.setPromotionId(promotionId);
+        }
+        return new TwoTuple<>(itemPOCommonOperation.addList(itemPOS), promotionId);
     }
 
     @Override
@@ -53,13 +61,6 @@ public class PromotionData extends UnicastRemoteObject implements PromotionDataS
         return commonOperation.update(po);
     }
 
-    @Override
-    public ResultMessage delete(int id) throws RemoteException {
-        ResultMessage resultMessage = commonOperation.deleteBySingleField("id", id);
-        if (resultMessage == ResultMessage.FAILURE)
-            return ResultMessage.SUCCESS;
-        return itemPOCommonOperation.deleteBySingleField("promotionId", id);
-    }
 
     @Override
     public PromotionPO getPromotionById(int id) throws RemoteException {

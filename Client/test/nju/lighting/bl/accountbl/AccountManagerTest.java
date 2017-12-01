@@ -24,7 +24,6 @@ public class AccountManagerTest {
         LoginHelper.INSTANCE.login("161250068", "2333");
     }
 
-    // TODO: 2017/11/30 Add authority test here
     @Test
     public void getAllAccounts() throws Exception {
         List<AccountVO> voList = manager.getAccountList();

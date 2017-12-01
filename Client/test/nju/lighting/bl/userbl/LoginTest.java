@@ -15,34 +15,35 @@ import static org.junit.Assert.*;
  * Description:
  * @author Liao
  */
-public class UserControllerTest {
-    UserBLService userBLService = new UserController();
+public class LoginTest {
+    private static final String USER_ID = "161250068";
+    private static final String WRONG_ID = "1111111";
+    private static final String RIGHT_PASSWORD = "2333";
+    private static final String WRONG_PASSWORD = "Excited";
+
+    private UserBLService userBLService = new UserController();
 
     @Test
     public void loginInvalidIDTest() throws Exception {
-        TwoTuple<UserVO, LoginReturnState> res = userBLService.login("", "Excited");
+        TwoTuple<UserVO, LoginReturnState> res = userBLService.login(WRONG_ID, RIGHT_PASSWORD);
+
         assertNull(res.t);
         assertEquals(LoginReturnState.INVALID_USER_NAME, res.r);
     }
 
     @Test
     public void loginInvalidPasswordTest() throws Exception {
-        TwoTuple<UserVO, LoginReturnState> res = userBLService.login("161250068", "NotExcited");
+        TwoTuple<UserVO, LoginReturnState> res = userBLService.login(USER_ID, WRONG_PASSWORD);
+
         assertNull(res.t);
         assertEquals(LoginReturnState.INVALID_PASSWORD, res.r);
     }
 
     @Test
     public void loginSuccessfullyTest() throws Exception {
-        TwoTuple<UserVO, LoginReturnState> res = userBLService.login("161250068", "2333");
+        TwoTuple<UserVO, LoginReturnState> res = userBLService.login(USER_ID, RIGHT_PASSWORD);
+
         assertNotNull(res.t);
         assertEquals(LoginReturnState.SUCCESS, res.r);
-    }
-
-    @Test
-    public void getUserListTest() throws Exception {
-        List<UserVO> vos = userBLService.getUserList();
-        assertEquals(3, vos.size());
-        assertEquals("161250068", vos.get(2).getID());
     }
 }

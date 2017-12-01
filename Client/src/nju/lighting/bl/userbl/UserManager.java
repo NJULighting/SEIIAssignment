@@ -53,8 +53,8 @@ public enum UserManager {
 
     /**
      * Add a new user, the id, username, identity, authorized and password mustn't be null
-     * @param id         id of the user
-     * @param username   user's name
+     * @param id         id of the user which should only contains letter or number
+     * @param username   user's name which should only contains letter, number or Chinese character
      * @param identity   user's identity
      * @param authorized this user whether be authorized
      * @param password   user's password
@@ -80,6 +80,21 @@ public enum UserManager {
             if (res == ResultMessage.FAILURE) // Duplicated id
                 return ResultMessage.DUPLICATE;
             else return res; // SUCCESS
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return ResultMessage.NETWORK_FAIL;
+        }
+    }
+
+    /**
+     * Delete a user with the id passed in
+     * @param id if of the user
+     * @return <code>ResultMessage.SUCCESS</code> as long as the database is in connection<br>
+     *     or in other words, no failure will be returned unless there's a network problem
+     */
+    public ResultMessage delete(String id) {
+        try {
+            return userDataService.delete(id);
         } catch (RemoteException e) {
             e.printStackTrace();
             return ResultMessage.NETWORK_FAIL;

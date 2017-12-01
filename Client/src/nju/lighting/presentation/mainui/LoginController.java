@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.beans.binding.*;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -125,14 +126,21 @@ public class LoginController extends CommonFather{
         buttons=new Button[]{closeBtn,miniBtn};
         super.initialize(location, resources);
 
-        DoubleBinding loginBind= Bindings.createDoubleBinding(()->(loginBtn.disableProperty().get())?0.5:1);
-        //登录按钮是否高亮与disable绑定
-        loginBtn.opacityProperty()
-                .bind(loginBind);
 
         //登录按钮是否可点与两textfield是否为空绑定
         loginBtn.disableProperty()
                 .bind(account.textProperty().isEmpty()
                 .or(password.textProperty().isEmpty()));
+        loginBtn.disableProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+
+                //登录按钮是否高亮与disable绑定
+                loginBtn.opacityProperty()
+                        .bind(Bindings.createDoubleBinding(()->(loginBtn.disableProperty().get())?0.5:1));
+            }
+        });
+
     }
+
 }

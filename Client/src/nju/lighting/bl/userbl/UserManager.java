@@ -2,13 +2,14 @@ package nju.lighting.bl.userbl;
 
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.MockLogger;
-import nju.lighting.bl.utils.NameChecker;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
+import nju.lighting.presentation.utils.NameChecker;
 import nju.lighting.vo.UserVO;
 import shared.Identity;
 import shared.ResultMessage;
+import shared.UserChangeInfo;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
@@ -52,6 +53,25 @@ public enum UserManager {
     }
 
     /**
+     * Get user according to id
+     * @param id id of user
+     * @return VO object which denote this user, <code>null</code> if id didn't match any user
+     */
+    public UserVO getUser(String id) {
+        try {
+            UserPO po = userDataService.get(id);
+            if (po == null)
+                return null;
+
+            User target = new User(po);
+            return target.toVO();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
      * Add a new user, the id, username, identity, authorized and password mustn't be null
      * @param id         id of the user which should only contains letter or number
      * @param username   user's name which should only contains letter, number or Chinese character
@@ -66,7 +86,7 @@ public enum UserManager {
      */
     public ResultMessage addUser(String id, String username, Identity identity, boolean authorized, String password) {
         try {
-            // Check id correctness
+            // Check id's correctness
             if (!NameChecker.validID(id))
                 return ResultMessage.INVALID_ID;
 
@@ -90,11 +110,39 @@ public enum UserManager {
      * Delete a user with the id passed in
      * @param id if of the user
      * @return <code>ResultMessage.SUCCESS</code> as long as the database is in connection<br>
-     *     or in other words, no failure will be returned unless there's a network problem
+     * or in other words, no failure will be returned unless there's a network problem
      */
     public ResultMessage delete(String id) {
         try {
             return userDataService.delete(id);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return ResultMessage.NETWORK_FAIL;
+        }
+    }
+
+    public ResultMessage userRenameHimself(String newName) {
+        try {
+            LoginHelper.INSTANCE.getSignedInUser().rename(newName);
+            return ResultMessage.SUCCESS;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return ResultMessage.NETWORK_FAIL;
+        }
+    }
+
+    public ResultMessage adminChangeUser(String id, UserChangeInfo info) {
+        try {
+            // Find user
+            UserPO po = userDataService.get(id);
+            if (po == null) {
+                return ResultMessage.INVALID_ID;
+            }
+
+            // Change attributes
+            User target = new User(po);
+            target.changeInfo(info);
+            return ResultMessage.SUCCESS;
         } catch (RemoteException e) {
             e.printStackTrace();
             return ResultMessage.NETWORK_FAIL;

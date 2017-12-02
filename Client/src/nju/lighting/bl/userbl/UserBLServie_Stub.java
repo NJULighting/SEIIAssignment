@@ -2,10 +2,7 @@ package nju.lighting.bl.userbl;
 
 import nju.lighting.blservice.userblservice.UserBLService;
 import nju.lighting.vo.UserVO;
-import shared.Identity;
-import shared.LoginReturnState;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.*;
 
 import java.util.ArrayList;
 
@@ -45,12 +42,7 @@ public class UserBLServie_Stub implements UserBLService {
     }
 
     @Override
-    public ResultMessage changeName(String id, String newName) {
-        return null;
-    }
-
-    @Override
-    public ResultMessage administratorChangePassword(String id, String newPassword) {
+    public ResultMessage changeUser(String id, UserChangeInfo changeInfo) {
         return null;
     }
 

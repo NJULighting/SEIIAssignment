@@ -4,7 +4,7 @@ import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.MockLogger;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
-import nju.lighting.bl.utils.NameChecker;
+import nju.lighting.presentation.utils.NameChecker;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.po.account.AccountPO;

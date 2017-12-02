@@ -1,6 +1,6 @@
 package nju.lighting.bl.userbl;
 
-import nju.lighting.bl.utils.NameChecker;
+import nju.lighting.presentation.utils.NameChecker;
 import nju.lighting.blservice.userblservice.UserBLService;
 import org.junit.After;
 import org.junit.Test;

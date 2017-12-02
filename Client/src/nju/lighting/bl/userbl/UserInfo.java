@@ -8,7 +8,7 @@ package nju.lighting.bl.userbl;
 public interface UserInfo {
     /**
      * Check current user's authority
-     * @return true only if user is authorized
+     * @return true if user is authorized, false otherwise
      */
     boolean authorized();
 }

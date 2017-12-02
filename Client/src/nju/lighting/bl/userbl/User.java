@@ -5,6 +5,7 @@ import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
 import nju.lighting.vo.UserVO;
 import shared.Identity;
+import shared.UserChangeInfo;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
@@ -15,13 +16,13 @@ import java.rmi.RemoteException;
  * @author Liao
  */
 public class User {
+    private final String id;
     private String name;
     private String password;
-    private String id;
     private Identity identity;
     private boolean authorized;
 
-    public User(UserPO po) {
+    User(UserPO po) {
         name = po.getName();
         password = po.getPassword();
         id = po.getId();
@@ -29,7 +30,7 @@ public class User {
         authorized = po.getAuthorized();
     }
 
-    public User(String name, String password, String id, Identity identity, boolean authorized) {
+    User(String name, String password, String id, Identity identity, boolean authorized) {
         this.name = name;
         this.password = password;
         this.id = id;
@@ -47,29 +48,61 @@ public class User {
 
     /**
      * Update data from the database
-     * @return
+     * @return true if the user is authorized, false otherwise
      */
     boolean isAuthorized() {
-        updateState();
+        updateFromDataBase();
         return authorized;
     }
 
     public String getId() {
-        updateState();
+        updateFromDataBase();
         return id;
     }
 
-    private void updateState() {
+    public void setPassword(String password) throws RemoteException {
+        this.password = password;
+        writeToDatabase();
+    }
+
+    void rename(String name) throws RemoteException {
+        this.name = name;
+        writeToDatabase();
+    }
+
+    void changeInfo(UserChangeInfo changeInfo) throws RemoteException {
+        name = changeInfo.name;
+        password = changeInfo.password;
+        identity = changeInfo.identity;
+        authorized = changeInfo.authorized;
+        writeToDatabase();
+    }
+
+    /**
+     * Update the user's fields
+     */
+    private void updateFromDataBase() {
         // TODO: 2017/11/30 Synchronization problem
         try {
             UserDataService userDataService = DataFactory.getDataBase(UserDataService.class);
             UserPO newData = userDataService.get(id);
-            id = newData.getId();
             name = newData.getName();
             authorized = newData.getAuthorized();
             identity = newData.getIdentity();
             password = newData.getPassword();
         } catch (NamingException | RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Write current state to database
+     */
+    private void writeToDatabase() throws RemoteException {
+        try {
+            UserDataService userDataService = DataFactory.getDataBase(UserDataService.class);
+            userDataService.update(toPO());
+        } catch (NamingException e) {
             e.printStackTrace();
         }
     }

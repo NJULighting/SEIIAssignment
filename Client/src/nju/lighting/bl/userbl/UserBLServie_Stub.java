@@ -45,20 +45,18 @@ public class UserBLServie_Stub implements UserBLService {
     }
 
     @Override
+    public ResultMessage changeName(String id, String newName) {
+        return null;
+    }
+
+    @Override
+    public ResultMessage administratorChangePassword(String id, String newPassword) {
+        return null;
+    }
+
+    @Override
     public ResultMessage deleteUser(String id) {
         return id.equals("0") || id.equals("1") ? ResultMessage.SUCCESS : ResultMessage.FAILURE;
-    }
-
-    @Override
-    public ResultMessage modifyUser(UserVO vo) {
-        if (vo.getUsername().contains("Frog"))
-            return ResultMessage.SUCCESS;
-        return ResultMessage.FAILURE;
-    }
-
-    @Override
-    public String generateJobNum(UserVO vo) {
-        return "1234567890";
     }
 
     @Override
@@ -93,7 +91,12 @@ public class UserBLServie_Stub implements UserBLService {
     }
 
     @Override
-    public ResultMessage logOut(UserVO vo) {
-        return vo == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
+    public ResultMessage userChangePassword(String oldPassword, String newPassword) {
+        return null;
+    }
+
+    @Override
+    public ResultMessage changeName(String newName) {
+        return null;
     }
 }

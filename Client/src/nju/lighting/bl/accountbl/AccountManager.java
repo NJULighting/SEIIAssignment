@@ -155,7 +155,7 @@ public enum AccountManager {
      * @return <code>ResultMessage.SUCCESS</code> if the name is valid<br>
      * <code>ResultMessage.DUPLICATE</code> if name repeated<br>
      * <code>ResultMessage.NETWORK_FAIL</code> if network failed<br>
-     * <cdoe>ResultMessage.INVALID_NAME</cdoe> if name's invalid<br>
+     * <code>ResultMessage.INVALID_NAME</code> if name's invalid<br>
      * <code>FAILURE</code> if current user not authorized
      */
     ResultMessage rename(String id, String newName) {

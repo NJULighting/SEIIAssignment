@@ -24,8 +24,8 @@ public class UserController implements UserBLService{
     }
 
     @Override
-    public ResultMessage addUser(String password, Identity identity, String username, boolean authorized) {
-        return null;
+    public ResultMessage addUser(String id, String password, Identity identity, String username, boolean authorized) {
+        return userManager.addUser(id, username, identity, authorized, password);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class UserController implements UserBLService{
 
     @Override
     public ResultMessage deleteUser(String id) {
-        return null;
+        return userManager.delete(id);
     }
 
     @Override

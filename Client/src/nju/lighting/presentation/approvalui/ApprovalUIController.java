@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import nju.lighting.bl.approvalbl.ApprovalBLService_Stub;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
+import nju.lighting.presentation.documentui.Doc;
 import nju.lighting.presentation.documentui.GiftDocController;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
@@ -29,6 +30,7 @@ import java.util.ResourceBundle;
 public class ApprovalUIController implements Initializable {
     ApprovalBLService approvalBLService;
     ArrayList<DocVO> docs;
+    DocVO selectedDoc;
 
     @FXML
     JFXListView docList;
@@ -49,27 +51,27 @@ public class ApprovalUIController implements Initializable {
         ObservableList list = docList.getSelectionModel().getSelectedItems();
         if (list != null && list.size() != 0) {
             Label clicked = (Label) docList.getSelectionModel().getSelectedItems().get(0);
-            int i = findDoc(clicked.getText());
-            detailNum.setText("Doc " + i);
-            GiftDocController.giftDoc=(GiftDocVO) docs.get(i);
-            //detail= FXMLLoader.load(getClass().getResource("../documentui/GiftDoc.fxml"));
-            System.out.println("SUCC");
-            //detail.setVisible(true);
-            System.out.println("children "+detail.getChildren().size());
-            if (detail.getChildren().size()>0)
-            detail.getChildren().remove(detail.getChildren().size()-1);
 
-            detail.getChildren().add(FXMLLoader.load(getClass().getResource("../documentui/GiftDoc.fxml")));
-            detail.getStylesheets().add(getClass().getResource("../tableview.css").toExternalForm());
+            if (detail.getChildren().size()>0)
+                detail.getChildren().remove(detail.getChildren().size()-1);
+
+            Doc.doc = findDoc(clicked.getText());
+            FXMLLoader loader=Doc.getLoader();
+            detail.getChildren().add(loader.load());
+
         }
     }
 
-    int findDoc(String Id) {
+    public DocVO getSelectedDoc() {
+        return selectedDoc;
+    }
+
+    DocVO findDoc(String Id) {
         for (int i = 0; i < docs.size(); i++) {
             if (Id.equals(docs.get(i).getDocId()))
-                return i;
+                return docs.get(i);
         }
-        return -1;
+        return null;
     }
 
     @Override

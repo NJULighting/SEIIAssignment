@@ -99,13 +99,7 @@ public class LoginController extends CommonFather{
 
             case SUCCESS:
                 System.out.println("Succ");
-                if (result.t.getIdentity().equals(Identity.GENERAL.toString())) {
-                    new MainUI("GeneralManager.fxml");
-                    System.out.println("General");
-                } else if (result.t.getIdentity().equals(Identity.REPOSITORY.toString())) {
-                    new MainUI("RepositoryManager.fxml");
-                    System.out.println("General");
-                }
+                new MainUI(result.t.getIdentity());
                 break;
         }
     }
@@ -137,7 +131,7 @@ public class LoginController extends CommonFather{
 
                 //登录按钮是否高亮与disable绑定
                 loginBtn.opacityProperty()
-                        .bind(Bindings.createDoubleBinding(()->(loginBtn.disableProperty().get())?0.5:1));
+                        .bind(Bindings.createDoubleBinding(()->(loginBtn.disableProperty().get())?MISS_OPACITY:1));
             }
         });
 

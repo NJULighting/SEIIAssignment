@@ -7,25 +7,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <ScrollPane maxHeight="610.0" prefWidth="1070.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.GiftDocController">
    <content>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="1054.0" style="-fx-background-color: white;">
          <children>
-            <VBox layoutX="254.0" layoutY="35.0">
+            <VBox fx:id="vbox" layoutX="254.0" layoutY="35.0" spacing="30.0">
                <children>
-                  <TableView fx:id="giftList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mouseTransparent="true" style="-fx-background-color: white;">
-                     <columns>
-                        <TableColumn fx:id="commodityName" editable="false" maxWidth="744.0" prefWidth="288.0" resizable="false" sortable="false" text="商品名" />
-                        <TableColumn fx:id="count" editable="false" maxWidth="445.0" minWidth="0.0" prefWidth="112.5" resizable="false" sortable="false" text="数量" />
-                        <TableColumn fx:id="price" editable="false" maxWidth="595.0" prefWidth="109.5" resizable="false" text="单价" />
-                        <TableColumn fx:id="subtotal" editable="false" maxWidth="595.0" prefWidth="94.0" resizable="false" text="小计" />
-                     </columns>
+                  <TableView fx:id="giftTableView" fixedCellSize="40.0" focusTraversable="false" prefHeight="400.0" prefWidth="550.0" stylesheets="@../tableview.css">
+                    <columns>
+                      <TableColumn fx:id="commodityName" editable="false" prefWidth="250.0" sortable="false" text="商品名" />
+                      <TableColumn fx:id="count" editable="false" prefWidth="100.0" sortable="false" text="数量" />
+                        <TableColumn fx:id="price" editable="false" minWidth="0.0" prefWidth="100.0" sortable="false" text="单价" />
+                        <TableColumn fx:id="subtotal" editable="false" prefWidth="100.0" sortable="false" text="小计" />
+                    </columns>
                   </TableView>
                   <HBox alignment="CENTER_RIGHT">
                      <children>
-                        <Label text="总价： " />
-                        <Label fx:id="total" text="Label" />
+                        <Label text="总价： ">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Label>
+                        <Label fx:id="total" text="Label">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Label>
                      </children>
                   </HBox>
                </children>

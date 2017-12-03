@@ -1,9 +1,13 @@
 package nju.lighting.presentation.mainui;
 
+import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
@@ -74,5 +78,12 @@ public abstract class CommonFather implements Initializable {
             });
         }
 
+    }
+
+    public void disableReorder(TableView tableView){
+        tableView.skinProperty().addListener((obs, oldSkin, newSkin) -> {
+            final TableHeaderRow header = (TableHeaderRow) tableView.lookup("TableHeaderRow");
+            header.reorderingProperty().addListener((o, oldVal, newVal) -> header.setReordering(false));
+        });
     }
 }

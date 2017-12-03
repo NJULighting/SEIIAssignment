@@ -5,9 +5,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import shared.Identity;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created on 2017/11/23.
@@ -28,9 +30,17 @@ public class MainUI {
     public Scene scene;
     public Pane[] bottoms;
 
-    public MainUI(String url) throws IOException {
+    static HashMap<Identity,String> hashMap=new HashMap<>();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
+    static {
+        hashMap.put(Identity.GENERAL,"GeneralManager.fxml");
+        hashMap.put(Identity.REPOSITORY,"RepositoryManager.fxml");
+        hashMap.put(Identity.SALE_MANAGER,"SalesManager.fxml");
+    }
+
+    public MainUI(Identity identity) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(hashMap.get(identity)));
         Pane temp= loader.load();
         MainUIController controller = loader.getController();
 

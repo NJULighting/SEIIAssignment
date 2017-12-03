@@ -173,6 +173,7 @@ public enum AccountManager {
                 return ResultMessage.DUPLICATE; // Repeated
             // Rename succeed
             target.setName(newName);
+            accountDataService.update(target);
             logger.add(OPType.MODIFY, "Account Name", id);
             return ResultMessage.SUCCESS;
         } catch (RemoteException e) {

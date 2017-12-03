@@ -88,7 +88,7 @@ public class UserBLServie_Stub implements UserBLService {
     }
 
     @Override
-    public ResultMessage changeName(String newName) {
+    public ResultMessage userChangeName(String newName) {
         return null;
     }
 }

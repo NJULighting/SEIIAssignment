@@ -46,7 +46,7 @@ public interface AdministratorService {
     /**
      * Change a user's attributes.
      *
-     * @param id
+     * @param id id of the target user
      * @param changeInfo A <code>UserChangeInfo</code> object that contains changed information for the user
      * @return <code>ResultMessage.SUCCESS</code> if network works well
      * <code>ResultMessage.FAILURE</code> otherwise

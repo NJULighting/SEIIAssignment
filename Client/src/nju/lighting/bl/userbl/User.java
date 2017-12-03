@@ -55,12 +55,21 @@ public class User {
         return authorized;
     }
 
-    public String getId() {
+    public String getName() {
         updateFromDataBase();
+        return name;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setPassword(String password) throws RemoteException {
+    boolean passwordRight(String password) {
+        updateFromDataBase();
+        return this.password.equals(password);
+    }
+
+    void changePassword(String password) throws RemoteException {
         this.password = password;
         writeToDatabase();
     }

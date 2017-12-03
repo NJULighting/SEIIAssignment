@@ -27,7 +27,7 @@ public class UserController implements UserBLService{
 
     @Override
     public ArrayList<UserVO> findUsers(String keyword) {
-        return null;
+        return null;// TODO: 2017/12/3 complete this method 
     }
 
     @Override
@@ -52,11 +52,11 @@ public class UserController implements UserBLService{
 
     @Override
     public ResultMessage userChangePassword(String oldPassword, String newPassword) {
-        return null;
+        return userManager.userChangePassword(oldPassword, newPassword);
     }
 
     @Override
-    public ResultMessage changeName(String newName) {
+    public ResultMessage userChangeName(String newName) {
         return userManager.userRenameHimself(newName);
     }
 }

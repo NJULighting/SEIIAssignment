@@ -8,6 +8,7 @@ import nju.lighting.po.user.UserPO;
 import nju.lighting.presentation.utils.NameChecker;
 import nju.lighting.vo.UserVO;
 import shared.Identity;
+import shared.OPType;
 import shared.ResultMessage;
 import shared.UserChangeInfo;
 
@@ -99,7 +100,10 @@ public enum UserManager {
             ResultMessage res = userDataService.insert(user.toPO());
             if (res == ResultMessage.FAILURE) // Duplicated id
                 return ResultMessage.DUPLICATE;
-            else return res; // SUCCESS
+            else {
+                logger.add(OPType.ADD, "New user", id);
+                return res; // SUCCESS
+            }
         } catch (RemoteException e) {
             e.printStackTrace();
             return ResultMessage.NETWORK_FAIL;
@@ -121,6 +125,12 @@ public enum UserManager {
         }
     }
 
+    /**
+     * Change a user's name.
+     * @param newName new name of the user
+     * @return <code>ResultMessage.SUCCESS</code> if the name only contains letters, numbers and Chinese characters<br>
+     * <code>ResultMessage.NETWORK_FAIL</code> otherwise
+     */
     public ResultMessage userRenameHimself(String newName) {
         try {
             LoginHelper.INSTANCE.getSignedInUser().rename(newName);
@@ -131,6 +141,38 @@ public enum UserManager {
         }
     }
 
+    /**
+     * Change password of a user.
+     * @param oldPassword the old password of the user
+     * @param newPassword new password of the user
+     * @return <code>ResultMessage.SUCCESS</code> if password is not empty<br>
+     *     <code>ResultMessage.FAILURE</code> if oldPassword is wrong<br>
+     *         <code>ResultMessage.NETWORK_FAIL</code> if network fails
+     */
+    public ResultMessage userChangePassword(String oldPassword, String newPassword) {
+        User user = LoginHelper.INSTANCE.getSignedInUser();
+        if (!user.passwordRight(oldPassword)) {
+            return ResultMessage.FAILURE;
+        }
+
+        // Change password
+        try {
+            user.changePassword(newPassword);
+            return ResultMessage.SUCCESS;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return ResultMessage.NETWORK_FAIL;
+        }
+    }
+
+    /**
+     * Change a user's attributes.
+     *
+     * @param id id of the target user
+     * @param info A <code>UserChangeInfo</code> object that contains changed information for the user
+     * @return <code>ResultMessage.SUCCESS</code> if network works well
+     * <code>ResultMessage.FAILURE</code> otherwise
+     */
     public ResultMessage adminChangeUser(String id, UserChangeInfo info) {
         try {
             // Find user

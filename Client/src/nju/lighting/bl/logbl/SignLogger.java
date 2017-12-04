@@ -1,9 +1,9 @@
 package nju.lighting.bl.logbl;
 
 /**
- * Created on 2017/11/6.
+ * Created on 2017/12/4.
  * Description:
  * @author Liao
  */
-public class SimppleLogger {
+public class SignLogger {
 }

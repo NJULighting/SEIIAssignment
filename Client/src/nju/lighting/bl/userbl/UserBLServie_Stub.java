@@ -84,6 +84,11 @@ public class UserBLServie_Stub implements UserBLService {
     }
 
     @Override
+    public void logout() {
+
+    }
+
+    @Override
     public ResultMessage userChangePassword(String oldPassword, String newPassword) {
         return null;
     }

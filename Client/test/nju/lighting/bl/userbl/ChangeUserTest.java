@@ -82,10 +82,8 @@ public class ChangeUserTest {
 
     @Test
     public void changeTogetherTest() throws Exception {
-        builder.changeAuthorized(NEW_AUTHORITY);
-        builder.changeIdentity(NEW_IDENTITY);
-        builder.changePassword(NEW_PASSWORD);
-        builder.rename(NEW_NAME);
+        builder.changeAuthorized(NEW_AUTHORITY).changeIdentity(NEW_IDENTITY)
+                .changePassword(NEW_PASSWORD).rename(NEW_NAME);
 
         ResultMessage res = adminService.changeUser(USER_ID, builder.build());
 

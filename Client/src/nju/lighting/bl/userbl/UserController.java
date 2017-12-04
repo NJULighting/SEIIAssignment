@@ -51,6 +51,11 @@ public class UserController implements UserBLService{
     }
 
     @Override
+    public void logout() {
+        loginHelper.logout();
+    }
+
+    @Override
     public ResultMessage userChangePassword(String oldPassword, String newPassword) {
         return userManager.userChangePassword(oldPassword, newPassword);
     }

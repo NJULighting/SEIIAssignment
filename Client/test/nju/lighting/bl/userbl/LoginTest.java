@@ -1,5 +1,6 @@
 package nju.lighting.bl.userbl;
 
+import nju.lighting.blservice.userblservice.LoginService;
 import nju.lighting.blservice.userblservice.UserBLService;
 import nju.lighting.vo.UserVO;
 import org.junit.Test;
@@ -21,7 +22,7 @@ public class LoginTest {
     private static final String RIGHT_PASSWORD = "2333";
     private static final String WRONG_PASSWORD = "Excited";
 
-    private UserBLService userBLService = new UserController();
+    private LoginService userBLService = new UserController();
 
     @Test
     public void loginInvalidIDTest() throws Exception {
@@ -45,5 +46,11 @@ public class LoginTest {
 
         assertNotNull(res.t);
         assertEquals(LoginReturnState.SUCCESS, res.r);
+    }
+
+    @Test
+    public void logoutTest() throws Exception {
+        userBLService.login(USER_ID, RIGHT_PASSWORD);
+        userBLService.logout();
     }
 }

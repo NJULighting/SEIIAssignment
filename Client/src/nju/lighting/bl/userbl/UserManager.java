@@ -1,7 +1,7 @@
 package nju.lighting.bl.userbl;
 
 import nju.lighting.bl.logbl.Logger;
-import nju.lighting.bl.logbl.MockLogger;
+import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
@@ -31,7 +31,7 @@ public enum UserManager {
     UserManager() {
         try {
             userDataService = DataFactory.getDataBase(UserDataService.class);
-            logger = new MockLogger(); // TODO: 2017/11/30 Change logger here
+            logger = new UserLogger();
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -101,7 +101,7 @@ public enum UserManager {
             if (res == ResultMessage.FAILURE) // Duplicated id
                 return ResultMessage.DUPLICATE;
             else {
-                logger.add(OPType.ADD, "New user", id);
+                logger.add(OPType.ADD, "添加新用户 " + id + " " + username);
                 return res; // SUCCESS
             }
         } catch (RemoteException e) {
@@ -118,6 +118,7 @@ public enum UserManager {
      */
     public ResultMessage delete(String id) {
         try {
+            logger.add(OPType.DELETE, "删除用户 " + id);
             return userDataService.delete(id);
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -134,6 +135,7 @@ public enum UserManager {
     public ResultMessage userRenameHimself(String newName) {
         try {
             LoginHelper.INSTANCE.getSignedInUser().rename(newName);
+            logger.add(OPType.MODIFY, "重命名为 " + newName);
             return ResultMessage.SUCCESS;
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -158,6 +160,7 @@ public enum UserManager {
         // Change password
         try {
             user.changePassword(newPassword);
+            logger.add(OPType.MODIFY, "修改密码");
             return ResultMessage.SUCCESS;
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -184,6 +187,7 @@ public enum UserManager {
             // Change attributes
             User target = new User(po);
             target.changeInfo(info);
+            logger.add(OPType.MODIFY, "管理员修改用户" + id  + " 详细信息：" + info.toString());
             return ResultMessage.SUCCESS;
         } catch (RemoteException e) {
             e.printStackTrace();

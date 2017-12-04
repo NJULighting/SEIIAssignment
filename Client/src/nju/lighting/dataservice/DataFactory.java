@@ -1,6 +1,7 @@
 package nju.lighting.dataservice;
 
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
+import nju.lighting.dataservice.logdataservice.LogDataService;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 
 import javax.naming.Context;
@@ -23,6 +24,7 @@ public class DataFactory {
     static {
         databaseMap.put(UserDataService.class, "userDataService");
         databaseMap.put(AccountDataService.class, "accountDataService");
+        databaseMap.put(LogDataService.class, "logDataService");
     }
     public static AccountDataService getAccountDataBase() throws NamingException {
         Context namingContext = new InitialContext();

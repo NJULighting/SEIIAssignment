@@ -1,5 +1,6 @@
 package nju.lighting.po.log;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,25 +8,23 @@ import java.util.Date;
  * Description:
  * @author Liao
  */
-public class LogPO {
-    private String id;
+public class LogPO implements Serializable{
+    private static final long serialVersionUID = 124623587452L;
+
+    private int id;
     private Date time;
     private String userID;
     private String content;
 
-    public LogPO(Date time, String content, String id, String userID) {
+    public LogPO(Date time, String content, int id, String userID) {
         this.time = time;
         this.id = id;
         this.content = content;
         this.userID = userID;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public Date getTime() {
@@ -40,15 +39,7 @@ public class LogPO {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public String getUserID() {
         return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
     }
 }

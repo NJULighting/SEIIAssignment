@@ -17,12 +17,10 @@ import java.util.Date;
  * @author Liao
  */
 public class UserLogger implements Logger {
-    private static UserLogger instance;
-    private User currentUser;
+    // TODO: 2017/12/4 Refactor this class
     private LogDataService dataService;
 
-    private UserLogger() {
-        currentUser = LoginHelper.INSTANCE.getSignedInUser();
+    public UserLogger() {
         try {
             dataService = DataFactory.getDataBase(LogDataService.class);
         } catch (NamingException e) {
@@ -30,16 +28,11 @@ public class UserLogger implements Logger {
         }
     }
 
-    public static UserLogger getInstance() {
-        if (instance == null)
-            instance = new UserLogger();
-        return instance;
-    }
-
     @Override
     public void add(OPType type, String message) {
         try {
             String finalMessage = processMessage(type, message);
+            User currentUser = LoginHelper.INSTANCE.getSignedInUser();
             dataService.insert(new LogPO(new Date(), finalMessage, 0, currentUser.getId()));
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -50,6 +43,7 @@ public class UserLogger implements Logger {
     public void add(OPType type, Object object) {
         try {
             String finalMessage = processMessage(type, object.toString());
+            User currentUser = LoginHelper.INSTANCE.getSignedInUser();
             dataService.insert(new LogPO(new Date(), finalMessage, 0, currentUser.getId()));
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -57,6 +51,6 @@ public class UserLogger implements Logger {
     }
 
     private String processMessage(OPType type, String message) {
-        return currentUser.getName() + " " + type + " : " + message;
+        return type + " : " + message;
     }
 }

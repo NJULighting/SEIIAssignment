@@ -1,10 +1,10 @@
 package nju.lighting.main;
 
 import nju.lighting.data.accountdata.AccountData;
-import nju.lighting.data.accountdata.AccountDataService_Stub;
+import nju.lighting.data.logdata.LogData;
 import nju.lighting.data.userdata.UserData;
-import nju.lighting.data.userdata.UserDataService_Stub;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
+import nju.lighting.dataservice.logdataservice.LogDataService;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 
 import javax.naming.Context;
@@ -24,8 +24,10 @@ public class Server {
         try {
             AccountDataService accountDataService = new AccountData();
             UserDataService userDataService = new UserData();
+            LogDataService logDataService = new LogData();
             Context namingContext = new InitialContext();
             LocateRegistry.createRegistry(8888);
+            namingContext.bind("rmi://localhost:8888/logDataService", logDataService);
             namingContext.bind("rmi://localhost:8888/accountDataService", accountDataService);
             namingContext.bind("rmi://localhost:8888/userDataService", userDataService);
         } catch (RemoteException | NamingException e) {

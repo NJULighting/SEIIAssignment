@@ -1,17 +1,18 @@
 package nju.lighting.bl.userbl;
 
 import nju.lighting.bl.logbl.Logger;
-import nju.lighting.bl.logbl.MockLogger;
+import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
 import nju.lighting.vo.UserVO;
 import shared.LoginReturnState;
-import shared.ResultMessage;
+import shared.OPType;
 import shared.TwoTuple;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
+import java.util.Optional;
 
 /**
  * Created on 2017/11/6.
@@ -24,14 +25,17 @@ public enum LoginHelper {
      */
     INSTANCE;
 
+    private static final String SIGN_IN_MESSAGE = "登录成功";
+    private static final String SIGN_OUT_MESSAGE = "登出成功";
+
     private UserDataService userDataService;
     private User loggedUser; // Store the user
     private Logger logger;
 
     LoginHelper() {
         try {
+            logger = new UserLogger();
             userDataService = DataFactory.getDataBase(UserDataService.class);
-            logger = new MockLogger();
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -53,12 +57,23 @@ public enum LoginHelper {
 
             // Login succeed
             loggedUser = new User(loginRes.t);
-            // TODO: 2017/11/30 Add log here
+            logger.add(OPType.SIGN_IN, SIGN_IN_MESSAGE);
             return new TwoTuple<>(loggedUser.toVO(), loginRes.r);
         } catch (RemoteException e) {
             e.printStackTrace();
             return new TwoTuple<>(null, LoginReturnState.UNKNOWN);
         }
+    }
+
+
+    /**
+     * Log out a user, this methods mainly used to log message
+     */
+    public void logout() {
+        Optional.ofNullable(loggedUser).ifPresent(user -> {
+            logger.add(OPType.SIGN_OUT, SIGN_OUT_MESSAGE);
+            loggedUser = null;
+        });
     }
 
     /**

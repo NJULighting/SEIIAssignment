@@ -9,12 +9,12 @@ import shared.OPType;
  */
 public class MockLogger implements Logger {
     @Override
-    public void add(OPType type, String itemName, String id) {
-        System.out.println("Log other succeed");
+    public void add(OPType type, String message) {
+        System.out.println("Log succeed");
     }
 
     @Override
-    public void add(OPType type, Describable description) {
-        System.out.println("Log describable succeed");
+    public void add(OPType type, Object object) {
+
     }
 }

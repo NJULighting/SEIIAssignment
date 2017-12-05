@@ -33,7 +33,8 @@ public class UserLogger implements Logger {
         try {
             String finalMessage = processMessage(type, message);
             User currentUser = LoginHelper.INSTANCE.getSignedInUser();
-            dataService.insert(new LogPO(new Date(), finalMessage, 0, currentUser.getId()));
+            LogPO log = new LogPO(new Date(), finalMessage, 0, currentUser.getId());
+            dataService.insert(log);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

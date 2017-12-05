@@ -36,8 +36,8 @@ public class UserController implements UserBLService{
     }
 
     @Override
-    public ResultMessage changeUser(String id, UserChangeInfo changeInfo) {
-        return userManager.adminChangeUser(id, changeInfo);
+    public ResultMessage changeUser(UserChangeInfo changeInfo) {
+        return userManager.adminChangeUser(changeInfo);
     }
 
     @Override

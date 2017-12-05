@@ -5,10 +5,12 @@ import shared.CustomerGrade;
 import shared.CustomerType;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "CUSTOMER")
-public class CustomerPO implements CSVable {
+public class CustomerPO implements CSVable, Serializable {
+    private static final long serialVersionUID = 12498946452L;
 
     private int ID;
 

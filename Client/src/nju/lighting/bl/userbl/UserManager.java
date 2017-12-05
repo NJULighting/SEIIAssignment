@@ -176,18 +176,18 @@ public enum UserManager {
      * @return <code>ResultMessage.SUCCESS</code> if network works well
      * <code>ResultMessage.FAILURE</code> otherwise
      */
-    public ResultMessage adminChangeUser(String id, UserChangeInfo info) {
+    public ResultMessage adminChangeUser(UserChangeInfo info) {
         try {
             // Find user
-            UserPO po = userDataService.get(id);
+            UserPO po = userDataService.get(info.id);
             if (po == null) {
                 return ResultMessage.INVALID_ID;
             }
-
+            // TODO: 2017/12/5 Refactor here
             // Change attributes
             User target = new User(po);
             target.changeInfo(info);
-            logger.add(OPType.MODIFY, "管理员修改用户" + id  + " 详细信息：" + info.toString());
+            logger.add(OPType.MODIFY, "管理员修改用户" + info.id  + " 详细信息：" + info.toString());
             return ResultMessage.SUCCESS;
         } catch (RemoteException e) {
             e.printStackTrace();

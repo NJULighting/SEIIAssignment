@@ -6,27 +6,16 @@ import shared.CustomerType;
 public class CustomerVO {
 
     private int ID;
-
     private CustomerType type;
-
     private CustomerGrade grade;
-
     private String name;
-
     private String telephone;
-
     private String address;
-
     private String postage;
-
     private String email;
-
     private double receivableLimit;
-
     private double receivable;
-
     private double payable;
-
     private String salesman;
 
 

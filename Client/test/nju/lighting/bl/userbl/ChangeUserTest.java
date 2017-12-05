@@ -1,6 +1,7 @@
 package nju.lighting.bl.userbl;
 
 import nju.lighting.blservice.userblservice.AdministratorService;
+import nju.lighting.blservice.userblservice.LoginService;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
@@ -11,8 +12,11 @@ import shared.Identity;
 import shared.ResultMessage;
 import shared.UserChangeInfo;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
 
 /**
  * Created on 2017/12/3.
@@ -21,6 +25,8 @@ import static org.junit.Assert.assertFalse;
  */
 public class ChangeUserTest {
     private static final String USER_ID = "161250068";
+    private static final String INVALID_USER_ID = "1612500xx";
+    private static final String PASSWORD = "2333";
     private static final String NEW_NAME = "ExcitedFrog";
     private static final String NEW_PASSWORD = "1234567";
     private static final Identity NEW_IDENTITY = Identity.GENERAL;
@@ -36,15 +42,20 @@ public class ChangeUserTest {
 
     @Before
     public void setUp() throws Exception {
-        oldData = dataService.get(USER_ID);
         builder = new UserChangeInfo.Builder(USER_ID);
+        LoginHelper.INSTANCE.login(USER_ID, PASSWORD);
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void invalidIDTest() throws Exception {
+        builder = new UserChangeInfo.Builder(INVALID_USER_ID);
     }
 
     @Test
     public void changeNameTest() throws Exception {
         builder.rename(NEW_NAME);
 
-        adminService.changeUser(USER_ID, builder.build());
+        adminService.changeUser(builder.build());
 
         UserPO po = dataService.get(USER_ID);
         assertEquals(NEW_NAME, po.getName());
@@ -54,7 +65,7 @@ public class ChangeUserTest {
     public void changePasswordTest() throws Exception {
         builder.changePassword(NEW_PASSWORD);
 
-        adminService.changeUser(USER_ID, builder.build());
+        adminService.changeUser(builder.build());
 
         UserPO po = dataService.get(USER_ID);
         assertEquals(NEW_PASSWORD, po.getPassword());
@@ -64,7 +75,7 @@ public class ChangeUserTest {
     public void changeIdentity() throws Exception {
         builder.changeIdentity(NEW_IDENTITY);
 
-        adminService.changeUser(USER_ID, builder.build());
+        adminService.changeUser(builder.build());
 
         UserPO po = dataService.get(USER_ID);
         assertEquals(NEW_IDENTITY, po.getIdentity());
@@ -74,7 +85,7 @@ public class ChangeUserTest {
     public void changeAuthority() throws Exception {
         builder.changeAuthorized(NEW_AUTHORITY);
 
-        adminService.changeUser(USER_ID, builder.build());
+        adminService.changeUser(builder.build());
 
         UserPO po = dataService.get(USER_ID);
         assertFalse(po.getAuthorized());
@@ -85,7 +96,7 @@ public class ChangeUserTest {
         builder.changeAuthorized(NEW_AUTHORITY).changeIdentity(NEW_IDENTITY)
                 .changePassword(NEW_PASSWORD).rename(NEW_NAME);
 
-        ResultMessage res = adminService.changeUser(USER_ID, builder.build());
+        ResultMessage res = adminService.changeUser(builder.build());
 
         UserPO po = dataService.get(USER_ID);
         assertEquals(ResultMessage.SUCCESS, res);
@@ -102,6 +113,6 @@ public class ChangeUserTest {
         builder.changeAuthorized(oldData.getAuthorized());
         builder.changeIdentity(oldData.getIdentity());
         builder.changePassword(oldData.getPassword());
-        adminService.changeUser(USER_ID, builder.build());
+        adminService.changeUser(builder.build());
     }
 }

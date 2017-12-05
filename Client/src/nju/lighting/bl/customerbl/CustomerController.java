@@ -1,60 +1,53 @@
 package nju.lighting.bl.customerbl;
 
 import nju.lighting.blservice.customerblservice.CustomerBLService;
+import shared.CustomerChangeInfo;
 import shared.ResultMessage;
 import nju.lighting.vo.CustomerVO;
 import shared.CustomerType;
 
-import java.rmi.RemoteException;
-import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerController implements CustomerBLService {
+    private CustomerManager manager = CustomerManager.INSTANCE;
 
+    @Override
+    public List<CustomerVO> getCustomerList() {
+        return manager.getCustomerVOList();
+    }
 
-    //得到客户列表
-    public ArrayList<CustomerVO> getCustomerList()  {
+    @Override
+    public ResultMessage createCustomer(CustomerVO vo) {
+        return manager.createCustomer(vo);
+    }
+
+    @Override
+    public ResultMessage changeReceivableLimit(int customerID, double newLimit) {
+        return manager.changeReceivableLimit(customerID, newLimit);
+    }
+
+    @Override
+    public List<CustomerVO> search(String keyword) {
         return null;
     }
 
-    //请求增加客户，得到是否可修改应收额度
-    public boolean hasModifyLimitAuthority(String userId)  {
-        return true;
+    @Override
+    public ResultMessage deleteCustomer(int customerID) {
+        return manager.delete(customerID);
     }
 
-    //增加客户
-    public ResultMessage createCustomer(CustomerVO vo)  {
-        return ResultMessage.SUCCESS;
+    @Override
+    public ResultMessage changeCustomer(CustomerChangeInfo changeInfo) {
+        return manager.changeCustomer(changeInfo);
     }
 
-    //查找客户
-    public ArrayList<CustomerVO> findCustomer(String keyword)  {
-        return null;
+    @Override
+    public CustomerVO findCustomerByID(int id) {
+        return manager.findCustomerByID(id);
     }
 
-    //删除客户
-    public ResultMessage deleteCustomer(CustomerVO customer)  {
-        return ResultMessage.SUCCESS;
+    @Override
+    public List<CustomerVO> findCustomerByType(CustomerType type) {
+        return manager.findCustomerByType(type);
     }
-
-    //更改客户信息
-    public ResultMessage modifyCustomer(CustomerVO customer)  {
-        return ResultMessage.SUCCESS;
-    }
-
-    //根据客户ID寻找客户
-    public CustomerVO findCustomerByID(int id)  {
-        return null;
-    }
-
-    //根据客户类型寻找客户
-    public ArrayList<CustomerVO> findCustomerByType(CustomerType type)  {
-        return null;
-    }
-
-    //获取下一位客户编号
-    public int getNextCustomerID()  {
-        return 000001;
-    }
-
-
 }

@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Liao
  */
 public interface LogBLService {
-    ArrayList<LogVO> getLogListByTime(Date from, Date to) ;
+    ArrayList<LogVO> getLogListByTime(Date from, Date to);
 
-    ArrayList<LogVO> findLogs(LogFilter filter) ;
+    ArrayList<LogVO> findLogs(LogFilter filter);
 }

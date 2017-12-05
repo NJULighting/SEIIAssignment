@@ -6,7 +6,9 @@ import shared.HistoryDocType;
 
 import java.util.Date;
 
-public class HistoryDocVO extends DocVO {
+public class HistoryDocVO {
+
+    private String creatorId;
 
     private DocVO docVO;
 
@@ -17,10 +19,20 @@ public class HistoryDocVO extends DocVO {
     public HistoryDocVO(Date time, String creatorId, String docId,
                         DocType type, DocVO docVO, String comment,
                         HistoryDocType state) {
-        super(time, creatorId, docId, type);
+
         this.docVO = docVO;
         this.comment = comment;
         this.state = state;
+    }
+
+    /*
+    总经理审批单据时用的构造函数，确定了historyDoc的 审批人ID，评语以及doc
+    审批时间在bl层生成
+     */
+    public HistoryDocVO(String creatorId, String comment, DocVO docVO) {
+        this.creatorId = creatorId;
+        this.comment = comment;
+        this.docVO=docVO;
     }
 
     public DocVO getDocVO() {

@@ -35,6 +35,8 @@ import java.util.ResourceBundle;
  */
 public class Client extends Application {
     UserBLService userBLService;
+    static UserVO userVO;
+
 
     private double XOffset;
     private double YOffSet;
@@ -54,6 +56,11 @@ public class Client extends Application {
         primaryStage=stage;
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
+    }
+
+
+    public static UserVO getUserVO() {
+        return userVO;
     }
 
     @Override

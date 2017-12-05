@@ -14,35 +14,21 @@ import java.util.Iterator;
  * @author 陈俊宇
  */
 public class GiftDocVO extends DocVO {
-    private double total;
-    private ArrayList<GiftItemVO> giftItemVOs;
+    private GiftItemListVO giftItemListVO;
     private String customer;
 
-
-    public GiftDocVO(Date time, String creatorId, String docId, DocType type, ArrayList<GiftItemVO> giftItemVOs, String customer) {
+    public GiftDocVO(Date time, String creatorId, String docId, DocType type,
+                     ArrayList<GiftItemVO> gifts, String customer) {
         super(time, creatorId, docId, type);
-        this.giftItemVOs = giftItemVOs;
+        this.giftItemListVO = new GiftItemListVO(gifts);
         this.customer = customer;
-        total=0;
-        for (int i=0;i<giftItemVOs.size();i++){
-            total+=giftItemVOs.get(i).getSubtotal();
-        }
+    }
 
+    public GiftItemListVO getGiftItemListVO() {
+        return giftItemListVO;
     }
 
 
-
-    public ArrayList<GiftItemVO> getGifts() {
-        return giftItemVOs;
-    }
-
-    public void setGifts(ArrayList<GiftItemVO> giftItemVOs) {
-        this.giftItemVOs = giftItemVOs;
-    }
-
-    public double getTotal() {
-        return total;
-    }
 
     public String getCustomer() {
         return customer;

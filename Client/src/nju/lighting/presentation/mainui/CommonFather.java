@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,10 +22,11 @@ import java.util.ResourceBundle;
  * @author 陈俊宇
  */
 public abstract class CommonFather implements Initializable {
-    Button[] buttons;
+    public Stage stage;
+    public Button[] buttons;
     private double XOffset;
     private double YOffSet;
-    final Double MISS_OPACITY = 0.45;
+    public Double MISS_OPACITY = 0.45;
 
     //关闭程序
     @FXML
@@ -46,7 +48,7 @@ public abstract class CommonFather implements Initializable {
 
 
     public void mouseExit(MouseEvent event) {
-            ((Button) event.getSource()).setOpacity(MISS_OPACITY);
+        ((Button) event.getSource()).setOpacity(MISS_OPACITY);
     }
 
     @FXML
@@ -59,8 +61,8 @@ public abstract class CommonFather implements Initializable {
     @FXML
     public void Drag(MouseEvent event) {
         event.consume();
-        Client.primaryStage.setX(event.getScreenX() - XOffset);
-        Client.primaryStage.setY(event.getScreenY() - YOffSet);
+        stage.setX(event.getScreenX() - XOffset);
+        stage.setY(event.getScreenY() - YOffSet);
 
     }
 

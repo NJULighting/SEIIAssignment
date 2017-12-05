@@ -1,11 +1,18 @@
 package nju.lighting.bl.promotionbl;
 
+import nju.lighting.bl.approvalbl.ApprovalBLService_Stub;
+import nju.lighting.bl.userbl.UserBLServie_Stub;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
+import nju.lighting.vo.DocVO;
+import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.BasicCommodityTreeVO;
+import nju.lighting.vo.doc.giftdoc.GiftDocVO;
+import nju.lighting.vo.doc.giftdoc.GiftItemListVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.promotion.ComboPromotionVO;
 import nju.lighting.vo.promotion.CustomerOrientedPromotionVO;
+import nju.lighting.vo.promotion.PriceOrientedVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerGrade;
 import shared.PromotionType;
@@ -14,6 +21,7 @@ import shared.ResultMessage;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created on 2017/10/21.
@@ -38,10 +46,11 @@ public class PromotionBLService_Stub implements PromotionBLService {
         gifts1.add(giftItemVO1);
         gifts1.add(giftItemVO2);
 
+        UserVO creator=new UserBLServie_Stub().getUser("0");
 
-        PromotionVO promotionVo1 = new CustomerOrientedPromotionVO("店庆酬宾",PromotionType.CustomerOriented,
+        PromotionVO promotionVo1 = new CustomerOrientedPromotionVO("店庆酬宾",creator,PromotionType.CustomerOriented,
                 null,null,CustomerGrade.FIVE,gifts1,0,0,null);
-        PromotionVO promotionVo2 = new ComboPromotionVO("店庆酬宾",PromotionType.Combo,null,null,
+        PromotionVO promotionVo2 = new ComboPromotionVO("店庆酬宾",creator,PromotionType.Combo,null,null,
                 gifts1,300,50);
 
         ArrayList<PromotionVO> promotionVOs = new ArrayList<>();
@@ -53,17 +62,21 @@ public class PromotionBLService_Stub implements PromotionBLService {
 
     @Override
     public ArrayList<PromotionVO> getPromotionList() {
-
-        Calendar c = Calendar.getInstance();
-
-        PromotionVO vo1 =new CustomerOrientedPromotionVO("店庆酬宾",PromotionType.CustomerOriented,
-                null,null,CustomerGrade.FIVE,null,30,0,null);
-        PromotionVO vo2 =  new ComboPromotionVO("店庆酬宾",PromotionType.PriceOriented,null,null,
-                null,300,100);
+        UserVO creator=new UserBLServie_Stub().getUser("0");
+        ArrayList<DocVO> gifts=((new ApprovalBLService_Stub().getDocumentList()));
+        PromotionVO vo1 =new CustomerOrientedPromotionVO("店庆酬宾",creator,PromotionType.CustomerOriented,
+                new Date(),new Date(),CustomerGrade.FIVE,null,30,0,null);
+        PromotionVO vo2 =  new PriceOrientedVO("店庆酬宾",creator,PromotionType.PriceOriented,new Date(),new Date(),
+                150,0,
+                ((GiftDocVO)gifts.get(0)).getGiftItemListVO().getGiftItemVOs(),
+                300,new Date());
+        PromotionVO vo3 =  new PriceOrientedVO("店庆酬宾",creator,PromotionType.PriceOriented,new Date(),new Date(),
+                150,0, null, 300,new Date());
 
         ArrayList<PromotionVO> promotionVOs = new ArrayList<>();
         promotionVOs.add(vo1);
         promotionVOs.add(vo2);
+        promotionVOs.add(vo3);
 
         return promotionVOs;
     }

@@ -20,7 +20,7 @@ import java.util.Date;
  */
 public class SalesDoc extends SalesTypeDoc{
     public SalesDoc(String id, String userId, Date time, String salesTypeDocID,
-                    String customerId, String salesman, String repository, String remarks,
+                    int customerId, String salesman, String repository, String remarks,
                     double discount, double voucher, double finalAmount) {
         super(id, DocType.SALES,userId, time, salesTypeDocID, customerId, salesman,
                 repository, remarks, discount, voucher, finalAmount);
@@ -57,7 +57,7 @@ public class SalesDoc extends SalesTypeDoc{
      * @return SalesDocPO
      */
     public DocPO createPO(){
-        return new SalesDocPO(id,docType,userId,time,this.getSalesTypeDocID(),this.getCustomerId()
+        return new SalesDocPO(id,docType,userId,time,this.getSalesTypeDocID(),Integer.toString(getCustomerId())
                 ,this.getRepository(),this.getRemarks()
                 ,this.getDiscount(),this.getVoucher(),this.getFinalAmount());
     }

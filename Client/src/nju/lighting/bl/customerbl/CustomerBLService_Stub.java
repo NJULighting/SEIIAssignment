@@ -9,6 +9,7 @@ import shared.CustomerType;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class CustomerBLService_Stub implements CustomerBLService {
 
     ArrayList<CustomerVO> customerAll;
@@ -33,6 +34,11 @@ public class CustomerBLService_Stub implements CustomerBLService {
             return ResultMessage.SUCCESS;
         else
             return ResultMessage.FAILURE;
+    }
+
+    @Override
+    public ResultMessage changeReceivableLimit(int customerID, double newLimit) {
+        return null;
     }
 
     //查找客户

@@ -7,7 +7,7 @@ import java.util.Date;
 public class SalesReturnDocVO extends SalesTypeDocVO {
 
     public SalesReturnDocVO(Date time, String creatorId, String docId,
-                            DocType type, String salesTypeDocID, String customerId,
+                            DocType type, String salesTypeDocID, int customerId,
                             String salesman, String repository, String remarks,
                             double beforeDiscountAmount, double discount,
                             double voucher, double finalAmount) {

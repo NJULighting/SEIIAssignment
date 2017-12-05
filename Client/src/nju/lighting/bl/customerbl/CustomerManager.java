@@ -16,7 +16,6 @@ import shared.ResultMessage;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +24,7 @@ import java.util.stream.Collectors;
  * Description:
  * @author 高梦婷
  */
-public enum CustomerManager implements CustomerInfo {
+public enum CustomerManager {
     INSTANCE;
 
     private CustomerDataService dataService;
@@ -50,7 +49,7 @@ public enum CustomerManager implements CustomerInfo {
         try {
             Customer target = new Customer(changeInfo.id);
             target.changeInfo(changeInfo);
-            logger.add(OPType.MODIFY, "修改客户信息 ");
+            logger.add(OPType.MODIFY, "修改客户信息 " + changeInfo.toString());
             return ResultMessage.SUCCESS;
         } catch (NamingException | RemoteException e) {
             e.printStackTrace();
@@ -66,6 +65,7 @@ public enum CustomerManager implements CustomerInfo {
      */
     ResultMessage delete(int customerID) {
         try {
+            logger.add(OPType.DELETE, "删除客户 " + customerID);
             return dataService.deleteCustomer(customerID);
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -98,7 +98,10 @@ public enum CustomerManager implements CustomerInfo {
     ResultMessage createCustomer(CustomerVO vo) {
         Customer customer = new Customer(vo);
         try {
-            return dataService.insertCustomer(customer.toPO());
+            ResultMessage res =  dataService.insertCustomer(customer.toPO());
+            if (res == ResultMessage.SUCCESS)
+                logger.add(OPType.ADD, "添加新客户" + vo.getName());
+            return res;
         } catch (RemoteException e) {
             e.printStackTrace();
             return ResultMessage.NETWORK_FAIL;
@@ -154,36 +157,13 @@ public enum CustomerManager implements CustomerInfo {
 
         // Execute changing
         try {
-            return dataService.changeReceivableLimit(id, limit);
+            ResultMessage res =  dataService.changeReceivableLimit(id, limit);
+            if (res == ResultMessage.SUCCESS)
+                logger.add(OPType.MODIFY, "修改客户 " + id + " 应收额度为 " + limit);
+            return res;
         } catch (RemoteException e) {
             e.printStackTrace();
             return ResultMessage.NETWORK_FAIL;
         }
-    }
-
-    /**
-     * 若增加客户应收，amount为正数，反之为负
-     * @param amount
-     */
-    public void changeReceivable(String customerId, double amount) {
-
-    }
-
-    /**
-     * 若增加客户应付，amount为正数，反之为负
-     * @param amount
-     */
-    public void changePayable(String customerId, double amount) {
-
-    }
-
-    /**
-     * 临时添加 by iznauy
-     * 为了让系统可以临时跑起来QAQ
-     * @return
-     */
-    @Override
-    public ArrayList<Customer> getCustomerList() {
-        return null;
     }
 }

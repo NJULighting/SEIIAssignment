@@ -12,7 +12,7 @@ import java.util.Calendar;
  * @author Liao
  */
 public class Account {
-    private String id;
+    private final String id;
     private double amount;
     private String name;
     private AccountChangeLogList logList;

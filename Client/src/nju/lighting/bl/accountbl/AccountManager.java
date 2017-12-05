@@ -1,7 +1,7 @@
 package nju.lighting.bl.accountbl;
 
 import nju.lighting.bl.logbl.Logger;
-import nju.lighting.bl.logbl.MockLogger;
+import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.presentation.utils.NameChecker;
@@ -34,7 +34,7 @@ public enum AccountManager {
     AccountManager() {
         try {
             accountDataService = DataFactory.getAccountDataBase();
-            logger = new MockLogger();
+            logger = new UserLogger();
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -78,7 +78,7 @@ public enum AccountManager {
         try {
             ResultMessage res = accountDataService.insert(account.toPO());
             if (res == ResultMessage.SUCCESS)
-                logger.add(OPType.ADD, "Account", id);
+                logger.add(OPType.ADD, "Account");
             return res;
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -173,7 +173,8 @@ public enum AccountManager {
                 return ResultMessage.DUPLICATE; // Repeated
             // Rename succeed
             target.setName(newName);
-            logger.add(OPType.MODIFY, "Account Name", id);
+            accountDataService.update(target);
+            logger.add(OPType.MODIFY, "Account Name");
             return ResultMessage.SUCCESS;
         } catch (RemoteException e) {
             e.printStackTrace();

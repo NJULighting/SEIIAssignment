@@ -9,19 +9,20 @@ import shared.ResultMessage;
  */
 public interface UserPersonalService {
     /**
-     * Change password of a user. This method should only be invoked by the user himself
+     * Change password of a user.
      * @param oldPassword the old password of the user
      * @param newPassword new password of the user
      * @return <code>ResultMessage.SUCCESS</code> if password is not empty<br>
-     *     <code>ResultMessage.FAILURE</code> otherwise
+     *     <code>ResultMessage.FAILURE</code> if oldPassword is wrong<br>
+     *         <code>ResultMessage.NETWORK_FAIL</code> if network fails
      */
     ResultMessage userChangePassword(String oldPassword, String newPassword);
 
     /**
-     * Change a user's name. This method should only be used when the user himself want to change his name
+     * Change a user's name.
      * @param newName new name of the user
      * @return <code>ResultMessage.SUCCESS</code> if the name only contains letters, numbers and Chinese characters<br>
-     * <code>ResultMessage.FAILURE</code> otherwise
+     * <code>ResultMessage.NETWORD_FAIL</code> otherwise
      */
-    ResultMessage changeName(String newName);
+    ResultMessage userChangeName(String newName);
 }

@@ -1,11 +1,8 @@
 package nju.lighting.bl.documentbl.salesdoc;
 
-import nju.lighting.bl.commoditybl.BasicCommodityItem;
 import nju.lighting.bl.commoditybl.CommodityInfo;
-import nju.lighting.bl.commoditybl.CommodityManager;
 import nju.lighting.bl.commoditybl.MockCommodity;
 import nju.lighting.bl.customerbl.CustomerInfo;
-import nju.lighting.bl.customerbl.CustomerManage;
 import nju.lighting.bl.customerbl.MockCustomer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.salesdoc.SalesDocPO;
@@ -13,7 +10,6 @@ import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocVO;
 import shared.DocType;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**

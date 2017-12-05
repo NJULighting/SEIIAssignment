@@ -1,34 +1,30 @@
 package nju.lighting.bl.customerbl;
 
+import nju.lighting.dataservice.DataFactory;
+import nju.lighting.dataservice.customerdataservice.CustomerDataService;
+import nju.lighting.po.customer.CustomerPO;
+import nju.lighting.vo.CustomerVO;
+import shared.CustomerChangeInfo;
 import shared.CustomerGrade;
 import shared.CustomerType;
 
+import javax.naming.NamingException;
+import java.rmi.RemoteException;
+
 public class Customer {
 
-    private int ID;
-
+    private final int ID;
     private CustomerType type;
-
     private CustomerGrade grade;
-
     private String name;
-
     private String telephone;
-
     private String address;
-
     private String postage;
-
     private String email;
-
     private double receivableLimit;
-
     private double receivable;
-
     private double payable;
-
     private String salesman;
-
 
 
     public Customer(int ID, CustomerType type, CustomerGrade grade, String name, String telephone, String address, String postage, String email, double receivableLimit, double receivable, double payable, String salesman) {
@@ -46,12 +42,86 @@ public class Customer {
         this.salesman = salesman;
     }
 
-    public int getID() {
-        return ID;
+    Customer(int id) throws NamingException, RemoteException {
+        CustomerDataService dataService = DataFactory.getDataBase(CustomerDataService.class);
+        CustomerPO po = dataService.getCustomerById(id);
+
+        ID = id;
+        type = po.getType();
+        grade = po.getGrade();
+        address = po.getAddress();
+        email = po.getEmail();
+        name = po.getName();
+        postage = po.getPostage();
+        telephone = po.getTelephone();
+        receivable = po.getReceivable();
+        receivableLimit = po.getReceivableLimit();
+        payable = po.getPayable();
+        salesman = po.getSalesman();
     }
 
-    public void setID(int id) {
-        ID = id;
+    Customer(CustomerVO vo) {
+        ID = vo.getID();
+        type = vo.getType();
+        grade = vo.getGrade();
+        address = vo.getAddress();
+        email = vo.getEmail();
+        name = vo.getName();
+        postage = vo.getPostage();
+        telephone = vo.getTelephone();
+        receivable = vo.getReceivable();
+        receivableLimit = vo.getReceivableLimit();
+        payable = vo.getPayable();
+        salesman = vo.getSalesman();
+    }
+
+    Customer(CustomerPO po) {
+        ID = po.getID();
+        type = po.getType();
+        grade = po.getGrade();
+        address = po.getAddress();
+        email = po.getEmail();
+        name = po.getName();
+        postage = po.getPostage();
+        telephone = po.getTelephone();
+        receivable = po.getReceivable();
+        receivableLimit = po.getReceivableLimit();
+        payable = po.getPayable();
+        salesman = po.getSalesman();
+    }
+
+    void changeInfo(CustomerChangeInfo info) throws RemoteException, NamingException {
+        type = info.type;
+        grade = info.grade;
+        address = info.address;
+        email = info.email;
+        name = info.name;
+        telephone = info.telephone;
+        salesman = info.salesman;
+        postage = info.postage;
+        writeToDatabase();
+    }
+
+    private void writeToDatabase() throws RemoteException, NamingException {
+        CustomerDataService dataService = DataFactory.getDataBase(CustomerDataService.class);
+        dataService.updateCustomer(toPO());
+    }
+
+    CustomerPO toPO() {
+        return new CustomerPO(ID, type, grade, name, telephone, address, postage, email, receivableLimit, receivable, payable, salesman);
+    }
+
+    CustomerVO toVO() {
+        return new CustomerVO(ID, type, grade, name, telephone, address, postage, email, receivableLimit, receivable, payable, salesman);
+    }
+
+    void setReceivableLimit(double receivableLimit) throws RemoteException, NamingException {
+        this.receivableLimit = receivableLimit;
+        writeToDatabase();
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public CustomerType getType() {
@@ -77,69 +147,4 @@ public class Customer {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPostage() {
-        return postage;
-    }
-
-    public void setPostage(String postage) {
-        this.postage = postage;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public double getReceivableLimit() {
-        return receivableLimit;
-    }
-
-    public void setReceivableLimit(double receivableLimit) {
-        this.receivableLimit = receivableLimit;
-    }
-
-    public double getReceivable() {
-        return receivable;
-    }
-
-    public void setReceivable(double receivable) {
-        this.receivable = receivable;
-    }
-
-    public double getPayable() {
-        return payable;
-    }
-
-    public void setPayable(double payable) {
-        this.payable = payable;
-    }
-
-    public String getSalesman() {
-        return salesman;
-    }
-
-    public void setSalesman(String salesman) {
-        this.salesman = salesman;
-    }
-
 }

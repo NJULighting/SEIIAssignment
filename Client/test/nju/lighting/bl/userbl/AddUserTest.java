@@ -1,8 +1,9 @@
 package nju.lighting.bl.userbl;
 
-import nju.lighting.presentation.utils.NameChecker;
 import nju.lighting.blservice.userblservice.UserBLService;
+import nju.lighting.presentation.utils.NameChecker;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import shared.Identity;
 import shared.ResultMessage;
@@ -24,6 +25,11 @@ public class AddUserTest {
     private static final boolean AUTHORIZED = false;
 
     private UserBLService userBLService = new UserController();
+
+    @Before
+    public void setUp() throws Exception {
+        LoginHelper.INSTANCE.login("161250068", "2333");
+    }
 
     @Test
     public void nameCheckerTest() throws Exception {
@@ -61,6 +67,7 @@ public class AddUserTest {
 
     @After
     public void tearDown() throws Exception {
+        LoginHelper.INSTANCE.login("161250068", "2333");
         userBLService.deleteUser(ADD_USER_ID);
         userBLService.deleteUser(INVALID_ID);
     }

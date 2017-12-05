@@ -3,7 +3,10 @@ package nju.lighting.po.customer;
 import shared.CustomerGrade;
 import shared.CustomerType;
 
-public class CustomerPO {
+import java.io.Serializable;
+
+public class CustomerPO implements Serializable{
+    private static final long serialVersionUID = 12498946452L;
 
     private int ID;
 

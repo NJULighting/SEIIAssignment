@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * Description:
  * @author Liao
  */
+@Deprecated
 public class UserBLServie_Stub implements UserBLService {
 
     @Override
@@ -42,7 +43,7 @@ public class UserBLServie_Stub implements UserBLService {
     }
 
     @Override
-    public ResultMessage changeUser(String id, UserChangeInfo changeInfo) {
+    public ResultMessage changeUser(UserChangeInfo changeInfo) {
         return null;
     }
 
@@ -83,12 +84,17 @@ public class UserBLServie_Stub implements UserBLService {
     }
 
     @Override
+    public void logout() {
+
+    }
+
+    @Override
     public ResultMessage userChangePassword(String oldPassword, String newPassword) {
         return null;
     }
 
     @Override
-    public ResultMessage changeName(String newName) {
+    public ResultMessage userChangeName(String newName) {
         return null;
     }
 }

@@ -2,8 +2,9 @@ package nju.lighting.bl.documentbl.salesdoc;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.MockCommodity;
+import nju.lighting.bl.customerbl.Customer;
 import nju.lighting.bl.customerbl.CustomerInfo;
-import nju.lighting.bl.customerbl.CustomerManage;
+import nju.lighting.bl.customerbl.CustomerManager;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.salesdoc.SalesReturnDocPO;
 import nju.lighting.vo.DocVO;
@@ -31,7 +32,7 @@ public class SalesReturnDoc extends SalesTypeDoc{
      * 审批单据，减少客户应付
      */
     public void approve(){
-        CustomerInfo info = new CustomerManage();
+        CustomerInfo info = CustomerManager.INSTANCE;
         info.changePayable(this.getCustomerId(),0-this.getFinalAmount());
         //增加商品数量
         CommodityInfo commodityInfo = new MockCommodity();

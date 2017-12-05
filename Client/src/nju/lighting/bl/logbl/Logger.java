@@ -7,9 +7,9 @@ import shared.OPType;
  * Description:
  * @author Liao
  */
-public interface Logger extends DocLogger, OtherLogger {
+public interface Logger {
 
-    void add(OPType type, String itemName, String id);
+    void add(OPType type, String message);
 
-    void add(OPType type, Describable description);
+    void add(OPType type, Object object);
 }

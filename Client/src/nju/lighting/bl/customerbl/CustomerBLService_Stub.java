@@ -1,12 +1,13 @@
 package nju.lighting.bl.customerbl;
 
 import nju.lighting.blservice.customerblservice.CustomerBLService;
+import shared.CustomerChangeInfo;
 import shared.ResultMessage;
 import nju.lighting.vo.CustomerVO;
 import shared.CustomerType;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerBLService_Stub implements CustomerBLService {
 
@@ -21,13 +22,8 @@ public class CustomerBLService_Stub implements CustomerBLService {
     }
 
     //得到客户列表
-    public ArrayList<CustomerVO> getCustomerList()  {
+    public List<CustomerVO> getCustomerList()  {
         return customerAll;
-    }
-
-    @Override
-    public boolean hasModifyLimitAuthority(String userId) {
-        return false;
     }
 
 
@@ -40,29 +36,20 @@ public class CustomerBLService_Stub implements CustomerBLService {
     }
 
     //查找客户
-    public ArrayList<CustomerVO> findCustomer(String keyword)  {
+    public List<CustomerVO> search(String keyword)  {
         if (keyword.equals(String.valueOf(id))) {
             return customerAll;
         } else return null;
     }
 
     //删除客户
-    public ResultMessage deleteCustomer(CustomerVO customer)  {
-        if (customer.getID() == id) {
-            return ResultMessage.SUCCESS;
-        } else return ResultMessage.FAILURE;
+    public ResultMessage deleteCustomer(int customerID)  {
+        return ResultMessage.SUCCESS;
     }
 
     //更改客户信息
-    public ResultMessage modifyCustomer(CustomerVO customer)  {
-        if (customer.getID() == id) {
-            return ResultMessage.SUCCESS;
-        } else return ResultMessage.FAILURE;
-    }
-
-    //获取下一位客户编号
-    public int getNextCustomerID()  {
-        return id + 1;
+    public ResultMessage changeCustomer(CustomerChangeInfo changeInfo)  {
+        return ResultMessage.SUCCESS;
     }
 
 
@@ -74,7 +61,7 @@ public class CustomerBLService_Stub implements CustomerBLService {
     }
 
     //根据客户类型寻找客户
-    public ArrayList<CustomerVO> findCustomerByType(CustomerType type)  {
+    public List<CustomerVO> findCustomerByType(CustomerType type)  {
         if (type == customer.getType()) {
             return customerAll;
         } else return null;

@@ -51,6 +51,8 @@ public class CustomerData extends UnicastRemoteObject implements CustomerDataSer
     @Override
     public ResultMessage changeReceivable(int customerId, double amount) throws RemoteException {
         CustomerPO customerPO = getCustomerById(customerId);
+        if (customerPO == null)
+            return ResultMessage.FAILURE;
         customerPO.setReceivable(amount);
         return updateCustomer(customerPO);
     }
@@ -58,6 +60,8 @@ public class CustomerData extends UnicastRemoteObject implements CustomerDataSer
     @Override
     public ResultMessage changeReceivableLimit(int customerId, double amount) throws RemoteException {
         CustomerPO customerPO = getCustomerById(customerId);
+        if (customerPO == null)
+            return ResultMessage.FAILURE;
         customerPO.setReceivableLimit(amount);
         return updateCustomer(customerPO);
     }
@@ -65,6 +69,8 @@ public class CustomerData extends UnicastRemoteObject implements CustomerDataSer
     @Override
     public ResultMessage changePayable(int customerId, double amount) throws RemoteException {
         CustomerPO customerPO = getCustomerById(customerId);
+        if (customerPO == null)
+            return ResultMessage.FAILURE;
         customerPO.setPayable(amount);
         return updateCustomer(customerPO);
     }

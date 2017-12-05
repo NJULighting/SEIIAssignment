@@ -46,12 +46,11 @@ public interface AdministratorService {
     /**
      * Change a user's attributes.
      *
-     * @param id
      * @param changeInfo A <code>UserChangeInfo</code> object that contains changed information for the user
      * @return <code>ResultMessage.SUCCESS</code> if network works well
      * <code>ResultMessage.FAILURE</code> otherwise
      */
-    ResultMessage changeUser(String id, UserChangeInfo changeInfo);
+    ResultMessage changeUser(UserChangeInfo changeInfo);
 
     /**
      * Delete a user with the id passed in

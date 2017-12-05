@@ -1,6 +1,7 @@
 package nju.lighting.po.log;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,8 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "LOG")
-public class LogPO {
+public class LogPO implements Serializable{
+    private static final long serialVersionUID = 124623587452L;
 
     private int id;
 

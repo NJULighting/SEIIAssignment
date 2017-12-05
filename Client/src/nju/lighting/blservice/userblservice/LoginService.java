@@ -19,4 +19,9 @@ public interface LoginService {
      * <code>LoginReturnState.SUCCESS</code> and a <code>UserVO</code> in the <code>TwoTuple</code>
      */
     TwoTuple<UserVO, LoginReturnState> login(String id, String password);
+
+    /**
+     * Logout current signed in user.
+     */
+    void logout();
 }

@@ -1,13 +1,14 @@
 package nju.lighting.bl.userbl;
 
 import nju.lighting.bl.logbl.Logger;
-import nju.lighting.bl.logbl.MockLogger;
+import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
 import nju.lighting.presentation.utils.NameChecker;
 import nju.lighting.vo.UserVO;
 import shared.Identity;
+import shared.OPType;
 import shared.ResultMessage;
 import shared.UserChangeInfo;
 
@@ -30,7 +31,7 @@ public enum UserManager {
     UserManager() {
         try {
             userDataService = DataFactory.getDataBase(UserDataService.class);
-            logger = new MockLogger(); // TODO: 2017/11/30 Change logger here
+            logger = new UserLogger();
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -99,7 +100,10 @@ public enum UserManager {
             ResultMessage res = userDataService.insert(user.toPO());
             if (res == ResultMessage.FAILURE) // Duplicated id
                 return ResultMessage.DUPLICATE;
-            else return res; // SUCCESS
+            else {
+                logger.add(OPType.ADD, "添加新用户 " + id + " " + username);
+                return res; // SUCCESS
+            }
         } catch (RemoteException e) {
             e.printStackTrace();
             return ResultMessage.NETWORK_FAIL;
@@ -114,6 +118,7 @@ public enum UserManager {
      */
     public ResultMessage delete(String id) {
         try {
+            logger.add(OPType.DELETE, "删除用户 " + id);
             return userDataService.delete(id);
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -121,9 +126,16 @@ public enum UserManager {
         }
     }
 
+    /**
+     * Change a user's name.
+     * @param newName new name of the user
+     * @return <code>ResultMessage.SUCCESS</code> if the name only contains letters, numbers and Chinese characters<br>
+     * <code>ResultMessage.NETWORK_FAIL</code> otherwise
+     */
     public ResultMessage userRenameHimself(String newName) {
         try {
             LoginHelper.INSTANCE.getSignedInUser().rename(newName);
+            logger.add(OPType.MODIFY, "重命名为 " + newName);
             return ResultMessage.SUCCESS;
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -131,17 +143,51 @@ public enum UserManager {
         }
     }
 
-    public ResultMessage adminChangeUser(String id, UserChangeInfo info) {
+    /**
+     * Change password of a user.
+     * @param oldPassword the old password of the user
+     * @param newPassword new password of the user
+     * @return <code>ResultMessage.SUCCESS</code> if password is not empty<br>
+     *     <code>ResultMessage.FAILURE</code> if oldPassword is wrong<br>
+     *         <code>ResultMessage.NETWORK_FAIL</code> if network fails
+     */
+    public ResultMessage userChangePassword(String oldPassword, String newPassword) {
+        User user = LoginHelper.INSTANCE.getSignedInUser();
+        if (!user.passwordRight(oldPassword)) {
+            return ResultMessage.FAILURE;
+        }
+
+        // Change password
+        try {
+            user.changePassword(newPassword);
+            logger.add(OPType.MODIFY, "修改密码");
+            return ResultMessage.SUCCESS;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return ResultMessage.NETWORK_FAIL;
+        }
+    }
+
+    /**
+     * Change a user's attributes.
+     *
+     * @param id id of the target user
+     * @param info A <code>UserChangeInfo</code> object that contains changed information for the user
+     * @return <code>ResultMessage.SUCCESS</code> if network works well
+     * <code>ResultMessage.FAILURE</code> otherwise
+     */
+    public ResultMessage adminChangeUser(UserChangeInfo info) {
         try {
             // Find user
-            UserPO po = userDataService.get(id);
+            UserPO po = userDataService.get(info.id);
             if (po == null) {
                 return ResultMessage.INVALID_ID;
             }
-
+            // TODO: 2017/12/5 Refactor here
             // Change attributes
             User target = new User(po);
             target.changeInfo(info);
+            logger.add(OPType.MODIFY, "管理员修改用户" + info.id  + " 详细信息：" + info.toString());
             return ResultMessage.SUCCESS;
         } catch (RemoteException e) {
             e.printStackTrace();

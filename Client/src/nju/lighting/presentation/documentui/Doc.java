@@ -25,6 +25,7 @@ public class Doc{
 
 
 
+
     public static FXMLLoader getLoader() throws IOException {
         return  new FXMLLoader(Doc.class.getResource(map.get(doc.getType())));
     }

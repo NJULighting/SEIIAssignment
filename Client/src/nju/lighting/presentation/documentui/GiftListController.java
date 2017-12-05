@@ -24,6 +24,7 @@ import nju.lighting.bl.documentbl.giftdoc.GiftDoc;
 import nju.lighting.bl.documentbl.giftdoc.GiftDocItem;
 import nju.lighting.presentation.mainui.CommonFather;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
+import nju.lighting.vo.doc.giftdoc.GiftItemListVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 
 import java.awt.event.MouseEvent;
@@ -39,8 +40,8 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
  *
  * @author 陈俊宇
  */
-public class GiftDocController extends CommonFather  {
-    public  GiftDocVO giftDoc;
+public class GiftListController extends CommonFather  {
+    private  static GiftItemListVO giftItemListVO;
 
     @FXML
     public TableView giftTableView;
@@ -60,12 +61,12 @@ public class GiftDocController extends CommonFather  {
     @FXML
     public TableColumn<GiftItemVO, String> subtotal;
 
-    @FXML
-    public VBox vbox;
 
-    public GiftDocController (){
-        giftDoc=(GiftDocVO)Doc.doc;
+    public static void setGiftItemListVO(GiftItemListVO giftItemListVO) {
+        GiftListController.giftItemListVO = giftItemListVO;
     }
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -78,11 +79,12 @@ public class GiftDocController extends CommonFather  {
                 cellData.getValue().countProperty());
         subtotal.setCellValueFactory(cellData ->
                 cellData.getValue().subtotalProperty());
+        ArrayList<GiftItemVO> giftItemVOS=giftItemListVO.getGiftItemVOs();
 
-        int size = giftDoc.getGifts().size();
+        int size = giftItemVOS.size();
         price.setCellValueFactory(cellData -> cellData.getValue().priceProperty());
         for (int i = 0; i < size; i++) {
-            giftObservableList.add(giftDoc.getGifts().get(i));
+            giftObservableList.add(giftItemVOS.get(i));
         }
 
         System.out.println("size  " +size);
@@ -93,8 +95,7 @@ public class GiftDocController extends CommonFather  {
         giftTableView.prefHeightProperty().bind(giftTableView.fixedCellSizeProperty().multiply(Bindings.size(giftTableView.getItems()).add(1.01)));
         disableReorder(giftTableView);
 
-
-        total.setText(giftDoc.getTotal() + "");
+        total.setText(giftItemListVO.getTotal() + "");
     }
 
 }

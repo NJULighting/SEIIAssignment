@@ -14,6 +14,7 @@ import shared.ResultMessage;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created on 2017/10/21.
@@ -57,8 +58,8 @@ public class PromotionBLService_Stub implements PromotionBLService {
         Calendar c = Calendar.getInstance();
 
         PromotionVO vo1 =new CustomerOrientedPromotionVO("店庆酬宾",PromotionType.CustomerOriented,
-                null,null,CustomerGrade.FIVE,null,30,0,null);
-        PromotionVO vo2 =  new ComboPromotionVO("店庆酬宾",PromotionType.PriceOriented,null,null,
+                new Date(),new Date(),CustomerGrade.FIVE,null,30,0,null);
+        PromotionVO vo2 =  new ComboPromotionVO("店庆酬宾",PromotionType.PriceOriented,new Date(),new Date(),
                 null,300,100);
 
         ArrayList<PromotionVO> promotionVOs = new ArrayList<>();

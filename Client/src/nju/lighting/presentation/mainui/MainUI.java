@@ -39,6 +39,8 @@ public class MainUI {
     }
 
     public MainUI(Identity identity) throws IOException {
+        Stage stage=new Stage();
+        Client.setPrimaryStage(stage);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource(hashMap.get(identity)));
         Pane temp= loader.load();
@@ -52,10 +54,10 @@ public class MainUI {
         controller.setMainUI(this);
         scene = new Scene(root);
         controller.jumpTo(0);
-        Stage stage=new Stage();
+
         stage.setScene(scene);
         stage.getScene().getStylesheets().add(Client.class.getResource("../custom.css").toExternalForm());
-        Client.setPrimaryStage(stage);
+
 
     }
 }

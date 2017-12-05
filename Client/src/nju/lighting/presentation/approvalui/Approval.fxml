@@ -2,27 +2,27 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.validation.NumberValidator?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.approvalui.ApprovalUIController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1280.0" style="-fx-background-color: #5599FF;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.approvalui.ApprovalUIController">
     <children>
-          <Pane layoutX="225.0" prefHeight="610.0" prefWidth="1051.0">
-              <children>
-                  <Text fx:id="detailNum" layoutX="364.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="253.99998092651367">
-                      <font>
-                          <Font size="19.0" />
-                      </font>
-                  </Text>
-            <NumberValidator layoutX="135.0" layoutY="103.0" />
-            <Pane fx:id="detail" prefHeight="610.0" prefWidth="1051.0" style="-fx-background-color: white;" />
-              </children>
-          </Pane>
-      <JFXListView fx:id="docList" layoutX="-2.0" onMouseClicked="#clicked" prefHeight="537.0" prefWidth="224.0" />
-      <JFXButton layoutY="537.0" minHeight="0.0" prefHeight="36.0" prefWidth="109.0" text="同意" />
-      <JFXButton layoutX="110.0" layoutY="537.0" minHeight="0.0" prefHeight="36.0" prefWidth="109.0" text="驳回" />
-      <JFXButton layoutX="-2.0" layoutY="570.0" minHeight="0.0" prefHeight="36.0" prefWidth="224.0" text="批量通过" />
+      <Pane fx:id="detail" layoutX="225.0" prefHeight="610.0" prefWidth="1055.0" style="-fx-background-color: white;" />
+      <JFXListView fx:id="docList" onMouseClicked="#clicked" prefHeight="574.0" prefWidth="225.0" />
+      <HBox layoutY="574.0">
+         <children>
+            <JFXButton fx:id="approveBtn" disable="true" minHeight="0.0" onAction="#approve" prefHeight="36.0" prefWidth="109.0" text="同意" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="rejectBtn" disable="true" minHeight="0.0" onAction="#reject" prefHeight="36.0" prefWidth="109.0" text="驳回" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Light" size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
     </children>
 </Pane>

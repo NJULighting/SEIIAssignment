@@ -2,37 +2,24 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="610.0" prefWidth="1070.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.GiftDocController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.GiftDoc">
    <content>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="1054.0" style="-fx-background-color: white;">
+      <AnchorPane prefHeight="610.0" prefWidth="1055.0">
          <children>
-            <VBox fx:id="vbox" layoutX="254.0" layoutY="35.0" spacing="30.0">
+            <VBox fx:id="container" alignment="CENTER" layoutX="188.0" layoutY="82.0">
                <children>
-                  <TableView fx:id="giftTableView" fixedCellSize="40.0" focusTraversable="false" prefHeight="400.0" prefWidth="550.0" stylesheets="@../tableview.css">
-                    <columns>
-                      <TableColumn fx:id="commodityName" editable="false" prefWidth="250.0" sortable="false" text="商品名" />
-                      <TableColumn fx:id="count" editable="false" prefWidth="100.0" sortable="false" text="数量" />
-                        <TableColumn fx:id="price" editable="false" minWidth="0.0" prefWidth="100.0" sortable="false" text="单价" />
-                        <TableColumn fx:id="subtotal" editable="false" prefWidth="100.0" sortable="false" text="小计" />
-                    </columns>
-                  </TableView>
-                  <HBox alignment="CENTER_RIGHT">
+                  <HBox alignment="CENTER">
                      <children>
-                        <Label text="总价： ">
+                        <Label fx:id="title" alignment="CENTER" text="名字" textAlignment="CENTER">
                            <font>
-                              <Font size="20.0" />
-                           </font></Label>
-                        <Label fx:id="total" text="Label">
-                           <font>
-                              <Font size="20.0" />
-                           </font></Label>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
                      </children>
                   </HBox>
                </children>

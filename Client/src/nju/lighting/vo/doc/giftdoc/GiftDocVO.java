@@ -14,35 +14,34 @@ import java.util.Iterator;
  * @author 陈俊宇
  */
 public class GiftDocVO extends DocVO {
-    private double total;
-    private ArrayList<GiftItemVO> giftItemVOs;
+    private GiftItemListVO giftItemListVO;
     private String customer;
 
 
     public GiftDocVO(Date time, String creatorId, String docId, DocType type, ArrayList<GiftItemVO> giftItemVOs, String customer) {
         super(time, creatorId, docId, type);
-        this.giftItemVOs = giftItemVOs;
         this.customer = customer;
-        total=0;
+        double total=0;
         for (int i=0;i<giftItemVOs.size();i++){
             total+=giftItemVOs.get(i).getSubtotal();
         }
 
+        this.giftItemListVO=new GiftItemListVO(giftItemVOs,total);
     }
 
 
 
-    public ArrayList<GiftItemVO> getGifts() {
-        return giftItemVOs;
-    }
-
-    public void setGifts(ArrayList<GiftItemVO> giftItemVOs) {
-        this.giftItemVOs = giftItemVOs;
-    }
-
-    public double getTotal() {
-        return total;
-    }
+//    public ArrayList<GiftItemVO> getGifts() {
+//        return giftItemVOs;
+//    }
+//
+//    public void setGifts(ArrayList<GiftItemVO> giftItemVOs) {
+//        this.giftItemVOs = giftItemVOs;
+//    }
+//
+//    public double getTotal() {
+//        return total;
+//    }
 
     public String getCustomer() {
         return customer;
@@ -50,5 +49,9 @@ public class GiftDocVO extends DocVO {
 
     public void setCustomer(String customer) {
         this.customer = customer;
+    }
+
+    public GiftItemListVO getGiftItemListVO() {
+        return giftItemListVO;
     }
 }

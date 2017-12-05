@@ -40,6 +40,11 @@ public class Client extends Application {
     private double YOffSet;
     private Button[] buttons;
 
+    public static UserVO user;
+
+    public static Stage getPrimaryStage() {
+        return primaryStage;
+    }
 
     static Parent root;
 

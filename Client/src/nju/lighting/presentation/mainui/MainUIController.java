@@ -68,7 +68,7 @@ public abstract class MainUIController extends CommonFather {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
+    stage=Client.primaryStage;
         for (int i = 0; i < MAIN_BUTTON_SIZE; i++) {
 
             int index = i;

@@ -21,7 +21,7 @@
                <graphic>
                   <ImageView fx:id="miniBtn" fitHeight="15.0" fitWidth="18.0">
                      <image>
-                        <Image url="@../../../../../../../../Desktop/图标/运算-减.png" />
+                        <Image url="@../../../../images/最小化_白.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -39,7 +39,7 @@
                <graphic>
                   <ImageView fx:id="closeBtn" fitHeight="15.0" fitWidth="15.0">
                      <image>
-                        <Image url="@../../../../../../../../Desktop/图标/运算-乘.png" />
+                        <Image url="@../../../../images/关闭_白.png" />
                      </image>
                   </ImageView>
                </graphic>

@@ -21,7 +21,7 @@
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>
-                  <Image url="@../../../../../../../../Desktop/图标/审批单据.png" />
+                  <Image url="@../../../../images/审批单据.png" />
                </image>
             </ImageView>
          </graphic>
@@ -30,7 +30,7 @@
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>
-                  <Image url="@../../../../../../../../Desktop/图标/管理促销策略.png" />
+                  <Image url="@../../../../images/管理促销策略.png" />
                </image>
             </ImageView>
          </graphic>
@@ -39,7 +39,7 @@
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>
-                  <Image url="@../../../../../../../../Desktop/图标/查看经营历程表.png" />
+                  <Image url="@../../../../images/查看经营历程表.png" />
                </image>
             </ImageView>
          </graphic>
@@ -48,7 +48,7 @@
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>
-                  <Image url="@../../../../../../../../Desktop/图标/查看经营情况表.png" />
+                  <Image url="@../../../../images/查看经营情况表.png" />
                </image>
             </ImageView>
          </graphic>
@@ -57,7 +57,7 @@
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>
-                  <Image url="@../../../../../../../../Desktop/图标/查看销售情况表.png" />
+                  <Image url="@../../../../images/查看销售情况表.png" />
                </image>
             </ImageView>
          </graphic>
@@ -66,7 +66,7 @@
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>
-                  <Image url="@../../../../../../../../Desktop/图标/查询日志.png" />
+                  <Image url="@../../../../images/查询日志.png" />
                </image>
             </ImageView>
          </graphic>

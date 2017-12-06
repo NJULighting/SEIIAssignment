@@ -15,10 +15,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import nju.lighting.bl.promotionbl.Promotion;
+
 import nju.lighting.bl.promotionbl.PromotionBLService_Stub;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
-import nju.lighting.presentation.utils.DateFormat;
+import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.vo.promotion.PromotionVO;
 
 import java.io.IOException;
@@ -131,8 +131,8 @@ public class PromotionManageController implements Initializable {
             if (item != null) {
                 name=new Label(item.getName());
                 type=new Label(item.getType().toString());
-                time=new Label(DateFormat.toString(item.getStartDate())+" - "+
-                        DateFormat.toString(item.getEndDate()));
+                time=new Label(DateHelper.toString(item.getStartDate())+" - "+
+                        DateHelper.toString(item.getEndDate()));
                 openBtn=new JFXButton("打开");
                 invalidBtn=new JFXButton("失效");
                 buttonBox=new HBox(openBtn,invalidBtn);

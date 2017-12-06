@@ -2,8 +2,8 @@ package nju.lighting.bl.documentbl.salesdoc;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.MockCommodity;
-import nju.lighting.bl.customerbl.Customer;
 import nju.lighting.bl.customerbl.CustomerInfo;
+import nju.lighting.bl.customerbl.CustomerInfoImpl;
 import nju.lighting.bl.customerbl.CustomerManager;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.salesdoc.SalesReturnDocPO;
@@ -21,8 +21,8 @@ import java.util.Date;
  */
 public class SalesReturnDoc extends SalesTypeDoc{
     public SalesReturnDoc(String id, String userId, Date time,
-                          String salesTypeDocID, String customerId, String salesman,
-                          String repository, String remarks,double discount,
+                          String salesTypeDocID, int customerId, String salesman,
+                          String repository, String remarks, double discount,
                           double voucher, double finalAmount) {
         super(id, DocType.SALES_RETURN, userId, time, salesTypeDocID, customerId, salesman,
                 repository, remarks, discount, voucher, finalAmount);
@@ -32,7 +32,7 @@ public class SalesReturnDoc extends SalesTypeDoc{
      * 审批单据，减少客户应付
      */
     public void approve(){
-        CustomerInfo info = CustomerManager.INSTANCE;
+        CustomerInfo info = new CustomerInfoImpl();
         info.changePayable(this.getCustomerId(),0-this.getFinalAmount());
         //增加商品数量
         CommodityInfo commodityInfo = new MockCommodity();
@@ -58,7 +58,7 @@ public class SalesReturnDoc extends SalesTypeDoc{
      * @return SalesReturnDocPO
      */
     public DocPO createPO(){
-        return new SalesReturnDocPO(id,docType,userId,time,this.getSalesTypeDocID(),this.getCustomerId()
+        return new SalesReturnDocPO(id,docType,userId,time,this.getSalesTypeDocID(),Integer.toString(getCustomerId())
                 ,this.getRepository(),this.getRemarks()
                 ,this.getDiscount(),this.getVoucher(),this.getFinalAmount());
     }

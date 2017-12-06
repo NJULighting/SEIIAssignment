@@ -42,24 +42,6 @@ public class Customer {
         this.salesman = salesman;
     }
 
-    Customer(int id) throws NamingException, RemoteException {
-        CustomerDataService dataService = DataFactory.getDataBase(CustomerDataService.class);
-        CustomerPO po = dataService.getCustomerById(id);
-
-        ID = id;
-        type = po.getType();
-        grade = po.getGrade();
-        address = po.getAddress();
-        email = po.getEmail();
-        name = po.getName();
-        postage = po.getPostage();
-        telephone = po.getTelephone();
-        receivable = po.getReceivable();
-        receivableLimit = po.getReceivableLimit();
-        payable = po.getPayable();
-        salesman = po.getSalesman();
-    }
-
     Customer(CustomerVO vo) {
         ID = vo.getID();
         type = vo.getType();

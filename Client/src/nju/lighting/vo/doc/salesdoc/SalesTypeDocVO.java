@@ -8,7 +8,7 @@ import java.util.Date;
 public class SalesTypeDocVO extends DocVO {
 
     private String salesTypeDocID;
-    private String customerId;
+    private int customerId;
     private String salesman;
     private String repository;
     private String remarks;
@@ -18,7 +18,7 @@ public class SalesTypeDocVO extends DocVO {
     private double finalAmount = 0;
 
     public SalesTypeDocVO(Date time, String creatorId, String docId, DocType type,
-                          String salesTypeDocID, String customerId, String salesman,
+                          String salesTypeDocID, int customerId, String salesman,
                           String repository, String remarks,
                           double beforeDiscountAmount, double discount,
                           double voucher, double finalAmount) {
@@ -42,11 +42,11 @@ public class SalesTypeDocVO extends DocVO {
         this.salesTypeDocID = salesTypeDocID;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 

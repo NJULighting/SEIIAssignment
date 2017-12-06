@@ -18,7 +18,7 @@ import java.util.Date;
 public class SalesTypeDoc extends Doc {
 
     private String salesTypeDocID;
-    private String customerId;
+    private int customerId;
     private String salesman;
     private String repository;
     private String remarks;
@@ -33,7 +33,7 @@ public class SalesTypeDoc extends Doc {
 
 
     public SalesTypeDoc(String id, DocType docType, String userId, Date time, String salesTypeDocID,
-                        String customerId, String salesman, String repository, String remarks,
+                        int customerId, String salesman, String repository, String remarks,
                         double discount, double voucher, double finalAmount) {
         super(id, docType, userId, time);
         this.salesTypeDocID = salesTypeDocID;
@@ -91,11 +91,11 @@ public class SalesTypeDoc extends Doc {
         this.salesTypeDocID = salesTypeDocID;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 

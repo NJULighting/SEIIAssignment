@@ -13,7 +13,7 @@ import java.util.List;
  * @author Liao
  */
 public class InitController implements InitializationBLService {
-    InitHelper initHelper = InitHelper.INSTANCE;
+    private InitHelper initHelper = InitHelper.INSTANCE;
 
     @Override
     public List<InitVO> getInitInfo() {
@@ -22,6 +22,6 @@ public class InitController implements InitializationBLService {
 
     @Override
     public ResultMessage initiateAccount() {
-        return null;
+        return initHelper.createInit();
     }
 }

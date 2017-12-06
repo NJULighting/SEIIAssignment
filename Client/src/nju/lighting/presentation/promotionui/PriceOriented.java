@@ -4,13 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import nju.lighting.presentation.documentui.GiftListController;
-import nju.lighting.presentation.utils.DateFormat;
+import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.vo.promotion.PriceOrientedVO;
-import nju.lighting.vo.promotion.PromotionVO;
 
 
 import java.io.IOException;
@@ -53,8 +50,8 @@ public class PriceOriented implements Initializable {
     public PriceOriented(){
 
         promotion=(PriceOrientedVO)PromotionManageController.selectedPromotion;
-        validTimeStr=DateFormat.toString(promotion.getStartDate())+" - "
-                +DateFormat.toString(promotion.getEndDate());
+        validTimeStr= DateHelper.toString(promotion.getStartDate())+" - "
+                + DateHelper.toString(promotion.getEndDate());
 
     }
 
@@ -65,7 +62,7 @@ public class PriceOriented implements Initializable {
         creator.setText(promotion.getCreator().getUsername());
         validTime.setText(validTimeStr);
         voucher.setText(""+promotion.getVouchers());
-        voucherEndTime.setText(DateFormat.toString(promotion.getVoucherEndDate()));
+        voucherEndTime.setText(DateHelper.toString(promotion.getVoucherEndDate()));
         System.out.println(promotion);
         if (promotion.getGifts()!=null){
             GiftListController.setGiftItemListVO(promotion.getGifts());

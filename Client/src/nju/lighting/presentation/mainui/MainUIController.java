@@ -30,26 +30,24 @@ public abstract class MainUIController extends CommonFather {
 
     //界面跳转
     void jumpTo(int index) {
-        Pane bottom;
+        Pane center;
         String url = urls[index];
-        bottom = mainUI.bottoms[index];
+        center = mainUI.center[index];
+
 
         //设置下半部分界面
-        if (bottom == null) {
+        if (center == null) {
             try {
-                bottom = FXMLLoader.load(getClass().getResource(url));
+                center = FXMLLoader.load(getClass().getResource(url));
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            mainUI.bottoms[index]=bottom;
+            mainUI.center[index]=center;
         }
 
 
-        if (mainUI.root.getChildren().size() > 1) {
-            mainUI.root.getChildren().remove(1);
-        }
-        mainUI.root.getChildren().add(bottom);
+        mainUI.root.setCenter(center);
 
         //高光
         if (currentBtn[0] != null) {
@@ -77,7 +75,7 @@ public abstract class MainUIController extends CommonFather {
             buttons[i].setOnAction(e -> {
 
                 jumpTo(index);
-                Client.setScene(mainUI.scene);
+                //Client.setScene(mainUI.scene);
             });
 
             super.initialize(location, resources);

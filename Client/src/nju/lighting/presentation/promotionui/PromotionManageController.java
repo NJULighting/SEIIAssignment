@@ -141,7 +141,7 @@ public class PromotionManageController implements Initializable {
                 buttonBox=new HBox(openBtn,invalidBtn);
                 buttonBox.setVisible(false);
                 buttonBox.setSpacing(25);
-                buttonBox.setPadding(new Insets(0,0,0,150));
+                buttonBox.setPadding(new Insets(0,0,0,15));
 
                 openBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override

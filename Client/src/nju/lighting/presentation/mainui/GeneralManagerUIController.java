@@ -44,8 +44,8 @@ public class GeneralManagerUIController extends MainUIController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttons = new Button[]{approvalBtn, promotionManageBtn, BusinessConditionBtn, SalesConditionBtn, logBtn,
-                miniBtn, closeBtn};
-        urls = new String[]{"../approvalui/Approval.fxml", "../promotionui/Promotion.fxml",
+                };
+        urls = new String[]{"../approvalui/Approval.fxml", "../promotionui/PromotionManage.fxml",
                 "../documentui/BusinessConditionTable.fxml", "../documentui/SaleConditionTable.fxml",
                 "../logui/log.fxml"};
         MAIN_BUTTON_SIZE = 5;

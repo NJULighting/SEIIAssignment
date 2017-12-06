@@ -47,7 +47,10 @@ public enum CustomerManager {
      */
     ResultMessage changeCustomer(CustomerChangeInfo changeInfo) {
         try {
-            Customer target = new Customer(changeInfo.id);
+            CustomerPO po = dataService.getCustomerById(changeInfo.id);
+            if (po == null)
+                return ResultMessage.FAILURE;
+            Customer target = new Customer(po);
             target.changeInfo(changeInfo);
             logger.add(OPType.MODIFY, "修改客户信息 " + changeInfo.toString());
             return ResultMessage.SUCCESS;
@@ -116,9 +119,15 @@ public enum CustomerManager {
      */
     CustomerVO findCustomerByID(int id) {
         try {
-            Customer customer = new Customer(id);
+            // Get po and check
+            CustomerPO po = dataService.getCustomerById(id);
+            if (po == null)
+                return null;
+
+            // Transfer
+            Customer customer = new Customer(po);
             return customer.toVO();
-        } catch (NamingException | RemoteException e) {
+        } catch (RemoteException e) {
             e.printStackTrace();
             return null;
         }

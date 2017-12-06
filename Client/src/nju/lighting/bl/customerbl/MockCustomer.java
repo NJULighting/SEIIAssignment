@@ -10,15 +10,15 @@ import java.util.List;
  * Description:
  * @author 高梦婷
  */
-public class MockCustomer implements CustomerInfo{
+public class MockCustomer implements CustomerInfo {
 
     /**
      * 若增加客户应收，amount为正数，反之为负
      * @param customerId
      * @param amount
      */
-    public ResultMessage changeReceivable(int customerId, double amount){
-
+    public ResultMessage changeReceivable(int customerId, double amount) {
+        return ResultMessage.FAILURE;
     }
 
     /**
@@ -26,15 +26,15 @@ public class MockCustomer implements CustomerInfo{
      * @param customerId
      * @param amount
      */
-    public ResultMessage changePayable(int customerId, double amount){
-
+    public ResultMessage changePayable(int customerId, double amount) {
+        return ResultMessage.FAILURE;
     }
 
     /**
      * 得到包含所有客户的列表
      * @return 对应的客户列表
      */
-    public List<Customer> getCustomerList(){
+    public List<Customer> getCustomerList() {
         return new ArrayList<Customer>();
     }
 

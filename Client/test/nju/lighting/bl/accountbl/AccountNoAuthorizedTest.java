@@ -1,12 +1,12 @@
 package nju.lighting.bl.accountbl;
 
 
-import nju.lighting.bl.userbl.LoginHelper;
+import nju.lighting.bl.userbl.LoginTestHelper;
 import org.junit.Before;
 import org.junit.Test;
 import shared.ResultMessage;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 /**
  * Created on 2017/12/1.
  * Description: This test is based on that the user is not authorized
@@ -17,7 +17,7 @@ public class AccountNoAuthorizedTest {
 
     @Before
     public void setUp() throws Exception {
-        LoginHelper.INSTANCE.login("1611200xx", "9999");
+        LoginTestHelper.loginNotAuthorizedUser();
     }
 
     @Test

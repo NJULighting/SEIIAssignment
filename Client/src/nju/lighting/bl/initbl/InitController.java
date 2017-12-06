@@ -8,18 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created on 2017/10/22.
+ * Created on 2017/12/6.
  * Description:
  * @author Liao
  */
-public class InitializationBLService_Stub implements InitializationBLService {
+public class InitController implements InitializationBLService {
+    InitHelper initHelper = InitHelper.INSTANCE;
+
     @Override
-    public List<InitVO> getInitInfo()  {
-        return null;
+    public List<InitVO> getInitInfo() {
+        return initHelper.getInitInfo();
     }
 
     @Override
-    public ResultMessage initiateAccount()  {
-        return ResultMessage.FAILURE;
+    public ResultMessage initiateAccount() {
+        return null;
     }
 }

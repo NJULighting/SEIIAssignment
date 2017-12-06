@@ -1,13 +1,9 @@
 package nju.lighting.vo.promotion;
 
 
-import nju.lighting.bl.userbl.User;
 import nju.lighting.vo.UserVO;
-import nju.lighting.vo.doc.giftdoc.GiftItemVO;
-import shared.CustomerGrade;
 import shared.PromotionType;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**

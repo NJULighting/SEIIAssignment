@@ -3,6 +3,7 @@ package nju.lighting.bl.customerbl;
 import nju.lighting.bl.userbl.LoginTestHelper;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
 import nju.lighting.vo.CustomerVO;
+import org.junit.Ignore;
 import org.junit.Test;
 import shared.CustomerGrade;
 import shared.CustomerType;
@@ -23,7 +24,7 @@ public class AddCustomerTest {
         LoginTestHelper.loginAuthorizedUser();
     }
 
-    @Test
+    @Test @Ignore
     public void addCustomerTest() throws Exception {
         CustomerVO customerVO = new CustomerVO(0, CustomerType.SALESPERSON, CustomerGrade.FIVE, "SuperFrog", "6666666"
         , "上海交通大学", "210046", "excited@frogmail.com", 666666, 0, 0, "LittleFrog");

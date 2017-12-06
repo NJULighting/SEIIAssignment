@@ -32,6 +32,7 @@ public class Server {
             LogDataService logDataService = new LogData();
             CustomerDataService customerDataService = new CustomerData();
             InitDataService initDataService = new InitData();
+
             Context namingContext = new InitialContext();
             LocateRegistry.createRegistry(8888);
             namingContext.bind(ADDRESS + "initDataService", initDataService);

@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * Created on 2017/11/27.
  * Description:
- *
  * @author iznauy
  */
 public interface InitDataService {
@@ -18,4 +17,5 @@ public interface InitDataService {
     ResultMessage createInit(String userId, Date date) throws RemoteException;
 
     List<InitPO> getAllInit() throws RemoteException;
+
 }

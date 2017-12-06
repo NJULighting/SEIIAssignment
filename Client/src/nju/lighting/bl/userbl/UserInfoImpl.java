@@ -36,6 +36,6 @@ public class UserInfoImpl implements UserInfo {
 
     @Override
     public String getIDOfSignedUser() {
-        return LoginHelper.INSTANCE.getSignedInUser().getName();
+        return LoginHelper.INSTANCE.getSignedInUser().getId();
     }
 }

@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
  * Description:
  * @author 高梦婷
  */
-public enum CustomerManager {
+enum CustomerManager {
     INSTANCE;
 
     private CustomerDataService dataService;

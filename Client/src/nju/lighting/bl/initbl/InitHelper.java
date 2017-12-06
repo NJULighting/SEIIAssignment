@@ -1,18 +1,14 @@
 package nju.lighting.bl.initbl;
 
-import nju.lighting.bl.userbl.LoginHelper;
-import nju.lighting.bl.userbl.User;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.initdataservice.InitDataService;
 import nju.lighting.po.init.InitPO;
 import nju.lighting.vo.InitVO;
-import shared.ResultMessage;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +18,7 @@ import java.util.stream.Collectors;
  * Description:
  * @author Liao
  */
-public enum InitHelper {
+enum InitHelper {
     INSTANCE;
 
     private InitDataService dataService;

@@ -12,7 +12,7 @@ import javax.naming.NamingException;
 import java.rmi.RemoteException;
 
 public class Customer {
-
+    // TODO: 2017/12/6 modify access of this class
     private final int ID;
     private CustomerType type;
     private CustomerGrade grade;

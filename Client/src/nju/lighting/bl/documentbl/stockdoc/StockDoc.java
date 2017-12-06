@@ -2,10 +2,8 @@ package nju.lighting.bl.documentbl.stockdoc;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.MockCommodity;
-import nju.lighting.bl.customerbl.Customer;
 import nju.lighting.bl.customerbl.CustomerInfo;
 import nju.lighting.bl.customerbl.CustomerInfoImpl;
-import nju.lighting.bl.customerbl.CustomerManager;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.stockdoc.StockDocPO;
 import nju.lighting.vo.DocVO;

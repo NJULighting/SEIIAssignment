@@ -98,8 +98,11 @@ public class LoginController extends CommonFather{
                 break;
 
             case SUCCESS:
-                System.out.println("Succ");
+                System.out.println("Succ");{
                 new MainUI(result.t.getIdentity());
+                Client.setUserVO(result.t);
+            }
+
                 break;
         }
     }
@@ -117,6 +120,8 @@ public class LoginController extends CommonFather{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        stage=Client.primaryStage;
+
         buttons=new Button[]{closeBtn,miniBtn};
         super.initialize(location, resources);
 

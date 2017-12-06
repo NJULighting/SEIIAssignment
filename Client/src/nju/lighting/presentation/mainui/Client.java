@@ -35,7 +35,7 @@ import java.util.ResourceBundle;
  */
 public class Client extends Application {
     UserBLService userBLService;
-    static UserVO userVO;
+    private static UserVO userVO;
 
 
     private double XOffset;
@@ -61,6 +61,10 @@ public class Client extends Application {
 
     public static UserVO getUserVO() {
         return userVO;
+    }
+
+    public static void setUserVO(UserVO userVO) {
+        Client.userVO = userVO;
     }
 
     @Override

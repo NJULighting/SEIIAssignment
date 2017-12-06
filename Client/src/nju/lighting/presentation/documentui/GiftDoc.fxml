@@ -9,7 +9,7 @@
 
 <ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.GiftDoc">
    <content>
-      <AnchorPane prefHeight="610.0" prefWidth="1055.0" style="-fx-background-color: white;">
+      <AnchorPane prefHeight="610.0" prefWidth="855.0" style="-fx-background-color: white;">
          <children>
             <VBox fx:id="container" alignment="CENTER" layoutX="188.0" layoutY="82.0">
                <children>

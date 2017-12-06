@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.GeneralManagerUIController">
    <children>
       <JFXButton fx:id="approvalBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="审批单据">
          <graphic>

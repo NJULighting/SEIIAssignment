@@ -19,19 +19,11 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-      <ImageView fitHeight="720.0" fitWidth="1280.0">
-         <image>
-            <Image url="@../../../../../../../../Desktop/13378647_235535566146_2.jpg" />
-         </image>
-      </ImageView>
-      <VBox layoutY="120.0" prefHeight="600.0" prefWidth="200.0">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="680.0" prefWidth="200.0">
          <children>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" text="首页" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
+            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="首页">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
@@ -39,10 +31,7 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" text="客户管理" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
+            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="客户管理">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
@@ -50,43 +39,15 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" text="制定销售单" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
+            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定销售单">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
-                        <Image url="@../../../../images/销售单.png" />
+                        <Image url="@../../../../images/查看销售情况表.png" />
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" text="制定销售退货单" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0">
-                     <image>
-                        <Image url="@../../../../images/进货退货单.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" text="制定进货单" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0">
-                     <image>
-                        <Image url="@../../../../images/进货单.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" text="制定进货退货单" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
+            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定销售退货单">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
@@ -94,36 +55,23 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-         </children>
-      </VBox>
-      <HBox alignment="CENTER" layoutX="1030.0" layoutY="5.0" prefHeight="50.0" prefWidth="250.0" spacing="10.0">
-         <children>
-            <JFXButton alignment="CENTER" prefHeight="40.0" prefWidth="100.0" text="注销" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="37.0" fitWidth="37.0">
-                     <image>
-                        <Image url="@../../../../images/退出登录.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton alignment="CENTER" prefHeight="40.0" prefWidth="100.0" text="退出" textFill="WHITE">
+            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定进货单">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
-                        <Image url="@../../../../images/关闭.png" />
+                        <Image url="@../../../../images/进货单.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定进货退货单">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@../../../../images/进货退货单.png" />
                      </image>
                   </ImageView>
                </graphic></JFXButton>
          </children>
-      </HBox>
-      <Label layoutX="730.0" layoutY="15.0" prefHeight="30.0" prefWidth="300.0" text="您好！" textFill="WHITE" />
-      <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="687.0" layoutY="10.0">
-         <image>
-            <Image url="@../../../../images/成功.png" />
-         </image>
-      </ImageView>
-    </children>
-   <opaqueInsets>
-      <Insets />
-   </opaqueInsets>
+      </VBox>
+   </children>
 </Pane>

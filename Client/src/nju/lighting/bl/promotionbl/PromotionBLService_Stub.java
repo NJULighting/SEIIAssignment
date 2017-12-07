@@ -8,31 +8,23 @@ import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.BasicCommodityTreeVO;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
-import nju.lighting.vo.doc.giftdoc.GiftItemListVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
-import nju.lighting.vo.promotion.ComboPromotionVO;
-import nju.lighting.vo.promotion.CustomerOrientedPromotionVO;
-import nju.lighting.vo.promotion.PriceOrientedVO;
 import nju.lighting.vo.promotion.PromotionVO;
-import shared.CustomerGrade;
-import shared.PromotionType;
-import shared.ResultMessage;
+import shared.*;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created on 2017/10/21.
  * Description
- *
  * @author 陈俊宇
  */
 public class PromotionBLService_Stub implements PromotionBLService {
 
     @Override
-    public ArrayList<PromotionVO> getBenefitsPlan(int customerLevel, ArrayList<String> CommodityList, double total) {
+    public List<PromotionVO> getBenefitsPlan(CustomerGrade customerLevel, List<String> CommodityList, double total) {
         BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222", "日本LED无障碍灯泡", null,
                 100, 100, 100);
         BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223", "日本LED无障碍灯泡" + "-b", null,
@@ -46,12 +38,12 @@ public class PromotionBLService_Stub implements PromotionBLService {
         gifts1.add(giftItemVO1);
         gifts1.add(giftItemVO2);
 
-        UserVO creator=new UserBLServie_Stub().getUser("0");
+        UserVO creator = new UserBLServie_Stub().getUser("0");
 
-        PromotionVO promotionVo1 = new CustomerOrientedPromotionVO("店庆酬宾",creator,PromotionType.CustomerOriented,
-                null,null,CustomerGrade.FIVE,gifts1,0,0,null);
-        PromotionVO promotionVo2 = new ComboPromotionVO("店庆酬宾",creator,PromotionType.Combo,null,null,
-                gifts1,300,50);
+        PromotionVO promotionVo1 = new PromotionVO(0, "店庆酬宾", creator, PromotionType.CustomerOriented,
+                null, null, CustomerGrade.FIVE, 0, gifts1, 0, 0, null);
+        PromotionVO promotionVo2 = new PromotionVO(1, "店庆酬宾", creator, PromotionType.Combo, null, null
+                , null, 300, gifts1, 50, 0, null);
 
         ArrayList<PromotionVO> promotionVOs = new ArrayList<>();
         promotionVOs.add(promotionVo1);
@@ -61,17 +53,17 @@ public class PromotionBLService_Stub implements PromotionBLService {
     }
 
     @Override
-    public ArrayList<PromotionVO> getPromotionList() {
-        UserVO creator=new UserBLServie_Stub().getUser("0");
-        ArrayList<DocVO> gifts=((new ApprovalBLService_Stub().getDocumentList()));
-        PromotionVO vo1 =new CustomerOrientedPromotionVO("店庆酬宾",creator,PromotionType.CustomerOriented,
-                new Date(),new Date(),CustomerGrade.FIVE,null,30,0,null);
-        PromotionVO vo2 =  new PriceOrientedVO("店庆酬宾",creator,PromotionType.PriceOriented,new Date(),new Date(),
-                150,0,
-                ((GiftDocVO)gifts.get(0)).getGiftItemListVO().getGiftItemVOs(),
-                300,new Date());
-        PromotionVO vo3 =  new PriceOrientedVO("店庆酬宾",creator,PromotionType.PriceOriented,new Date(),new Date(),
-                150,0, null, 300,new Date());
+    public List<PromotionVO> getPromotionList() {
+        UserVO creator = new UserBLServie_Stub().getUser("0");
+        ArrayList<DocVO> gifts = ((new ApprovalBLService_Stub().getDocumentList()));
+        PromotionVO vo1 = new PromotionVO(1, "店庆酬宾", creator, PromotionType.CustomerOriented,
+                new Date(), new Date(), CustomerGrade.FIVE, 30, null, 0, 0, null);
+        PromotionVO vo2 = new PromotionVO(2, "店庆酬宾", creator, PromotionType.PriceOriented, new Date(), new Date(),
+                null, 150,
+                ((GiftDocVO) gifts.get(0)).getGiftItemListVO().getGiftItemVOs(),
+                0, 300, new Date());
+        PromotionVO vo3 = new PromotionVO(3, "店庆酬宾", creator, PromotionType.PriceOriented, new Date(), new Date(),
+                null, 150, null, 0, 300, new Date());
 
         ArrayList<PromotionVO> promotionVOs = new ArrayList<>();
         promotionVOs.add(vo1);
@@ -87,7 +79,7 @@ public class PromotionBLService_Stub implements PromotionBLService {
     }
 
     @Override
-    public ResultMessage commit(PromotionVO vo) {
+    public TwoTuple<ResultMessage, PromotionVO> commit(PromotionBuildInfo info) {
         return null;
     }
 
@@ -97,7 +89,7 @@ public class PromotionBLService_Stub implements PromotionBLService {
     }
 
     @Override
-    public ResultMessage delete(PromotionVO vo) {
+    public ResultMessage delete(int promotionID) {
         return ResultMessage.FAILURE;
     }
 }

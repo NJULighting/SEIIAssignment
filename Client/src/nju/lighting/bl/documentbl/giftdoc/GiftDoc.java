@@ -20,7 +20,7 @@ public class GiftDoc extends Doc {
 
     ArrayList<GiftDocItem> items;
 
-    Customer customer;
+    private Customer customer;
 
     Date time;
 

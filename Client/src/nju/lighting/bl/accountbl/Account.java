@@ -11,7 +11,7 @@ import java.util.Calendar;
  * Description: 账户的领域模型对象
  * @author Liao
  */
-public class Account {
+class Account {
     private final String id;
     private double amount;
     private String name;

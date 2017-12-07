@@ -72,6 +72,4 @@ public class CustomerBLService_Stub implements CustomerBLService {
             return customerAll;
         } else return null;
     }
-
-
 }

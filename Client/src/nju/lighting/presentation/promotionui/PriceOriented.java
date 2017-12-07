@@ -7,8 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import nju.lighting.presentation.documentui.GiftListController;
 import nju.lighting.presentation.utils.DateHelper;
-import nju.lighting.vo.promotion.PriceOrientedVO;
-
+import nju.lighting.vo.doc.giftdoc.GiftItemListVO;
+import nju.lighting.vo.promotion.PromotionVO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,9 +21,9 @@ import java.util.ResourceBundle;
  * @author 陈俊宇
  */
 public class PriceOriented implements Initializable {
-    PriceOrientedVO promotion;
+    private PromotionVO promotion;
 
-    String validTimeStr;
+    private String validTimeStr;
 
     @FXML
     Label title;
@@ -49,7 +49,7 @@ public class PriceOriented implements Initializable {
 
     public PriceOriented(){
 
-        promotion=(PriceOrientedVO)PromotionManageController.selectedPromotion;
+        promotion= PromotionManageController.selectedPromotion;
         validTimeStr= DateHelper.toString(promotion.getStartDate())+" - "
                 + DateHelper.toString(promotion.getEndDate());
 
@@ -62,10 +62,11 @@ public class PriceOriented implements Initializable {
         creator.setText(promotion.getCreator().getUsername());
         validTime.setText(validTimeStr);
         voucher.setText(""+promotion.getVouchers());
-        voucherEndTime.setText(DateHelper.toString(promotion.getVoucherEndDate()));
+        voucherEndTime.setText(DateHelper.toString(promotion.getVouchersEndDate()));
         System.out.println(promotion);
-        if (promotion.getGifts()!=null){
-            GiftListController.setGiftItemListVO(promotion.getGifts());
+        if (promotion.getGoods()!=null){
+            GiftItemListVO giftItemListVO = new GiftItemListVO(promotion.getGoods());
+            GiftListController.setGiftItemListVO(giftItemListVO);
             try {
 
                 gift.getChildren().add(FXMLLoader.load(getClass().getResource("../documentui/GiftList.fxml")));

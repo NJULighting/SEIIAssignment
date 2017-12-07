@@ -1,7 +1,6 @@
 package nju.lighting.bl.customerbl;
 
-import nju.lighting.bl.userbl.LoginHelper;
-import nju.lighting.bl.utls.LoginTestHelper;
+import nju.lighting.bl.userbl.LoginTestHelper;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;

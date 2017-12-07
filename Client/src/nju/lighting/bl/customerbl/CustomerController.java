@@ -8,7 +8,7 @@ import shared.CustomerType;
 
 import java.util.List;
 
-public class CustomerController implements CustomerBLService {
+class CustomerController implements CustomerBLService {
     private CustomerManager manager = CustomerManager.INSTANCE;
 
     @Override

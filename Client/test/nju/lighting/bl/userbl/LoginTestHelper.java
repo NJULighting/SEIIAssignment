@@ -1,6 +1,4 @@
-package nju.lighting.bl.utls;
-
-import nju.lighting.bl.userbl.LoginHelper;
+package nju.lighting.bl.userbl;
 
 /**
  * Created on 2017/12/5.

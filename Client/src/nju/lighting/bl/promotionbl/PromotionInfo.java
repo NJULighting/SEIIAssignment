@@ -9,6 +9,6 @@ import java.util.ArrayList;
  * Description
  * @author 陈俊宇
  */
-public interface getBenefitsPlan {
+public interface PromotionInfo {
     ArrayList<Promotion> getBenefitsPlan();
 }

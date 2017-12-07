@@ -4,10 +4,10 @@ import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
-import nju.lighting.presentation.utils.NameChecker;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.po.account.AccountPO;
+import nju.lighting.presentation.utils.NameChecker;
 import nju.lighting.vo.account.AccountVO;
 import shared.OPType;
 import shared.ResultMessage;
@@ -22,7 +22,7 @@ import java.util.List;
  * Description:
  * @author Liao
  */
-public enum AccountManager {
+enum AccountManager {
     /**
      * Singleton
      */

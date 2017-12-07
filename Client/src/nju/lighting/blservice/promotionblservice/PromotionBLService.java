@@ -3,9 +3,12 @@ package nju.lighting.blservice.promotionblservice;
 
 import nju.lighting.vo.commodity.BasicCommodityTreeVO;
 import nju.lighting.vo.promotion.PromotionVO;
+import shared.CustomerGrade;
+import shared.PromotionBuildInfo;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/10/21.
@@ -15,15 +18,15 @@ import java.util.ArrayList;
  */
 public interface PromotionBLService {
 
-    ArrayList<PromotionVO> getBenefitsPlan(int customerLevel, ArrayList<String> CommodityList, double total); //得到满足条件的销售策略
+    List<PromotionVO> getBenefitsPlan(CustomerGrade customerLevel, List<String> CommodityList, double total); //得到满足条件的销售策略
 
-    ArrayList<PromotionVO> getPromotionList();
+    List<PromotionVO> getPromotionList();
 
     BasicCommodityTreeVO create();
 
-    ResultMessage commit(PromotionVO vo);
+    TwoTuple<ResultMessage, PromotionVO> commit(PromotionBuildInfo info);
 
     ResultMessage modify(PromotionVO vo);
 
-    ResultMessage delete(PromotionVO vo);
+    ResultMessage delete(int promotionID);
 }

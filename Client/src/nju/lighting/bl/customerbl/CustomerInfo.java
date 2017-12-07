@@ -13,20 +13,20 @@ public interface CustomerInfo {
     /**
      * 若增加客户应收，amount为正数，反之为负
      * @param customerId id of customer
-     * @param amount amount of receivable
+     * @param amount     amount of receivable
      */
-    public ResultMessage changeReceivable(int customerId, double amount);
+    ResultMessage changeReceivable(int customerId, double amount);
 
     /**
      * 若增加客户应付，amount为正数，反之为负
      * @param customerId id of target customer
-     * @param amount amount of payable
+     * @param amount     amount of payable
      */
-    public ResultMessage changePayable(int customerId, double amount);
+    ResultMessage changePayable(int customerId, double amount);
 
     /**
      * 得到包含所有客户的列表
      * @return 对应的客户列表
      */
-    public List<Customer> getCustomerList();
+    List<Customer> getCustomerList();
 }

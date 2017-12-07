@@ -11,7 +11,7 @@ import java.util.Date;
  * Description:
  * @author Liao
  */
-public class AccountChangeLog {
+class AccountChangeLog {
     private Date time;
     private double delta;
     private double amount; // After change

@@ -15,7 +15,7 @@ import java.rmi.RemoteException;
  * Description: Model of User
  * @author Liao
  */
-public class User {
+class User {
     private final String id;
     private String name;
     private String password;

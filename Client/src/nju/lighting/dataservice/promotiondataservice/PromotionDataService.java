@@ -2,10 +2,11 @@ package nju.lighting.dataservice.promotiondataservice;
 
 import nju.lighting.po.promotion.PromotionPO;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/10/21.
@@ -15,14 +16,12 @@ import java.util.ArrayList;
  */
 public interface PromotionDataService extends Remote {
 
-    ArrayList<PromotionPO> getBenefitsPlan(int customerLevel, ArrayList<String> commodityList, double total) throws RemoteException;
+    List<PromotionPO> getPromotionList() throws RemoteException;
 
-    ArrayList<PromotionPO> getPromotionList() throws RemoteException;
-
-    ResultMessage insert(PromotionPO po) throws RemoteException;
+    TwoTuple<ResultMessage, Integer> insert(PromotionPO po) throws RemoteException;
 
     ResultMessage update(PromotionPO po) throws RemoteException;
 
-    ResultMessage delete(PromotionPO po) throws RemoteException;
+    PromotionPO getPromotionById(int id) throws RemoteException;
 
 }

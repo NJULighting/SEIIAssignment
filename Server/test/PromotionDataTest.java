@@ -43,9 +43,9 @@ public class PromotionDataTest {
         PromotionPackageItemPO promotionPackageItemPO2 = new PromotionPackageItemPO("4-00001");
         itemPOS.add(promotionPackageItemPO1);
         itemPOS.add(promotionPackageItemPO2);
-        PromotionPO promotionPO1 = new PromotionPO("光棍节大促销", PromotionType.CustomerOriented, beginTime, endTime, createTime,
+        PromotionPO promotionPO1 = new PromotionPO("161250220", "光棍节大促销", PromotionType.CustomerOriented, beginTime, endTime, createTime,
                 CustomerGrade.FIVE, 1000, null, 0.1, 10000, voucherEndTime);
-        PromotionPO promotionPO2 = new PromotionPO("老板带着小姨子跑了，清仓大处理", PromotionType.Combo,
+        PromotionPO promotionPO2 = new PromotionPO("161250220", "老板带着小姨子跑了，清仓大处理", PromotionType.Combo,
                 beginTime, endTime, createTime, CustomerGrade.FIVE, 1000, itemPOS, 0.1, 10000, voucherEndTime);
         ResultMessage resultMessage1 = promotionData.insert(promotionPO1).t;
         ResultMessage resultMessage2 = promotionData.insert(promotionPO2).t;

@@ -21,6 +21,8 @@ public class PromotionPO implements Serializable {
     private static final long serialVersionUID = 213143123109L;
     private int id; //id
 
+    private String creatorId;
+
     private String name; //促销策略名称
 
     private PromotionType type;  //促销策略类型
@@ -50,6 +52,7 @@ public class PromotionPO implements Serializable {
     public String toString() {
         return "PromotionPO{" +
                 "id=" + id +
+                ", creatorId='" + creatorId + '\'' +
                 ", name='" + name + '\'' +
                 ", type=" + type +
                 ", startDate=" + startDate +
@@ -62,6 +65,32 @@ public class PromotionPO implements Serializable {
                 ", vouchers=" + vouchers +
                 ", vouchersEndDate=" + vouchersEndDate +
                 '}';
+    }
+
+    @Column(name = "CREATOR_ID", nullable = false, length = 20)
+    public String getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    public PromotionPO(String creatorId, String name, PromotionType type,
+                       Date startDate, Date endDate, Date time, CustomerGrade level, double total,
+                       List<PromotionPackageItemPO> goods, double off, double vouchers, Date vouchersEndDate) {
+        this.creatorId = creatorId;
+        this.name = name;
+        this.type = type;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.time = time;
+        this.level = level;
+        this.total = total;
+        this.goods = goods;
+        this.off = off;
+        this.vouchers = vouchers;
+        this.vouchersEndDate = vouchersEndDate;
     }
 
     public PromotionPO(String name, PromotionType type, Date startDate, Date endDate, CustomerGrade level,

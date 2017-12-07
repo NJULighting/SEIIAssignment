@@ -1,6 +1,6 @@
 package nju.lighting.bl.accountbl;
 
-import nju.lighting.bl.userbl.LoginHelper;
+import nju.lighting.bl.userbl.LoginTestHelper;
 import nju.lighting.vo.account.AccountVO;
 import org.junit.After;
 import org.junit.Before;
@@ -21,7 +21,7 @@ public class AccountManagerTest {
 
     @Before
     public void setUp() throws Exception {
-        LoginHelper.INSTANCE.login("161250068", "2333");
+        LoginTestHelper.loginAuthorizedUser();
     }
 
     @Test

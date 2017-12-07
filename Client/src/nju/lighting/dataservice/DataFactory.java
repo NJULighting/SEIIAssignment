@@ -2,7 +2,9 @@ package nju.lighting.dataservice;
 
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
+import nju.lighting.dataservice.initdataservice.InitDataService;
 import nju.lighting.dataservice.logdataservice.LogDataService;
+import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 
 import javax.naming.Context;
@@ -25,6 +27,8 @@ public class DataFactory {
         databaseMap.put(AccountDataService.class, "accountDataService");
         databaseMap.put(LogDataService.class, "logDataService");
         databaseMap.put(CustomerDataService.class, "customerDataService");
+        databaseMap.put(InitDataService.class, "initDataService");
+        databaseMap.put(PromotionDataService.class, "promotionDataService");
     }
 
     public static AccountDataService getAccountDataBase() throws NamingException {

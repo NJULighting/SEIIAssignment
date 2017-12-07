@@ -1,6 +1,7 @@
 package nju.lighting.po.init;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,7 +12,8 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "INIT_INFO")
-public class InitPO {
+public class InitPO implements Serializable {
+    private static final long serialVersionUID = 2418894342385L;
 
     private int id;
 
@@ -21,7 +23,8 @@ public class InitPO {
 
     private String url;
 
-    public InitPO() {}
+    public InitPO() {
+    }
 
     @Override
     public String toString() {

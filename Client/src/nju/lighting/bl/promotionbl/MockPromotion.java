@@ -8,12 +8,9 @@ import shared.PromotionType;
  *
  * @author 陈俊宇
  */
-public class MockPromotion extends Promotion {
+@Deprecated
+public class MockPromotion {
     double voucher;
     PromotionType type;
 
-    public MockPromotion(double voucher, PromotionType type) {
-        this.voucher = voucher;
-        this.type = type;
-    }
 }

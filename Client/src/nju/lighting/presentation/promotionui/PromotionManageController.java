@@ -23,7 +23,7 @@ import nju.lighting.vo.promotion.PromotionVO;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -33,9 +33,9 @@ import java.util.ResourceBundle;
  * @author 陈俊宇
  */
 public class PromotionManageController implements Initializable {
-    ArrayList<PromotionVO> promotions;
-    PromotionBLService promotionBLService = new PromotionBLService_Stub();
-    int itemsPerPage = 10;
+    private List<PromotionVO> promotions;
+    private PromotionBLService promotionBLService = new PromotionBLService_Stub();
+    private int itemsPerPage = 10;
     double PREF_WIDTH = 300, PREF_HEIGHT = 30;
     static PromotionVO selectedPromotion;
 

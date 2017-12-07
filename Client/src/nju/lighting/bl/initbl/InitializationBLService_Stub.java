@@ -4,8 +4,8 @@ import nju.lighting.blservice.initblservice.InitializationBLService;
 import nju.lighting.vo.InitVO;
 import shared.ResultMessage;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/10/22.
@@ -14,19 +14,12 @@ import java.util.ArrayList;
  */
 public class InitializationBLService_Stub implements InitializationBLService {
     @Override
-    public InitVO getInitInfo()  {
+    public List<InitVO> getInitInfo()  {
         return null;
     }
 
     @Override
-    public ResultMessage commit(InitVO vo)  {
-        return vo == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
-    }
-
-    @Override
-    public ArrayList<InitVO> getHistoryInfo()  {
-        ArrayList<InitVO> initVOS = new ArrayList<>();
-        initVOS.add(getInitInfo());
-        return initVOS;
+    public ResultMessage initiateAccount()  {
+        return ResultMessage.FAILURE;
     }
 }

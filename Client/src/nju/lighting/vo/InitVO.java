@@ -1,6 +1,7 @@
 package nju.lighting.vo;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created on 2017/10/21.
@@ -8,47 +9,37 @@ import java.util.ArrayList;
  * @author Liao
  */
 public class InitVO {
-    private ArrayList<String> commodityCategories;
-    private ArrayList<String> commodities;
-    private ArrayList<String> customers;
-    private ArrayList<String> accounts;
+    private final int id;
+    private final Date time;
+    private final String userID;
+    private String url;
+    private String username;
 
-    public InitVO(ArrayList<String> commodityCategories, ArrayList<String> commodities, ArrayList<String> customers, ArrayList<String> accounts) {
-        this.commodityCategories = commodityCategories;
-        this.commodities = commodities;
-        this.customers = customers;
-        this.accounts = accounts;
+    public InitVO(int id, Date time, String userID, String url, String username) {
+        this.id = id;
+        this.time = time;
+        this.userID = userID;
+        this.url = url;
+        this.username = username;
     }
 
-    public ArrayList<String> getCommodityCategories() {
-        return commodityCategories;
+    public int getId() {
+        return id;
     }
 
-    public void setCommodityCategories(ArrayList<String> commodityCategories) {
-        this.commodityCategories = commodityCategories;
+    public Date getTime() {
+        return time;
     }
 
-    public ArrayList<String> getCommodities() {
-        return commodities;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setCommodities(ArrayList<String> commodities) {
-        this.commodities = commodities;
+    public String getUrl() {
+        return url;
     }
 
-    public ArrayList<String> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(ArrayList<String> customers) {
-        this.customers = customers;
-    }
-
-    public ArrayList<String> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(ArrayList<String> accounts) {
-        this.accounts = accounts;
+    public String getUsername() {
+        return username;
     }
 }

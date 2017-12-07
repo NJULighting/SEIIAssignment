@@ -22,7 +22,7 @@ import java.util.List;
  * Description:
  * @author Liao
  */
-public enum UserManager {
+enum UserManager {
     INSTANCE;
 
     private UserDataService userDataService;

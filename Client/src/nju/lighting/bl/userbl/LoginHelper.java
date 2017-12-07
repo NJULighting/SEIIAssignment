@@ -19,7 +19,7 @@ import java.util.Optional;
  * Description:
  * @author Liao
  */
-public enum LoginHelper {
+enum LoginHelper {
     /**
      * Singleton
      */

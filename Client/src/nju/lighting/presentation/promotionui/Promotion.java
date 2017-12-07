@@ -2,9 +2,7 @@ package nju.lighting.presentation.promotionui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import nju.lighting.vo.promotion.PriceOrientedVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.PromotionType;
 

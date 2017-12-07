@@ -1,38 +1,19 @@
 package nju.lighting.presentation.documentui;
 
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.JFXTreeView;
-import com.sun.javafx.scene.control.skin.TableHeaderRow;
-import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
-import javafx.util.Callback;
-import nju.lighting.bl.documentbl.giftdoc.GiftDoc;
-import nju.lighting.bl.documentbl.giftdoc.GiftDocItem;
 import nju.lighting.presentation.mainui.CommonFather;
-import nju.lighting.vo.doc.giftdoc.GiftDocVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemListVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 
-import java.awt.event.MouseEvent;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
-
-import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 /**
  * Created on 2017/11/27.
@@ -81,7 +62,7 @@ public class GiftListController extends CommonFather  {
                     cellData.getValue().countProperty());
             subtotal.setCellValueFactory(cellData ->
                     cellData.getValue().subtotalProperty());
-            ArrayList<GiftItemVO> giftItemVOS=giftItemListVO.getGiftItemVOs();
+            List<GiftItemVO> giftItemVOS=giftItemListVO.getGiftItemVOs();
 
             int size = giftItemVOS.size();
             price.setCellValueFactory(cellData -> cellData.getValue().priceProperty());

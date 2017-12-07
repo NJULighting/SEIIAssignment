@@ -18,22 +18,24 @@ import java.util.List;
 public class PromotionPO implements Serializable {
     private static final long serialVersionUID = 213143123109L;
 
-    private int id; //id
-    private String name; //促销策略名称
-    private PromotionType type;  //促销策略类型
-    private Date startDate;  //起始日期
-    private Date endDate;  //截止日期
-    private Date time; //创建时间
-    private CustomerGrade level; //针对不同级别用户中用户的级别
-    private double total;  //针对不同总价的促销策略中的总价
-    private List<PromotionPackageItemPO> goods; //组合特价包裹
-    private double off;  //折让金额
-    private double vouchers; //代金券金额
-    private Date vouchersEndDate;  //代金券截止日期
+    private int id;
+    private String name;
+    private String creatorID;
+    private PromotionType type;
+    private Date startDate;
+    private Date endDate;
+    private Date time;
+    private CustomerGrade level;
+    private double total;
+    private List<PromotionPackageItemPO> goods;
+    private double off;
+    private double vouchers;
+    private Date vouchersEndDate;
 
-    public PromotionPO(int id, String name, PromotionType type, Date startDate, Date endDate, Date time, CustomerGrade level
+    public PromotionPO(int id, String creatorID, String name, PromotionType type, Date startDate, Date endDate, Date time, CustomerGrade level
             , double total, List<PromotionPackageItemPO> goods, double off, double vouchers, Date vouchersEndDate) {
         this.id = id;
+        this.creatorID = creatorID;
         this.name = name;
         this.type = type;
         this.startDate = startDate;
@@ -47,9 +49,10 @@ public class PromotionPO implements Serializable {
         this.vouchersEndDate = vouchersEndDate;
     }
 
-    public PromotionPO(String name, PromotionType type, Date startDate, Date endDate, Date time, CustomerGrade level
+    public PromotionPO(String name, String creatorID, PromotionType type, Date startDate, Date endDate, Date time, CustomerGrade level
             , double total, List<PromotionPackageItemPO> goods, double off, double vouchers, Date vouchersEndDate) {
         this.name = name;
+        this.creatorID = creatorID;
         this.type = type;
         this.startDate = startDate;
         this.endDate = endDate;

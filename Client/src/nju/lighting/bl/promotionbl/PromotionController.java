@@ -8,7 +8,6 @@ import shared.PromotionBuildInfo;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,14 +16,15 @@ import java.util.List;
  * @author 陈俊宇
  */
 public class PromotionController implements PromotionBLService {
-    PromotionManager manager = PromotionManager.INSTANCE;
+    private PromotionManager manager = PromotionManager.INSTANCE;
+
     @Override
-    public List<PromotionVO> getBenefitsPlan(CustomerGrade customerLevel, ArrayList<String> CommodityList, double total) {
+    public List<PromotionVO> getBenefitsPlan(CustomerGrade customerLevel, List<String> CommodityList, double total) {
         return null;
     }
 
     @Override
-    public ArrayList<PromotionVO> getPromotionList() {
+    public List<PromotionVO> getPromotionList() {
         return null;
     }
 
@@ -34,7 +34,7 @@ public class PromotionController implements PromotionBLService {
     }
 
     @Override
-    public TwoTuple<ResultMessage, Integer> commit(PromotionBuildInfo info) {
+    public TwoTuple<ResultMessage, PromotionVO> commit(PromotionBuildInfo info) {
         return manager.commit(info);
     }
 

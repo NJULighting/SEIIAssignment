@@ -56,4 +56,6 @@ enum PromotionManager {
             return res;
         }
     }
+
+
 }

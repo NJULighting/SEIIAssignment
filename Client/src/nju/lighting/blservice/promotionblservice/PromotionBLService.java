@@ -8,7 +8,6 @@ import shared.PromotionBuildInfo;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,13 +18,13 @@ import java.util.List;
  */
 public interface PromotionBLService {
 
-    List<PromotionVO> getBenefitsPlan(CustomerGrade customerLevel, ArrayList<String> CommodityList, double total); //得到满足条件的销售策略
+    List<PromotionVO> getBenefitsPlan(CustomerGrade customerLevel, List<String> CommodityList, double total); //得到满足条件的销售策略
 
-    ArrayList<PromotionVO> getPromotionList();
+    List<PromotionVO> getPromotionList();
 
     BasicCommodityTreeVO create();
 
-    TwoTuple<ResultMessage, Integer> commit(PromotionBuildInfo info);
+    TwoTuple<ResultMessage, PromotionVO> commit(PromotionBuildInfo info);
 
     ResultMessage modify(PromotionVO vo);
 

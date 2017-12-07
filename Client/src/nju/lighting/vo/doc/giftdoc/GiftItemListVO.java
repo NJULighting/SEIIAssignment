@@ -1,6 +1,7 @@
 package nju.lighting.vo.doc.giftdoc;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/12/4.
@@ -9,10 +10,10 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public class GiftItemListVO {
-    private ArrayList<GiftItemVO> giftItemVOs;
+    private List<GiftItemVO> giftItemVOs;
     private double total=0;
 
-    public GiftItemListVO(ArrayList<GiftItemVO> giftItemVOs) {
+    public GiftItemListVO(List<GiftItemVO> giftItemVOs) {
         this.giftItemVOs = giftItemVOs;
 
         for (int i=0;i<giftItemVOs.size();i++){
@@ -20,7 +21,7 @@ public class GiftItemListVO {
         }
     }
 
-    public ArrayList<GiftItemVO> getGiftItemVOs() {
+    public List<GiftItemVO> getGiftItemVOs() {
         return giftItemVOs;
     }
 

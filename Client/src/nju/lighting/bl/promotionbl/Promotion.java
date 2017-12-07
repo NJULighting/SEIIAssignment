@@ -14,6 +14,7 @@ import shared.PromotionType;
 
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 /**
@@ -63,13 +64,15 @@ class Promotion  {
                 .collect(Collectors.toList());
 
         // TODO: 2017/12/7 Add user id here
-        return new PromotionPO(name, type, startDate, endDate, createTime, level
+        return new PromotionPO(name, userID, type, startDate, endDate, createTime, level
                 , priceTarget, itemPOList, off, vouchers, vouchersEndDate);
     }
 
     PromotionVO toVO(){
         UserInfo info = new UserInfoImpl();
         UserVO creatorVO = info.getUserVOByID(userID);
+        if (creatorVO == null)
+            throw new NoSuchElementException("Invalid user id");
         return new PromotionVO(id, name, creatorVO, type, startDate, endDate, level, priceTarget, goods, off, vouchers, vouchersEndDate);
     }
 

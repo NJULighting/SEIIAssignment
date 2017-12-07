@@ -12,6 +12,8 @@ public class PromotionPackageItemPO implements Serializable {
     private static final long serialVersionUID = 2873143123109L;
     private String commodityId;
     private int promotionId;
+    private int count;
+    private int subtotal;
 
     public PromotionPackageItemPO(String commodityId, int promotionId) {
         this.commodityId = commodityId;
@@ -20,5 +22,9 @@ public class PromotionPackageItemPO implements Serializable {
 
     public PromotionPackageItemPO(String commodityId) {
         this.commodityId = commodityId;
+    }
+
+    public String getCommodityId() {
+        return commodityId;
     }
 }

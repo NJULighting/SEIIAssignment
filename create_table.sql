@@ -247,6 +247,7 @@ CREATE TABLE PROMOTION_COMMODITY (
 	ID integer,
 	PROMOTION_ID integer,
 	GOOD_ID varchar(36),
+	COUNT integer,
 	primary key(ID)
 );
 

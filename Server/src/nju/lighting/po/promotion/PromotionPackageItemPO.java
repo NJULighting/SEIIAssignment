@@ -16,8 +16,19 @@ public class PromotionPackageItemPO implements Serializable {
     private int id;
     private int promotionId;
 
+    private int commodityCount = 1;
+
     public PromotionPackageItemPO() {
 
+    }
+
+    @Column(name = "COUNT", nullable = false)
+    public int getCommodityCount() {
+        return commodityCount;
+    }
+
+    public void setCommodityCount(int commodityCount) {
+        this.commodityCount = commodityCount;
     }
 
     public PromotionPackageItemPO(String commodityId, int id, int promotionId) {

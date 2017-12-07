@@ -73,8 +73,5 @@ public class CustomerBLService_Stub implements CustomerBLService {
         } else return null;
     }
 
-    @Override
-    public ResultMessage changeReceivableLimit(int customerID, double newLimit) {
-        return null;
-    }
+
 }

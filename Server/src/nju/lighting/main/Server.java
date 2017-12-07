@@ -4,11 +4,13 @@ import nju.lighting.data.accountdata.AccountData;
 import nju.lighting.data.customerdata.CustomerData;
 import nju.lighting.data.initdata.InitData;
 import nju.lighting.data.logdata.LogData;
+import nju.lighting.data.promotiondata.PromotionData;
 import nju.lighting.data.userdata.UserData;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
 import nju.lighting.dataservice.initdataservice.InitDataService;
 import nju.lighting.dataservice.logdataservice.LogDataService;
+import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 
 import javax.naming.Context;
@@ -32,9 +34,11 @@ public class Server {
             LogDataService logDataService = new LogData();
             CustomerDataService customerDataService = new CustomerData();
             InitDataService initDataService = new InitData();
+            PromotionDataService promotionDataService = new PromotionData();
 
             Context namingContext = new InitialContext();
             LocateRegistry.createRegistry(8888);
+            namingContext.bind(ADDRESS + "promotionDataService", promotionDataService);
             namingContext.bind(ADDRESS + "initDataService", initDataService);
             namingContext.bind(ADDRESS + "customerDataService", customerDataService);
             namingContext.bind(ADDRESS + "logDataService", logDataService);

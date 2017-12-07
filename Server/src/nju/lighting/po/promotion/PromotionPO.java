@@ -5,20 +5,20 @@ import shared.CustomerGrade;
 import shared.PromotionType;
 
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 /**
  * Created on 2017/10/19.
  * Description:
- *
  * @author 陈俊宇
  */
 @Entity
 @Table(name = "PROMOTION")
-public class PromotionPO {
-
+public class PromotionPO implements Serializable {
+    private static final long serialVersionUID = 213143123109L;
     private int id; //id
 
     private String name; //促销策略名称
@@ -43,7 +43,8 @@ public class PromotionPO {
 
     private Date vouchersEndDate;  //代金券截止日期
 
-    public PromotionPO() {}
+    public PromotionPO() {
+    }
 
     @Override
     public String toString() {

@@ -26,12 +26,12 @@ public class GiftItemVO {
         this.subtotal=commodity.getRecentSellPrice()*count;
     }
 
-    public double getSubtotal() {
-        return subtotal;
+    public String getCommodityID() {
+        return commodity.getId();
     }
 
-    public BasicCommodityItemVO getCommodity() {
-        return commodity;
+    public double getSubtotal() {
+        return subtotal;
     }
 
     public int getCount() {

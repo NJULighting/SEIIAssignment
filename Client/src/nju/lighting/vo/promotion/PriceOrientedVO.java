@@ -11,11 +11,9 @@ import java.util.Date;
 /**
  * Created on 2017/11/19.
  * Description
- *
  * @author 陈俊宇
  */
-public class
-PriceOrientedVO extends PromotionVO {
+public class PriceOrientedVO extends PromotionVO {
     private double price;   //目标金额
 
     private double off;

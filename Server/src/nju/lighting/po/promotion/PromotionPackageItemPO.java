@@ -1,21 +1,19 @@
 package nju.lighting.po.promotion;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created on 2017/11/27.
  * Description:
- *
  * @author iznauy
  */
 @Entity
 @Table(name = "PROMOTION_COMMODITY")
-public class PromotionPackageItemPO {
-
+public class PromotionPackageItemPO implements Serializable {
+    private static final long serialVersionUID = 2873143123109L;
     private String commodityId;
-
     private int id;
-
     private int promotionId;
 
     public PromotionPackageItemPO() {
@@ -32,7 +30,6 @@ public class PromotionPackageItemPO {
         this.commodityId = commodityId;
         this.promotionId = promotionId;
     }
-
 
 
     @Override

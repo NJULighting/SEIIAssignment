@@ -1,5 +1,7 @@
 package nju.lighting.bl.userbl;
 
+import nju.lighting.vo.UserVO;
+
 /**
  * Created on 2017/11/14.
  * Description:
@@ -24,4 +26,6 @@ public interface UserInfo {
      * @return id of the user
      */
     String getIDOfSignedUser();
+
+    UserVO getUserVOByID(String userID);
 }

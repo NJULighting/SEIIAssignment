@@ -1,11 +1,14 @@
 package nju.lighting.bl.initbl;
 
+import nju.lighting.bl.logbl.Logger;
+import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.initdataservice.InitDataService;
 import nju.lighting.po.init.InitPO;
 import nju.lighting.vo.InitVO;
+import shared.OPType;
 import shared.ResultMessage;
 
 import javax.naming.NamingException;
@@ -24,9 +27,11 @@ enum InitHelper {
     INSTANCE;
 
     private InitDataService dataService;
+    private Logger logger;
 
     InitHelper() {
         try {
+            logger = new UserLogger();
             dataService = DataFactory.getDataBase(InitDataService.class);
         } catch (NamingException e) {
             e.printStackTrace();
@@ -55,7 +60,10 @@ enum InitHelper {
     ResultMessage createInit() {
         UserInfo userInfo = new UserInfoImpl();
         try {
-            return dataService.createInit(userInfo.getIDOfSignedUser(), new Date());
+            ResultMessage res = dataService.createInit(userInfo.getIDOfSignedUser(), new Date());
+            if (res == ResultMessage.SUCCESS)
+                logger.add(OPType.ADD, "完成期初建账");
+            return res;
         } catch (RemoteException e) {
             e.printStackTrace();
             return ResultMessage.FAILURE;

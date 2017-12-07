@@ -3,6 +3,7 @@ package nju.lighting.bl.userbl;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
+import nju.lighting.vo.UserVO;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
@@ -37,5 +38,10 @@ public class UserInfoImpl implements UserInfo {
     @Override
     public String getIDOfSignedUser() {
         return LoginHelper.INSTANCE.getSignedInUser().getId();
+    }
+
+    @Override
+    public UserVO getUserVOByID(String userID) {
+        return UserManager.INSTANCE.getUser(userID);
     }
 }

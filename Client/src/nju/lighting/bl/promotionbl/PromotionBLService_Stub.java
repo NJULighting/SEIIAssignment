@@ -8,20 +8,16 @@ import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.BasicCommodityTreeVO;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
-import nju.lighting.vo.doc.giftdoc.GiftItemListVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.promotion.ComboPromotionVO;
 import nju.lighting.vo.promotion.CustomerOrientedPromotionVO;
 import nju.lighting.vo.promotion.PriceOrientedVO;
 import nju.lighting.vo.promotion.PromotionVO;
-import shared.CustomerGrade;
-import shared.PromotionType;
-import shared.ResultMessage;
+import shared.*;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created on 2017/10/21.
@@ -32,7 +28,7 @@ import java.util.Date;
 public class PromotionBLService_Stub implements PromotionBLService {
 
     @Override
-    public ArrayList<PromotionVO> getBenefitsPlan(int customerLevel, ArrayList<String> CommodityList, double total) {
+    public List<PromotionVO> getBenefitsPlan(CustomerGrade customerLevel, ArrayList<String> CommodityList, double total) {
         BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222", "日本LED无障碍灯泡", null,
                 100, 100, 100);
         BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223", "日本LED无障碍灯泡" + "-b", null,
@@ -87,7 +83,7 @@ public class PromotionBLService_Stub implements PromotionBLService {
     }
 
     @Override
-    public ResultMessage commit(PromotionVO vo) {
+    public TwoTuple<ResultMessage, Integer> commit(PromotionBuildInfo info) {
         return null;
     }
 
@@ -97,7 +93,7 @@ public class PromotionBLService_Stub implements PromotionBLService {
     }
 
     @Override
-    public ResultMessage delete(PromotionVO vo) {
+    public ResultMessage delete(int promotionID) {
         return ResultMessage.FAILURE;
     }
 }

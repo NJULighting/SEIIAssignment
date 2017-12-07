@@ -43,8 +43,11 @@ public class CommentsController extends CommonFather {
 
     @FXML
     void ok(){
-        approvalUIController.setComment(comment.getText());
-        dialog.hide();
+        if (comment.getText()!=null&&comment.getText().length()!=0){
+            approvalUIController.setComment(comment.getText());
+            dialog.hide();
+        }
+
     }
 
     @FXML

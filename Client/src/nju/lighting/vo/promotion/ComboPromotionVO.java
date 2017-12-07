@@ -1,6 +1,7 @@
 package nju.lighting.vo.promotion;
 
 
+import nju.lighting.vo.UserVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import shared.PromotionType;
 
@@ -20,8 +21,9 @@ public class ComboPromotionVO extends PromotionVO{
 
     private double off;     //组合商品降价额度
 
-    public ComboPromotionVO(String name, PromotionType type, Date startDate, Date endDate, ArrayList<GiftItemVO> combo, double total, double off) {
-        super(name, type, startDate, endDate);
+    public ComboPromotionVO(String name, UserVO creator, PromotionType type, Date startDate, Date endDate,
+                            ArrayList<GiftItemVO> combo, double total, double off) {
+        super(name, creator, type, startDate, endDate);
         this.combo = combo;
         this.total = total;
         this.off = off;

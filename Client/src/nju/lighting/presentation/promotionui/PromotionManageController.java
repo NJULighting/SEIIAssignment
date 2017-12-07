@@ -1,10 +1,10 @@
 package nju.lighting.presentation.promotionui;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,13 +15,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import nju.lighting.bl.promotionbl.Promotion;
+
 import nju.lighting.bl.promotionbl.PromotionBLService_Stub;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
+import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.vo.promotion.PromotionVO;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -37,6 +37,7 @@ public class PromotionManageController implements Initializable {
     PromotionBLService promotionBLService = new PromotionBLService_Stub();
     int itemsPerPage = 10;
     double PREF_WIDTH = 300, PREF_HEIGHT = 30;
+    static PromotionVO selectedPromotion;
 
     @FXML
     Pagination pagination;
@@ -130,14 +131,28 @@ public class PromotionManageController implements Initializable {
             if (item != null) {
                 name=new Label(item.getName());
                 type=new Label(item.getType().toString());
-                time=new Label(item.getStartDate().toString()+" - "+
-                        item.getEndDate());
+                time=new Label(DateHelper.toString(item.getStartDate())+" - "+
+                        DateHelper.toString(item.getEndDate()));
                 openBtn=new JFXButton("打开");
                 invalidBtn=new JFXButton("失效");
                 buttonBox=new HBox(openBtn,invalidBtn);
                 buttonBox.setVisible(false);
                 buttonBox.setSpacing(25);
-                buttonBox.setPadding(new Insets(0,0,0,150));
+                buttonBox.setPadding(new Insets(0,0,0,15));
+
+                openBtn.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        PromotionManageController.selectedPromotion=item;
+                        System.out.println(PromotionManageController.selectedPromotion.getType());
+                        System.out.println(PromotionManageController.selectedPromotion);
+                        try {
+                            new Promotion(item);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
 
                 setGraphic(new HBox(name,type,time,buttonBox));
                 setOnMouseEntered(new EventHandler<MouseEvent>() {

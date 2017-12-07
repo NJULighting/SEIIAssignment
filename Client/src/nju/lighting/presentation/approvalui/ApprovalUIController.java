@@ -65,14 +65,14 @@ public class ApprovalUIController implements Initializable {
     JFXButton rejectBtn;
 
 
-
     @FXML
     void approve() {
+        approvalBLService = new ApprovalBLService_Stub();
         if (selectedDocList != null && selectedDocList.size() != 0) {
             DocVO currentDoc;
             for (int i = 0; i < selectedDocList.size(); i++) {
                 currentDoc = findDoc(((Label) selectedDocList.get(i)).getText());
-                    approvalBLService.approve(new HistoryDocVO(Client.user.getID(), "", currentDoc));
+                approvalBLService.approve(new HistoryDocVO(Client.getUserVO().getID(), "", currentDoc));
             }
         }
         refresh();
@@ -80,35 +80,40 @@ public class ApprovalUIController implements Initializable {
 
     @FXML
     void reject() throws IOException {
-        dialog=new Stage();
-        DocVO currentDoc=findDoc(((Label) selectedDocList.get(0)).getText());
+        dialog = new Stage();
+        DocVO currentDoc = findDoc(((Label) selectedDocList.get(0)).getText());
 
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("comments.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("comments.fxml"));
         dialog.setScene(new Scene(loader.load()));
-        CommentsController controller=loader.getController();
+        CommentsController controller = loader.getController();
         controller.setApprovalUIController(this);
 
         dialog.initStyle(StageStyle.TRANSPARENT);
         //在对话框关闭之前无法返回主界面
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.showAndWait();
-        approvalBLService.reject(new HistoryDocVO(Client.user.getID(),comment,currentDoc));
-        refresh();
+
+        if (comment != null){
+            approvalBLService.reject(new HistoryDocVO(Client.getUserVO().getID(), comment, currentDoc));
+            refresh();
+        }
+
     }
 
-    void refresh(){
+    void refresh() {
         docList.getItems().removeAll(selectedDocList);
 
-        if (docList.getItems().size()>0){
+        if (docList.getItems().size() > 0) {
             docList.getSelectionModel().clearAndSelect(0);
             rejectBtn.setDisable(false);
             showSelectedDoc();
-        }else {
+        } else {
             approveBtn.setDisable(true);
             rejectBtn.setDisable(true);
             detail.getChildren().clear();
         }
     }
+
     @FXML
     public void clicked(MouseEvent event) {
         selectedDocList = docList.getSelectionModel().getSelectedItems();

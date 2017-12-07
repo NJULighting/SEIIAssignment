@@ -31,7 +31,7 @@
     -fx-text-fill:black;
     -fx-font-size: 15;
     -fx-border-width: 0;
-    -fx-background-color:ghostwhite;
+    -fx-background-color:white;
 }
 .table-view:focused .table-row-cell:filled:focused:selected {
     -fx-background-color: transparent;

@@ -10,11 +10,14 @@ import java.util.ArrayList;
  */
 public class GiftItemListVO {
     private ArrayList<GiftItemVO> giftItemVOs;
-    private double total;
+    private double total=0;
 
-    public GiftItemListVO(ArrayList<GiftItemVO> giftItemVOs, double total) {
+    public GiftItemListVO(ArrayList<GiftItemVO> giftItemVOs) {
         this.giftItemVOs = giftItemVOs;
-        this.total = total;
+
+        for (int i=0;i<giftItemVOs.size();i++){
+            total+=giftItemVOs.get(i).getSubtotal();
+        }
     }
 
     public ArrayList<GiftItemVO> getGiftItemVOs() {

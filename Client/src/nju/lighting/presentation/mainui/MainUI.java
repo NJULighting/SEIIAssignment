@@ -2,6 +2,7 @@ package nju.lighting.presentation.mainui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -25,10 +26,11 @@ public class MainUI {
      * @throws IOException
      */
 
-    public VBox root;
-    public Pane up;
-    public Scene scene;
-    public Pane[] bottoms;
+//    public VBox root;
+//    public Pane up;
+//    public Scene scene;
+//    public Pane[] bottoms;
+
 
     static HashMap<Identity,String> hashMap=new HashMap<>();
 
@@ -38,26 +40,52 @@ public class MainUI {
         hashMap.put(Identity.SALE_MANAGER,"SalesManager.fxml");
     }
 
-    public MainUI(Identity identity) throws IOException {
-        Stage stage=new Stage();
+//    public MainUI(Identity identity) throws IOException {
+//
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource(hashMap.get(identity)));
+//        Pane temp= loader.load();
+//        MainUIController controller = loader.getController();
+//
+//        up =temp;
+//        root=new VBox();
+//        root.getChildren().add(up);
+//        bottoms=new Pane[controller.MAIN_BUTTON_SIZE];
+//
+//        controller.setMainUI(this);
+//        scene = new Scene(root);
+//        controller.jumpTo(0);
+//        Stage stage=new Stage();
+//        stage.setScene(scene);
+//        stage.getScene().getStylesheets().add(Client.class.getResource("../custom.css").toExternalForm());
+//        Client.setPrimaryStage(stage);
+//
+//    }
+
+    public BorderPane root;
+    public Pane up;
+    public VBox left;
+    public Pane[] center;
+
+    public MainUI(Identity identity) throws IOException{
+        Stage stage =new Stage();
         Client.setPrimaryStage(stage);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(hashMap.get(identity)));
-        Pane temp= loader.load();
-        MainUIController controller = loader.getController();
-
-        up =temp;
-        root=new VBox();
-        root.getChildren().add(up);
-        bottoms=new Pane[controller.MAIN_BUTTON_SIZE];
-
+        FXMLLoader loader=new FXMLLoader(getClass().getResource(hashMap.get(identity)));
+        left=loader.load();
+        System.out.println("left" + left);
+        MainUIController controller=loader.getController();
+        up=FXMLLoader.load(getClass().getResource("Title.fxml"));
+        System.out.println(controller);
+        center=new Pane[controller.MAIN_BUTTON_SIZE];
         controller.setMainUI(this);
-        scene = new Scene(root);
+        root=new BorderPane();
+        root.setTop(up);
+        root.setLeft(left);
         controller.jumpTo(0);
-
-        stage.setScene(scene);
+        stage.setScene(new Scene(root));
         stage.getScene().getStylesheets().add(Client.class.getResource("../custom.css").toExternalForm());
 
 
     }
+
 }

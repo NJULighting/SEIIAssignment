@@ -19,9 +19,6 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public class ApprovalBLService_Stub implements ApprovalBLService {
-
-    public ArrayList<DocVO> docList;
-
     @Override
     public ArrayList<DocVO> getDocumentList() {
         BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222","日本LED无障碍灯泡", null,
@@ -80,19 +77,7 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         GiftDocVO vo3 = new GiftDocVO(null,"00001", "ZPD-20171021-0011",DocType.GIFT, gifts2, "N0.1");
         GiftDocVO vo4 = new GiftDocVO(null,"00001", "ZPD-20171021-0012",DocType.GIFT, gifts2, "N0.1");
         GiftDocVO vo5 = new GiftDocVO(null,"00001", "ZPD-20171021-0013",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo6 = new GiftDocVO(null,"00001", "ZPD-20171021-0014",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo7 = new GiftDocVO(null,"00001", "ZPD-20171021-0015",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo8 = new GiftDocVO(null,"00001", "ZPD-20171021-0016",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo9 = new GiftDocVO(null,"00001", "ZPD-20171021-0017",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo10 = new GiftDocVO(null,"00001", "ZPD-20171021-0018",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo11 = new GiftDocVO(null,"00001", "ZPD-20171021-0019",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo12 = new GiftDocVO(null,"00001", "ZPD-20171021-0020",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo13 = new GiftDocVO(null,"00001", "ZPD-20171021-0021",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo14 = new GiftDocVO(null,"00001", "ZPD-20171021-0022",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo15 = new GiftDocVO(null,"00001", "ZPD-20171021-0023",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo16 = new GiftDocVO(null,"00001", "ZPD-20171021-0024",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo17 = new GiftDocVO(null,"00001", "ZPD-20171021-0025",DocType.GIFT, gifts2, "N0.1");
-
+        GiftDocVO vo6 = new GiftDocVO(null,"00001", "ZPD-20171021-0015",DocType.GIFT, gifts2, "N0.1");
         ArrayList<DocVO> DocVOs = new ArrayList<>();
         DocVOs.add(vo1);
         DocVOs.add(vo2);
@@ -100,20 +85,7 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         DocVOs.add(vo4);
         DocVOs.add(vo5);
         DocVOs.add(vo6);
-        DocVOs.add(vo7);
-        DocVOs.add(vo8);
-        DocVOs.add(vo9);
-        DocVOs.add(vo10);
-        DocVOs.add(vo11);
-        DocVOs.add(vo12);
-        DocVOs.add(vo13);
-        DocVOs.add(vo14);
-        DocVOs.add(vo15);
-        DocVOs.add(vo16);
-        DocVOs.add(vo17);
 
-
-        docList=DocVOs;
         return DocVOs;
 
 
@@ -121,9 +93,7 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
 
     @Override
     public ResultMessage approve(HistoryDocVO vo) {
-        docList.remove(vo.getDocVO());
         return ResultMessage.SUCCESS;
-
     }
 
     @Override

@@ -3,7 +3,7 @@ package nju.lighting.bl.documentbl.stockdoc;
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.MockCommodity;
 import nju.lighting.bl.customerbl.CustomerInfo;
-import nju.lighting.bl.customerbl.CustomerManager;
+import nju.lighting.bl.customerbl.CustomerInfoImpl;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.stockdoc.StockReturnDocPO;
 import nju.lighting.vo.DocVO;
@@ -27,8 +27,8 @@ public class StockReturnDoc extends StockTypeDoc{
      * 审批单据，减少客户应收
      */
     public void approve(){
-        CustomerInfo info = CustomerManager.INSTANCE;
-        info.changeReceivable(this.getCustomerId(),0-this.getTotalAmount());
+        CustomerInfo info = new CustomerInfoImpl();
+        info.changeReceivable(Integer.parseInt(getCustomerId()),0-this.getTotalAmount());
         //减少商品数量
         CommodityInfo commodityInfo = new MockCommodity();
         int listNum = this.getCommodityListNumber();

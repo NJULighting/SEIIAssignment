@@ -48,7 +48,7 @@ public abstract class CommonFather implements Initializable {
 
 
     public void mouseExit(MouseEvent event) {
-            ((Button) event.getSource()).setOpacity(MISS_OPACITY);
+        ((Button) event.getSource()).setOpacity(MISS_OPACITY);
     }
 
     @FXML

@@ -35,16 +35,13 @@ import java.util.ResourceBundle;
  */
 public class Client extends Application {
     UserBLService userBLService;
+    private static UserVO userVO;
+
 
     private double XOffset;
     private double YOffSet;
     private Button[] buttons;
 
-    public static UserVO user;
-
-    public static Stage getPrimaryStage() {
-        return primaryStage;
-    }
 
     static Parent root;
 
@@ -59,6 +56,15 @@ public class Client extends Application {
         primaryStage=stage;
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
+    }
+
+
+    public static UserVO getUserVO() {
+        return userVO;
+    }
+
+    public static void setUserVO(UserVO userVO) {
+        Client.userVO = userVO;
     }
 
     @Override

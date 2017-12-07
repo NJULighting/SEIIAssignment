@@ -194,21 +194,19 @@ root {
 
 .jfx-check-box {
 
-    /*-fx-font-weight: BOLD;*/
-    -fx-font-size: 16;
-
+    -fx-font-weight: BOLD;
 
 }
 
 
 
-/*.custom-jfx-check-box {*/
+.custom-jfx-check-box {
 
-    /*-jfx-checked-color: RED;*/
+    -jfx-checked-color: RED;
 
-    /*-jfx-unchecked-color: BLACK;*/
+    -jfx-unchecked-color: BLACK;
 
-/*}*/
+}
 
 
 
@@ -222,9 +220,9 @@ root {
 
 
 }
-/*.button:filled:hover{*/
-    /*-fx-background-color: #44B449;*/
-/*}*/
+.button:filled:hover{
+    -fx-background-color: #44B449;
+}
 
 .button{}
 
@@ -355,7 +353,6 @@ root {
 }
 .jfx-list-cell:filled:hover{
     -fx-background-color: #DCDCDC;
-
 }
 
 
@@ -366,7 +363,6 @@ root {
     -fx-background-insets: 0.0;
 
     -fx-text-fill: BLACK;
-    -fx-font-size:16;
 
 }
 
@@ -383,6 +379,8 @@ root {
 .jfx-list-cell:even{
     -fx-background-color: #F5F5F5;
 }
+
+
 
 
 

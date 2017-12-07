@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
  *
  * @author 陈俊宇
  */
-public class RepositoryManagerMainUIController extends MainUIController{
+public class RepositoryManagerController extends MainUIController{
     @FXML
     Button CommodityBtn;
 

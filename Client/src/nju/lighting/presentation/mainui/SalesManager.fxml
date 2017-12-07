@@ -19,9 +19,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <VBox prefHeight="680.0" prefWidth="200.0">
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.SalesManagerController">
          <children>
             <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="首页">
                <graphic>
@@ -31,7 +29,7 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="客户管理">
+            <JFXButton fx:id="customerManageBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="客户管理">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
@@ -39,15 +37,15 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定销售单">
+            <JFXButton fx:id="makeSalesDocBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定销售单">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
-                        <Image url="@../../../../images/查看销售情况表.png" />
+                        <Image url="@../../../../images/销售单.png" />
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定销售退货单">
+            <JFXButton fx:id="makeSalesReturnDocBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定销售退货单">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
@@ -55,7 +53,7 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定进货单">
+            <JFXButton fx:id="makeStockDocBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定进货单">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
@@ -63,7 +61,7 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定进货退货单">
+            <JFXButton fx:id="makeStockReturnBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定进货退货单">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
@@ -73,5 +71,3 @@
                </graphic></JFXButton>
          </children>
       </VBox>
-   </children>
-</Pane>

@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
  *
  * @author 陈俊宇
  */
-public class Title  extends CommonFather{
+public class TitleController extends CommonFather{
     @FXML
     Button close;
     @FXML

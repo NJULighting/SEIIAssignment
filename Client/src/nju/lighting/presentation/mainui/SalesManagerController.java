@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
  *
  * @author 高梦婷
  */
-public class SalesManagerUIController extends MainUIController {
+public class SalesManagerController extends MainUIController {
     @FXML
     private Button customerManageBtn;
     @FXML

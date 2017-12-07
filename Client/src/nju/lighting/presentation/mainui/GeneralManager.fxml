@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Text?>
 
-<VBox prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.GeneralManagerUIController">
+<VBox prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.GeneralManagerController">
    <children>
       <JFXButton fx:id="approvalBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="审批单据">
          <graphic>
@@ -53,11 +43,11 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="SalesConditionBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="查看销售情况表">
+      <JFXButton fx:id="SalesConditionBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="查看销售明细表">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>
-                  <Image url="@../../../../images/查看销售情况表.png" />
+                  <Image url="@../../../../images/销售明细表.png" />
                </image>
             </ImageView>
          </graphic>

@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
  *
  * @author 陈俊宇
  */
-public class GeneralManagerUIController extends MainUIController {
+public class GeneralManagerController extends MainUIController {
 
     @FXML
     private Button promotionManageBtn;
@@ -46,7 +46,7 @@ public class GeneralManagerUIController extends MainUIController {
         buttons = new Button[]{approvalBtn, promotionManageBtn, BusinessConditionBtn, SalesConditionBtn, logBtn,
                 };
         urls = new String[]{"../approvalui/Approval.fxml", "../promotionui/PromotionManage.fxml",
-                "../documentui/BusinessConditionTable.fxml", "../documentui/SaleConditionTable.fxml",
+                "../documentui/BusinessConditionTable.fxml", "../documentui/SalesConditionTable.fxml",
                 "../logui/log.fxml"};
         MAIN_BUTTON_SIZE = 5;
         super.initialize(location, resources);

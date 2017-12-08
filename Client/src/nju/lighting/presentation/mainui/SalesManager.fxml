@@ -21,7 +21,7 @@
 
 <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.SalesManagerController">
          <children>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="首页">
+            <JFXButton fx:id="mainBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="首页">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>

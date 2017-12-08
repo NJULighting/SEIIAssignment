@@ -1,6 +1,7 @@
 package nju.lighting.data.logdata;
 
 import nju.lighting.data.userdata.UserData;
+import nju.lighting.data.userdata.UserService;
 import nju.lighting.data.utils.CommonOperation;
 import nju.lighting.dataservice.logdataservice.LogDataService;
 import nju.lighting.po.log.LogPO;
@@ -46,7 +47,7 @@ public class LogData extends UnicastRemoteObject implements LogDataService {
 
     @Override
     public List<LogPO> findByIdentity(Identity identity) throws RemoteException {
-        UserData userData = new UserData();
+        UserService userData = new UserData();
         List<UserPO> userPOS = userData.getByIdentity(identity);
         ArrayList<LogPO> logLists = new ArrayList<>();
         for (UserPO user: userPOS) {
@@ -71,7 +72,7 @@ public class LogData extends UnicastRemoteObject implements LogDataService {
     @Override
     public List<LogPO> findByTimeAndIdentity(Date from, Date to, Identity identity) throws RemoteException {
         List<LogPO> originalLogs = findByTime(from, to);
-        UserData userData = new UserData();
+        UserService userData = new UserData();
         List<UserPO> userPOS = userData.getByIdentity(identity);
         TreeSet<String> userIds = new TreeSet<>();
         for (UserPO userPO: userPOS)

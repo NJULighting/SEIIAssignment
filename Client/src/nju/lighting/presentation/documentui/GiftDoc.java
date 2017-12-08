@@ -35,7 +35,7 @@ public class GiftDoc implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        GiftListController.setGiftItemListVO(giftDocVO.getGiftItemListVO());
+        GiftListController.setGiftItemListVO(giftDocVO.getGifts());
         title.setText(giftDocVO.getDocId());
         try {
             container.getChildren().add(FXMLLoader.load(getClass().getResource("GiftList.fxml")));

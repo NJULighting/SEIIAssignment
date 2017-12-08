@@ -20,8 +20,8 @@ public class Promotion {
 
     static {
         hashMap.put(PromotionType.PriceOriented,"priceOriented.fxml");
-        hashMap.put(PromotionType.Combo,"comboPromotion.fxml");
-        hashMap.put(PromotionType.CustomerOriented,"customerOrientedPromotion.fxml");
+        hashMap.put(PromotionType.Combo,"Combo.fxml");
+        hashMap.put(PromotionType.CustomerOriented,"CustomerOriented.fxml");
     }
 
     public Promotion(PromotionVO promotionVO) throws IOException {

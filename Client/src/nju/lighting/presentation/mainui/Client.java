@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import nju.lighting.bl.userbl.UserBLServie_Stub;
 import nju.lighting.blservice.userblservice.UserBLService;
+import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.vo.UserVO;
 import shared.Identity;
 import shared.LoginReturnState;
@@ -56,6 +57,7 @@ public class Client extends Application {
         primaryStage=stage;
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
+
     }
 
 

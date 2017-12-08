@@ -18,7 +18,7 @@ import java.util.List;
  * Description: 商品模块数据层实现
  * @author iznauy
  */
-public class CommodityData extends UnicastRemoteObject implements CommodityDataService {
+public class CommodityData extends UnicastRemoteObject implements CommodityDataService, CommodityService {
 
     private CommonOperation<CommodityItemPO> commodityItemPOCommonOperation;
 

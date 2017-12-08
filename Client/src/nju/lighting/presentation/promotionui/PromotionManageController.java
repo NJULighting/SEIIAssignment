@@ -61,8 +61,8 @@ public class PromotionManageController implements Initializable {
 //
 //            name=new Label(currentPromotion.getName());
 //            //name.setPrefSize(PREF_WIDTH,PREF_HEIGHT);
-//            type=new Label(currentPromotion.getType().toString());
-//            time=new Label(currentPromotion.getStartDate().toString()+" - "+
+//            type=new Label(currentPromotion.getType().approximateTime());
+//            time=new Label(currentPromotion.getStartDate().approximateTime()+" - "+
 //            currentPromotion.getEndDate());
 //            openBtn=new JFXButton("打开");
 //            invalidBtn=new JFXButton("失效");
@@ -131,8 +131,8 @@ public class PromotionManageController implements Initializable {
             if (item != null) {
                 name=new Label(item.getName());
                 type=new Label(item.getType().toString());
-                time=new Label(DateHelper.toString(item.getStartDate())+" - "+
-                        DateHelper.toString(item.getEndDate()));
+                time=new Label(DateHelper.approximateTime(item.getStartDate())+" - "+
+                        DateHelper.approximateTime(item.getEndDate()));
                 openBtn=new JFXButton("打开");
                 invalidBtn=new JFXButton("失效");
                 buttonBox=new HBox(openBtn,invalidBtn);

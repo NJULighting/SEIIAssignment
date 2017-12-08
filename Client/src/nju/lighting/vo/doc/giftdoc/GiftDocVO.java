@@ -7,6 +7,7 @@ import shared.DocType;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created on 2017/10/21.
@@ -14,21 +15,30 @@ import java.util.Iterator;
  * @author 陈俊宇
  */
 public class GiftDocVO extends DocVO {
-    private GiftItemListVO giftItemListVO;
+    private List<GiftItemVO> gifts;
     private String customer;
+    private double total=0;
+
 
     public GiftDocVO(Date time, String creatorId, String docId, DocType type,
-                     ArrayList<GiftItemVO> gifts, String customer) {
+                     List<GiftItemVO> gifts, String customer) {
         super(time, creatorId, docId, type);
-        this.giftItemListVO = new GiftItemListVO(gifts);
         this.customer = customer;
+        this.gifts=gifts;
+        for (int i=0;i<gifts.size();i++){
+            total+=gifts.get(i).getSubtotal();
+        }
     }
 
-    public GiftItemListVO getGiftItemListVO() {
-        return giftItemListVO;
+
+
+    public List<GiftItemVO> getGifts() {
+        return gifts;
     }
 
-
+    public double getTotal() {
+        return total;
+    }
 
     public String getCustomer() {
         return customer;

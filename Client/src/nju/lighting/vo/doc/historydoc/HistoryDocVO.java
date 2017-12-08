@@ -1,6 +1,7 @@
 package nju.lighting.vo.doc.historydoc;
 
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.UserVO;
 import shared.DocType;
 import shared.HistoryDocType;
 
@@ -8,7 +9,7 @@ import java.util.Date;
 
 public class HistoryDocVO {
 
-    private String creatorId;
+    private UserVO creator;
 
     private DocVO docVO;
 
@@ -29,8 +30,8 @@ public class HistoryDocVO {
     总经理审批单据时用的构造函数，确定了historyDoc的 审批人ID，评语以及doc
     审批时间在bl层生成
      */
-    public HistoryDocVO(String creatorId, String comment, DocVO docVO) {
-        this.creatorId = creatorId;
+    public HistoryDocVO(UserVO creator, String comment, DocVO docVO) {
+        this.creator = creator;
         this.comment = comment;
         this.docVO=docVO;
     }

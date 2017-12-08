@@ -38,6 +38,7 @@ public class ApprovalUIController implements Initializable {
     ArrayList<DocVO> docs;
     ObservableList selectedDocList;
     String comment;
+    boolean cancel;
     static Stage dialog;
 
     @FXML
@@ -72,7 +73,7 @@ public class ApprovalUIController implements Initializable {
             DocVO currentDoc;
             for (int i = 0; i < selectedDocList.size(); i++) {
                 currentDoc = findDoc(((Label) selectedDocList.get(i)).getText());
-                approvalBLService.approve(new HistoryDocVO(Client.getUserVO().getID(), "", currentDoc));
+                approvalBLService.approve(new HistoryDocVO(Client.getUserVO(), "", currentDoc));
             }
         }
         refresh();
@@ -93,12 +94,14 @@ public class ApprovalUIController implements Initializable {
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.showAndWait();
 
-        if (comment != null){
-            approvalBLService.reject(new HistoryDocVO(Client.getUserVO().getID(), comment, currentDoc));
+        if (cancel) {
+
+        } else {
+            approvalBLService.reject(new HistoryDocVO(Client.getUserVO(), comment, currentDoc));
             refresh();
         }
-
     }
+
 
     void refresh() {
         docList.getItems().removeAll(selectedDocList);
@@ -155,27 +158,9 @@ public class ApprovalUIController implements Initializable {
         return null;
     }
 
-//    void initialize(String choice) {
-//        docList.getItems().clear();
-//        if (choice.equals(LABEL))
-//            addLable();
-//        else if (choice.equals(CHECKBOX))
-//            addCheckBox();
-//    }
-//
-//    void addCheckBox() {
-//        for (int i = 0; i < docs.size(); i++) {
-//            JFXCheckBox item = new JFXCheckBox(docs.get(i).getDocId());
-//            docList.getItems().addAll(item);
-//        }
-//    }
-//
-//    void addLable() {
-//        for (int i = 0; i < docs.size(); i++) {
-//            Label item = new Label(""+docs.get(i).getDocId());
-//            docList.getItems().addAll(item);
-//        }
-//    }
+    public void setCancel(boolean cancel) {
+        this.cancel = cancel;
+    }
 
     public void setComment(String comment) {
         this.comment = comment;

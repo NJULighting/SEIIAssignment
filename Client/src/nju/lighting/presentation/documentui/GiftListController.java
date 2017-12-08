@@ -8,10 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import nju.lighting.presentation.mainui.CommonFather;
-import nju.lighting.vo.doc.giftdoc.GiftItemListVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -22,13 +22,14 @@ import java.util.ResourceBundle;
  * @author 陈俊宇
  */
 public class GiftListController extends CommonFather  {
-    private  static GiftItemListVO giftItemListVO;
+    private  static List<GiftItemVO> giftsVO;
+    private double total =0;
 
     @FXML
     public TableView giftTableView;
 
     @FXML
-    public Label total;
+    public Label totalLabel;
 
     @FXML
     public TableColumn<GiftItemVO, String> commodityName;
@@ -43,16 +44,19 @@ public class GiftListController extends CommonFather  {
     public TableColumn<GiftItemVO, String> subtotal;
 
 
-    public static void setGiftItemListVO(GiftItemListVO giftItemListVO) {
-        GiftListController.giftItemListVO = giftItemListVO;
+    public static void setGiftItemListVO( List<GiftItemVO> giftItemListVO) {
+        GiftListController.giftsVO = giftItemListVO;
     }
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        for (int i=0;i<giftsVO.size();i++){
+            total+=giftsVO.get(i).getSubtotal();
+        }
 
-        if (giftItemListVO!=null){
+        if (giftsVO!=null){
 
             ObservableList giftObservableList = FXCollections.observableArrayList();
 
@@ -62,7 +66,7 @@ public class GiftListController extends CommonFather  {
                     cellData.getValue().countProperty());
             subtotal.setCellValueFactory(cellData ->
                     cellData.getValue().subtotalProperty());
-            List<GiftItemVO> giftItemVOS=giftItemListVO.getGiftItemVOs();
+            List<GiftItemVO> giftItemVOS=giftsVO;
 
             int size = giftItemVOS.size();
             price.setCellValueFactory(cellData -> cellData.getValue().priceProperty());
@@ -78,7 +82,7 @@ public class GiftListController extends CommonFather  {
             giftTableView.prefHeightProperty().bind(giftTableView.fixedCellSizeProperty().multiply(Bindings.size(giftTableView.getItems()).add(1.01)));
             disableReorder(giftTableView);
 
-            total.setText(giftItemListVO.getTotal() + "");
+            totalLabel.setText(total + "");
         }
 
 

@@ -23,10 +23,6 @@ public class CommodityCategoriesTree {
         return new CommodityCategoriesTreeVO(root.toVO(rootVO));
     }
 
-    BasicCommodityTree toBasicCommodityTree() {
-        return null;
-    }
-
     public static class TreeBuilder {
         private CommodityCategoriesTree commodityCategoriesTree;
         private List<CommodityCategoryPO> categoryPOList;

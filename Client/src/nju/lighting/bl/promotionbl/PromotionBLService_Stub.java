@@ -6,7 +6,6 @@ import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
-import nju.lighting.vo.commodity.BasicCommodityTreeVO;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.promotion.PromotionVO;

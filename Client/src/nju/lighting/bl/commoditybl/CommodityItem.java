@@ -66,7 +66,13 @@ class CommodityItem {
     }
 
     public CommodityItemVO toVO() {
-        return null;
+        return new CommodityItemVO(getId(), getName(), getModelNumber(), getRepCount(), inPrice, sellPrice,
+                basicCommodityItem.getRecentInPrice(), basicCommodityItem.getRecentSellPrice(), batch,
+                batchNumber, dateOfProduction);
+    }
+
+    private int getRepCount() {
+        return basicCommodityItem.getRepCount();
     }
 
     public String getId() {

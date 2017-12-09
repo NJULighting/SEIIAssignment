@@ -1,7 +1,6 @@
 package nju.lighting.blservice.promotionblservice;
 
 
-import nju.lighting.vo.commodity.BasicCommodityTreeVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerGrade;
 import shared.PromotionBuildInfo;

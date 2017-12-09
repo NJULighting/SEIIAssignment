@@ -64,4 +64,56 @@ public class PromotionPO implements Serializable {
         this.vouchers = vouchers;
         this.vouchersEndDate = vouchersEndDate;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCreatorID() {
+        return creatorID;
+    }
+
+    public PromotionType getType() {
+        return type;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public CustomerGrade getLevel() {
+        return level;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public List<PromotionPackageItemPO> getGoods() {
+        return goods;
+    }
+
+    public double getOff() {
+        return off;
+    }
+
+    public double getVouchers() {
+        return vouchers;
+    }
+
+    public Date getVouchersEndDate() {
+        return vouchersEndDate;
+    }
 }

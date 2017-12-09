@@ -6,7 +6,9 @@ import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.SalesDetailVO;
 import nju.lighting.vo.viewtables.BusinessConditionItemVO;
-import shared.*;
+import shared.DocumentFilter;
+import shared.ResultMessage;
+import shared.BusinessConditionFilter;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,13 +19,9 @@ import java.util.Date;
  * @author Liao
  */
 public class DocController implements DocBLService {
-    @Override
-    public DocVO createDoc(DocType type) {
-        return null;
-    }
 
     @Override
-    public TwoTuple<String,ResultMessage> commitDoc(DocVO doc) {
+    public ResultMessage commitDoc(DocVO doc) {
         return null;
     }
 

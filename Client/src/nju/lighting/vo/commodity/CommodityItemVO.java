@@ -1,45 +1,32 @@
 package nju.lighting.vo.commodity;
 
-import shared.CommodityTreeNode;
+import shared.ICommodityTreeNode;
 
 import java.util.Date;
 
 /**
  * 商品的详细信息，提供给商品模块、库存模块使用
  */
-public class CommodityItemVO implements CommodityTreeNode {
+public class CommodityItemVO {
 
     private String id;
-
     private String name;
-
-    private CommodityCategoryVO category;
-
     private String modelNumber;
-
     private int repCount;
-
     private double inPrice;
-
     private double sellPrice;
-
     private double recentInPrice;
-
     private double recentSellPrice;
-
     private String batch;
-
     private String batchNumber;
-
     private Date dateOfProduction;
 
-    public CommodityItemVO(String id, String name, CommodityCategoryVO category,
+    public CommodityItemVO(String id, String name,
                            String modelNumber, int repCount, double inPrice, double sellPrice,
                            double recentInPrice, double recentSellPrice, String batch,
                            String batchNumber, Date dateOfProduction) {
         this.id = id;
         this.name = name;
-        this.category = category;
         this.modelNumber = modelNumber;
         this.repCount = repCount;
         this.inPrice = inPrice;
@@ -50,6 +37,7 @@ public class CommodityItemVO implements CommodityTreeNode {
         this.batchNumber = batchNumber;
         this.dateOfProduction = dateOfProduction;
     }
+
 
     public String getId() {
         return id;
@@ -65,14 +53,6 @@ public class CommodityItemVO implements CommodityTreeNode {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public CommodityCategoryVO getCategory() {
-        return category;
-    }
-
-    public void setCategory(CommodityCategoryVO category) {
-        this.category = category;
     }
 
     public String getModelNumber() {
@@ -148,11 +128,6 @@ public class CommodityItemVO implements CommodityTreeNode {
     }
 
     public BasicCommodityItemVO toBasicCommodityItem() {
-        return new BasicCommodityItemVO(id, name, category, repCount, recentInPrice, recentSellPrice);
-    }
-
-    @Override
-    public boolean isCommodity() {
-        return true;
+        return new BasicCommodityItemVO(id, name, repCount, recentInPrice, recentSellPrice);
     }
 }

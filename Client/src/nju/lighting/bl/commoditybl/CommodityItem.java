@@ -1,36 +1,27 @@
 package nju.lighting.bl.commoditybl;
 
+import nju.lighting.po.commodity.CommodityItemPO;
 import nju.lighting.vo.commodity.CommodityItemVO;
-import shared.CommodityTreeNode;
 
 import java.util.Date;
 
 /**
  * 商品全部信息领域模型对象
  */
-public class CommodityItem implements CommodityTreeNode {
+class CommodityItem {
 
     private String modelNumber;
-
     private double inPrice;
-
     private double sellPrice;
-
-    /**
-     * 聚合 BasicCommodityItem
-     */
     private BasicCommodityItem basicCommodityItem;
-
     private String batch;
-
     private String batchNumber;
-
     private Date dateOfProduction;
 
-    public CommodityItem(String id, String name, CommodityCategoryItem category, String modelNumber,
-                           int repCount, double inPrice, double sellPrice,
-                           double recentInPrice, double recentSellPrice, String batch,
-                           String batchNumber, Date dateOfProduction) {
+    CommodityItem(String id, String name, int category, String modelNumber,
+                  int repCount, double inPrice, double sellPrice,
+                  double recentInPrice, double recentSellPrice, String batch,
+                  String batchNumber, Date dateOfProduction) {
         this.modelNumber = modelNumber;
         this.inPrice = inPrice;
         this.sellPrice = sellPrice;
@@ -40,56 +31,48 @@ public class CommodityItem implements CommodityTreeNode {
         this.basicCommodityItem = new BasicCommodityItem(id, name, category, repCount, recentInPrice, recentSellPrice);
     }
 
-    public String getModelNumber() {
-        return modelNumber;
+    CommodityItem(CommodityItemPO po) {
+        this(po.getId(), po.getName(), po.getCategoryId(), po.getModelNumber(), po.getRepCount(), po.getInPrice(),
+                po.getSellPrice(), po.getRecentInPrice(), po.getRecentSellPrice(), po.getBatch(), po.getBatchNumber(),
+                po.getDateOfProduction());
     }
 
-    public void setModelNumber(String modelNumber) {
-        this.modelNumber = modelNumber;
+    public String getModelNumber() {
+        return modelNumber;
     }
 
     public double getInPrice() {
         return inPrice;
     }
 
-    public void setInPrice(double inPrice) {
-        this.inPrice = inPrice;
-    }
-
     public double getSellPrice() {
         return sellPrice;
     }
 
-    public void setSellPrice(double sellPrice) {
-        this.sellPrice = sellPrice;
+    public BasicCommodityItem getBasicCommodityItem() {
+        return basicCommodityItem;
     }
 
     public String getBatch() {
         return batch;
     }
 
-    public void setBatch(String batch) {
-        this.batch = batch;
-    }
-
     public String getBatchNumber() {
         return batchNumber;
-    }
-
-    public void setBatchNumber(String batchNumber) {
-        this.batchNumber = batchNumber;
     }
 
     public Date getDateOfProduction() {
         return dateOfProduction;
     }
 
-    public void setDateOfProduction(Date dateOfProduction) {
-        this.dateOfProduction = dateOfProduction;
+    public CommodityItemVO toVO() {
+        return new CommodityItemVO(getId(), getName(), getModelNumber(), getRepCount(), inPrice, sellPrice,
+                basicCommodityItem.getRecentInPrice(), basicCommodityItem.getRecentSellPrice(), batch,
+                batchNumber, dateOfProduction);
     }
 
-    public CommodityItemVO toVO() {
-        return null;
+    private int getRepCount() {
+        return basicCommodityItem.getRepCount();
     }
 
     public String getId() {
@@ -108,44 +91,11 @@ public class CommodityItem implements CommodityTreeNode {
         basicCommodityItem.setName(name);
     }
 
-    public CommodityCategoryItem getCategory() {
-        return basicCommodityItem.getCategory();
+    public int getCategory() {
+        return basicCommodityItem.getCategoryID();
     }
 
-    public void setCategory(CommodityCategoryItem category) {
-        basicCommodityItem.setCategory(category);
-    }
-
-    public int getRepCount() {
-        return basicCommodityItem.getRepCount();
-    }
-
-    public void setRepCount(int repCount) {
-        basicCommodityItem.setRepCount(repCount);
-    }
-
-    public double getRecentInPrice() {
-        return basicCommodityItem.getRecentInPrice();
-    }
-
-    public void setRecentInPrice(double recentInPrice) {
-        basicCommodityItem.setRecentInPrice(recentInPrice);
-    }
-
-    public double getRecentSellPrice() {
-        return basicCommodityItem.getRecentSellPrice();
-    }
-
-    public void setRecentSellPrice(double recentSellPrice) {
-        basicCommodityItem.setRecentSellPrice(recentSellPrice);
-    }
-
-    public BasicCommodityItem toBasicCommodityItem() {
+    BasicCommodityItem toBasicCommodityItem() {
         return basicCommodityItem;
-    }
-
-    @Override
-    public boolean isCommodity() {
-        return true;
     }
 }

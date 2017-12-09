@@ -5,8 +5,10 @@ import shared.ResultMessage;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class CommodityDataService_Stub implements CommodityDataService {
 
@@ -44,6 +46,16 @@ public class CommodityDataService_Stub implements CommodityDataService {
         commodityCategoryPOS.add(cc2);
         commodityCategoryPOS.add(cc3);
         commodityCategoryPOS.add(cc4);
+    }
+
+    @Override
+    public List<CommodityItemPO> findByCategory(String categoryID) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public Date getRecentChangeTime() throws RemoteException {
+        return null;
     }
 
     @Override

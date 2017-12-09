@@ -1,30 +1,31 @@
 package nju.lighting.blservice.commodityblservice;
 
+import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
-import nju.lighting.vo.commodity.CommodityTreeVO;
 import shared.ResultMessage;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface CommodityBLService {
 
-    CommodityTreeVO getCommodityTreeVO() ;
+    CommodityCategoriesTreeVO getCommodityCategoriesTreeVO();
 
-    ResultMessage addCommodity(CommodityItemVO newCommodity) ;
+    ResultMessage addCommodity(CommodityItemVO newCommodity);
 
-    ArrayList<CommodityItemVO> findCommodityVOByName(String commodityName) ;
+    List<CommodityItemVO> findCommodityByCategory(int categoryID);
 
-    CommodityItemVO findCommodityVOById(String id) ;
+    List<CommodityItemVO> findCommodityVOByName(String commodityName);
 
-    ResultMessage deleteCommodity(String id) ;
+    CommodityItemVO findCommodityVOById(String id);
 
-    ResultMessage modifyCommodity(CommodityItemVO commodity) ;
+    ResultMessage deleteCommodity(String id);
 
-    ResultMessage addCategory(CommodityCategoryVO newCategory) ;
+    ResultMessage modifyCommodity(CommodityItemVO commodity);
 
-    ResultMessage deleteCategory(int id) ;
+    ResultMessage addCategory(CommodityCategoryVO newCategory);
 
-    ResultMessage modifyCategory(CommodityCategoryVO categoryItemVO) ;
+    ResultMessage deleteCategory(int id);
 
+    ResultMessage modifyCategory(CommodityCategoryVO categoryItemVO);
 }

@@ -1,29 +1,23 @@
 package nju.lighting.bl.commoditybl;
 
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
-import shared.CommodityTreeNode;
 
 /**
  * 商品基本信息领域对象模型
  */
-public class BasicCommodityItem implements CommodityTreeNode {
+public class BasicCommodityItem {
 
     private String id;
-
     private String name;
-
-    private CommodityCategoryItem category;
-
+    private int categoryID;
     private int repCount;
-
     private double recentInPrice;
-
     private double recentSellPrice;
 
-    public BasicCommodityItem(String id, String name, CommodityCategoryItem category, int repCount, double recentInPrice, double recentSellPrice) {
+    BasicCommodityItem(String id, String name, int categoryID, int repCount, double recentInPrice, double recentSellPrice) {
         this.id = id;
         this.name = name;
-        this.category = category;
+        this.categoryID = categoryID;
         this.repCount = repCount;
         this.recentInPrice = recentInPrice;
         this.recentSellPrice = recentSellPrice;
@@ -45,12 +39,12 @@ public class BasicCommodityItem implements CommodityTreeNode {
         this.name = name;
     }
 
-    public CommodityCategoryItem getCategory() {
-        return category;
+    int getCategoryID() {
+        return categoryID;
     }
 
-    public void setCategory(CommodityCategoryItem category) {
-        this.category = category;
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
     }
 
     public int getRepCount() {
@@ -79,11 +73,5 @@ public class BasicCommodityItem implements CommodityTreeNode {
 
     public BasicCommodityItemVO toVo() {
         return null;
-    }
-
-
-    @Override
-    public boolean isCommodity() {
-        return true;
     }
 }

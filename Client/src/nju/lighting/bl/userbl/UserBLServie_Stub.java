@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * Description:
  * @author Liao
  */
+@Deprecated
 public class UserBLServie_Stub implements UserBLService {
 
     @Override

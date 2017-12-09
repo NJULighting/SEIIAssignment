@@ -1,16 +1,14 @@
 package nju.lighting.data.commoditydata;
 
 import nju.lighting.data.utils.CommonOperation;
-import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,6 +25,16 @@ public class CommodityData extends UnicastRemoteObject implements CommodityDataS
     public CommodityData() throws RemoteException {
         this.commodityItemPOCommonOperation = new CommonOperation<>(CommodityItemPO.class.getName());
         this.categoryPOCommonOperation = new CommonOperation<>(CommodityCategoryPO.class.getName());
+    }
+
+    @Override
+    public List<CommodityItemPO> findByCategory(String categoryID) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public Date getRecentChangeTime() throws RemoteException {
+        return null;
     }
 
     @Override

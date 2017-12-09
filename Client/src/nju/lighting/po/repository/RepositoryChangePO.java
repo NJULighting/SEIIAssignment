@@ -2,9 +2,12 @@ package nju.lighting.po.repository;
 
 import shared.RepositoryChangeType;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class RepositoryChangePO {
+public class RepositoryChangePO implements Serializable {
+    private static final long serialVersionUID = 5663833142940508609L;
+    private int id;
 
     private String commodityId;
 
@@ -22,6 +25,19 @@ public class RepositoryChangePO {
         this.count = count;
         this.amount = amount;
         this.date = date;
+    }
+
+    public RepositoryChangePO(int id, String commodityId, RepositoryChangeType type, int count, double amount, Date date) {
+        this.id = id;
+        this.commodityId = commodityId;
+        this.type = type;
+        this.count = count;
+        this.amount = amount;
+        this.date = date;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getCommodityId() {

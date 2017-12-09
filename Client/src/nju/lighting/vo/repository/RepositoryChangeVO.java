@@ -7,6 +7,7 @@ import java.util.Date;
 public class RepositoryChangeVO {
 
     private String commodityId;
+    private String commodityName;
 
     private RepositoryChangeType type;
 
@@ -16,7 +17,8 @@ public class RepositoryChangeVO {
 
     private Date date;
 
-    public RepositoryChangeVO(String commodityId, RepositoryChangeType type, int count, double amount, Date date) {
+    public RepositoryChangeVO(String commodityName, String commodityId, RepositoryChangeType type, int count, double amount, Date date) {
+        this.commodityName = commodityName;
         this.commodityId = commodityId;
         this.type = type;
         this.count = count;

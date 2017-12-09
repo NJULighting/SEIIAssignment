@@ -1,23 +1,23 @@
 package nju.lighting.vo.commodity;
 
-import shared.CommodityTreeNode;
+import shared.ICommodityTreeNode;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class CommodityCategoryVO implements CommodityTreeNode {
+public class CommodityCategoryVO {
 
     private CommodityCategoryVO upperCategory;
-
-    private ArrayList<CommodityTreeNode> children = new ArrayList<>();
-
+    private List<CommodityCategoryVO> children;
     private int id;
-
     private String name;
+    private boolean isLeaf;
 
-    public CommodityCategoryVO(CommodityCategoryVO upperCategory, int id, String name) {
+    public CommodityCategoryVO(CommodityCategoryVO upperCategory, int id, String name, boolean isLeaf) {
         this.upperCategory = upperCategory;
         this.id = id;
         this.name = name;
+        this.isLeaf = isLeaf;
     }
 
     public CommodityCategoryVO getUpperCategory() {
@@ -44,16 +44,11 @@ public class CommodityCategoryVO implements CommodityTreeNode {
         this.name = name;
     }
 
-    public ArrayList<CommodityTreeNode> getChildren() {
-        return children;
+    public boolean isLeaf() {
+        return isLeaf;
     }
 
-    public void addChild(CommodityTreeNode child) {
-        children.add(child);
-    }
-
-    @Override
-    public boolean isCommodity() {
-        return false;
+    public void setChildren(List<CommodityCategoryVO> children) {
+        this.children = children;
     }
 }

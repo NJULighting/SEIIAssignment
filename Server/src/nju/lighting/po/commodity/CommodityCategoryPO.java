@@ -1,15 +1,15 @@
 package nju.lighting.po.commodity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "COMMODITY_CATEGORY")
-public class CommodityCategoryPO {
+public class CommodityCategoryPO implements Serializable {
 
+    private static final long serialVersionUID = 6841205188085709051L;
     private int id;
-
     private String name;
-
     private Integer upperCategoryId = -1;
 
     public CommodityCategoryPO() {

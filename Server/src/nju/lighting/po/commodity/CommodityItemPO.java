@@ -3,12 +3,14 @@ package nju.lighting.po.commodity;
 import shared.CSVable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "COMMODITY")
-public class CommodityItemPO implements CSVable {
+public class CommodityItemPO implements CSVable, Serializable {
 
+    private static final long serialVersionUID = -3364745348644189788L;
     private String id;
 
     private String name;
@@ -35,7 +37,7 @@ public class CommodityItemPO implements CSVable {
 
     @Override
     public String toCSV() {
-        return name + "," + categoryId + "," +  modelNumber + "," + inPrice + "," + sellPrice + "," + recentSellPrice;
+        return name + "," + categoryId + "," + modelNumber + "," + inPrice + "," + sellPrice + "," + recentSellPrice;
     }
 
     @Override

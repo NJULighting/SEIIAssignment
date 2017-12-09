@@ -3,10 +3,12 @@ package nju.lighting.po.repository;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class RepositoryTableItemPO {
+public class RepositoryTableItemPO implements Serializable{
 
+    private static final long serialVersionUID = 4231752295432771700L;
     private String name;
 
     private String commodityId;

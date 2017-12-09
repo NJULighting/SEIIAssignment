@@ -1,7 +1,6 @@
 package nju.lighting.bl.promotionbl;
 
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
-import nju.lighting.vo.commodity.BasicCommodityTreeVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerGrade;
 import shared.PromotionBuildInfo;
@@ -19,13 +18,13 @@ public class PromotionController implements PromotionBLService {
     private PromotionManager manager = PromotionManager.INSTANCE;
 
     @Override
-    public List<PromotionVO> getBenefitsPlan(CustomerGrade customerLevel, List<String> CommodityList, double total) {
-        return null;
+    public List<PromotionVO> getBenefitsPlan(CustomerGrade customerLevel, List<String> commodityList, double total) {
+        return manager.getBenefitsPlan(customerLevel, commodityList, total);
     }
 
     @Override
     public List<PromotionVO> getPromotionList() {
-        return null;
+        return manager.getPromotionList();
     }
 
     @Override
@@ -40,12 +39,12 @@ public class PromotionController implements PromotionBLService {
 
     @Override
     public ResultMessage modify(PromotionVO vo) {
-        return null;
+        return manager.modify(vo);
     }
 
 
     @Override
     public ResultMessage delete(int promotionID) {
-        return null;
+        return null; // TODO: 2017/12/7 Need this?
     }
 }

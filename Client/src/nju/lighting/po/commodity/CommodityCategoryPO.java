@@ -1,11 +1,14 @@
 package nju.lighting.po.commodity;
 
-public class CommodityCategoryPO {
+import java.io.Serializable;
+
+public class CommodityCategoryPO implements Serializable {
+
+    private static final long serialVersionUID = 6841205188085709051L;
+
 
     private int id;
-
     private String name;
-
     private int upperCategoryId = -1;
 
     public CommodityCategoryPO(int id, String name, int upperCategoryId) {

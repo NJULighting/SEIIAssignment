@@ -1,31 +1,24 @@
 package nju.lighting.po.commodity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CommodityItemPO {
+public class CommodityItemPO implements Serializable {
+
+    private static final long serialVersionUID = -3364745348644189788L;
+    private static final String SEPARATOR_CHAR = "-";
 
     private String id;
-
     private String name;
-
     private int categoryId;
-
     private String modelNumber;
-
     private int repCount;
-
     private double inPrice;
-
     private double sellPrice;
-
     private double recentInPrice;
-
     private double recentSellPrice;
-
     private String batch;
-
     private String batchNumber;
-
     private Date dateOfProduction;
 
     public CommodityItemPO(String id, String name, int categoryId, String modelNumber,
@@ -44,6 +37,11 @@ public class CommodityItemPO {
         this.batch = batch;
         this.batchNumber = batchNumber;
         this.dateOfProduction = dateOfProduction;
+    }
+
+    public int getParent() {
+        String[] tmp = id.split(SEPARATOR_CHAR);
+        return Integer.parseInt(tmp[tmp.length - 2]);
     }
 
     public String getId() {

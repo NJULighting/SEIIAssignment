@@ -5,17 +5,12 @@ import java.util.Date;
 public class RepositoryTableItemVO {
 
     private String commodityId;
-
+    private String commodityName;
     private String modelNumber;
-
     private int repCount;
-
     private double recentInPrice;
-
     private String batch;
-
     private String batchNumber;
-
     private Date dateOfProduction;
 
     public RepositoryTableItemVO(String commodityId, String modelNumber,

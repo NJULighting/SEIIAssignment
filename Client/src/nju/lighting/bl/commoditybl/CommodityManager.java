@@ -1,58 +1,52 @@
 package nju.lighting.bl.commoditybl;
 
+import nju.lighting.bl.logbl.Logger;
+import nju.lighting.bl.logbl.UserLogger;
+import nju.lighting.dataservice.DataFactory;
+import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
+import nju.lighting.po.commodity.CommodityCategoryPO;
+import nju.lighting.po.commodity.CommodityItemPO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.CommodityTreeVO;
 import shared.ResultMessage;
 
+import javax.naming.NamingException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class CommodityManager implements CommodityInfo {
+enum CommodityManager implements CommodityInfo {
+    INSTANCE;
 
-    /**
-     * 商品树
-     */
-    private CommodityTree commodityTree;
+    private CommodityCategoriesTree commodityTree;
+    private CommodityDataService dataService;
+    private Logger logger;
 
-    /**
-     * 单例
-     */
-    private static CommodityManager commodityManager;
-
-    /**
-     * 构造器 初始化
-     */
-    private CommodityManager() {
-        fetchCommodityInfo();
+    CommodityManager() {
+        try {
+            dataService = DataFactory.getDataBase(CommodityDataService.class);
+            logger = new UserLogger();
+            buildCommodityTree();
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
     }
 
-    /**
-     * 单例类
-     */
-    public static CommodityManager createCommodity() {
-        if (CommodityManager.commodityManager == null)
-            CommodityManager.commodityManager = new CommodityManager();
-        return CommodityManager.commodityManager;
-    }
-
-    /**
-     * 去服务器端取数据
-     */
-    private void fetchCommodityInfo() {
-
-    }
-
-    /**
-     * 判断服务器端数据是否发生变化
-     */
-    private boolean hasChanged() {
-        return false;
+    private void buildCommodityTree() {
+        try {
+            List<CommodityCategoryPO> categoryPOList = dataService.getAllCommodityCategory();
+            CommodityCategoriesTree.TreeBuilder treeBuilder = new CommodityCategoriesTree.TreeBuilder(categoryPOList);
+            commodityTree = treeBuilder.build();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * 对逻辑层其他模块提供的方法
      */
-    public CommodityTree getCommodityTree() {
+    public CommodityCategoriesTree getCommodityTree() {
         return null;
     }
 
@@ -68,10 +62,10 @@ public class CommodityManager implements CommodityInfo {
         return null;
     }
 
-    /**
-     * 对界面层提供的方法
-     */
+
+    // 对界面层提供的方法
     public CommodityTreeVO getCommodityTreeVO() {
+
         return null;
     }
 

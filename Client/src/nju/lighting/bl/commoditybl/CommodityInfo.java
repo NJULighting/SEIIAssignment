@@ -1,15 +1,10 @@
 package nju.lighting.bl.commoditybl;
 
-import nju.lighting.vo.commodity.BasicCommodityItemVO;
-import nju.lighting.vo.commodity.BasicCommodityTreeVO;
-import nju.lighting.vo.commodity.CommodityItemVO;
-import nju.lighting.vo.commodity.CommodityTreeVO;
-
 import java.util.ArrayList;
 
 public interface CommodityInfo {
 
-    CommodityTree getCommodityTree();
+    CommodityCategoriesTree getCommodityTree();
 
     BasicCommodityTree getBasicCommodityTree();
 

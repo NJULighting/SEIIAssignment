@@ -3,12 +3,14 @@ package nju.lighting.po.repository;
 import shared.RepositoryChangeType;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "REPOSITORY_CHANGE")
-public class RepositoryChangePO {
+public class RepositoryChangePO implements Serializable {
 
+    private static final long serialVersionUID = 5663833142940508609L;
     private int id;
 
     private String commodityId;

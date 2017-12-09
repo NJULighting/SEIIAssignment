@@ -14,14 +14,20 @@ import java.util.stream.Collectors;
 class PromotionItemList {
     private List<GiftItemVO> goods;
 
+    PromotionItemList() {}
+
     PromotionItemList(List<GiftItemVO> goods) {
         this.goods = goods;
     }
 
     List<PromotionPackageItemPO> toPOList(int promotionID) {
         return goods.stream()
-                .map(giftItemVO -> new PromotionPackageItemPO(giftItemVO.getCommodityID(), promotionID))
+                .map(giftItemVO -> new PromotionPackageItemPO(giftItemVO.getCommodityID(), promotionID, giftItemVO.getCount()))
                 .collect(Collectors.toList());
+    }
+
+    void addAll(List<PromotionPackageItemPO> goods) {
+        // TODO: 2017/12/8 commodity info
     }
 
     List<GiftItemVO> getGoods() {

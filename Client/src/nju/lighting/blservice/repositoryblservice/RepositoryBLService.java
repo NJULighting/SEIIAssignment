@@ -3,14 +3,13 @@ package nju.lighting.blservice.repositoryblservice;
 import nju.lighting.vo.repository.RepositoryChangeVO;
 import nju.lighting.vo.repository.RepositoryTableVO;
 
-import java.rmi.Remote;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public interface RepositoryBLService extends Remote {
+public interface RepositoryBLService {
 
-    ArrayList<RepositoryChangeVO> getRepositoryChanges(Date startDate, Date endDate) ;
+    List<RepositoryChangeVO> getRepositoryChanges(Date startDate, Date endDate);
 
-    RepositoryTableVO getRepositoryTable() ;
+    RepositoryTableVO getRepositoryTable();
 
 }

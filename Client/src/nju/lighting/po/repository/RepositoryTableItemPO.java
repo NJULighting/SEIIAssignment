@@ -1,24 +1,22 @@
 package nju.lighting.po.repository;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class RepositoryTableItemPO {
+public class RepositoryTableItemPO implements Serializable {
 
+    private static final long serialVersionUID = 4231752295432771700L;
+    private String name;
     private String commodityId;
-
     private String modelNumber;
-
     private int repCount;
-
     private double recentInPrice;
-
     private String batch;
-
     private String batchNumber;
-
     private Date dateOfProduction;
 
-    public RepositoryTableItemPO(String commodityId, String modelNumber, int repCount, double recentInPrice, String batch, String batchNumber, Date dateOfProduction) {
+    public RepositoryTableItemPO(String name, String commodityId, String modelNumber, int repCount, double recentInPrice, String batch, String batchNumber, Date dateOfProduction) {
+        this.name = name;
         this.commodityId = commodityId;
         this.modelNumber = modelNumber;
         this.repCount = repCount;
@@ -26,6 +24,10 @@ public class RepositoryTableItemPO {
         this.batch = batch;
         this.batchNumber = batchNumber;
         this.dateOfProduction = dateOfProduction;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getCommodityId() {

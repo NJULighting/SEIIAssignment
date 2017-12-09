@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface CommodityDataService extends Remote {
 
+    List<CommodityItemPO> findByCategory(String categoryID) throws RemoteException;
+
     List<CommodityItemPO> getAllCommodity() throws RemoteException;
 
     CommodityItemPO findById(String id) throws RemoteException;

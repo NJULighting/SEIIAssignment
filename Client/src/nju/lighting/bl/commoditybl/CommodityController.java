@@ -1,19 +1,18 @@
 package nju.lighting.bl.commoditybl;
 
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
+import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
-import nju.lighting.vo.commodity.CommodityTreeVO;
 import shared.ResultMessage;
 
-import java.rmi.RemoteException;
-import java.util.ArrayList;
+import java.util.List;
 
 public class CommodityController implements CommodityBLService {
 
 
     @Override
-    public CommodityTreeVO getCommodityTreeVO() {
+    public CommodityCategoriesTreeVO getCommodityCategoriesTreeVO() {
         return null;
     }
 
@@ -23,7 +22,7 @@ public class CommodityController implements CommodityBLService {
     }
 
     @Override
-    public ArrayList<CommodityItemVO> findCommodityVOByName(String commodityName) {
+    public List<CommodityItemVO> findCommodityVOByName(String commodityName) {
         return null;
     }
 

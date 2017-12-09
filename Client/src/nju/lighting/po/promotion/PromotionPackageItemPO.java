@@ -13,14 +13,14 @@ public class PromotionPackageItemPO implements Serializable {
     private String commodityId;
     private int promotionId;
     private int count;
-    private int subtotal;
 
-    public PromotionPackageItemPO(String commodityId, int promotionId) {
+    public PromotionPackageItemPO(String commodityId, int promotionId, int count) {
         this.commodityId = commodityId;
         this.promotionId = promotionId;
     }
 
-    public PromotionPackageItemPO(String commodityId) {
+    public PromotionPackageItemPO(int count, String commodityId) {
+        this.count = count;
         this.commodityId = commodityId;
     }
 

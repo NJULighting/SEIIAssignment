@@ -1,69 +1,36 @@
 package nju.lighting.bl.repositorybl;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
+import nju.lighting.bl.logbl.Logger;
+import nju.lighting.bl.logbl.UserLogger;
+import nju.lighting.dataservice.DataFactory;
+import nju.lighting.dataservice.repositorydataservice.RepositoryDataService;
 import nju.lighting.vo.repository.RepositoryChangeVO;
 import nju.lighting.vo.repository.RepositoryTableVO;
 import shared.ResultMessage;
 
+import javax.naming.NamingException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class RepositoryManager implements RepositoryInfo {
+public enum RepositoryManager implements RepositoryInfo {
+    INSTANCE;
 
-    /**
-     * 库存变化情况
-     */
-    private ArrayList<RepositoryChange> repositoryChanges;
+    private RepositoryDataService dataService;
+    private Logger logger;
 
-    /**
-     * 当前库存
-     */
-    private RepositoryTable repositoryTable;
-
-    /**
-     * 库存依赖于商品
-     */
-    private CommodityInfo commodityInfo;
-
-    /**
-     * 单例
-     */
-    private static RepositoryManager repositoryManager;
-
-    /**
-     * 构造器
-     */
-    private RepositoryManager() {
-        fetchRepositoryInfo();
+    RepositoryManager() {
+        try {
+            dataService = DataFactory.getDataBase(RepositoryDataService.class);
+            logger = new UserLogger();
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
     }
 
-    /**
-     * 判断服务器端数据是否发生变化，八成会被遗弃
-     */
-    private boolean hasChanged() {
-        return false;
-    }
 
-    /**
-     * 单例方法
-     */
-    public static RepositoryManager createRepository() {
-        if (RepositoryManager.repositoryManager == null)
-            RepositoryManager.repositoryManager = new RepositoryManager();
-        return RepositoryManager.repositoryManager;
-    }
-
-    /**
-     * 从服务器端获取数据
-     */
-    private void fetchRepositoryInfo() {
-
-    }
-
-    /**
-     * 为了显示层提供的方法
-     */
-    public ArrayList<RepositoryChangeVO> getRepositoryChanges(Date startDate, Date endDate) {
+    public List<RepositoryChangeVO> getRepositoryChanges(Date startDate, Date endDate) {
         return null;
     }
 
@@ -72,7 +39,7 @@ public class RepositoryManager implements RepositoryInfo {
     }
 
     /**
-     *提供给其他模块用于变更库存信息
+     * 提供给其他模块用于变更库存信息
      * @param change
      * @return
      */

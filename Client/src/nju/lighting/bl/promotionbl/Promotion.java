@@ -74,7 +74,8 @@ class Promotion {
         createTime = po.getTime();
         userID = po.getCreatorID();
 
-        // TODO: 2017/12/7 Transfer goods list
+        itemList = new PromotionItemList();
+        itemList.addAll(po.getGoods());
     }
 
 

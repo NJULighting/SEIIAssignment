@@ -1,13 +1,13 @@
 package nju.lighting.vo.commodity;
 
-import shared.CommodityTreeNode;
+import shared.ICommodityTreeNode;
 
 import java.util.Date;
 
 /**
  * 商品的详细信息，提供给商品模块、库存模块使用
  */
-public class CommodityItemVO implements CommodityTreeNode {
+public class CommodityItemVO implements ICommodityTreeNode {
 
     private String id;
 

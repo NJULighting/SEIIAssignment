@@ -1,29 +1,30 @@
 package nju.lighting.bl.commoditybl;
 
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
+import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
-import nju.lighting.vo.commodity.CommodityTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 
-import shared.CommodityTreeNode;
+import shared.ICommodityTreeNode;
 import shared.ResultMessage;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class CommodityBLService_Stub implements CommodityBLService {
 
     private ArrayList<CommodityItem> items = new ArrayList<>();
 
-    private CommodityTree tree = new CommodityTree(null);
+    private CommodityCategoriesTree tree = new CommodityCategoriesTree(null);
 
     public CommodityBLService_Stub() {
 
 
-        CommodityCategoryItem cc1 = new CommodityCategoryItem(null, null,1, "天才");
-        CommodityCategoryItem cc2 = new CommodityCategoryItem(null, null,2, "小天才");
-        CommodityCategoryItem cc3 = new CommodityCategoryItem(null, null,3, "大天才");
-        CommodityCategoryItem cc4 = new CommodityCategoryItem(null, null,4, "超级天才");
+        int cc1 = new CommodityCategoryItem(null, null,1, "天才");
+        int cc2 = new CommodityCategoryItem(null, null,2, "小天才");
+        int cc3 = new CommodityCategoryItem(null, null,3, "大天才");
+        Integer cc4 = new CommodityCategoryItem(null, null,4, "超级天才");
 
         CommodityItem com1 = new CommodityItem("01", "天才灯具", cc1, "2017",
                 100, 1000, 1000, 1000, 1000, "a", "01", new Date(111111111));
@@ -44,20 +45,20 @@ public class CommodityBLService_Stub implements CommodityBLService {
         items.add(com5);
         items.add(com6);
 
-        ArrayList<CommodityTreeNode> cca1 = new ArrayList<>();
+        ArrayList<ICommodityTreeNode> cca1 = new ArrayList<>();
         cca1.add(com1);
         cca1.add(com2);
-        ArrayList<CommodityTreeNode> cca2 = new ArrayList<>();
+        ArrayList<ICommodityTreeNode> cca2 = new ArrayList<>();
         cca2.add(com3);
         cca2.add(com4);
-        ArrayList<CommodityTreeNode> cca3 = new ArrayList<>();
+        ArrayList<ICommodityTreeNode> cca3 = new ArrayList<>();
         cca3.add(com5);
         cca3.add(com6);
         cc1.setChildren(cca1);
         cc2.setChildren(cca2);
         cc3.setChildren(cca3);
 
-        ArrayList<CommodityTreeNode> node = new ArrayList<>();
+        ArrayList<Integer> node = new ArrayList<>();
         node.add(cc1);
         node.add(cc2);
         node.add(cc3);
@@ -67,7 +68,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public CommodityTreeVO getCommodityTreeVO() {
+    public CommodityCategoriesTreeVO getCommodityCategoriesTreeVO() {
         return tree.toVO();
     }
 
@@ -77,7 +78,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public ArrayList<CommodityItemVO> findCommodityVOByName(String commodityName)  {
+    public List<CommodityItemVO> findCommodityVOByName(String commodityName)  {
         ArrayList<CommodityItemVO> itemVOS = new ArrayList<>();
         for (CommodityItem item: items) {
             if (item.getName().equals(commodityName)) {

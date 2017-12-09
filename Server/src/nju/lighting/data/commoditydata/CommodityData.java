@@ -30,6 +30,11 @@ public class CommodityData extends UnicastRemoteObject implements CommodityDataS
     }
 
     @Override
+    public List<CommodityItemPO> findByCategory(String categoryID) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public List<CommodityItemPO> getAllCommodity() throws RemoteException {
         return commodityItemPOCommonOperation.getAll();
     }

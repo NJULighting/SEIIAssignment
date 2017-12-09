@@ -1,21 +1,21 @@
 package nju.lighting.vo.commodity;
 
-import shared.CommodityTreeNode;
+import shared.ICommodityTreeNode;
 
 import java.util.ArrayList;
 
 public class CommodityTreeVO {
-    private ArrayList<CommodityTreeNode> roots;
+    private ArrayList<ICommodityTreeNode> roots;
 
-    public CommodityTreeVO(ArrayList<CommodityTreeNode> roots) {
+    public CommodityTreeVO(ArrayList<ICommodityTreeNode> roots) {
         this.roots = roots;
     }
 
-    public ArrayList<CommodityTreeNode> getRoots() {
+    public ArrayList<ICommodityTreeNode> getRoots() {
         return roots;
     }
 
-    public void setRoots(ArrayList<CommodityTreeNode> roots) {
+    public void setRoots(ArrayList<ICommodityTreeNode> roots) {
         this.roots = roots;
     }
 }

@@ -1,8 +1,8 @@
 package nju.lighting.vo.commodity;
 
-import shared.CommodityTreeNode;
+import shared.ICommodityTreeNode;
 
-public class BasicCommodityItemVO implements CommodityTreeNode {
+public class BasicCommodityItemVO implements ICommodityTreeNode {
 
     private String id;
 

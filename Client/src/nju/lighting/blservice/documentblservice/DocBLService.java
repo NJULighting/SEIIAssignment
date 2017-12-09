@@ -5,10 +5,7 @@ import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.SalesDetailVO;
 import nju.lighting.vo.viewtables.BusinessConditionItemVO;
-import shared.DocType;
-import shared.DocumentFilter;
-import shared.ResultMessage;
-import shared.BusinessConditionFilter;
+import shared.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,7 +14,8 @@ public interface DocBLService {
 
     DocVO createDoc(DocType type) ;
 
-    ResultMessage commitDoc(DocVO doc) ;
+    //返回子类doc的id，如salesDocid
+    TwoTuple<String,ResultMessage> commitDoc(DocVO doc) ;
 
     ArrayList<HistoryDocVO> findDocuments(DocumentFilter filter);
 

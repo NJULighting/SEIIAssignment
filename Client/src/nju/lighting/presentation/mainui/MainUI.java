@@ -37,7 +37,9 @@ public class MainUI {
     static {
         hashMap.put(Identity.GENERAL,"GeneralManager.fxml");
         hashMap.put(Identity.REPOSITORY,"RepositoryManager.fxml");
+        hashMap.put(Identity.SALE,"SalesManager.fxml");
         hashMap.put(Identity.SALE_MANAGER,"SalesManager.fxml");
+        hashMap.put(Identity.FINANCE,"AccountManager.fxml");
     }
 
 //    public MainUI(Identity identity) throws IOException {

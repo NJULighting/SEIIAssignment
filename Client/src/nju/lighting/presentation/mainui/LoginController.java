@@ -99,8 +99,8 @@ public class LoginController extends CommonFather{
 
             case SUCCESS:
                 System.out.println("Succ");{
-                new MainUI(result.t.getIdentity());
                 Client.setUserVO(result.t);
+                new MainUI(result.t.getIdentity());
             }
 
                 break;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
@@ -12,56 +13,95 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.SalesDocController">
    <children>
-      <Line endX="300.0" layoutX="127.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />
-      <Label layoutX="26.0" layoutY="14.0" text="制定进货单">
+      <Line endX="300.0" layoutX="130.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />
+      <Label layoutX="30.0" layoutY="14.0" text="制定进货单">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <VBox layoutX="706.0" layoutY="199.0" prefHeight="300.0" prefWidth="300.0">
+      <VBox layoutX="39.0" layoutY="70.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0" spacing="6.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="280.0">
                <children>
-                  <Label prefWidth="80.0" text="操作员" />
-                  <TextField prefWidth="180.0" />
+                  <Label prefWidth="80.0" text="客户" />
+                  <TextField editable="false" prefHeight="30.0" prefWidth="135.0" promptText="选择客户 &gt;" text="- -">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></TextField>
+                  <Button mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@../../../../images/增加客户.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0" spacing="6.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="业务员" />
-                  <TextField prefWidth="180.0" />
+                  <TextField editable="false" prefWidth="180.0" text="- -" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0" spacing="6.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
+               <children>
+                  <Label prefWidth="80.0" text="操作员" />
+                  <TextField editable="false" prefWidth="180.0" text="- -" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="仓库  " />
-                  <TextField prefWidth="180.0" />
+                  <TextField prefWidth="180.0" text="默认仓库" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0" spacing="6.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="折让前总额" />
-                  <TextField prefWidth="180.0" />
+                  <TextField prefWidth="180.0" text="0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0" spacing="6.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="折让" />
-                  <TextField prefWidth="180.0" />
+                  <TextField prefWidth="180.0" text="0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0" spacing="6.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="代金券金额" />
-                  <TextField prefWidth="180.0" />
+                  <TextField prefWidth="180.0" text="0" />
                </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
+               <children>
+                  <Label prefWidth="80.0" text="最终总额" />
+                  <TextField editable="false" prefWidth="180.0" text="0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="260.0" spacing="5.0">
+               <children>
+                  <Label prefWidth="80.0" text="备注" />
+                  <TextArea prefHeight="100.0" prefWidth="180.0" text="无" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>
-      <JFXListView layoutX="27.0" layoutY="142.0" prefHeight="515.0" prefWidth="616.0" />
-      <Label layoutX="27.0" layoutY="122.0" text="出货商品清单" />
+      <JFXListView layoutX="420.0" layoutY="85.0" prefHeight="547.0" prefWidth="615.0" />
+      <Label layoutX="945.0" layoutY="60.0" text="出货商品清单" />
+      <JFXButton layoutX="149.0" layoutY="605.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
+      <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="330.0" layoutY="267.0">
+         <image>
+            <Image url="@../../../../images/向左.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

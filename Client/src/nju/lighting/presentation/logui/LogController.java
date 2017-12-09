@@ -19,6 +19,8 @@ import nju.lighting.vo.LogVO;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -80,7 +82,7 @@ public class LogController implements Initializable {
 
 
     void initPagination() {
-        logVOArrayList = logBLService.getLogListByTime(startDate, endDate);
+        //logVOArrayList = logBLService.getLogListByTime(Date.from(startDate,endDate) ;
         pagination.setPageCount(logVOArrayList.size() / itemsPerPage + 1);
         pagination.setPageFactory((Integer index) -> createPage(index));
     }
@@ -89,7 +91,7 @@ public class LogController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         startDate = LocalDate.now();
 
-        endDate = DateHelper.WeekAgo();
+        //endDate = DateHelper.WeekAgo();
         initPagination();
 
         okBtn.setOnAction(new EventHandler<ActionEvent>() {

@@ -50,10 +50,6 @@ enum CommodityManager implements CommodityInfo {
         return null;
     }
 
-    public BasicCommodityTree getBasicCommodityTree() {
-        return null;
-    }
-
     public ArrayList<BasicCommodityItem> getBasicCommodityItems(ArrayList<String> ids) {
         return null;
     }

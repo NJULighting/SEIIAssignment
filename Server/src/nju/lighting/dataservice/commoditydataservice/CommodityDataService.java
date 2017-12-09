@@ -6,11 +6,14 @@ import shared.ResultMessage;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.Date;
 import java.util.List;
 
 public interface CommodityDataService extends Remote {
 
     List<CommodityItemPO> findByCategory(String categoryID) throws RemoteException;
+
+    Date getRecentChangeTime() throws RemoteException;
 
     List<CommodityItemPO> getAllCommodity() throws RemoteException;
 

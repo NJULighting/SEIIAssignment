@@ -6,8 +6,6 @@ public interface CommodityInfo {
 
     CommodityCategoriesTree getCommodityTree();
 
-    BasicCommodityTree getBasicCommodityTree();
-
     ArrayList<BasicCommodityItem> getBasicCommodityItems(ArrayList<String> ids);
 
     ArrayList<CommodityItem> getCommodityItems(ArrayList<String> ids);

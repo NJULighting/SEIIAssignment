@@ -20,10 +20,24 @@ public class GiftItemVO {
 
     private double subtotal;
 
+    /*
+    构造赠品项的时候所用的构造函数，只需要传入商品和数量，根据实时的结果得到价格
+     */
     public GiftItemVO(BasicCommodityItemVO commodity, int count) {
         this.commodity = commodity;
         this.count = count;
         this.subtotal=commodity.getRecentSellPrice()*count;
+    }
+
+
+    /*
+    显示的时候所需要的构造函数，因为商品的结果可能发生改变，所以商品的价格应该取自于
+    数据库中存在的数据
+     */
+    public GiftItemVO(BasicCommodityItemVO commodity, int count, double subtotal) {
+        this.commodity = commodity;
+        this.count = count;
+        this.subtotal = subtotal;
     }
 
     public String getCommodityID() {

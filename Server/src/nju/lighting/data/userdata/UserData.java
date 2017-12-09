@@ -18,7 +18,7 @@ import java.util.List;
  * 11.26日完成，27日重构 通过全部测试
  * @author iznauy
  */
-public class UserData extends UnicastRemoteObject implements UserDataService {
+public class UserData extends UnicastRemoteObject implements UserDataService, UserService {
 
     /**
      * 聚合一个CommonOperation
@@ -58,6 +58,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
         return commonOperation.getAll();
     }
 
+    @Override
     public List<UserPO> getByIdentity(Identity identity) {
         return commonOperation.getListBySingleField("identity", identity);
     }

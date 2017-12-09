@@ -28,7 +28,7 @@
                                 <Font size="20.0" />
                             </font>
                         </Label>
-                        <Label fx:id="total" text="Label">
+                        <Label fx:id="totalLabel" text="Label">
                             <font>
                                 <Font size="20.0" />
                             </font>

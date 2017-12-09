@@ -55,19 +55,25 @@ public class PromotionBLService_Stub implements PromotionBLService {
     public List<PromotionVO> getPromotionList() {
         UserVO creator = new UserBLServie_Stub().getUser("0");
         ArrayList<DocVO> gifts = ((new ApprovalBLService_Stub().getDocumentList()));
+
         PromotionVO vo1 = new PromotionVO(1, "店庆酬宾", creator, PromotionType.CustomerOriented,
-                new Date(), new Date(), CustomerGrade.FIVE, 30, null, 0, 0, null);
+                new Date(), new Date(), CustomerGrade.FIVE, 0, null, 30, 0, new Date());
         PromotionVO vo2 = new PromotionVO(2, "店庆酬宾", creator, PromotionType.PriceOriented, new Date(), new Date(),
                 null, 150,
-                ((GiftDocVO) gifts.get(0)).getGiftItemListVO().getGiftItemVOs(),
+                ((GiftDocVO) gifts.get(0)).getGifts(),
                 0, 300, new Date());
         PromotionVO vo3 = new PromotionVO(3, "店庆酬宾", creator, PromotionType.PriceOriented, new Date(), new Date(),
                 null, 150, null, 0, 300, new Date());
+        PromotionVO vo4=new PromotionVO(2, "店庆酬宾", creator, PromotionType.Combo, new Date(), new Date(),
+                null, 150,
+                ((GiftDocVO) gifts.get(1)).getGifts(),
+                0, 0, new Date());
 
         ArrayList<PromotionVO> promotionVOs = new ArrayList<>();
         promotionVOs.add(vo1);
         promotionVOs.add(vo2);
         promotionVOs.add(vo3);
+        promotionVOs.add(vo4);
 
         return promotionVOs;
     }

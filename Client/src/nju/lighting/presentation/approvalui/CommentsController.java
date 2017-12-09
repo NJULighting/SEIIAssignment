@@ -33,8 +33,8 @@ public class CommentsController extends CommonFather {
 
     Stage dialog;
 
-    public CommentsController(){
-        dialog=ApprovalUIController.dialog;
+    public CommentsController() {
+        dialog = ApprovalUIController.dialog;
     }
 
     public void setApprovalUIController(ApprovalUIController approvalUIController) {
@@ -42,16 +42,17 @@ public class CommentsController extends CommonFather {
     }
 
     @FXML
-    void ok(){
-        if (comment.getText()!=null&&comment.getText().length()!=0){
-            approvalUIController.setComment(comment.getText());
-            dialog.hide();
-        }
+    void ok() {
+        approvalUIController.setCancel(false);
+        approvalUIController.setComment(comment.getText());
+        dialog.hide();
+
 
     }
 
     @FXML
-    void cancel(){
+    void cancel() {
+        approvalUIController.setCancel(true);
         dialog.hide();
     }
 
@@ -60,9 +61,9 @@ public class CommentsController extends CommonFather {
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println(dialog);
 
-        stage=dialog;
-        MISS_OPACITY=0.9;
-        buttons=new Button[]{okBtn,cancelBtn};
+        stage = dialog;
+        MISS_OPACITY = 0.9;
+        buttons = new Button[]{okBtn, cancelBtn};
         super.initialize(location, resources);
     }
 }

@@ -39,6 +39,12 @@ public class UserBLServie_Stub implements UserBLService {
             return new UserVO("Frog 0", "0000", Identity.GENERAL, true);
         else if (id.equals("1"))
             return new UserVO("Frog 1", "0001", Identity.REPOSITORY, false);
+        else if(id.equals("2"))
+            return new UserVO("Frog 2","0002",Identity.SALE,false);
+        else if(id.equals("3"))
+            return new UserVO("Frog 3","0003",Identity.SALE_MANAGER,true);
+        else if(id.equals("4"))
+            return new UserVO("Frog 4","0004",Identity.FINANCE,false);
         return null;
     }
 
@@ -49,7 +55,7 @@ public class UserBLServie_Stub implements UserBLService {
 
     @Override
     public ResultMessage deleteUser(String id) {
-        return id.equals("0") || id.equals("1") ? ResultMessage.SUCCESS : ResultMessage.FAILURE;
+        return id.equals("0") || id.equals("1") || id.equals("2") || id.equals("3") || id.equals("4") ? ResultMessage.SUCCESS : ResultMessage.FAILURE;
     }
 
     @Override
@@ -73,6 +79,39 @@ public class UserBLServie_Stub implements UserBLService {
                 res.r = LoginReturnState.SUCCESS;
                 return res;
             } else {
+                // Password wrong
+                res.r = LoginReturnState.INVALID_PASSWORD;
+                return res;
+            }
+        }else if(id.equals("jhxs")){
+            // Password right
+            if(password.equals("1")){
+                res.t = getUser("2");
+                res.r = LoginReturnState.SUCCESS;
+                return res;
+            }else {
+                // Password wrong
+                res.r = LoginReturnState.INVALID_PASSWORD;
+                return res;
+            }
+        }else if(id.equals("xsjl")){
+            // Password right
+            if(password.equals("1")){
+                res.t = getUser("3");
+                res.r = LoginReturnState.SUCCESS;
+                return res;
+            }else {
+                // Password wrong
+                res.r = LoginReturnState.INVALID_PASSWORD;
+                return res;
+            }
+        }else if(id.equals("cw")){
+            // Password right
+            if(password.equals("1")){
+                res.t = getUser("4");
+                res.r = LoginReturnState.SUCCESS;
+                return res;
+            }else {
                 // Password wrong
                 res.r = LoginReturnState.INVALID_PASSWORD;
                 return res;

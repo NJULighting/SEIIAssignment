@@ -1,6 +1,8 @@
 package nju.lighting.bl.logbl;
 
 import nju.lighting.blservice.logblservice.LogBLService;
+import nju.lighting.presentation.utils.DateHelper;
+import shared.Identity;
 import shared.LogFilter;
 import nju.lighting.vo.LogVO;
 
@@ -17,11 +19,58 @@ public class LogBLService_Stub implements LogBLService {
 
     @Override
     public ArrayList<LogVO> getLogListByTime(Date from, Date to)  {
-        LogVO logVO0 = new LogVO(1234567, "Too young");
-        LogVO logVO1 = new LogVO(1234568, "Too simple");
+        Date aWeekAgo= DateHelper.WeekAgo();
+        LogVO logVO0 = new LogVO(aWeekAgo, "Too young","Frog0", Identity.FINANCE);
+        LogVO logVO1 = new LogVO(new Date(), "Too simple","Frog1",Identity.GENERAL);
+
+
         ArrayList<LogVO> logs = new ArrayList<>();
         logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
+        logs.add(logVO0);
         logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+        logs.add(logVO1);
+
+
+
+
+
         return logs;
     }
 

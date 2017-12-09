@@ -1,6 +1,7 @@
 package nju.lighting.data.repositorydata;
 
 import nju.lighting.data.commoditydata.CommodityData;
+import nju.lighting.data.commoditydata.CommodityService;
 import nju.lighting.data.utils.CommonOperation;
 import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.dataservice.repositorydataservice.RepositoryDataService;
@@ -54,7 +55,7 @@ public class RepositoryData extends UnicastRemoteObject implements RepositoryDat
     @Override
     public RepositoryTablePO getRepositoryTable() throws RemoteException {
         RepositoryTablePO tablePO = new RepositoryTablePO();
-        CommodityData commodityData = new CommodityData();
+        CommodityService commodityData = new CommodityData();
         List<CommodityItemPO> commodityItemPOList = commodityData.getAllCommodity();
         for (CommodityItemPO commodityItemPO: commodityItemPOList) {
             tablePO.addRepositoryItem(new RepositoryTableItemPO(commodityItemPO));

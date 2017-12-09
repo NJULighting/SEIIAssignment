@@ -8,29 +8,29 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.logui.LogController">
     <children>
-        <HBox layoutX="443.0" layoutY="21.0" spacing="50.0">
+        <HBox layoutX="199.0" layoutY="23.0" spacing="50.0">
             <children>
                 <Label text="起始时间">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-            <JFXDatePicker />
+            <JFXDatePicker fx:id="startDatePicker" />
             </children>
         </HBox>
-        <HBox layoutX="800.0" layoutY="21.0" spacing="50.0">
+        <HBox layoutX="556.0" layoutY="23.0" spacing="50.0">
             <children>
                 <Label text="终止时间">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-            <JFXDatePicker />
+            <JFXDatePicker fx:id="endDatePicker" />
             </children>
         </HBox>
-      <JFXButton layoutX="1160.0" layoutY="21.0" text="确认" />
-      <Pagination layoutX="14.0" layoutY="82.0" prefHeight="525.0" prefWidth="1249.0" />
+      <JFXButton fx:id="okBtn" layoutX="916.0" layoutY="23.0" text="确认" />
+      <Pagination fx:id="pagination" layoutX="14.0" layoutY="78.0" prefHeight="525.0" prefWidth="1050.0" />
     </children>
 </Pane>

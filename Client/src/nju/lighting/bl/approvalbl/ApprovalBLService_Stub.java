@@ -21,11 +21,11 @@ import java.util.ArrayList;
 public class ApprovalBLService_Stub implements ApprovalBLService {
     @Override
     public ArrayList<DocVO> getDocumentList() {
-        BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222","日本LED无障碍灯泡", null,
+        BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222","日本LED无障碍灯泡",
                 100, 100,100);
-        BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223","日本LED无障碍灯泡" + "-b", null,
+        BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223","日本LED无障碍灯泡" + "-b",
                 100, 100,100);
-        BasicCommodityItemVO commodityVO3 = new BasicCommodityItemVO("xx0002224","日本LED无障碍灯泡" + "-c", null,
+        BasicCommodityItemVO commodityVO3 = new BasicCommodityItemVO("xx0002224","日本LED无障碍灯泡" + "-c",
                 100, 100, 100);
 
         GiftItemVO giftItemVO1 = new GiftItemVO(commodityVO1, 3);

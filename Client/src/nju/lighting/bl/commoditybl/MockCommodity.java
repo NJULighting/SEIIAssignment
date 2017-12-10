@@ -45,11 +45,6 @@ public class MockCommodity implements CommodityInfo {
     }
 
     @Override
-    public BasicCommodityTree getBasicCommodityTree() {
-        return tree.toBasicCommodityTree();
-    }
-
-    @Override
     public ArrayList<BasicCommodityItem> getBasicCommodityItems(ArrayList<String> ids) {
         ArrayList<BasicCommodityItem> comItems = new ArrayList<>();
         for (String id : ids) {

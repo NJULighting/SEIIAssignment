@@ -1,5 +1,7 @@
 package nju.lighting.vo.commodity;
 
+import nju.lighting.blservice.commodityblservice.CommodityBLService;
+import nju.lighting.po.commodity.CommodityItemPO;
 import shared.ICommodityTreeNode;
 
 import java.util.ArrayList;
@@ -12,12 +14,18 @@ public class CommodityCategoryVO {
     private int id;
     private String name;
     private boolean isLeaf;
+    private String path;
 
     public CommodityCategoryVO(CommodityCategoryVO upperCategory, int id, String name, boolean isLeaf) {
         this.upperCategory = upperCategory;
         this.id = id;
         this.name = name;
         this.isLeaf = isLeaf;
+    }
+
+    public CommodityCategoryVO(CommodityCategoryVO upperCategory, String name) {
+        this.upperCategory = upperCategory;
+        this.name = name;
     }
 
     public CommodityCategoryVO getUpperCategory() {
@@ -30,6 +38,10 @@ public class CommodityCategoryVO {
 
     public int getId() {
         return id;
+    }
+
+    public List<CommodityCategoryVO> getChildren() {
+        return children;
     }
 
     public void setId(int id) {
@@ -50,5 +62,24 @@ public class CommodityCategoryVO {
 
     public void setChildren(List<CommodityCategoryVO> children) {
         this.children = children;
+    }
+
+    public String getPath() {
+        if (path == null) {
+            path = getParentPath() + id;
+        }
+        return path;
+    }
+
+    public String getParentPath() {
+        StringBuilder parentPath = new StringBuilder();
+
+        // Use a pointer and a loop to get the parent path
+        CommodityCategoryVO curr = this;
+        while (curr.upperCategory != null && curr.upperCategory.id != -1) {
+            parentPath.insert(0, curr.upperCategory.getId() + CommodityBLService.SEPARATOR);
+            curr = curr.upperCategory;
+        }
+        return parentPath.toString();
     }
 }

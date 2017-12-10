@@ -1,6 +1,7 @@
 package nju.lighting.blservice.promotionblservice;
 
 
+import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerGrade;
 import shared.PromotionBuildInfo;
@@ -21,7 +22,7 @@ public interface PromotionBLService {
 
     List<PromotionVO> getPromotionList();
 
-    BasicCommodityTreeVO create();
+    CommodityCategoriesTreeVO create();
 
     TwoTuple<ResultMessage, PromotionVO> commit(PromotionBuildInfo info);
 

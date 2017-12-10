@@ -6,6 +6,7 @@ import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 import shared.ResultMessage;
 
+import java.io.*;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
@@ -22,6 +23,21 @@ public class CommodityData extends UnicastRemoteObject implements CommodityDataS
 
     private CommonOperation<CommodityCategoryPO> categoryPOCommonOperation;
 
+    private static final String recentChangeFilePath = "Date.out";
+
+    private void updateRecentChangeTime() {
+        Date date = new Date();
+        File file = new File(recentChangeFilePath);
+        if (!file.exists()) {
+            file.mkdir();
+        }
+        try (ObjectOutputStream oj = new ObjectOutputStream(new FileOutputStream(file))) {
+            oj.writeObject(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public CommodityData() throws RemoteException {
         this.commodityItemPOCommonOperation = new CommonOperation<>(CommodityItemPO.class.getName());
         this.categoryPOCommonOperation = new CommonOperation<>(CommodityCategoryPO.class.getName());
@@ -29,12 +45,21 @@ public class CommodityData extends UnicastRemoteObject implements CommodityDataS
 
     @Override
     public List<CommodityItemPO> findByCategory(String categoryID) throws RemoteException {
-        return null;
+        return commodityItemPOCommonOperation.getListBySingleField("CATEGORY_ID", categoryID);
     }
 
     @Override
     public Date getRecentChangeTime() throws RemoteException {
-        return null;
+        File file = new File(recentChangeFilePath);
+        if (!file.exists())
+            return null;
+        Date date = null;
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))){
+            date = (Date) in.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 
     @Override
@@ -75,11 +100,17 @@ public class CommodityData extends UnicastRemoteObject implements CommodityDataS
 
     @Override
     public ResultMessage add(CommodityCategoryPO commodityCategoryPO) throws RemoteException {
-        return categoryPOCommonOperation.add(commodityCategoryPO);
+        ResultMessage resultMessage =  categoryPOCommonOperation.add(commodityCategoryPO);
+        if (resultMessage == ResultMessage.SUCCESS)
+            updateRecentChangeTime();
+        return resultMessage;
     }
 
     @Override
     public ResultMessage deleteCategory(int id) throws RemoteException {
-        return categoryPOCommonOperation.deleteBySingleField("id", id);
+        ResultMessage resultMessage =  categoryPOCommonOperation.deleteBySingleField("id", id);
+        if (resultMessage == ResultMessage.SUCCESS)
+            updateRecentChangeTime();
+        return resultMessage;
     }
 }

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -18,9 +19,13 @@ import java.util.ResourceBundle;
  * Created on 2017/12/6.
  * Description
  *
- * @author 陈俊宇
+ * @author 高梦婷
  */
 public class TitleController extends CommonFather{
+    @FXML
+    Label userName;
+    @FXML
+    Label userID;
     @FXML
     Button close;
     @FXML
@@ -40,5 +45,7 @@ public class TitleController extends CommonFather{
         buttons=new Button[]{close,mini,exit};
         stage=Client.primaryStage;
         super.initialize(location, resources);
+        userName.setText(Client.getUserVO().getUsername());
+        userID.setText(Client.getUserVO().getID());
     }
 }

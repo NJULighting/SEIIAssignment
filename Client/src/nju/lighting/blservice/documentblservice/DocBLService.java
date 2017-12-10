@@ -5,16 +5,16 @@ import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessConditionItemVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.SalesDetailVO;
-import shared.BusinessConditionFilter;
-import shared.DocumentFilter;
-import shared.ResultMessage;
+import shared.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public interface DocBLService {
 
-    ResultMessage commitDoc(DocVO doc);
+    DocVO createDoc(DocType type);
+
+    TwoTuple<String,ResultMessage> commitDoc(DocVO doc);
 
     ArrayList<HistoryDocVO> findDocuments(DocumentFilter filter);
 

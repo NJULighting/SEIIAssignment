@@ -8,15 +8,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane minHeight="0.0" minWidth="0.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.GiftListController">
     <children>
         <VBox fx:id="vbox" alignment="CENTER" spacing="30.0">
             <children>
-                <TableView fx:id="giftTableView" fixedCellSize="40.0" focusTraversable="false" prefHeight="400.0" prefWidth="550.0" stylesheets="@../tableview.css">
+                <TableView fx:id="giftTableView" editable="true" fixedCellSize="40.0" focusTraversable="false" prefHeight="400.0" prefWidth="550.0" stylesheets="@../tableview.css">
                     <columns>
                         <TableColumn fx:id="commodityName" editable="false" prefWidth="250.0" sortable="false" text="商品名" />
-                        <TableColumn fx:id="count" editable="false" prefWidth="100.0" sortable="false" text="数量" />
+                        <TableColumn fx:id="count" editable="true" prefWidth="100.0" sortable="false" text="数量" />
                         <TableColumn fx:id="price" editable="false" minWidth="0.0" prefWidth="100.0" sortable="false" text="单价" />
                         <TableColumn fx:id="subtotal" editable="false" prefWidth="100.0" sortable="false" text="小计" />
                     </columns>

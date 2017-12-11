@@ -32,8 +32,8 @@ import java.util.ResourceBundle;
  * @author 陈俊宇
  */
 public class LogController implements Initializable {
-    LocalDate startDate;
-    LocalDate endDate;
+    Date startDate;
+    Date endDate;
 
     ArrayList<LogVO> logVOArrayList;
 
@@ -82,25 +82,29 @@ public class LogController implements Initializable {
 
 
     void initPagination() {
-        //logVOArrayList = logBLService.getLogListByTime(Date.from(startDate,endDate) ;
+        logVOArrayList = logBLService.getLogListByTime(startDate, endDate);
         pagination.setPageCount(logVOArrayList.size() / itemsPerPage + 1);
         pagination.setPageFactory((Integer index) -> createPage(index));
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        startDate = LocalDate.now();
+        startDate = new Date();
 
         //endDate = DateHelper.WeekAgo();
         initPagination();
+
 
         okBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 if (startDatePicker.getValue()!=null&&endDatePicker.getValue()!=null){
-                    startDate=(startDatePicker.getValue());
+                    startDate=(DateHelper.localDateToDate(startDatePicker.getValue()));
+                    endDate=DateHelper.localDateToDate(endDatePicker.getValue());
+
                 }
             }
         });
     }
+
 }

@@ -30,6 +30,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/11/27.
@@ -67,9 +68,10 @@ public class GiftListController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        for (int i = 0; i < giftsVO.size(); i++) {
-            total += giftsVO.get(i).getSubtotal();
-        }
+
+        total = giftsVO.stream()
+                .mapToDouble(GiftItemVO::getPrice)
+                .sum();
 
 
         if (giftsVO != null) {
@@ -84,25 +86,16 @@ public class GiftListController implements Initializable {
                     cellData.getValue().subtotalProperty().asObject());
             price.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
 
-            List<GiftItemVO> giftItemVOS = giftsVO;
 
-            int size = giftItemVOS.size();
+            giftObservableList.addAll(giftsVO.stream()
+                    .map(x -> new CommodityItem(x))
+                    .collect(Collectors.toList())
+            );
 
-            for (int i = 0; i < size; i++) {
-                giftObservableList.add(new CommodityItem(giftItemVOS.get(i)));
-            }
-
-
-
-            System.out.println("size  " + size);
-            giftTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
             giftTableView.setItems(giftObservableList);
 
-            //设置表格的高度和与数据的多少一致，否则数据多的时候表中就会出现滚动条
-            giftTableView.prefHeightProperty().bind(giftTableView.fixedCellSizeProperty().multiply(Bindings.size(giftTableView.getItems()).add(1.01)));
+            TableViewHelper.commonSet(giftTableView);
 
-            //禁止表头拖动
-            TableViewHelper.disableReorder(giftTableView);
 
             totalLabel.setText(total + "");
         }

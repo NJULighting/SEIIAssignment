@@ -7,8 +7,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -16,6 +18,7 @@ import javafx.scene.control.Pagination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
+import javafx.stage.Stage;
 import nju.lighting.bl.promotionbl.PromotionBLService_Stub;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.presentation.utils.DateHelper;
@@ -42,50 +45,18 @@ public class PromotionManageController implements Initializable {
     @FXML
     Pagination pagination;
 
+    @FXML
+    JFXButton create;
 
 
+    @FXML
+    void create() throws IOException {
+        Stage stage =new Stage();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("createPromotion.fxml"))));
+        stage.show();
+    }
 
-//    JFXListView createPage(int index){
-//        JFXListView listView=new JFXListView();
-//        Label name,type,time;
-//        HBox buttonBox;
-//        JFXButton openBtn,invalidBtn;
-//        HBox listCell;
-//        int left=promotions.size()-index*itemsPerPage;
-//
-//        int max=(left>itemsPerPage)?itemsPerPage:left;
-//
-//        for(int i=0;i<max;i++){
-//
-//            PromotionVO currentPromotion=promotions.get(index*itemsPerPage+i);
-//
-//            name=new Label(currentPromotion.getName());
-//            //name.setPrefSize(PREF_WIDTH,PREF_HEIGHT);
-//            type=new Label(currentPromotion.getType().approximateTime());
-//            time=new Label(currentPromotion.getStartDate().approximateTime()+" - "+
-//            currentPromotion.getEndDate());
-//            openBtn=new JFXButton("打开");
-//            invalidBtn=new JFXButton("失效");
-//            buttonBox=new HBox(openBtn,invalidBtn);
-//            buttonBox.setVisible(false);
-//
-//            listCell=new HBox();
-//            listCell=new HBox(name,type,time,buttonBox);
-//
-//            listView.getItems().add(listCell);
-//
-//        }
-//
-//        listView.getStylesheets().add(getClass().getResource("../label.css").toExternalForm());
-//        //listView.setCellFactory(Label);
-//        return listView;
-//    }
-//
-//    int findHovered(JFXListView listView){
-//        for (int i=0;i<listView.getItems().size();i++){
-//            if (listView.)
-//        }
-//    }
+
 
     ListView createPage(int index) {
         ListView<PromotionVO> promotionVOJFXListView = new JFXListView<>();

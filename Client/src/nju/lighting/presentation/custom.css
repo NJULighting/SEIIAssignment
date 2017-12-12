@@ -23,11 +23,11 @@ root {
 
 .jfx-hamburger StackPane {
 
-    -fx-pref-width: 40px;
+    -fx-pref-width: 30px;
 
-    -fx-pref-height: 7px;
+    -fx-pref-height: 3px;
 
-    -fx-background-color: #D63333;
+    -fx-background-color:  #5599FF;
 
     -fx-background-radius: 5px;
 
@@ -217,7 +217,7 @@ root {
     -fx-padding: 0.7em 0.57em;
 
     -fx-font-size: 14px;
-
+    -fx-background-color: transparent;
 
 }
 .button:filled:hover{

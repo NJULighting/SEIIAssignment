@@ -1,7 +1,5 @@
 package nju.lighting.po.commodity;
 
-import nju.lighting.bl.utils.CommodityPathParser;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -48,10 +46,6 @@ public class CommodityItemPO implements Serializable {
 
     public String getId() {
         return id;
-    }
-
-    public int getSequenceNumber() {
-        return CommodityPathParser.getLastNumOfPath(id);
     }
 
     public void setId(String id) {

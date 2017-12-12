@@ -21,16 +21,34 @@ import java.util.ArrayList;
 public class ApprovalBLService_Stub implements ApprovalBLService {
     @Override
     public ArrayList<DocVO> getDocumentList() {
-        BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222","日本LED无障碍灯泡",
+        BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222","日本LED无障碍灯泡", null,
                 100, 100,100);
-        BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223","日本LED无障碍灯泡" + "-b",
+        BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223","日本LED无障碍灯泡" + "-b", null,
                 100, 100,100);
-        BasicCommodityItemVO commodityVO3 = new BasicCommodityItemVO("xx0002224","日本LED无障碍灯泡" + "-c",
+        BasicCommodityItemVO commodityVO3 = new BasicCommodityItemVO("xx0002224","日本LED无障碍灯泡" + "-c", null,
                 100, 100, 100);
 
         GiftItemVO giftItemVO1 = new GiftItemVO(commodityVO1, 3);
         GiftItemVO giftItemVO2 = new GiftItemVO(commodityVO2, 1);
-        GiftItemVO giftItemVO3 = new GiftItemVO(commodityVO3, 10);
+        GiftItemVO giftItemVO3 = new GiftItemVO(commodityVO3, 11);
+        GiftItemVO giftItemVO4 = new GiftItemVO(commodityVO3, 12);
+        GiftItemVO giftItemVO5 = new GiftItemVO(commodityVO3, 13);
+        GiftItemVO giftItemVO6 = new GiftItemVO(commodityVO3, 14);
+        GiftItemVO giftItemVO7 = new GiftItemVO(commodityVO3, 15);
+        GiftItemVO giftItemVO8 = new GiftItemVO(commodityVO3, 16);
+        GiftItemVO giftItemVO9 = new GiftItemVO(commodityVO3, 17);
+        GiftItemVO giftItemV10 = new GiftItemVO(commodityVO3, 18);
+        GiftItemVO giftItemV11 = new GiftItemVO(commodityVO3, 19);
+        GiftItemVO giftItemV12 = new GiftItemVO(commodityVO3, 20);
+        GiftItemVO giftItemV13 = new GiftItemVO(commodityVO3, 21);
+        GiftItemVO giftItemV14 = new GiftItemVO(commodityVO3, 22);
+        GiftItemVO giftItemV15 = new GiftItemVO(commodityVO3, 23);
+        GiftItemVO giftItemV16 = new GiftItemVO(commodityVO3, 24);
+        GiftItemVO giftItemV17 = new GiftItemVO(commodityVO3, 25);
+        GiftItemVO giftItemV18 = new GiftItemVO(commodityVO3, 26);
+
+
+
 
 
 
@@ -40,31 +58,23 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
 
         gifts1.add(giftItemVO1);
         gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
-        gifts1.add(giftItemVO2);
+        gifts1.add(giftItemVO3);
+        gifts1.add(giftItemVO4);
+        gifts1.add(giftItemVO5);
+        gifts1.add(giftItemVO6);
+        gifts1.add(giftItemVO7);
+        gifts1.add(giftItemVO8);
+        gifts1.add(giftItemVO9);
+        gifts1.add(giftItemV10);
+        gifts1.add(giftItemV11);
+        gifts1.add(giftItemV12);
+        gifts1.add(giftItemV13);
+        gifts1.add(giftItemV14);
+        gifts1.add(giftItemV15);
+        gifts1.add(giftItemV16);
+        gifts1.add(giftItemV17);
+        gifts1.add(giftItemV18);
+
 
 
         gifts2.add(giftItemVO2);

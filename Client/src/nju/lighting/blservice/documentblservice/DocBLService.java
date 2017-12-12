@@ -1,6 +1,7 @@
 package nju.lighting.blservice.documentblservice;
 
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.UserVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessConditionItemVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
@@ -28,4 +29,5 @@ public interface DocBLService {
 
     DocVO redFlushAndCopy(DocVO target);
 
+    UserVO getCreatorInfo(String creatorID);
 }

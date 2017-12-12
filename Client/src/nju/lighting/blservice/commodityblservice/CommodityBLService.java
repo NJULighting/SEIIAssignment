@@ -32,6 +32,12 @@ public interface CommodityBLService {
 
     ResultMessage modifyCommodity(CommodityItemVO commodity);
 
+    /**
+     * Add a new category. The parent category's vo should be obtained in the vo tree.
+     * @param newCategory category you want to add
+     * @return <tt>SUCCESS</tt> if add successfully,
+     * <tt>FAILURE</tt> if parent category don't exists any more or it contains commodity items.
+     */
     ResultMessage addCategory(CommodityCategoryVO newCategory);
 
     ResultMessage deleteCategory(int id);

@@ -21,8 +21,19 @@ class CommodityCategoriesTree {
     }
 
     public CommodityCategoriesTreeVO toVO() {
-        CommodityCategoryVO rootVO = new CommodityCategoryVO(null, root.categoryID, root.categoryName, root.isLeaf);
-        return new CommodityCategoriesTreeVO(root.toVO(rootVO));
+        return new CommodityCategoriesTreeVO(root.toVO(null));
+    }
+
+    /**
+     * Find corresponding category and check whether it's a leaf.
+     * If the category doesn't exists or it's not a leaf, it will return false.
+     * Otherwise, it will return true.
+     * @param path path of the category
+     * @return <tt>true</tt> if it's not null and is a leaf, <tt>false</tt> other wise
+     */
+    boolean isLeaf(String path) {
+        CommodityCategory target = get(path);
+        return target != null && target.isLeaf;
     }
 
     boolean contains(String path) {
@@ -30,6 +41,9 @@ class CommodityCategoriesTree {
     }
 
     CommodityCategory get(String path) {
+        if (path.isEmpty())
+            return root;
+
         String[] categories = path.split(CommodityBLService.SEPARATOR);
         CommodityCategory curr = root;
         for (String category : categories) {
@@ -99,6 +113,9 @@ class CommodityCategoriesTree {
 
         CommodityCategoryVO toVO(CommodityCategoryVO parentVO) {
             CommodityCategoryVO curr = new CommodityCategoryVO(parentVO, categoryID, categoryName, isLeaf);
+            if (isLeaf)
+                return curr;
+
             List<CommodityCategoryVO> voChildren = children.stream()
                     .map(commodityCategory -> commodityCategory.toVO(curr))
                     .collect(Collectors.toList());

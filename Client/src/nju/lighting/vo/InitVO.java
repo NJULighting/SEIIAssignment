@@ -1,6 +1,5 @@
 package nju.lighting.vo;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**

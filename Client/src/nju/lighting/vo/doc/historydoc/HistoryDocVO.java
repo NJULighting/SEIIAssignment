@@ -33,7 +33,7 @@ public class HistoryDocVO {
     public HistoryDocVO(UserVO creator, String comment, DocVO docVO) {
         this.creator = creator;
         this.comment = comment;
-        this.docVO=docVO;
+        this.docVO = docVO;
     }
 
     public DocVO getDocVO() {

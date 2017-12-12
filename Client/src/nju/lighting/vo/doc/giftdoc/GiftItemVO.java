@@ -1,10 +1,8 @@
 package nju.lighting.vo.doc.giftdoc;
 
 
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 
 /**
@@ -21,14 +19,13 @@ public class GiftItemVO {
     private double subtotal;
 
     /*
-    构造赠品项的时候所用的构造函数，只需要传入商品和数量，根据实时的结果得到价格
-     */
+        构造赠品项的时候所用的构造函数，只需要传入商品和数量，根据实时的结果得到价格
+         */
     public GiftItemVO(BasicCommodityItemVO commodity, int count) {
         this.commodity = commodity;
         this.count = count;
-        this.subtotal=commodity.getRecentSellPrice()*count;
+        this.subtotal = commodity.getRecentSellPrice() * count;
     }
-
 
     /*
     显示的时候所需要的构造函数，因为商品的结果可能发生改变，所以商品的价格应该取自于
@@ -38,6 +35,10 @@ public class GiftItemVO {
         this.commodity = commodity;
         this.count = count;
         this.subtotal = subtotal;
+    }
+
+    public BasicCommodityItemVO getCommodity() {
+        return commodity;
     }
 
     public String getCommodityID() {
@@ -57,18 +58,22 @@ public class GiftItemVO {
     }
 
     public ObservableValue<String> commodityNameProperty() {
-       return new SimpleStringProperty(commodity.getName());
+        return new SimpleStringProperty(commodity.getName());
     }
 
-    public ObservableValue<String> countProperty(){
-        return new SimpleStringProperty(""+count);
+    public ObservableValue<String> countProperty() {
+        return new SimpleStringProperty("" + count);
     }
 
-    public ObservableValue<String> subtotalProperty(){
-        return new SimpleStringProperty(""+subtotal);
-    }
-    public ObservableValue<String> priceProperty(){
-        return new SimpleStringProperty(""+commodity.getRecentSellPrice());
+    public ObservableValue<String> subtotalProperty() {
+        return new SimpleStringProperty("" + subtotal);
     }
 
+    public ObservableValue<String> priceProperty() {
+        return new SimpleStringProperty("" + commodity.getRecentSellPrice());
+    }
+
+    public double getPrice() {
+        return commodity.getRecentSellPrice();
+    }
 }

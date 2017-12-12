@@ -4,9 +4,7 @@ package nju.lighting.vo.doc.giftdoc;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -17,19 +15,18 @@ import java.util.List;
 public class GiftDocVO extends DocVO {
     private List<GiftItemVO> gifts;
     private String customer;
-    private double total=0;
+    private double total = 0;
 
 
     public GiftDocVO(Date time, String creatorId, String docId, DocType type,
                      List<GiftItemVO> gifts, String customer) {
         super(time, creatorId, docId, type);
         this.customer = customer;
-        this.gifts=gifts;
-        for (int i=0;i<gifts.size();i++){
-            total+=gifts.get(i).getSubtotal();
+        this.gifts = gifts;
+        for (int i = 0; i < gifts.size(); i++) {
+            total += gifts.get(i).getSubtotal();
         }
     }
-
 
 
     public List<GiftItemVO> getGifts() {

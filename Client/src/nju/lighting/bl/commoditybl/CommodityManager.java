@@ -47,7 +47,7 @@ enum CommodityManager {
     ResultMessage addCommodity(CommodityItemVO newCommodity, String categoryPath) {
         // Check category id
         updateFromDatabase();
-        if (!commodityTree.contains(categoryPath))
+        if (!commodityTree.isLeaf(categoryPath))
             return ResultMessage.FAILURE;
 
         try {
@@ -57,7 +57,7 @@ enum CommodityManager {
             int sequenceNum = poList.stream()
                     .max(Comparator.comparing(CommodityItemPO::getSequenceNumber))
                     .map(CommodityItemPO::getSequenceNumber)
-                    .orElse(0);
+                    .orElse(0) + 1;
             String commodityID = categoryPath + CommodityBLService.SEPARATOR + sequenceNum;
 
             // Create po and add it to the database
@@ -118,10 +118,17 @@ enum CommodityManager {
         }
     }
 
+    /**
+     * Add a new category. The parent category's vo should be obtained in the vo tree.
+     * @param newCategory category you want to add
+     * @return <tt>SUCCESS</tt> if add successfully,
+     * <tt>FAILURE</tt> if parent category don't exists any more or it contains commodity items.
+     */
     ResultMessage addCategory(CommodityCategoryVO newCategory) {
-        // Check whether database has changed
+        // Update and check
         updateFromDatabase();
-        if (!commodityTree.contains(newCategory.getParentPath())) {
+        if (!commodityTree.contains(newCategory.getParentPath())
+                || containsItem(newCategory.getUpperCategory().getId())) {
             return ResultMessage.FAILURE;
         }
 
@@ -135,6 +142,10 @@ enum CommodityManager {
             e.printStackTrace();
             return ResultMessage.NETWORK_FAIL;
         }
+    }
+
+    private boolean containsItem(int category) {
+        return !findCommodityByCategory(category).isEmpty();
     }
 
     ResultMessage deleteCategory(int id) {
@@ -151,7 +162,7 @@ enum CommodityManager {
 
     ResultMessage changeCategoryName(CommodityCategoryVO vo) {
         updateFromDatabase();
-        if (vo.getId() == -1 || !commodityTree.contains(vo.getParentPath()))
+        if (vo.getId() == -1 || !commodityTree.isLeaf(vo.getParentPath()))
             return ResultMessage.FAILURE;
 
         // Execute the change
@@ -188,6 +199,9 @@ enum CommodityManager {
         }
     }
 
+    /**
+     * Build the tree of commodity categories
+     */
     private void buildCommodityTree() {
         try {
             List<CommodityCategoryPO> categoryPOList = dataService.getAllCommodityCategory();
@@ -198,6 +212,9 @@ enum CommodityManager {
         }
     }
 
+    /**
+     * Just rebuild the tree orz
+     */
     private void updateFromDatabase() {
         buildCommodityTree();
     }

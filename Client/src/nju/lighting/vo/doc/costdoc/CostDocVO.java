@@ -27,12 +27,12 @@ public class CostDocVO extends DocVO {
         this.accountList = accountList;
     }
 
-    public ArrayList<AccountVO> getAccountList() {
-        return accountList;
-    }
-
     public CostDocVO(Date time, String creatorId, String docId) {
         super(time, creatorId, docId, DocType.COST);
+    }
+
+    public ArrayList<AccountVO> getAccountList() {
+        return accountList;
     }
 
     public AccountVO getAccount() {

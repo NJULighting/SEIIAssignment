@@ -1,5 +1,7 @@
 package nju.lighting.vo.commodity;
 
+import shared.ICommodityTreeNode;
+
 import java.util.Date;
 
 /**
@@ -36,20 +38,6 @@ public class CommodityItemVO {
         this.dateOfProduction = dateOfProduction;
     }
 
-    public CommodityItemVO(String name, String modelNumber, int repCount, double inPrice,
-                           double sellPrice, double recentInPrice, double recentSellPrice, String batch,
-                           String batchNumber, Date dateOfProduction) {
-        this.name = name;
-        this.modelNumber = modelNumber;
-        this.repCount = repCount;
-        this.inPrice = inPrice;
-        this.sellPrice = sellPrice;
-        this.recentInPrice = recentInPrice;
-        this.recentSellPrice = recentSellPrice;
-        this.batch = batch;
-        this.batchNumber = batchNumber;
-        this.dateOfProduction = dateOfProduction;
-    }
 
     public String getId() {
         return id;

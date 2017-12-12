@@ -9,50 +9,55 @@ import shared.ResultMessage;
 import java.util.List;
 
 public class CommodityController implements CommodityBLService {
-
+    private CommodityManager manager = CommodityManager.INSTANCE;
 
     @Override
     public CommodityCategoriesTreeVO getCommodityCategoriesTreeVO() {
-        return null;
+        return manager.getCommodityCategoriesTreeVO();
     }
 
     @Override
-    public ResultMessage addCommodity(CommodityItemVO newCommodity)  {
-        return null;
+    public ResultMessage addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category)  {
+        return manager.addCommodity(newCommodity, category.getPath());
+    }
+
+    @Override
+    public List<CommodityItemVO> findCommodityByCategory(int categoryID) {
+        return manager.findCommodityByCategory(categoryID);
     }
 
     @Override
     public List<CommodityItemVO> findCommodityVOByName(String commodityName) {
-        return null;
+        return manager.findCommodityVOByName(commodityName);
     }
 
     @Override
     public CommodityItemVO findCommodityVOById(String id) {
-        return null;
+        return manager.findCommodityVOById(id);
     }
 
     @Override
     public ResultMessage deleteCommodity(String id)  {
-        return null;
+        return manager.deleteCommodity(id);
     }
 
     @Override
     public ResultMessage modifyCommodity(CommodityItemVO commodity)  {
-        return null;
+        return manager.modifyCommodity(commodity);
     }
 
     @Override
     public ResultMessage addCategory(CommodityCategoryVO newCategory)  {
-        return null;
+        return manager.addCategory(newCategory);
     }
 
     @Override
     public ResultMessage deleteCategory(int id)  {
-        return null;
+        return manager.deleteCategory(id);
     }
 
     @Override
-    public ResultMessage modifyCategory(CommodityCategoryVO categoryItemVO) {
-        return null;
+    public ResultMessage changeCategoryName(CommodityCategoryVO categoryVO) {
+        return manager.changeCategoryName(categoryVO);
     }
 }

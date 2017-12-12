@@ -34,14 +34,6 @@ public class CommodityDataTest {
     }
 
     @Test
-    public void getByCategory() throws Exception {
-        List<CommodityItemPO> commodityItemPOS = commodityData.findByCategory(4);
-        for (CommodityItemPO po: commodityItemPOS) {
-            System.out.println(po);
-        }
-    }
-
-    @Test
     public void getAllCommodityCategory() throws Exception {
         List<CommodityCategoryPO> categoryPOS = commodityData.getAllCommodityCategory();
         for (CommodityCategoryPO categoryPO: categoryPOS) {

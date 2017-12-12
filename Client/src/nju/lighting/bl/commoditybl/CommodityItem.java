@@ -37,6 +37,16 @@ class CommodityItem {
                 po.getDateOfProduction());
     }
 
+    CommodityItem(CommodityItemVO vo, int categoryID) {
+        basicCommodityItem = new BasicCommodityItem(vo.getId(), vo.getName(), categoryID, vo.getRepCount(), vo.getRecentInPrice(), vo.getRecentSellPrice());
+        modelNumber = vo.getModelNumber();
+        inPrice = vo.getInPrice();
+        sellPrice = vo.getSellPrice();
+        batch = vo.getBatch();
+        batchNumber = vo.getBatchNumber();
+        dateOfProduction = vo.getDateOfProduction();
+    }
+
     public String getModelNumber() {
         return modelNumber;
     }
@@ -75,20 +85,20 @@ class CommodityItem {
         return basicCommodityItem.getRepCount();
     }
 
+    public double getRecentInPrice() {
+        return basicCommodityItem.getRecentInPrice();
+    }
+
+    public double getRecentSellPrice() {
+        return basicCommodityItem.getRecentSellPrice();
+    }
+
     public String getId() {
         return basicCommodityItem.getId();
     }
 
-    public void setId(String id) {
-        this.basicCommodityItem.setId(id);
-    }
-
     public String getName() {
         return basicCommodityItem.getName();
-    }
-
-    public void setName(String name) {
-        basicCommodityItem.setName(name);
     }
 
     public int getCategory() {
@@ -98,4 +108,12 @@ class CommodityItem {
     BasicCommodityItem toBasicCommodityItem() {
         return basicCommodityItem;
     }
+
+    public CommodityItemPO toPO() {
+        return new CommodityItemPO(getId(), getName(), getCategory(), getModelNumber(),
+                getRepCount(), inPrice, sellPrice, getRecentInPrice(),
+                getRecentSellPrice(), batch, batchNumber, dateOfProduction);
+    }
+
+
 }

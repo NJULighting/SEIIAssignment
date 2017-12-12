@@ -9,9 +9,18 @@ import java.util.List;
 
 public interface CommodityBLService {
 
+    String SEPARATOR = "-";
+
     CommodityCategoriesTreeVO getCommodityCategoriesTreeVO();
 
-    ResultMessage addCommodity(CommodityItemVO newCommodity);
+    /**
+     * Add a new commodity to the system. You need to pass category's id for the new commodity,
+     * 'cause <tt>CommodityVO</tt> doesn't contains its category's id.
+     * @param newCommodity new commodity's vo
+     * @param category   id of the commodity's category
+     * @return <tt>SUCCESS</tt> if category's id is right and database works well, <tt>FAILURE</tt> otherwise
+     */
+    ResultMessage addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category);
 
     List<CommodityItemVO> findCommodityByCategory(int categoryID);
 
@@ -27,5 +36,5 @@ public interface CommodityBLService {
 
     ResultMessage deleteCategory(int id);
 
-    ResultMessage modifyCategory(CommodityCategoryVO categoryItemVO);
+    ResultMessage changeCategoryName(CommodityCategoryVO categoryVO);
 }

@@ -82,5 +82,10 @@ public abstract class CommonFather implements Initializable {
 
     }
 
-
+    public void disableReorder(TableView tableView){
+        tableView.skinProperty().addListener((obs, oldSkin, newSkin) -> {
+            final TableHeaderRow header = (TableHeaderRow) tableView.lookup("TableHeaderRow");
+            header.reorderingProperty().addListener((o, oldVal, newVal) -> header.setReordering(false));
+        });
+    }
 }

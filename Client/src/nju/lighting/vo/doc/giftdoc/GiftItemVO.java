@@ -16,11 +16,9 @@ public class GiftItemVO {
 
     private BasicCommodityItemVO commodity;
 
-   private int count;
-    //SimpleStringProperty count;
-    private double subtotal;
-    private double price;
+    private int count;
 
+    private double subtotal;
 
     /*
     构造赠品项的时候所用的构造函数，只需要传入商品和数量，根据实时的结果得到价格
@@ -28,10 +26,7 @@ public class GiftItemVO {
     public GiftItemVO(BasicCommodityItemVO commodity, int count) {
         this.commodity = commodity;
         this.count = count;
-        //this.count =new SimpleStringProperty(count+"");
-        this.price =commodity.getRecentInPrice();
         this.subtotal=commodity.getRecentSellPrice()*count;
-
     }
 
 
@@ -41,19 +36,8 @@ public class GiftItemVO {
      */
     public GiftItemVO(BasicCommodityItemVO commodity, int count, double subtotal) {
         this.commodity = commodity;
-        //this.count = count;
         this.count = count;
-        //this.count =new SimpleStringProperty(count+"");
-//        this.count =new SimpleStringProperty(count+"");
-//        this.subtotal = subtotal;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public BasicCommodityItemVO getCommodity() {
-        return commodity;
+        this.subtotal = subtotal;
     }
 
     public String getCommodityID() {
@@ -70,16 +54,7 @@ public class GiftItemVO {
 
     public void setCount(int count) {
         this.count = count;
-        subtotal=count*commodity.getRecentSellPrice();
     }
-
-//    public void setCount( int count){
-//        this.count.set(""+count);
-//    }
-
-//    public String getCount() {
-//        return count.get();
-//    }
 
     public ObservableValue<String> commodityNameProperty() {
        return new SimpleStringProperty(commodity.getName());

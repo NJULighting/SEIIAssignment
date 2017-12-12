@@ -1,0 +1,14 @@
+.button{
+
+    -fx-pref-width: 30px;
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+
+    -fx-background-radius: 30px;
+    -fx-background-position: center;
+    -fx-pref-height: 30px;
+
+    -fx-border-width: 0;
+
+
+}

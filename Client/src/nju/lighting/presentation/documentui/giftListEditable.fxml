@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.GiftListEditable">
+    <children>
+      <VBox fx:id="vbox1" alignment="CENTER" layoutX="10.0" layoutY="10.0" spacing="30.0">
+         <children>
+            <TableView fx:id="giftTableView" editable="true" fixedCellSize="40.0" focusTraversable="false" prefHeight="400.0" prefWidth="600.0" snapToPixel="false" stylesheets="@../tableview.css">
+               <columns>
+                  <TableColumn fx:id="commodityName" editable="false" prefWidth="220.0" sortable="false" text="商品名" />
+                  <TableColumn fx:id="count" editable="true" prefWidth="100.0" sortable="false" text="数量" />
+                  <TableColumn fx:id="price" editable="false" minWidth="0.0" prefWidth="100.0" sortable="false" text="单价" />
+                  <TableColumn fx:id="subtotal" editable="false" prefWidth="100.0" sortable="false" text="小计" />
+                  <TableColumn fx:id="deleteBtn" editable="false" sortable="false" />
+               </columns>
+            </TableView>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Label text="总价： ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalLabel" text="Label">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>

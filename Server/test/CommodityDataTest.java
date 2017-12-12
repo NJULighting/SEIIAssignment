@@ -95,4 +95,11 @@ public class CommodityDataTest {
         assertEquals(ResultMessage.SUCCESS, message);
     }
 
+    @Test
+    public void findByCategoryIDTest() throws Exception {
+        int id = 4;
+        List<CommodityItemPO> poList = commodityData.findByCategory(4);
+        assertNotNull(poList);
+        assertEquals(1, poList.size());
+    }
 }

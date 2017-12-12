@@ -19,7 +19,6 @@ import javax.naming.NamingException;
 import java.rmi.RemoteException;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 enum CommodityManager {
@@ -28,7 +27,6 @@ enum CommodityManager {
     private CommodityCategoriesTree commodityTree;
     private CommodityDataService dataService;
     private Logger logger;
-    private Date changeDate;
 
     CommodityManager() {
         try {
@@ -193,7 +191,6 @@ enum CommodityManager {
     private void buildCommodityTree() {
         try {
             List<CommodityCategoryPO> categoryPOList = dataService.getAllCommodityCategory();
-            changeDate = dataService.getRecentChangeTime();
             CommodityCategoriesTree.TreeBuilder treeBuilder = new CommodityCategoriesTree.TreeBuilder(categoryPOList);
             commodityTree = treeBuilder.build();
         } catch (RemoteException e) {
@@ -202,19 +199,7 @@ enum CommodityManager {
     }
 
     private void updateFromDatabase() {
-        // Check whether data has changed
-        try {
-            if (databaseHasChanged()) {
-                buildCommodityTree();
-                changeDate = dataService.getRecentChangeTime();
-            }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private boolean databaseHasChanged() throws RemoteException {
-        return dataService.getRecentChangeTime().compareTo(changeDate) != 0;
+        buildCommodityTree();
     }
 
     @FunctionalInterface

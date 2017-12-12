@@ -33,12 +33,25 @@
     -fx-border-width: 0;
     -fx-background-color:white;
 }
+.table-view .table-row-cell .table-cell:filled:focused:selected{
+    -fx-background-color:blue;
+}
 .table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: transparent;
+    -fx-background-color: red;
 
 }
 .table-view:focused{
     -fx-background-color: transparent;
+}
+
+.button{
+
+    -fx-pref-height:20;
+    -fx-pref-width: 20;
+    -fx-min-height: 0;
+    -fx-min-width: 0;
+    -fx-font-size: 14px;
+    -fx-background-color: transparent,transparent,transparent,transparent;
 }
 
 

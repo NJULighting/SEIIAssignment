@@ -130,7 +130,7 @@ public class CommodityItemPO implements CSVable, Serializable {
         this.name = name;
     }
 
-    @Column(name = "CATEGORY_ID")
+    @Column(name = "CATEGORY_ID", nullable = false)
     public int getCategoryId() {
         return categoryId;
     }

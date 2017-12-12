@@ -1,7 +1,6 @@
 package nju.lighting.bl.promotionbl;
 
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
-import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerGrade;
 import shared.PromotionBuildInfo;
@@ -29,7 +28,7 @@ public class PromotionController implements PromotionBLService {
     }
 
     @Override
-    public CommodityCategoriesTreeVO create() {
+    public BasicCommodityTreeVO create() {
         return null;
     }
 

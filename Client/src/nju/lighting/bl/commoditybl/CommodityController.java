@@ -9,55 +9,50 @@ import shared.ResultMessage;
 import java.util.List;
 
 public class CommodityController implements CommodityBLService {
-    private CommodityManager manager = CommodityManager.INSTANCE;
+
 
     @Override
     public CommodityCategoriesTreeVO getCommodityCategoriesTreeVO() {
-        return manager.getCommodityCategoriesTreeVO();
+        return null;
     }
 
     @Override
-    public ResultMessage addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category)  {
-        return manager.addCommodity(newCommodity, category.getPath());
-    }
-
-    @Override
-    public List<CommodityItemVO> findCommodityByCategory(int categoryID) {
-        return manager.findCommodityByCategory(categoryID);
+    public ResultMessage addCommodity(CommodityItemVO newCommodity)  {
+        return null;
     }
 
     @Override
     public List<CommodityItemVO> findCommodityVOByName(String commodityName) {
-        return manager.findCommodityVOByName(commodityName);
+        return null;
     }
 
     @Override
     public CommodityItemVO findCommodityVOById(String id) {
-        return manager.findCommodityVOById(id);
+        return null;
     }
 
     @Override
     public ResultMessage deleteCommodity(String id)  {
-        return manager.deleteCommodity(id);
+        return null;
     }
 
     @Override
     public ResultMessage modifyCommodity(CommodityItemVO commodity)  {
-        return manager.modifyCommodity(commodity);
+        return null;
     }
 
     @Override
     public ResultMessage addCategory(CommodityCategoryVO newCategory)  {
-        return manager.addCategory(newCategory);
+        return null;
     }
 
     @Override
     public ResultMessage deleteCategory(int id)  {
-        return manager.deleteCategory(id);
+        return null;
     }
 
     @Override
-    public ResultMessage changeCategoryName(CommodityCategoryVO categoryVO) {
-        return manager.changeCategoryName(categoryVO);
+    public ResultMessage modifyCategory(CommodityCategoryVO categoryItemVO) {
+        return null;
     }
 }

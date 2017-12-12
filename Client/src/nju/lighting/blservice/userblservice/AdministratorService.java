@@ -6,6 +6,7 @@ import shared.ResultMessage;
 import shared.UserChangeInfo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/12/2.
@@ -34,7 +35,7 @@ public interface AdministratorService {
      */
     ResultMessage addUser(String id, String password, Identity identity, String username, boolean authorized);
 
-    ArrayList<UserVO> findUsers(String keyword);
+    List<UserVO> findUsers(String keyword);
 
     /**
      * Get user according to id

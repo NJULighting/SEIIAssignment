@@ -192,6 +192,8 @@ enum CommodityManager {
     private <C> CommodityItemVO findByToEntity(C condition, DataServiceFunction<C, CommodityItemPO> function) {
         try {
             CommodityItemPO po = function.apply(condition);
+            if (po == null)
+                return null;
             return new CommodityItem(po).toVO();
         } catch (RemoteException e) {
             e.printStackTrace();

@@ -5,6 +5,7 @@ import nju.lighting.vo.UserVO;
 import shared.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/11/6.
@@ -26,7 +27,7 @@ public class UserController implements UserBLService{
     }
 
     @Override
-    public ArrayList<UserVO> findUsers(String keyword) {
+    public List<UserVO> findUsers(String keyword) {
         return null;// TODO: 2017/12/3 complete this method
     }
 

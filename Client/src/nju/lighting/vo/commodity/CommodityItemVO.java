@@ -142,4 +142,6 @@ public class CommodityItemVO {
     public BasicCommodityItemVO toBasicCommodityItem() {
         return new BasicCommodityItemVO(id, name, repCount, recentInPrice, recentSellPrice);
     }
+
+
 }

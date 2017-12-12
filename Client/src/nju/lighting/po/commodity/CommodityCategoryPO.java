@@ -17,11 +17,6 @@ public class CommodityCategoryPO implements Serializable {
         this.upperCategoryId = upperCategoryId;
     }
 
-    public CommodityCategoryPO(String name, int upperCategoryId) {
-        this.name = name;
-        this.upperCategoryId = upperCategoryId;
-    }
-
     public int getId() {
         return id;
     }

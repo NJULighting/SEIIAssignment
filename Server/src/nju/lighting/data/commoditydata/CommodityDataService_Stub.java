@@ -49,7 +49,7 @@ public class CommodityDataService_Stub implements CommodityDataService {
     }
 
     @Override
-    public List<CommodityItemPO> findByCategory(int categoryID) throws RemoteException {
+    public List<CommodityItemPO> findByCategory(String categoryID) throws RemoteException {
         return null;
     }
 

@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface CommodityDataService extends Remote {
 
-    List<CommodityItemPO> findByCategory(int categoryID) throws RemoteException;
+    List<CommodityItemPO> findByCategory(String categoryID) throws RemoteException;
 
     Date getRecentChangeTime() throws RemoteException;
 

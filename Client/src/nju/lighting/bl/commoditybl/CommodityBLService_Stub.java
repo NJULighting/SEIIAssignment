@@ -1,13 +1,11 @@
 package nju.lighting.bl.commoditybl;
 
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
-import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 
-import shared.ICommodityTreeNode;
 import shared.ResultMessage;
 
 import java.util.ArrayList;
@@ -58,7 +56,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public ResultMessage addCommodity(CommodityItemVO newCommodity) {
+    public ResultMessage addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category) {
         return ResultMessage.SUCCESS;
     }
 
@@ -112,7 +110,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public ResultMessage modifyCategory(CommodityCategoryVO categoryItemVO) {
+    public ResultMessage changeCategoryName(CommodityCategoryVO categoryVO) {
         return ResultMessage.SUCCESS;
     }
 }

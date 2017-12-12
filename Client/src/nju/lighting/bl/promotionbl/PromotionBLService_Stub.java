@@ -6,6 +6,7 @@ import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
+import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.promotion.PromotionVO;
@@ -24,9 +25,9 @@ public class PromotionBLService_Stub implements PromotionBLService {
 
     @Override
     public List<PromotionVO> getBenefitsPlan(CustomerGrade customerLevel, List<String> CommodityList, double total) {
-        BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222", "日本LED无障碍灯泡", null,
+        BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222", "日本LED无障碍灯泡",
                 100, 100, 100);
-        BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223", "日本LED无障碍灯泡" + "-b", null,
+        BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223", "日本LED无障碍灯泡" + "-b",
                 100, 100, 100);
 
         ArrayList<GiftItemVO> gifts1 = new ArrayList<>();
@@ -79,7 +80,7 @@ public class PromotionBLService_Stub implements PromotionBLService {
     }
 
     @Override
-    public BasicCommodityTreeVO create() {
+    public CommodityCategoriesTreeVO create() {
         return null;
     }
 

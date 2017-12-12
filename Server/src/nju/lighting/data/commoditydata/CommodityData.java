@@ -89,6 +89,11 @@ public class CommodityData extends UnicastRemoteObject implements CommodityDataS
     }
 
     @Override
+    public ResultMessage update(CommodityCategoryPO categoryPO) throws RemoteException {
+        return categoryPOCommonOperation.update(categoryPO);
+    }
+
+    @Override
     public ResultMessage update(CommodityItemPO commodityItemPO) throws RemoteException {
         return commodityItemPOCommonOperation.update(commodityItemPO);
     }

@@ -162,7 +162,7 @@ enum CommodityManager {
 
     ResultMessage changeCategoryName(CommodityCategoryVO vo) {
         updateFromDatabase();
-        if (vo.getId() == -1 || !commodityTree.isLeaf(vo.getParentPath()))
+        if (vo.getId() == -1 || !commodityTree.contains(vo.getParentPath()))
             return ResultMessage.FAILURE;
 
         // Execute the change

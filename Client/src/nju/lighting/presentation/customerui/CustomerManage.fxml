@@ -1,63 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8">
-    <children>
-        <Circle fill="#fffefe" layoutX="46.0" layoutY="46.0" radius="42.0" stroke="#b9b3b3" strokeType="INSIDE"/>
-        <ImageView fitHeight="45.0" fitWidth="63.0" layoutX="14.0" layoutY="23.0">
-            <image>
-                <Image url="@../../../../../../../../Desktop/NXV@%25ZS@23WXNHAX)PN(57Y.png"/>
-            </image>
-        </ImageView>
-        <VBox alignment="CENTER_RIGHT" layoutX="101.0" layoutY="27.0" prefHeight="63.0" prefWidth="120.0" spacing="5.0">
-            <children>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="身份：销售人员" wrappingWidth="120.0"/>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID：XXXX" wrappingWidth="120.0"/>
-                <Button alignment="CENTER" mnemonicParsing="false" text="退出"/>
-            </children>
-        </VBox>
-        <HBox layoutX="341.0" layoutY="35.0" spacing="50.0">
-            <children>
-                <Button alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="主界面" textOverrun="CLIP"/>
-                <Button alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="客户管理"/>
-                <Button alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="制定销售单"/>
-                <Button alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="制定销售退货单"/>
-                <Button alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="制定进货单"/>
-                <Button alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="制定进货退货单"/>
-            </children>
-        </HBox>
-        <TableView layoutX="341.0" layoutY="192.0" prefHeight="480.0" prefWidth="850.0">
-            <columns>
-                <TableColumn prefWidth="200.0" text="客户编号"/>
-                <TableColumn prefWidth="100.0" text="姓名"/>
-                <TableColumn prefWidth="75.0" text="性别"/>
-                <TableColumn prefWidth="100.0" text="等级"/>
-                <TableColumn prefWidth="100.0" text="应收"/>
-                <TableColumn prefWidth="100.0" text="应付"/>
-            </columns>
-        </TableView>
-        <PasswordField layoutX="341.0" layoutY="146.0" prefHeight="23.0" prefWidth="285.0" promptText="输入客户编号或关键词"/>
-        <Button alignment="CENTER" layoutX="653.0" layoutY="146.0" lineSpacing="4.0" mnemonicParsing="false"
-                prefWidth="50.0" text="搜 索" textAlignment="CENTER">
-            <opaqueInsets>
-                <Insets/>
-            </opaqueInsets>
-        </Button>
-        <Button alignment="CENTER" layoutX="1071.0" layoutY="135.0" mnemonicParsing="false" prefHeight="45.0"
-                prefWidth="120.0" text="+ 添加客户" textAlignment="CENTER" textFill="#0600ff">
-            <font>
-                <Font size="14.0"/>
-            </font>
-        </Button>
-    </children>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.customerui.CustomerManageController">
+   <children>
+      <Line endX="300.0" layoutX="130.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />
+      <Label layoutX="30.0" layoutY="14.0" text="客户管理">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />
+      <TextField fx:id="search" layoutX="40.0" layoutY="71.0" promptText="输入关键词" />
+      <Button fx:id="searchBtn" layoutX="241.0" layoutY="61.0" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <image>
+                  <Image url="@../../../../images/搜索.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <JFXButton fx:id="addCustomerBtn" layoutX="890.0" layoutY="51.0" prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="增加客户" textFill="WHITE" />
+      <HBox alignment="CENTER_LEFT" layoutX="40.0" layoutY="120.0" prefHeight="40.0" prefWidth="1000.0" spacing="20.0" style="-fx-border-color: #5599ff;">
+         <children>
+            <Label text="客户编号">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <Label prefWidth="45.0" text="分类" />
+            <Label prefWidth="60.0" text="姓名" />
+            <Label prefWidth="82.0" text="级别" />
+            <Label prefWidth="74.0" text="应收" />
+            <Label prefWidth="74.0" text="应付" />
+            <Label prefWidth="74.0" text="应收额度" />
+            <Label prefWidth="97.0" text="电话" />
+            <Label text="默认业务员" />
+         </children>
+         <padding>
+            <Insets left="15.0" />
+         </padding></HBox>
+      <Pagination fx:id="customerList" layoutX="40.0" layoutY="160.0" maxPageIndicatorCount="9" prefHeight="500.0" prefWidth="1000.0" />
+   </children>
 </Pane>

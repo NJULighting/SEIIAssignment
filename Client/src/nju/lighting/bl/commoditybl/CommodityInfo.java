@@ -1,14 +1,14 @@
 package nju.lighting.bl.commoditybl;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface CommodityInfo {
 
     CommodityCategoriesTree getCommodityTree();
 
-    ArrayList<BasicCommodityItem> getBasicCommodityItems(ArrayList<String> ids);
+    List<BasicCommodityItem> getBasicCommodityItems(List<String> ids);
 
-    ArrayList<CommodityItem> getCommodityItems(ArrayList<String> ids);
+    List<CommodityItem> getCommodityItems(List<String> ids);
 
     boolean addCommodityItem(String id, int count);
 

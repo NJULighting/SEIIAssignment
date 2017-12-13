@@ -47,36 +47,8 @@ class CommodityItem {
         dateOfProduction = vo.getDateOfProduction();
     }
 
-    public String getModelNumber() {
-        return modelNumber;
-    }
-
-    public double getInPrice() {
-        return inPrice;
-    }
-
-    public double getSellPrice() {
-        return sellPrice;
-    }
-
-    public BasicCommodityItem getBasicCommodityItem() {
-        return basicCommodityItem;
-    }
-
-    public String getBatch() {
-        return batch;
-    }
-
-    public String getBatchNumber() {
-        return batchNumber;
-    }
-
-    public Date getDateOfProduction() {
-        return dateOfProduction;
-    }
-
-    public CommodityItemVO toVO() {
-        return new CommodityItemVO(getId(), getName(), getModelNumber(), getRepCount(), inPrice, sellPrice,
+    CommodityItemVO toVO() {
+        return new CommodityItemVO(getId(), getName(), modelNumber, getRepCount(), inPrice, sellPrice,
                 basicCommodityItem.getRecentInPrice(), basicCommodityItem.getRecentSellPrice(), batch,
                 batchNumber, dateOfProduction);
     }
@@ -85,23 +57,23 @@ class CommodityItem {
         return basicCommodityItem.getRepCount();
     }
 
-    public double getRecentInPrice() {
+    private double getRecentInPrice() {
         return basicCommodityItem.getRecentInPrice();
     }
 
-    public double getRecentSellPrice() {
+    private double getRecentSellPrice() {
         return basicCommodityItem.getRecentSellPrice();
     }
 
-    public String getId() {
+    String getId() {
         return basicCommodityItem.getId();
     }
 
-    public String getName() {
+    String getName() {
         return basicCommodityItem.getName();
     }
 
-    public int getCategory() {
+    int getCategory() {
         return basicCommodityItem.getCategoryID();
     }
 
@@ -110,7 +82,7 @@ class CommodityItem {
     }
 
     public CommodityItemPO toPO() {
-        return new CommodityItemPO(getId(), getName(), getCategory(), getModelNumber(),
+        return new CommodityItemPO(getId(), getName(), getCategory(), modelNumber,
                 getRepCount(), inPrice, sellPrice, getRecentInPrice(),
                 getRecentSellPrice(), batch, batchNumber, dateOfProduction);
     }

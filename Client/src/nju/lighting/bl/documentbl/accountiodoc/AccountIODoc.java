@@ -1,4 +1,4 @@
-package nju.lighting.bl.documentbl;
+package nju.lighting.bl.documentbl.accountiodoc;
 
 /**
  * Created on 2017/11/7.

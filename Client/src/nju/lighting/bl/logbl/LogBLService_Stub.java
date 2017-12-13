@@ -6,9 +6,9 @@ import shared.Identity;
 import shared.LogFilter;
 import nju.lighting.vo.LogVO;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created on 2017/10/22.
@@ -18,7 +18,7 @@ import java.util.Date;
 public class LogBLService_Stub implements LogBLService {
 
     @Override
-    public ArrayList<LogVO> getLogListByTime(Date from, Date to)  {
+    public List<LogVO> getLogListByTime(Date from, Date to)  {
         Date aWeekAgo= DateHelper.WeekAgo();
         LogVO logVO0 = new LogVO(aWeekAgo, "Too young","Frog0", Identity.FINANCE);
         LogVO logVO1 = new LogVO(new Date(), "Too simple","Frog1",Identity.GENERAL);
@@ -76,7 +76,7 @@ public class LogBLService_Stub implements LogBLService {
 
 
     @Override
-    public ArrayList<LogVO> findLogs(LogFilter filter)  {
+    public List<LogVO> findLogs(LogFilter filter)  {
         Date date1 = new Date();
         Date date2 = new Date(System.currentTimeMillis());
         return getLogListByTime(date1, date2);

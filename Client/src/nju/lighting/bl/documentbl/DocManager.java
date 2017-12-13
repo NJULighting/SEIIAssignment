@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Description: 处理单据提交、创建、查找业务
  * @author Liao
  */
-public class DocManage {
+public class DocManager {
 
     /**
      * 根据传入的单据类型进行单据的创建

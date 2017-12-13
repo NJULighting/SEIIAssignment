@@ -1,5 +1,7 @@
 package nju.lighting.bl.commoditybl;
 
+import nju.lighting.vo.repository.RepositoryTableItemVO;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -65,6 +67,16 @@ public class MockCommodity implements CommodityInfo {
             }
         }
         return comItems;
+    }
+
+    @Override
+    public String getCommodityNameByID(String commodityID) {
+        return null;
+    }
+
+    @Override
+    public List<RepositoryTableItemVO> getRepositoryTableItemList() {
+        return null;
     }
 
     @Override

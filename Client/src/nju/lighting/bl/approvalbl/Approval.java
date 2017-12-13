@@ -1,10 +1,6 @@
 package nju.lighting.bl.approvalbl;
 
 import nju.lighting.bl.documentbl.Doc;
-import nju.lighting.bl.documentbl.DocInfo;
-import nju.lighting.bl.documentbl.DocManage;
-import nju.lighting.vo.DocVO;
-import shared.ResultMessage;
 
 import java.util.ArrayList;
 

@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
  * @author Liao
  */
 public class VPOTransformer {
-    public static <IN, OUT> List<OUT> toVPOList(List<IN> voList, Function<IN, OUT> function) {
-        return voList.stream()
+    public static <IN, OUT> List<OUT> toVPOList(List<IN> list, Function<IN, OUT> function) {
+        return list.stream()
                 .map(function)
                 .collect(Collectors.toList());
     }

@@ -4,8 +4,8 @@ import nju.lighting.blservice.logblservice.LogBLService;
 import nju.lighting.vo.LogVO;
 import shared.LogFilter;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created on 2017/11/6.
@@ -14,12 +14,12 @@ import java.util.Date;
  */
 public class LogController implements LogBLService {
     @Override
-    public ArrayList<LogVO> getLogListByTime(Date from, Date to) {
+    public List<LogVO> getLogListByTime(Date from, Date to) {
         return null;
     }
 
     @Override
-    public ArrayList<LogVO> findLogs(LogFilter filter) {
+    public List<LogVO> findLogs(LogFilter filter) {
         return null;
     }
 }

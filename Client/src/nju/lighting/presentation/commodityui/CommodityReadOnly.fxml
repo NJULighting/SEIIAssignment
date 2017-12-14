@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<HBox spacing="50.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.commodityui.CommodityReadOnly">
+   <children>
+      <VBox spacing="30.0">
+         <children>
+            <Label text="编号">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="名称">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="型号">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="库存数量">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="进价">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="零售价">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="最近进价">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="最近零售价">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox spacing="30.0">
+         <children>
+            <Label fx:id="id" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="name" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="modelNumber" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="repCount" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="inPrice" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="sellPrice" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="recentInPrice" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="recentSellPrice" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</HBox>

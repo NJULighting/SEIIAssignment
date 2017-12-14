@@ -3,37 +3,31 @@ package nju.lighting.po.doc.stockdoc;
 import nju.lighting.po.doc.DocPO;
 import shared.DocType;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-public class StockDocPO extends DocPO {
+public class StockDocPO extends DocPO implements Serializable{
 
-    private String stockDocID;
-
+    private static final long serialVersionUID = 108990321444431827L;
     private String customerId;
-
     private String repository;
-
-    private String remarks = "";
-
+    private String remarks;
     private double totalAmount = 0;
+    private List<StockDocItemPO> itemPOS;
 
-    public StockDocPO(String id, DocType docType, String userId, Date time,
-                          String stockDocID, String customerId, String repository,
-                          String remarks, double totalAmount) {
+    public StockDocPO(String id, DocType docType, String userId, Date time, String customerId
+            , String repository, String remarks, double totalAmount, List<StockDocItemPO> itemPOS) {
         super(id, docType, userId, time);
-        this.stockDocID = stockDocID;
         this.customerId = customerId;
         this.repository = repository;
         this.remarks = remarks;
         this.totalAmount = totalAmount;
+        this.itemPOS = itemPOS;
     }
 
-    public String getStockDocID() {
-        return stockDocID;
-    }
-
-    public void setStockDocID(String stockDocID) {
-        this.stockDocID = stockDocID;
+    public List<StockDocItemPO> getItemPOS() {
+        return itemPOS;
     }
 
     public String getCustomerId() {

@@ -1,28 +1,28 @@
 package nju.lighting.po.doc.stockdoc;
 
+import shared.Item;
+
+import java.io.Serializable;
+
 /**
  * LastEditTime: 2017/11/7
  * Description:
  * @author GaoMengting
  */
-public class StockDocItemPO {
+public class StockDocItemPO implements Serializable {
 
+    private static final long serialVersionUID = -8422670828085703373L;
     private int id;
-
-    private String SalesDocID;
-
+    private String docId;
     private String commodityID;
-
     private int number = 0;
-
     private double totalAmount = 0;
-    
-    private String remarks = "";
+    private String remarks = null;
 
     public StockDocItemPO(int id, String SalesDocID, String commodityID,
                           int number, double totalAmount, String remarks) {
         this.id = id;
-        this.SalesDocID = SalesDocID;
+        this.docId = SalesDocID;
         this.commodityID = commodityID;
         this.number = number;
         this.totalAmount = totalAmount;
@@ -37,12 +37,12 @@ public class StockDocItemPO {
         this.id = id;
     }
 
-    public String getSalesDocID() {
-        return SalesDocID;
+    public String getDocID() {
+        return docId;
     }
 
-    public void setSalesDocID(String salesDocID) {
-        this.SalesDocID = salesDocID;
+    public void setDocId(String docID) {
+        this.docId = docID;
     }
 
     public String getCommodityID() {
@@ -76,5 +76,4 @@ public class StockDocItemPO {
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
-
 }

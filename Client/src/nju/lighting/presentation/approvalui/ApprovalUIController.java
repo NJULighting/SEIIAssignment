@@ -24,7 +24,7 @@ import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -35,7 +35,7 @@ import java.util.ResourceBundle;
  */
 public class ApprovalUIController implements Initializable {
     ApprovalBLService approvalBLService;
-    ArrayList<DocVO> docs;
+    List<DocVO> docs;
     ObservableList selectedDocList;
     String comment;
     boolean cancel;

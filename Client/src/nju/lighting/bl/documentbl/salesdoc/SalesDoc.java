@@ -46,8 +46,8 @@ public class SalesDoc extends SalesTypeDoc{
      * 创建相应的VO对象
      * @return SalesDocVO
      */
-    public DocVO createVO(){
-        return new SalesDocVO(time,userId,id,docType,this.getSalesTypeDocID(),this.getCustomerId()
+    public DocVO toVO(){
+        return new SalesDocVO(createTime,userId,id,docType,this.getSalesTypeDocID(),this.getCustomerId()
                 ,this.getSalesman(),this.getRepository(),this.getRemarks(),this.getBeforeDiscountAmount()
                 ,this.getDiscount(),this.getVoucher(),this.getFinalAmount());
     }
@@ -56,8 +56,8 @@ public class SalesDoc extends SalesTypeDoc{
      * 创建相应的PO对象
      * @return SalesDocPO
      */
-    public DocPO createPO(){
-        return new SalesDocPO(id,docType,userId,time,this.getSalesTypeDocID(),Integer.toString(getCustomerId())
+    public DocPO toPO(){
+        return new SalesDocPO(id,docType,userId, createTime,this.getSalesTypeDocID(),Integer.toString(getCustomerId())
                 ,this.getRepository(),this.getRemarks()
                 ,this.getDiscount(),this.getVoucher(),this.getFinalAmount());
     }

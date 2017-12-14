@@ -2,25 +2,31 @@ package nju.lighting.po.doc.accountiodoc;
 
 import nju.lighting.po.doc.DocPO;
 import shared.AccountIODocType;
+import shared.DocState;
 import shared.DocType;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created on 2017/10/18.
  * Description:
  * @author Liao
  */
-public class AccountIODocPO extends DocPO {
+public class AccountIODocPO extends DocPO implements Serializable {
+
+    private static final long serialVersionUID = -5635472117924146487L;
     private AccountIODocType ioType;
     private String customerID;
-    private ArrayList<AccountTransferItemPO> transferAccountList;
+    private List<AccountTransferItemPO> transferAccountList;
     private double total;
 
-    public AccountIODocPO(String id, DocType docType, String userId, Date time
-            , AccountIODocType ioType, String customerID, ArrayList<AccountTransferItemPO> transferAccountList, double total) {
-        super(id, docType, userId, time);
+    public AccountIODocPO(String id, DocType docType, String userId, Date createTime,
+                          Date checkTime, String approvalComment, DocState state, String approvalId,
+                          AccountIODocType ioType, String customerID, List<AccountTransferItemPO> transferAccountList, double total) {
+        super(id, docType, userId, createTime, checkTime, approvalComment, state, approvalId);
         this.ioType = ioType;
         this.customerID = customerID;
         this.transferAccountList = transferAccountList;
@@ -43,7 +49,7 @@ public class AccountIODocPO extends DocPO {
         this.customerID = customerID;
     }
 
-    public ArrayList<AccountTransferItemPO> getTransferAccountList() {
+    public List<AccountTransferItemPO> getTransferAccountList() {
         return transferAccountList;
     }
 

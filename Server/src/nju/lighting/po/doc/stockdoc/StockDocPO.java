@@ -8,14 +8,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "STOCK_DOC")
-public class StockDocPO extends DocPO {
+public class StockDocPO extends DocPO implements Serializable{
 
+    private static final long serialVersionUID = 108990321444431827L;
     private String customerId;
 
     private String repository;

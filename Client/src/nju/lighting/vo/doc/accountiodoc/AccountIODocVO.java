@@ -18,21 +18,18 @@ public class AccountIODocVO extends DocVO {
     private AccountTransferItemPO transferAccountList;
     private int total;
 
-    public AccountIODocVO(Date time, String creatorId, String docId, AccountIODocType type
-            , String customer, AccountTransferItemPO transferAccountList, int total) {
-        super(time, creatorId, docId, DocType.ACCOUNT_INOUT);
-        this.type = type;
+    public AccountIODocVO(Date time, String creatorId, String docId, DocType type, AccountIODocType type1,
+                          String customer, AccountTransferItemPO transferAccountList, int total) {
+        super(time, creatorId, docId, type);
+        this.type = type1;
         this.customer = customer;
         this.transferAccountList = transferAccountList;
         this.total = total;
     }
 
-    public AccountIODocType getAccountIODdocType() {
-        return type;
-    }
-
-    public void setAccountIODocType(AccountIODocType type) {
-        this.type = type;
+    public AccountIODocVO(Date time, String creatorId, DocType docType) {
+        super(time, creatorId, docType);
+        type = docType == DocType.ACCOUNT_IN ? AccountIODocType.IN : AccountIODocType.OUT;
     }
 
     public String getCustomer() {

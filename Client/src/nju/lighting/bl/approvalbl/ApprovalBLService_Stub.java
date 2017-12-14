@@ -7,11 +7,10 @@ import nju.lighting.vo.doc.giftdoc.GiftDocVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.DocType;
-import shared.HistoryDocType;
 import shared.ResultMessage;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/10/21.
@@ -20,7 +19,7 @@ import java.util.ArrayList;
  */
 public class ApprovalBLService_Stub implements ApprovalBLService {
     @Override
-    public ArrayList<DocVO> getDocumentList() {
+    public List<DocVO> getDocumentList() {
         BasicCommodityItemVO commodityVO1 = new BasicCommodityItemVO("xx0002222","日本LED无障碍灯泡",
                 100, 100,100);
         BasicCommodityItemVO commodityVO2 = new BasicCommodityItemVO("xx0002223","日本LED无障碍灯泡" + "-b",

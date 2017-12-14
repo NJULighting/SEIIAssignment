@@ -3,6 +3,7 @@ package nju.lighting.po.doc.stockdoc;
 import shared.Item;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * LastEditTime: 2017/11/7
@@ -11,18 +12,14 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "STOCK_DOC_ITEM")
-public class StockDocItemPO implements Item {
+public class StockDocItemPO implements Item ,Serializable{
 
+    private static final long serialVersionUID = -8422670828085703373L;
     private int id;
-
     private String docId;
-
     private String commodityID;
-
     private int number = 0;
-
     private double totalAmount = 0;
-
     private String remarks = null;
 
     public StockDocItemPO() {

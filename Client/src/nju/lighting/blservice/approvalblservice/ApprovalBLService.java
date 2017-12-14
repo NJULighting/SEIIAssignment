@@ -6,6 +6,7 @@ import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.ResultMessage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/10/21.
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public interface ApprovalBLService {
-    ArrayList<DocVO> getDocumentList() ;
+    List<DocVO> getDocumentList() ;
 
     ResultMessage approve(HistoryDocVO vo) ;
 

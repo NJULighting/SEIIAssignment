@@ -1,11 +1,14 @@
 package nju.lighting.bl.approvalbl;
 
+import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
+import shared.DocState;
 import shared.ResultMessage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/11/19.
@@ -14,9 +17,11 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public class ApprovalController implements ApprovalBLService {
+    private ApprovalManager manager = ApprovalManager.INSTANCE;
+
     @Override
-    public ArrayList<DocVO> getDocumentList() {
-        return null;
+    public List<DocVO> getDocumentList() {
+        return manager.getDocumentList();
     }
 
     @Override

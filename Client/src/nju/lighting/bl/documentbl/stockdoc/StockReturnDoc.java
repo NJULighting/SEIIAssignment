@@ -41,8 +41,8 @@ public class StockReturnDoc extends StockTypeDoc{
      * 由其子类创建相应的VO对象
      * @return 对应的StockReturnDocVO
      */
-    public DocVO createVO(){
-        return new StockReturnDocVO(time,userId,id,docType,this.getStockTypeDocID(),this.getCustomerId(),this.getRepository(),
+    public DocVO toVO(){
+        return new StockReturnDocVO(createTime,userId,id,docType,this.getStockTypeDocID(),this.getCustomerId(),this.getRepository(),
                 this.getRemarks(),this.getTotalAmount());
     }
 
@@ -50,8 +50,8 @@ public class StockReturnDoc extends StockTypeDoc{
      * 由其子类创建响应的PO对象
      * @return 对应的StockReturnDocPO
      */
-    public DocPO createPO(){
-        return new StockReturnDocPO(id,docType,userId,time,this.getStockTypeDocID(),this.getCustomerId(),this.getRepository(),
+    public DocPO toPO(){
+        return new StockReturnDocPO(id,docType,userId, createTime,this.getStockTypeDocID(),this.getCustomerId(),this.getRepository(),
                 this.getRemarks(),this.getTotalAmount());
     }
 }

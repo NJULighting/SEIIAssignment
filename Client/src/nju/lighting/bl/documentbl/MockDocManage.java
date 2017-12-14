@@ -1,6 +1,9 @@
 package nju.lighting.bl.documentbl;
 
+import nju.lighting.vo.DocVO;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/11/14.
@@ -10,8 +13,8 @@ import java.util.ArrayList;
  */
 public class MockDocManage  implements DocInfo{
     @Override
-    public ArrayList<Doc> findUnCheckedDoc() {
-        ArrayList<Doc> uncheckedDocs = new ArrayList<>();
+    public List<DocVO> findUnCheckedDoc() {
+        ArrayList<DocVO> uncheckedDocs = new ArrayList<>();
 
 
         return  uncheckedDocs;

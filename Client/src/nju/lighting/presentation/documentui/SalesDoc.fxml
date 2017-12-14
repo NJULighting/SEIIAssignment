@@ -21,16 +21,16 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <VBox layoutX="39.0" layoutY="70.0">
+      <VBox layoutX="40.0" layoutY="70.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="280.0">
                <children>
                   <Label prefWidth="80.0" text="客户" />
-                  <TextField editable="false" prefHeight="30.0" prefWidth="135.0" promptText="选择客户 &gt;" text="- -">
+                  <TextField fx:id="customer" editable="false" prefHeight="30.0" prefWidth="135.0" promptText="选择客户 &gt;" text="- -">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></TextField>
-                  <Button mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+                  <Button fx:id="choseCustomBtn" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
                      <graphic>
                         <ImageView>
                            <image>
@@ -44,49 +44,49 @@
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="业务员" />
-                  <TextField editable="false" prefWidth="180.0" text="- -" />
+                  <TextField fx:id="salesman" editable="false" prefWidth="180.0" text="- -" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="操作员" />
-                  <TextField editable="false" prefWidth="180.0" text="- -" />
+                  <TextField fx:id="userman" editable="false" prefWidth="180.0" text="- -" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="仓库  " />
-                  <TextField prefWidth="180.0" text="默认仓库" />
+                  <TextField fx:id="repository" prefWidth="180.0" text="默认仓库" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="折让前总额" />
-                  <TextField prefWidth="180.0" text="0" />
+                  <TextField fx:id="accountBeforeDis" editable="false" prefWidth="180.0" text="0" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="折让" />
-                  <TextField prefWidth="180.0" text="0" />
+                  <TextField fx:id="discount" onAction="#setDiscount" onInputMethodTextChanged="#setDiscount" prefWidth="180.0" text="0" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="代金券金额" />
-                  <TextField prefWidth="180.0" text="0" />
+                  <TextField fx:id="voucher" onAction="#setVoucher" prefWidth="180.0" text="0" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="最终总额" />
-                  <TextField editable="false" prefWidth="180.0" text="0" />
+                  <TextField fx:id="account" editable="false" prefWidth="180.0" text="0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="备注" />
-                  <TextArea prefHeight="100.0" prefWidth="180.0" text="无" />
+                  <TextArea fx:id="remarks" prefHeight="100.0" prefWidth="180.0" text="无" wrapText="true" />
                </children>
                <VBox.margin>
                   <Insets top="10.0" />
@@ -96,12 +96,16 @@
       </VBox>
       <JFXListView layoutX="420.0" layoutY="85.0" prefHeight="547.0" prefWidth="615.0" />
       <Label layoutX="945.0" layoutY="60.0" text="出货商品清单" />
-      <JFXButton layoutX="149.0" layoutY="605.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
+      <JFXButton fx:id="finishBtn" layoutX="155.0" layoutY="602.0" onAction="#finish" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
       <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="330.0" layoutY="267.0">
          <image>
             <Image url="@../../../../images/向左.png" />
          </image>
       </ImageView>
+      <Label fx:id="failMessage" layoutX="310.0" layoutY="622.0" text="制定失败！" textFill="#b90000" visible="false" />
+      <Label fx:id="failDisCount" layoutX="310.0" layoutY="350.0" text="格式错误！" textFill="#b90000" visible="false" />
+      <Label fx:id="failVoucher" layoutX="310.0" layoutY="400.0" text="格式错误！" textFill="#b90000" visible="false" />
+      <Label fx:id="failCustomer" layoutX="310.0" layoutY="100.0" text="选择客户！" textFill="#b90000" visible="false" />
    </children>
 </Pane>

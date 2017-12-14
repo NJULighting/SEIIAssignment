@@ -1,6 +1,7 @@
 package nju.lighting.presentation.utils;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
+import javafx.beans.binding.Bindings;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -15,12 +16,25 @@ import nju.lighting.presentation.documentui.EditingCell;
  * @author 陈俊宇
  */
 public class TableViewHelper {
-    public static void disableReorder(TableView tableView){
+
+    public static void commonSet(TableView tableView){
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+
+        //设置表格的高度和与数据的多少一致，否则数据多的时候表中就会出现滚动条
+
+        tableView.prefHeightProperty().bind(tableView.fixedCellSizeProperty().multiply(Bindings.size(tableView.getItems()).add(1.01)));
+
+        System.out.println(tableView.getPrefHeight());
         tableView.skinProperty().addListener((obs, oldSkin, newSkin) -> {
             final TableHeaderRow header = (TableHeaderRow) tableView.lookup("TableHeaderRow");
             header.reorderingProperty().addListener((o, oldVal, newVal) -> header.setReordering(false));
         });
     }
+
+
+
+
 
     public static void Edit( TableColumn<CommodityItem ,Integer> count){
         Callback<TableColumn<CommodityItem, Integer>,

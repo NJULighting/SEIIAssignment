@@ -75,7 +75,7 @@ public class DocOperation {
         try {
             session.getTransaction().begin();
             for(Object obj: list)
-                session.update(obj);
+                session.saveOrUpdate(obj);
             session.flush();
             session.getTransaction().commit();
         } catch (Exception e) {

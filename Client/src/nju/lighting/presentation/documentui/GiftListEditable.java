@@ -15,6 +15,7 @@ import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/10.
@@ -22,8 +23,7 @@ import java.util.ResourceBundle;
  *
  * @author 陈俊宇
  */
-public class GiftListEditable implements  Initializable {
-
+public class GiftListEditable implements Initializable {
 
 
     private static List<GiftItemVO> giftsVO;
@@ -58,9 +58,11 @@ public class GiftListEditable implements  Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        for (int i = 0; i < giftsVO.size(); i++) {
-            total += giftsVO.get(i).getSubtotal();
-        }
+
+
+        total = giftsVO.stream()
+                .mapToDouble(GiftItemVO::getPrice)
+                .sum();
 
 
         if (giftsVO != null) {
@@ -77,14 +79,10 @@ public class GiftListEditable implements  Initializable {
             deleteBtn.setCellValueFactory(cellData ->
                     cellData.getValue().boolProperty());
 
-            List<GiftItemVO> giftItemVOS = giftsVO;
 
-            int size = giftItemVOS.size();
-
-            for (int i = 0; i < size; i++) {
-                giftObservableList.add(new CommodityItem(giftItemVOS.get(i)));
-            }
-
+            giftObservableList.addAll(giftsVO.stream()
+                    .map(x -> new CommodityItem(x))
+                    .collect(Collectors.toList()));
 
             // 设置表格中的按钮
             Callback<TableColumn<CommodityItem, Boolean>,
@@ -96,15 +94,9 @@ public class GiftListEditable implements  Initializable {
 
             TableViewHelper.Edit(count);
 
-            System.out.println("size  " + size);
-            giftTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
             giftTableView.setItems(giftObservableList);
 
-            //设置表格的高度和与数据的多少一致，否则数据多的时候表中就会出现滚动条
-            giftTableView.prefHeightProperty().bind(giftTableView.fixedCellSizeProperty().multiply(Bindings.size(giftTableView.getItems()).add(1.01)));
-
-            //禁止表头拖动
-            TableViewHelper.disableReorder(giftTableView);
+            TableViewHelper.commonSet(giftTableView);
 
             totalLabel.setText(total + "");
         }

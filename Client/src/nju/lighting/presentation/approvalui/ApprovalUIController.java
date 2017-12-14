@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -140,10 +141,11 @@ public class ApprovalUIController implements Initializable {
             detail.getChildren().remove(detail.getChildren().size() - 1);
 
         Doc.doc = findDoc(clicked.getText());
-        FXMLLoader loader = null;
+
         try {
-            loader = Doc.getLoader();
-            detail.getChildren().add(loader.load());
+            FXMLLoader  loader = Doc.getLoader();
+            ScrollPane doc=loader.load();
+            detail.getChildren().add(doc);
         } catch (IOException e) {
             e.printStackTrace();
         }

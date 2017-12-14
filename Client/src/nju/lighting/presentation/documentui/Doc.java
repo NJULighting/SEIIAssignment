@@ -21,6 +21,7 @@ public class Doc{
     static HashMap<DocType,String> map=new HashMap<>();
     static {
         map.put(DocType.GIFT, "GiftDoc.fxml");
+        map.put(DocType.ACCOUNT_INOUT,"AccountIODoc.fxml");
     }
 
 

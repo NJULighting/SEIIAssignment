@@ -1,14 +1,20 @@
 package nju.lighting.bl.commoditybl;
 
-import java.util.ArrayList;
+import nju.lighting.vo.repository.RepositoryTableItemVO;
+
+import java.util.List;
 
 public interface CommodityInfo {
 
-    CommodityCategoriesTree getCommodityTree();
+    CommodityCategoriesTree getCommodityCategoryTree();
 
-    ArrayList<BasicCommodityItem> getBasicCommodityItems(ArrayList<String> ids);
+    List<BasicCommodityItem> getBasicCommodityItems(List<String> ids);
 
-    ArrayList<CommodityItem> getCommodityItems(ArrayList<String> ids);
+    List<CommodityItem> getCommodityItems(List<String> ids);
+
+    String getCommodityNameByID(String commodityID);
+
+    List<RepositoryTableItemVO> getRepositoryTableItemList();
 
     boolean addCommodityItem(String id, int count);
 

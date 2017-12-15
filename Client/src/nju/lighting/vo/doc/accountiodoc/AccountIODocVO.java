@@ -1,60 +1,53 @@
 package nju.lighting.vo.doc.accountiodoc;
 
-import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.account.AccountVO;
 import shared.AccountIODocType;
 import shared.DocType;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created on 2017/10/21.
  * Description:
- *
  * @author Liao
  */
 public class AccountIODocVO extends DocVO {
-    private AccountIODocType type;
     private String customer;
     private List<AccountTransferItemVO> transferAccountList;
     private double total;
+    private List<AccountVO> accountList;
 
     public AccountIODocVO(Date time, String creatorId, String docId, DocType type, AccountIODocType type1, String customer,
                           List<AccountTransferItemVO> transferAccountList, double total) {
         super(time, creatorId, docId, type);
-        this.type = type1;
         this.customer = customer;
         this.transferAccountList = transferAccountList;
         this.total = total;
     }
 
+    /**
+     * This constructor should be used when the user want to create a new doc
+     * @param time        time of creation
+     * @param type        doc's type
+     * @param accountList list of account
+     */
+    public AccountIODocVO(Date time, DocType type, List<AccountVO> accountList) {
+        super(time, type);
+        this.accountList = accountList;
+    }
+
     //无需输入总价的构造函数
-    public AccountIODocVO(Date time, String creatorId, String docId, DocType type, AccountIODocType type1, String customer,
+    public AccountIODocVO(Date time, String creatorId, String docId, DocType type, String customer,
                           List<AccountTransferItemVO> transferAccountList) {
         super(time, creatorId, docId, type);
-        this.type = type1;
         this.customer = customer;
         this.transferAccountList = transferAccountList;
-
-        //学习 骚操作
-//        List<List<String>> l = new ArrayList<>();
-//        List<String> l1 = l.stream().flatMap(x -> x.stream()).collect(Collectors.toList());
-
-
+        // Calculate value for total
         total = transferAccountList.stream()
                 .mapToDouble(AccountTransferItemVO::getAmount)
                 .sum();
-    }
-
-    public AccountIODocType getAccountIODdocType() {
-        return type;
-    }
-
-    public void setAccountIODocType(AccountIODocType type) {
-        this.type = type;
     }
 
     public String getCustomer() {
@@ -79,5 +72,9 @@ public class AccountIODocVO extends DocVO {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public List<AccountVO> getAccountList() {
+        return accountList;
     }
 }

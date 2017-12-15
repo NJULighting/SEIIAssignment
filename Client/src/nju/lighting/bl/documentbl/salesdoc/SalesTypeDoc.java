@@ -170,7 +170,7 @@ public class SalesTypeDoc extends Doc {
      * 由其子类创建相应的VO对象
      * @return 对应的<code>DocVO</code>
      */
-    public DocVO createVO(){
+    public DocVO toVO(){
         return null;
     }
 
@@ -178,7 +178,7 @@ public class SalesTypeDoc extends Doc {
      * 由其子类创建响应的PO对象
      * @return 对应的<code>DocPO</code>
      */
-    public DocPO createPO(){
+    public DocPO toPO(){
         return null;
     }
 }

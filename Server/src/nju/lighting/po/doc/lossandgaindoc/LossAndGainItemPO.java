@@ -4,11 +4,13 @@ import shared.Item;
 import shared.LossAndGainItemType;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "LOSS_AND_GAIN_DOC_ITEM")
-public class LossAndGainItemPO implements Item {
+public class LossAndGainItemPO implements Item, Serializable {
 
+    private static final long serialVersionUID = 7167744148385043685L;
     private int id;
 
     private String docId;

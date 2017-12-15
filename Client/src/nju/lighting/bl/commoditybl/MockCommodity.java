@@ -1,9 +1,10 @@
 package nju.lighting.bl.commoditybl;
 
-import shared.ICommodityTreeNode;
+import nju.lighting.vo.repository.RepositoryTableItemVO;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MockCommodity implements CommodityInfo {
 
@@ -40,12 +41,12 @@ public class MockCommodity implements CommodityInfo {
     }
 
     @Override
-    public CommodityCategoriesTree getCommodityTree() {
+    public CommodityCategoriesTree getCommodityCategoryTree() {
         return tree;
     }
 
     @Override
-    public ArrayList<BasicCommodityItem> getBasicCommodityItems(ArrayList<String> ids) {
+    public List<BasicCommodityItem> getBasicCommodityItems(List<String> ids) {
         ArrayList<BasicCommodityItem> comItems = new ArrayList<>();
         for (String id : ids) {
             for (CommodityItem item : items) {
@@ -57,7 +58,7 @@ public class MockCommodity implements CommodityInfo {
     }
 
     @Override
-    public ArrayList<CommodityItem> getCommodityItems(ArrayList<String> ids) {
+    public List<CommodityItem> getCommodityItems(List<String> ids) {
         ArrayList<CommodityItem> comItems = new ArrayList<>();
         for (String id : ids) {
             for (CommodityItem item : items) {
@@ -66,6 +67,16 @@ public class MockCommodity implements CommodityInfo {
             }
         }
         return comItems;
+    }
+
+    @Override
+    public String getCommodityNameByID(String commodityID) {
+        return null;
+    }
+
+    @Override
+    public List<RepositoryTableItemVO> getRepositoryTableItemList() {
+        return null;
     }
 
     @Override

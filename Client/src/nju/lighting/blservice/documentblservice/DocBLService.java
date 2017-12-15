@@ -8,8 +8,8 @@ import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.SalesDetailVO;
 import shared.*;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public interface DocBLService {
 
@@ -17,11 +17,11 @@ public interface DocBLService {
 
     TwoTuple<String,ResultMessage> commitDoc(DocVO doc);
 
-    ArrayList<HistoryDocVO> findDocuments(DocumentFilter filter);
+    List<HistoryDocVO> findDocuments(DocumentFilter filter);
 
-    ArrayList<BusinessConditionItemVO> findSaleRecords(BusinessConditionFilter filter);
+    List<BusinessConditionItemVO> findSaleRecords(BusinessConditionFilter filter);
 
-    ArrayList<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter);
+    List<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter);
 
     SalesDetailVO findRevenueAndExpenditure(Date startDate, Date endDate);
 

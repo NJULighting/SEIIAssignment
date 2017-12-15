@@ -8,12 +8,9 @@ import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
-import shared.AccountIODocType;
 import shared.DocType;
-import shared.HistoryDocType;
 import shared.ResultMessage;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -98,7 +95,7 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
 
 
         AccountIODocVO accountIODocVO=new AccountIODocVO(new Date(),"00001","SKD-20171211-00001",
-                DocType.ACCOUNT_INOUT, AccountIODocType.IN,"刘钦",accountTransferItemVOList);
+                DocType.ACCOUNT_IN,"刘钦",accountTransferItemVOList);
 
         GiftDocVO vo1 = new GiftDocVO(null,"00001", "ZPD-20171021-0009",DocType.GIFT,gifts1,"hiahia");
         GiftDocVO vo2 = new GiftDocVO(null,"00001", "ZPD-20171021-0010",DocType.GIFT, gifts2, "N0.1");
@@ -126,7 +123,7 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
     }
 
     @Override
-    public ResultMessage approveAll(ArrayList<HistoryDocVO> voList) {
+    public ResultMessage approveAll(List<HistoryDocVO> voList) {
         return ResultMessage.SUCCESS;
     }
 

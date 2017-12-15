@@ -45,7 +45,8 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
     static {
         typeToName.put(DocType.ALERT, new TwoTuple<>(AlertDocPO.class.getName(), AlertDocItemPO.class.getName()));
         typeToName.put(DocType.LOSS_AND_GAIN, new TwoTuple<>(LossAndGainDocPO.class.getName(), LossAndGainItemPO.class.getName()));
-        typeToName.put(DocType.ACCOUNT_INOUT, new TwoTuple<>(AccountIODocPO.class.getName(), AccountTransferItemPO.class.getName()));
+        typeToName.put(DocType.ACCOUNT_IN, new TwoTuple<>(AccountIODocPO.class.getName(), AccountTransferItemPO.class.getName()));
+        typeToName.put(DocType.ACCOUNT_OUT, new TwoTuple<>(AccountIODocPO.class.getName(), AccountTransferItemPO.class.getName()));
         typeToName.put(DocType.SALES_RETURN, new TwoTuple<>(SalesReturnDocPO.class.getName(), SalesDocItemPO.class.getName()));
         typeToName.put(DocType.SALES, new TwoTuple<>(SalesDocPO.class.getName(), SalesDocItemPO.class.getName()));
         typeToName.put(DocType.COST, new TwoTuple<>(CostDocPO.class.getName(), CostDocItemPO.class.getName()));

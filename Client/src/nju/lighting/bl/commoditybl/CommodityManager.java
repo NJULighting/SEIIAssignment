@@ -3,6 +3,7 @@ package nju.lighting.bl.commoditybl;
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.utils.CommodityPathParser;
+import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.dataservice.DataFactory;
@@ -180,25 +181,11 @@ enum CommodityManager {
     }
 
     private <C> List<CommodityItemVO> findByToList(C condition, DataServiceFunction<C, List<CommodityItemPO>> function) {
-        try {
-            List<CommodityItemPO> poList = function.apply(condition);
-            return VPOTransformer.toVPOList(poList, itemPO -> new CommodityItem(itemPO).toVO());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return Collections.emptyList();
-        }
+        return DataServiceFunction.findByToList(condition, function, itemPO -> new CommodityItem(itemPO).toVO());
     }
 
     private <C> CommodityItemVO findByToEntity(C condition, DataServiceFunction<C, CommodityItemPO> function) {
-        try {
-            CommodityItemPO po = function.apply(condition);
-            if (po == null)
-                return null;
-            return new CommodityItem(po).toVO();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return DataServiceFunction.findByToEntity(condition, function, po -> new CommodityItem(po).toVO());
     }
 
     /**
@@ -221,8 +208,4 @@ enum CommodityManager {
         buildCommodityTree();
     }
 
-    @FunctionalInterface
-    interface DataServiceFunction<T, R> {
-        R apply(T t) throws RemoteException;
-    }
 }

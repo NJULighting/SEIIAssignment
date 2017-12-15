@@ -1,29 +1,31 @@
 package nju.lighting.bl.repositorybl;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
-import nju.lighting.bl.logbl.Logger;
-import nju.lighting.bl.logbl.UserLogger;
+import nju.lighting.bl.commoditybl.CommodityInfoImpl;
+import nju.lighting.bl.utils.DataServiceBiFunction;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.repositorydataservice.RepositoryDataService;
+import nju.lighting.po.repository.RepositoryChangePO;
 import nju.lighting.vo.repository.RepositoryChangeVO;
 import nju.lighting.vo.repository.RepositoryTableVO;
+import shared.RepositoryChangeType;
 import shared.ResultMessage;
 
 import javax.naming.NamingException;
-import java.util.ArrayList;
+import java.rmi.RemoteException;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public enum RepositoryManager implements RepositoryInfo {
+enum RepositoryManager {
     INSTANCE;
 
     private RepositoryDataService dataService;
-    private Logger logger;
 
     RepositoryManager() {
         try {
             dataService = DataFactory.getDataBase(RepositoryDataService.class);
-            logger = new UserLogger();
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -31,20 +33,12 @@ public enum RepositoryManager implements RepositoryInfo {
 
 
     public List<RepositoryChangeVO> getRepositoryChanges(Date startDate, Date endDate) {
-        return null;
+        return DataServiceBiFunction.findToList(startDate, endDate,
+                dataService::getRepositoryChanges, po -> new RepositoryChange(po).toVO());
     }
 
     public RepositoryTableVO getRepositoryTable() {
-        return null;
-    }
-
-    /**
-     * 提供给其他模块用于变更库存信息
-     * @param change
-     * @return
-     */
-    @Override
-    public ResultMessage changeRepository(RepositoryChange change) {
-        return null;
+        CommodityInfo commodityInfo = new CommodityInfoImpl();
+        return new RepositoryTableVO(commodityInfo.getRepositoryTableItemList());
     }
 }

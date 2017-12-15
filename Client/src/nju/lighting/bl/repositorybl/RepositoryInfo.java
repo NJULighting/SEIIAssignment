@@ -1,5 +1,6 @@
 package nju.lighting.bl.repositorybl;
 
+import shared.RepositoryChangeType;
 import shared.ResultMessage;
 
 /**
@@ -10,6 +11,6 @@ import shared.ResultMessage;
  */
 public interface RepositoryInfo {
 
-    ResultMessage changeRepository(RepositoryChange change);
+    ResultMessage changeRepository(String commodityID, int count, double amount, RepositoryChangeType type);
 
 }

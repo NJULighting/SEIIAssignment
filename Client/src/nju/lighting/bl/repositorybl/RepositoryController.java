@@ -8,14 +8,15 @@ import java.util.Date;
 import java.util.List;
 
 public class RepositoryController implements RepositoryBLService {
+    private RepositoryManager manager = RepositoryManager.INSTANCE;
 
     @Override
     public List<RepositoryChangeVO> getRepositoryChanges(Date startDate, Date endDate) {
-        return null;
+        return manager.getRepositoryChanges(startDate, endDate);
     }
 
     @Override
     public RepositoryTableVO getRepositoryTable() {
-        return null;
+        return manager.getRepositoryTable();
     }
 }

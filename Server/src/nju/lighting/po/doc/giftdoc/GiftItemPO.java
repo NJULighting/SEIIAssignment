@@ -3,6 +3,7 @@ package nju.lighting.po.doc.giftdoc;
 import shared.Item;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created on 2017/10/22.
@@ -11,16 +12,14 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "GIFT_DOC_ITEM")
-public class GiftItemPO implements Item {
+public class GiftItemPO implements Item, Serializable {
+
+    private static final long serialVersionUID = 8168210972699713697L;
 
     private int id;
-
     private String commodityID;
-
     private int count;
-
     private double subtotal;
-
     private String docId;
 
     @Column(name = "GIFT_DOC_ID", nullable = false, length = 36)

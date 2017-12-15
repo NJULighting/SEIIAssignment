@@ -4,13 +4,15 @@ import shared.DocState;
 import shared.DocType;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 
 @MappedSuperclass
-public abstract class DocPO {
+public abstract class DocPO implements Serializable{
 
+    private static final long serialVersionUID = 8223454946318384837L;
     private String id;
 
     private DocType docType;

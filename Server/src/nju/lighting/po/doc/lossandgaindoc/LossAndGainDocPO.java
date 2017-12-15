@@ -15,6 +15,7 @@ import java.util.List;
 @Table(name = "LOSS_AND_GAIN_DOC")
 public class LossAndGainDocPO extends DocPO {
 
+    private static final long serialVersionUID = 6918970037634014229L;
     private String comment;
 
     private List<LossAndGainItemPO> itemPOS;

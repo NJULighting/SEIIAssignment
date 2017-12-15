@@ -9,14 +9,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "ALERT_DOC")
-public class AlertDocPO extends DocPO {
+public class AlertDocPO extends DocPO implements Serializable {
 
+    private static final long serialVersionUID = 43096723613323999L;
     private String comment;
 
     private boolean triggered;

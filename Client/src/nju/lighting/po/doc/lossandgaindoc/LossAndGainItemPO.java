@@ -2,52 +2,59 @@ package nju.lighting.po.doc.lossandgaindoc;
 
 import shared.LossAndGainItemType;
 
-public class LossAndGainItemPO {
+import java.io.Serializable;
 
-    private String lossAndGainDocId;
+public class LossAndGainItemPO implements Serializable {
 
+    private static final long serialVersionUID = 7167744148385043685L;
+
+    private int id;
+    private String docId;
     private String commodityId;
-
     private int count;
-
     private LossAndGainItemType type;
 
-    public LossAndGainItemPO(String lossAndGainDocId, String commodityId, int count, LossAndGainItemType type) {
-        this.lossAndGainDocId = lossAndGainDocId;
+    /**
+     * Constructor for committing a new document.
+     */
+    public LossAndGainItemPO(String commodityId, int count, LossAndGainItemType type) {
         this.commodityId = commodityId;
         this.count = count;
         this.type = type;
     }
 
-    public String getLossAndGainDocId() {
-        return lossAndGainDocId;
+    /**
+     * Constructor for approval module.
+     */
+    public LossAndGainItemPO(int id, String docId, String commodityId, int count, LossAndGainItemType type) {
+        this.id = id;
+        this.docId = docId;
+        this.commodityId = commodityId;
+        this.count = count;
+        this.type = type;
     }
 
-    public void setLossAndGainDocId(String lossAndGainDocId) {
-        this.lossAndGainDocId = lossAndGainDocId;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getDocId() {
+        return docId;
     }
 
     public String getCommodityId() {
         return commodityId;
     }
 
-    public void setCommodityId(String commodityId) {
-        this.commodityId = commodityId;
-    }
-
     public int getCount() {
         return count;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
-
     public LossAndGainItemType getType() {
         return type;
-    }
-
-    public void setType(LossAndGainItemType type) {
-        this.type = type;
     }
 }

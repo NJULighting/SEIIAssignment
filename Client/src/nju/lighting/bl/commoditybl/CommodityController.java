@@ -8,7 +8,7 @@ import shared.ResultMessage;
 
 import java.util.List;
 
-public class CommodityController implements CommodityBLService {
+class CommodityController implements CommodityBLService {
     private CommodityManager manager = CommodityManager.INSTANCE;
 
     @Override

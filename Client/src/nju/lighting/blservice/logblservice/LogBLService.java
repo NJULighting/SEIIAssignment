@@ -3,8 +3,8 @@ package nju.lighting.blservice.logblservice;
 import nju.lighting.vo.LogVO;
 import shared.LogFilter;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created on 2017/10/21.
@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Liao
  */
 public interface LogBLService {
-    ArrayList<LogVO> getLogListByTime(Date from, Date to);
+    List<LogVO> getLogListByTime(Date from, Date to);
 
-    ArrayList<LogVO> findLogs(LogFilter filter);
+    List<LogVO> findLogs(LogFilter filter);
 }

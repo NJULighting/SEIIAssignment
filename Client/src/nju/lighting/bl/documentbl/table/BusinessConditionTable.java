@@ -1,4 +1,4 @@
-package nju.lighting.bl.documentbl;
+package nju.lighting.bl.documentbl.table;
 
 import nju.lighting.vo.viewtables.BusinessConditionItemVO;
 import shared.BusinessConditionFilter;

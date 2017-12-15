@@ -1,16 +1,17 @@
 package nju.lighting.vo.repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RepositoryTableVO {
 
-    private ArrayList<RepositoryTableItemVO> repositoryTableItemVOS;
+    private List<RepositoryTableItemVO> repositoryTableItemVOS;
 
-    public RepositoryTableVO(ArrayList<RepositoryTableItemVO> repositoryTableItemVOS) {
+    public RepositoryTableVO(List<RepositoryTableItemVO> repositoryTableItemVOS) {
         this.repositoryTableItemVOS = repositoryTableItemVOS;
     }
 
-    public ArrayList<RepositoryTableItemVO> getRepositoryTableItemVOS() {
+    public List<RepositoryTableItemVO> getRepositoryTableItemVOS() {
         return repositoryTableItemVOS;
     }
 

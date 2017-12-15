@@ -5,7 +5,7 @@ import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.ResultMessage;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/11/19.
@@ -14,9 +14,11 @@ import java.util.ArrayList;
  * @author 陈俊宇
  */
 public class ApprovalController implements ApprovalBLService {
+    private ApprovalManager manager = ApprovalManager.INSTANCE;
+
     @Override
-    public ArrayList<DocVO> getDocumentList() {
-        return null;
+    public List<DocVO> getDocumentList() {
+        return manager.getDocumentList();
     }
 
     @Override
@@ -25,7 +27,7 @@ public class ApprovalController implements ApprovalBLService {
     }
 
     @Override
-    public ResultMessage approveAll(ArrayList<HistoryDocVO> voList) {
+    public ResultMessage approveAll(List<HistoryDocVO> voList) {
         return null;
     }
 

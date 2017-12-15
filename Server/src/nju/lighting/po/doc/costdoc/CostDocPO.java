@@ -20,9 +20,10 @@ import java.util.List;
 @Table(name = "COST_DOC")
 public class CostDocPO extends DocPO {
 
+    private static final long serialVersionUID = -7793771039130081796L;
     private String accountID;
 
-    private ArrayList<CostDocItemPO> itemList;
+    private List<CostDocItemPO> itemList;
 
     private double total;
 
@@ -48,7 +49,7 @@ public class CostDocPO extends DocPO {
     }
 
     @Transient
-    public ArrayList<CostDocItemPO> getItemList() {
+    public List<CostDocItemPO> getItemList() {
         return itemList;
     }
 
@@ -76,8 +77,8 @@ public class CostDocPO extends DocPO {
     @Override
     public void setItems(List<Object> list) {
         this.itemList = new ArrayList<>();
-        for (Object o: list) {
-            itemList.add((CostDocItemPO)o);
+        for (Object o : list) {
+            itemList.add((CostDocItemPO) o);
         }
     }
 }

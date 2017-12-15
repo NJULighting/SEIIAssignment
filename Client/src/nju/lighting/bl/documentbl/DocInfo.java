@@ -1,9 +1,9 @@
 package nju.lighting.bl.documentbl;
 
 
-import nju.lighting.vo.doc.historydoc.HistoryDocVO;
+import nju.lighting.vo.DocVO;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/11/7.
@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 
 public interface DocInfo {
-    ArrayList<Doc> findUnCheckedDoc();
+    List<DocVO> findUnCheckedDoc();
 }
 
 

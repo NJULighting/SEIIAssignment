@@ -21,7 +21,8 @@ import java.util.List;
 @Table(name = "GIFT_DOC")
 public class GiftDocPO extends DocPO {
 
-    private ArrayList<GiftItemPO> giftItemPOs;
+    private static final long serialVersionUID = 4982735498710662541L;
+    private List<GiftItemPO> giftItemPOs;
 
     private int customerID;
 
@@ -48,7 +49,7 @@ public class GiftDocPO extends DocPO {
     }
 
     @Transient
-    public ArrayList<GiftItemPO> getGifts() {
+    public List<GiftItemPO> getGifts() {
         return giftItemPOs;
     }
 
@@ -66,7 +67,7 @@ public class GiftDocPO extends DocPO {
     }
 
     @Transient
-    public ArrayList<GiftItemPO> getGiftItemPOs() {
+    public List<GiftItemPO> getGiftItemPOs() {
         return giftItemPOs;
     }
 

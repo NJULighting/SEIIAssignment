@@ -40,12 +40,12 @@ public class LossAndGainDoc extends Doc {
     }
 
     @Override
-    public DocVO createVO() {
+    public DocVO toVO() {
         return null;
     }
 
     @Override
-    public DocPO createPO() {
+    public DocPO toPO() {
         return null;
     }
 }

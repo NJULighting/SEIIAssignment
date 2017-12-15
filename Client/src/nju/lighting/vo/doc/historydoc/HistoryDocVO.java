@@ -10,11 +10,8 @@ import java.util.Date;
 public class HistoryDocVO {
 
     private UserVO creator;
-
     private DocVO docVO;
-
     private String comment;
-
     private HistoryDocType state;
 
     public HistoryDocVO(Date time, String creatorId, String docId,

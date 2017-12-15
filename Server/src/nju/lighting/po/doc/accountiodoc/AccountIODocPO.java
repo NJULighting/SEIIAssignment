@@ -5,6 +5,7 @@ import shared.AccountIODocType;
 import shared.DocType;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,8 +17,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "ACCOUNT_IO_DOC")
-public class AccountIODocPO extends DocPO {
+public class AccountIODocPO extends DocPO implements Serializable {
 
+    private static final long serialVersionUID = -5635472117924146487L;
     private AccountIODocType ioType;
 
     private String customerID;

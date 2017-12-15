@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Deprecated
 public class CommodityBLService_Stub implements CommodityBLService {
 
     private List<CommodityItem> items = new ArrayList<>();

@@ -13,6 +13,7 @@ import java.util.List;
 @Table(name = "SALES_DOC")
 public class SalesDocPO extends DocPO {
 
+    private static final long serialVersionUID = -8130289997119314949L;
     private String salesMan;
 
     private String customerId;

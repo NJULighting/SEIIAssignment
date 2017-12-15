@@ -9,8 +9,8 @@ import nju.lighting.vo.viewtables.SalesDetailVO;
 import nju.lighting.vo.viewtables.BusinessConditionItemVO;
 import shared.*;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created on 2017/11/7.
@@ -30,17 +30,17 @@ public class DocController implements DocBLService {
     }
 
     @Override
-    public ArrayList<HistoryDocVO> findDocuments(DocumentFilter filter) {
+    public List<HistoryDocVO> findDocuments(DocumentFilter filter) {
         return null;
     }
 
     @Override
-    public ArrayList<BusinessConditionItemVO> findSaleRecords(BusinessConditionFilter filter) {
+    public List<BusinessConditionItemVO> findSaleRecords(BusinessConditionFilter filter) {
         return null;
     }
 
     @Override
-    public ArrayList<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) {
+    public List<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) {
         return null;
     }
 

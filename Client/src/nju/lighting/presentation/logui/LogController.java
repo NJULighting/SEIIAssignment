@@ -18,11 +18,8 @@ import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.vo.LogVO;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -35,7 +32,7 @@ public class LogController implements Initializable {
     Date startDate;
     Date endDate;
 
-    ArrayList<LogVO> logVOArrayList;
+    List<LogVO> logVOArrayList;
 
     /*
     logVOArrayList中存储10页的内容，用CurrentListLevel标记当前logVOArrayList所含是第几个十页的，如一到十页level就为0

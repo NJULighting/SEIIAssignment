@@ -1,10 +1,12 @@
 package nju.lighting.po.doc.costdoc;
 
 import nju.lighting.po.doc.DocPO;
+import shared.DocState;
 import shared.DocType;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created on 2017/10/18.
@@ -12,13 +14,29 @@ import java.util.Date;
  * @author Liao
  */
 public class CostDocPO extends DocPO {
+    private static final long serialVersionUID = -7793771039130081796L;
     private String accountID;
-    private ArrayList<CostDocItemPO> itemList;
+    private List<CostDocItemPO> itemList;
     private double total;
 
-    public CostDocPO(String id, String userId, Date time
-            , String accountID, ArrayList<CostDocItemPO> itemList, double total) {
-        super(id, DocType.COST, userId, time);
+    /**
+     * Constructor for committing a new document.
+     */
+    public CostDocPO(DocType type, String userId, Date createTime, String accountID,
+                     List<CostDocItemPO> itemList, double total) {
+        super(type, userId, createTime);
+        this.accountID = accountID;
+        this.itemList = itemList;
+        this.total = total;
+    }
+
+    /**
+     * Constructor for approval module.
+     */
+    public CostDocPO(String id, DocType docType, String userId, Date createTime,
+                     Date checkTime, String approvalComment, DocState state, String approvalId,
+                     String accountID, List<CostDocItemPO> itemList, double total) {
+        super(id, docType, userId, createTime, checkTime, approvalComment, state, approvalId);
         this.accountID = accountID;
         this.itemList = itemList;
         this.total = total;
@@ -28,23 +46,11 @@ public class CostDocPO extends DocPO {
         return accountID;
     }
 
-    public void setAccountID(String accountID) {
-        this.accountID = accountID;
-    }
-
-    public ArrayList<CostDocItemPO> getItemList() {
+    public List<CostDocItemPO> getItemList() {
         return itemList;
-    }
-
-    public void setItemList(ArrayList<CostDocItemPO> itemList) {
-        this.itemList = itemList;
     }
 
     public double getTotal() {
         return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
     }
 }

@@ -55,7 +55,7 @@ public class PromotionBLService_Stub implements PromotionBLService {
     @Override
     public List<PromotionVO> getPromotionList() {
         UserVO creator = new UserBLServie_Stub().getUser("0");
-        ArrayList<DocVO> gifts = ((new ApprovalBLService_Stub().getDocumentList()));
+        List<DocVO> gifts = ((new ApprovalBLService_Stub().getDocumentList()));
 
         PromotionVO vo1 = new PromotionVO(1, "店庆酬宾", creator, PromotionType.CustomerOriented,
                 new Date(), new Date(), CustomerGrade.FIVE, 0, null, 30, 0, new Date());

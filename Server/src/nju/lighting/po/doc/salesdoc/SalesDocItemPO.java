@@ -3,6 +3,7 @@ package nju.lighting.po.doc.salesdoc;
 import shared.Item;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * LastEditTime: 2017/11/7
@@ -11,8 +12,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "SALES_DOC_ITEM")
-public class SalesDocItemPO implements Item {
+public class SalesDocItemPO implements Item, Serializable {
 
+    private static final long serialVersionUID = -6523508821221460968L;
     private int id;
 
     private String docId;

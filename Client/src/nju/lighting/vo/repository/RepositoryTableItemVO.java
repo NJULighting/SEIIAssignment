@@ -13,9 +13,10 @@ public class RepositoryTableItemVO {
     private String batchNumber;
     private Date dateOfProduction;
 
-    public RepositoryTableItemVO(String commodityId, String modelNumber,
+    public RepositoryTableItemVO(String commodityId, String modelNumber, String commodityName,
                                  int repCount, double recentInPrice,
                                  String batch, String batchNumber, Date dateOfProduction) {
+        this.commodityName = commodityName;
         this.commodityId = commodityId;
         this.modelNumber = modelNumber;
         this.repCount = repCount;
@@ -79,5 +80,9 @@ public class RepositoryTableItemVO {
 
     public void setDateOfProduction(Date dateOfProduction) {
         this.dateOfProduction = dateOfProduction;
+    }
+
+    public String getCommodityName() {
+        return commodityName;
     }
 }

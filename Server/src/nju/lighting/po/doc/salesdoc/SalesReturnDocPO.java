@@ -16,6 +16,7 @@ import java.util.List;
 @Table(name = "SALES_RETURN_DOC")
 public class SalesReturnDocPO extends DocPO {
 
+    private static final long serialVersionUID = 5891779428479239805L;
     private String salesMan;
 
     private String customerId;

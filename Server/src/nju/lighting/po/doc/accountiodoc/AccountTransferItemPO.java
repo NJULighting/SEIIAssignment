@@ -3,6 +3,7 @@ package nju.lighting.po.doc.accountiodoc;
 import shared.Item;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created on 2017/10/21.
@@ -11,8 +12,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "ACCOUNT_TRANSFER")
-public class AccountTransferItemPO implements Item {
+public class AccountTransferItemPO implements Item, Serializable {
 
+    private static final long serialVersionUID = -6496549992772237320L;
     private int id;
 
     private String accountID;

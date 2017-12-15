@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 商品的详细信息，提供给商品模块、库存模块使用
  */
-public class CommodityItemVO {
+public class CommodityItemVO implements Nameable {
 
     private String id;
     private String name;

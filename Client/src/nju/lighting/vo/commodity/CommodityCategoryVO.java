@@ -4,7 +4,7 @@ import nju.lighting.blservice.commodityblservice.CommodityBLService;
 
 import java.util.List;
 
-public class CommodityCategoryVO {
+public class CommodityCategoryVO  implements Nameable{
 
     private final CommodityCategoryVO upperCategory;
     private List<CommodityCategoryVO> children;

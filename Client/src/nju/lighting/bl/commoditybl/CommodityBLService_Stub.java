@@ -27,7 +27,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
         poList.add(new CommodityCategoryPO(2, "Excited", 1));
         poList.add(new CommodityCategoryPO(3, "Naive", 2));
         poList.add(new CommodityCategoryPO(4, "Too Young", 1));
-        poList.add(new CommodityCategoryPO(5, "Too Simple", 44));
+        poList.add(new CommodityCategoryPO(5, "Too Simple", 1));
         CommodityCategoriesTree.TreeBuilder builder = new CommodityCategoriesTree.TreeBuilder(poList);
         tree = builder.build();
 
@@ -49,6 +49,17 @@ public class CommodityBLService_Stub implements CommodityBLService {
         items.add(com4);
         items.add(com5);
         items.add(com6);
+        items.add(com6);
+        items.add(com6);items.add(com6);
+        items.add(com6);
+        items.add(com6);
+        items.add(com6);
+        items.add(com6);
+        items.add(com6);
+        items.add(com6);
+
+
+
     }
 
     @Override

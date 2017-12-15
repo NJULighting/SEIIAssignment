@@ -16,21 +16,15 @@ import java.util.ResourceBundle;
  */
 public class RepositoryManagerController extends MainUIController{
     @FXML
-    Button CommodityBtn;
+    Button commodityBtn;
 
     @FXML
-    Button HistoryBtn;
-
-    @FXML
-    Button miniBtn;
-
-    @FXML
-    Button closeBtn;
+    Button historyBtn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttons = new Button[]{HistoryBtn,CommodityBtn,miniBtn,closeBtn};
-        urls = new String[]{"../documentui/HistoryDoc.fxml","../commodityui/CommodityUI.fxml"};
+        buttons = new Button[]{historyBtn,commodityBtn};
+        urls = new String[]{"../documentui/HistoryDoc.fxml","../commodityui/CommodityManage.fxml"};
         MAIN_BUTTON_SIZE = 2;
         super.initialize(location, resources);
     }

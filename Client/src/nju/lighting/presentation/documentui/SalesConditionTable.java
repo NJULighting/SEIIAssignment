@@ -123,8 +123,7 @@ public class SalesConditionTable implements Initializable {
 
             nodeList.setSpacing(30);
 
-            initBtn();
-            btn.setAlignment(Pos.BOTTOM_RIGHT);
+//            initBtn();
            // nodesList.addAnimatedNode(btn);
             nodeList.getChildren().clear();
             nodeList.addAnimatedNode(hamburger);

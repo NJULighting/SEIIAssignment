@@ -5,7 +5,6 @@ import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.ResultMessage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ public interface ApprovalBLService {
 
     ResultMessage approve(HistoryDocVO vo) ;
 
-    ResultMessage approveAll(ArrayList<HistoryDocVO> voList) ;
+    ResultMessage approveAll(List<HistoryDocVO> voList) ;
 
     ResultMessage reject(HistoryDocVO vo) ;
 

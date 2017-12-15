@@ -1,5 +1,6 @@
 package nju.lighting.po.doc.accountiodoc;
 
+import nju.lighting.presentation.documentui.AccountTransferItem;
 import shared.Item;
 
 import java.io.Serializable;
@@ -18,12 +19,28 @@ public class AccountTransferItemPO implements Serializable {
     private double amount;
     private String comments;
 
+    /**
+     * Constructor for approval module
+     */
     public AccountTransferItemPO(int id, String accountID, String docId, double amount, String comments) {
         this.id = id;
         this.accountID = accountID;
         this.docId = docId;
         this.amount = amount;
         this.comments = comments;
+    }
+
+    /**
+     * Constructor for committing a new document.
+     */
+    public AccountTransferItemPO(String accountID, double amount, String comments) {
+        this.accountID = accountID;
+        this.amount = amount;
+        this.comments = comments;
+    }
+
+    public String getDocId() {
+        return docId;
     }
 
     public int getId() {
@@ -34,23 +51,11 @@ public class AccountTransferItemPO implements Serializable {
         return accountID;
     }
 
-    public void setAccountID(String accountID) {
-        this.accountID = accountID;
-    }
-
     public double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
     public String getComments() {
         return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
     }
 }

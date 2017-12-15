@@ -4,6 +4,7 @@ import shared.CostDocItemType;
 import shared.Item;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created on 2017/10/21.
@@ -12,8 +13,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "COST_DOC_ITEM")
-public class CostDocItemPO implements Item {
+public class CostDocItemPO implements Item, Serializable {
 
+    private static final long serialVersionUID = 7563989692066507077L;
     private int id;
 
     private CostDocItemType type;

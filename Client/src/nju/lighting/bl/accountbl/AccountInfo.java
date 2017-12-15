@@ -1,8 +1,9 @@
 package nju.lighting.bl.accountbl;
 
+import nju.lighting.vo.account.AccountVO;
 import shared.ResultMessage;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/11/7.
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * @author Liao
  */
 public interface AccountInfo {
-    ArrayList<Account> getAccountList();
+    List<AccountVO> getAccountList();
 
     ResultMessage updateAmount(String targetName, double total);
 }

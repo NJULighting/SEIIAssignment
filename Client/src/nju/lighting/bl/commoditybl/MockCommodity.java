@@ -41,7 +41,7 @@ public class MockCommodity implements CommodityInfo {
     }
 
     @Override
-    public CommodityCategoriesTree getCommodityTree() {
+    public CommodityCategoriesTree getCommodityCategoryTree() {
         return tree;
     }
 

@@ -1,5 +1,6 @@
 package nju.lighting.blservice.commodityblservice;
 
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
@@ -34,6 +35,8 @@ public interface CommodityBLService {
      * @return list of commodities that belongs to the same category
      */
     List<CommodityItemVO> findCommodityByCategory(int categoryID);
+
+    List<BasicCommodityItemVO> findBasicCommodityByCategory(int categoryID);
 
     /**
      * Find commodities by id of its parent category

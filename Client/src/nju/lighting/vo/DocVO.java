@@ -18,9 +18,8 @@ public abstract class DocVO {
         this.type = type;
     }
 
-    public DocVO(Date time, String creatorId, DocType type) {
+    public DocVO(Date time, DocType type) {
         this.time = time;
-        this.creatorId = creatorId;
         this.type = type;
     }
 

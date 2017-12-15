@@ -15,14 +15,26 @@ public class StockDocItemPO implements Serializable {
     private int id;
     private String docId;
     private String commodityID;
-    private int number = 0;
-    private double totalAmount = 0;
-    private String remarks = null;
+    private int number;
+    private double totalAmount;
+    private String remarks;
 
-    public StockDocItemPO(int id, String SalesDocID, String commodityID,
-                          int number, double totalAmount, String remarks) {
+    /**
+     * Constructor for approval module.
+     */
+    public StockDocItemPO(int id, String docId, String commodityID, int number, double totalAmount, String remarks) {
         this.id = id;
-        this.docId = SalesDocID;
+        this.docId = docId;
+        this.commodityID = commodityID;
+        this.number = number;
+        this.totalAmount = totalAmount;
+        this.remarks = remarks;
+    }
+
+    /**
+     * Constructor for committing a new document.
+     */
+    public StockDocItemPO(String commodityID, int number, double totalAmount, String remarks) {
         this.commodityID = commodityID;
         this.number = number;
         this.totalAmount = totalAmount;
@@ -33,47 +45,23 @@ public class StockDocItemPO implements Serializable {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getDocID() {
+    public String getDocId() {
         return docId;
-    }
-
-    public void setDocId(String docID) {
-        this.docId = docID;
     }
 
     public String getCommodityID() {
         return commodityID;
     }
 
-    public void setCommodityID(String commodityID) {
-        this.commodityID = commodityID;
-    }
-
     public int getNumber() {
         return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
     }
 
     public double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
     public String getRemarks() {
         return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
     }
 }

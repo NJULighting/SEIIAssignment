@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CommodityInfo {
 
-    CommodityCategoriesTree getCommodityTree();
+    CommodityCategoriesTree getCommodityCategoryTree();
 
     List<BasicCommodityItem> getBasicCommodityItems(List<String> ids);
 

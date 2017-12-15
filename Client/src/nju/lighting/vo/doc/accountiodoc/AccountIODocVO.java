@@ -1,11 +1,12 @@
 package nju.lighting.vo.doc.accountiodoc;
 
-import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.account.AccountVO;
 import shared.AccountIODocType;
 import shared.DocType;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created on 2017/10/21.
@@ -13,23 +14,40 @@ import java.util.Date;
  * @author Liao
  */
 public class AccountIODocVO extends DocVO {
-    private AccountIODocType type;
     private String customer;
-    private AccountTransferItemPO transferAccountList;
-    private int total;
+    private List<AccountTransferItemVO> transferAccountList;
+    private double total;
+    private List<AccountVO> accountList;
 
-    public AccountIODocVO(Date time, String creatorId, String docId, DocType type, AccountIODocType type1,
-                          String customer, AccountTransferItemPO transferAccountList, int total) {
+    public AccountIODocVO(Date time, String creatorId, String docId, DocType type, AccountIODocType type1, String customer,
+                          List<AccountTransferItemVO> transferAccountList, double total) {
         super(time, creatorId, docId, type);
-        this.type = type1;
         this.customer = customer;
         this.transferAccountList = transferAccountList;
         this.total = total;
     }
 
-    public AccountIODocVO(Date time, String creatorId, DocType docType) {
-        super(time, creatorId, docType);
-        type = docType == DocType.ACCOUNT_IN ? AccountIODocType.IN : AccountIODocType.OUT;
+    /**
+     * This constructor should be used when the user want to create a new doc
+     * @param time        time of creation
+     * @param type        doc's type
+     * @param accountList list of account
+     */
+    public AccountIODocVO(Date time, DocType type, List<AccountVO> accountList) {
+        super(time, type);
+        this.accountList = accountList;
+    }
+
+    //无需输入总价的构造函数
+    public AccountIODocVO(Date time, String creatorId, String docId, DocType type, String customer,
+                          List<AccountTransferItemVO> transferAccountList) {
+        super(time, creatorId, docId, type);
+        this.customer = customer;
+        this.transferAccountList = transferAccountList;
+        // Calculate value for total
+        total = transferAccountList.stream()
+                .mapToDouble(AccountTransferItemVO::getAmount)
+                .sum();
     }
 
     public String getCustomer() {
@@ -40,19 +58,23 @@ public class AccountIODocVO extends DocVO {
         this.customer = customer;
     }
 
-    public AccountTransferItemPO getTransferAccountList() {
+    public List<AccountTransferItemVO> getTransferAccountList() {
         return transferAccountList;
     }
 
-    public void setTransferAccountList(AccountTransferItemPO transferAccountList) {
+    public void setTransferAccountList(List<AccountTransferItemVO> transferAccountList) {
         this.transferAccountList = transferAccountList;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
+    }
+
+    public List<AccountVO> getAccountList() {
+        return accountList;
     }
 }

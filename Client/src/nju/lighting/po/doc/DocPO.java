@@ -15,9 +15,23 @@ public abstract class DocPO implements Serializable {
     private Date checkTime;
     private String approvalComment;
     private DocState state = DocState.UN_CHECKED;
-    private String approvalId;
+    private String approvalId; // Approver's idd
 
 
+    /**
+     * Constructor for committing. No need to pass id, the id of the
+     * committed document will be returned from the data layer
+     * @param type document's type
+     * @param userId user's id
+     * @param createTime the time that the document was created
+     */
+    public DocPO(DocType type, String userId, Date createTime) {
+        this.docType = type;
+        this.userId = userId;
+        this.createTime = createTime;
+    }
+
+    @Deprecated
     public DocPO(String id, DocType docType, String userId, Date time) {
         this.id = id;
         this.docType = docType;
@@ -25,6 +39,18 @@ public abstract class DocPO implements Serializable {
         this.createTime = time;
     }
 
+    /**
+     * Constructor for approval module, which should be used when a history doc
+     * which was approved want to transform to a doc po.
+     * @param id id of the doc
+     * @param docType type of the doc
+     * @param userId user's id
+     * @param createTime time when it was created
+     * @param checkTime time when it was checked
+     * @param approvalComment approver's comment
+     * @param state result state for this approving
+     * @param approvalId approver's id
+     */
     public DocPO(String id, DocType docType, String userId, Date createTime, Date checkTime,
                  String approvalComment, DocState state, String approvalId) {
         this.id = id;

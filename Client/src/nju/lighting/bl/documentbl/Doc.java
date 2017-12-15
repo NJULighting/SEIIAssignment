@@ -44,8 +44,6 @@ public abstract class Doc {
      */
     abstract public void approve();
 
-    abstract public DocVO getVOForCreation();
-
     /**
      *驳回单据，该方法在审批单据时调用
      */

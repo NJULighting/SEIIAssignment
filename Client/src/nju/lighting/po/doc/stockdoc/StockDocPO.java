@@ -1,6 +1,7 @@
 package nju.lighting.po.doc.stockdoc;
 
 import nju.lighting.po.doc.DocPO;
+import shared.DocState;
 import shared.DocType;
 
 import java.io.Serializable;
@@ -16,9 +17,14 @@ public class StockDocPO extends DocPO implements Serializable{
     private double totalAmount = 0;
     private List<StockDocItemPO> itemPOS;
 
-    public StockDocPO(String id, DocType docType, String userId, Date time, String customerId
-            , String repository, String remarks, double totalAmount, List<StockDocItemPO> itemPOS) {
-        super(id, docType, userId, time);
+    /**
+     * Constructor for approval module.
+     */
+    public StockDocPO(String id, DocType docType, String userId, Date createTime,
+                      Date checkTime, String approvalComment, DocState state, String approvalId,
+                      String customerId, String repository, String remarks, double totalAmount,
+                      List<StockDocItemPO> itemPOS) {
+        super(id, docType, userId, createTime, checkTime, approvalComment, state, approvalId);
         this.customerId = customerId;
         this.repository = repository;
         this.remarks = remarks;
@@ -26,39 +32,36 @@ public class StockDocPO extends DocPO implements Serializable{
         this.itemPOS = itemPOS;
     }
 
-    public List<StockDocItemPO> getItemPOS() {
-        return itemPOS;
+    /**
+     * Constructor for committing a new document.
+     */
+    public StockDocPO(DocType type, String userId, Date createTime, String customerId,
+                      String repository, String remarks, double totalAmount, List<StockDocItemPO> itemPOS) {
+        super(type, userId, createTime);
+        this.customerId = customerId;
+        this.repository = repository;
+        this.remarks = remarks;
+        this.totalAmount = totalAmount;
+        this.itemPOS = itemPOS;
     }
 
     public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
-
     public String getRepository() {
         return repository;
-    }
-
-    public void setRepository(String repository) {
-        this.repository = repository;
     }
 
     public String getRemarks() {
         return remarks;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
     public double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
+    public List<StockDocItemPO> getItemPOS() {
+        return itemPOS;
     }
 }

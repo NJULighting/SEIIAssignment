@@ -34,7 +34,7 @@ public class CommodityInfoImpl implements CommodityInfo {
     }
 
     @Override
-    public CommodityCategoriesTree getCommodityTree() {
+    public CommodityCategoriesTree getCommodityCategoryTree() {
         return null;
     }
 

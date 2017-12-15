@@ -3,11 +3,13 @@ package nju.lighting.po.doc.alertdoc;
 import shared.Item;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "ALERT_DOC_ITEM")
-public class AlertDocItemPO implements Item {
+public class AlertDocItemPO implements Item, Serializable {
 
+    private static final long serialVersionUID = 5024994132501068584L;
     private int id;
 
     private String docId;

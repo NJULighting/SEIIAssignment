@@ -1,13 +1,10 @@
 package nju.lighting.bl.approvalbl;
 
-import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
-import shared.DocState;
 import shared.ResultMessage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,7 +27,7 @@ public class ApprovalController implements ApprovalBLService {
     }
 
     @Override
-    public ResultMessage approveAll(ArrayList<HistoryDocVO> voList) {
+    public ResultMessage approveAll(List<HistoryDocVO> voList) {
         return null;
     }
 

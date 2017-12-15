@@ -1,19 +1,31 @@
 package nju.lighting.bl.documentbl;
 
+import nju.lighting.bl.documentbl.accountiodoc.AccountDocFactory;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.DocType;
 import shared.DocumentFilter;
 import shared.ResultMessage;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * Created on 2017/11/7.
  * Description: 处理单据提交、创建、查找业务
  * @author Liao
  */
-public class DocManager {
+public enum DocManager {
+    INSTANCE;
+
+    private Map<DocType, Supplier<DocFactory>> voMap;
+
+    DocManager() {
+        voMap = new HashMap<>();
+        voMap.put(DocType.ACCOUNT_OUT, AccountDocFactory::new);
+    }
 
     /**
      * 根据传入的单据类型进行单据的创建
@@ -22,7 +34,7 @@ public class DocManager {
      */
     public DocVO createDoc(DocType type) {
 
-        return null;
+        return voMap.get(type).get().getVOForCreation();
     }
 
     /**

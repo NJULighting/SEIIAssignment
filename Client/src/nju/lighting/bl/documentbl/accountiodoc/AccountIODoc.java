@@ -1,8 +1,6 @@
 package nju.lighting.bl.documentbl.accountiodoc;
 
 import nju.lighting.bl.documentbl.Doc;
-import nju.lighting.bl.userbl.UserInfo;
-import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.accountiodoc.AccountIODocPO;
 import nju.lighting.vo.DocVO;
@@ -26,15 +24,18 @@ public class AccountIODoc extends Doc{
     private AccountDocItemList itemList;
     private InOutStrategy strategy;
 
-    protected AccountIODoc(DocPO po) {
+    public AccountIODoc(DocPO po) {
         super(po);
         strategy = docType == DocType.ACCOUNT_IN ? new InStrategy() : new OutStrategy();
     }
+
+
 
     @Override
     public void approve() {
         strategy.approve(this);
     }
+
 
     @Override
     public ResultMessage reject() {
@@ -55,12 +56,6 @@ public class AccountIODoc extends Doc{
     public DocPO toPO() {
         return new AccountIODocPO(id, docType, userId, createTime, checkTime,
                 approvalComment, state, approvalId, ioType, customerID, itemList.toPO(id), total);
-    }
-
-    @Override
-    public DocVO getVOForCreation() {
-        UserInfo userInfo = new UserInfoImpl();
-        return new AccountIODocVO(new Date(), userInfo.getIDOfSignedUser(), );
     }
 
     @Override

@@ -23,10 +23,25 @@ public class AccountIODocPO extends DocPO implements Serializable {
     private List<AccountTransferItemPO> transferAccountList;
     private double total;
 
+    /**
+     * Constructor for approval module
+     */
     public AccountIODocPO(String id, DocType docType, String userId, Date createTime,
                           Date checkTime, String approvalComment, DocState state, String approvalId,
                           AccountIODocType ioType, String customerID, List<AccountTransferItemPO> transferAccountList, double total) {
         super(id, docType, userId, createTime, checkTime, approvalComment, state, approvalId);
+        this.ioType = ioType;
+        this.customerID = customerID;
+        this.transferAccountList = transferAccountList;
+        this.total = total;
+    }
+
+    /**
+     * Constructor for committing a new document.
+     */
+    public AccountIODocPO(DocType type, String userId, Date createTime, AccountIODocType ioType,
+                          String customerID, List<AccountTransferItemPO> transferAccountList, double total) {
+        super(type, userId, createTime);
         this.ioType = ioType;
         this.customerID = customerID;
         this.transferAccountList = transferAccountList;

@@ -43,7 +43,7 @@ public class StockDoc extends StockTypeDoc{
      * @return 对应的StockDocVO
      */
     public DocVO createVO(){
-        return new StockDocVO(time,userId,id,docType,this.getStockTypeDocID(),this.getCustomerId(),this.getRepository(),
+        return new StockDocVO(time,userId,id,docType,this.getCustomerId(),this.getRepository(),
                 this.getRemarks(),this.getTotalAmount());
     }
 
@@ -52,7 +52,7 @@ public class StockDoc extends StockTypeDoc{
      * @return 对应的StockDocPO
      */
     public DocPO createPO(){
-        return new StockDocPO(id,docType,userId,time,this.getStockTypeDocID(),this.getCustomerId(),this.getRepository(),
+        return new StockDocPO(id,docType,userId,time,this.getCustomerId(),this.getRepository(),
                 this.getRemarks(),this.getTotalAmount());
     }
 }

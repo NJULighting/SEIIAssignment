@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +19,6 @@ import javafx.scene.control.Pagination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import nju.lighting.bl.customerbl.CustomerBLService_Stub;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
 import nju.lighting.vo.CustomerVO;
@@ -26,7 +26,9 @@ import nju.lighting.vo.CustomerVO;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import shared.CustomerType;
+import shared.ResultMessage;
 
+import javax.swing.text.html.ImageView;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -37,6 +39,8 @@ public class CustomerManageController implements Initializable {
     private List<CustomerVO> customerVOList;
     private int itemsPerPage = 9;
 
+
+
     @FXML
     private TextField search;
 
@@ -44,11 +48,60 @@ public class CustomerManageController implements Initializable {
     private Button searchBtn;
 
     @FXML
+    private Button deleteSearch;
+
+    @FXML
     private Button addCustomerBtn;
 
     @FXML
     private Pagination customerList;
 
+    @FXML
+    private Label searchLabel;
+
+    //查看客户信息
+    private void checkCustomer(){
+
+    }
+
+    //清除搜索，列表显示所有客户
+    public void setDeleteSearch(){
+        search.setText("");
+        customerVOList = customerBLService.getCustomerList();
+        setCustomerList();
+
+        deleteSearch.setDisable(true);
+        deleteSearch.setVisible(false);
+        searchLabel.setVisible(false);
+    }
+
+    //关键字字数不超过8个字
+    public void keyTyped(Event e){
+        String s = search.getText();
+        if(s.length() >= 8) e.consume();
+    }
+
+    public void search(){
+        String keywords = search.getText();
+        if(keywords==null||keywords.length()==0){//无关键词，则显示所有列表
+            customerVOList = customerBLService.getCustomerList();
+            setCustomerList();
+        }
+        else{//有关键词，删除搜索键可见
+            searchLabel.setVisible(true);
+            deleteSearch.setDisable(false);
+            deleteSearch.setVisible(true);
+
+            customerVOList = customerBLService.search(keywords);
+            setCustomerList();
+        }
+    }
+
+    //设置客户列表的显示
+    private void setCustomerList(){
+        customerList.setPageCount((customerVOList.size() / itemsPerPage) + 1);
+        customerList.setPageFactory((Integer index) -> createPage(index));
+    }
 
     ListView createPage(int index) {
         ListView<CustomerVO> customerVOJFXListView = new JFXListView<>();
@@ -151,6 +204,16 @@ public class CustomerManageController implements Initializable {
                     }
                 });
 
+                invalidBtn.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        CustomerBLService customerBLService = new CustomerBLService_Stub();
+                        ResultMessage resultMessage = customerBLService.deleteCustomer(Integer.parseInt(id.getText()));
+                        System.out.println("delete customer: "+resultMessage);
+                        //CustomerManageController
+                    }
+                });
+
                 box = new HBox(id,type,name,grade,receive,pay,receiveLimit,telephone,salesman,buttonBox);
                 box.setSpacing(20);
                 box.setPadding(new Insets(0,0,0,6));
@@ -179,8 +242,7 @@ public class CustomerManageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         customerVOList = customerBLService.getCustomerList();
 
-        customerList.setPageCount((customerVOList.size() / itemsPerPage) + 1);
-        customerList.setPageFactory((Integer index) -> createPage(index));
+        setCustomerList();
 
     }
 

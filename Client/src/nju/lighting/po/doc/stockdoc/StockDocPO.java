@@ -7,8 +7,6 @@ import java.util.Date;
 
 public class StockDocPO extends DocPO {
 
-    private String stockDocID;
-
     private String customerId;
 
     private String repository;
@@ -18,22 +16,13 @@ public class StockDocPO extends DocPO {
     private double totalAmount = 0;
 
     public StockDocPO(String id, DocType docType, String userId, Date time,
-                          String stockDocID, String customerId, String repository,
+                          String customerId, String repository,
                           String remarks, double totalAmount) {
         super(id, docType, userId, time);
-        this.stockDocID = stockDocID;
         this.customerId = customerId;
         this.repository = repository;
         this.remarks = remarks;
         this.totalAmount = totalAmount;
-    }
-
-    public String getStockDocID() {
-        return stockDocID;
-    }
-
-    public void setStockDocID(String stockDocID) {
-        this.stockDocID = stockDocID;
     }
 
     public String getCustomerId() {

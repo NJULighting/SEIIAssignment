@@ -7,8 +7,6 @@ import java.util.Date;
 
 public class StockReturnDocPO extends DocPO {
 
-    private String stockReturnDocID;
-
     private String customerId;
 
     private String repository;
@@ -18,22 +16,13 @@ public class StockReturnDocPO extends DocPO {
     private double totalAmount = 0;
 
     public StockReturnDocPO(String id, DocType docType, String userId, Date time,
-                      String stockReturnDocID, String customerId, String repository,
+                      String customerId, String repository,
                       String remarks, double totalAmount) {
         super(id, docType, userId, time);
-        this.stockReturnDocID = stockReturnDocID;
         this.customerId = customerId;
         this.repository = repository;
         this.remarks = remarks;
         this.totalAmount = totalAmount;
-    }
-
-    public String getStockReturnDocID() {
-        return stockReturnDocID;
-    }
-
-    public void setStockReturnDocID(String stockReturnDocID) {
-        this.stockReturnDocID = stockReturnDocID;
     }
 
     public String getCustomerId() {

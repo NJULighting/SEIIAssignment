@@ -4,9 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.TreeCell;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -32,7 +30,8 @@ import java.util.ResourceBundle;
 public class CommodityCategory implements Initializable {
     private static CommodityCategoriesTreeVO categoriesTreeVO;
     static boolean Editable;
-    private double leftPadding=50;
+    private double leftPadding=80;
+    private double topPadding=25;
     private CommodityBLService commodityBLService;
 
     public static void setCategoriesTreeVO(CommodityCategoriesTreeVO categoriesTreeVO) {
@@ -52,7 +51,7 @@ public class CommodityCategory implements Initializable {
         System.out.println("clicked");
         HBox commodityVBox = FXMLLoader.load(getClass().getResource("CommodityReadOnly.fxml"));
         container.getChildren().add(commodityVBox);
-        commodityVBox.setMargin(commodityVBox, new Insets(50, 0, 0, leftPadding));
+        commodityVBox.setMargin(commodityVBox, new Insets(topPadding, 0, 0, leftPadding));
     }
 
     public static void setEditable(boolean editable) {
@@ -67,7 +66,7 @@ public class CommodityCategory implements Initializable {
             TreeItem selected = categoryTreeView.getSelectionModel().getSelectedItem();
 
             if (selected.isLeaf() && selected.getValue().getClass().equals(CommodityItemVO.class)) {
-                CommodityItemVO commodity = ((CommodityItemVO) selected.getValue());
+                CommodityItemVO commodity = (((CommodityItemVO) selected.getValue()));
                 showSelectedCommodity(commodity);
             }
         }
@@ -140,6 +139,9 @@ public class CommodityCategory implements Initializable {
 
         if (Editable) {
             initEditable();
+        }else {
+            categoryTreeView.setMinHeight(460);
+            categoryTreeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         }
 
 

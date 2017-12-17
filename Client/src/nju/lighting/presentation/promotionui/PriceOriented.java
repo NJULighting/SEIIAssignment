@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import nju.lighting.presentation.commodityui.CommodityCategory;
 import nju.lighting.presentation.documentui.GiftListController;
 import nju.lighting.presentation.utils.DateHelper;
 
@@ -56,6 +57,8 @@ public class PriceOriented implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
         title.setText(promotion.getName());
         creator.setText(promotion.getCreator().getUsername());
         validTime.setText(validTimeStr);
@@ -74,6 +77,6 @@ public class PriceOriented implements Initializable {
             noneGift.setVisible(true);
 
 
-
+        CommodityCategory.setEditable(false);
     }
 }

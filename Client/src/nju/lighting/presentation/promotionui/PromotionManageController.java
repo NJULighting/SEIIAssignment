@@ -115,8 +115,6 @@ public class PromotionManageController implements Initializable {
                     @Override
                     public void handle(ActionEvent event) {
                         PromotionManageController.selectedPromotion=item;
-                        System.out.println(PromotionManageController.selectedPromotion.getType());
-                        System.out.println(PromotionManageController.selectedPromotion);
                         try {
                             new Promotion(item);
                         } catch (IOException e) {

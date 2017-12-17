@@ -3,10 +3,7 @@ package nju.lighting.presentation.documentui;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.Skin;
-import javafx.scene.control.Skinnable;
-import javafx.scene.control.TableCell;
+import javafx.scene.control.*;
 import nju.lighting.presentation.utils.ImageViewHelper;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 
@@ -29,8 +26,8 @@ public class BtnCell extends TableCell<CommodityItem, Boolean> {
 
             @Override
             public void handle(ActionEvent t) {
-                getTableView().getItems().remove(getTableRow().getIndex());
-                System.out.println(getTableView().getItems().size());
+                TableView tableView=getTableView();
+                tableView.getItems().remove(getTableRow().getIndex());
             }
         });
     }
@@ -38,7 +35,7 @@ public class BtnCell extends TableCell<CommodityItem, Boolean> {
     //Display button if the row is not empty
     @Override
     protected void updateItem(Boolean t, boolean empty) {
-        System.out.println(empty);
+
         super.updateItem(t, empty);
         if (!empty) {
             setGraphic(cellButton);

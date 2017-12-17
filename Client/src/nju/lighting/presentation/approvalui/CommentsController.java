@@ -33,9 +33,7 @@ public class CommentsController extends CommonFather {
 
     Stage dialog;
 
-    public CommentsController() {
-        dialog = ApprovalUIController.dialog;
-    }
+
 
     public void setApprovalUIController(ApprovalUIController approvalUIController) {
         this.approvalUIController = approvalUIController;
@@ -65,5 +63,9 @@ public class CommentsController extends CommonFather {
         MISS_OPACITY = 0.9;
         buttons = new Button[]{okBtn, cancelBtn};
         super.initialize(location, resources);
+    }
+
+    public void setDialog(Stage dialog) {
+        this.dialog = dialog;
     }
 }

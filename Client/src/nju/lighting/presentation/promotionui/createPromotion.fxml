@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,12 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<ScrollPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.promotionui.CreatePromotion">
+<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="800" prefWidth="650" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.promotionui.CreatePromotion">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="788.0" prefWidth="598.0">
+    <AnchorPane fx:id="anchorPane" prefHeight="795.0" prefWidth="648.0" style="-fx-background-color: white;">
          <children>
-            <VBox fx:id="container" layoutX="27.0" layoutY="49.0" spacing="30.0">
+            <VBox fx:id="container" layoutX="47.0" layoutY="25.0" spacing="30.0">
                <children>
                   <HBox spacing="40.0">
                      <children>
@@ -25,6 +26,14 @@
                            </font>
                         </Label>
                         <JFXTextField fx:id="title" />
+                        <JFXButton fx:id="commit" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #5599FF;" text="提交" textFill="WHITE">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="140.0" />
+                           </HBox.margin>
+                        </JFXButton>
                      </children>
                   </HBox>
                   <HBox spacing="80.0">

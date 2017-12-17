@@ -40,7 +40,7 @@ public class ApprovalUIController implements Initializable {
     ObservableList selectedDocList;
     String comment;
     boolean cancel;
-    static Stage dialog;
+    Stage dialog;
 
     @FXML
     JFXListView docList;
@@ -89,7 +89,7 @@ public class ApprovalUIController implements Initializable {
         dialog.setScene(new Scene(loader.load()));
         CommentsController controller = loader.getController();
         controller.setApprovalUIController(this);
-
+        controller.setDialog(dialog);
         dialog.initStyle(StageStyle.TRANSPARENT);
         //在对话框关闭之前无法返回主界面
         dialog.initModality(Modality.APPLICATION_MODAL);

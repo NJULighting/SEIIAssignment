@@ -45,10 +45,13 @@ public class TableViewHelper {
 
         count.setOnEditCommit(
                 (TableColumn.CellEditEvent<CommodityItem, Integer> t) -> {
+                    int index= t.getTablePosition().getRow();
+
                     CommodityItem selected = t.getTableView().getItems().get(
-                            t.getTablePosition().getRow());
+                            index);
                     selected.setCount(t.getNewValue());
                     selected.setSubtotal(selected.getPrice() * selected.getCount());
+
 
                 });
     }

@@ -7,9 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
+import nju.lighting.presentation.commodityui.CommodityCategory;
 
 
 import java.io.IOException;
@@ -29,6 +33,7 @@ public class CreatePromotion implements Initializable {
     private final String PRICE_ORIENTED = "针对不同总价";
     private final String CUSTOMER_ORIENTED = "针对不同级别用户";
 
+
     HashMap<String, String> hashMap = new HashMap<>();
 
     @FXML
@@ -36,6 +41,12 @@ public class CreatePromotion implements Initializable {
 
     @FXML
     VBox container;
+
+    @FXML
+    ScrollPane scrollPane;
+
+    @FXML
+    AnchorPane anchorPane;
 
     void initTypeComboBox() {
         type.getItems().add(new Label(COMBO));
@@ -81,6 +92,7 @@ public class CreatePromotion implements Initializable {
                         if (container.getChildren().size()>4)
                             container.getChildren().remove(4);
                         container.getChildren().add(loader.load());
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -88,5 +100,10 @@ public class CreatePromotion implements Initializable {
             }
         });
 
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
+        CommodityCategory.setEditable(false);
     }
+
+
 }

@@ -70,7 +70,7 @@ public class GiftListController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         total = giftsVO.stream()
-                .mapToDouble(GiftItemVO::getPrice)
+                .mapToDouble(GiftItemVO::getSubtotal)
                 .sum();
 
 

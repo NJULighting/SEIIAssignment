@@ -1,12 +1,16 @@
 package nju.lighting.vo.doc.costdoc;
 
+import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.costdoc.CostDocItemPO;
+import nju.lighting.po.doc.costdoc.CostDocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.account.AccountVO;
 import shared.DocType;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created on 2017/10/21.
@@ -14,50 +18,51 @@ import java.util.Date;
  * @author Liao
  */
 public class CostDocVO extends DocVO {
-    private ArrayList<AccountVO> accountList; // 用于提供账户列表，方便用户选择
     private AccountVO account; // 用户最后在现金费用单中选择的账户
-    private ArrayList<CostDocItemVO> itemList;
-    private int total;
+    private List<CostDocItemVO> itemList;
+    private double total;
 
+    /**
+     * Constructor for bl
+     */
     public CostDocVO(Date time, String creatorId, String docId
-            , AccountVO accounts, ArrayList<CostDocItemVO> itemList, int total, ArrayList<AccountVO> accountList) {
+            , AccountVO accounts, List<CostDocItemVO> itemList, List<AccountVO> accountList) {
         super(time, creatorId, docId, DocType.COST);
         this.account = accounts;
         this.itemList = itemList;
-        this.total = total;
-        this.accountList = accountList;
+        total = calculateTotal();
     }
 
-    public CostDocVO(Date time, String creatorId, String docId) {
-        super(time, creatorId, docId, DocType.COST);
-    }
-
-    public ArrayList<AccountVO> getAccountList() {
-        return accountList;
+    /**
+     * Constructor for pre
+     */
+    public CostDocVO(Date time, String creatorId, AccountVO account,
+                     List<CostDocItemVO> itemList) {
+        super(time, DocType.COST, creatorId);
+        this.account = account;
+        this.itemList = itemList;
+        this.total = calculateTotal();
     }
 
     public AccountVO getAccount() {
         return account;
     }
 
-    public ArrayList<CostDocItemVO> getItemList() {
+    public List<CostDocItemVO> getItemList() {
         return itemList;
     }
 
-    public void setItemList(ArrayList<CostDocItemVO> itemList) {
-        this.itemList = itemList;
-    }
-
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    private double calculateTotal() {
+        return itemList.stream().mapToDouble(CostDocItemVO::getAmount).sum();
     }
 
     @Override
     public DocPO toPO() {
-        return null;
+        List<CostDocItemPO> poList = VPOTransformer.toVPOList(itemList, CostDocItemVO::toPO);
+        return new CostDocPO(getType(), getCreatorId(), getTime(), account.getId(), poList, total);
     }
 }

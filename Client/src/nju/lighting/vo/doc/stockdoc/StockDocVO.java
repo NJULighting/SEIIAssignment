@@ -1,26 +1,48 @@
 package nju.lighting.vo.doc.stockdoc;
 
+import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.stockdoc.StockDocItemPO;
+import nju.lighting.po.doc.stockdoc.StockDocPO;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
 
 import java.util.Date;
+import java.util.List;
 
 public class StockDocVO extends DocVO {
 
     private String customerId;
     private String repository;
     private String remarks = "";
-    private double totalAmount = 0;
+    private double totalAmount;
+    private List<StockDocItemVO> items;
 
-    public StockDocVO(Date time, String creatorId, String docId, DocType type,
-                          String customerId, String repository,
-                          String remarks, double totalAmount) {
-        super(time, creatorId, docId, type);
+    /**
+     * Constructor for pre
+     */
+    public StockDocVO(Date time, String creatorId, String customerId,
+                      String repository, String remarks, double totalAmount, List<StockDocItemVO> items) {
+        super(time, DocType.STOCK, creatorId);
         this.customerId = customerId;
         this.repository = repository;
         this.remarks = remarks;
         this.totalAmount = totalAmount;
+        this.items = items;
+    }
+
+    /**
+     * Constructor for bl
+     */
+    public StockDocVO(Date time, String creatorId, String docId,
+                      String customerId, String repository, String remarks, double totalAmount,
+                      List<StockDocItemVO> items) {
+        super(time, creatorId, docId, DocType.STOCK);
+        this.customerId = customerId;
+        this.repository = repository;
+        this.remarks = remarks;
+        this.totalAmount = totalAmount;
+        this.items = items;
     }
 
     public String getCustomerId() {
@@ -57,6 +79,8 @@ public class StockDocVO extends DocVO {
 
     @Override
     public DocPO toPO() {
-        return null;
+        List<StockDocItemPO> itemPOList = VPOTransformer.toVPOList(items, StockDocItemVO::toPO);
+        return new StockDocPO(getType(), getCreatorId(), getTime(), customerId, repository,
+                remarks, totalAmount, itemPOList);
     }
 }

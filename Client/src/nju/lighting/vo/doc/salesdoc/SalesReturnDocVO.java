@@ -1,10 +1,14 @@
 package nju.lighting.vo.doc.salesdoc;
 
+import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.salesdoc.SalesDocItemPO;
+import nju.lighting.po.doc.salesdoc.SalesReturnDocPO;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
 
 import java.util.Date;
+import java.util.List;
 
 public class SalesReturnDocVO extends DocVO {
 
@@ -12,17 +16,20 @@ public class SalesReturnDocVO extends DocVO {
     private String salesman;
     private String repository;
     private String remarks;
-    private double beforeDiscountAmount = 0;
-    private double discount = 0;
-    private double voucher = 0;
-    private double finalAmount = 0;
+    private double beforeDiscountAmount;
+    private double discount;
+    private double voucher;
+    private double finalAmount;
+    private List<SalesDocItemVO> items;
 
-    public SalesReturnDocVO(Date time, String creatorId, String docId, DocType type,
-                      int customerId, String salesman,
-                      String repository, String remarks,
-                      double beforeDiscountAmount, double discount,
-                      double voucher, double finalAmount) {
-        super(time, creatorId, docId, type);
+    /**
+     * Constructor for bl
+     */
+    public SalesReturnDocVO(Date time, String creatorId, String docId,
+                            int customerId, String salesman, String repository, String remarks,
+                            double beforeDiscountAmount, double discount, double voucher, double finalAmount,
+                            List<SalesDocItemVO> items) {
+        super(time, creatorId, docId, DocType.SALES_RETURN);
         this.customerId = customerId;
         this.salesman = salesman;
         this.repository = repository;
@@ -31,6 +38,25 @@ public class SalesReturnDocVO extends DocVO {
         this.discount = discount;
         this.voucher = voucher;
         this.finalAmount = finalAmount;
+        this.items = items;
+    }
+
+    /**
+     * Constructor for pre
+     */
+    public SalesReturnDocVO(Date time, String creatorId, int customerId,
+                            String salesman, String repository, String remarks, double beforeDiscountAmount,
+                            double discount, double voucher, double finalAmount, List<SalesDocItemVO> items) {
+        super(time, DocType.SALES_RETURN, creatorId);
+        this.customerId = customerId;
+        this.salesman = salesman;
+        this.repository = repository;
+        this.remarks = remarks;
+        this.beforeDiscountAmount = beforeDiscountAmount;
+        this.discount = discount;
+        this.voucher = voucher;
+        this.finalAmount = finalAmount;
+        this.items = items;
     }
 
     public int getCustomerId() {
@@ -99,6 +125,8 @@ public class SalesReturnDocVO extends DocVO {
 
     @Override
     public DocPO toPO() {
-        return null;
+        List<SalesDocItemPO> poList = VPOTransformer.toVPOList(items, SalesDocItemVO::toPO);
+        return new SalesReturnDocPO(getType(), getCreatorId(), getTime(), salesman, customerId + "", repository,
+                remarks, discount, voucher, finalAmount, poList);
     }
 }

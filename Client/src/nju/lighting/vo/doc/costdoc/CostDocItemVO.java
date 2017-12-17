@@ -1,5 +1,6 @@
 package nju.lighting.vo.doc.costdoc;
 
+import nju.lighting.po.doc.costdoc.CostDocItemPO;
 import shared.CostDocItemType;
 
 /**
@@ -28,5 +29,9 @@ public class CostDocItemVO {
 
     public String getComment() {
         return comment;
+    }
+
+    CostDocItemPO toPO() {
+        return new CostDocItemPO(type, amount, comment);
     }
 }

@@ -13,8 +13,6 @@ import java.util.List;
 
 public interface DocBLService {
 
-    DocVO createDoc(DocType type);
-
     TwoTuple<String,ResultMessage> commitDoc(DocVO doc);
 
     List<HistoryDocVO> findDocuments(DocumentFilter filter);

@@ -2,8 +2,7 @@ package nju.lighting.vo.doc.historydoc;
 
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
-import shared.DocType;
-import shared.HistoryDocType;
+import shared.DocState;
 
 import java.util.Date;
 
@@ -12,48 +11,54 @@ public class HistoryDocVO {
     private UserVO creator;
     private DocVO docVO;
     private String comment;
-    private HistoryDocType state;
+    private DocState state;
+    private Date checkTime;
+    private UserVO approver;
 
-    public HistoryDocVO(Date time, String creatorId, String docId,
-                        DocType type, DocVO docVO, String comment,
-                        HistoryDocType state) {
-
+    /**
+     * Constructor for bl
+     */
+    public HistoryDocVO(UserVO creator, DocVO docVO, String comment, DocState state,
+                        Date checkTime, UserVO approver) {
+        this.creator = creator;
         this.docVO = docVO;
         this.comment = comment;
         this.state = state;
+        this.checkTime = checkTime;
+        this.approver = approver;
     }
 
-    /*
-    总经理审批单据时用的构造函数，确定了historyDoc的 审批人ID，评语以及doc
-    审批时间在bl层生成
+    /**
+     * Constructor for approval pre
      */
     public HistoryDocVO(UserVO creator, String comment, DocVO docVO) {
         this.creator = creator;
         this.comment = comment;
         this.docVO = docVO;
+        checkTime = new Date();
     }
 
     public DocVO getDocVO() {
         return docVO;
     }
 
-    public void setDocVO(DocVO docVO) {
-        this.docVO = docVO;
-    }
-
     public String getComment() {
         return comment;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public HistoryDocType getState() {
+    public DocState getState() {
         return state;
     }
 
-    public void setState(HistoryDocType state) {
-        this.state = state;
+    public UserVO getCreator() {
+        return creator;
+    }
+
+    public Date getCheckTime() {
+        return checkTime;
+    }
+
+    public UserVO getApprover() {
+        return approver;
     }
 }

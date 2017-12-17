@@ -97,12 +97,12 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         AccountIODocVO accountIODocVO=new AccountIODocVO(new Date(),"00001","SKD-20171211-00001",
                 DocType.ACCOUNT_IN,"刘钦",accountTransferItemVOList);
 
-        GiftDocVO vo1 = new GiftDocVO(null,"00001", "ZPD-20171021-0009",DocType.GIFT,gifts1,"hiahia");
-        GiftDocVO vo2 = new GiftDocVO(null,"00001", "ZPD-20171021-0010",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo3 = new GiftDocVO(null,"00001", "ZPD-20171021-0011",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo4 = new GiftDocVO(null,"00001", "ZPD-20171021-0012",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo5 = new GiftDocVO(null,"00001", "ZPD-20171021-0013",DocType.GIFT, gifts2, "N0.1");
-        GiftDocVO vo6 = new GiftDocVO(null,"00001", "ZPD-20171021-0015",DocType.GIFT, gifts2, "N0.1");
+        GiftDocVO vo1 = new GiftDocVO(null,"00001", "ZPD-20171021-0009",gifts1,1, 1);
+        GiftDocVO vo2 = new GiftDocVO(null,"00001", "ZPD-20171021-0010", gifts2, 3, 2);
+        GiftDocVO vo3 = new GiftDocVO(null,"00001", "ZPD-20171021-0011", gifts2, 4, 3);
+        GiftDocVO vo4 = new GiftDocVO(null,"00001", "ZPD-20171021-0012", gifts2, 1, 4);
+        GiftDocVO vo5 = new GiftDocVO(null,"00001", "ZPD-20171021-0013", gifts2, 1, 1);
+        GiftDocVO vo6 = new GiftDocVO(null,"00001", "ZPD-20171021-0015", gifts2, 1, 1);
         ArrayList<DocVO> DocVOs = new ArrayList<>();
         DocVOs.add(vo1);
         DocVOs.add(vo2);

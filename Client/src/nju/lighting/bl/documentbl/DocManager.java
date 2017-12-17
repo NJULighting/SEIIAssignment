@@ -28,16 +28,6 @@ public enum DocManager {
     }
 
     /**
-     * 根据传入的单据类型进行单据的创建
-     * @param type 单据类型
-     * @return 相应类型的单据
-     */
-    public DocVO createDoc(DocType type) {
-
-        return voMap.get(type).get().getVOForCreation();
-    }
-
-    /**
      * 提交单据
      * @param doc 需要提交的单据
      * @return 提交的结果（成功或失败）

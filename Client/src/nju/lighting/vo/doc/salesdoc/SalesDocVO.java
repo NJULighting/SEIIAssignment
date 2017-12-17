@@ -1,10 +1,14 @@
 package nju.lighting.vo.doc.salesdoc;
 
+import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.salesdoc.SalesDocItemPO;
+import nju.lighting.po.doc.salesdoc.SalesDocPO;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
 
 import java.util.Date;
+import java.util.List;
 
 public class SalesDocVO extends DocVO {
 
@@ -12,16 +16,54 @@ public class SalesDocVO extends DocVO {
     private String salesman;
     private String repository;
     private String remarks;
-    private double beforeDiscountAmount = 0;
-    private double discount = 0;
-    private double voucher = 0;
-    private double finalAmount = 0;
+    private double beforeDiscountAmount;
+    private double discount;
+    private double voucher;
+    private double finalAmount;
+    private List<SalesDocItemVO> items;
+
+    /**
+     * Constructor for pre
+     */
+    public SalesDocVO(Date time, String creatorId, int customerId,
+                      String salesman, String repository, String remarks, double beforeDiscountAmount,
+                      double discount, double voucher, double finalAmount, List<SalesDocItemVO> items) {
+        super(time, DocType.SALES, creatorId);
+        this.customerId = customerId;
+        this.salesman = salesman;
+        this.repository = repository;
+        this.remarks = remarks;
+        this.beforeDiscountAmount = beforeDiscountAmount;
+        this.discount = discount;
+        this.voucher = voucher;
+        this.finalAmount = finalAmount;
+        this.items = items;
+    }
+
+    /**
+     * Constructor for bl
+     */
+    public SalesDocVO(Date time, String creatorId, String docId, DocType type,
+                      int customerId, String salesman, String repository, String remarks,
+                      double beforeDiscountAmount, double discount, double voucher, double finalAmount,
+                      List<SalesDocItemVO> items) {
+        super(time, creatorId, docId, type);
+        this.customerId = customerId;
+        this.salesman = salesman;
+        this.repository = repository;
+        this.remarks = remarks;
+        this.beforeDiscountAmount = beforeDiscountAmount;
+        this.discount = discount;
+        this.voucher = voucher;
+        this.finalAmount = finalAmount;
+        this.items = items;
+    }
 
     public SalesDocVO(Date time, String creatorId, String docId, DocType type,
-                          int customerId, String salesman,
-                          String repository, String remarks,
-                          double beforeDiscountAmount, double discount,
-                          double voucher, double finalAmount) {
+                      int customerId, String salesman,
+                      String repository, String remarks,
+                      double beforeDiscountAmount, double discount,
+                      double voucher, double finalAmount) {
         super(time, creatorId, docId, type);
         this.customerId = customerId;
         this.salesman = salesman;
@@ -37,68 +79,43 @@ public class SalesDocVO extends DocVO {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
     public String getSalesman() {
         return salesman;
-    }
-
-    public void setSalesman(String salesman) {
-        this.salesman = salesman;
     }
 
     public String getRepository() {
         return repository;
     }
 
-    public void setRepository(String repository) {
-        this.repository = repository;
-    }
-
     public String getRemarks() {
         return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
     }
 
     public double getBeforeDiscountAmount() {
         return beforeDiscountAmount;
     }
 
-    public void setBeforeDiscountAmount(double beforeDiscountAmount) {
-        this.beforeDiscountAmount = beforeDiscountAmount;
-    }
-
     public double getDiscount() {
         return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
     }
 
     public double getVoucher() {
         return voucher;
     }
 
-    public void setVoucher(double voucher) {
-        this.voucher = voucher;
-    }
-
     public double getFinalAmount() {
         return finalAmount;
     }
 
-    public void setFinalAmount(double finalAmount) {
-        this.beforeDiscountAmount = beforeDiscountAmount;
+    public List<SalesDocItemVO> getItems() {
+        return items;
     }
 
     @Override
     public DocPO toPO() {
-        return null;
+        List<SalesDocItemPO> poList = VPOTransformer.toVPOList(items, SalesDocItemVO::toPO);
+        return new SalesDocPO(getType(), getCreatorId(), getTime(), salesman,
+                customerId + "", repository, remarks, discount,
+                voucher, finalAmount, poList);
     }
 }

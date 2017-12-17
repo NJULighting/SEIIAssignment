@@ -124,10 +124,7 @@ public class SalesDocController implements Initializable{
         }
         else if(checkFormat(discount,failDisCount) && checkFormat(voucher,failVoucher)){
 
-            DocVO docVO = docBLService.createDoc(DocType.SALES);
-
-
-            DocVO salesDocVO = new SalesDocVO(new Date(), Client.getUserVO().getID(),docVO.getDocId(),DocType.SALES
+            DocVO salesDocVO = new SalesDocVO(new Date(), Client.getUserVO().getID(),null,DocType.SALES
                     ,customerVO.getID(),customerVO.getSalesman(),repository.getText(),remarks.getText(),
                     Double.parseDouble(accountBeforeDis.getText()),Double.parseDouble(discount.getText()),
                     Double.parseDouble(voucher.getText()),Double.parseDouble(account.getText()));

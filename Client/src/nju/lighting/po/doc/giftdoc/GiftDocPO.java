@@ -25,11 +25,12 @@ public class GiftDocPO extends DocPO {
     /**
      * Constructor for approval module.
      */
-    public GiftDocPO(String id, DocType docType, String userId, Date createTime, Date checkTime, String approvalComment, DocState state, String approvalId, List<GiftItemPO> giftItemPOs, int customerID, String repositoryID, double total, int promotionId) {
+    public GiftDocPO(String id, DocType docType, String userId, Date createTime,
+                     Date checkTime, String approvalComment, DocState state, String approvalId,
+                     List<GiftItemPO> giftItemPOs, int customerID, double total, int promotionId) {
         super(id, docType, userId, createTime, checkTime, approvalComment, state, approvalId);
         this.giftItemPOs = giftItemPOs;
         this.customerID = customerID;
-        this.repositoryID = repositoryID;
         this.total = total;
         this.promotionId = promotionId;
     }
@@ -38,11 +39,10 @@ public class GiftDocPO extends DocPO {
      * Constructor for committing a new document.
      */
     public GiftDocPO(DocType type, String userId, Date createTime, List<GiftItemPO> giftItemPOs,
-                     int customerID, String repositoryID, double total, int promotionId) {
+                     int customerID, double total, int promotionId) {
         super(type, userId, createTime);
         this.giftItemPOs = giftItemPOs;
         this.customerID = customerID;
-        this.repositoryID = repositoryID;
         this.total = total;
         this.promotionId = promotionId;
     }

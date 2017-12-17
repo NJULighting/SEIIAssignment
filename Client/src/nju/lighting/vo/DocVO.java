@@ -12,6 +12,9 @@ public abstract class DocVO {
     private String docId;
     private DocType type;
 
+    /**
+     * Constructor for bl
+     */
     public DocVO(Date time, String creatorId, String docId, DocType type) {
         this.time = time;
         this.creatorId = creatorId;
@@ -19,9 +22,13 @@ public abstract class DocVO {
         this.type = type;
     }
 
-    public DocVO(Date time, DocType type) {
+    /**
+     * Constructor for pre
+     */
+    public DocVO(Date time, DocType type, String creatorId) {
         this.time = time;
         this.type = type;
+        this.creatorId = creatorId;
     }
 
     /**

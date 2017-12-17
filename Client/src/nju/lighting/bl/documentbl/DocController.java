@@ -20,11 +20,6 @@ import java.util.List;
 public class DocController implements DocBLService {
 
     @Override
-    public DocVO createDoc(DocType type) {
-        return null;
-    }
-
-    @Override
     public TwoTuple<String,ResultMessage> commitDoc(DocVO doc) {
         return null;
     }

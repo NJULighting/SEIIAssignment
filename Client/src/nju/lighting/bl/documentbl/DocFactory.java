@@ -1,5 +1,6 @@
 package nju.lighting.bl.documentbl;
 
+import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 
@@ -9,7 +10,7 @@ import nju.lighting.vo.doc.historydoc.HistoryDocVO;
  * @author Liao
  */
 public interface DocFactory {
-    DocVO getVOForCreation();
-
     Doc createDocForApproval(HistoryDocVO historyDocVO);
+
+    DocVO poToDocVO(DocPO po);
 }

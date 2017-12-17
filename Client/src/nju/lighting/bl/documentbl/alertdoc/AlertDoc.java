@@ -3,7 +3,6 @@ package nju.lighting.bl.documentbl.alertdoc;
 import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 import shared.DocType;
 import shared.ResultMessage;
 

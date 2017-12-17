@@ -1,5 +1,6 @@
 package nju.lighting.bl.commoditybl;
 
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.repository.RepositoryTableItemVO;
 
 import java.util.List;
@@ -8,7 +9,7 @@ public interface CommodityInfo {
 
     CommodityCategoriesTree getCommodityCategoryTree();
 
-    List<BasicCommodityItem> getBasicCommodityItems(List<String> ids);
+    BasicCommodityItemVO getBasicCommodityItemVO(String id);
 
     List<CommodityItem> getCommodityItems(List<String> ids);
 
@@ -18,6 +19,6 @@ public interface CommodityInfo {
 
     boolean addCommodityItem(String id, int count);
 
-    boolean subCommodityItem(String id, int count);
+    boolean reduceCommodityItem(String id, int count);
 
 }

@@ -1,26 +1,65 @@
 package nju.lighting.vo.doc.alertdoc;
 
+import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.alertdoc.AlertDocItemPO;
+import nju.lighting.po.doc.alertdoc.AlertDocPO;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import shared.DocType;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class AlertDocVO extends DocVO {
 
-    private List<BasicCommodityItemVO> commodities;
     private List<AlertDocItemVO> items;
+    private String comment;
+    private boolean triggered;
+    private boolean expired;
 
-    public AlertDocVO(Date time, String creatorId, String docId, DocType type) {
-        super(time, creatorId, docId, type);
+    /**
+     * Constructor for pre
+     */
+    public AlertDocVO(String creatorID, Date time, DocType type, List<AlertDocItemVO> items, String comment,
+                      boolean triggered, boolean expired) {
+        super(time, type, creatorID);
+        this.items = items;
+        this.comment = comment;
+        this.triggered = triggered;
+        this.expired = expired;
     }
 
+    /**
+     * Constructor for bl
+     */
+    public AlertDocVO(Date time, String creatorId, String docId, DocType type,
+                      List<AlertDocItemVO> items, String comment, boolean triggered, boolean expired) {
+        super(time, creatorId, docId, type);
+        this.items = items;
+        this.comment = comment;
+        this.triggered = triggered;
+        this.expired = expired;
+    }
 
     @Override
     public DocPO toPO() {
-        return null;
+        List<AlertDocItemPO> itemPOList = VPOTransformer.toVPOList(items, AlertDocItemVO::toPO);
+        return new AlertDocPO(getType(), getCreatorId(), getTime(), comment, triggered, expired, itemPOList);
+    }
+
+    public List<AlertDocItemVO> getItems() {
+        return items;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public boolean isTriggered() {
+        return triggered;
+    }
+
+    public boolean isExpired() {
+        return expired;
     }
 }

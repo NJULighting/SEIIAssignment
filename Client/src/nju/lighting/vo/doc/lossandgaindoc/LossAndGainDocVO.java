@@ -1,46 +1,46 @@
 package nju.lighting.vo.doc.lossandgaindoc;
 
+import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.lossandgaindoc.LossAndGainDocPO;
+import nju.lighting.po.doc.lossandgaindoc.LossAndGainItemPO;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import shared.DocType;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class LossAndGainDocVO extends DocVO {
 
-    private ArrayList<BasicCommodityItemVO> commodities;
+    private List<LossAndGainDocItemVO> items;
+    private String comment;
 
-    private ArrayList<LossAndGainDocItemVO> items;
-
-    public LossAndGainDocVO(Date time, String creatorId,
-                            String docId, DocType type,
-                            ArrayList<BasicCommodityItemVO> commodities,
-                            ArrayList<LossAndGainDocItemVO> items) {
+    /**
+     * Constructor for bl
+     */
+    public LossAndGainDocVO(Date time, String creatorId, String docId, DocType type,
+                            List<LossAndGainDocItemVO> items, String comment) {
         super(time, creatorId, docId, type);
-        this.commodities = commodities;
         this.items = items;
+        this.comment = comment;
     }
 
-    public ArrayList<BasicCommodityItemVO> getCommodities() {
-        return commodities;
+    /**
+     * Constructor for pre
+     */
+    public LossAndGainDocVO(Date time, String creatorId, List<LossAndGainDocItemVO> items, String comment) {
+        super(time, DocType.LOSS_AND_GAIN, creatorId);
+        this.items = items;
+        this.comment = comment;
     }
 
-    public void setCommodities(ArrayList<BasicCommodityItemVO> commodities) {
-        this.commodities = commodities;
-    }
-
-    public ArrayList<LossAndGainDocItemVO> getItems() {
+    public List<LossAndGainDocItemVO> getItems() {
         return items;
-    }
-
-    public void setItems(ArrayList<LossAndGainDocItemVO> items) {
-        this.items = items;
     }
 
     @Override
     public DocPO toPO() {
-        return null;
+        List<LossAndGainItemPO> itemPOList = VPOTransformer.toVPOList(items, LossAndGainDocItemVO::toPO);
+        return new LossAndGainDocPO(getType(), getCreatorId(), getTime(), comment, itemPOList);
     }
 }

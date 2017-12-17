@@ -7,7 +7,6 @@ import nju.lighting.bl.customerbl.MockCustomer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.salesdoc.SalesDocPO;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.doc.salesdoc.SalesDocVO;
 import shared.DocType;
 
 import java.util.Date;
@@ -37,7 +36,7 @@ public class SalesDoc extends SalesTypeDoc{
         CommodityInfo commodityInfo = new MockCommodity();
         int listNum = this.getCommodityListNumber();
         for(int i=0;i<listNum;i++){
-            commodityInfo.subCommodityItem(this.getCommodityListItem(i).getCommodityID(),this.getCommodityListItem(i).getNumber());
+            commodityInfo.reduceCommodityItem(this.getCommodityListItem(i).getCommodityID(),this.getCommodityListItem(i).getNumber());
         }
 
     }

@@ -31,14 +31,6 @@ public abstract class DocPO implements Serializable {
         this.createTime = createTime;
     }
 
-    @Deprecated
-    public DocPO(String id, DocType docType, String userId, Date time) {
-        this.id = id;
-        this.docType = docType;
-        this.userId = userId;
-        this.createTime = time;
-    }
-
     /**
      * Constructor for approval module, which should be used when a history doc
      * which was approved want to transform to a doc po.

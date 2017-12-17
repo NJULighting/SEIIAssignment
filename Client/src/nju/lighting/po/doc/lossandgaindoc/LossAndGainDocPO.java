@@ -33,4 +33,12 @@ public class LossAndGainDocPO extends DocPO {
         this.comment = comment;
         this.itemPOS = itemPOS;
     }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public List<LossAndGainItemPO> getItemPOS() {
+        return itemPOS;
+    }
 }

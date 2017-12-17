@@ -1,5 +1,7 @@
 package nju.lighting.bl.documentbl;
 
+import nju.lighting.bl.userbl.UserInfo;
+import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
@@ -18,20 +20,16 @@ import java.util.List;
  * @author Liao
  */
 public class DocController implements DocBLService {
-
-    @Override
-    public DocVO createDoc(DocType type) {
-        return null;
-    }
+    private DocManager manager = DocManager.INSTANCE;
 
     @Override
     public TwoTuple<String,ResultMessage> commitDoc(DocVO doc) {
-        return null;
+        return manager.commitDoc(doc);
     }
 
     @Override
     public List<HistoryDocVO> findDocuments(DocumentFilter filter) {
-        return null;
+        return manager.findDocuments(filter);
     }
 
     @Override
@@ -61,6 +59,7 @@ public class DocController implements DocBLService {
 
     @Override
     public UserVO getCreatorInfo(String creatorID) {
-        return null;
+        UserInfo userInfo = new UserInfoImpl();
+        return userInfo.getUserVOByID(creatorID);
     }
 }

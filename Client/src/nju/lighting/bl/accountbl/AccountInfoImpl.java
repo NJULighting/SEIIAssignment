@@ -1,5 +1,6 @@
 package nju.lighting.bl.accountbl;
 
+import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.bl.utils.DataServiceSupplier;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
@@ -33,5 +34,11 @@ public class AccountInfoImpl implements AccountInfo {
     @Override
     public ResultMessage updateAmount(String targetName, double total) {
         return null;
+    }
+
+    @Override
+    public AccountVO getAccountByID(String accountID) {
+        return DataServiceFunction.findByToEntity(accountID, dataService::get,
+                accountPO -> new Account(accountPO).toVO());
     }
 }

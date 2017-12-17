@@ -1,5 +1,6 @@
 package nju.lighting.bl.commoditybl;
 
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.repository.RepositoryTableItemVO;
 
 import java.util.ArrayList;
@@ -46,15 +47,8 @@ public class MockCommodity implements CommodityInfo {
     }
 
     @Override
-    public List<BasicCommodityItem> getBasicCommodityItems(List<String> ids) {
-        ArrayList<BasicCommodityItem> comItems = new ArrayList<>();
-        for (String id : ids) {
-            for (CommodityItem item : items) {
-                if (item.getId().equals(id))
-                    comItems.add(item.toBasicCommodityItem());
-            }
-        }
-        return comItems;
+    public BasicCommodityItemVO getBasicCommodityItemVO(String id) {
+        return null;
     }
 
     @Override
@@ -85,7 +79,7 @@ public class MockCommodity implements CommodityInfo {
     }
 
     @Override
-    public boolean subCommodityItem(String id, int count) {
+    public boolean reduceCommodityItem(String id, int count) {
         return false;
     }
 }

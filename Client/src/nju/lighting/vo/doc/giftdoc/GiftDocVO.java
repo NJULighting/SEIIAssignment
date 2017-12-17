@@ -1,7 +1,10 @@
 package nju.lighting.vo.doc.giftdoc;
 
 
+import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.giftdoc.GiftDocPO;
+import nju.lighting.po.doc.giftdoc.GiftItemPO;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
 
@@ -15,20 +18,34 @@ import java.util.List;
  */
 public class GiftDocVO extends DocVO {
     private List<GiftItemVO> gifts;
-    private String customer;
-    private double total = 0;
+    private int customerID;
+    private double total;
+    private int promotionID;
 
-
-    public GiftDocVO(Date time, String creatorId, String docId, DocType type,
-                     List<GiftItemVO> gifts, String customer) {
-        super(time, creatorId, docId, type);
-        this.customer = customer;
+    /**
+     * Constructor for promotion
+     */
+    public GiftDocVO(Date time, String creatorId, List<GiftItemVO> gifts, int customerID, int promotionID) {
+        super(time, DocType.GIFT, creatorId);
         this.gifts = gifts;
-        for (int i = 0; i < gifts.size(); i++) {
-            total += gifts.get(i).getSubtotal();
-        }
+        this.customerID = customerID;
+        this.promotionID = promotionID;
+
+        total = gifts.stream().mapToDouble(GiftItemVO::getSubtotal).sum();
     }
 
+    /**
+     * Constructor for bl
+     */
+    public GiftDocVO(Date time, String creatorId, String docId,
+                     List<GiftItemVO> gifts, int customerID, int promotionID) {
+        super(time, creatorId, docId, DocType.GIFT);
+        this.customerID = customerID;
+        this.gifts = gifts;
+        this.promotionID = promotionID;
+
+        total = gifts.stream().mapToDouble(GiftItemVO::getSubtotal).sum();
+    }
 
     public List<GiftItemVO> getGifts() {
         return gifts;
@@ -38,16 +55,17 @@ public class GiftDocVO extends DocVO {
         return total;
     }
 
-    public String getCustomer() {
-        return customer;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomer(String customer) {
-        this.customer = customer;
+    public int getPromotionID() {
+        return promotionID;
     }
 
     @Override
     public DocPO toPO() {
-        return null;
+        List<GiftItemPO> poList = VPOTransformer.toVPOList(gifts, GiftItemVO::toPO);
+        return new GiftDocPO(getType(), getCreatorId(), getTime(), poList, customerID, total, promotionID);
     }
 }

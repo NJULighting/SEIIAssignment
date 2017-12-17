@@ -1,5 +1,8 @@
 package nju.lighting.vo.doc.salesdoc;
 
+import nju.lighting.po.doc.salesdoc.SalesDocItemPO;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
+
 /**
  * LastEditTime: 2017/11/7
  * Description:
@@ -7,73 +10,33 @@ package nju.lighting.vo.doc.salesdoc;
  */
 public class SalesDocItemVO {
 
-    private int id;
-    private String SalesDocID;
-    private String commodityID;
-    private String commodityName;
-    private String commodityType;
-    private int number = 0;
-    private double salePrice = 0;
-    private double totalAmount = 0;
+    private BasicCommodityItemVO commodity;
+    private int number;
+    private double totalAmount;
     private String remarks = "";
 
-    public SalesDocItemVO() {
+    /**
+     * Constructor for pre
+     */
+    public SalesDocItemVO(int number, String remarks, BasicCommodityItemVO commodity) {
+        this.commodity = commodity;
+        this.number = number;
+        this.remarks = remarks;
+        totalAmount = number * commodity.getRecentSellPrice();
     }
 
-    public SalesDocItemVO(int id, String SalesDocID, String commodityID, String commodityName, String commodityType,
-                          int number, double salePrice, String remarks) {
-        this.id = id;
-        this.SalesDocID = SalesDocID;
-        this.commodityID = commodityID;
-        this.commodityName = commodityName;
-        this.commodityType = commodityType;
+    /**
+     * Constructor for bl
+     */
+    public SalesDocItemVO(BasicCommodityItemVO commodity, int number, double totalAmount, String remarks) {
+        this.commodity = commodity;
         this.number = number;
-        this.salePrice = salePrice;
+        this.totalAmount = totalAmount;
         this.remarks = remarks;
     }
 
     private void updateTotalAmount() {
-        totalAmount = number * salePrice;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getSalesDocID() {
-        return SalesDocID;
-    }
-
-    public void setSalesDocID(String salesDocID) {
-        this.SalesDocID = salesDocID;
-    }
-
-    public String getCommodityID() {
-        return commodityID;
-    }
-
-    public void setCommodityID(String commodityID) {
-        this.commodityID = commodityID;
-    }
-
-    public String getCommodityName() {
-        return commodityName;
-    }
-
-    public void setCommodityName(String commodityName) {
-        this.commodityName = commodityName;
-    }
-
-    public String getCommodityType() {
-        return commodityType;
-    }
-
-    public void setCommodityType(String commodityType) {
-        this.commodityType = commodityType;
+        totalAmount = number * commodity.getRecentSellPrice();
     }
 
     public int getNumber() {
@@ -85,15 +48,6 @@ public class SalesDocItemVO {
         updateTotalAmount();
     }
 
-    public double getSalePrice() {
-        return salePrice;
-    }
-
-    public void setSalePrice(double salePrice) {
-        this.salePrice = salePrice;
-        updateTotalAmount();
-    }
-
     public double getTotalAmount() {
         return totalAmount;
     }
@@ -102,8 +56,12 @@ public class SalesDocItemVO {
         return remarks;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
+    public BasicCommodityItemVO getCommodity() {
+        return commodity;
+    }
+
+    SalesDocItemPO toPO() {
+        return new SalesDocItemPO(commodity.getId(), number, totalAmount, remarks);
     }
 
 }

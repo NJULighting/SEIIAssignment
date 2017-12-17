@@ -24,4 +24,9 @@ public class MockAccountInfo implements AccountInfo {
     public ResultMessage updateAmount(String targetName, double total) {
         return ResultMessage.SUCCESS;
     }
+
+    @Override
+    public AccountVO getAccountByID(String accountID) {
+        return null;
+    }
 }

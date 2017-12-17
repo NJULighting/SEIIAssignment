@@ -128,7 +128,7 @@ public class SalesDocController implements Initializable{
 
 
             DocVO salesDocVO = new SalesDocVO(new Date(), Client.getUserVO().getID(),docVO.getDocId(),DocType.SALES
-                    ,null,customerVO.getID(),customerVO.getSalesman(),repository.getText(),remarks.getText(),
+                    ,customerVO.getID(),customerVO.getSalesman(),repository.getText(),remarks.getText(),
                     Double.parseDouble(accountBeforeDis.getText()),Double.parseDouble(discount.getText()),
                     Double.parseDouble(voucher.getText()),Double.parseDouble(account.getText()));
 

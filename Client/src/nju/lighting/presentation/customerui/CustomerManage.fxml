@@ -18,8 +18,8 @@
          </font>
       </Label>
       <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />
-      <TextField fx:id="search" layoutX="40.0" layoutY="71.0" promptText="输入关键词" />
-      <Button fx:id="searchBtn" layoutX="241.0" layoutY="61.0" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+      <TextField fx:id="search" layoutX="40.0" layoutY="71.0" onKeyTyped="#keyTyped" promptText="输入关键词" />
+      <Button fx:id="searchBtn" layoutX="241.0" layoutY="56.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>
@@ -49,5 +49,26 @@
             <Insets left="15.0" />
          </padding></HBox>
       <Pagination fx:id="customerList" layoutX="40.0" layoutY="160.0" maxPageIndicatorCount="9" prefHeight="500.0" prefWidth="1000.0" />
+      <Label fx:id="searchLabel" layoutX="115.0" layoutY="17.0" prefHeight="20.0" prefWidth="88.0" text="查找客户" visible="false">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0">
+               <image>
+                  <Image url="@../../../../images/向右.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Button fx:id="deleteSearch" disable="true" layoutX="200.0" layoutY="56.0" mnemonicParsing="false" onAction="#setDeleteSearch" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" visible="false">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <image>
+                  <Image url="@../../../../images/详情关闭.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </Pane>

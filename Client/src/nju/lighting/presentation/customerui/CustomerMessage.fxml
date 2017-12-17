@@ -29,15 +29,17 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <ImageView fitHeight="20.0" fitWidth="30.0" layoutX="110.0" layoutY="18.0">
-         <image>
-            <Image url="@../../../../images/向右.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="140.0" layoutY="17.0" text="查看客户">
+      <Label layoutX="115.0" layoutY="17.0" prefHeight="20.0" prefWidth="88.0" text="查看客户">
          <font>
             <Font size="16.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0">
+               <image>
+                  <Image url="@../../../../images/向右.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Label>
       <Button layoutX="40.0" layoutY="59.0" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" text="返回" textFill="#5599ff">
          <font>

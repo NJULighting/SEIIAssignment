@@ -1,5 +1,7 @@
 package nju.lighting.vo.doc.accountiodoc;
 
+import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
+
 /**
  * Created on 2017/11/20.
  * Description:
@@ -8,12 +10,12 @@ package nju.lighting.vo.doc.accountiodoc;
 public class AccountTransferItemVO {
     private double amount;
     private String comments;
-    private String accountName;
+    private String accountID;
 
-    public AccountTransferItemVO(double amount, String comments, String accountName) {
+    public AccountTransferItemVO(double amount, String comments, String accountID) {
         this.amount = amount;
         this.comments = comments;
-        this.accountName = accountName;
+        this.accountID = accountID;
     }
 
     public double getAmount() {
@@ -24,7 +26,11 @@ public class AccountTransferItemVO {
         return comments;
     }
 
-    public String getAccountName() {
-        return accountName;
+    public String getAccountID() {
+        return accountID;
+    }
+
+    AccountTransferItemPO toPO() {
+        return new AccountTransferItemPO(accountID, amount, comments);
     }
 }

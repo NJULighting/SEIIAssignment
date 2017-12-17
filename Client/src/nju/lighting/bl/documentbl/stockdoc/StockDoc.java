@@ -52,7 +52,6 @@ public class StockDoc extends StockTypeDoc{
      * @return 对应的StockDocPO
      */
     public DocPO toPO(){
-        return new StockDocPO(id,docType,userId, createTime,this.getStockTypeDocID(),this.getCustomerId(),this.getRepository(),
-                this.getRemarks(),this.getTotalAmount());
+        return null;
     }
 }

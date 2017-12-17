@@ -1,5 +1,6 @@
 package nju.lighting.vo.doc.lossandgaindoc;
 
+import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import shared.DocType;
@@ -36,5 +37,10 @@ public class LossAndGainDocVO extends DocVO {
 
     public void setItems(ArrayList<LossAndGainDocItemVO> items) {
         this.items = items;
+    }
+
+    @Override
+    public DocPO toPO() {
+        return null;
     }
 }

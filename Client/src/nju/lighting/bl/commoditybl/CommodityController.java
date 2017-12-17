@@ -1,6 +1,7 @@
 package nju.lighting.bl.commoditybl;
 
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
@@ -24,6 +25,11 @@ class CommodityController implements CommodityBLService {
     @Override
     public List<CommodityItemVO> findCommodityByCategory(int categoryID) {
         return manager.findCommodityByCategory(categoryID);
+    }
+
+    @Override
+    public List<BasicCommodityItemVO> findBasicCommodityByCategory(int categoryID) {
+        return null;
     }
 
     @Override

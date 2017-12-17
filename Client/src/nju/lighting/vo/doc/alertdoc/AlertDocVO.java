@@ -1,24 +1,26 @@
 package nju.lighting.vo.doc.alertdoc;
 
+import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import shared.DocType;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class AlertDocVO extends DocVO {
 
-    private ArrayList<BasicCommodityItemVO> commodities;
+    private List<BasicCommodityItemVO> commodities;
+    private List<AlertDocItemVO> items;
 
-    private ArrayList<AlertDocItemVO> items;
-
-    public AlertDocVO(Date time, String creatorId, String docId,
-                      DocType type, ArrayList<BasicCommodityItemVO> commodities,
-                      ArrayList<AlertDocItemVO> items) {
+    public AlertDocVO(Date time, String creatorId, String docId, DocType type) {
         super(time, creatorId, docId, type);
-        this.commodities = commodities;
-        this.items = items;
     }
 
+
+    @Override
+    public DocPO toPO() {
+        return null;
+    }
 }

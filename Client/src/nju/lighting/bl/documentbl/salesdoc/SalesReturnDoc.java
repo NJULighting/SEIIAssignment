@@ -57,8 +57,6 @@ public class SalesReturnDoc extends SalesTypeDoc{
      * @return SalesReturnDocPO
      */
     public DocPO toPO(){
-        return new SalesReturnDocPO(id,docType,userId, createTime,this.getSalesTypeDocID(),Integer.toString(getCustomerId())
-                ,this.getRepository(),this.getRemarks()
-                ,this.getDiscount(),this.getVoucher(),this.getFinalAmount());
+        return null;
     }
 }

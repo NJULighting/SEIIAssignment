@@ -1,5 +1,6 @@
 package nju.lighting.vo;
 
+import nju.lighting.po.doc.DocPO;
 import shared.DocType;
 
 import java.util.Date;
@@ -22,6 +23,12 @@ public abstract class DocVO {
         this.time = time;
         this.type = type;
     }
+
+    /**
+     * Transform to po for committing
+     * @return corresponding persistent object
+     */
+    public abstract DocPO toPO();
 
     public Date getTime() {
         return time;

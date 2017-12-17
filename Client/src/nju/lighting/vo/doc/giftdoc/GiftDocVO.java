@@ -1,6 +1,7 @@
 package nju.lighting.vo.doc.giftdoc;
 
 
+import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
 
@@ -43,5 +44,10 @@ public class GiftDocVO extends DocVO {
 
     public void setCustomer(String customer) {
         this.customer = customer;
+    }
+
+    @Override
+    public DocPO toPO() {
+        return null;
     }
 }

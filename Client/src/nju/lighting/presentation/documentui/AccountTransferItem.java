@@ -16,7 +16,7 @@ public class AccountTransferItem {
     SimpleDoubleProperty amount;
 
     public AccountTransferItem(AccountTransferItemVO vo) {
-        accountName = new SimpleStringProperty(vo.getAccountName());
+        accountName = new SimpleStringProperty(vo.getAccountID());
         comments = new SimpleStringProperty(vo.getComments());
         amount = new SimpleDoubleProperty(vo.getAmount());
 

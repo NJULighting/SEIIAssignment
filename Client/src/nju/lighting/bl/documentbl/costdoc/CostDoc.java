@@ -72,4 +72,9 @@ public class CostDoc extends Doc {
     public DocPO toPO() {
         return null;
     }
+
+    @Override
+    protected void assignWithPO(DocPO po) {
+
+    }
 }

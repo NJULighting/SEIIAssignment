@@ -181,4 +181,9 @@ public class SalesTypeDoc extends Doc {
     public DocPO toPO(){
         return null;
     }
+
+    @Override
+    protected void assignWithPO(DocPO po) {
+
+    }
 }

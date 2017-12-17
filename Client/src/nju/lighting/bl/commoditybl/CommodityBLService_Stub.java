@@ -2,6 +2,7 @@ package nju.lighting.bl.commoditybl;
 
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
@@ -78,6 +79,11 @@ public class CommodityBLService_Stub implements CommodityBLService {
                 .filter(commodityItem -> commodityItem.getCategory() == categoryID)
                 .map(CommodityItem::toVO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BasicCommodityItemVO> findBasicCommodityByCategory(int categoryID) {
+        return null;
     }
 
     @Override

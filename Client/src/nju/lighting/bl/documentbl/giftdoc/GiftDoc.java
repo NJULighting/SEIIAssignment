@@ -64,4 +64,9 @@ public class GiftDoc extends Doc {
     public DocPO toPO() {
         return null;
     }
+
+    @Override
+    protected void assignWithPO(DocPO po) {
+
+    }
 }

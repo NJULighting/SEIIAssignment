@@ -18,22 +18,23 @@ import java.util.Date;
  * 进货退货单
  * @author 高梦婷
  */
-public class StockReturnDoc extends StockTypeDoc{
-    public StockReturnDoc(String id,String userId, Date time, String stockTypeDocID,
+public class StockReturnDoc extends StockTypeDoc {
+    public StockReturnDoc(String id, String userId, Date time, String stockTypeDocID,
                           String customerId, String repository, String remarks) {
         super(id, DocType.STOCK_RETURN, userId, time, stockTypeDocID, customerId, repository, remarks);
     }
+
     /**
      * 审批单据，减少客户应收
      */
-    public void approve(){
+    public void approve() {
         CustomerInfo info = new CustomerInfoImpl();
-        info.changeReceivable(Integer.parseInt(getCustomerId()),0-this.getTotalAmount());
+        info.changeReceivable(Integer.parseInt(getCustomerId()), 0 - this.getTotalAmount());
         //减少商品数量
         CommodityInfo commodityInfo = new MockCommodity();
         int listNum = this.getCommodityListNumber();
-        for(int i=0;i<listNum;i++){
-            commodityInfo.subCommodityItem(this.getCommodityListItem(i).getCommodityID(),this.getCommodityListItem(i).getNumber());
+        for (int i = 0; i < listNum; i++) {
+            commodityInfo.subCommodityItem(this.getCommodityListItem(i).getCommodityID(), this.getCommodityListItem(i).getNumber());
         }
     }
 
@@ -41,17 +42,16 @@ public class StockReturnDoc extends StockTypeDoc{
      * 由其子类创建相应的VO对象
      * @return 对应的StockReturnDocVO
      */
-    public DocVO toVO(){
-        return new StockReturnDocVO(createTime,userId,id,docType,this.getStockTypeDocID(),this.getCustomerId(),this.getRepository(),
-                this.getRemarks(),this.getTotalAmount());
+    public DocVO toVO() {
+        return new StockReturnDocVO(createTime, userId, id, docType, this.getStockTypeDocID(), this.getCustomerId(), this.getRepository(),
+                this.getRemarks(), this.getTotalAmount());
     }
 
     /**
      * 由其子类创建响应的PO对象
      * @return 对应的StockReturnDocPO
      */
-    public DocPO toPO(){
-        return new StockReturnDocPO(id,docType,userId, createTime,this.getStockTypeDocID(),this.getCustomerId(),this.getRepository(),
-                this.getRemarks(),this.getTotalAmount());
+    public DocPO toPO() {
+        return new StockReturnDocPO(docType, userId, createTime,getCustomerId(), getRepository(), getRemarks(), getTotalAmount(), null);
     }
 }

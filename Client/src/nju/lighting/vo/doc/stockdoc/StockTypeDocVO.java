@@ -1,5 +1,6 @@
 package nju.lighting.vo.doc.stockdoc;
 
+import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
 
@@ -62,5 +63,10 @@ public class StockTypeDocVO extends DocVO {
 
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    @Override
+    public DocPO toPO() {
+        return null;
     }
 }

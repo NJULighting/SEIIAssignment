@@ -1,5 +1,9 @@
 package nju.lighting.vo.doc.accountiodoc;
 
+import nju.lighting.bl.utils.VPOTransformer;
+import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.accountiodoc.AccountIODocPO;
+import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.account.AccountVO;
 import shared.AccountIODocType;
@@ -62,10 +66,6 @@ public class AccountIODocVO extends DocVO {
         return transferAccountList;
     }
 
-    public void setTransferAccountList(List<AccountTransferItemVO> transferAccountList) {
-        this.transferAccountList = transferAccountList;
-    }
-
     public double getTotal() {
         return total;
     }
@@ -76,5 +76,14 @@ public class AccountIODocVO extends DocVO {
 
     public List<AccountVO> getAccountList() {
         return accountList;
+    }
+
+    @Override
+    public DocPO toPO() {
+        // Transform items
+        AccountIODocType ioDocType = getType() == DocType.ACCOUNT_IN ? AccountIODocType.IN : AccountIODocType.OUT;
+        List<AccountTransferItemPO> itemPOList = VPOTransformer.toVPOList(transferAccountList, AccountTransferItemVO::toPO);
+
+        return new AccountIODocPO(getType(), getCreatorId(), getTime(), ioDocType, customer, itemPOList, total);
     }
 }

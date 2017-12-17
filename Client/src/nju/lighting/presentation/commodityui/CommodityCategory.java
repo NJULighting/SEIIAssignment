@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
@@ -30,8 +31,8 @@ import java.util.ResourceBundle;
 public class CommodityCategory implements Initializable {
     private static CommodityCategoriesTreeVO categoriesTreeVO;
     static boolean Editable;
-    private double leftPadding=80;
-    private double topPadding=25;
+     double leftPadding=80;
+     double topPadding=25;
     private CommodityBLService commodityBLService;
 
     public static void setCategoriesTreeVO(CommodityCategoriesTreeVO categoriesTreeVO) {
@@ -42,6 +43,8 @@ public class CommodityCategory implements Initializable {
     TreeView<Nameable> categoryTreeView;
     @FXML
     HBox container;
+    @FXML
+    StackPane stackPane;
 
     TreeItem root;
 
@@ -102,11 +105,6 @@ public class CommodityCategory implements Initializable {
         }
     }
 
-    void initEditable(){
-        categoryTreeView.setMinHeight(680);
-        leftPadding=300;
-        System.out.println("category editable");
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -118,34 +116,21 @@ public class CommodityCategory implements Initializable {
 
         categoryTreeView.setRoot(root);
 
-        categoryTreeView.setCellFactory(new Callback<TreeView<Nameable>, TreeCell<Nameable>>() {
-            @Override
-            public TreeCell<Nameable> call(TreeView<Nameable> param) {
-                return new TreeCell<Nameable>() {
-                    @Override
-                    protected void updateItem(Nameable item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                            setText(null);
-                        } else {
-                            setText(item.getName());
-                        }
-                    }
 
-                };
-            }
-        });
+//        if (Editable) {
+//
+//        }else {
+            categoryTreeView.setCellFactory((TreeView<Nameable> p) ->
+                    new myTreeCellReadOnly());
 
-        if (Editable) {
-            initEditable();
-        }else {
             categoryTreeView.setMinHeight(460);
             categoryTreeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        }
+//        }
 
 
     }
 
-
+    public TreeView<Nameable> getCategoryTreeView() {
+        return categoryTreeView;
+    }
 }

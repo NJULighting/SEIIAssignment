@@ -51,14 +51,14 @@ public class CommodityBLService_Stub implements CommodityBLService {
         items.add(com5);
         items.add(com6);
         items.add(com6);
-        items.add(com6);items.add(com6);
         items.add(com6);
         items.add(com6);
         items.add(com6);
         items.add(com6);
         items.add(com6);
         items.add(com6);
-
+        items.add(com6);
+        items.add(com6);
 
 
     }
@@ -87,9 +87,9 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public List<CommodityItemVO> findCommodityVOByName(String commodityName)  {
+    public List<CommodityItemVO> findCommodityVOByName(String commodityName) {
         ArrayList<CommodityItemVO> itemVOS = new ArrayList<>();
-        for (CommodityItem item: items) {
+        for (CommodityItem item : items) {
             if (item.getName().equals(commodityName)) {
                 itemVOS.add(item.toVO());
             }
@@ -99,7 +99,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
 
     @Override
     public CommodityItemVO findCommodityVOById(String id) {
-        for (CommodityItem item: items) {
+        for (CommodityItem item : items) {
             if (item.getId().equals(id)) {
                 return item.toVO();
             }
@@ -118,8 +118,15 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public ResultMessage addCategory(CommodityCategoryVO newCategory){
-        return ResultMessage.SUCCESS;
+    public ResultMessage addCategory(CommodityCategoryVO newCategory) {
+
+        String name = newCategory.getName();
+
+        if (name.equals("1"))
+            return ResultMessage.DUPLICATE;
+        else if (name.equals("2"))
+            return ResultMessage.FAILURE;
+        else return ResultMessage.SUCCESS;
     }
 
     @Override

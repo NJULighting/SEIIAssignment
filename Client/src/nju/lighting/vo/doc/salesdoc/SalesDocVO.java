@@ -59,6 +59,7 @@ public class SalesDocVO extends DocVO {
         this.items = items;
     }
 
+    @Deprecated
     public SalesDocVO(Date time, String creatorId, String docId, DocType type,
                       int customerId, String salesman,
                       String repository, String remarks,

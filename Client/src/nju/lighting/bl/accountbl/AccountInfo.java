@@ -14,4 +14,6 @@ public interface AccountInfo {
     List<AccountVO> getAccountList();
 
     ResultMessage updateAmount(String targetName, double total);
+
+    AccountVO getAccountByID(String accountID);
 }

@@ -2,19 +2,17 @@ package nju.lighting.bl.commoditybl;
 
 import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.bl.utils.DataServiceSupplier;
-import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.po.commodity.CommodityItemPO;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.repository.RepositoryTableItemVO;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
-import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/9.
@@ -39,8 +37,10 @@ public class CommodityInfoImpl implements CommodityInfo {
     }
 
     @Override
-    public List<BasicCommodityItem> getBasicCommodityItems(List<String> ids) {
-        return null;
+    public BasicCommodityItemVO getBasicCommodityItemVO(String id) {
+        return DataServiceFunction.findByToEntity(id, dataService::findById,
+                itemPO -> new BasicCommodityItemVO(id, itemPO.getName(), itemPO.getRepCount(),
+                        itemPO.getRecentInPrice(), itemPO.getRecentSellPrice()));
     }
 
     @Override
@@ -76,7 +76,7 @@ public class CommodityInfoImpl implements CommodityInfo {
     }
 
     @Override
-    public boolean subCommodityItem(String id, int count) {
+    public boolean reduceCommodityItem(String id, int count) {
         return false;
     }
 }

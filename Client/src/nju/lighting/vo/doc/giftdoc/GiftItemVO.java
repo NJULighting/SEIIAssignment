@@ -26,15 +26,6 @@ public class GiftItemVO {
         this.subtotal = commodity.getRecentSellPrice() * count;
     }
 
-    /**
-     * Constructor for bl
-     */
-    public GiftItemVO(BasicCommodityItemVO commodity, int count, double subtotal) {
-        this.commodity = commodity;
-        this.count = count;
-        this.subtotal = subtotal;
-    }
-
     public BasicCommodityItemVO getCommodity() {
         return commodity;
     }

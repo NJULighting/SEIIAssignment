@@ -12,21 +12,31 @@ public class SalesDocItemVO {
 
     private BasicCommodityItemVO commodity;
     private int number;
-    private double salePrice;
     private double totalAmount;
     private String remarks = "";
 
-    public SalesDocItemVO(int number, double salePrice, String remarks, BasicCommodityItemVO commodity) {
+    /**
+     * Constructor for pre
+     */
+    public SalesDocItemVO(int number, String remarks, BasicCommodityItemVO commodity) {
         this.commodity = commodity;
         this.number = number;
-        this.salePrice = salePrice;
         this.remarks = remarks;
+        totalAmount = number * commodity.getRecentSellPrice();
+    }
 
-        updateTotalAmount();
+    /**
+     * Constructor for bl
+     */
+    public SalesDocItemVO(BasicCommodityItemVO commodity, int number, double totalAmount, String remarks) {
+        this.commodity = commodity;
+        this.number = number;
+        this.totalAmount = totalAmount;
+        this.remarks = remarks;
     }
 
     private void updateTotalAmount() {
-        totalAmount = number * salePrice;
+        totalAmount = number * commodity.getRecentSellPrice();
     }
 
     public int getNumber() {
@@ -35,15 +45,6 @@ public class SalesDocItemVO {
 
     public void setNumber(int number) {
         this.number = number;
-        updateTotalAmount();
-    }
-
-    public double getSalePrice() {
-        return salePrice;
-    }
-
-    public void setSalePrice(double salePrice) {
-        this.salePrice = salePrice;
         updateTotalAmount();
     }
 

@@ -26,9 +26,9 @@ public class CostDocVO extends DocVO {
      * Constructor for bl
      */
     public CostDocVO(Date time, String creatorId, String docId
-            , AccountVO accounts, List<CostDocItemVO> itemList, List<AccountVO> accountList) {
+            , AccountVO account, List<CostDocItemVO> itemList) {
         super(time, creatorId, docId, DocType.COST);
-        this.account = accounts;
+        this.account = account;
         this.itemList = itemList;
         total = calculateTotal();
     }

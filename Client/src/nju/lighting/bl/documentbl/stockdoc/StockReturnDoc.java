@@ -7,7 +7,6 @@ import nju.lighting.bl.customerbl.CustomerInfoImpl;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.stockdoc.StockReturnDocPO;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.doc.stockdoc.StockReturnDocVO;
 import shared.DocType;
 
 import java.util.Date;
@@ -34,7 +33,7 @@ public class StockReturnDoc extends StockTypeDoc {
         CommodityInfo commodityInfo = new MockCommodity();
         int listNum = this.getCommodityListNumber();
         for (int i = 0; i < listNum; i++) {
-            commodityInfo.subCommodityItem(this.getCommodityListItem(i).getCommodityID(), this.getCommodityListItem(i).getNumber());
+            commodityInfo.reduceCommodityItem(this.getCommodityListItem(i).getCommodityID(), this.getCommodityListItem(i).getNumber());
         }
     }
 

@@ -14,18 +14,18 @@ public class AlertDocVO extends DocVO {
 
     private List<AlertDocItemVO> items;
     private String comment;
-    private boolean eligible;
+    private boolean triggered;
     private boolean expired;
 
     /**
      * Constructor for pre
      */
     public AlertDocVO(String creatorID, Date time, DocType type, List<AlertDocItemVO> items, String comment,
-                      boolean eligible, boolean expired) {
+                      boolean triggered, boolean expired) {
         super(time, type, creatorID);
         this.items = items;
         this.comment = comment;
-        this.eligible = eligible;
+        this.triggered = triggered;
         this.expired = expired;
     }
 
@@ -33,18 +33,18 @@ public class AlertDocVO extends DocVO {
      * Constructor for bl
      */
     public AlertDocVO(Date time, String creatorId, String docId, DocType type,
-                      List<AlertDocItemVO> items, String comment, boolean eligible, boolean expired) {
+                      List<AlertDocItemVO> items, String comment, boolean triggered, boolean expired) {
         super(time, creatorId, docId, type);
         this.items = items;
         this.comment = comment;
-        this.eligible = eligible;
+        this.triggered = triggered;
         this.expired = expired;
     }
 
     @Override
     public DocPO toPO() {
         List<AlertDocItemPO> itemPOList = VPOTransformer.toVPOList(items, AlertDocItemVO::toPO);
-        return new AlertDocPO(getType(), getCreatorId(), getTime(), comment, eligible, expired, itemPOList);
+        return new AlertDocPO(getType(), getCreatorId(), getTime(), comment, triggered, expired, itemPOList);
     }
 
     public List<AlertDocItemVO> getItems() {
@@ -55,8 +55,8 @@ public class AlertDocVO extends DocVO {
         return comment;
     }
 
-    public boolean isEligible() {
-        return eligible;
+    public boolean isTriggered() {
+        return triggered;
     }
 
     public boolean isExpired() {

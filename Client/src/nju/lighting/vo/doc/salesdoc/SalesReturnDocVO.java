@@ -1,5 +1,6 @@
 package nju.lighting.vo.doc.salesdoc;
 
+import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
 
@@ -94,5 +95,10 @@ public class SalesReturnDocVO extends DocVO {
 
     public void setFinalAmount(double finalAmount) {
         this.beforeDiscountAmount = beforeDiscountAmount;
+    }
+
+    @Override
+    public DocPO toPO() {
+        return null;
     }
 }

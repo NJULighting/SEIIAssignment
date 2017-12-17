@@ -43,8 +43,7 @@ public class StockReturnDoc extends StockTypeDoc {
      * @return 对应的StockReturnDocVO
      */
     public DocVO toVO() {
-        return new StockReturnDocVO(createTime, userId, id, docType, this.getStockTypeDocID(), this.getCustomerId(), this.getRepository(),
-                this.getRemarks(), this.getTotalAmount());
+        return null;
     }
 
     /**

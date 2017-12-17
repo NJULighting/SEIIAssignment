@@ -47,9 +47,7 @@ public class SalesDoc extends SalesTypeDoc{
      * @return SalesDocVO
      */
     public DocVO toVO(){
-        return new SalesDocVO(createTime,userId,id,docType,this.getSalesTypeDocID(),this.getCustomerId()
-                ,this.getSalesman(),this.getRepository(),this.getRemarks(),this.getBeforeDiscountAmount()
-                ,this.getDiscount(),this.getVoucher(),this.getFinalAmount());
+        return null;
     }
 
     /**

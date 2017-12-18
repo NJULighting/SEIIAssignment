@@ -5,6 +5,7 @@ import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.accountiodoc.AccountIODocPO;
+import nju.lighting.po.doc.accountiodoc.AccountOutDocPO;
 import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import nju.lighting.po.doc.alertdoc.AlertDocItemPO;
 import nju.lighting.po.doc.alertdoc.AlertDocPO;
@@ -46,7 +47,7 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
         typeToName.put(DocType.ALERT, new TwoTuple<>(AlertDocPO.class.getName(), AlertDocItemPO.class.getName()));
         typeToName.put(DocType.LOSS_AND_GAIN, new TwoTuple<>(LossAndGainDocPO.class.getName(), LossAndGainItemPO.class.getName()));
         typeToName.put(DocType.ACCOUNT_IN, new TwoTuple<>(AccountIODocPO.class.getName(), AccountTransferItemPO.class.getName()));
-        typeToName.put(DocType.ACCOUNT_OUT, new TwoTuple<>(AccountIODocPO.class.getName(), AccountTransferItemPO.class.getName()));
+        typeToName.put(DocType.ACCOUNT_OUT, new TwoTuple<>(AccountOutDocPO.class.getName(), AccountTransferItemPO.class.getName()));
         typeToName.put(DocType.SALES_RETURN, new TwoTuple<>(SalesReturnDocPO.class.getName(), SalesDocItemPO.class.getName()));
         typeToName.put(DocType.SALES, new TwoTuple<>(SalesDocPO.class.getName(), SalesDocItemPO.class.getName()));
         typeToName.put(DocType.COST, new TwoTuple<>(CostDocPO.class.getName(), CostDocItemPO.class.getName()));
@@ -113,6 +114,8 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
             String itemClassName = twoTuple.r;
             DocOperation docOperation = new DocOperation();
             List<DocPO> docPOList = docOperation.getByState(docState, className);
+            if (docPOList == null)
+                continue;
             for (DocPO docPO: docPOList) {
                 String docId = docPO.getId();
                 List<Object> items = docOperation.getItemList(itemClassName, docId);
@@ -130,6 +133,8 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
         String itemClassName = target.r;
         DocOperation docOperation = new DocOperation();
         List<DocPO> docPOList = docOperation.getAll(className);
+        if (docPOList == null)
+            return null;
         for (DocPO docPO: docPOList) {
             String docId = docPO.getId();
             List<Object> items = docOperation.getItemList(itemClassName, docId);
@@ -146,6 +151,8 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
             String itemClassName = twoTuple.r;
             DocOperation docOperation = new DocOperation();
             List<DocPO> docPOList = docOperation.getByDate(from, to, className);
+            if (docPOList == null)
+                continue;
             for (DocPO docPO: docPOList) {
                 String docId = docPO.getId();
                 List<Object> items = docOperation.getItemList(itemClassName, docId);
@@ -159,6 +166,8 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
     @Override
     public List<DocPO> findByTimeAndType(Date from, Date to, DocType type) throws RemoteException {
         List<DocPO> all = findByTime(from, to);
+        if (all == null)
+            return null;
         List<DocPO> result = new ArrayList<>();
         for (DocPO docPO: all) {
             if (docPO.getDocType() == type)

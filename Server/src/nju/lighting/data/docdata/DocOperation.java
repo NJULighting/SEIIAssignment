@@ -5,6 +5,7 @@ import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.po.doc.DocPO;
 import org.hibernate.Session;
 import shared.DocState;
+import shared.DocType;
 import shared.ResultMessage;
 
 import java.util.Date;
@@ -90,27 +91,32 @@ public class DocOperation {
 
     public DocPO getById(String className, String id) {
         CommonOperation<DocPO> commonOperation = new CommonOperation<>(className);
-        return commonOperation.getBySingleField("id", id);
+        DocPO po = commonOperation.getBySingleField("id", id);
+        return DocTypeSetter.setType(className, po);
     }
 
     public List<DocPO> getAll(String className) {
         CommonOperation<DocPO> commonOperation = new CommonOperation<>(className);
-        return commonOperation.getAll();
+        List<DocPO> pos = commonOperation.getAll();
+        return DocTypeSetter.setType(className, pos);
     }
 
     public List<DocPO> getByUserId(String className, String userId) {
         CommonOperation<DocPO> commonOperation = new CommonOperation<>(className);
-        return commonOperation.getListBySingleField("userId", userId);
+        List<DocPO> pos = commonOperation.getListBySingleField("userId", userId);
+        return DocTypeSetter.setType(className, pos);
     }
 
     public List<DocPO> getByDate(Date from, Date to, String className) {
         CommonOperation<DocPO> commonOperation = new CommonOperation<>(className);
-        return commonOperation.getDataBetweenTime(from, to, "createTime");
+        List<DocPO> pos = commonOperation.getDataBetweenTime(from, to, "createTime");
+        return DocTypeSetter.setType(className, pos);
     }
 
     public List<DocPO> getByState(DocState docState, String className) {
         CommonOperation<DocPO> commonOperation = new CommonOperation<>(className);
-        return commonOperation.getListBySingleField("state", docState);
+        List<DocPO> pos =  commonOperation.getListBySingleField("state", docState);
+        return DocTypeSetter.setType(className, pos);
     }
 
     public List<Object> getItemList(String itemClassName, String parentId) {

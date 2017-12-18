@@ -9,7 +9,6 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.util.Callback;
 import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
@@ -29,15 +28,14 @@ import java.util.ResourceBundle;
  * @author 陈俊宇
  */
 public class CommodityCategory implements Initializable {
+
     private static CommodityCategoriesTreeVO categoriesTreeVO;
     static boolean Editable;
-     double leftPadding=80;
-     double topPadding=25;
+    double leftPadding = 80;
+    double topPadding = 25;
     private CommodityBLService commodityBLService;
 
-    public static void setCategoriesTreeVO(CommodityCategoriesTreeVO categoriesTreeVO) {
-        CommodityCategory.categoriesTreeVO = categoriesTreeVO;
-    }
+
 
     @FXML
     TreeView<Nameable> categoryTreeView;
@@ -48,11 +46,16 @@ public class CommodityCategory implements Initializable {
 
     TreeItem root;
 
-    void showSelectedCommodity(CommodityItemVO commodity) throws IOException {
-        CommodityReadOnly.setCommodity(commodity);
+    void showSelectedCommodity(CommodityItemVO commodity) {
+        Commodity.setCommodity(commodity);
         container.getChildren().clear();
         System.out.println("clicked");
-        HBox commodityVBox = FXMLLoader.load(getClass().getResource("CommodityReadOnly.fxml"));
+        HBox commodityVBox = null;
+        try {
+            commodityVBox = FXMLLoader.load(getClass().getResource("Commodity.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         container.getChildren().add(commodityVBox);
         commodityVBox.setMargin(commodityVBox, new Insets(topPadding, 0, 0, leftPadding));
     }
@@ -117,20 +120,13 @@ public class CommodityCategory implements Initializable {
         categoryTreeView.setRoot(root);
 
 
-//        if (Editable) {
-//
-//        }else {
-            categoryTreeView.setCellFactory((TreeView<Nameable> p) ->
-                    new myTreeCellReadOnly());
+        categoryTreeView.setCellFactory((TreeView<Nameable> p) ->
+                new MyTreeCellReadOnly());
 
-            categoryTreeView.setMinHeight(460);
-            categoryTreeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-//        }
+        categoryTreeView.setMinHeight(460);
+        categoryTreeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
 
     }
 
-    public TreeView<Nameable> getCategoryTreeView() {
-        return categoryTreeView;
-    }
 }

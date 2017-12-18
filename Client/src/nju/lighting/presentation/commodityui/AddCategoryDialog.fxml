@@ -10,20 +10,6 @@
 
 <AnchorPane prefHeight="129.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.commodityui.AddCategoryDialog">
    <children>
-      <HBox fx:id="btnBox" layoutX="130.0" layoutY="98.0" spacing="30.0">
-         <children>
-            <JFXButton fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancel" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #5599FF;" text="取消" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="okbtn" mnemonicParsing="false" onAction="#ok" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #5599FF;" text="确认" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXButton>
-         </children>
-      </HBox>
       <HBox layoutX="11.0" layoutY="38.0" spacing="20.0">
          <children>
             <Label text="name：">

@@ -9,7 +9,7 @@ import nju.lighting.vo.commodity.Nameable;
  *
  * @author 陈俊宇
  */
-public class myTreeCellReadOnly extends TreeCell<Nameable> {
+public class MyTreeCellReadOnly extends TreeCell<Nameable> {
 
 
     @Override

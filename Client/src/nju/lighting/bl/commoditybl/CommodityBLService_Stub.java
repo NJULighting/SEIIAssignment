@@ -109,12 +109,12 @@ public class CommodityBLService_Stub implements CommodityBLService {
 
     @Override
     public ResultMessage deleteCommodity(String id) {
-        return ResultMessage.FAILURE;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
     public ResultMessage modifyCommodity(CommodityItemVO commodity) {
-        return ResultMessage.FAILURE;
+        return ResultMessage.SUCCESS;
     }
 
     @Override

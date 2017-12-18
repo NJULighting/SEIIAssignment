@@ -29,7 +29,7 @@ public class DialogHelper {
         hashMap.put(ResultMessage.FAILURE,"此次行为失败");
     }
 
-    public  static void dialog(ResultMessage resultMessage, StackPane stackPane) throws IOException {
+    public  static void dialog(ResultMessage resultMessage, StackPane stackPane)  {
 
 
         JFXDialogLayout layout=new JFXDialogLayout();
@@ -37,7 +37,11 @@ public class DialogHelper {
         FXMLLoader loader= new FXMLLoader(DialogHelper.class.getResource("DialogPane.fxml"));
 
 
-        layout.setBody((AnchorPane)loader.load());
+        try {
+            layout.setBody((AnchorPane)loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         DialogPane controller=loader.getController();
         Label label=controller.getLabel();
         label.setText(hashMap.get(resultMessage));

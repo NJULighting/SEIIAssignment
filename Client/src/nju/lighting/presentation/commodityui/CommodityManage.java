@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TreeView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import nju.lighting.vo.commodity.Nameable;
 
@@ -35,7 +34,7 @@ public class CommodityManage implements Initializable{
             CommodityCategory controller= loader.getController();
 
             controller.categoryTreeView.setCellFactory((TreeView<Nameable> p) ->
-                    new myTreeCell(controller.stackPane));
+                    new MyTreeCell(controller));
             controller.categoryTreeView.setMinHeight(680);
             controller.topPadding=50;
             controller.leftPadding=300;

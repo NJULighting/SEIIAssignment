@@ -66,7 +66,18 @@ public class GiftDoc extends Doc {
     }
 
     @Override
-    protected void assignWithPO(DocPO po) {
-
+    public boolean containsCustomer(String customerId) {
+        return false;
     }
+
+    @Override
+    public boolean containsCommodity(String commodityName) {
+        return false;
+    }
+
+    @Override
+    public boolean containsRepository(String repository) {
+        return false;
+    }
+
 }

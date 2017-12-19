@@ -3,7 +3,6 @@ package nju.lighting.bl.documentbl.lossandgaindoc;
 import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocVO;
 import shared.DocType;
 import shared.ResultMessage;
 
@@ -50,7 +49,18 @@ public class LossAndGainDoc extends Doc {
     }
 
     @Override
-    protected void assignWithPO(DocPO po) {
-
+    public boolean containsCustomer(String customerId) {
+        return false;
     }
+
+    @Override
+    public boolean containsCommodity(String commodityName) {
+        return false;
+    }
+
+    @Override
+    public boolean containsRepository(String repository) {
+        return false;
+    }
+
 }

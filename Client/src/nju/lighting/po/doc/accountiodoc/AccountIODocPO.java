@@ -79,4 +79,5 @@ public class AccountIODocPO extends DocPO implements Serializable {
     public void setTotal(double total) {
         this.total = total;
     }
+
 }

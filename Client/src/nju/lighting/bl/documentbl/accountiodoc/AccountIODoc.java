@@ -5,11 +5,9 @@ import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.accountiodoc.AccountIODocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;
-import shared.AccountIODocType;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.DocType;
 import shared.ResultMessage;
-
-import java.util.Date;
 
 /**
  * Created on 2017/11/7.
@@ -18,24 +16,47 @@ import java.util.Date;
  */
 public class AccountIODoc extends Doc{
 
-    private AccountIODocType ioType;
+    // TODO: 2017/12/18 Modify about the io type
     private String customerID;
     private double total;
     private AccountDocItemList itemList;
     private InOutStrategy strategy;
 
+    /**
+     * Constructor for approval module
+     */
+    public AccountIODoc(HistoryDocVO historyDocVO) {
+        super(historyDocVO);
+
+        if (docType == DocType.ACCOUNT_IN) {
+            strategy = new InStrategy();
+        } else {
+            strategy = new OutStrategy();
+        }
+
+        // Assign specific fields
+        AccountIODocVO docVO = (AccountIODocVO) historyDocVO.getDocVO();
+        customerID = docVO.getCustomer();
+        total = docVO.getTotal();
+        itemList = new AccountDocItemList();
+        itemList.addAll(docVO.getTransferAccountList());
+    }
+
     public AccountIODoc(DocPO po) {
         super(po);
         strategy = docType == DocType.ACCOUNT_IN ? new InStrategy() : new OutStrategy();
+
+        // Assign specific attributes
+        AccountIODocPO accountIODocPO = (AccountIODocPO) po;
+        customerID = accountIODocPO.getCustomerID();
+        total = accountIODocPO.getTotal();
+        itemList = new AccountDocItemList(accountIODocPO.getTransferAccountList());
     }
-
-
 
     @Override
     public void approve() {
         strategy.approve(this);
     }
-
 
     @Override
     public ResultMessage reject() {
@@ -55,15 +76,22 @@ public class AccountIODoc extends Doc{
     @Override
     public DocPO toPO() {
         return new AccountIODocPO(id, docType, userId, createTime, checkTime,
-                approvalComment, state, approvalId, ioType, customerID, itemList.toPO(id), total);
+                approvalComment, state, approvalId, null, customerID, itemList.toPO(id), total);
     }
 
     @Override
-    protected void assignWithPO(DocPO po) {
-        AccountIODocPO accountIODocPO = (AccountIODocPO) po;
-        ioType = accountIODocPO.getIOType();
-        customerID = accountIODocPO.getCustomerID();
-        total = accountIODocPO.getTotal();
-        itemList = new AccountDocItemList(accountIODocPO.getTransferAccountList());
+    public boolean containsCustomer(String customerId) {
+        return this.customerID.equals(customerId);
     }
+
+    @Override
+    public boolean containsCommodity(String commodityName) {
+        return false;
+    }
+
+    @Override
+    public boolean containsRepository(String repository) {
+        return false;
+    }
+
 }

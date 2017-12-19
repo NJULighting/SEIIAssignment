@@ -1,16 +1,21 @@
 package nju.lighting.bl.documentbl.alertdoc;
 
-import nju.lighting.bl.commoditybl.BasicCommodityItem;
+import nju.lighting.po.doc.alertdoc.AlertDocItemPO;
+import nju.lighting.vo.doc.alertdoc.AlertDocItemVO;
 
 public class AlertDocItem {
 
     private int count;
+    private String commodityId;
 
-    private BasicCommodityItem commodityItem;
+    AlertDocItem(AlertDocItemPO po) {
+        count = po.getCount();
+        commodityId = po.getCommodityId();
+    }
 
-    public AlertDocItem(int count, BasicCommodityItem commodityItem) {
-        this.count = count;
-        this.commodityItem = commodityItem;
+    AlertDocItem(AlertDocItemVO vo) {
+        count = vo.getCount();
+        commodityId = vo.getCommodity().getId();
     }
 
     public int getCount() {
@@ -21,11 +26,15 @@ public class AlertDocItem {
         this.count = count;
     }
 
-    public BasicCommodityItem getCommodityItem() {
-        return commodityItem;
+    public String getCommodityId() {
+        return commodityId;
     }
 
-    public void setCommodityItem(BasicCommodityItem commodityItem) {
-        this.commodityItem = commodityItem;
+    public void setCommodityId(String commodityId) {
+        this.commodityId = commodityId;
+    }
+
+    AlertDocItemPO toPO(String docId) {
+        return new AlertDocItemPO(0, docId, commodityId, count);
     }
 }

@@ -24,9 +24,9 @@ public class AccountIODocVO extends DocVO {
     /**
      * Constructor for pre
      */
-    public AccountIODocVO(Date time, DocType type, String customer, String creatorID, List<AccountTransferItemVO> transferAccountList) {
+    public AccountIODocVO(Date time, DocType type, String customerId, String creatorID, List<AccountTransferItemVO> transferAccountList) {
         super(time, type, creatorID);
-        this.customer = customer;
+        this.customer = customerId;
         this.transferAccountList = transferAccountList;
         total = calculateTotal();
     }

@@ -6,7 +6,7 @@ package nju.lighting.bl.userbl;
  * @author Liao
  */
 public class LoginTestHelper {
-    private static final String AUTHORIZED_USER = "161250068";
+    public static final String AUTHORIZED_USER = "161250068";
     private static final String NOT_AUTHORIZED_USER = "1611200xx";
     private static final String AUTHORIZED_USER_PASSWORD = "2333";
     private static final String NOT_AUTHORIZED_USER_PASSWORD = "9999";

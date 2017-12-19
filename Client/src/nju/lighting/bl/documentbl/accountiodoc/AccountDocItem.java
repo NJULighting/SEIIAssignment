@@ -1,6 +1,7 @@
 package nju.lighting.bl.documentbl.accountiodoc;
 
 import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
+import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 
 /**
  * Created on 2017/12/14.
@@ -20,19 +21,25 @@ class AccountDocItem {
         comments = itemPO.getComments();
     }
 
-    public int getId() {
+    AccountDocItem(AccountTransferItemVO itemVO) {
+        accountID = itemVO.getAccountID();
+        amount = itemVO.getAmount();
+        comments = itemVO.getComments();
+    }
+
+    int getId() {
         return id;
     }
 
-    public String getAccountID() {
+    String getAccountID() {
         return accountID;
     }
 
-    public double getAmount() {
+    double getAmount() {
         return amount;
     }
 
-    public String getComments() {
+    String getComments() {
         return comments;
     }
 

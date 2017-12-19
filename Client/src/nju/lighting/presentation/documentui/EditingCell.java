@@ -21,8 +21,7 @@ public class EditingCell extends TableCell<CommodityItem, Integer> {
 
     private JFXTextField textField;
 
-    public EditingCell() {
-    }
+
 
     @Override
     public void startEdit() {

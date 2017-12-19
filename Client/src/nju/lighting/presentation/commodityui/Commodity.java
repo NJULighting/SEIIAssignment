@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
  *
  * @author 陈俊宇
  */
-public class CommodityReadOnly  implements Initializable{
+public class Commodity implements Initializable{
     private static CommodityItemVO commodity;
 
 
@@ -23,7 +23,7 @@ public class CommodityReadOnly  implements Initializable{
     Label id,name,modelNumber,repCount,inPrice,sellPrice,recentInPrice,recentSellPrice;
 
     public static void setCommodity(CommodityItemVO commodity) {
-        CommodityReadOnly.commodity = commodity;
+        Commodity.commodity = commodity;
     }
 
     @Override

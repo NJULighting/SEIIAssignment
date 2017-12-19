@@ -2,6 +2,7 @@ package nju.lighting.data.docdata;
 
 import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.po.doc.accountiodoc.AccountIODocPO;
+import nju.lighting.po.doc.accountiodoc.AccountOutDocPO;
 import nju.lighting.po.doc.alertdoc.AlertDocItemPO;
 import nju.lighting.po.doc.alertdoc.AlertDocPO;
 import nju.lighting.po.doc.costdoc.CostDocPO;
@@ -34,7 +35,7 @@ public class DocIdGenerator {
         typeToName.put(DocType.ALERT, new TwoTuple<>("BJD", AlertDocPO.class.getName()));
         typeToName.put(DocType.LOSS_AND_GAIN, new TwoTuple<>("BSBYD", LossAndGainDocPO.class.getName()));
         typeToName.put(DocType.ACCOUNT_IN, new TwoTuple<>("SKD", AccountIODocPO.class.getName()));
-        typeToName.put(DocType.ACCOUNT_OUT, new TwoTuple<>("FKD", AccountIODocPO.class.getName()));
+        typeToName.put(DocType.ACCOUNT_OUT, new TwoTuple<>("FKD", AccountOutDocPO.class.getName()));
         typeToName.put(DocType.SALES_RETURN, new TwoTuple<>("XSTHD", SalesReturnDocPO.class.getName()));
         typeToName.put(DocType.SALES, new TwoTuple<>("XSD", SalesDocPO.class.getName()));
         typeToName.put(DocType.COST, new TwoTuple<>("XJFYD", CostDocPO.class.getName()));

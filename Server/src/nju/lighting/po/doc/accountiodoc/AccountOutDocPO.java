@@ -16,8 +16,8 @@ import java.util.List;
  * @author Liao
  */
 @Entity
-@Table(name = "ACCOUNT_IO_DOC")
-public class AccountIODocPO extends DocPO implements Serializable {
+@Table(name = "ACCOUNT_OUT_DOC")
+public class AccountOutDocPO extends DocPO implements Serializable {
 
     private static final long serialVersionUID = -5635472117924146487L;
 
@@ -27,11 +27,11 @@ public class AccountIODocPO extends DocPO implements Serializable {
 
     private double total;
 
-    public AccountIODocPO() {
+    public AccountOutDocPO() {
 
     }
 
-    public AccountIODocPO(String id, DocType docType, String userId, Date time
+    public AccountOutDocPO(String id, DocType docType, String userId, Date time
             , String customerID, List<AccountTransferItemPO> transferAccountList, double total) {
         super(id, docType, userId, time);
         this.customerID = customerID;

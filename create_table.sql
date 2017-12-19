@@ -115,7 +115,19 @@ CREATE TABLE ACCOUNT_IO_DOC (
 	CHECKER_COMMENT varchar(300),
 	CHECK_TIME DATETIME,
 	CREATE_TIME DATETIME not null,
-	IO_TYPE varchar(20) not null,
+	CUSTOMER_ID varchar(30) not null,
+	TOTAL float(8) not null,
+	primary key(ID)
+);
+
+CREATE TABLE ACCOUNT_OUT_DOC (
+	ID varchar(36) not null,
+	USER_ID varchar(20) not null,
+	CHECKER_ID varchar(20),
+	STATE varchar(20) not null,
+	CHECKER_COMMENT varchar(300),
+	CHECK_TIME DATETIME,
+	CREATE_TIME DATETIME not null,
 	CUSTOMER_ID varchar(30) not null,
 	TOTAL float(8) not null,
 	primary key(ID)

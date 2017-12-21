@@ -11,7 +11,6 @@ import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;
 import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import shared.DocType;

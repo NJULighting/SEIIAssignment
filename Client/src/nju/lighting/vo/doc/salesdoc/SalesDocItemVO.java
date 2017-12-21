@@ -10,6 +10,7 @@ import nju.lighting.vo.commodity.BasicCommodityItemVO;
  */
 public class SalesDocItemVO {
 
+    private int id;
     private BasicCommodityItemVO commodity;
     private int number;
     private double totalAmount;
@@ -29,6 +30,14 @@ public class SalesDocItemVO {
      * Constructor for bl
      */
     public SalesDocItemVO(BasicCommodityItemVO commodity, int number, double totalAmount, String remarks) {
+        this.commodity = commodity;
+        this.number = number;
+        this.totalAmount = totalAmount;
+        this.remarks = remarks;
+    }
+
+    public SalesDocItemVO(int id, BasicCommodityItemVO commodity, int number, double totalAmount, String remarks) {
+        this.id = id;
         this.commodity = commodity;
         this.number = number;
         this.totalAmount = totalAmount;
@@ -58,6 +67,10 @@ public class SalesDocItemVO {
 
     public BasicCommodityItemVO getCommodity() {
         return commodity;
+    }
+
+    public int getId() {
+        return id;
     }
 
     SalesDocItemPO toPO() {

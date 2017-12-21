@@ -33,7 +33,7 @@ public class CostDocFactory implements DocFactory {
 
         // Item list
         List<CostDocItemVO> itemVOList = VPOTransformer.toVPOList(costDocPO.getItemList(),
-                itemPO -> new CostDocItemVO(itemPO.getType(), itemPO.getAmount(), itemPO.getComment()));
+                itemPO -> new CostDocItemVO(itemPO.getId(), itemPO.getType(), itemPO.getAmount(), itemPO.getComment()));
 
         return new CostDocVO(po.getCreateTime(), po.getUserId(), po.getId(),
                 accountInfo.getAccountByID(costDocPO.getAccountID()), itemVOList);

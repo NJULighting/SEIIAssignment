@@ -6,7 +6,6 @@ import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.bl.documentbl.DocFactory;
 import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
-import nju.lighting.po.doc.salesdoc.SalesDocItemPO;
 import nju.lighting.po.doc.salesdoc.SalesDocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
@@ -20,7 +19,7 @@ import java.util.List;
  * Description:
  * @author Liao
  */
-public class SalesDocFactory implements DocFactory{
+public class SalesDocFactory implements DocFactory {
 
     @Override
     public Doc createDocForApproval(HistoryDocVO historyDocVO) {
@@ -34,7 +33,7 @@ public class SalesDocFactory implements DocFactory{
 
         // Item list
         List<SalesDocItemVO> itemVOList = VPOTransformer.toVPOList(salesDocPO.getItemPOS(),
-                itemPO -> new SalesDocItemVO(commodityInfo.getBasicCommodityItemVO(itemPO.getCommodityID()),
+                itemPO -> new SalesDocItemVO(itemPO.getId(), commodityInfo.getBasicCommodityItemVO(itemPO.getCommodityID()),
                         itemPO.getNumber(), itemPO.getTotalAmount(), itemPO.getRemarks()));
 
         double beforeDiscountAmount = salesDocPO.getFinalAmount() / (1 - salesDocPO.getDiscount());

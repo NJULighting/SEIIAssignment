@@ -8,9 +8,17 @@ import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
  * @author Liao
  */
 public class AccountTransferItemVO {
+    private int id;
     private double amount;
     private String comments;
     private String accountID;
+
+    public AccountTransferItemVO(double amount, String comments, String accountID, int id) {
+        this.id = id;
+        this.amount = amount;
+        this.comments = comments;
+        this.accountID = accountID;
+    }
 
     public AccountTransferItemVO(double amount, String comments, String accountID) {
         this.amount = amount;

@@ -65,7 +65,7 @@ public class StockDocFactory implements DocFactory {
                 ((StockDocPO) po).getItemPOS() : ((StockReturnDocPO) po).getItemPOS();
 
         return VPOTransformer.toVPOList(itemPOList,
-                stockDocItemPO -> new StockDocItemVO(commodityInfo.getBasicCommodityItemVO(stockDocItemPO.getCommodityID()),
-                        stockDocItemPO.getNumber(), stockDocItemPO.getRemarks(), stockDocItemPO.getTotalAmount()));
+                stockDocItemPO -> new StockDocItemVO(stockDocItemPO.getId(), commodityInfo.getBasicCommodityItemVO(stockDocItemPO.getCommodityID()),
+                        stockDocItemPO.getNumber(), stockDocItemPO.getTotalAmount(), stockDocItemPO.getRemarks()));
     }
 }

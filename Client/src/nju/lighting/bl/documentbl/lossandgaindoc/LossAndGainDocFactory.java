@@ -34,7 +34,7 @@ public class LossAndGainDocFactory implements DocFactory {
         // Item list
         List<LossAndGainDocItemVO> itemVOList = VPOTransformer.toVPOList(docPO.getItemPOS(),
                 itemPO -> new LossAndGainDocItemVO(commodityInfo.getBasicCommodityItemVO(itemPO.getCommodityId()),
-                        itemPO.getCount(), itemPO.getType()));
+                        itemPO.getCount(), itemPO.getType(), itemPO.getId()));
 
         return new LossAndGainDocVO(po.getCreateTime(), po.getUserId(), po.getId(), po.getDocType(),
                 itemVOList, docPO.getComment());

@@ -8,6 +8,7 @@ import shared.ResultMessage;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerDataService_Stub implements CustomerDataService {
 
@@ -87,6 +88,16 @@ public class CustomerDataService_Stub implements CustomerDataService {
 
     @Override
     public ResultMessage changeReceivableLimit(int customerId, double amount) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<CustomerPO> fuzzySearchByName(String key) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<CustomerPO> fuzzySearchById(Integer id) throws RemoteException {
         return null;
     }
 }

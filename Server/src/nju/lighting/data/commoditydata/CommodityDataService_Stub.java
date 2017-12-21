@@ -153,4 +153,19 @@ public class CommodityDataService_Stub implements CommodityDataService {
         }
         return pos;
     }
+
+    @Override
+    public List<CommodityItemPO> fuzzySearchByName(String key) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<CommodityItemPO> fuzzySearchById(String key) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<CommodityItemPO> fuzzySearchByModel(String key) throws RemoteException {
+        return null;
+    }
 }

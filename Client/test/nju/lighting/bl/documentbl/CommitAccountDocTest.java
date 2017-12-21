@@ -3,6 +3,11 @@ package nju.lighting.bl.documentbl;
 import nju.lighting.bl.userbl.LoginTestHelper;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
+import nju.lighting.dataservice.DataFactory;
+import nju.lighting.dataservice.documentdataservice.DocDataService;
+import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.accountiodoc.AccountIODocPO;
+import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;
 import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
@@ -29,10 +34,12 @@ public class CommitAccountDocTest {
     private static final List<AccountTransferItemVO> ITEM_LIST = Arrays.asList(ITEM_0, ITEM_1, ITEM_2);
 
     private DocManager manager = DocManager.INSTANCE;
+    private DocDataService dataService;
 
     @Before
     public void setUp() throws Exception {
         LoginTestHelper.loginAuthorizedUser();
+        dataService = DataFactory.getDataBase(DocDataService.class);
     }
 
     @Test
@@ -57,5 +64,14 @@ public class CommitAccountDocTest {
 
         assertEquals(ResultMessage.SUCCESS, res.r);
         assertTrue(res.t.contains("FKD"));
+    }
+
+    @Test
+    public void updateTest() throws Exception {
+        List<DocPO> poList = dataService.findByType(DocType.ACCOUNT_IN);
+        AccountIODocPO inPO = (AccountIODocPO) poList.get(0);
+        inPO.getTransferAccountList().add(new AccountTransferItemPO("asdlfj233", 2321, "TooSimple"));
+        inPO.getTransferAccountList().add(new AccountTransferItemPO("asdlfj233", 2321, "TooYoung"));
+        dataService.updateDoc(inPO);
     }
 }

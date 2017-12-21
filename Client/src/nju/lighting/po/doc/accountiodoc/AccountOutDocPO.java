@@ -15,9 +15,9 @@ import java.util.List;
  * Description:
  * @author Liao
  */
-public class AccountIODocPO extends DocPO implements Serializable {
+public class AccountOutDocPO extends DocPO implements Serializable {
 
-    private static final long serialVersionUID = -5635472117924146487L;
+    private static final long serialVersionUID = -56354721179246487L;
     private String customerID;
     private List<AccountTransferItemPO> transferAccountList;
     private double total;
@@ -25,7 +25,7 @@ public class AccountIODocPO extends DocPO implements Serializable {
     /**
      * Constructor for approval module
      */
-    public AccountIODocPO(String id, DocType docType, String userId, Date createTime,
+    public AccountOutDocPO(String id, DocType docType, String userId, Date createTime,
                           Date checkTime, String approvalComment, DocState state, String approvalId,
                           AccountIODocType ioType, String customerID, List<AccountTransferItemPO> transferAccountList, double total) {
         super(id, docType, userId, createTime, checkTime, approvalComment, state, approvalId);
@@ -37,7 +37,7 @@ public class AccountIODocPO extends DocPO implements Serializable {
     /**
      * Constructor for committing a new document.
      */
-    public AccountIODocPO(DocType type, String userId, Date createTime, AccountIODocType ioType,
+    public AccountOutDocPO(DocType type, String userId, Date createTime, AccountIODocType ioType,
                           String customerID, List<AccountTransferItemPO> transferAccountList, double total) {
         super(type, userId, createTime);
         this.customerID = customerID;
@@ -71,5 +71,4 @@ public class AccountIODocPO extends DocPO implements Serializable {
     public void setTotal(double total) {
         this.total = total;
     }
-
 }

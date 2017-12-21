@@ -3,6 +3,7 @@ package nju.lighting.bl.documentbl.accountiodoc;
 import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.accountiodoc.AccountIODocPO;
+import nju.lighting.po.doc.accountiodoc.AccountOutDocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
@@ -14,7 +15,7 @@ import shared.ResultMessage;
  * Description: 负责创建初始的收付款单
  * @author Liao
  */
-public class AccountIODoc extends Doc{
+public class AccountIODoc extends Doc {
 
     // TODO: 2017/12/18 Modify about the io type
     private String customerID;
@@ -75,7 +76,10 @@ public class AccountIODoc extends Doc{
 
     @Override
     public DocPO toPO() {
-        return new AccountIODocPO(id, docType, userId, createTime, checkTime,
+        if (docType == DocType.ACCOUNT_IN)
+            return new AccountIODocPO(id, docType, userId, createTime, checkTime,
+                    approvalComment, state, approvalId, null, customerID, itemList.toPO(id), total);
+        else return new AccountOutDocPO(id, docType, userId, createTime, checkTime,
                 approvalComment, state, approvalId, null, customerID, itemList.toPO(id), total);
     }
 

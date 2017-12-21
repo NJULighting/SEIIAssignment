@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import nju.lighting.presentation.documentui.GiftListController;
 import nju.lighting.presentation.utils.DateHelper;
@@ -27,49 +28,43 @@ public class CustomerOriented  implements Initializable{
     private String validTimeStr;
 
     @FXML
-    Label title;
+    Label off, voucher,voucherEndTime,trigger;
 
     @FXML
-    Label creator;
+    VBox container,giftBox,voucherBox;
 
     @FXML
-    Label validTime;
+    HBox offBox;
 
-    @FXML
-    Label voucher,off;
-
-    @FXML
-    Label voucherEndTime,noneGift;
-
-    @FXML
-    VBox gift;
 
     public CustomerOriented() {
-        promotion= PromotionManageController.selectedPromotion;
-        validTimeStr= DateHelper.approximateTime(promotion.getStartDate())+" - "
-                + DateHelper.approximateTime(promotion.getEndDate());
+        promotion = Promotion.promotion;
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-        title.setText(promotion.getName());
-        creator.setText(promotion.getCreator().getUsername());
-        validTime.setText(validTimeStr);
-        off.setText(promotion.getOff()+"");
-        voucher.setText(""+promotion.getVouchers());
-        voucherEndTime.setText(DateHelper.approximateTime(promotion.getVouchersEndDate()));
-        System.out.println(promotion);
-        if (promotion.getGoods()!=null){
+
+        trigger.setText("当用户等级大于"+promotion.getLevel()+"时");
+        if (promotion.getVouchers()==0)
+            container.getChildren().remove(voucherBox);
+        else {
+            voucher.setText(""+promotion.getVouchers());
+            voucherEndTime.setText(validTimeStr);
+        }
+
+        if(promotion.getOff()==0)
+            container.getChildren().remove(offBox);
+        else
+            off.setText(promotion.getOff()+"");
+        if (promotion.getGoods()==null)
+            container.getChildren().remove(giftBox);
+        else{
             List<GiftItemVO> giftItemListVO = promotion.getGoods();
             GiftListController.setGiftItemListVO(giftItemListVO);
             try {
-                gift.getChildren().add(FXMLLoader.load(getClass().getResource("../documentui/GiftList.fxml")));
+                giftBox.getChildren().add(FXMLLoader.load(getClass().getResource("../documentui/GiftList.fxml")));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else
-            noneGift.setVisible(true);
-
-
-
+        }
     }
 }

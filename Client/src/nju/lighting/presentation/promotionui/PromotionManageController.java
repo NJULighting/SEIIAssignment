@@ -81,16 +81,15 @@ public class PromotionManageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         promotions = promotionBLService.getPromotionList();
-        pagination.getStylesheets().add(getClass().getResource("../pagination.css").toExternalForm());
+        pagination.getStylesheets().add(getClass().getResource("../promotionManage.css").toExternalForm());
         pagination.setPageCount((promotions.size() / itemsPerPage) + 1);
-        // pagination=new Pagination((promotions.size()/itemsPerPage)+1);
         pagination.setPageFactory((Integer index) -> createPage(index));
 
 
     }
 
 
-    static class myListCell extends ListCell<PromotionVO> {
+    class myListCell extends ListCell<PromotionVO> {
         Label name,type,time;
         HBox buttonBox;
         JFXButton openBtn,invalidBtn;
@@ -116,7 +115,10 @@ public class PromotionManageController implements Initializable {
                     public void handle(ActionEvent event) {
                         PromotionManageController.selectedPromotion=item;
                         try {
-                            new Promotion(item);
+//                            new Promotion(item).init();
+                            Promotion.promotion=item;
+                            FXMLLoader.load(getClass().getResource("Promotion.fxml"));
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

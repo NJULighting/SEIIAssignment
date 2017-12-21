@@ -3,11 +3,8 @@ package nju.lighting.bl.documentbl.stockdoc;
 import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
-import shared.DocType;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.ResultMessage;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created on 2017/11/11.
@@ -15,66 +12,28 @@ import java.util.Date;
  * 进货类单据，是进货单和进货退货单的父类
  * @author 高梦婷
  */
-public class StockTypeDoc extends Doc {
+abstract class StockTypeDoc extends Doc {
 
-    private String stockTypeDocID;
-    private String customerId;
-    private String repository;
-    private String remarks;
-    private ArrayList<StockDocItem> commodityList;
-    private int commodityListNumber = 0;
-    private double totalAmount = 0;
+    String customerId;
+    String repository;
+    String remarks;
+    double totalAmount;
+    StockDocItemList itemList = new StockDocItemList();
 
 
-    public StockTypeDoc(String id, DocType docType, String userId, Date time,
-                        String stockTypeDocID, String customerId, String repository,
-                        String remarks) {
-        super(id, docType, userId, time);
-        this.stockTypeDocID = stockTypeDocID;
+    StockTypeDoc(HistoryDocVO historyDocVO) {
+        super(historyDocVO);
+    }
+
+    StockTypeDoc(DocPO po) {
+        super(po);
+    }
+
+    void setAttributes( String customerId, String repository, String remarks, double totalAmount) {
         this.customerId = customerId;
         this.repository = repository;
         this.remarks = remarks;
-    }
-
-    /**
-     * 在商品列表里面增加一个商品项
-     * @param stockDocItem
-     */
-    public void addCommodityListItem(StockDocItem stockDocItem){
-        totalAmount = totalAmount+stockDocItem.getTotalAmount();
-        commodityList.add(stockDocItem);
-        commodityListNumber++;
-    }
-
-    /**
-     * 根据商品项的索引删除商品项，第一项的索引为0
-     * @param index
-     */
-    public void deleteCommodityListItem(int index){
-        if(commodityListNumber!=0){
-            totalAmount = totalAmount-commodityList.get(index).getTotalAmount();
-            commodityList.remove(index);
-            commodityListNumber--;
-        }
-    }
-
-    /**
-     * 根据索引值得到商品列表里的一个商品项，第一项的索引为0
-     * @param index
-     * @return StockDocItem
-     */
-    public StockDocItem getCommodityListItem(int index){return commodityList.get(index);}
-
-    /**
-     * 返回目前商品项的个数
-     * @return commodityListNumber
-     */
-    public int getCommodityListNumber(){return commodityListNumber;}
-
-    public String getStockTypeDocID(){return stockTypeDocID;}
-
-    public void setStockTypeDocID(String stockTypeDocID) {
-        this.stockTypeDocID = stockTypeDocID;
+        this.totalAmount = totalAmount;
     }
 
     public String getCustomerId() {
@@ -101,54 +60,39 @@ public class StockTypeDoc extends Doc {
         this.remarks = remarks;
     }
 
-    public double getTotalAmount(){return totalAmount;}
-
-
-    /**
-     * 审批单据，具体方法由其子类实现
-     */
-    public void approve(){
+    public double getTotalAmount() {
+        return totalAmount;
     }
+
 
     @Override
-    public ResultMessage reject() {
-        return null;
-    }
+    abstract public void approve();
 
     @Override
-    public ResultMessage modify() {
-        return null;
-    }
+    abstract public ResultMessage reject();
 
-    /**
-     * 创建相应的VO对象
-     * @return 对应的<code>DocVO</code>
-     */
-    public DocVO toVO(){
-        return null;
-    }
+    @Override
+    abstract public ResultMessage modify();
 
-    /**
-     * 由其子类创建响应的PO对象
-     * @return 对应的<code>DocPO</code>
-     */
-    public DocPO toPO(){
-        return null;
-    }
+    @Override
+    abstract public DocVO toVO();
+
+    @Override
+    abstract public DocPO toPO();
 
     @Override
     public boolean containsCustomer(String customerId) {
-        return false;
+        return this.customerId.equals(customerId);
     }
 
     @Override
     public boolean containsCommodity(String commodityName) {
-        return false;
+        return itemList.containsCommodity(commodityName);
     }
 
     @Override
     public boolean containsRepository(String repository) {
-        return false;
+        return this.repository.equals(repository);
     }
 
 }

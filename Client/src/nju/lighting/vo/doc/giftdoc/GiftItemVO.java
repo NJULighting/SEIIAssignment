@@ -26,6 +26,9 @@ public class GiftItemVO {
         this.subtotal = commodity.getRecentSellPrice() * count;
     }
 
+    /**
+     * Constructor for bl
+     */
     public GiftItemVO(int id, BasicCommodityItemVO commodity, int count) {
         this.id = id;
         this.commodity = commodity;
@@ -51,6 +54,10 @@ public class GiftItemVO {
 
     public double getPrice() {
         return commodity.getRecentSellPrice();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public ObservableValue<String> commodityNameProperty() {

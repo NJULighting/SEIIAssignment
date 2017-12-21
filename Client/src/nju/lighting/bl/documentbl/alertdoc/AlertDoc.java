@@ -6,12 +6,7 @@ import nju.lighting.po.doc.alertdoc.AlertDocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
-import shared.DocType;
 import shared.ResultMessage;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created on 2017/11/7.
@@ -72,7 +67,8 @@ public class AlertDoc extends Doc {
 
     @Override
     public DocPO toPO() {
-        return null;
+        return new AlertDocPO(id, docType, userId, createTime, checkTime, approvalComment, state, approvalId, comment,
+                triggered, expired, itemList.toPO(id));
     }
 
     @Override

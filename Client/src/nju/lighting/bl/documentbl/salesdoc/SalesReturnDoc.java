@@ -1,16 +1,11 @@
 package nju.lighting.bl.documentbl.salesdoc;
 
-import nju.lighting.bl.commoditybl.CommodityInfo;
-import nju.lighting.bl.commoditybl.MockCommodity;
-import nju.lighting.bl.customerbl.CustomerInfo;
-import nju.lighting.bl.customerbl.CustomerInfoImpl;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.salesdoc.SalesReturnDocPO;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.doc.salesdoc.SalesReturnDocVO;
-import shared.DocType;
-
-import java.util.Date;
+import shared.ResultMessage;
 
 /**
  * Create on 2017/11/12
@@ -18,43 +13,49 @@ import java.util.Date;
  * 销售退货单
  * @author 高梦婷
  */
-public class SalesReturnDoc extends SalesTypeDoc{
-    public SalesReturnDoc(String id, String userId, Date time,
-                          String salesTypeDocID, int customerId, String salesman,
-                          String repository, String remarks, double discount,
-                          double voucher, double finalAmount) {
-        super(id, DocType.SALES_RETURN, userId, time, salesTypeDocID, customerId, salesman,
-                repository, remarks, discount, voucher, finalAmount);
+class SalesReturnDoc extends SalesTypeDoc {
+
+    SalesReturnDoc(HistoryDocVO historyDocVO) {
+        super(historyDocVO);
+        SalesReturnDocVO docVO = (SalesReturnDocVO) historyDocVO.getDocVO();
+        setAttributes(docVO.getCustomerId(), docVO.getSalesman(), docVO.getRepository(), docVO.getRemarks(),
+                docVO.getBeforeDiscountAmount(), docVO.getDiscount(), docVO.getVoucher(), docVO.getFinalAmount());
+    }
+
+    SalesReturnDoc(DocPO po) {
+        super(po);
+        SalesReturnDocPO docPO = (SalesReturnDocPO) po;
+        setAttributes(Integer.parseInt(docPO.getCustomerId()), docPO.getSalesMan(), docPO.getRepository(),
+                docPO.getRemarks(), 0.0, docPO.getDiscount(), docPO.getVoucher(), docPO.getFinalAmount());
+        beforeDiscountAmount = calculateBeforeDiscount();
     }
 
     /**
-     * 审批单据，减少客户应付
+     * Reduce customer's receivable
      */
-    public void approve(){
-        CustomerInfo info = new CustomerInfoImpl();
-        info.changePayable(this.getCustomerId(),0-this.getFinalAmount());
-        //增加商品数量
-        CommodityInfo commodityInfo = new MockCommodity();
-        int listNum = this.getCommodityListNumber();
-        for(int i=0;i<listNum;i++){
-            commodityInfo.addCommodityItem(this.getCommodityListItem(i).getCommodityID(),this.getCommodityListItem(i).getNumber());
-        }
+    public void approve() {
+
     }
 
-
-    /**
-     * 创建相应的VO对象
-     * @return SalesReturnDocVO
-     */
-    public DocVO toVO(){
+    @Override
+    public ResultMessage reject() {
         return null;
     }
 
-    /**
-     * 创建相应的PO对象
-     * @return SalesReturnDocPO
-     */
-    public DocPO toPO(){
+    @Override
+    public ResultMessage modify() {
         return null;
+    }
+
+    @Override
+    public DocVO toVO() {
+        return null;
+    }
+
+    @Override
+    public DocPO toPO() {
+        return new SalesReturnDocPO(id, docType, userId, createTime, checkTime,
+                approvalComment, state, approvalId, salesman, Integer.toString(customerId), repository,
+                remarks, discount, voucher, finalAmount, itemList.toPO(id));
     }
 }

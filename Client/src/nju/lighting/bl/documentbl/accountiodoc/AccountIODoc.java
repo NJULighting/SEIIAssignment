@@ -43,15 +43,25 @@ public class AccountIODoc extends Doc {
         itemList.addAll(docVO.getTransferAccountList());
     }
 
+    /**
+     * Used for searching
+     */
     public AccountIODoc(DocPO po) {
         super(po);
         strategy = docType == DocType.ACCOUNT_IN ? new InStrategy() : new OutStrategy();
 
-        // Assign specific attributes
-        AccountIODocPO accountIODocPO = (AccountIODocPO) po;
-        customerID = accountIODocPO.getCustomerID();
-        total = accountIODocPO.getTotal();
-        itemList = new AccountDocItemList(accountIODocPO.getTransferAccountList());
+        if (docType == DocType.ACCOUNT_IN) {
+            // Assign specific attributes
+            AccountIODocPO accountIODocPO = (AccountIODocPO) po;
+            customerID = accountIODocPO.getCustomerID();
+            total = accountIODocPO.getTotal();
+            itemList = new AccountDocItemList(accountIODocPO.getTransferAccountList());
+        } else {
+            AccountOutDocPO accountOutDocPO = (AccountOutDocPO) po;
+            customerID = accountOutDocPO.getCustomerID();
+            total = accountOutDocPO.getTotal();
+            itemList = new AccountDocItemList(accountOutDocPO.getTransferAccountList());
+        }
     }
 
     @Override

@@ -1,16 +1,11 @@
 package nju.lighting.bl.documentbl.stockdoc;
 
-import nju.lighting.bl.commoditybl.CommodityInfo;
-import nju.lighting.bl.commoditybl.MockCommodity;
-import nju.lighting.bl.customerbl.CustomerInfo;
-import nju.lighting.bl.customerbl.CustomerInfoImpl;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.stockdoc.StockDocPO;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.doc.stockdoc.StockDocVO;
-import shared.DocType;
-
-import java.util.Date;
+import shared.ResultMessage;
 
 /**
  * Create on 2017/11/12
@@ -18,39 +13,50 @@ import java.util.Date;
  * 进货单
  * @author 高梦婷
  */
-public class StockDoc extends StockTypeDoc{
-    public StockDoc(String id, String userId, Date time,
-            String stockTypeDocID, String customerId, String repository, String remarks) {
-        super(id, DocType.STOCK, userId, time, stockTypeDocID, customerId, repository, remarks);
+class StockDoc extends StockTypeDoc {
+
+    StockDoc(HistoryDocVO historyDocVO) {
+        super(historyDocVO);
+        StockDocVO docVO = (StockDocVO) historyDocVO.getDocVO();
+        setAttributes(docVO.getCustomerId(), docVO.getRepository(), docVO.getRemarks(), docVO.getTotalAmount());
+
+        docVO.getItems().forEach(itemList::add);
+    }
+
+    StockDoc(DocPO po) {
+        super(po);
+        StockDocPO stockDocPO = (StockDocPO) po;
+        setAttributes(stockDocPO.getCustomerId(), stockDocPO.getCustomerId(),
+                stockDocPO.getRepository(), stockDocPO.getTotalAmount());
+
+        stockDocPO.getItemPOS().forEach(itemList::add);
     }
 
     /**
      * 审批单据，增加客户应收，增加商品数量
      */
-    public void approve(){
-        CustomerInfo info = new CustomerInfoImpl();
-        info.changeReceivable(Integer.parseInt(getCustomerId()),this.getTotalAmount());
-        //增加商品数量
-        CommodityInfo commodityInfo = new MockCommodity();
-        int listNum = this.getCommodityListNumber();
-        for(int i=0;i<listNum;i++){
-            commodityInfo.addCommodityItem(this.getCommodityListItem(i).getCommodityID(),this.getCommodityListItem(i).getNumber());
-        }
+    @Override
+    public void approve() {
     }
 
-    /**
-     * 由其子类创建相应的VO对象
-     * @return 对应的StockDocVO
-     */
-    public DocVO toVO(){
+    @Override
+    public ResultMessage reject() {
         return null;
     }
 
-    /**
-     * 由其子类创建响应的PO对象
-     * @return 对应的StockDocPO
-     */
-    public DocPO toPO(){
+    @Override
+    public ResultMessage modify() {
         return null;
+    }
+
+    @Override
+    public DocVO toVO() {
+        return null;
+    }
+
+    @Override
+    public DocPO toPO() {
+        return new StockDocPO(id, docType, userId, createTime, checkTime, approvalComment,
+                state, approvalId, customerId, repository, remarks, totalAmount, itemList.toPO(id));
     }
 }

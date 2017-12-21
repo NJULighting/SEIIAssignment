@@ -6,7 +6,6 @@ import nju.lighting.bl.documentbl.costdoc.CostDocFactory;
 import nju.lighting.bl.documentbl.giftdoc.GiftDocFactory;
 import nju.lighting.bl.documentbl.lossandgaindoc.LossAndGainDocFactory;
 import nju.lighting.bl.documentbl.salesdoc.SalesDocFactory;
-import nju.lighting.bl.documentbl.salesdoc.SalesReturnDoc;
 import nju.lighting.bl.documentbl.salesdoc.SalesReturnDocFactory;
 import nju.lighting.bl.documentbl.stockdoc.StockDocFactory;
 import nju.lighting.bl.logbl.Logger;

@@ -1,7 +1,10 @@
 package nju.lighting.bl.documentbl.giftdoc;
 
 import nju.lighting.bl.commoditybl.BasicCommodityItem;
-
+import nju.lighting.bl.commoditybl.CommodityInfo;
+import nju.lighting.bl.commoditybl.CommodityInfoImpl;
+import nju.lighting.po.doc.giftdoc.GiftItemPO;
+import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 
 
 /**
@@ -12,38 +15,49 @@ import nju.lighting.bl.commoditybl.BasicCommodityItem;
  */
 public class GiftDocItem {
 
-    BasicCommodityItem gifts;
+    private int id;
+    private int count;
+    private double subtotal;
+    private String commodityId;
 
-    int count;
+    GiftDocItem(GiftItemVO vo) {
+        id = vo.getId();
+        count = vo.getCount();
+        commodityId = vo.getCommodityID();
 
-    double subtotal;
-
-    public GiftDocItem(BasicCommodityItem gifts, int count) {
-        this.gifts = gifts;
-        this.count = count;
+        subtotal = calculateSubtotal();
     }
 
-    public BasicCommodityItem getGifts() {
-        return gifts;
+    GiftDocItem(GiftItemPO po) {
+        id = po.getId();
+        count = po.getCount();
+        commodityId = po.getCommodityID();
+
+        subtotal = calculateSubtotal();
     }
 
-    public void setGifts(BasicCommodityItem gifts) {
-        this.gifts = gifts;
+    private double calculateSubtotal() {
+        CommodityInfo commodityInfo = new CommodityInfoImpl();
+        return commodityInfo.getCommodityRecentSellPrice(commodityId);
     }
 
     public int getCount() {
         return count;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
-
     public double getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
+    public int getId() {
+        return id;
+    }
+
+    public String getCommodityId() {
+        return commodityId;
+    }
+
+    GiftItemPO toPO(String docId) {
+        return new GiftItemPO(id, commodityId, count, subtotal, docId);
     }
 }

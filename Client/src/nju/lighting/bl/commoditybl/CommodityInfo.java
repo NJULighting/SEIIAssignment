@@ -11,6 +11,8 @@ public interface CommodityInfo {
 
     BasicCommodityItemVO getBasicCommodityItemVO(String id);
 
+    double getCommodityRecentSellPrice(String id);
+
     List<CommodityItem> getCommodityItems(List<String> ids);
 
     String getCommodityNameByID(String commodityID);

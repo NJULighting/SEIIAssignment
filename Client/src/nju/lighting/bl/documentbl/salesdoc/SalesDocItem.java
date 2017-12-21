@@ -1,5 +1,10 @@
 package nju.lighting.bl.documentbl.salesdoc;
 
+import nju.lighting.bl.commoditybl.CommodityInfo;
+import nju.lighting.bl.commoditybl.CommodityInfoImpl;
+import nju.lighting.po.doc.salesdoc.SalesDocItemPO;
+import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
+
 /**
  * Description:
  * 销售类单据里的商品条目
@@ -7,90 +12,48 @@ package nju.lighting.bl.documentbl.salesdoc;
 public class SalesDocItem {
 
     private int id;
-    private String salesDocID;
     private String commodityID;
-    private String commodityName;
-    private String commodityType;
-    private int number = 0;
-    private double salePrice = 0;
-    private double totalAmount = 0;
+    private int number;
+    private double salePrice;
+    private double totalAmount;
     private String remarks = "";
 
-    public SalesDocItem() {
+    SalesDocItem(SalesDocItemPO po) {
+        id = po.getId();
+        commodityID = po.getCommodityID();
+        number = po.getNumber();
+        remarks = po.getRemarks();
+
+        updatePriceAndTotal();
     }
 
-    public SalesDocItem(int id, String salesDocID, String commodityID, String commodityName, String commodityType,
-                          int number, double salePrice, String remarks) {
-        this.id = id;
-        this.salesDocID = salesDocID;
-        this.commodityID = commodityID;
-        this.commodityName = commodityName;
-        this.commodityType = commodityType;
-        this.number = number;
-        this.salePrice = salePrice;
-        this.remarks = remarks;
+    SalesDocItem(SalesDocItemVO vo) {
+        id = vo.getId();
+        commodityID = vo.getCommodity().getId();
+        remarks = vo.getRemarks();
+
+        updatePriceAndTotal();
     }
 
-    private void updateTotalAmount() {
-        totalAmount = number * salePrice;
+    private void updatePriceAndTotal() {
+        CommodityInfo commodityInfo = new CommodityInfoImpl();
+        salePrice = commodityInfo.getCommodityRecentSellPrice(commodityID);
+        totalAmount = salePrice * number;
     }
-
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getSalesDocID() {
-        return salesDocID;
-    }
-
-    public void setSalesDocID(String salesDocID) {
-        this.salesDocID = salesDocID;
     }
 
     public String getCommodityID() {
         return commodityID;
     }
 
-    public void setCommodityID(String commodityID) {
-        this.commodityID = commodityID;
-    }
-
-    public String getCommodityName() {
-        return commodityName;
-    }
-
-    public void setCommodityName(String commodityName) {
-        this.commodityName = commodityName;
-    }
-
-    public String getCommodityType() {
-        return commodityType;
-    }
-
-    public void setCommodityType(String commodityType) {
-        this.commodityType = commodityType;
-    }
-
     public int getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
-        updateTotalAmount();
-    }
-
     public double getSalePrice() {
         return salePrice;
-    }
-
-    public void setSalePrice(double salePrice) {
-        this.salePrice = salePrice;
-        updateTotalAmount();
     }
 
     public double getTotalAmount() {
@@ -105,4 +68,7 @@ public class SalesDocItem {
         this.remarks = remarks;
     }
 
+    SalesDocItemPO toPO(String docId) {
+        return new SalesDocItemPO(id, docId, commodityID, number, totalAmount, remarks);
+    }
 }

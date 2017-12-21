@@ -7,6 +7,7 @@ import nju.lighting.vo.doc.alertdoc.AlertDocItemVO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/18.
@@ -38,5 +39,11 @@ class AlertDocItemList {
             }
         }
         return false;
+    }
+
+    List<AlertDocItemPO> toPO(String docId) {
+        return items.stream()
+                .map(alertDocItem -> alertDocItem.toPO(docId))
+                .collect(Collectors.toList());
     }
 }

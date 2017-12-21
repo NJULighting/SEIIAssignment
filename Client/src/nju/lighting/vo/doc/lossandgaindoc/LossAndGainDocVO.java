@@ -38,6 +38,10 @@ public class LossAndGainDocVO extends DocVO {
         return items;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
     @Override
     public DocPO toPO() {
         List<LossAndGainItemPO> itemPOList = VPOTransformer.toVPOList(items, LossAndGainDocItemVO::toPO);

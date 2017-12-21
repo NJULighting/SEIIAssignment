@@ -44,6 +44,19 @@ public class CommodityInfoImpl implements CommodityInfo {
     }
 
     @Override
+    public double getCommodityRecentSellPrice(String id) {
+        try {
+            CommodityItemPO po = dataService.findById(id);
+            if (po == null)
+                throw new NoSuchElementException("Invalid Id");
+            return po.getRecentSellPrice();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    @Override
     public List<CommodityItem> getCommodityItems(List<String> ids) {
         return null;
     }

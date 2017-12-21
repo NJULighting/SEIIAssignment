@@ -56,6 +56,10 @@ public class StockDocItemVO {
         return id;
     }
 
+    public BasicCommodityItemVO getCommodity() {
+        return commodity;
+    }
+
     StockDocItemPO toPO() {
         return new StockDocItemPO(commodity.getId(), number, totalAmount, remarks);
     }

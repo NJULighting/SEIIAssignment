@@ -10,12 +10,14 @@ import shared.CostDocItemType;
  * @author Liao
  */
 public class CostDocItem {
+    private int id;
     private CostDocItemType type;
     private double amount;
     private String comment;
 
     CostDocItem(CostDocItemVO vo) {
         this(vo.getType(), vo.getAmount(), vo.getComment());
+        id = vo.getId();
     }
 
     private CostDocItem(CostDocItemType type, double amount, String comment) {
@@ -31,7 +33,7 @@ public class CostDocItem {
         comment = po.getComment();
     }
 
-    CostDocItemPO toPO(String id) {
-        return null;
+    CostDocItemPO toPO(String docId) {
+        return new CostDocItemPO(id, type, docId, amount, comment);
     }
 }

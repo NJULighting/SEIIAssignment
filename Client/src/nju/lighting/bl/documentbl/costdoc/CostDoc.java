@@ -4,10 +4,11 @@ import nju.lighting.bl.accountbl.AccountInfo;
 import nju.lighting.bl.accountbl.MockAccountInfo;
 import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.costdoc.CostDocPO;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.doc.costdoc.CostDocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.ResultMessage;
-
-import java.util.List;
 
 /**
  * Created on 2017/11/7.
@@ -16,18 +17,32 @@ import java.util.List;
  */
 public class CostDoc extends Doc {
 
-    private List<CostDocItem> costDocItems;
-    private String chosenAccount;
+    private CostDocItemList itemList = new CostDocItemList();
+    private String accountId;
     private double totalAmount;
+
+    public CostDoc(HistoryDocVO historyDocVO) {
+        super(historyDocVO);
+        CostDocVO docVO = (CostDocVO) historyDocVO.getDocVO();
+        accountId = docVO.getAccount().getId();
+        totalAmount = docVO.getTotal();
+
+        docVO.getItemList().forEach(itemList::add);
+    }
 
     public CostDoc(DocPO po) {
         super(po);
+        CostDocPO costDocPO = (CostDocPO) po;
+        accountId = costDocPO.getAccountID();
+        totalAmount = costDocPO.getTotal();
+
+        costDocPO.getItemList().forEach(itemList::add);
     }
 
     @Override
     public void approve() {
         AccountInfo accountInfo = new MockAccountInfo();
-        accountInfo.updateAmount(chosenAccount, totalAmount);
+        accountInfo.updateAmount(accountId, totalAmount);
     }
 
     @Override
@@ -47,7 +62,8 @@ public class CostDoc extends Doc {
 
     @Override
     public DocPO toPO() {
-        return null;
+        return new CostDocPO(id, docType, userId, createTime, checkTime,
+                approvalComment, state, approvalId, accountId, itemList.toPo(id), totalAmount);
     }
 
     @Override

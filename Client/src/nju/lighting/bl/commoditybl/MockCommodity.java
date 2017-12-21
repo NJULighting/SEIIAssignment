@@ -52,6 +52,11 @@ public class MockCommodity implements CommodityInfo {
     }
 
     @Override
+    public double getCommodityRecentSellPrice(String id) {
+        return 0;
+    }
+
+    @Override
     public List<CommodityItem> getCommodityItems(List<String> ids) {
         ArrayList<CommodityItem> comItems = new ArrayList<>();
         for (String id : ids) {

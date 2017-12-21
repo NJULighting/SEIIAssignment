@@ -5,22 +5,33 @@ import nju.lighting.po.doc.DocPO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/18.
  * Description:
  * @author Liao
  */
-public abstract class ItemList<Item> {
-    protected List<Item> items;
+public class ItemList<Item> {
+    private List<Item> items;
 
-    protected ItemList() {
+    public ItemList() {
         items = new ArrayList<>();
     }
 
-    protected <T> void add(T t, Function<T, Item> function) {
+    public  <T> void add(T t, Function<T, Item> function) {
         items.add(function.apply(t));
     }
 
-    public abstract List<DocPO> toPO(String docId);
+    public  <PO> List<PO> toPO(String docId, Function<Item, PO> function) {
+        return items.stream().map(function).collect(Collectors.toList());
+    }
+
+    public <Attribute> boolean containItemWithAttribute(Attribute attribute, Function<Item, Attribute> function) {
+        for (Item i : items) {
+            if (attribute.equals(function.apply(i)))
+                return true;
+        }
+        return false;
+    }
 }

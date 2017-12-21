@@ -3,7 +3,10 @@ package nju.lighting.bl.documentbl.giftdoc;
 import nju.lighting.bl.customerbl.Customer;
 import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.giftdoc.GiftDocPO;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.doc.giftdoc.GiftDocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.DocType;
 import shared.ResultMessage;
 
@@ -16,28 +19,39 @@ import java.util.Date;
  *
  * @author 陈俊宇
  */
-public class GiftDoc extends Doc {
+class GiftDoc extends Doc {
 
-    ArrayList<GiftDocItem> items;
+    private GiftDocItemList itemList = new GiftDocItemList();
+    private int customerID;
+    private String repositoryID = "01";
+    private double total;
+    private int promotionId;
 
-    private Customer customer;
+    GiftDoc(HistoryDocVO historyDocVO) {
+        super(historyDocVO);
+        GiftDocVO docVO = (GiftDocVO) historyDocVO.getDocVO();
+        customerID = docVO.getCustomerID();
+        total = docVO.getTotal();
+        promotionId = docVO.getPromotionID();
 
-    Date time;
+        docVO.getGifts().forEach(itemList::add);
+    }
 
+    GiftDoc(DocPO po) {
+        super(po);
+        GiftDocPO giftDocPO = (GiftDocPO) po;
+        customerID = giftDocPO.getCustomerID();
+        repositoryID = giftDocPO.getRepositoryID();
+        total = giftDocPO.getTotal();
+        promotionId = giftDocPO.getPromotionId();
 
-    public GiftDoc(String  docId, DocType docType, String userId, Date time,ArrayList<GiftDocItem> items,Customer customer) {
+        giftDocPO.getGiftItemPOs().forEach(itemList::add);
+    }
+
+    @Deprecated
+    GiftDoc(String  docId, DocType docType, String userId, Date time, ArrayList<GiftDocItem> items, Customer customer) {
         super(docId, docType, userId, time);
-        this.items=items;
         this.docType=DocType.GIFT;
-        this.customer=customer;
-    }
-
-    public ArrayList<GiftDocItem> getItems() {
-        return items;
-    }
-
-    public void setItems(ArrayList<GiftDocItem> items) {
-        this.items = items;
     }
 
     @Override
@@ -62,12 +76,13 @@ public class GiftDoc extends Doc {
 
     @Override
     public DocPO toPO() {
-        return null;
+        return new GiftDocPO(id, docType, userId, createTime, checkTime, approvalComment,
+                state, approvalId, itemList.toPO(id), customerID, total, promotionId);
     }
 
     @Override
     public boolean containsCustomer(String customerId) {
-        return false;
+        return this.customerID == Integer.parseInt(customerId);
     }
 
     @Override
@@ -77,7 +92,6 @@ public class GiftDoc extends Doc {
 
     @Override
     public boolean containsRepository(String repository) {
-        return false;
+        return repositoryID.equals(repository);
     }
-
 }

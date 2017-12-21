@@ -36,6 +36,10 @@ public class LossAndGainDocItemVO {
         return type;
     }
 
+    public int getId() {
+        return id;
+    }
+
     LossAndGainItemPO toPO() {
         return new LossAndGainItemPO(commodity.getId(), count, type);
     }

@@ -31,7 +31,8 @@ import java.rmi.registry.LocateRegistry;
  * @author Liao
  */
 public class Server {
-    private static final String ADDRESS = "rmi://111.231.85.219:8888/";
+  //  private static final String ADDRESS = "rmi://111.231.85.219:8888/";
+    private static final String ADDRESS = "rmi://localhost:8888/";
     public static void main(String[] args) {
         System.out.println("Constructing server implementation");
         try {

@@ -1,0 +1,18 @@
+
+.list-cell:even{
+    -fx-background-color: white;
+}
+
+.list-cell:filled:hover{
+    -fx-background-color: #DCDCDC;
+
+}
+
+.list-cell .label{
+    -fx-pref-width: 150;
+    -fx-pref-height: 30;
+    -fx-text-alignment: left;
+
+    -fx-font-size: 16;
+    -fx-text-fill: black;
+}

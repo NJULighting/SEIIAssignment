@@ -8,6 +8,7 @@ import shared.ResultMessage;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/10/22.
@@ -56,6 +57,11 @@ public class AccountDataService_Stub extends UnicastRemoteObject implements Acco
 
     @Override
     public ResultMessage add(AccountLogPO logPO) {
+        return null;
+    }
+
+    @Override
+    public List<AccountPO> fuzzySearchById(String key) throws RemoteException {
         return null;
     }
 }

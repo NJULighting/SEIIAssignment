@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.promotionui.PriceOriented">
+<ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.promotionui.Promotion">
   <content>
       <Pane maxHeight="1.7976931348623157E308" minHeight="798.0" prefWidth="600.0" style="-fx-background-color: white;">
          <children>
-            <VBox layoutX="18.0" layoutY="14.0" maxHeight="1.7976931348623157E308" prefWidth="540.0" spacing="30.0" style="-fx-background-color: white;">
+            <VBox fx:id="container" layoutX="18.0" layoutY="14.0" maxHeight="1.7976931348623157E308" prefWidth="540.0" spacing="30.0" style="-fx-background-color: white;">
                <children>
                   <VBox alignment="CENTER">
                      <children>
@@ -57,43 +57,9 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox spacing="10.0">
-                     <children>
-                        <Label text="触发条件： ">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label text="Label">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
                </children>
             </VBox>
             <VBox fx:id="combo" layoutX="116.0" layoutY="602.0" visible="false" />
-            <HBox fx:id="giftBox" layoutX="14.0" layoutY="717.0">
-               <children>
-                  <Label text="赠品清单：">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="noneGift" text="        空" visible="false">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
             <VBox fx:id="voucherBox" layoutX="182.0" layoutY="456.0" spacing="30.0" visible="false">
                <children>
                   <HBox>

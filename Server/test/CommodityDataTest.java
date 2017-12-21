@@ -42,6 +42,14 @@ public class CommodityDataTest {
     }
 
     @Test
+    public void fuzzySearch() throws Exception {
+        List<CommodityItemPO> commodityItemPOS = commodityData.fuzzySearchByName("W");
+        for (CommodityItemPO po: commodityItemPOS) {
+            System.out.println(po);
+        }
+    }
+
+    @Test
     public void getAllCommodityCategory() throws Exception {
         List<CommodityCategoryPO> categoryPOS = commodityData.getAllCommodityCategory();
         for (CommodityCategoryPO categoryPO: categoryPOS) {

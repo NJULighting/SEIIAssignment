@@ -118,4 +118,19 @@ public class CommodityData extends UnicastRemoteObject implements CommodityDataS
             updateRecentChangeTime();
         return resultMessage;
     }
+
+    @Override
+    public List<CommodityItemPO> fuzzySearchByName(String key) throws RemoteException {
+        return commodityItemPOCommonOperation.fuzzySearch("name", key);
+    }
+
+    @Override
+    public List<CommodityItemPO> fuzzySearchById(String key) throws RemoteException {
+        return commodityItemPOCommonOperation.fuzzySearch("id", key);
+    }
+
+    @Override
+    public List<CommodityItemPO> fuzzySearchByModel(String key) throws RemoteException {
+        return commodityItemPOCommonOperation.fuzzySearch("modelNumber", key);
+    }
 }

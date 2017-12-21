@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane minHeight="680.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.SystemManager">
+   <children>
+      <HBox>
+         <children>
+            <JFXListView fx:id="categoryListView" prefHeight="680.0" prefWidth="250.0" />
+            <JFXListView fx:id="userListView" />
+            <HBox fx:id="detailContainer" prefHeight="650.0" />
+         </children>
+      </HBox>
+   </children>
+</StackPane>

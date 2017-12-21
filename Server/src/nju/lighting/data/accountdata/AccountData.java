@@ -85,4 +85,9 @@ public class AccountData extends UnicastRemoteObject implements AccountDataServi
     public ResultMessage add(AccountLogPO logPO) {
         return accountLogPOCommonOperation.add(logPO);
     }
+
+    @Override
+    public List<AccountPO> fuzzySearchById(String key) throws RemoteException {
+        return accountPOCommonOperation.fuzzySearch("id", key);
+    }
 }

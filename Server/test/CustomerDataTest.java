@@ -42,6 +42,14 @@ public class CustomerDataTest {
     }
 
     @Test
+    public void fuzzySearchById() throws Exception {
+        List<CustomerPO> customerPOS = customerData.fuzzySearchById(1);
+        for (CustomerPO customerPO: customerPOS) {
+            System.out.println(customerPO);
+        }
+    }
+
+    @Test
     public void getCustomerById() throws Exception {
         CustomerPO customerPO = customerData.getCustomerById(1);
         System.out.println(customerPO);

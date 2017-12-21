@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import nju.lighting.presentation.commodityui.CommodityCategory;
 import nju.lighting.presentation.documentui.GiftListController;
@@ -29,54 +30,42 @@ public class PriceOriented implements Initializable {
     private String validTimeStr;
 
     @FXML
-    Label title;
+    Label trigger, voucher, voucherEndTime;
 
     @FXML
-    Label creator;
+    VBox container,giftBox,voucherBox;
 
-    @FXML
-    Label validTime;
-
-    @FXML
-    Label voucher;
-
-    @FXML
-    Label voucherEndTime,noneGift;
-
-    @FXML
-    VBox combo,gift;
 
 
     public PriceOriented(){
 
-        promotion= PromotionManageController.selectedPromotion;
-        validTimeStr= DateHelper.approximateTime(promotion.getStartDate())+" - "
-                + DateHelper.approximateTime(promotion.getEndDate());
+        promotion = Promotion.promotion;
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        trigger.setText("当总价大于"+promotion.getPrice()+"时");
+        if (promotion.getVouchers()==0)
+            container.getChildren().remove(voucherBox);
+        else {
+            voucher.setText(""+promotion.getVouchers());
+            voucherEndTime.setText(validTimeStr);
+        }
 
 
-        title.setText(promotion.getName());
-        creator.setText(promotion.getCreator().getUsername());
-        validTime.setText(validTimeStr);
-        voucher.setText(""+promotion.getVouchers());
-        voucherEndTime.setText(DateHelper.approximateTime(promotion.getVouchersEndDate()));
-        System.out.println(promotion);
-        if (promotion.getGoods()!=null){
+        if (promotion.getGoods()==null)
+            container.getChildren().remove(giftBox);
+        else{
             List<GiftItemVO> giftItemListVO = promotion.getGoods();
             GiftListController.setGiftItemListVO(giftItemListVO);
             try {
-                gift.getChildren().add(FXMLLoader.load(getClass().getResource("../documentui/GiftList.fxml")));
+                giftBox.getChildren().add(FXMLLoader.load(getClass().getResource("../documentui/GiftList.fxml")));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else
-            noneGift.setVisible(true);
+        }
 
 
-        CommodityCategory.setEditable(false);
     }
 }

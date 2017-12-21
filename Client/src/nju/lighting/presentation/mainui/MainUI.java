@@ -40,6 +40,7 @@ public class MainUI {
         hashMap.put(Identity.SALE,"SalesManager.fxml");
         hashMap.put(Identity.SALE_MANAGER,"SalesManager.fxml");
         hashMap.put(Identity.FINANCE,"AccountManager.fxml");
+        hashMap.put(Identity.SYSTEM_ADMIN,"SystemManager.fxml");
     }
 
 //    public MainUI(Identity identity) throws IOException {
@@ -63,7 +64,7 @@ public class MainUI {
 //
 //    }
 
-    public BorderPane root;
+    public BorderPane root= new BorderPane();
     public Pane up;
     public VBox left;
     public Pane[] center;
@@ -73,17 +74,24 @@ public class MainUI {
         Client.setPrimaryStage(stage);
 
         FXMLLoader loader=new FXMLLoader(getClass().getResource(hashMap.get(identity)));
-        left=loader.load();
-        System.out.println("left" + left);
-        MainUIController controller=loader.getController();
+
         up=FXMLLoader.load(getClass().getResource("Title.fxml"));
-        System.out.println(controller);
-        center=new Pane[controller.MAIN_BUTTON_SIZE];
-        controller.setMainUI(this);
-        root=new BorderPane();
         root.setTop(up);
-        root.setLeft(left);
-        controller.jumpTo(0);
+
+
+
+
+        if(identity!=Identity.SYSTEM_ADMIN){
+            left=loader.load();
+
+            root.setLeft(left);
+            MainUIController controller=loader.getController();
+            center=new Pane[controller.MAIN_BUTTON_SIZE];
+            controller.setMainUI(this);
+            controller.jumpTo(0);
+        }else
+            root.setRight(loader.load());
+
         stage.setScene(new Scene(root));
         stage.getScene().getStylesheets().add(Client.class.getResource("../custom.css").toExternalForm());
 

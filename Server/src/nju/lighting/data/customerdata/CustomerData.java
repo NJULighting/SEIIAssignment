@@ -74,4 +74,14 @@ public class CustomerData extends UnicastRemoteObject implements CustomerDataSer
         customerPO.setPayable(amount);
         return updateCustomer(customerPO);
     }
+
+    @Override
+    public List<CustomerPO> fuzzySearchByName(String key) throws RemoteException {
+        return commonOperation.fuzzySearch("name", key);
+    }
+
+    @Override
+    public List<CustomerPO> fuzzySearchById(Integer id) throws RemoteException {
+        return commonOperation.fuzzySearchByInt("id", id);
+    }
 }

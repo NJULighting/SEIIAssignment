@@ -46,6 +46,8 @@ public class UserBLServie_Stub implements UserBLService {
             return new UserVO("Frog 3","0003",Identity.SALE_MANAGER,true);
         else if(id.equals("4"))
             return new UserVO("Frog 4","0004",Identity.FINANCE,false);
+        else if (id.equals("5"))
+            return new UserVO("Admin","0000",Identity.SYSTEM_ADMIN,true);
         return null;
     }
 
@@ -117,6 +119,10 @@ public class UserBLServie_Stub implements UserBLService {
                 res.r = LoginReturnState.INVALID_PASSWORD;
                 return res;
             }
+        }else if (id.equals("admin")){
+            res.t=getUser("5");
+            res.r=LoginReturnState.SUCCESS;
+            return res;
         }
         // User not existed
         res.r = LoginReturnState.INVALID_USER_NAME;

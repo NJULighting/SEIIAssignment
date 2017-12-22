@@ -3,7 +3,7 @@ package nju.lighting.bl.documentbl.alertdoc;
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.documentbl.Doc;
-import nju.lighting.bl.documentbl.DocFactory;
+import nju.lighting.bl.documentbl.DocVOFactory;
 import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.alertdoc.AlertDocPO;
@@ -19,7 +19,7 @@ import java.util.List;
  * Description:
  * @author Liao
  */
-public class AlertDocFactory implements DocFactory {
+public class AlertDocVOFactory implements DocVOFactory {
     @Override
     public Doc createDocForApproval(HistoryDocVO historyDocVO) {
         return null;

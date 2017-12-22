@@ -13,9 +13,9 @@ import shared.ResultMessage;
  * 进货单
  * @author 高梦婷
  */
-class StockDoc extends StockTypeDoc {
+public class StockDoc extends StockTypeDoc {
 
-    StockDoc(HistoryDocVO historyDocVO) {
+    public StockDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
         StockDocVO docVO = (StockDocVO) historyDocVO.getDocVO();
         setAttributes(docVO.getCustomerId(), docVO.getRepository(), docVO.getRemarks(), docVO.getTotalAmount());
@@ -23,7 +23,7 @@ class StockDoc extends StockTypeDoc {
         docVO.getItems().forEach(itemList::add);
     }
 
-    StockDoc(DocPO po) {
+    public StockDoc(DocPO po) {
         super(po);
         StockDocPO stockDocPO = (StockDocPO) po;
         setAttributes(stockDocPO.getCustomerId(), stockDocPO.getCustomerId(),

@@ -19,7 +19,7 @@ import java.util.Date;
  *
  * @author 陈俊宇
  */
-class GiftDoc extends Doc {
+public class GiftDoc extends Doc {
 
     private GiftDocItemList itemList = new GiftDocItemList();
     private int customerID;
@@ -27,7 +27,7 @@ class GiftDoc extends Doc {
     private double total;
     private int promotionId;
 
-    GiftDoc(HistoryDocVO historyDocVO) {
+    public GiftDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
         GiftDocVO docVO = (GiftDocVO) historyDocVO.getDocVO();
         customerID = docVO.getCustomerID();
@@ -37,7 +37,7 @@ class GiftDoc extends Doc {
         docVO.getGifts().forEach(itemList::add);
     }
 
-    GiftDoc(DocPO po) {
+    public GiftDoc(DocPO po) {
         super(po);
         GiftDocPO giftDocPO = (GiftDocPO) po;
         customerID = giftDocPO.getCustomerID();

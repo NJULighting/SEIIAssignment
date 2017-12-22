@@ -4,7 +4,6 @@ import nju.lighting.blservice.userblservice.UserBLService;
 import nju.lighting.vo.UserVO;
 import shared.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,8 +16,8 @@ public class UserController implements UserBLService{
     private UserManager userManager = UserManager.INSTANCE;
 
     @Override
-    public ArrayList<UserVO> getUserList() {
-        return userManager.getUserList();
+    public List<UserVO> getUserList(Identity userIdentity) {
+        return userManager.getUserList(userIdentity);
     }
 
     @Override

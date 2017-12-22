@@ -13,9 +13,9 @@ import shared.ResultMessage;
  * 销售单
  * @author 高梦婷
  */
-class SalesDoc extends SalesTypeDoc {
+public class SalesDoc extends SalesTypeDoc {
 
-    SalesDoc(HistoryDocVO historyDocVO) {
+    public SalesDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
         SalesDocVO docVO = (SalesDocVO) historyDocVO.getDocVO();
         setAttributes(docVO.getCustomerId(), docVO.getSalesman(), docVO.getRepository(), docVO.getRemarks(),
@@ -24,7 +24,7 @@ class SalesDoc extends SalesTypeDoc {
         docVO.getItems().forEach(itemList::add);
     }
 
-    SalesDoc(DocPO po) {
+    public SalesDoc(DocPO po) {
         super(po);
         SalesDocPO salesDocPO = (SalesDocPO) po;
         setAttributes(Integer.parseInt(salesDocPO.getCustomerId()), salesDocPO.getSalesMan(), salesDocPO.getRepository(),

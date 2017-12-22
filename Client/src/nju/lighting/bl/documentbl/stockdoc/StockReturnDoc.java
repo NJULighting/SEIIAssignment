@@ -14,8 +14,8 @@ import shared.ResultMessage;
  * 进货退货单
  * @author 高梦婷
  */
-class StockReturnDoc extends StockTypeDoc {
-    StockReturnDoc(HistoryDocVO historyDocVO) {
+public class StockReturnDoc extends StockTypeDoc {
+    public StockReturnDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
         StockReturnDocVO docVO = (StockReturnDocVO) historyDocVO.getDocVO();
         setAttributes(docVO.getCustomerId(), docVO.getRepository(), docVO.getRemarks(), docVO.getTotalAmount());
@@ -23,7 +23,7 @@ class StockReturnDoc extends StockTypeDoc {
         docVO.getItems().forEach(itemList::add);
     }
 
-    StockReturnDoc(DocPO po) {
+    public StockReturnDoc(DocPO po) {
         super(po);
         StockDocPO stockDocPO = (StockDocPO) po;
         setAttributes(stockDocPO.getCustomerId(), stockDocPO.getRepository(),

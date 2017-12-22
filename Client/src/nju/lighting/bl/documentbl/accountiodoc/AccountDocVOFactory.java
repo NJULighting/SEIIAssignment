@@ -1,7 +1,7 @@
 package nju.lighting.bl.documentbl.accountiodoc;
 
 import nju.lighting.bl.documentbl.Doc;
-import nju.lighting.bl.documentbl.DocFactory;
+import nju.lighting.bl.documentbl.DocVOFactory;
 import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.accountiodoc.AccountIODocPO;
@@ -17,7 +17,7 @@ import java.util.List;
  * Description:
  * @author Liao
  */
-public class AccountDocFactory implements DocFactory {
+public class AccountDocVOFactory implements DocVOFactory {
     @Override
     public Doc createDocForApproval(HistoryDocVO historyDocVO) {
         return null;

@@ -3,7 +3,7 @@ package nju.lighting.bl.documentbl.stockdoc;
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.documentbl.Doc;
-import nju.lighting.bl.documentbl.DocFactory;
+import nju.lighting.bl.documentbl.DocVOFactory;
 import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.stockdoc.StockDocItemPO;
@@ -23,7 +23,7 @@ import java.util.List;
  * Description:
  * @author Liao
  */
-public class StockDocFactory implements DocFactory {
+public class StockDocVOFactory implements DocVOFactory {
     private CommodityInfo commodityInfo = new CommodityInfoImpl();
 
     @Override

@@ -1,6 +1,5 @@
 package nju.lighting.bl.documentbl.giftdoc;
 
-import nju.lighting.bl.commoditybl.BasicCommodityItem;
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.po.doc.giftdoc.GiftItemPO;

@@ -37,13 +37,13 @@ import java.util.ResourceBundle;
 public class ApprovalUIController implements Initializable {
     ApprovalBLService approvalBLService;
     List<DocVO> docs;
-    ObservableList selectedDocList;
+    ObservableList<DocVO> selectedDocList;
     String comment;
     boolean cancel;
     Stage dialog;
 
     @FXML
-    JFXListView docList;
+    JFXListView<DocVO> docList;
 
     @FXML
     Pane detail;
@@ -73,7 +73,7 @@ public class ApprovalUIController implements Initializable {
         if (selectedDocList != null && selectedDocList.size() != 0) {
             DocVO currentDoc;
             for (int i = 0; i < selectedDocList.size(); i++) {
-                currentDoc = findDoc(((Label) selectedDocList.get(i)).getText());
+                currentDoc =selectedDocList.get(i);
                 approvalBLService.approve(new HistoryDocVO(Client.getUserVO(), "", currentDoc));
             }
         }
@@ -83,7 +83,7 @@ public class ApprovalUIController implements Initializable {
     @FXML
     void reject() throws IOException {
         dialog = new Stage();
-        DocVO currentDoc = findDoc(((Label) selectedDocList.get(0)).getText());
+        DocVO currentDoc =  selectedDocList.get(0);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("comments.fxml"));
         dialog.setScene(new Scene(loader.load()));
@@ -152,13 +152,7 @@ public class ApprovalUIController implements Initializable {
 
     }
 
-    DocVO findDoc(String Id) {
-        for (int i = 0; i < docs.size(); i++) {
-            if (Id.equals(docs.get(i).getDocId()))
-                return docs.get(i);
-        }
-        return null;
-    }
+
 
     public void setCancel(boolean cancel) {
         this.cancel = cancel;
@@ -177,12 +171,12 @@ public class ApprovalUIController implements Initializable {
             docList.getItems().add(docs.get(i));
         }
 
-        docList.setCellFactory(new Callback<ListView, JFXListCell>() {
+        docList.setCellFactory(new Callback<ListView<DocVO>, ListCell<DocVO>>() {
             @Override
-            public JFXListCell call(ListView param) {
-                return new JFXListCell(){
+            public ListCell<DocVO> call(ListView<DocVO> param) {
+                return new JFXListCell<DocVO>(){
                     @Override
-                    protected void updateItem(Object item, boolean empty) {
+                    protected void updateItem(DocVO item, boolean empty) {
                         super.updateItem(item, empty);
                         if (empty){
                             setText(null);

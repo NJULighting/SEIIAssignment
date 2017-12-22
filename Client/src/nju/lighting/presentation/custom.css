@@ -338,18 +338,23 @@ root {
 
 
 
-.jfx-list-cell-container > .label {
+/*.jfx-list-cell-container .label {*/
 
-    -fx-text-fill: BLACK;
+    /*-fx-text-fill: green;*/
 
-}
+/*}*/
 
 
 
-.jfx-list-cell:selected > .jfx-rippler > StackPane, .jfx-list-cell:even:selected > .jfx-rippler > StackPane {
+/*.jfx-list-cell:selected > .jfx-rippler > StackPane, .jfx-list-cell:even:selected > .jfx-rippler > StackPane {*/
 
-    -fx-background-color: #DCDCDC;
+    /*-fx-background-color:#DCDCDC;*/
+    /*-fx-text-fill:green;*/
 
+/*}*/
+.jfx-list-cell:selected{
+    -fx-background-color:#DCDCDC;
+    -fx-text-fill:green;
 }
 .jfx-list-cell:filled:hover{
     -fx-background-color: #DCDCDC;
@@ -370,14 +375,14 @@ root {
 
 .jfx-list-cell:odd {
 
-    -fx-background-color: transparent;
+    -fx-background-color: #F5F5F5;
 
 }
 
 
 
 .jfx-list-cell:even{
-    -fx-background-color: transparent;
+    -fx-background-color: #F5F5F5;
 }
 
 
@@ -390,8 +395,6 @@ root {
 
     -jfx-rippler-fill: white;
 
-    -fx-text-color: black;
-
 }
 
 
@@ -399,8 +402,6 @@ root {
 .jfx-list-view {
 
     -fx-background-insets: 0;
-
-    -fx-border-width: 0px;
 
     /*-jfx-cell-horizontal-margin: 0.0;*/
 
@@ -454,7 +455,7 @@ root {
 
 .jfx-tool-bar Label {
 
-    -fx-text-fill: black;
+    -fx-text-fill: WHITE;
 
 }
 
@@ -506,9 +507,10 @@ root {
 
 .jfx-list-cell-container .label {
 
-    -fx-text-fill: BLACK;
+    -fx-text-fill: green;
 
 }
+
 
 
 

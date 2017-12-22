@@ -1,21 +1,21 @@
 package nju.lighting.presentation.approvalui;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Callback;
 import nju.lighting.bl.approvalbl.ApprovalBLService_Stub;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import nju.lighting.presentation.documentui.Doc;
@@ -135,12 +135,12 @@ public class ApprovalUIController implements Initializable {
 
     //显示所选的单据
     void showSelectedDoc() {
-        Label clicked = (Label) docList.getSelectionModel().getSelectedItems().get(0);
+        DocVO clicked = (DocVO) docList.getSelectionModel().getSelectedItems().get(0);
 
         if (detail.getChildren().size() > 0)
             detail.getChildren().remove(detail.getChildren().size() - 1);
 
-        Doc.doc = findDoc(clicked.getText());
+        Doc.doc = clicked;
 
         try {
             FXMLLoader  loader = Doc.getLoader();
@@ -173,9 +173,28 @@ public class ApprovalUIController implements Initializable {
         approvalBLService = new ApprovalBLService_Stub();
         docs = approvalBLService.getDocumentList();
         for (int i = 0; i < docs.size(); i++) {
-            Label item = new Label("" + docs.get(i).getDocId());
-            docList.getItems().add(item);
+
+            docList.getItems().add(docs.get(i));
         }
+
+        docList.setCellFactory(new Callback<ListView, JFXListCell>() {
+            @Override
+            public JFXListCell call(ListView param) {
+                return new JFXListCell(){
+                    @Override
+                    protected void updateItem(Object item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty){
+                            setText(null);
+                            setGraphic(null);
+                        }else {
+                            setText(((DocVO)item).getDocId());
+                        }
+                    }
+                };
+            }
+        });
+
         docList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 

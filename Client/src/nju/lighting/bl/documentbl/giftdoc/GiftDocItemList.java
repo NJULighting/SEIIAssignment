@@ -26,4 +26,8 @@ public class GiftDocItemList {
     List<GiftItemPO> toPO(String docId) {
         return itemList.toPO(docId, item -> item.toPO(docId));
     }
+
+    List<GiftItemVO> toVO() {
+        return itemList.toVO(GiftDocItem::toVO);
+    }
 }

@@ -95,11 +95,13 @@ public enum DocManager {
         try {
             UserInfo userInfo = new UserInfoImpl();
             List<DocPO> poList = dataService.findByUserId(userInfo.getIDOfSignedUser());
+            DocFactory docFactory = new DocFactory();
+            List<Doc> docList = poList.stream().map(docFactory::poToDoc).collect(Collectors.toList());
 
             // Filter them and transform them to HistoryDocVO list
-            return poList.stream()
+            return docList.stream()
                     .filter(filter.getPredicate())
-                    .map(po -> factoryMap.get(po.getDocType()).get().poToHistoryDocVO(po, userInfo))
+                    .map(Doc::toHistoryDocVO)
                     .collect(Collectors.toList());
         } catch (RemoteException e) {
             e.printStackTrace();

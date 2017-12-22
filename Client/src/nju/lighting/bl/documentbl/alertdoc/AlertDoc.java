@@ -62,7 +62,7 @@ public class AlertDoc extends Doc {
 
     @Override
     public DocVO toVO() {
-        return null;
+        return new AlertDocVO(createTime, userId, id, docType, itemList.toVO(), comment, triggered, expired);
     }
 
     @Override

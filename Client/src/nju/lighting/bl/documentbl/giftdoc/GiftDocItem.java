@@ -59,4 +59,9 @@ public class GiftDocItem {
     GiftItemPO toPO(String docId) {
         return new GiftItemPO(id, commodityId, count, subtotal, docId);
     }
+
+    GiftItemVO toVO() {
+        CommodityInfo commodityInfo = new CommodityInfoImpl();
+        return new GiftItemVO(id, commodityInfo.getBasicCommodityItemVO(commodityId), count);
+    }
 }

@@ -1,6 +1,7 @@
 package nju.lighting.bl.documentbl.costdoc;
 
 import nju.lighting.bl.accountbl.AccountInfo;
+import nju.lighting.bl.accountbl.AccountInfoImpl;
 import nju.lighting.bl.accountbl.MockAccountInfo;
 import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
@@ -57,7 +58,8 @@ public class CostDoc extends Doc {
 
     @Override
     public DocVO toVO() {
-        return null;
+        AccountInfo accountInfo = new AccountInfoImpl();
+        return new CostDocVO(createTime, userId, id, accountInfo.getAccountByID(accountId), itemList.toVO());
     }
 
     @Override

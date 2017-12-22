@@ -71,7 +71,7 @@ public class GiftDoc extends Doc {
 
     @Override
     public DocVO toVO() {
-        return null;
+        return new GiftDocVO(createTime, userId, id, itemList.toVO(), customerID, promotionId);
     }
 
     @Override

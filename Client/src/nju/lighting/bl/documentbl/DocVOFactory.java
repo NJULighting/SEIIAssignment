@@ -18,7 +18,6 @@ import java.util.function.Function;
  * @author Liao
  */
 public interface DocVOFactory {
-    Doc createDocForApproval(HistoryDocVO historyDocVO);
 
     DocVO poToDocVO(DocPO po);
 

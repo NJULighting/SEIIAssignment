@@ -51,7 +51,8 @@ public class StockDoc extends StockTypeDoc {
 
     @Override
     public DocVO toVO() {
-        return null;
+        return new StockDocVO(createTime, userId, id, customerId, repository,
+                remarks, totalAmount, itemList.toVO());
     }
 
     @Override

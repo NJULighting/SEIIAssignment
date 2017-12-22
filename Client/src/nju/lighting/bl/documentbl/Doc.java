@@ -1,5 +1,7 @@
 package nju.lighting.bl.documentbl;
 
+import nju.lighting.bl.userbl.UserInfo;
+import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
@@ -91,6 +93,12 @@ public abstract class Doc {
 
     abstract public boolean containsRepository(String repository);
 
+    public HistoryDocVO toHistoryDocVO() {
+        UserInfo userInfo = new UserInfoImpl();
+        return new HistoryDocVO(userInfo.getUserVOByID(userId), toVO(), approvalComment, state,
+                checkTime, userInfo.getUserVOByID(approvalId));
+    }
+
     public String getId() {
         return id;
     }
@@ -105,5 +113,9 @@ public abstract class Doc {
 
     public Date getCreateTime() {
         return createTime;
+    }
+
+    public DocState getState() {
+        return state;
     }
 }

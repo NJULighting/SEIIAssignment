@@ -91,4 +91,10 @@ public class StockDocItem {
     StockDocItemPO toPO(String docId) {
         return new StockDocItemPO(id, docId, commodityID, number, totalAmount, remarks);
     }
+
+    StockDocItemVO toVO() {
+        CommodityInfo commodityInfo = new CommodityInfoImpl();
+        return new StockDocItemVO(id, commodityInfo.getBasicCommodityItemVO(commodityID),
+                number, totalAmount, remarks);
+    }
 }

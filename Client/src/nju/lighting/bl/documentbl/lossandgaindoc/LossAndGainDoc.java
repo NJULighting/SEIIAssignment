@@ -52,7 +52,7 @@ public class LossAndGainDoc extends Doc {
 
     @Override
     public DocVO toVO() {
-        return null;
+        return new LossAndGainDocVO(createTime, userId, id, docType, itemList.toVO(), comment);
     }
 
     @Override

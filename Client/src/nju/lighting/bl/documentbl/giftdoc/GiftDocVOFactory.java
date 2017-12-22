@@ -2,7 +2,6 @@ package nju.lighting.bl.documentbl.giftdoc;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
-import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.bl.documentbl.DocVOFactory;
 import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
@@ -10,7 +9,6 @@ import nju.lighting.po.doc.giftdoc.GiftDocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
-import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 
 import java.util.List;
 
@@ -20,11 +18,6 @@ import java.util.List;
  * @author Liao
  */
 public class GiftDocVOFactory implements DocVOFactory {
-
-    @Override
-    public Doc createDocForApproval(HistoryDocVO historyDocVO) {
-        return null;
-    }
 
     @Override
     public DocVO poToDocVO(DocPO po) {

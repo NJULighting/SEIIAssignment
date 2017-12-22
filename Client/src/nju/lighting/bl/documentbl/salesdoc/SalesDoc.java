@@ -53,7 +53,8 @@ public class SalesDoc extends SalesTypeDoc {
     }
 
     public DocVO toVO() {
-        return null;
+        return new SalesDocVO(createTime, userId, id, docType, customerId, salesman,
+                repository, remarks, beforeDiscountAmount, discount, voucher, finalAmount, itemList.toVO());
     }
 
     public DocPO toPO() {

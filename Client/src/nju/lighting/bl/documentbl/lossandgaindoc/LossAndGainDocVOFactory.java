@@ -2,13 +2,11 @@ package nju.lighting.bl.documentbl.lossandgaindoc;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
-import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.bl.documentbl.DocVOFactory;
 import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.lossandgaindoc.LossAndGainDocPO;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocItemVO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocVO;
 
@@ -20,10 +18,6 @@ import java.util.List;
  * @author Liao
  */
 public class LossAndGainDocVOFactory implements DocVOFactory {
-    @Override
-    public Doc createDocForApproval(HistoryDocVO historyDocVO) {
-        return null;
-    }
 
     @Override
     public DocVO poToDocVO(DocPO po) {

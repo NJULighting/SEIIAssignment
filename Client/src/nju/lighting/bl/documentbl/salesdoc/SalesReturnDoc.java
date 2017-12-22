@@ -49,7 +49,8 @@ public class SalesReturnDoc extends SalesTypeDoc {
 
     @Override
     public DocVO toVO() {
-        return null;
+        return new SalesReturnDocVO(createTime, userId, id, customerId, salesman, repository,
+                remarks, beforeDiscountAmount, discount, voucher, finalAmount, itemList.toVO());
     }
 
     @Override

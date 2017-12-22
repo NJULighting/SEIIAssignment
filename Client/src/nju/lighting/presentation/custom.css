@@ -338,18 +338,23 @@ root {
 
 
 
-.jfx-list-cell-container > .label {
+/*.jfx-list-cell-container .label {*/
 
-    -fx-text-fill: BLACK;
+    /*-fx-text-fill: green;*/
 
-}
+/*}*/
 
 
 
-.jfx-list-cell:selected > .jfx-rippler > StackPane, .jfx-list-cell:even:selected > .jfx-rippler > StackPane {
+/*.jfx-list-cell:selected > .jfx-rippler > StackPane, .jfx-list-cell:even:selected > .jfx-rippler > StackPane {*/
 
+    /*-fx-background-color:#DCDCDC;*/
+    /*-fx-text-fill:green;*/
+
+/*}*/
+.jfx-list-cell:selected{
     -fx-background-color:#DCDCDC;
-
+    -fx-text-fill:green;
 }
 .jfx-list-cell:filled:hover{
     -fx-background-color: #DCDCDC;
@@ -502,9 +507,10 @@ root {
 
 .jfx-list-cell-container .label {
 
-    -fx-text-fill: BLACK;
+    -fx-text-fill: green;
 
 }
+
 
 
 

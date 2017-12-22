@@ -7,13 +7,9 @@ package shared;
  */
 public class BusinessConditionFilter {
     private long startDate;
-
     private long endDate;
-
     private String commodity;
-
     private String customer;
-
     private String user;
 
 

@@ -6,7 +6,6 @@ import nju.lighting.bl.documentbl.costdoc.CostDocFactory;
 import nju.lighting.bl.documentbl.giftdoc.GiftDocFactory;
 import nju.lighting.bl.documentbl.lossandgaindoc.LossAndGainDocFactory;
 import nju.lighting.bl.documentbl.salesdoc.SalesDocFactory;
-import nju.lighting.bl.documentbl.salesdoc.SalesReturnDoc;
 import nju.lighting.bl.documentbl.salesdoc.SalesReturnDocFactory;
 import nju.lighting.bl.documentbl.stockdoc.StockDocFactory;
 import nju.lighting.bl.logbl.Logger;
@@ -18,14 +17,12 @@ import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
+import nju.lighting.vo.viewtables.BusinessConditionItemVO;
 import shared.*;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -108,5 +105,17 @@ public enum DocManager {
             e.printStackTrace();
             return Collections.emptyList();
         }
+    }
+
+    List<BusinessConditionItemVO> findSaleRecords(BusinessConditionFilter filter) {
+        try {
+            Set<DocPO> docPOS = new HashSet<>();
+
+            List<DocPO> salesPOList = dataService.findByType(DocType.SALES);
+
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

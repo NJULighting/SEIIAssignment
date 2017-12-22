@@ -1,10 +1,11 @@
 package shared;
 
-import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -17,39 +18,67 @@ public class DocumentFilter {
     private final Predicate<DocPO> stateFilter;
 
     public Predicate<DocPO> getPredicate() {
-        return typeFilter.and(dateFilter).and(creatorFilter).and(idFilter);
+        return typeFilter.and(dateFilter).and(creatorFilter).and(idFilter).and(stateFilter);
     }
 
     private DocumentFilter(Builder builder) {
-        typeFilter = generatePredicate(builder.docType, DocPO::getDocType);
         creatorFilter = generatePredicate(builder.creatorId, DocPO::getUserId);
         idFilter = generatePredicate(builder.docId, DocPO::getId);
         stateFilter = generatePredicate(builder.state, DocPO::getState);
 
+        // Generate type filter
+        if (builder.docTypes.size() == 0) {
+            typeFilter = generatePredicate(null, DocPO::getDocType);
+        } else {
+            Predicate<DocPO> typeFilter = po -> false;
+            for (DocType type : builder.docTypes) {
+                typeFilter = typeFilter.or(po -> po.getDocType() == type);
+            }
+            this.typeFilter = typeFilter;
+        }
+
         // Generate filter for date
-        Predicate<DocPO> endDateFilter = po -> Optional.of(builder.endDate)
+        Predicate<DocPO> endDateFilter = po -> Optional.ofNullable(builder.endDate)
                 .map(date -> date.compareTo(po.getCreateTime()) >= 0)
                 .orElse(true);
-        dateFilter = endDateFilter.and(po -> Optional.of(builder.startDate)
+        dateFilter = endDateFilter.and(po -> Optional.ofNullable(builder.startDate)
                 .map(date -> date.compareTo(po.getCreateTime()) <= 0)
                 .orElse(true));
 
     }
 
     private <T> Predicate<DocPO> generatePredicate(T t, Function<DocPO, T> function) {
-        return po -> Optional.of(t).map(target -> function.apply(po).equals(t)).orElse(true);
+        return po -> Optional.ofNullable(t).map(target -> function.apply(po).equals(t)).orElse(true);
     }
 
     public static class Builder {
-        private DocType docType;
+        private final Set<DocType> docTypes = new HashSet<>();
         private Date startDate;
         private Date endDate;
         private String creatorId;
         private String docId;
         private DocState state;
+        private String customerId;
+        private String salesmanId;
+        private String repository;
+
+        public Builder customer(String customerId) {
+            this.customerId = customerId;
+            return this;
+        }
+
+        public Builder salesman(String salesmanId) {
+            this.salesmanId = salesmanId;
+            return this;
+        }
+
+        public Builder repository(String repository) {
+            this.repository = repository;
+            return this;
+        }
 
         public Builder docType(DocType docType) {
-            this.docType = docType;
+            docTypes.add(docType);
             return this;
         }
 

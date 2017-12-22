@@ -12,7 +12,7 @@ import nju.lighting.vo.commodity.BasicCommodityItemVO;
  * @author 陈俊宇
  */
 public class GiftItemVO {
-
+    private int id;
     private BasicCommodityItemVO commodity;
     private int count;
     private double subtotal;
@@ -21,6 +21,16 @@ public class GiftItemVO {
      * Constructor for promotion
      */
     public GiftItemVO(BasicCommodityItemVO commodity, int count) {
+        this.commodity = commodity;
+        this.count = count;
+        this.subtotal = commodity.getRecentSellPrice() * count;
+    }
+
+    /**
+     * Constructor for bl
+     */
+    public GiftItemVO(int id, BasicCommodityItemVO commodity, int count) {
+        this.id = id;
         this.commodity = commodity;
         this.count = count;
         this.subtotal = commodity.getRecentSellPrice() * count;
@@ -44,6 +54,10 @@ public class GiftItemVO {
 
     public double getPrice() {
         return commodity.getRecentSellPrice();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public ObservableValue<String> commodityNameProperty() {

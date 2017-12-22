@@ -19,7 +19,7 @@ import java.util.List;
 @Table(name = "ACCOUNT_OUT_DOC")
 public class AccountOutDocPO extends DocPO implements Serializable {
 
-    private static final long serialVersionUID = -5635472117924146487L;
+    private static final long serialVersionUID = -56354721179246487L;
 
     private String customerID;
 

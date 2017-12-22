@@ -77,6 +77,10 @@ public class StockDocVO extends DocVO {
         this.totalAmount = totalAmount;
     }
 
+    public List<StockDocItemVO> getItems() {
+        return items;
+    }
+
     @Override
     public DocPO toPO() {
         List<StockDocItemPO> itemPOList = VPOTransformer.toVPOList(items, StockDocItemVO::toPO);

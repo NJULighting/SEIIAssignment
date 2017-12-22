@@ -4,15 +4,11 @@ import nju.lighting.bl.accountbl.AccountInfo;
 import nju.lighting.bl.accountbl.MockAccountInfo;
 import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
-import nju.lighting.vo.account.AccountVO;
-import nju.lighting.vo.doc.costdoc.CostDocItemVO;
-import nju.lighting.vo.doc.costdoc.CostDocVO;
+import nju.lighting.po.doc.costdoc.CostDocPO;
 import nju.lighting.vo.DocVO;
-import shared.DocType;
+import nju.lighting.vo.doc.costdoc.CostDocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.ResultMessage;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created on 2017/11/7.
@@ -21,36 +17,32 @@ import java.util.Date;
  */
 public class CostDoc extends Doc {
 
-    private ArrayList<CostDocItem> costDocItems;
-    private String chosenAccount;
+    private CostDocItemList itemList = new CostDocItemList();
+    private String accountId;
     private double totalAmount;
 
-    public CostDoc(String id, String userId, Date time,ArrayList<CostDocItem> costDocItems) {
-        super(id, DocType.COST, userId, time);
-        this.costDocItems = costDocItems;
+    public CostDoc(HistoryDocVO historyDocVO) {
+        super(historyDocVO);
+        CostDocVO docVO = (CostDocVO) historyDocVO.getDocVO();
+        accountId = docVO.getAccount().getId();
+        totalAmount = docVO.getTotal();
+
+        docVO.getItemList().forEach(itemList::add);
     }
 
-    public CostDoc(CostDocVO vo) {
-        super(vo.getDocId(), DocType.COST, vo.getCreatorId(), vo.getTime());
-        // Create cost items list
-        costDocItems = new ArrayList<>();
-        for (CostDocItemVO item : vo.getItemList()) {
-            costDocItems.add(new CostDocItem(item));
-        }
-        // Create chosen account
-        AccountVO chosenAccountVO = vo.getAccount();
-        chosenAccount = chosenAccountVO.getName();
-        // Total amount
-        totalAmount = vo.getTotal();
+    public CostDoc(DocPO po) {
+        super(po);
+        CostDocPO costDocPO = (CostDocPO) po;
+        accountId = costDocPO.getAccountID();
+        totalAmount = costDocPO.getTotal();
+
+        costDocPO.getItemList().forEach(itemList::add);
     }
 
-    /**
-     * 修改响应账户金额
-     */
     @Override
     public void approve() {
         AccountInfo accountInfo = new MockAccountInfo();
-        accountInfo.updateAmount(chosenAccount, totalAmount);
+        accountInfo.updateAmount(accountId, totalAmount);
     }
 
     @Override
@@ -70,11 +62,23 @@ public class CostDoc extends Doc {
 
     @Override
     public DocPO toPO() {
-        return null;
+        return new CostDocPO(id, docType, userId, createTime, checkTime,
+                approvalComment, state, approvalId, accountId, itemList.toPo(id), totalAmount);
     }
 
     @Override
-    protected void assignWithPO(DocPO po) {
-
+    public boolean containsCustomer(String customerId) {
+        return false;
     }
+
+    @Override
+    public boolean containsCommodity(String commodityName) {
+        return false;
+    }
+
+    @Override
+    public boolean containsRepository(String repository) {
+        return false;
+    }
+
 }

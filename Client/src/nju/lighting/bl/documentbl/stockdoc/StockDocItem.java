@@ -1,5 +1,10 @@
 package nju.lighting.bl.documentbl.stockdoc;
 
+import nju.lighting.bl.commoditybl.CommodityInfo;
+import nju.lighting.bl.commoditybl.CommodityInfoImpl;
+import nju.lighting.po.doc.stockdoc.StockDocItemPO;
+import nju.lighting.vo.doc.stockdoc.StockDocItemVO;
+
 /**
  * Description:
  * 进货类单据里的商品条目
@@ -7,31 +12,33 @@ package nju.lighting.bl.documentbl.stockdoc;
 public class StockDocItem {
 
     private int id;
-    private String stockDocID;
     private String commodityID;
-    private String commodityName;
-    private String commodityType;
-    private int number = 0;
-    private double salePrice = 0;
-    private double totalAmount = 0;
+    private int number;
+    private double salePrice;
+    private double totalAmount;
     private String remarks = "";
 
-    public StockDocItem() {
+    StockDocItem(StockDocItemPO po) {
+        id = po.getId();
+        commodityID = po.getCommodityID();
+        number = po.getNumber();
+        remarks = po.getRemarks();
+
+        updatePriceAndTotal();
     }
 
-    public StockDocItem(int id, String stockDocID, String commodityID, String commodityName, String commodityType,
-                        int number, double salePrice, String remarks) {
-        this.id = id;
-        this.stockDocID = stockDocID;
-        this.commodityID = commodityID;
-        this.commodityName = commodityName;
-        this.commodityType = commodityType;
-        this.number = number;
-        this.salePrice = salePrice;
-        this.remarks = remarks;
+    StockDocItem(StockDocItemVO vo) {
+        id = vo.getId();
+        commodityID = vo.getCommodity().getId();
+        number = vo.getNumber();
+        remarks = vo.getRemarks();
+
+        updatePriceAndTotal();
     }
 
-    private void updateTotalAmount() {
+    private void updatePriceAndTotal() {
+        CommodityInfo commodityInfo = new CommodityInfoImpl();
+        salePrice = commodityInfo.getCommodityRecentSellPrice(commodityID);
         totalAmount = number * salePrice;
     }
 
@@ -43,14 +50,6 @@ public class StockDocItem {
         this.id = id;
     }
 
-    public String getStockDocID() {
-        return stockDocID;
-    }
-
-    public void setStockDocID(String salesDocID) {
-        this.stockDocID = stockDocID;
-    }
-
     public String getCommodityID() {
         return commodityID;
     }
@@ -59,29 +58,13 @@ public class StockDocItem {
         this.commodityID = commodityID;
     }
 
-    public String getCommodityName() {
-        return commodityName;
-    }
-
-    public void setCommodityName(String commodityName) {
-        this.commodityName = commodityName;
-    }
-
-    public String getCommodityType() {
-        return commodityType;
-    }
-
-    public void setCommodityType(String commodityType) {
-        this.commodityType = commodityType;
-    }
-
     public int getNumber() {
         return number;
     }
 
     public void setNumber(int number) {
         this.number = number;
-        updateTotalAmount();
+        updatePriceAndTotal();
     }
 
     public double getSalePrice() {
@@ -90,7 +73,7 @@ public class StockDocItem {
 
     public void setSalePrice(double salePrice) {
         this.salePrice = salePrice;
-        updateTotalAmount();
+        updatePriceAndTotal();
     }
 
     public double getTotalAmount() {
@@ -105,4 +88,7 @@ public class StockDocItem {
         this.remarks = remarks;
     }
 
+    StockDocItemPO toPO(String docId) {
+        return new StockDocItemPO(id, docId, commodityID, number, totalAmount, remarks);
+    }
 }

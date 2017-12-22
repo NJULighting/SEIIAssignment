@@ -86,4 +86,5 @@ public abstract class DocPO implements Serializable {
     public String getApprovalId() {
         return approvalId;
     }
+
 }

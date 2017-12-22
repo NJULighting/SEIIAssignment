@@ -4,7 +4,6 @@ import nju.lighting.po.doc.DocPO;
 import shared.DocState;
 import shared.DocType;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -56,6 +55,7 @@ public class AlertDocPO extends DocPO {
     public List<AlertDocItemPO> getItemPOS() {
         return itemPOS;
     }
+
 }
 
 

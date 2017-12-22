@@ -2,26 +2,37 @@ package nju.lighting.bl.documentbl.lossandgaindoc;
 
 import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.lossandgaindoc.LossAndGainDocPO;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocVO;
-import shared.DocType;
 import shared.ResultMessage;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created on 2017/11/7.
  * Description: 处理库存报损报溢相关业务
  * @author iznauy
  */
-public class LossAndGainDoc extends Doc {
+class LossAndGainDoc extends Doc {
 
-    private ArrayList<LossAndGainDocItem> items;
+    private String comment;
+    private LossAndGainDocItemList itemList = new LossAndGainDocItemList();
 
-    public LossAndGainDoc(String id, DocType docType, String userId, Date time, ArrayList<LossAndGainDocItem> items) {
-        super(id, docType, userId, time);
-        this.items = items;
+    LossAndGainDoc(HistoryDocVO historyDocVO) {
+        super(historyDocVO);
+        LossAndGainDocVO docVO = (LossAndGainDocVO) historyDocVO.getDocVO();
+        comment = docVO.getComment();
+
+        docVO.getItems().forEach(itemList::add);
+    }
+
+    LossAndGainDoc(DocPO po) {
+        super(po);
+        comment = ((LossAndGainDocPO) po).getComment();
+
+        ((LossAndGainDocPO) po).getItemPOS().forEach(itemList::add);
     }
 
     @Override
@@ -46,11 +57,23 @@ public class LossAndGainDoc extends Doc {
 
     @Override
     public DocPO toPO() {
-        return null;
+        return new LossAndGainDocPO(id, docType, userId, createTime, checkTime,
+                approvalComment, state, approvalId, comment, itemList.toPO(id));
     }
 
     @Override
-    protected void assignWithPO(DocPO po) {
-
+    public boolean containsCustomer(String customerId) {
+        return false;
     }
+
+    @Override
+    public boolean containsCommodity(String commodityName) {
+        return itemList.containCommodity(commodityName);
+    }
+
+    @Override
+    public boolean containsRepository(String repository) {
+        return false;
+    }
+
 }

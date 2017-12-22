@@ -1,20 +1,30 @@
 package nju.lighting.bl.documentbl.lossandgaindoc;
 
-import nju.lighting.bl.commoditybl.BasicCommodityItem;
+import nju.lighting.bl.commoditybl.CommodityInfo;
+import nju.lighting.bl.commoditybl.CommodityInfoImpl;
+import nju.lighting.po.doc.lossandgaindoc.LossAndGainItemPO;
+import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocItemVO;
 import shared.LossAndGainItemType;
 
-public class LossAndGainDocItem {
+class LossAndGainDocItem {
 
     private int count;
-
+    private int id;
     private LossAndGainItemType type;
+    private String commodityId;
 
-    private BasicCommodityItem commodityItem;
+    LossAndGainDocItem(LossAndGainDocItemVO vo) {
+        id = vo.getId();
+        count = vo.getCount();
+        type = vo.getType();
+        commodityId = vo.getCommodity().getId();
+    }
 
-    public LossAndGainDocItem(int count, LossAndGainItemType type, BasicCommodityItem commodityItem) {
-        this.count = count;
-        this.type = type;
-        this.commodityItem = commodityItem;
+    LossAndGainDocItem(LossAndGainItemPO po) {
+        id = po.getId();
+        count = po.getCount();
+        type = po.getType();
+        commodityId = po.getCommodityId();
     }
 
     public int getCount() {
@@ -33,11 +43,24 @@ public class LossAndGainDocItem {
         this.type = type;
     }
 
-    public BasicCommodityItem getCommodityItem() {
-        return commodityItem;
+    public String getCommodityId() {
+        return commodityId;
     }
 
-    public void setCommodityItem(BasicCommodityItem commodityItem) {
-        this.commodityItem = commodityItem;
+    public void setCommodityId(String commodityId) {
+        this.commodityId = commodityId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    String getCommodityName() {
+        CommodityInfo info = new CommodityInfoImpl();
+        return info.getCommodityNameByID(commodityId);
+    }
+
+    LossAndGainItemPO toPO(String docId) {
+        return new LossAndGainItemPO(id, docId, commodityId, count, type);
     }
 }

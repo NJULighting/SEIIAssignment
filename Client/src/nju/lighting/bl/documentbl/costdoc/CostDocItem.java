@@ -1,5 +1,6 @@
 package nju.lighting.bl.documentbl.costdoc;
 
+import nju.lighting.po.doc.costdoc.CostDocItemPO;
 import nju.lighting.vo.doc.costdoc.CostDocItemVO;
 import shared.CostDocItemType;
 
@@ -9,18 +10,30 @@ import shared.CostDocItemType;
  * @author Liao
  */
 public class CostDocItem {
+    private int id;
     private CostDocItemType type;
     private double amount;
     private String comment;
 
-    public CostDocItem(CostDocItemVO vo) {
+    CostDocItem(CostDocItemVO vo) {
         this(vo.getType(), vo.getAmount(), vo.getComment());
+        id = vo.getId();
     }
 
-    public CostDocItem(CostDocItemType type, double amount, String comment) {
+    private CostDocItem(CostDocItemType type, double amount, String comment) {
 
         this.type = type;
         this.amount = amount;
         this.comment = comment;
+    }
+
+    CostDocItem(CostDocItemPO po) {
+        type = po.getType();
+        amount = po.getAmount();
+        comment = po.getComment();
+    }
+
+    CostDocItemPO toPO(String docId) {
+        return new CostDocItemPO(id, type, docId, amount, comment);
     }
 }

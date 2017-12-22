@@ -83,7 +83,7 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         gifts2.add(giftItemVO3);
         gifts2.add(giftItemVO3);
 
-        AccountTransferItemVO accountTransferItemVO1=new AccountTransferItemVO(100,"h","sadasdasd");
+        AccountTransferItemVO accountTransferItemVO1=new AccountTransferItemVO(100,"h","sadasdasd", 1);
 
         List<AccountTransferItemVO> accountTransferItemVOList=new ArrayList<>();
 

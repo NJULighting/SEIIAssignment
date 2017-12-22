@@ -2,6 +2,7 @@ package nju.lighting.bl.documentbl;
 
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.DocState;
 import shared.DocType;
 import shared.ResultMessage;
@@ -24,6 +25,7 @@ public abstract class Doc {
     protected DocState state;
     protected String approvalId;
 
+    @Deprecated
     protected Doc(String id, DocType docType, String userId, Date createTime) {
         this.id = id;
         this.docType = docType;
@@ -31,12 +33,30 @@ public abstract class Doc {
         this.createTime = createTime;
     }
 
+    /**
+     * Constructor for approval module
+     */
+    protected Doc(HistoryDocVO historyDocVO) {
+        DocVO docVO = historyDocVO.getDocVO();
+        id = docVO.getDocId();
+        docType = docVO.getType();
+        userId = docVO.getCreatorId();
+        createTime = docVO.getTime();
+        state = historyDocVO.getState();
+    }
+
+    /**
+     * Constructor for po
+     */
     protected Doc(DocPO po) {
         id = po.getId();
         docType = po.getDocType();
         userId = po.getUserId();
         createTime = po.getCreateTime();
-        assignWithPO(po);
+        checkTime = po.getCheckTime();
+        approvalComment = po.getApprovalComment();
+        state = po.getState();
+        approvalId = po.getApprovalId();
     }
 
     /**
@@ -65,5 +85,25 @@ public abstract class Doc {
      */
     abstract public DocPO toPO();
 
-    abstract protected void assignWithPO(DocPO po);
+    abstract public boolean containsCustomer(String customerId);
+
+    abstract public boolean containsCommodity(String commodityName);
+
+    abstract public boolean containsRepository(String repository);
+
+    public String getId() {
+        return id;
+    }
+
+    public DocType getDocType() {
+        return docType;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
 }

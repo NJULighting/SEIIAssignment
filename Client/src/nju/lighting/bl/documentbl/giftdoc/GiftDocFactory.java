@@ -33,7 +33,7 @@ public class GiftDocFactory implements DocFactory{
 
         // Item list
         List<GiftItemVO> itemVOList = VPOTransformer.toVPOList(giftDocPO.getGiftItemPOs(),
-                giftItemPO -> new GiftItemVO(commodityInfo.getBasicCommodityItemVO(giftItemPO.getCommodityID()),
+                giftItemPO -> new GiftItemVO(giftItemPO.getId(), commodityInfo.getBasicCommodityItemVO(giftItemPO.getCommodityID()),
                         giftItemPO.getCount()));
 
         return new GiftDocVO(po.getCreateTime(), po.getUserId(), po.getId(), itemVOList,

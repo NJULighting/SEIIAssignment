@@ -32,8 +32,8 @@ public class AlertDocFactory implements DocFactory {
         List<AlertDocItemVO> itemVOList =
                 VPOTransformer.toVPOList(alertDocPO.getItemPOS(),
                         itemPO -> new AlertDocItemVO(commodityInfo.getBasicCommodityItemVO(itemPO.getCommodityId()),
-                                itemPO.getCount()));
-        return new AlertDocVO(po.getUserId(), po.getCreateTime(), po.getDocType(), itemVOList, alertDocPO.getComment(),
+                                itemPO.getId(), itemPO.getCount()));
+        return new AlertDocVO(po.getCreateTime(), po.getUserId(), po.getId(), po.getDocType(), itemVOList, alertDocPO.getComment(),
                 alertDocPO.isTriggered(), alertDocPO.isExpired());
     }
 }

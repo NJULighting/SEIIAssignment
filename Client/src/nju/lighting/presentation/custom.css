@@ -348,7 +348,7 @@ root {
 
 .jfx-list-cell:selected > .jfx-rippler > StackPane, .jfx-list-cell:even:selected > .jfx-rippler > StackPane {
 
-    -fx-background-color:#DCDCDC;
+    -fx-background-color: #DCDCDC;
 
 }
 .jfx-list-cell:filled:hover{
@@ -370,14 +370,14 @@ root {
 
 .jfx-list-cell:odd {
 
-    -fx-background-color: #F5F5F5;
+    -fx-background-color: transparent;
 
 }
 
 
 
 .jfx-list-cell:even{
-    -fx-background-color: #F5F5F5;
+    -fx-background-color: transparent;
 }
 
 
@@ -390,6 +390,8 @@ root {
 
     -jfx-rippler-fill: white;
 
+    -fx-text-color: black;
+
 }
 
 
@@ -397,6 +399,8 @@ root {
 .jfx-list-view {
 
     -fx-background-insets: 0;
+
+    -fx-border-width: 0px;
 
     /*-jfx-cell-horizontal-margin: 0.0;*/
 
@@ -450,7 +454,7 @@ root {
 
 .jfx-tool-bar Label {
 
-    -fx-text-fill: WHITE;
+    -fx-text-fill: black;
 
 }
 

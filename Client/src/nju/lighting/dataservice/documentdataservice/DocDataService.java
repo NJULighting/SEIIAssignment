@@ -23,4 +23,7 @@ public interface DocDataService extends Remote {
     List<DocPO> findByTime(Date from, Date to) throws RemoteException;
 
     List<DocPO> findByTimeAndType(Date from, Date to, DocType type) throws RemoteException;
+
+    List<DocPO> findByTypeAndState(DocType type, DocState state) throws RemoteException;
+
 }

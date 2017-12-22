@@ -109,11 +109,9 @@ public enum DocManager {
         }
     }
 
-    List<BusinessConditionItemVO> findSaleRecords(BusinessConditionFilter filter) {
+    List<HistoryDocVO> findSaleRecords(DocumentFilter filter) {
         try {
             Set<DocPO> docPOS = new HashSet<>();
-
-            List<DocPO> salesPOList = dataService.findByType(DocType.SALES);
 
         } catch (RemoteException e) {
             e.printStackTrace();

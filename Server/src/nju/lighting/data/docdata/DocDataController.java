@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/11/29.
@@ -173,7 +174,18 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
             if (docPO.getDocType() == type)
                 result.add(docPO);
         }
-        return all;
+        return result;
+    }
+
+    @Override
+    public List<DocPO> findByTypeAndState(DocType type, DocState state) throws RemoteException {
+        List<DocPO> all = findByType(type);
+        if (all == null)
+            return null;
+
+        return all.stream()
+                .filter(po -> po.getState() == state)
+                .collect(Collectors.toList());
     }
 
 

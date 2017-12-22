@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.customerui.CustomerSearchListController">
+   <children>
+      <Pane fx:id="firstPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0">
+         <children>
+            <TextField fx:id="search" layoutX="40.0" layoutY="21.0" onAction="#search" onKeyTyped="#keyTyped" promptText="输入关键词" />
+            <Button fx:id="searchBtn" layoutX="241.0" layoutY="6.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@../../../../images/搜索.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <JFXButton fx:id="addCustomerBtn" layoutX="890.0" layoutY="1.0" prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="增加客户" textFill="WHITE" />
+            <HBox alignment="CENTER_LEFT" layoutX="40.0" layoutY="70.0" prefHeight="40.0" prefWidth="1000.0" spacing="20.0" style="-fx-border-color: #5599ff;">
+               <children>
+                  <Label text="客户编号">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefWidth="45.0" text="分类" />
+                  <Label prefWidth="60.0" text="姓名" />
+                  <Label prefWidth="82.0" text="级别" />
+                  <Label prefWidth="74.0" text="应收" />
+                  <Label prefWidth="74.0" text="应付" />
+                  <Label prefWidth="74.0" text="应收额度" />
+                  <Label prefWidth="97.0" text="电话" />
+                  <Label text="默认业务员" />
+               </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </HBox>
+            <Pagination fx:id="customerList" layoutX="40.0" layoutY="110.0" maxPageIndicatorCount="9" prefHeight="500.0" prefWidth="1000.0" />
+            <Button fx:id="deleteSearch" disable="true" layoutX="199.0" layoutY="4.0" mnemonicParsing="false" onAction="#setDeleteSearch" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" visible="false">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@../../../../images/详情关闭.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="noResult" layoutX="301.0" layoutY="31.0" text="无结果！" visible="false" />
+         </children>
+      </Pane>
+      <Pane fx:id="secondPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="1.0" fill="WHITE" height="500.0" layoutX="90.0" layoutY="70.0" stroke="#cccccc" strokeType="INSIDE" strokeWidth="0.5" width="900.0" />
+            <Button fx:id="backButton" layoutX="40.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" textFill="#5599ff">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@../../../../images/返回.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <HBox layoutX="162.0" layoutY="121.0" spacing="170.0">
+               <children>
+                  <VBox spacing="20.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label text="客户编号：" />
+                              <JFXTextField fx:id="idText" editable="false" focusColor="#5599ff" prefWidth="150.0" unFocusColor="#4d4d4d" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label text="姓名：" />
+                              <JFXTextField fx:id="nameText" editable="false" focusColor="#5599ff" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label text="分类：" />
+                              <JFXComboBox fx:id="typebox" focusColor="#5599ff" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label text="级别：" />
+                              <JFXComboBox fx:id="gradebox" focusColor="#5599ff" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label text="应付：" />
+                              <JFXTextField fx:id="payText" editable="false" focusColor="#5599ff" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label text="应收：" />
+                              <JFXTextField fx:id="receiveText" editable="false" focusColor="#5599ff" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label text="应收额度：" />
+                              <JFXTextField fx:id="receiveLimitText" editable="false" focusColor="#5599ff" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" spacing="20.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="默认业务员：" />
+                              <JFXTextField fx:id="salesmanText" editable="false" focusColor="#5599ff" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="电话：">
+                                 <HBox.margin>
+                                    <Insets left="45.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXTextField fx:id="telephoneText" editable="false" focusColor="#5599ff" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="邮编：">
+                                 <HBox.margin>
+                                    <Insets left="45.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXTextField fx:id="postageText" editable="false" focusColor="#5599ff" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="电子邮箱：">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXTextField fx:id="emailText" editable="false" focusColor="#5599ff" prefWidth="300.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="地址：">
+                                 <HBox.margin>
+                                    <Insets left="45.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXTextField fx:id="addressText" editable="false" focusColor="#5599ff" prefWidth="300.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Label fx:id="failDisCount1" layoutX="388.0" layoutY="316.0" text="格式错误！" textFill="#b90000" visible="false" />
+            <Label fx:id="failDisCount2" layoutX="388.0" layoutY="366.0" text="格式错误！" textFill="#b90000" visible="false" />
+            <Label fx:id="failDisCount3" layoutX="388.0" layoutY="416.0" text="格式错误！" textFill="#b90000" visible="false" />
+            <Label fx:id="failDisCount4" layoutX="388.0" layoutY="166.0" text="姓名不能为空！" textFill="#b90000" visible="false" />
+            <Button fx:id="modifyButton" layoutX="885.0" layoutY="5.0" mnemonicParsing="false" onAction="#modify" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" textFill="#5599ff">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@../../../../images/修改.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="deleteButton" layoutX="946.0" layoutY="4.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" textFill="#5599ff">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@../../../../images/删除.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="saveButton" disable="true" layoutX="890.0" layoutY="11.0" mnemonicParsing="false" onAction="#save" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" textFill="#5599ff" visible="false">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="29.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../../../../images/保存.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</Pane>

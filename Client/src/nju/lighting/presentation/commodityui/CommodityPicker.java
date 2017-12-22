@@ -8,6 +8,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import nju.lighting.bl.commoditybl.BasicCommodityItem;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.Nameable;
@@ -19,6 +20,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/17.
@@ -42,6 +44,7 @@ public class CommodityPicker implements Initializable {
             FXMLLoader loader=new FXMLLoader(getClass().getResource("CommodityCategory.fxml"));
             container.getChildren().add(loader.load());
             category=loader.getController();
+            category.categoryTreeView.setMinHeight(480);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,10 +54,11 @@ public class CommodityPicker implements Initializable {
     @FXML
     void ok(){
         ObservableList<TreeItem<Nameable>> temp=category.categoryTreeView.getSelectionModel().getSelectedItems();
-        for (int i=0;i<temp.size();i++){
-            commodities.add(new GiftItemVO(((CommodityItemVO) temp.get(i).getValue()).toBasicCommodityItem(),1));
-        }
-        System.out.println("hide");
+
+        commodities=temp.stream().
+                filter(x->x.getValue().getClass().equals(CommodityItemVO.class))
+                .map(x-> new GiftItemVO(((CommodityItemVO)x.getValue()).toBasicCommodityItem(),1))
+                .collect(Collectors.toList());
         stage.hide();
         canceled=false;
     }

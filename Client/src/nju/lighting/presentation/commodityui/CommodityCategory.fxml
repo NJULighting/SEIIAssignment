@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="stackPane" minHeight="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.commodityui.CommodityCategory">
+<StackPane fx:id="stackPane" minHeight="-Infinity" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.commodityui.CommodityCategory">
    <HBox>
       <children>
          <TreeView fx:id="categoryTreeView" minWidth="300.0" onMouseClicked="#leftClicked" />

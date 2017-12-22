@@ -2,6 +2,7 @@ package nju.lighting.presentation.mainui;
 
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -30,7 +31,7 @@ public abstract class MainUIController extends CommonFather {
 
     //界面跳转
     void jumpTo(int index) {
-        Pane center;
+        Node center;
         String url = urls[index];
         center = mainUI.center[index];
 
@@ -38,7 +39,7 @@ public abstract class MainUIController extends CommonFather {
         //设置下半部分界面
         if (center == null) {
             try {
-                center = FXMLLoader.load(getClass().getResource(url));
+                center = (Node)FXMLLoader.load(getClass().getResource(url));
             } catch (IOException e) {
                 e.printStackTrace();
             }

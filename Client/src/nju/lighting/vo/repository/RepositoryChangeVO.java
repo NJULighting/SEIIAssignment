@@ -26,6 +26,10 @@ public class RepositoryChangeVO {
         this.date = date;
     }
 
+    public String getCommodityName() {
+        return commodityName;
+    }
+
     public String getCommodityId() {
         return commodityId;
     }

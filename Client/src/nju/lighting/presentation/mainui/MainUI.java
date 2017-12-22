@@ -1,6 +1,7 @@
 package nju.lighting.presentation.mainui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -67,7 +68,7 @@ public class MainUI {
     public BorderPane root= new BorderPane();
     public Pane up;
     public VBox left;
-    public Pane[] center;
+    public Node[] center;
 
     public MainUI(Identity identity) throws IOException{
         Stage stage =new Stage();
@@ -86,7 +87,7 @@ public class MainUI {
 
             root.setLeft(left);
             MainUIController controller=loader.getController();
-            center=new Pane[controller.MAIN_BUTTON_SIZE];
+            center=new Node[controller.MAIN_BUTTON_SIZE];
             controller.setMainUI(this);
             controller.jumpTo(0);
         }else

@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
 import nju.lighting.presentation.mainui.Client;
+import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.CustomerVO;
@@ -59,10 +60,9 @@ public class CustomerDetail {
 
 
     CustomerSearchListController controller;
-    private CustomerVO customerVO = null;
+    private CustomerVO customerVO ;
     private ArrayList<TextField> textFields = new ArrayList<>();
-    private Pane backPane;
-    private HBox father;
+    Upper upper;
     private boolean add;
     private final double DEFAULT_LIMIT = 2000;
 
@@ -121,7 +121,7 @@ public class CustomerDetail {
                 "四级",
                 "五级(vip)"
         );
-        
+
         //按照item填写每个信息
         if (!add) {
             idText.setText(String.format("%06d", customerVO.getID()));
@@ -159,9 +159,7 @@ public class CustomerDetail {
 
 
     public void back() {
-        father.getChildren().clear();
-        father.getChildren().add(backPane);
-        controller.title.setText("");
+            upper.back();
     }
 
     //保存失败
@@ -268,11 +266,12 @@ public class CustomerDetail {
     }
 
 
+    public void setUpper(Upper upper) {
+        this.upper = upper;
+    }
+
     public void setController(CustomerSearchListController controller) {
         this.controller = controller;
-        backPane = controller.getPane();
-        father = controller.getFather();
         customerBLService = controller.getCustomerBLService();
-
     }
 }

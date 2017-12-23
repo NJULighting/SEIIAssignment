@@ -18,8 +18,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
+import nju.lighting.bl.customerbl.Customer;
 import nju.lighting.bl.customerbl.CustomerBLService_Stub;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
+import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.CustomerVO;
@@ -35,13 +37,13 @@ public class CustomerSearchListController implements Initializable {
 
     private CustomerBLService customerBLService = new CustomerBLService_Stub();
     private List<CustomerVO> customerVOList;
-    private int itemsPerPage = 9;
-    CustomerSearchListController customerSearchListController=this;
+    CustomerSearchListController customerSearchListController = this;
+    Upper upper;
     Label title;
+    private CustomerVO selectedCustomer;
 
     @FXML
     private TableView<CustomerVO> tableView;
-
 
 
     @FXML
@@ -67,43 +69,43 @@ public class CustomerSearchListController implements Initializable {
     private Label noResult;
 
     @FXML
-    TableColumn<CustomerVO,Integer> customerId;
+    TableColumn<CustomerVO, Integer> customerId;
 
     @FXML
-    TableColumn<CustomerVO,String> type;
+    TableColumn<CustomerVO, String> type;
 
     @FXML
-    TableColumn<CustomerVO,String> name;
+    TableColumn<CustomerVO, String> name;
 
     @FXML
-    TableColumn<CustomerVO,String> grade;
+    TableColumn<CustomerVO, String> grade;
 
 
     @FXML
-    TableColumn<CustomerVO,Double> receive;
+    TableColumn<CustomerVO, Double> receive;
 
     @FXML
-    TableColumn<CustomerVO,Double> pay;
+    TableColumn<CustomerVO, Double> pay;
 
     @FXML
-    TableColumn<CustomerVO,Double> receiveLimit;
+    TableColumn<CustomerVO, Double> receiveLimit;
 
     @FXML
-    TableColumn<CustomerVO,String> telephone;
+    TableColumn<CustomerVO, String> telephone;
     @FXML
-    TableColumn<CustomerVO,String> salesman;
+    TableColumn<CustomerVO, String> salesman;
 
     @FXML
-    TableColumn<CustomerVO,String> openBtn;
+    TableColumn<CustomerVO, String> openBtn;
 
     HBox father;
 
 
     //清除搜索，列表显示所有客户
-    public void setDeleteSearch(){
+    public void setDeleteSearch() {
         search.setText("");
         customerVOList = customerBLService.getCustomerList();
-       // setCustomerList();
+        // setCustomerList();
 
         noResult.setVisible(false);
 
@@ -112,27 +114,26 @@ public class CustomerSearchListController implements Initializable {
     }
 
     //关键字字数不超过8个字
-    public void keyTyped(Event e){
+    public void keyTyped(Event e) {
         String s = search.getText();
-        if(s.length() >= 8) e.consume();
+        if (s.length() >= 8) e.consume();
     }
 
-    public void search(){
+    public void search() {
         String keywords = search.getText();
-        if(keywords==null||keywords.length()==0){//无关键词，则显示所有列表
+        if (keywords == null || keywords.length() == 0) {//无关键词，则显示所有列表
             customerVOList = customerBLService.getCustomerList();
-           // setCustomerList();
-        }
-        else{//有关键词，删除搜索键可见
+            // setCustomerList();
+        } else {//有关键词，删除搜索键可见
             deleteSearch.setDisable(false);
             deleteSearch.setVisible(true);
 
             List<CustomerVO> customerVOS = customerBLService.search(keywords);
-            if(customerVOS!=null){
+            if (customerVOS != null) {
                 noResult.setVisible(false);
                 customerVOList = customerVOS;
-               // setCustomerList();
-            }else{
+                // setCustomerList();
+            } else {
                 noResult.setVisible(true);
             }
         }
@@ -144,82 +145,69 @@ public class CustomerSearchListController implements Initializable {
         customerVOList = customerBLService.getCustomerList();
 
         customerId.setCellValueFactory(p ->
-        new SimpleIntegerProperty(p.getValue().getID()).asObject());
+                new SimpleIntegerProperty(p.getValue().getID()).asObject());
 
-        type.setCellValueFactory(p->
-        new SimpleStringProperty(CustomerHelper.typeToString(p.getValue().getType())));
+        type.setCellValueFactory(p ->
+                new SimpleStringProperty(CustomerHelper.typeToString(p.getValue().getType())));
 
-        name.setCellValueFactory(p->
-        new SimpleStringProperty(p.getValue().getName()));
+        name.setCellValueFactory(p ->
+                new SimpleStringProperty(p.getValue().getName()));
 
-        grade.setCellValueFactory(p->
-        new SimpleStringProperty(CustomerHelper.gradeToString(p.getValue().getGrade())));
+        grade.setCellValueFactory(p ->
+                new SimpleStringProperty(CustomerHelper.gradeToString(p.getValue().getGrade())));
 
-        receive.setCellValueFactory(p->
-        new SimpleDoubleProperty(p.getValue().getReceivable()).asObject());
+        receive.setCellValueFactory(p ->
+                new SimpleDoubleProperty(p.getValue().getReceivable()).asObject());
 
-        pay.setCellValueFactory(p->
-        new SimpleDoubleProperty(p.getValue().getPayable()).asObject());
+        pay.setCellValueFactory(p ->
+                new SimpleDoubleProperty(p.getValue().getPayable()).asObject());
 
-        receiveLimit.setCellValueFactory(p->
-        new SimpleDoubleProperty(p.getValue().getReceivableLimit()).asObject());
+        receiveLimit.setCellValueFactory(p ->
+                new SimpleDoubleProperty(p.getValue().getReceivableLimit()).asObject());
 
-        telephone.setCellValueFactory(p->
-        new SimpleStringProperty(p.getValue().getTelephone()));
+        telephone.setCellValueFactory(p ->
+                new SimpleStringProperty(p.getValue().getTelephone()));
 
-        salesman.setCellValueFactory(p->
-        new SimpleStringProperty(p.getValue().getSalesman()));
+        salesman.setCellValueFactory(p ->
+                new SimpleStringProperty(p.getValue().getSalesman()));
 
-        openBtn.setCellValueFactory(p->
+        openBtn.setCellValueFactory(p ->
                 new SimpleStringProperty(p.getValue().getSalesman()));
 
         openBtn.setCellFactory(new Callback<TableColumn<CustomerVO, String>, TableCell<CustomerVO, String>>() {
             @Override
             public TableCell<CustomerVO, String> call(TableColumn<CustomerVO, String> param) {
-                return new TableCell<CustomerVO,String>(){
-                    JFXButton openBtn=new JFXButton("查看");
-                    JFXButton deleteBtn=new JFXButton("删除");
-                    HBox buttonBox=new HBox(openBtn,deleteBtn);
-
+                return new TableCell<CustomerVO, String>() {
+                    JFXButton openBtn = new JFXButton("查看");
+                    JFXButton deleteBtn = new JFXButton("删除");
+                    HBox buttonBox = new HBox(openBtn, deleteBtn);
 
 
                     @Override
                     protected void updateItem(String item, boolean empty) {
-                        TableRow tableRow=getTableRow();
-                        tableRow.setOnMouseEntered(e->{
+                        TableRow tableRow = getTableRow();
+                        tableRow.setOnMouseEntered(e -> {
                             buttonBox.setVisible(true);
                         });
 
-                        tableRow.setOnMouseExited(e->{
+                        tableRow.setOnMouseExited(e -> {
                             buttonBox.setVisible(false);
                         });
                         super.updateItem(item, empty);
-                        if (empty){
+                        if (empty) {
                             setText(null);
                             setGraphic(null);
-                        }else {
-                            CustomerVO customerVO=getTableView().getItems().get(getTableRow().getIndex());
+                        } else {
+                            CustomerVO customerVO = getTableView().getItems().get(getTableRow().getIndex());
                             setText(null);
                             setGraphic(buttonBox);
                             buttonBox.setVisible(false);
                             buttonBox.setSpacing(50);
-                            openBtn.setOnAction(e->{
-                                title.setText(">客户详情");
-                                FXMLLoader loader=new FXMLLoader(getClass().getResource("CustomerDetail.fxml"));
-                            father.getChildren().clear();
-                                try {
-                                    father.getChildren().add(loader.load());
-                                } catch (IOException e1) {
-                                    e1.printStackTrace();
-                                }
-                                CustomerDetail controller=loader.getController();
-                                controller.setController(customerSearchListController);
-                                controller.setCustomerVO(customerVO);
-
-                            controller.init(false);
+                            openBtn.setOnAction(e -> {
+                                customerDetail(false,customerVO);
                             });
 
-                            deleteBtn.setOnAction(e ->{
+                            deleteBtn.setOnAction(e -> {
                                 ResultMessage resultMessage = customerBLService.deleteCustomer(customerVO.getID());
                                 getTableView().getItems().remove(customerVO);
                             });
@@ -229,40 +217,65 @@ public class CustomerSearchListController implements Initializable {
             }
         });
 
-        ObservableList<CustomerVO> observableList=FXCollections.observableArrayList();
+        ObservableList<CustomerVO> observableList = FXCollections.observableArrayList();
 
         observableList.addAll(customerVOList.stream()
-        .collect(Collectors.toList()));
+                .collect(Collectors.toList()));
 
         tableView.setItems(observableList);
         TableViewHelper.commonSet(tableView);
 
-        addCustomerBtn.setOnAction(e->{
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("CustomerDetail.fxml"));
-            try {
-                title.setText(">增加客户");
-                father.getChildren().clear();
-                father.getChildren().add(loader.load());
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-
-            CustomerDetail controller=loader.getController();
-            controller.init(true);
-            controller.setController(customerSearchListController);
+        addCustomerBtn.setOnAction(e -> {
+            customerDetail(true,null);
         });
 
     }
-    public  void setReadOnly(){
-        addCustomerBtn.setVisible(false);
-        tableView.getColumns().remove(openBtn);
+
+    void customerDetail(boolean add,CustomerVO customerVO){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerDetail.fxml"));
+        father.getChildren().clear();
+        try {
+            father.getChildren().add(loader.load());
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+
+        CustomerDetail controller = loader.getController();
+        if (add)
+            title.setText(">增加客户");
+        else{
+            title.setText(">客户详情");
+        }
+
+        controller.setController(customerSearchListController);
+        controller.setCustomerVO(customerVO);
+        controller.setUpper(upper);
+        controller.init(add);
+
     }
+
+    public void setReadOnly(CustomerPicker  picker,Upper upper) {
+        tableView.getColumns().remove(openBtn);
+        addCustomerBtn.setText("确定");
+        addCustomerBtn.setOnAction(e->{
+            if (!tableView.getSelectionModel().isEmpty()){
+                selectedCustomer=tableView.getItems().get(tableView.getSelectionModel().getSelectedIndex());
+                picker.setCustomer(selectedCustomer);
+                picker.setCanceled(false);
+                upper.back();
+
+            }
+
+
+        });
+    }
+
     public CustomerBLService getCustomerBLService() {
         return customerBLService;
     }
 
-    public HBox getFather() {
-        return father;
+    public void setUpper(Upper upper) {
+        this.upper = upper;
     }
 
     public Pane getPane() {

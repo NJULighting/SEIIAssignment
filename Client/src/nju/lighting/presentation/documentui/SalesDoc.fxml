@@ -1,149 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.SalesDocController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.SalesDocController">
    <children>
       <Line endX="300.0" layoutX="130.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />
-      <Label layoutX="30.0" layoutY="14.0" text="制定销售单">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <VBox layoutX="780.0" layoutY="182.0">
+      <HBox layoutX="30.0" layoutY="14.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="280.0" spacing="5.0">
-               <children>
-                  <Label prefWidth="80.0" text="客户" />
-                  <JFXTextField fx:id="customer" focusColor="#5599ff" prefWidth="90.0" />
-                  <Button fx:id="choseCustomBtn" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
-                     <graphic>
-                        <ImageView>
-                           <image>
-                              <Image url="@../../../../images/增加客户.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
-               <children>
-                  <Label prefWidth="80.0" text="业务员" />
-                  <JFXTextField fx:id="salesman" focusColor="#5599ff" prefWidth="150.0" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
-               <children>
-                  <Label prefWidth="80.0" text="操作员" />
-                  <JFXTextField fx:id="userman" focusColor="#5599ff" prefWidth="150.0" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
-               <children>
-                  <Label prefWidth="80.0" text="仓库  " />
-                  <JFXTextField fx:id="repository" focusColor="#5599ff" prefWidth="150.0" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
-               <children>
-                  <Label prefWidth="80.0" text="促销策略" />
-                  <JFXTextField focusColor="#5599ff" prefWidth="90.0" />
-                  <Button mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
-                     <graphic>
-                        <ImageView>
-                           <image>
-                              <Image url="@../../../../images/增加客户.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="260.0" spacing="5.0">
-               <children>
-                  <Label prefWidth="80.0" text="备注" />
-                  <TextArea fx:id="remarks" prefHeight="100.0" prefWidth="150.0" text="无" wrapText="true" />
-               </children>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </HBox>
-         </children>
-      </VBox>
-      <JFXButton fx:id="finishBtn" layoutX="863.0" layoutY="103.0" onAction="#finish" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
-      <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />
-      <HBox alignment="BOTTOM_LEFT" layoutX="47.0" layoutY="597.0" spacing="12.0">
-         <children>
-            <VBox>
-               <children>
-                  <Label text="折让前总额" />
-                  <JFXTextField fx:id="accountBeforeDis" focusColor="#5599ff" prefWidth="150.0" text="0.0" />
-               </children>
-            </VBox>
-            <ImageView fitHeight="25.0" fitWidth="30.0">
-               <image>
-                  <Image url="@../../../../images/减.png" />
-               </image>
-            </ImageView>
-            <VBox>
-               <children>
-                  <Label text="折让" />
-                  <JFXTextField fx:id="discount" focusColor="#5599ff" onAction="#setDiscount" prefWidth="150.0" text="0.0" />
-               </children>
-            </VBox>
-            <ImageView fitHeight="25.0" fitWidth="30.0">
-               <image>
-                  <Image url="@../../../../images/减.png" />
-               </image>
-            </ImageView>
-            <VBox>
-               <children>
-                  <Label text="代金券金额" />
-                  <JFXTextField fx:id="voucher" focusColor="#5599ff" onAction="#setVoucher" prefWidth="150.0" text="0.0" />
-               </children>
-            </VBox>
-            <ImageView fitHeight="25.0" fitWidth="30.0">
-               <image>
-                  <Image url="@../../../../images/减.png" />
-               </image>
-            </ImageView>
-            <VBox>
-               <children>
-                  <Label text="促销减价" />
-                  <JFXTextField focusColor="#5599ff" prefWidth="150.0" text="0.0" />
-               </children>
-            </VBox>
-            <ImageView fitHeight="25.0" fitWidth="30.0">
-               <image>
-                  <Image url="@../../../../images/等于.png" />
-               </image>
-            </ImageView>
-            <VBox>
-               <children>
-                  <Label text="最终总额" />
-                  <JFXTextField fx:id="account" focusColor="#5599ff" prefWidth="150.0" text="0.0" />
-               </children>
-            </VBox>
+            <Label onMouseClicked="#back" text="制定销售单">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="sub">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </HBox>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="147.0" layoutY="62.0">
-         <image>
-            <Image url="@../../../../images/飞翔的订单.png" />
-         </image>
-      </ImageView>
-      <Pane layoutX="47.0" layoutY="103.0" prefHeight="477.0" prefWidth="702.0" />
-      <JFXButton layoutX="47.0" layoutY="64.0" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #5599FF;" text="增加商品" textFill="WHITE" />
+      <HBox fx:id="container" layoutX="14.0" layoutY="50.0">
+         <children>
+            <Pane fx:id="mainPane" prefHeight="630.0">
+               <children>
+                  <VBox layoutX="781.0" layoutY="143.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="280.0" spacing="5.0">
+                           <children>
+                              <Label prefWidth="80.0" text="客户" />
+                              <JFXTextField fx:id="customer" focusColor="#5599ff" prefWidth="90.0" />
+                              <Button fx:id="choseCustomBtn" mnemonicParsing="false" onAction="#chooseCustomer" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+                                 <graphic>
+                                    <ImageView>
+                                       <image>
+                                          <Image url="@../../../../images/增加客户.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
+                           <children>
+                              <Label prefWidth="80.0" text="业务员" />
+                              <JFXTextField fx:id="salesman" focusColor="#5599ff" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
+                           <children>
+                              <Label prefWidth="80.0" text="操作员" />
+                              <JFXTextField fx:id="userman" focusColor="#5599ff" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
+                           <children>
+                              <Label prefWidth="80.0" text="仓库  " />
+                              <JFXTextField fx:id="repository" focusColor="#5599ff" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
+                           <children>
+                              <Label prefWidth="80.0" text="促销策略" />
+                              <JFXTextField focusColor="#5599ff" prefWidth="90.0" />
+                              <Button mnemonicParsing="false" onAction="#choosePromotion" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+                                 <graphic>
+                                    <ImageView>
+                                       <image>
+                                          <Image url="@../../../../images/增加客户.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="260.0" spacing="5.0">
+                           <children>
+                              <Label prefWidth="80.0" text="备注" />
+                              <TextArea fx:id="remarks" prefHeight="100.0" prefWidth="150.0" text="无" wrapText="true" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <JFXButton fx:id="finishBtn" layoutX="864.0" layoutY="64.0" onAction="#finish" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
+                  <Line layoutX="1.0" layoutY="-40.0" startX="-0.0" stroke="#00000033" />
+                  <HBox alignment="BOTTOM_LEFT" layoutX="48.0" layoutY="558.0" spacing="12.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label text="折让前总额" />
+                              <JFXTextField fx:id="accountBeforeDis" focusColor="#5599ff" prefWidth="150.0" text="0.0" />
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="25.0" fitWidth="30.0">
+                           <image>
+                              <Image url="@../../../../images/减.png" />
+                           </image>
+                        </ImageView>
+                        <VBox>
+                           <children>
+                              <Label text="折让" />
+                              <JFXTextField fx:id="discount" focusColor="#5599ff" prefWidth="150.0" text="0.0" />
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="25.0" fitWidth="30.0">
+                           <image>
+                              <Image url="@../../../../images/减.png" />
+                           </image>
+                        </ImageView>
+                        <VBox>
+                           <children>
+                              <Label text="代金券金额" />
+                              <JFXTextField fx:id="voucher" focusColor="#5599ff" prefWidth="150.0" text="0.0" />
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="25.0" fitWidth="30.0">
+                           <image>
+                              <Image url="@../../../../images/减.png" />
+                           </image>
+                        </ImageView>
+                        <VBox>
+                           <children>
+                              <Label text="促销减价" />
+                              <JFXTextField fx:id="promotionOff" focusColor="#5599ff" prefWidth="150.0" text="0.0" />
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="25.0" fitWidth="30.0">
+                           <image>
+                              <Image url="@../../../../images/等于.png" />
+                           </image>
+                        </ImageView>
+                        <VBox>
+                           <children>
+                              <Label text="最终总额" />
+                              <JFXTextField fx:id="account" focusColor="#5599ff" prefWidth="150.0" text="0.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="148.0" layoutY="23.0">
+                     <image>
+                        <Image url="@../../../../images/飞翔的订单.png" />
+                     </image>
+                  </ImageView>
+                  <Pane fx:id="commodityContainer" layoutX="48.0" layoutY="64.0" prefHeight="477.0" prefWidth="702.0" />
+                  <JFXButton layoutX="48.0" layoutY="25.0" onAction="#chooseCommodity" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #5599FF;" text="增加商品" textFill="WHITE" />
+               </children>
+            </Pane>
+         </children>
+      </HBox>
    </children>
 </Pane>

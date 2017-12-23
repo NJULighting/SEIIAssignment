@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
+import nju.lighting.presentation.mainui.Upper;
+import nju.lighting.vo.CustomerVO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,19 +21,17 @@ import java.util.ResourceBundle;
  *
  * @author 陈俊宇
  */
-public class CustomerPicker implements Initializable{
+public class CustomerPicker {
 
-    @FXML
-    Button backButton;
 
     @FXML
     Pane pane;
 
-    Node previous;
-    Label title;
+    CustomerVO customer;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    boolean canceled=true;
+
+    public void init(Upper upper){
         FXMLLoader loader=new FXMLLoader(getClass().getResource("CustomerSearchListUI.fxml"));
         try {
             pane.getChildren().add(loader.load());
@@ -40,20 +40,23 @@ public class CustomerPicker implements Initializable{
         }
 
         CustomerSearchListController controller=loader.getController();
-        controller.setReadOnly();
+        controller.setReadOnly(this,upper);
 
     }
 
-    public void back() {
-//        father.getChildren().clear();
-//        father.getChildren().add(backPane);
-        title.setText("客户管理");
-    }
-    public void setPrevious(Node previous) {
-        this.previous = previous;
+    public CustomerVO getCustomer() {
+        return customer;
     }
 
-    public void setTitle(Label title) {
-        this.title = title;
+    public void setCustomer(CustomerVO customer) {
+        this.customer = customer;
+    }
+
+    public boolean isCanceled() {
+        return canceled;
+    }
+
+    public void setCanceled(boolean canceled) {
+        this.canceled = canceled;
     }
 }

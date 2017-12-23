@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.geometry.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
@@ -133,7 +134,11 @@
             <VBox>
                <children>
                   <Label text="最终总额" />
-                  <JFXTextField fx:id="account" focusColor="#5599ff" prefWidth="150.0" text="0.0" />
+                  <JFXTextField fx:id="account" editable="false" focusColor="#5599ff" prefWidth="150.0" style="-fx-cursor: Default;" text="0.0">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </JFXTextField>
                </children>
             </VBox>
          </children>

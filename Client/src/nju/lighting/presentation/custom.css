@@ -2,6 +2,8 @@ root {
 
     -fx-font-family: Roboto;
 
+    -fx-background-color: whitesmoke;
+
     src: "/resources/roboto/Roboto-Regular.ttf";
 
 }
@@ -37,11 +39,69 @@ root {
 
 /* Input Demo */
 
+.table-view{
+
+    -fx-border-width: 0 ;
+    -fx-background-color: transparent;
+
+    -fx-table-cell-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header{
+
+    -fx-font-weight: normal;
+    -fx-pref-height: 50px;
+}
+
+.table-view .column-header .label{
+
+    -fx-alignment: center-left;
+}
+
+.table-view .column-header-background{
+
+    -fx-background-color: transparent;
+
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+
+}
+
+.table-view .table-row-cell .table-cell{
+    -fx-text-fill:black;
+    -fx-alignment: center-left;
+    -fx-border-width: 0;
+    -fx-background-color:transparent;
+}
+
+.table-row-cell{
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: transparent;
+    -fx-text: black;
+}
 
 
 .text-field {
 
+    -fx-focus-color: #5599ff;
+
     -fx-max-width: 300;
+
+}
+
+.text-area {
+
+    -fx-focus-color: #5599ff;
 
 }
 
@@ -49,15 +109,13 @@ root {
 
 .jfx-text-field, .jfx-password-field {
 
-    -fx-background-color: WHITE;
-
-    -fx-font-weight: BOLD;
+    -fx-background-color: transparent;
 
     -fx-prompt-text-fill: #808080;
 
     -fx-alignment: top-left;
 
-    -jfx-focus-color: #4059A9;
+    -jfx-focus-color: #5599ff;
 
     -jfx-unfocus-color: #4d4d4d;
 
@@ -94,7 +152,6 @@ root {
 
 .jfx-text-area, .text-area {
 
-    -fx-font-weight: BOLD;
 
 }
 
@@ -607,6 +664,8 @@ root {
     /*-jfx-rippler-fill: -fx-tree-table-rippler-color;*/
 
 /*}*/
+
+
 
 
 

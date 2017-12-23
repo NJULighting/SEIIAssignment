@@ -12,7 +12,7 @@
     -fx-background-radius:0px;
 }
 .pagination .toggle-button:selected{
-    -fx-base: yellowgreen;
+    -fx-base: #5599ff;
 }
 .pagination .control-box{
     -fx-background-color:linear-gradient(to bottom,black,transparent);;

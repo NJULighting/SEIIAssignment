@@ -16,20 +16,17 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.SalesDocController">
    <children>
       <Line endX="300.0" layoutX="130.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />
-      <Label layoutX="30.0" layoutY="14.0" text="制定进货单">
+      <Label layoutX="30.0" layoutY="14.0" text="制定销售单">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <VBox layoutX="40.0" layoutY="70.0">
+      <VBox layoutX="780.0" layoutY="182.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="280.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="280.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="客户" />
-                  <TextField fx:id="customer" editable="false" prefHeight="30.0" prefWidth="135.0" promptText="选择客户 &gt;" text="- -">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin></TextField>
+                  <JFXTextField fx:id="customer" focusColor="#5599ff" prefWidth="90.0" />
                   <Button fx:id="choseCustomBtn" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
                      <graphic>
                         <ImageView>
@@ -44,49 +41,31 @@
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="业务员" />
-                  <TextField fx:id="salesman" editable="false" prefWidth="180.0" text="- -" />
+                  <JFXTextField fx:id="salesman" focusColor="#5599ff" prefWidth="150.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="操作员" />
-                  <TextField fx:id="userman" editable="false" prefWidth="180.0" text="- -" />
+                  <JFXTextField fx:id="userman" focusColor="#5599ff" prefWidth="150.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="仓库  " />
-                  <TextField fx:id="repository" prefWidth="180.0" text="默认仓库" />
+                  <JFXTextField fx:id="repository" focusColor="#5599ff" prefWidth="150.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
-                  <Label prefWidth="80.0" text="折让前总额" />
-                  <TextField fx:id="accountBeforeDis" editable="false" prefWidth="180.0" text="0" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
-               <children>
-                  <Label prefWidth="80.0" text="折让" />
-                  <TextField fx:id="discount" onAction="#setDiscount" onInputMethodTextChanged="#setDiscount" prefWidth="180.0" text="0" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
-               <children>
-                  <Label prefWidth="80.0" text="代金券金额" />
-                  <TextField fx:id="voucher" onAction="#setVoucher" prefWidth="180.0" text="0" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
-               <children>
-                  <Label prefWidth="80.0" text="最终总额" />
-                  <TextField fx:id="account" editable="false" prefWidth="180.0" text="0" />
+                  <Label prefWidth="80.0" text="促销策略" />
+                  <JFXComboBox focusColor="#5599ff" prefWidth="150.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="备注" />
-                  <TextArea fx:id="remarks" prefHeight="100.0" prefWidth="180.0" text="无" wrapText="true" />
+                  <TextArea fx:id="remarks" prefHeight="100.0" prefWidth="150.0" text="无" wrapText="true" />
                </children>
                <VBox.margin>
                   <Insets top="10.0" />
@@ -94,18 +73,78 @@
             </HBox>
          </children>
       </VBox>
-      <JFXListView layoutX="420.0" layoutY="85.0" prefHeight="547.0" prefWidth="615.0" />
-      <Label layoutX="945.0" layoutY="60.0" text="出货商品清单" />
-      <JFXButton fx:id="finishBtn" layoutX="155.0" layoutY="602.0" onAction="#finish" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
+      <Label layoutX="47.0" layoutY="70.0" text="出货商品清单" />
+      <JFXButton fx:id="finishBtn" layoutX="863.0" layoutY="103.0" onAction="#finish" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
       <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="330.0" layoutY="267.0">
+      <TableView layoutX="47.0" layoutY="103.0" prefHeight="477.0">
+        <columns>
+          <TableColumn prefWidth="100.0" text="编号" />
+          <TableColumn prefWidth="100.0" text="名称" />
+            <TableColumn prefWidth="100.0" text="型号" />
+            <TableColumn prefWidth="100.0" text="价格" />
+            <TableColumn prefWidth="100.0" text="数量" />
+            <TableColumn prefWidth="100.0" text="总价" />
+            <TableColumn prefWidth="100.0" />
+        </columns>
+      </TableView>
+      <HBox alignment="BOTTOM_LEFT" layoutX="47.0" layoutY="597.0" spacing="12.0">
+         <children>
+            <VBox>
+               <children>
+                  <Label text="折让前总额" />
+                  <JFXTextField fx:id="accountBeforeDis" focusColor="#5599ff" prefWidth="150.0" text="0.0" />
+               </children>
+            </VBox>
+            <ImageView fitHeight="25.0" fitWidth="30.0">
+               <image>
+                  <Image url="@../../../../images/减.png" />
+               </image>
+            </ImageView>
+            <VBox>
+               <children>
+                  <Label text="折让" />
+                  <JFXTextField fx:id="discount" focusColor="#5599ff" onAction="#setDiscount" prefWidth="150.0" text="0.0" />
+               </children>
+            </VBox>
+            <ImageView fitHeight="25.0" fitWidth="30.0">
+               <image>
+                  <Image url="@../../../../images/减.png" />
+               </image>
+            </ImageView>
+            <VBox>
+               <children>
+                  <Label text="代金券金额" />
+                  <JFXTextField fx:id="voucher" focusColor="#5599ff" onAction="#setVoucher" prefWidth="150.0" text="0.0" />
+               </children>
+            </VBox>
+            <ImageView fitHeight="25.0" fitWidth="30.0">
+               <image>
+                  <Image url="@../../../../images/减.png" />
+               </image>
+            </ImageView>
+            <VBox>
+               <children>
+                  <Label text="促销减价" />
+                  <JFXTextField focusColor="#5599ff" prefWidth="150.0" text="0.0" />
+               </children>
+            </VBox>
+            <ImageView fitHeight="25.0" fitWidth="30.0">
+               <image>
+                  <Image url="@../../../../images/等于.png" />
+               </image>
+            </ImageView>
+            <VBox>
+               <children>
+                  <Label text="最终总额" />
+                  <JFXTextField fx:id="account" focusColor="#5599ff" prefWidth="150.0" text="0.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="137.0" layoutY="60.0">
          <image>
-            <Image url="@../../../../images/向左.png" />
+            <Image url="@../../../../images/飞翔的订单.png" />
          </image>
       </ImageView>
-      <Label fx:id="failMessage" layoutX="310.0" layoutY="622.0" text="制定失败！" textFill="#b90000" visible="false" />
-      <Label fx:id="failDisCount" layoutX="310.0" layoutY="350.0" text="格式错误！" textFill="#b90000" visible="false" />
-      <Label fx:id="failVoucher" layoutX="310.0" layoutY="400.0" text="格式错误！" textFill="#b90000" visible="false" />
-      <Label fx:id="failCustomer" layoutX="310.0" layoutY="100.0" text="选择客户！" textFill="#b90000" visible="false" />
    </children>
 </Pane>

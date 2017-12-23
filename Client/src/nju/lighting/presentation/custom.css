@@ -352,10 +352,10 @@ root {
     /*-fx-text-fill:green;*/
 
 /*}*/
-.jfx-list-cell:selected{
-    -fx-background-color:#DCDCDC;
-    -fx-text-fill:green;
+.jfx-list-cell:filled:selected {
+    -fx-background-color: #DCDCDC;
 }
+
 .jfx-list-cell:filled:hover{
     -fx-background-color: #DCDCDC;
 }
@@ -375,14 +375,14 @@ root {
 
 .jfx-list-cell:odd {
 
-    -fx-background-color: #F5F5F5;
+    -fx-background-color: transparent;
 
 }
 
 
 
 .jfx-list-cell:even{
-    -fx-background-color: #F5F5F5;
+    -fx-background-color: transparent;
 }
 
 
@@ -626,7 +626,6 @@ root {
 
     -fx-border-width: 0 1 0 1;
 
-    -fx-border-color: #F3F3F3;
 
 }
 
@@ -652,7 +651,7 @@ root {
 
 .tree-table-view .column-header:last-visible {
 
-    -fx-border-width: 0 2 0 1;
+    -fx-border-width: 0 0 0 0;
 
 }
 
@@ -660,7 +659,7 @@ root {
 
 .tree-table-view .column-header-background {
 
-    -fx-border-width: 0 0.0 1 0;
+    -fx-border-width: 0 0.0 0 0;
 
     -fx-border-color: #F3F3F3;
 

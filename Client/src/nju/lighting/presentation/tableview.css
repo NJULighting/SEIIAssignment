@@ -1,7 +1,7 @@
 
 .table-view {
     -fx-border-width: 0 ;
-    -fx-table-cell-border-color: black;
+    -fx-table-cell-border-color: transparent;
     -fx-background-color: transparent;
     /*-fx-table-header-border-color: green    ;*/
     -fx-padding: 0;

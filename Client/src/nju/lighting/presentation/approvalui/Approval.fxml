@@ -15,7 +15,7 @@
 
 <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.approvalui.ApprovalUIController">
    <children>
-      <Pane fx:id="detail" layoutX="315.0" layoutY="71.0" prefHeight="560.0" prefWidth="725.0" style="-fx-background-color: white;" />
+      <Pane fx:id="detail" layoutX="315.0" layoutY="81.0" prefHeight="557.0" prefWidth="725.0" />
       <JFXListView fx:id="docList" layoutX="40.0" layoutY="81.0" onMouseClicked="#clicked" prefHeight="509.0" prefWidth="225.0" />
       <Line endX="300.0" layoutX="130.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />
       <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />
@@ -24,7 +24,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <HBox layoutX="43.0" layoutY="614.0" spacing="20.0">
+      <HBox layoutX="43.0" layoutY="606.0" spacing="20.0">
          <children>
             <JFXButton fx:id="approveBtn" disable="true" onAction="#approve" prefWidth="100.0" style="-fx-background-color: #5599ff;" text="同意" textFill="WHITE">
                <font>

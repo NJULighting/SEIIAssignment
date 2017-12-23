@@ -17,22 +17,33 @@ public class CommodityItem {
     SimpleIntegerProperty count;
     SimpleStringProperty name;
     SimpleDoubleProperty subtotal;
-    SimpleBooleanProperty bool;
+    SimpleBooleanProperty gift;
+    GiftItemVO giftItem;
 
     public CommodityItem(GiftItemVO vo){
-       price = new SimpleDoubleProperty(vo.getPrice());
-       count = new SimpleIntegerProperty(vo.getCount());
-       name =new SimpleStringProperty(vo.getCommodity().getName());
-       subtotal =new SimpleDoubleProperty(vo.getSubtotal());
-       bool=new SimpleBooleanProperty(true);
+        init(vo);
     }
 
-    public boolean isBool() {
-        return bool.get();
+    public CommodityItem(GiftItemVO vo,boolean gift){
+      init(vo);
+      this.gift.setValue(gift);
+
+    }
+    void init(GiftItemVO vo){
+        giftItem=vo;
+        price = new SimpleDoubleProperty(vo.getPrice());
+        count = new SimpleIntegerProperty(vo.getCount());
+        name =new SimpleStringProperty(vo.getCommodity().getName());
+        subtotal =new SimpleDoubleProperty(vo.getSubtotal());
+        gift =new SimpleBooleanProperty(false);
     }
 
-    public SimpleBooleanProperty boolProperty() {
-        return bool;
+    public boolean isGift() {
+        return gift.get();
+    }
+
+    public SimpleBooleanProperty giftProperty() {
+        return gift;
     }
 
     public double getPrice() {
@@ -79,5 +90,13 @@ public class CommodityItem {
 
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    public void setGift(boolean gift) {
+        this.gift.set(gift);
+    }
+
+    public GiftItemVO getGiftItem() {
+        return giftItem;
     }
 }

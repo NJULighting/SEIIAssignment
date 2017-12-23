@@ -48,10 +48,6 @@ public class SalesConditionTable implements Initializable {
     AnchorPane container;
 
 
-
-
-
-
     public JFXNodesList getNodesList() {
         return nodeList;
     }

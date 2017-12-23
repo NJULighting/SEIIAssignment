@@ -26,8 +26,12 @@ import nju.lighting.presentation.promotionui.BenefitsPlan;
 import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
+import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocVO;
+import nju.lighting.vo.promotion.PromotionVO;
 import shared.DocType;
+import shared.PromotionType;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
@@ -42,7 +46,7 @@ public class SalesDocController implements Initializable, Upper {
     private CustomerVO customerVO;
 
     private String salesDocID;
-    PromotionBLService promotionBLService=new PromotionBLService_Stub();
+    PromotionBLService promotionBLService = new PromotionBLService_Stub();
 
     private double accountBeforeDisNum = 0;
 
@@ -59,7 +63,7 @@ public class SalesDocController implements Initializable, Upper {
 
     @FXML
     private JFXTextField customer, salesman, userman, repository, accountBeforeDis, discount,
-    voucher, account,promotionOff;
+            voucher, account, promotionOff,promotionText;
 
     @FXML
     private TextArea remarks;
@@ -73,20 +77,22 @@ public class SalesDocController implements Initializable, Upper {
     @FXML
     Pane mainPane, commodityContainer;
 
-    ObservableList commodityList;
-    boolean commodityCancel=true;
+    ObservableList<CommodityItem> commodityList;
+    boolean commodityCancel = true, customerCanceled = true, promotionCanceled = true;
     CommodityPicker commodityPicker;
     GiftListEditable commodityController;
-    boolean customerCanceled=true;
+
     CustomerPicker customerPicker;
+    BenefitsPlan promotionPicker;
+    PromotionVO promotionVO;
 
     @FXML
     void chooseCustomer() {
         try {
             container.getChildren().clear();
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("../customerui/CustomerPicker.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../customerui/CustomerPicker.fxml"));
             container.getChildren().add(loader.load());
-            customerPicker=loader.getController();
+            customerPicker = loader.getController();
             customerPicker.init(this);
             sub.setText(">选择客户");
         } catch (IOException e) {
@@ -107,49 +113,74 @@ public class SalesDocController implements Initializable, Upper {
             e.printStackTrace();
         }
     }
+
     @FXML
-    void choosePromotion(){
+    void choosePromotion() throws IOException {
         container.getChildren().clear();
-        Pagination pagination=new BenefitsPlan(promotionBLService.getPromotionList()).getPagination();
-        container.getChildren().add(pagination);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../promotionui/BenefitsPlan.fxml"));
+        container.getChildren().add(loader.load());
+        promotionPicker = loader.getController();
+        promotionPicker.init(promotionBLService.getPromotionList(), this);
         sub.setText(">选择促销策略");
+
     }
 
     void refresh() {
-        if (!commodityCancel){
-            commodityList.clear();
+        if (!commodityCancel) {
+
             commodityList.addAll(commodityPicker.getCommodities().stream()
-            .map(x -> new CommodityItem(x))
-            .collect(Collectors.toList()));
-            commodityCancel=true;
+                    .map(x -> new CommodityItem(x))
+                    .collect(Collectors.toList()));
+            commodityPicker.setCanceled(true);
+            clearPromotion();
+        }
+       else if (!customerCanceled) {
+            customerVO = customerPicker.getCustomer();
+            customer.setText(customerVO.getName());
+            clearPromotion();
+            customerPicker.setCanceled(true);
+        }
+        else if (!promotionCanceled) {
+
+            clearPromotion();
+            promotionVO = promotionPicker.getPromotionVO();
+            promotionOff.setText(promotionVO.getOff() + "");
+            promotionText.setText(promotionVO.getName());
+
+
+
+            if (promotionVO.getType() != PromotionType.Combo&& promotionVO.getGoods()!=null)
+
+                commodityList.addAll(
+                        promotionVO.getGoods().stream()
+                                .map(x -> new CommodityItem(x, true))
+                                .collect(Collectors.toList())
+                );
+
+            promotionPicker.setCanceled(true);
         }
 
-        if(!customerCanceled){
-            customerVO=customerPicker.getCustomer();
-            customer.setText(customerVO.getName());
-            customerCanceled=true;
-        }
+
+
+
+
     }
 
     public void back() {
         container.getChildren().clear();
         container.getChildren().add(mainPane);
         sub.setText("");
-        if (commodityPicker!=null)
-        commodityCancel=commodityPicker.isCanceled();
-        if (customerPicker!=null)
-            customerCanceled=customerPicker.isCanceled();
+        if (commodityPicker != null)
+            commodityCancel = commodityPicker.isCanceled();
+        if (customerPicker != null)
+            customerCanceled = customerPicker.isCanceled();
+        if (promotionPicker!=null){
+            promotionCanceled=promotionPicker.isCanceled();
+        }
         refresh();
+
     }
 
-
-
-
-    //更新最终金额
-    public void updateAccount() {
-        accountNum = accountBeforeDisNum - discountNum - voucherNum;
-        account.setText(String.valueOf(accountNum));
-    }
 
     //完成并提交
     public void finish() {
@@ -189,6 +220,19 @@ public class SalesDocController implements Initializable, Upper {
         failMessage.setVisible(true);
     }
 
+    //当重要参数发生变化时清除正在作用的promotion
+    void clearPromotion(){
+        commodityList.removeAll(
+                commodityList.stream()
+                .filter(x-> x.isGift())
+                .collect(Collectors.toList())
+        );
+        promotionOff.setText(0+"");
+        promotionText.setText("");
+        promotionVO=null;
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GiftListEditable.fxml"));
@@ -204,30 +248,43 @@ public class SalesDocController implements Initializable, Upper {
         //监听，如果价总价变化 account跟着变化
         accountBeforeDis.textProperty().bind(commodityController.totalLabel.textProperty());
 
-        ChangeListener changeListener= new ChangeListener() {
+        ChangeListener changeListener = new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                account.setText(""+(
+                account.setText("" + (
                         Double.parseDouble(accountBeforeDis.textProperty().get())
-                        -Double.parseDouble(discount.textProperty().get())
-                        -Double.parseDouble(voucher.textProperty().get())
-                        -Double.parseDouble(promotionOff.textProperty().get())
-                        ));
+                                - Double.parseDouble(discount.textProperty().get())
+                                - Double.parseDouble(voucher.textProperty().get())
+                                - Double.parseDouble(promotionOff.textProperty().get())
+                ));
             }
         };
 
-        DoubleValidator discountValidator=new DoubleValidator();
+        DoubleValidator discountValidator = new DoubleValidator();
         discountValidator.setMessage("折让必须为小数");
-        DoubleValidator voucherValidator=new DoubleValidator();
+        DoubleValidator voucherValidator = new DoubleValidator();
         voucherValidator.setMessage("代金券金额必须为小数");
 
-        TextFieldHelper.binds(discount,discountValidator,false);
-        TextFieldHelper.binds(voucher,voucherValidator,false);
+        TextFieldHelper.binds(discount, discountValidator, false);
+        TextFieldHelper.binds(voucher, voucherValidator, false);
 
-        accountBeforeDis.textProperty().addListener(changeListener);
+
         discount.textProperty().addListener(changeListener);
         voucher.textProperty().addListener(changeListener);
         promotionOff.textProperty().addListener(changeListener);
+
+        accountBeforeDis.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                clearPromotion();
+                account.setText("" + (
+                        Double.parseDouble(accountBeforeDis.textProperty().get())
+                                - Double.parseDouble(discount.textProperty().get())
+                                - Double.parseDouble(voucher.textProperty().get())
+                                - Double.parseDouble(promotionOff.textProperty().get())
+                ));
+            }
+        });
 
     }
 

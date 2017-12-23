@@ -73,7 +73,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                            <children>
                               <Label prefWidth="80.0" text="促销策略" />
-                              <JFXTextField focusColor="#5599ff" prefWidth="90.0" />
+                              <JFXTextField fx:id="promotionText" focusColor="#5599ff" prefWidth="90.0" />
                               <Button mnemonicParsing="false" onAction="#choosePromotion" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
                                  <graphic>
                                     <ImageView>

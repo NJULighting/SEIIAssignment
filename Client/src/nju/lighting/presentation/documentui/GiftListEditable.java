@@ -1,9 +1,6 @@
 package nju.lighting.presentation.documentui;
 
 
-import javafx.beans.binding.Bindings;
-
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -32,7 +29,7 @@ public class GiftListEditable implements Initializable {
 
     public static List<GiftItemVO> giftsVO;
     private double total = 0;
-    ObservableList giftObservableList;
+    ObservableList<CommodityItem> giftObservableList;
     Upper upper;
 
     @FXML
@@ -66,7 +63,8 @@ public class GiftListEditable implements Initializable {
 
     double calculateTotal() {
         total=giftObservableList.stream()
-                .mapToDouble(x -> (((CommodityItem) x).subtotal.getValue()))
+                .filter(x->!x.isGift())
+                .mapToDouble(x -> (( x).subtotal.getValue()))
                 .sum();
         totalLabel.setText(total+ "");
         return total;
@@ -103,7 +101,7 @@ public class GiftListEditable implements Initializable {
                 cellData.getValue().subtotalProperty().asObject());
         price.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
         deleteBtn.setCellValueFactory(cellData ->
-                cellData.getValue().boolProperty());
+                cellData.getValue().giftProperty());
 
 
         refresh();

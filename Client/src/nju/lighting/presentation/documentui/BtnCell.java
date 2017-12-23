@@ -10,23 +10,23 @@ import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 /**
  * Created on 2017/12/10.
  * Description
- *表格中的按钮，在这里定义按钮的外观与行为
+ * 表格中的按钮，在这里定义按钮的外观与行为
+ *
  * @author 陈俊宇
  */
 
 public class BtnCell extends TableCell<CommodityItem, Boolean> {
-    final Button cellButton = new Button("",ImageViewHelper.delete());
+    final Button cellButton = new Button("", ImageViewHelper.delete());
 
 
     BtnCell() {
-
 
 
         cellButton.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent t) {
-                TableView tableView=getTableView();
+                TableView tableView = getTableView();
                 tableView.getItems().remove(getTableRow().getIndex());
             }
         });
@@ -38,9 +38,21 @@ public class BtnCell extends TableCell<CommodityItem, Boolean> {
 
         super.updateItem(t, empty);
         if (!empty) {
-            setGraphic(cellButton);
-        }else
+            if (t){
+                setText("赠品");
+                setGraphic(null);
+            }
+
+            else{
+                setGraphic(cellButton);
+                setText(null);
+            }
+
+        } else{
             setGraphic(null);
+            setText(null);
+        }
+
     }
 }
 

@@ -59,7 +59,16 @@
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Label prefWidth="80.0" text="促销策略" />
-                  <JFXComboBox focusColor="#5599ff" prefWidth="150.0" />
+                  <JFXTextField focusColor="#5599ff" prefWidth="90.0" />
+                  <Button mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@../../../../images/增加客户.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="260.0" spacing="5.0">
@@ -73,20 +82,8 @@
             </HBox>
          </children>
       </VBox>
-      <Label layoutX="47.0" layoutY="70.0" text="出货商品清单" />
       <JFXButton fx:id="finishBtn" layoutX="863.0" layoutY="103.0" onAction="#finish" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
       <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />
-      <TableView layoutX="47.0" layoutY="103.0" prefHeight="477.0">
-        <columns>
-          <TableColumn prefWidth="100.0" text="编号" />
-          <TableColumn prefWidth="100.0" text="名称" />
-            <TableColumn prefWidth="100.0" text="型号" />
-            <TableColumn prefWidth="100.0" text="价格" />
-            <TableColumn prefWidth="100.0" text="数量" />
-            <TableColumn prefWidth="100.0" text="总价" />
-            <TableColumn prefWidth="100.0" />
-        </columns>
-      </TableView>
       <HBox alignment="BOTTOM_LEFT" layoutX="47.0" layoutY="597.0" spacing="12.0">
          <children>
             <VBox>
@@ -141,10 +138,12 @@
             </VBox>
          </children>
       </HBox>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="137.0" layoutY="60.0">
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="147.0" layoutY="62.0">
          <image>
             <Image url="@../../../../images/飞翔的订单.png" />
          </image>
       </ImageView>
+      <Pane layoutX="47.0" layoutY="103.0" prefHeight="477.0" prefWidth="702.0" />
+      <JFXButton layoutX="47.0" layoutY="64.0" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #5599FF;" text="增加商品" textFill="WHITE" />
    </children>
 </Pane>

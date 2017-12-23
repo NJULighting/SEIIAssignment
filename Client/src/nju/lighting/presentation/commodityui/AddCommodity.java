@@ -12,6 +12,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextInputControl;
+import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 
@@ -78,13 +79,13 @@ public class AddCommodity extends Dialog implements Initializable {
 
 
 
-        binds(repCount, repCountValidator);
-        binds(inPrice,inPriceValidator);
-        binds(sellPrice,sellPriceValidator);
-        binds(recentInPrice,recentInPriceValidator);
-        binds(recentSellPrice,recentSellPriceValidator);
-        binds(name,namedValidator);
-        binds(modelNumber,modelNumberValidator);
+        TextFieldHelper.binds(repCount, repCountValidator);
+        TextFieldHelper.binds(inPrice,inPriceValidator);
+        TextFieldHelper.binds(sellPrice,sellPriceValidator);
+        TextFieldHelper.binds(recentInPrice,recentInPriceValidator);
+        TextFieldHelper.binds(recentSellPrice,recentSellPriceValidator);
+        TextFieldHelper.binds(name,namedValidator);
+        TextFieldHelper.binds(modelNumber,modelNumberValidator);
 
 
 

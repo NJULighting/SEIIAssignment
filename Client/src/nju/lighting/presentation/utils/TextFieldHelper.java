@@ -25,4 +25,23 @@ public class TextFieldHelper {
             }
         });
     }
+
+    public static void binds(JFXTextField textField, ValidatorBase validator, boolean movable) {
+        textField.getValidators().add(validator);
+        textField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (!newValue) {
+                    {
+                        if (!textField.validate())
+                            textField.requestFocus();
+                    }
+
+                } else
+                    textField.resetValidation();
+            }
+        });
+    }
+
+
 }

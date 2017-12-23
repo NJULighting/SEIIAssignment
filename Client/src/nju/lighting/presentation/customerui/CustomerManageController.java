@@ -7,13 +7,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import nju.lighting.presentation.mainui.Upper;
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CustomerManageController implements Initializable{
+public class CustomerManageController implements Initializable, Upper {
 
     @FXML
     HBox child;
@@ -24,8 +25,8 @@ public class CustomerManageController implements Initializable{
     @FXML
     Label sub;
 
-    @FXML
-    void back(){
+
+    public void back() {
         child.getChildren().clear();
         child.getChildren().add(mainPane);
         sub.setText("");
@@ -34,18 +35,16 @@ public class CustomerManageController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("CustomerSearchListUI.fxml"));
-            loader.load();
-            CustomerSearchListController controller=loader.getController();
-            mainPane=controller.getPane();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerSearchListUI.fxml"));
+            mainPane = loader.load();
+            CustomerSearchListController controller = loader.getController();
             child.getChildren().add(mainPane);
 
+            controller.setUpper(this);
+            controller.title = sub;
+            controller.father = child;
 
-
-            controller.title=sub;
-            controller.father=child;
-
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

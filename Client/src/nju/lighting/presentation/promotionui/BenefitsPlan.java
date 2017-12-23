@@ -37,7 +37,7 @@ public class BenefitsPlan {
 
     public BenefitsPlan(List<PromotionVO> list){
         promotionList=list;
-        pagination=new Pagination(promotionList.size()+1);
+        pagination=new Pagination(promotionList.size());
         pagination.setPageFactory((Integer index) -> createPage(index));
         pagination.getStylesheets().add(getClass().getResource("../benefitsplan.css").toExternalForm());
 

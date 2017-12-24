@@ -8,8 +8,6 @@ import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocVO;
 import shared.ResultMessage;
 
-import java.util.ArrayList;
-
 /**
  * Created on 2017/11/7.
  * Description: 处理库存报损报溢相关业务
@@ -20,12 +18,14 @@ public class LossAndGainDoc extends Doc {
     private String comment;
     private LossAndGainDocItemList itemList = new LossAndGainDocItemList();
 
+    public LossAndGainDoc(DocVO vo) {
+        super(vo);
+        assign((LossAndGainDocVO) vo);
+    }
+
     public LossAndGainDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
-        LossAndGainDocVO docVO = (LossAndGainDocVO) historyDocVO.getDocVO();
-        comment = docVO.getComment();
-
-        docVO.getItems().forEach(itemList::add);
+        assign((LossAndGainDocVO) historyDocVO.getDocVO());
     }
 
     public LossAndGainDoc(DocPO po) {
@@ -35,6 +35,19 @@ public class LossAndGainDoc extends Doc {
         ((LossAndGainDocPO) po).getItemPOS().forEach(itemList::add);
     }
 
+    private void assign(DocVO vo) {
+        LossAndGainDocVO docVO = (LossAndGainDocVO) vo;
+        comment = docVO.getComment();
+        docVO.getItems().forEach(itemList::add);
+    }
+
+    /**
+     * 得到报损（报溢）的支出（收入）
+     */
+    public double getAmount() {
+        return itemList.getAmount();
+    }
+
     @Override
     public void approve() {
 
@@ -42,6 +55,11 @@ public class LossAndGainDoc extends Doc {
 
     @Override
     public ResultMessage reject() {
+        return null;
+    }
+
+    @Override
+    public ResultMessage redFlush() {
         return null;
     }
 
@@ -74,6 +92,16 @@ public class LossAndGainDoc extends Doc {
     @Override
     public boolean containsRepository(String repository) {
         return false;
+    }
+
+    @Override
+    public String getCustomer() {
+        return null;
+    }
+
+    @Override
+    public String getRepository() {
+        return null;
     }
 
 }

@@ -15,12 +15,15 @@ import shared.ResultMessage;
  * @author 高梦婷
  */
 public class StockReturnDoc extends StockTypeDoc {
+
+    public StockReturnDoc(DocVO vo) {
+        super(vo);
+        assign(vo);
+    }
+
     public StockReturnDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
-        StockReturnDocVO docVO = (StockReturnDocVO) historyDocVO.getDocVO();
-        setAttributes(docVO.getCustomerId(), docVO.getRepository(), docVO.getRemarks(), docVO.getTotalAmount());
-
-        docVO.getItems().forEach(itemList::add);
+        assign(historyDocVO.getDocVO());
     }
 
     public StockReturnDoc(DocPO po) {
@@ -30,6 +33,13 @@ public class StockReturnDoc extends StockTypeDoc {
                 stockDocPO.getRemarks(), stockDocPO.getTotalAmount());
 
         stockDocPO.getItemPOS().forEach(itemList::add);
+    }
+
+    private void assign(DocVO vo) {
+        StockReturnDocVO docVO = (StockReturnDocVO) vo;
+        setAttributes(docVO.getCustomerId(), docVO.getRepository(), docVO.getRemarks(), docVO.getTotalAmount());
+
+        docVO.getItems().forEach(itemList::add);
     }
 
     /**
@@ -59,5 +69,9 @@ public class StockReturnDoc extends StockTypeDoc {
     public DocPO toPO() {
         return new StockReturnDocPO(id, docType, userId, createTime, checkTime, approvalComment, state,
                 approvalId, customerId, repository, remarks, totalAmount, itemList.toPO(id));
+    }
+
+    public double getRevenue() {
+        return itemList.getRevenue();
     }
 }

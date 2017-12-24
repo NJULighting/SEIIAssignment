@@ -2,9 +2,9 @@ package nju.lighting.bl.logbl;
 
 import nju.lighting.blservice.logblservice.LogBLService;
 import nju.lighting.presentation.utils.DateHelper;
+import nju.lighting.vo.LogVO;
 import shared.Identity;
 import shared.LogFilter;
-import nju.lighting.vo.LogVO;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,10 +18,10 @@ import java.util.List;
 public class LogBLService_Stub implements LogBLService {
 
     @Override
-    public List<LogVO> getLogListByTime(Date from, Date to)  {
-        Date aWeekAgo= DateHelper.WeekAgo();
-        LogVO logVO0 = new LogVO(aWeekAgo, "Too young","Frog0", Identity.FINANCE);
-        LogVO logVO1 = new LogVO(new Date(), "Too simple","Frog1",Identity.GENERAL);
+    public List<LogVO> getLogListByTime(Date from, Date to) {
+        Date aWeekAgo = DateHelper.WeekAgo();
+        LogVO logVO0 = new LogVO(aWeekAgo, "Too young", "Frog0", Identity.FINANCE);
+        LogVO logVO1 = new LogVO(new Date(), "Too simple", "Frog1", Identity.GENERAL);
 
 
         ArrayList<LogVO> logs = new ArrayList<>();
@@ -68,15 +68,12 @@ public class LogBLService_Stub implements LogBLService {
         logs.add(logVO1);
 
 
-
-
-
         return logs;
     }
 
 
     @Override
-    public List<LogVO> findLogs(LogFilter filter)  {
+    public List<LogVO> findLogs(LogFilter filter) {
         Date date1 = new Date();
         Date date2 = new Date(System.currentTimeMillis());
         return getLogListByTime(date1, date2);

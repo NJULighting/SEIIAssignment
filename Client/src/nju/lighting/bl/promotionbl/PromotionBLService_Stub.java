@@ -65,7 +65,7 @@ public class PromotionBLService_Stub implements PromotionBLService {
                 0, 300, new Date());
         PromotionVO vo3 = new PromotionVO(3, "店庆酬宾", creator, PromotionType.PriceOriented, new Date(), new Date(),
                 null, 150, null, 0, 300, new Date());
-        PromotionVO vo4=new PromotionVO(2, "店庆酬宾", creator, PromotionType.Combo, new Date(), new Date(),
+        PromotionVO vo4 = new PromotionVO(2, "店庆酬宾", creator, PromotionType.Combo, new Date(), new Date(),
                 null, 150,
                 ((GiftDocVO) gifts.get(1)).getGifts(),
                 0, 0, new Date());

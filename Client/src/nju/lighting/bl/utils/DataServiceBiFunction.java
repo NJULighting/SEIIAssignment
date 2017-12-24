@@ -12,8 +12,6 @@ import java.util.function.Function;
  */
 @FunctionalInterface
 public interface DataServiceBiFunction<T, R, Y> {
-    Y apply(T t, R r) throws RemoteException;
-
     static <C1, C2, VO, PO> List<VO> findToList(C1 condition1, C2 condition2,
                                                 DataServiceBiFunction<C1, C2, List<PO>> biFunction, Function<PO, VO> poTransformer) {
         try {
@@ -24,4 +22,6 @@ public interface DataServiceBiFunction<T, R, Y> {
             return Collections.emptyList();
         }
     }
+
+    Y apply(T t, R r) throws RemoteException;
 }

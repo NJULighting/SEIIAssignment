@@ -1,11 +1,8 @@
 package nju.lighting.bl.approvalbl;
 
-import nju.lighting.bl.documentbl.Doc;
-import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.vo.DocVO;
-import shared.DocState;
 
 import javax.naming.NamingException;
 import java.util.List;
@@ -20,7 +17,7 @@ public enum ApprovalManager {
 
     private DocDataService dataService;
 
-    ApprovalManager(){
+    ApprovalManager() {
         try {
             dataService = DataFactory.getDataBase(DocDataService.class);
         } catch (NamingException e) {

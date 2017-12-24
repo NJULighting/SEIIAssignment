@@ -5,6 +5,7 @@ import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
+import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import shared.DocState;
 import shared.DocType;
 import shared.ResultMessage;
@@ -36,15 +37,24 @@ public abstract class Doc {
     }
 
     /**
-     * Constructor for approval module
+     * Constructor for red flush
      */
-    protected Doc(HistoryDocVO historyDocVO) {
-        DocVO docVO = historyDocVO.getDocVO();
+    protected Doc(DocVO docVO) {
         id = docVO.getDocId();
         docType = docVO.getType();
         userId = docVO.getCreatorId();
         createTime = docVO.getTime();
+    }
+
+    /**
+     * Constructor for approval module
+     */
+    protected Doc(HistoryDocVO historyDocVO) {
+        this(historyDocVO.getDocVO());
+        checkTime = historyDocVO.getCheckTime();
+        approvalComment = historyDocVO.getComment();
         state = historyDocVO.getState();
+        approvalId = historyDocVO.getApprover().getID();
     }
 
     /**
@@ -67,14 +77,17 @@ public abstract class Doc {
     abstract public void approve();
 
     /**
-     *驳回单据，该方法在审批单据时调用
+     * 驳回单据，该方法在审批单据时调用
      */
     abstract public ResultMessage reject();
 
+    abstract public ResultMessage redFlush();
+
     /**
-     *保存修改后的单据，该方法在审批单据时调用
+     * 保存修改后的单据，该方法在审批单据时调用
      */
     abstract public ResultMessage modify();
+
     /**
      * 创建相应的VO对象
      * @return 对应的<code>DocVO</code>
@@ -93,10 +106,18 @@ public abstract class Doc {
 
     abstract public boolean containsRepository(String repository);
 
-    public HistoryDocVO toHistoryDocVO() {
+    abstract public String getCustomer();
+
+    abstract public String getRepository();
+
+    HistoryDocVO toHistoryDocVO() {
         UserInfo userInfo = new UserInfoImpl();
         return new HistoryDocVO(userInfo.getUserVOByID(userId), toVO(), approvalComment, state,
                 checkTime, userInfo.getUserVOByID(approvalId));
+    }
+
+    BusinessHistoryItemVO toBusinessHistoryItemVO() {
+        return new BusinessHistoryItemVO(createTime, docType, toVO(), getCustomer(), userId, getRepository());
     }
 
     public String getId() {

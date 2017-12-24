@@ -20,7 +20,6 @@ public class AlertDoc extends Doc {
     private boolean triggered;
     private boolean expired;
 
-
     public AlertDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
         AlertDocVO alertDocVO = (AlertDocVO) historyDocVO.getDocVO();
@@ -56,6 +55,11 @@ public class AlertDoc extends Doc {
     }
 
     @Override
+    public ResultMessage redFlush() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public ResultMessage modify() {
         return null;
     }
@@ -84,5 +88,15 @@ public class AlertDoc extends Doc {
     @Override
     public boolean containsRepository(String repository) {
         return false;
+    }
+
+    @Override
+    public String getCustomer() {
+        return null;
+    }
+
+    @Override
+    public String getRepository() {
+        return null;
     }
 }

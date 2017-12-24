@@ -57,20 +57,23 @@ public class MockCommodity implements CommodityInfo {
     }
 
     @Override
-    public List<CommodityItem> getCommodityItems(List<String> ids) {
-        ArrayList<CommodityItem> comItems = new ArrayList<>();
-        for (String id : ids) {
-            for (CommodityItem item : items) {
-                if (item.getId().equals(id))
-                    comItems.add(item);
-            }
-        }
-        return comItems;
+    public String getCommodityNameByID(String commodityID) {
+        return null;
     }
 
     @Override
-    public String getCommodityNameByID(String commodityID) {
+    public String getCommodityCategory(String commodityID) {
         return null;
+    }
+
+    @Override
+    public double getCommodityInPrice(String id) {
+        return 0;
+    }
+
+    @Override
+    public double getCostAdjustRevenue() {
+        return 0;
     }
 
     @Override

@@ -6,7 +6,6 @@ import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessConditionItemVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.SalesDetailVO;
-import shared.BusinessConditionFilter;
 import shared.DocumentFilter;
 import shared.ResultMessage;
 import shared.TwoTuple;
@@ -34,7 +33,7 @@ public interface DocBLService {
      */
     List<HistoryDocVO> findDocuments(DocumentFilter filter);
 
-    List<BusinessConditionItemVO> findSaleRecords(BusinessConditionFilter filter);
+    List<BusinessConditionItemVO> findSaleRecords(DocumentFilter filter);
 
     List<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter);
 

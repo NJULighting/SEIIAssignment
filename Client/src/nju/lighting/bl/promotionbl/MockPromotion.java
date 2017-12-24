@@ -5,7 +5,6 @@ import shared.PromotionType;
 /**
  * Created on 2017/11/19.
  * Description
- *
  * @author 陈俊宇
  */
 @Deprecated

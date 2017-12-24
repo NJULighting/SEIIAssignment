@@ -2,11 +2,11 @@ package nju.lighting.bl.documentbl.alertdoc;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
+import nju.lighting.bl.documentbl.DocItem;
 import nju.lighting.po.doc.alertdoc.AlertDocItemPO;
 import nju.lighting.vo.doc.alertdoc.AlertDocItemVO;
-import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 
-public class AlertDocItem {
+public class AlertDocItem implements DocItem {
 
     private int id;
     private int count;
@@ -47,5 +47,15 @@ public class AlertDocItem {
     AlertDocItemVO toVO() {
         CommodityInfo commodityInfo = new CommodityInfoImpl();
         return new AlertDocItemVO(commodityInfo.getBasicCommodityItemVO(commodityId), id, count);
+    }
+
+    @Override
+    public void redFlush() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void approve() {
+
     }
 }

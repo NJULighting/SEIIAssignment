@@ -3,13 +3,13 @@ package nju.lighting.bl.documentbl;
 import nju.lighting.bl.documentbl.accountiodoc.AccountIODoc;
 import nju.lighting.bl.documentbl.alertdoc.AlertDoc;
 import nju.lighting.bl.documentbl.costdoc.CostDoc;
+import nju.lighting.bl.documentbl.giftdoc.GiftDoc;
 import nju.lighting.bl.documentbl.lossandgaindoc.LossAndGainDoc;
 import nju.lighting.bl.documentbl.salesdoc.SalesDoc;
 import nju.lighting.bl.documentbl.salesdoc.SalesReturnDoc;
 import nju.lighting.bl.documentbl.stockdoc.StockDoc;
 import nju.lighting.bl.documentbl.stockdoc.StockReturnDoc;
 import nju.lighting.po.doc.DocPO;
-import nju.lighting.bl.documentbl.giftdoc.GiftDoc;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.DocType;
 

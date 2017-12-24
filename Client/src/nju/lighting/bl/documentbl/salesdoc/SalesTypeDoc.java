@@ -2,6 +2,7 @@ package nju.lighting.bl.documentbl.salesdoc;
 
 import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.ResultMessage;
 
@@ -23,13 +24,21 @@ public abstract class SalesTypeDoc extends Doc {
     double finalAmount;
     SaleDocItemList itemList = new SaleDocItemList();
 
+    SalesTypeDoc(DocVO vo) {
+        super(vo);
+    }
+
     SalesTypeDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
     }
 
-
     SalesTypeDoc(DocPO po) {
         super(po);
+    }
+
+    @Override
+    public ResultMessage redFlush() {
+        return null;
     }
 
     void setAttributes(int customerId, String salesman, String repository, String remarks,
@@ -44,16 +53,8 @@ public abstract class SalesTypeDoc extends Doc {
         this.finalAmount = finalAmount;
     }
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
     public String getSalesman() {
         return salesman;
-    }
-
-    public String getRepository() {
-        return repository;
     }
 
     public String getRemarks() {
@@ -74,6 +75,24 @@ public abstract class SalesTypeDoc extends Doc {
 
     double calculateBeforeDiscount() {
         return (finalAmount + voucher) / (1 - discount);
+    }
+
+    public double getTotalAmount() {
+        return itemList.getTotalRevenue();
+    }
+
+    public double getDiscountAmount() {
+        return beforeDiscountAmount * discount;
+    }
+
+    public double getVoucherCausedRevenue() {
+        double afterDiscount = beforeDiscountAmount * (1 - discount);
+        return voucher > afterDiscount ? voucher - afterDiscount : 0;
+    }
+
+    @Override
+    public String getRepository() {
+        return repository;
     }
 
     @Override
@@ -100,4 +119,8 @@ public abstract class SalesTypeDoc extends Doc {
         return this.repository.equals(repository);
     }
 
+    @Override
+    public String getCustomer() {
+        return Integer.toString(customerId);
+    }
 }

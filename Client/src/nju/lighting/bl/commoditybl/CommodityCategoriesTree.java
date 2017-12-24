@@ -4,7 +4,6 @@ import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
-import shared.ResultMessage;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,5 +1,6 @@
 package nju.lighting.bl.documentbl.costdoc;
 
+import nju.lighting.bl.documentbl.DocItem;
 import nju.lighting.po.doc.costdoc.CostDocItemPO;
 import nju.lighting.vo.doc.costdoc.CostDocItemVO;
 import shared.CostDocItemType;
@@ -9,7 +10,7 @@ import shared.CostDocItemType;
  * Description:
  * @author Liao
  */
-public class CostDocItem {
+public class CostDocItem implements DocItem {
     private int id;
     private CostDocItemType type;
     private double amount;
@@ -39,5 +40,15 @@ public class CostDocItem {
 
     CostDocItemVO toVO() {
         return new CostDocItemVO(id, type, amount, comment);
+    }
+
+    @Override
+    public void redFlush() {
+        amount = -amount;
+    }
+
+    @Override
+    public void approve() {
+
     }
 }

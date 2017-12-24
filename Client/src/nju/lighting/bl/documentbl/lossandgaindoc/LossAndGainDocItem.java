@@ -2,11 +2,12 @@ package nju.lighting.bl.documentbl.lossandgaindoc;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
+import nju.lighting.bl.documentbl.DocItem;
 import nju.lighting.po.doc.lossandgaindoc.LossAndGainItemPO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocItemVO;
 import shared.LossAndGainItemType;
 
-class LossAndGainDocItem {
+class LossAndGainDocItem implements DocItem {
 
     private int count;
     private int id;
@@ -67,5 +68,15 @@ class LossAndGainDocItem {
     LossAndGainDocItemVO toVO() {
         CommodityInfo commodityInfo = new CommodityInfoImpl();
         return new LossAndGainDocItemVO(commodityInfo.getBasicCommodityItemVO(commodityId), count, type, id);
+    }
+
+    @Override
+    public void redFlush() {
+        count = -count;
+    }
+
+    @Override
+    public void approve() {
+
     }
 }

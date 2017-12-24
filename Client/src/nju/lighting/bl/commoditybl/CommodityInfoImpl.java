@@ -1,9 +1,11 @@
 package nju.lighting.bl.commoditybl;
 
+import nju.lighting.bl.utils.CommodityPathParser;
 import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.bl.utils.DataServiceSupplier;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
+import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.repository.RepositoryTableItemVO;
@@ -12,6 +14,7 @@ import javax.naming.NamingException;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.function.Function;
 
 /**
@@ -57,11 +60,6 @@ public class CommodityInfoImpl implements CommodityInfo {
     }
 
     @Override
-    public List<CommodityItem> getCommodityItems(List<String> ids) {
-        return null;
-    }
-
-    @Override
     public String getCommodityNameByID(String commodityID) {
         try {
             CommodityItemPO po = dataService.findById(commodityID);
@@ -71,6 +69,33 @@ public class CommodityInfoImpl implements CommodityInfo {
         } catch (RemoteException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    @Override
+    public String getCommodityCategory(String commodityID) {
+        int categoryId = CommodityPathParser.getCommodityCategory(commodityID);
+        return Optional.ofNullable(DataServiceFunction.findByToPO(categoryId, dataService::findCategoryById))
+                .map(CommodityCategoryPO::getName)
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    @Override
+    public double getCommodityInPrice(String id) {
+        return Optional.ofNullable(DataServiceFunction.findByToPO(id, dataService::findById))
+                .map(CommodityItemPO::getInPrice)
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    @Override
+    public double getCostAdjustRevenue() {
+        try {
+            return dataService.getAllCommodity().stream()
+                    .mapToDouble(item -> (item.getRecentInPrice() - item.getInPrice()) * item.getRepCount())
+                    .sum();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return 0;
         }
     }
 

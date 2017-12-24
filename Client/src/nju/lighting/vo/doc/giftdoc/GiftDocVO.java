@@ -63,6 +63,10 @@ public class GiftDocVO extends DocVO {
         return promotionID;
     }
 
+    public String getRepository() {
+        return "01";
+    }
+
     @Override
     public DocPO toPO() {
         List<GiftItemPO> poList = VPOTransformer.toVPOList(gifts, GiftItemVO::toPO);

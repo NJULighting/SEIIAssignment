@@ -13,9 +13,13 @@ public interface CommodityInfo {
 
     double getCommodityRecentSellPrice(String id);
 
-    List<CommodityItem> getCommodityItems(List<String> ids);
-
     String getCommodityNameByID(String commodityID);
+
+    String getCommodityCategory(String commodityID);
+
+    double getCommodityInPrice(String id);
+
+    double getCostAdjustRevenue();
 
     List<RepositoryTableItemVO> getRepositoryTableItemList();
 

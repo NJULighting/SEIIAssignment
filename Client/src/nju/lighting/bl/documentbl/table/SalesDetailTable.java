@@ -1,8 +1,22 @@
 package nju.lighting.bl.documentbl.table;
 
+import nju.lighting.bl.commoditybl.CommodityInfo;
+import nju.lighting.bl.commoditybl.CommodityInfoImpl;
+import nju.lighting.bl.documentbl.giftdoc.GiftDoc;
+import nju.lighting.bl.documentbl.lossandgaindoc.LossAndGainDoc;
+import nju.lighting.bl.documentbl.salesdoc.SalesDoc;
+import nju.lighting.bl.documentbl.stockdoc.StockReturnDoc;
+import nju.lighting.dataservice.DataFactory;
+import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.vo.viewtables.SalesDetailVO;
+import shared.DocType;
 
+import javax.naming.NamingException;
+import java.rmi.RemoteException;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/11/7.
@@ -10,14 +24,104 @@ import java.util.Date;
  * @author Liao
  */
 public class SalesDetailTable {
+    private double salesRevenue; //ok
+    private double commodityGainRevenue; //ok
+    private double costAdjustRevenue;
+    private double spreadRevenue; //ok
+    private double voucherCausedRevenue; //ok
+    private double salesRevenueOff; //ok
+    private double costExpenditure; //ok
+    private double commodityLossExpenditure; //ok
+    private double giftExpenditure; // ok
+    private double profit;
+
+    private List<LossAndGainDoc> lossAndGainDocs;
+    private List<SalesDoc> salesDocs;
+    private List<StockReturnDoc> stockReturnDocs;
+    private List<GiftDoc> giftDocs;
+
+    private Date startDate;
+    private Date endDate;
+
+    private DocDataService dataService;
+
+    public SalesDetailTable(Date startDate, Date endDate) {
+
+        try {
+            dataService = DataFactory.getDataBase(DocDataService.class);
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
+
+        this.startDate = startDate;
+        this.endDate = endDate;
+
+        lossAndGainDocs = findToDoc(LossAndGainDoc.class, DocType.LOSS_AND_GAIN);
+        salesDocs = findToDoc(SalesDoc.class, DocType.SALES);
+        stockReturnDocs = findToDoc(StockReturnDoc.class, DocType.STOCK_RETURN);
+        giftDocs = findToDoc(GiftDoc.class, DocType.GIFT);
+
+        calculateCostAdjustRevenue();
+        calculateGiftDoc();
+        calculateLossAndGainDoc();
+        calculateSalesDoc();
+        calculateSpreadRevenue();
+        calculateProfit();
+    }
+
+    private void calculateProfit() {
+        profit = salesRevenue + commodityGainRevenue + voucherCausedRevenue + spreadRevenue + costAdjustRevenue
+                - costExpenditure - commodityLossExpenditure - giftExpenditure;
+    }
 
     /**
      * 根据所给的日期区间生成经营情况表
-     * @param startDate 开始时间
-     * @param endDate   结束时间（包含）
      * @return 相对应的经营情况表的值对象
      */
-    public SalesDetailVO findSalesDetailTable(Date startDate, Date endDate) {
-        return null;
+    public SalesDetailVO findSalesDetailTable() {
+        return new SalesDetailVO(salesRevenue, commodityGainRevenue, costAdjustRevenue, spreadRevenue,
+                voucherCausedRevenue, salesRevenueOff, costExpenditure, commodityLossExpenditure,
+                giftExpenditure, profit);
+    }
+
+    private void calculateSalesDoc() {
+        for (SalesDoc salesDoc : salesDocs) {
+            salesRevenue += salesDoc.getFinalAmount();
+            salesRevenueOff += salesDoc.getDiscountAmount();
+            voucherCausedRevenue += salesDoc.getVoucherCausedRevenue();
+            costExpenditure += salesDoc.getTotalCost();
+        }
+    }
+
+    private void calculateLossAndGainDoc() {
+        lossAndGainDocs.forEach(doc -> {
+            double amount = doc.getAmount();
+            if (amount >= 0) commodityGainRevenue += amount;
+            else commodityLossExpenditure -= amount;
+        });
+    }
+
+    private void calculateGiftDoc() {
+        giftExpenditure = giftDocs.stream().mapToDouble(GiftDoc::getTotal).sum();
+    }
+
+    private void calculateSpreadRevenue() {
+        spreadRevenue = stockReturnDocs.stream().mapToDouble(StockReturnDoc::getRevenue).sum();
+    }
+
+    private void calculateCostAdjustRevenue() {
+        CommodityInfo commodityInfo = new CommodityInfoImpl();
+        costAdjustRevenue = commodityInfo.getCostAdjustRevenue();
+    }
+
+    private <T> List<T> findToDoc(Class<T> type, DocType docType) {
+        try {
+            return dataService.findByTimeAndType(startDate, endDate, docType).stream()
+                    .map(type::cast)
+                    .collect(Collectors.toList());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
     }
 }

@@ -22,13 +22,14 @@ public class CostDoc extends Doc {
     private String accountId;
     private double totalAmount;
 
+    public CostDoc(DocVO vo) {
+        super(vo);
+        assign(vo);
+    }
+
     public CostDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
-        CostDocVO docVO = (CostDocVO) historyDocVO.getDocVO();
-        accountId = docVO.getAccount().getId();
-        totalAmount = docVO.getTotal();
-
-        docVO.getItemList().forEach(itemList::add);
+        assign(historyDocVO.getDocVO());
     }
 
     public CostDoc(DocPO po) {
@@ -40,6 +41,14 @@ public class CostDoc extends Doc {
         costDocPO.getItemList().forEach(itemList::add);
     }
 
+    private void assign(DocVO vo) {
+        CostDocVO costDocVO = (CostDocVO) vo;
+        totalAmount = costDocVO.getTotal();
+        accountId = costDocVO.getAccount().getId();
+
+        costDocVO.getItemList().forEach(itemList::add);
+    }
+
     @Override
     public void approve() {
         AccountInfo accountInfo = new MockAccountInfo();
@@ -48,6 +57,11 @@ public class CostDoc extends Doc {
 
     @Override
     public ResultMessage reject() {
+        return null;
+    }
+
+    @Override
+    public ResultMessage redFlush() {
         return null;
     }
 
@@ -81,6 +95,16 @@ public class CostDoc extends Doc {
     @Override
     public boolean containsRepository(String repository) {
         return false;
+    }
+
+    @Override
+    public String getCustomer() {
+        return null;
+    }
+
+    @Override
+    public String getRepository() {
+        return null;
     }
 
 }

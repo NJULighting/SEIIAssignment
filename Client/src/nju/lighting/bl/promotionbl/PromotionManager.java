@@ -60,9 +60,9 @@ enum PromotionManager {
 
     /**
      * Get promotion strategies which satisfy the condition you passed
-     * @param customerLevel level of customer
+     * @param customerLevel   level of customer
      * @param commodityIDList ids of commodities
-     * @param total price target for promotion
+     * @param total           price target for promotion
      * @return promotion vos meet these conditions
      * @throws IllegalArgumentException if customerLevel or commodityIDList is null
      */
@@ -100,7 +100,7 @@ enum PromotionManager {
     /**
      * Check the goods of po whether have same item of target commodity list
      * @param commodityIDList ids of commodities
-     * @param po po to be matched
+     * @param po              po to be matched
      * @return <code>true</code> if matches any, <code>false</code> if po's list is null or matches none
      */
     private boolean containsItemOfList(List<String> commodityIDList, PromotionPO po) {

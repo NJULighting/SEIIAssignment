@@ -11,7 +11,7 @@ import java.util.List;
  * Description:
  * @author Liao
  */
-public class UserController implements UserBLService{
+public class UserController implements UserBLService {
     private LoginHelper loginHelper = LoginHelper.INSTANCE;
     private UserManager userManager = UserManager.INSTANCE;
 

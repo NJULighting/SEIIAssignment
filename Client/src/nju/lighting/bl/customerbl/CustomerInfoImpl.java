@@ -1,7 +1,5 @@
 package nju.lighting.bl.customerbl;
 
-import nju.lighting.bl.logbl.Logger;
-import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
 import nju.lighting.po.customer.CustomerPO;

@@ -2,6 +2,7 @@ package nju.lighting.bl.documentbl.giftdoc;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
+import nju.lighting.bl.documentbl.DocItem;
 import nju.lighting.po.doc.giftdoc.GiftItemPO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 
@@ -9,10 +10,9 @@ import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 /**
  * Created on 2017/11/14.
  * Description
- *
  * @author 陈俊宇
  */
-public class GiftDocItem {
+public class GiftDocItem implements DocItem {
 
     private int id;
     private int count;
@@ -63,5 +63,16 @@ public class GiftDocItem {
     GiftItemVO toVO() {
         CommodityInfo commodityInfo = new CommodityInfoImpl();
         return new GiftItemVO(id, commodityInfo.getBasicCommodityItemVO(commodityId), count);
+    }
+
+    @Override
+    public void redFlush() {
+        count = -count;
+        subtotal = -subtotal;
+    }
+
+    @Override
+    public void approve() {
+
     }
 }

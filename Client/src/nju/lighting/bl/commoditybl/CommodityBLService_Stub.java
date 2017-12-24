@@ -4,9 +4,8 @@ import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
-import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
-
+import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.ResultMessage;
 
 import java.util.ArrayList;

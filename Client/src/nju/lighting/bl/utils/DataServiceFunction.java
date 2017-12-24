@@ -12,8 +12,6 @@ import java.util.function.Function;
  */
 @FunctionalInterface
 public interface DataServiceFunction<T, R> {
-    R apply(T t) throws RemoteException;
-
     static <C, VO, PO> List<VO> findByToList(C condition, DataServiceFunction<C, List<PO>> function, Function<PO, VO> poTransformer) {
         try {
             List<PO> poList = function.apply(condition);
@@ -35,4 +33,18 @@ public interface DataServiceFunction<T, R> {
             return null;
         }
     }
+
+    static <C, PO> PO findByToPO(C condition, DataServiceFunction<C, PO> function) {
+        try {
+            PO po = function.apply(condition);
+            if (po == null)
+                return null;
+            return po;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    R apply(T t) throws RemoteException;
 }

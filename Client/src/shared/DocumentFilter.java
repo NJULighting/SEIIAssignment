@@ -2,6 +2,8 @@ package shared;
 
 import nju.lighting.bl.documentbl.Doc;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Optional;
@@ -21,9 +23,25 @@ public class DocumentFilter {
     private final Predicate<Doc> commodityFilter;
     private final Predicate<Doc> repositoryFilter;
 
+    private final String commodity;
+    private final Date start;
+    private final Date end;
+
     public Predicate<Doc> getPredicate() {
         return typeFilter.and(dateFilter).and(creatorFilter).and(idFilter).and(stateFilter)
                 .and(customerFilter).and(commodityFilter).and(repositoryFilter);
+    }
+
+    public String getCommodity() {
+        return commodity;
+    }
+
+    public Date getStart() {
+        return Optional.ofNullable(start).orElse(new Date(Instant.now().minus(Duration.ofDays(1)).toEpochMilli()));
+    }
+
+    public Date getEnd() {
+        return Optional.ofNullable(end).orElse(new Date());
     }
 
     private DocumentFilter(Builder builder) {
@@ -34,6 +52,10 @@ public class DocumentFilter {
         customerFilter = generatePredicateByContain(builder.customerId, Doc::containsCustomer);
         commodityFilter = generatePredicateByContain(builder.commodityName, Doc::containsCommodity);
         repositoryFilter = generatePredicateByContain(builder.repository, Doc::containsRepository);
+
+        commodity = builder.commodityName;
+        start = builder.startDate;
+        end = builder.endDate;
 
         // Generate type filter
         if (builder.docTypes.size() == 0) {
@@ -129,7 +151,6 @@ public class DocumentFilter {
             this.state = state;
             return this;
         }
-
         public DocumentFilter build() {
             return new DocumentFilter(this);
         }

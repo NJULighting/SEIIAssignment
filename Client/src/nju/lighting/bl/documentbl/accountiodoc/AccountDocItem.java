@@ -1,5 +1,6 @@
 package nju.lighting.bl.documentbl.accountiodoc;
 
+import nju.lighting.bl.documentbl.DocItem;
 import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 
@@ -8,7 +9,7 @@ import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
  * Description:
  * @author Liao
  */
-class AccountDocItem {
+class AccountDocItem implements DocItem {
     private int id;
     private String accountID;
     private double amount;
@@ -49,5 +50,15 @@ class AccountDocItem {
 
     AccountTransferItemVO toVO() {
         return new AccountTransferItemVO(amount, comments, accountID, id);
+    }
+
+    @Override
+    public void redFlush() {
+
+    }
+
+    @Override
+    public void approve() {
+
     }
 }

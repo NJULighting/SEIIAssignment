@@ -23,6 +23,11 @@ public class AccountIODoc extends Doc {
     private AccountDocItemList itemList;
     private InOutStrategy strategy;
 
+    public AccountIODoc(DocVO vo) {
+        super(vo);
+        assign(vo);
+    }
+
     /**
      * Constructor for approval module
      */
@@ -36,11 +41,7 @@ public class AccountIODoc extends Doc {
         }
 
         // Assign specific fields
-        AccountIODocVO docVO = (AccountIODocVO) historyDocVO.getDocVO();
-        customerID = docVO.getCustomer();
-        total = docVO.getTotal();
-        itemList = new AccountDocItemList();
-        itemList.addAll(docVO.getTransferAccountList());
+        assign(historyDocVO.getDocVO());
     }
 
     /**
@@ -64,6 +65,14 @@ public class AccountIODoc extends Doc {
         }
     }
 
+    private void assign(DocVO vo) {
+        AccountIODocVO docVO = (AccountIODocVO) vo;
+        customerID = docVO.getCustomer();
+        total = docVO.getTotal();
+        itemList = new AccountDocItemList();
+        itemList.addAll(docVO.getTransferAccountList());
+    }
+
     @Override
     public void approve() {
         strategy.approve(this);
@@ -75,13 +84,18 @@ public class AccountIODoc extends Doc {
     }
 
     @Override
+    public ResultMessage redFlush() {
+        return null;
+    }
+
+    @Override
     public ResultMessage modify() {
         return null;
     }
 
     @Override
     public DocVO toVO() {
-            return new AccountIODocVO(createTime, userId, id, docType, customerID, itemList.toVO());
+        return new AccountIODocVO(createTime, userId, id, docType, customerID, itemList.toVO());
     }
 
     @Override
@@ -106,6 +120,16 @@ public class AccountIODoc extends Doc {
     @Override
     public boolean containsRepository(String repository) {
         return false;
+    }
+
+    @Override
+    public String getCustomer() {
+        return customerID;
+    }
+
+    @Override
+    public String getRepository() {
+        return null;
     }
 
 }

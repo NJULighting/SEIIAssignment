@@ -15,12 +15,14 @@ import shared.ResultMessage;
  */
 public class StockDoc extends StockTypeDoc {
 
+    public StockDoc(DocVO vo) {
+        super(vo);
+        assign(vo);
+    }
+
     public StockDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
-        StockDocVO docVO = (StockDocVO) historyDocVO.getDocVO();
-        setAttributes(docVO.getCustomerId(), docVO.getRepository(), docVO.getRemarks(), docVO.getTotalAmount());
-
-        docVO.getItems().forEach(itemList::add);
+        assign(historyDocVO.getDocVO());
     }
 
     public StockDoc(DocPO po) {
@@ -30,6 +32,13 @@ public class StockDoc extends StockTypeDoc {
                 stockDocPO.getRepository(), stockDocPO.getTotalAmount());
 
         stockDocPO.getItemPOS().forEach(itemList::add);
+    }
+
+    private void assign(DocVO vo) {
+        StockDocVO docVO = (StockDocVO) vo;
+        setAttributes(docVO.getCustomerId(), docVO.getRepository(), docVO.getRemarks(), docVO.getTotalAmount());
+
+        docVO.getItems().forEach(itemList::add);
     }
 
     /**

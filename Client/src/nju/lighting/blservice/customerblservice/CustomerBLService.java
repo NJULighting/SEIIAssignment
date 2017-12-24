@@ -1,5 +1,6 @@
 package nju.lighting.blservice.customerblservice;
 
+import nju.lighting.bl.customerbl.Customer;
 import nju.lighting.vo.CustomerVO;
 import shared.CustomerChangeInfo;
 import shared.CustomerType;
@@ -36,6 +37,8 @@ public interface CustomerBLService {
 
     //查找客户
     List<CustomerVO> search(String keyword);
+
+    List<CustomerVO> searchInType(String keyword, CustomerType type);
 
     /**
      * Delete a customer

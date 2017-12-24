@@ -4,7 +4,6 @@ import nju.lighting.blservice.initblservice.InitializationBLService;
 import nju.lighting.vo.InitVO;
 import shared.ResultMessage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

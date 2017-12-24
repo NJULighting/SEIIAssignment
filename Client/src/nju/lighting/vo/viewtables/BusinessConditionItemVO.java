@@ -2,13 +2,15 @@ package nju.lighting.vo.viewtables;
 
 import nju.lighting.vo.DocVO;
 
+import java.util.Date;
+
 /**
  * Created on 2017/10/21.
  * Description
  * @author 陈俊宇
  */
 public class BusinessConditionItemVO {
-    private long date;
+    private Date date;
 
     private String commodityName;
 
@@ -20,23 +22,20 @@ public class BusinessConditionItemVO {
 
     private double totalAmount;
 
-    private DocVO doc;
-
-    public BusinessConditionItemVO(long date, String commodityName, String commodityType, int number, double salePrice, double totalAmount, DocVO docVO) {
+    public BusinessConditionItemVO(Date date, String commodityName, String commodityType, int number, double salePrice, double totalAmount) {
         this.date = date;
         this.commodityName = commodityName;
         this.commodityType = commodityType;
         this.number = number;
         this.salePrice = salePrice;
         this.totalAmount = totalAmount;
-        this.doc = docVO;
     }
 
-    public long getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(long date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -76,12 +75,4 @@ public class BusinessConditionItemVO {
         this.totalAmount = totalAmount;
     }
 
-
-    public DocVO getDoc() {
-        return doc;
-    }
-
-    public void setDoc(DocVO doc) {
-        this.doc = doc;
-    }
 }

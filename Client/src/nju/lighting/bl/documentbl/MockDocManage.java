@@ -8,15 +8,14 @@ import java.util.List;
 /**
  * Created on 2017/11/14.
  * Description
- *
  * @author 陈俊宇
  */
-public class MockDocManage  implements DocInfo{
+public class MockDocManage implements DocInfo {
     @Override
     public List<DocVO> findUnCheckedDoc() {
         ArrayList<DocVO> uncheckedDocs = new ArrayList<>();
 
 
-        return  uncheckedDocs;
+        return uncheckedDocs;
     }
 }

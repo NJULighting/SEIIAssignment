@@ -40,14 +40,14 @@ public class UserBLServie_Stub implements UserBLService {
             return new UserVO("Frog 0", "0000", Identity.GENERAL, true);
         else if (id.equals("1"))
             return new UserVO("Frog 1", "0001", Identity.REPOSITORY, false);
-        else if(id.equals("2"))
-            return new UserVO("Frog 2","0002",Identity.SALE,false);
-        else if(id.equals("3"))
-            return new UserVO("Frog 3","0003",Identity.SALE_MANAGER,true);
-        else if(id.equals("4"))
-            return new UserVO("Frog 4","0004",Identity.FINANCE,false);
+        else if (id.equals("2"))
+            return new UserVO("Frog 2", "0002", Identity.SALE, false);
+        else if (id.equals("3"))
+            return new UserVO("Frog 3", "0003", Identity.SALE_MANAGER, true);
+        else if (id.equals("4"))
+            return new UserVO("Frog 4", "0004", Identity.FINANCE, false);
         else if (id.equals("5"))
-            return new UserVO("Admin","0000",Identity.SYSTEM_ADMIN,true);
+            return new UserVO("Admin", "0000", Identity.SYSTEM_ADMIN, true);
         return null;
     }
 
@@ -75,7 +75,7 @@ public class UserBLServie_Stub implements UserBLService {
                 res.r = LoginReturnState.INVALID_PASSWORD;
                 return res;
             }
-        }else if(id.equals("kc")){
+        } else if (id.equals("kc")) {
             // Password right
             if (password.equals("1")) {
                 res.t = getUser("1");
@@ -86,42 +86,42 @@ public class UserBLServie_Stub implements UserBLService {
                 res.r = LoginReturnState.INVALID_PASSWORD;
                 return res;
             }
-        }else if(id.equals("jhxs")){
+        } else if (id.equals("jhxs")) {
             // Password right
-            if(password.equals("1")){
+            if (password.equals("1")) {
                 res.t = getUser("2");
                 res.r = LoginReturnState.SUCCESS;
                 return res;
-            }else {
+            } else {
                 // Password wrong
                 res.r = LoginReturnState.INVALID_PASSWORD;
                 return res;
             }
-        }else if(id.equals("xsjl")){
+        } else if (id.equals("xsjl")) {
             // Password right
-            if(password.equals("1")){
+            if (password.equals("1")) {
                 res.t = getUser("3");
                 res.r = LoginReturnState.SUCCESS;
                 return res;
-            }else {
+            } else {
                 // Password wrong
                 res.r = LoginReturnState.INVALID_PASSWORD;
                 return res;
             }
-        }else if(id.equals("cw")){
+        } else if (id.equals("cw")) {
             // Password right
-            if(password.equals("1")){
+            if (password.equals("1")) {
                 res.t = getUser("4");
                 res.r = LoginReturnState.SUCCESS;
                 return res;
-            }else {
+            } else {
                 // Password wrong
                 res.r = LoginReturnState.INVALID_PASSWORD;
                 return res;
             }
-        }else if (id.equals("admin")){
-            res.t=getUser("5");
-            res.r=LoginReturnState.SUCCESS;
+        } else if (id.equals("admin")) {
+            res.t = getUser("5");
+            res.r = LoginReturnState.SUCCESS;
             return res;
         }
         // User not existed

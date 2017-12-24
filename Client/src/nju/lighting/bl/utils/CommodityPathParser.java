@@ -14,4 +14,14 @@ public class CommodityPathParser {
         int index = path.lastIndexOf(SEPARATOR);
         return Integer.parseInt(path.substring(index + 1));
     }
+
+    public static int getCommodityCategory(String commodityPath) {
+        // Check the commodity whether is the child of the root
+        if (!commodityPath.contains(SEPARATOR))
+            return -1;
+
+        // Get its category id
+        String[] tmp = commodityPath.split(SEPARATOR);
+        return Integer.parseInt(tmp[tmp.length - 2]);
+    }
 }

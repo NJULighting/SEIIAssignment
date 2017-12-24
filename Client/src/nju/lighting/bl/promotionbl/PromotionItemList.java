@@ -14,7 +14,8 @@ import java.util.stream.Collectors;
 class PromotionItemList {
     private List<GiftItemVO> goods;
 
-    PromotionItemList() {}
+    PromotionItemList() {
+    }
 
     PromotionItemList(List<GiftItemVO> goods) {
         this.goods = goods;

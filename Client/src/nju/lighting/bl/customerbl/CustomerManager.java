@@ -96,13 +96,13 @@ enum CustomerManager {
      * Create a new customer, id should be ignored 'cause the database will generate a id for it automatically
      * @param vo vo contains all information except id of a customer
      * @return <code>SUCCESS</code> if add successfully<br>
-     *     <code>FAILURE</code> if there's an exception in database
-     *     <code>NETWORK_FAIL</code> if network fails
+     * <code>FAILURE</code> if there's an exception in database
+     * <code>NETWORK_FAIL</code> if network fails
      */
     ResultMessage createCustomer(CustomerVO vo) {
         Customer customer = new Customer(vo);
         try {
-            ResultMessage res =  dataService.insertCustomer(customer.toPO());
+            ResultMessage res = dataService.insertCustomer(customer.toPO());
             if (res == ResultMessage.SUCCESS)
                 logger.add(OPType.ADD, "添加新客户" + vo.getName());
             return res;
@@ -116,7 +116,7 @@ enum CustomerManager {
      * Get a customer with this id
      * @param id type of target customers
      * @return customer with the id you passed <br>
-     *     or <code>null</code> if network fails
+     * or <code>null</code> if network fails
      */
     CustomerVO findCustomerByID(int id) {
         try {
@@ -138,7 +138,7 @@ enum CustomerManager {
      * Get vo list of customers by type
      * @param type type of target customers
      * @return customers with the type you passed <br>
-     *     or <code>null</code> if network fails
+     * or <code>null</code> if network fails
      */
     List<CustomerVO> findCustomerByType(CustomerType type) {
         try {
@@ -167,7 +167,7 @@ enum CustomerManager {
 
         // Execute changing
         try {
-            ResultMessage res =  dataService.changeReceivableLimit(id, limit);
+            ResultMessage res = dataService.changeReceivableLimit(id, limit);
             if (res == ResultMessage.SUCCESS)
                 logger.add(OPType.MODIFY, "修改客户 " + id + " 应收额度为 " + limit);
             return res;

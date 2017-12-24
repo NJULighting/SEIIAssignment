@@ -15,6 +15,7 @@ public class GiftDocItemList {
 
 
     private ItemList<GiftDocItem> itemList;
+
     void add(GiftItemPO po) {
         itemList.add(po, GiftDocItem::new);
     }

@@ -12,8 +12,6 @@ import java.util.function.Function;
  */
 @FunctionalInterface
 public interface DataServiceSupplier<T> {
-    T get() throws RemoteException;
-
     static <VO, PO> List<VO> getAll(DataServiceSupplier<List<PO>> supplier, Function<PO, VO> poTransformer) {
         try {
             List<PO> poList = supplier.get();
@@ -23,4 +21,6 @@ public interface DataServiceSupplier<T> {
             return Collections.emptyList();
         }
     }
+
+    T get() throws RemoteException;
 }

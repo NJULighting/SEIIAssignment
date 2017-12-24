@@ -1,7 +1,5 @@
 package nju.lighting.bl.promotionbl;
 
-import nju.lighting.vo.promotion.PromotionVO;
-
 import java.util.ArrayList;
 
 /**

@@ -18,7 +18,7 @@ class CommodityController implements CommodityBLService {
     }
 
     @Override
-    public ResultMessage addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category)  {
+    public ResultMessage addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category) {
         return manager.addCommodity(newCommodity, category.getPath());
     }
 
@@ -43,22 +43,22 @@ class CommodityController implements CommodityBLService {
     }
 
     @Override
-    public ResultMessage deleteCommodity(String id)  {
+    public ResultMessage deleteCommodity(String id) {
         return manager.deleteCommodity(id);
     }
 
     @Override
-    public ResultMessage modifyCommodity(CommodityItemVO commodity)  {
+    public ResultMessage modifyCommodity(CommodityItemVO commodity) {
         return manager.modifyCommodity(commodity);
     }
 
     @Override
-    public ResultMessage addCategory(CommodityCategoryVO newCategory)  {
+    public ResultMessage addCategory(CommodityCategoryVO newCategory) {
         return manager.addCategory(newCategory);
     }
 
     @Override
-    public ResultMessage deleteCategory(int id)  {
+    public ResultMessage deleteCategory(int id) {
         return manager.deleteCategory(id);
     }
 

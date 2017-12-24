@@ -2,6 +2,7 @@ package nju.lighting.bl.documentbl.salesdoc;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
+import nju.lighting.bl.documentbl.DocItem;
 import nju.lighting.po.doc.salesdoc.SalesDocItemPO;
 import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
 
@@ -9,7 +10,7 @@ import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
  * Description:
  * 销售类单据里的商品条目
  */
-public class SalesDocItem {
+public class SalesDocItem implements DocItem {
 
     private int id;
     private String commodityID;
@@ -40,6 +41,7 @@ public class SalesDocItem {
         salePrice = commodityInfo.getCommodityRecentSellPrice(commodityID);
         totalAmount = salePrice * number;
     }
+
     public int getId() {
         return id;
     }
@@ -76,5 +78,16 @@ public class SalesDocItem {
         CommodityInfo commodityInfo = new CommodityInfoImpl();
         return new SalesDocItemVO(id, commodityInfo.getBasicCommodityItemVO(commodityID), number,
                 totalAmount, remarks);
+    }
+
+    @Override
+    public void redFlush() {
+        number = -number;
+        totalAmount = -totalAmount;
+    }
+
+    @Override
+    public void approve() {
+
     }
 }

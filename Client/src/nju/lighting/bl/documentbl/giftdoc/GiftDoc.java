@@ -16,7 +16,6 @@ import java.util.Date;
 /**
  * Created on 2017/11/14.
  * Description
- *
  * @author 陈俊宇
  */
 public class GiftDoc extends Doc {
@@ -27,14 +26,14 @@ public class GiftDoc extends Doc {
     private double total;
     private int promotionId;
 
+    public GiftDoc(DocVO vo) {
+        super(vo);
+        assign(vo);
+    }
+
     public GiftDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
-        GiftDocVO docVO = (GiftDocVO) historyDocVO.getDocVO();
-        customerID = docVO.getCustomerID();
-        total = docVO.getTotal();
-        promotionId = docVO.getPromotionID();
-
-        docVO.getGifts().forEach(itemList::add);
+        assign(historyDocVO.getDocVO());
     }
 
     public GiftDoc(DocPO po) {
@@ -49,9 +48,23 @@ public class GiftDoc extends Doc {
     }
 
     @Deprecated
-    GiftDoc(String  docId, DocType docType, String userId, Date time, ArrayList<GiftDocItem> items, Customer customer) {
+    GiftDoc(String docId, DocType docType, String userId, Date time, ArrayList<GiftDocItem> items, Customer customer) {
         super(docId, docType, userId, time);
-        this.docType=DocType.GIFT;
+        this.docType = DocType.GIFT;
+    }
+
+    private void assign(DocVO vo) {
+        GiftDocVO giftDocVO = (GiftDocVO) vo;
+
+        customerID = giftDocVO.getCustomerID();
+        total = giftDocVO.getTotal();
+        promotionId = giftDocVO.getPromotionID();
+
+        giftDocVO.getGifts().forEach(itemList::add);
+    }
+
+    public double getTotal() {
+        return total;
     }
 
     @Override
@@ -61,6 +74,11 @@ public class GiftDoc extends Doc {
 
     @Override
     public ResultMessage reject() {
+        return null;
+    }
+
+    @Override
+    public ResultMessage redFlush() {
         return null;
     }
 
@@ -93,5 +111,15 @@ public class GiftDoc extends Doc {
     @Override
     public boolean containsRepository(String repository) {
         return repositoryID.equals(repository);
+    }
+
+    @Override
+    public String getCustomer() {
+        return Integer.toString(customerID);
+    }
+
+    @Override
+    public String getRepository() {
+        return repositoryID;
     }
 }

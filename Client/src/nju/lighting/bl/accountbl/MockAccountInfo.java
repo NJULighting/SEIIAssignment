@@ -15,8 +15,8 @@ public class MockAccountInfo implements AccountInfo {
     @Override
     public List<AccountVO> getAccountList() {
         ArrayList<AccountVO> res = new ArrayList<>();
-        res.add(new AccountVO("0001","Account0", 1000, null));
-        res.add(new AccountVO("0002","Account1", 2000, null));
+        res.add(new AccountVO("0001", "Account0", 1000, null));
+        res.add(new AccountVO("0002", "Account1", 2000, null));
         return null;
     }
 

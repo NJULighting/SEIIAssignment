@@ -3,6 +3,8 @@ package nju.lighting.vo.viewtables;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
 
+import java.util.Date;
+
 /**
  * Created on 2017/10/21.
  * Description
@@ -10,7 +12,7 @@ import shared.DocType;
  */
 public class BusinessHistoryItemVO {
 
-    private long date;
+    private Date date;
 
     private DocType type;
 
@@ -22,7 +24,7 @@ public class BusinessHistoryItemVO {
 
     private String repository;
 
-    public BusinessHistoryItemVO(long date, DocType type, DocVO docVO, String customer, String salesman, String repository) {
+    public BusinessHistoryItemVO(Date date, DocType type, DocVO docVO, String customer, String salesman, String repository) {
         this.date = date;
         this.type = type;
         this.docVO = docVO;
@@ -31,11 +33,11 @@ public class BusinessHistoryItemVO {
         this.salesman = salesman;
     }
 
-    public long getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(long date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

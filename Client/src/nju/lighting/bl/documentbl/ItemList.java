@@ -3,6 +3,7 @@ package nju.lighting.bl.documentbl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.ToDoubleFunction;
 import java.util.stream.Collectors;
 
 /**
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
  * Description:
  * @author Liao
  */
-public class ItemList<Item> {
+public class ItemList<Item extends DocItem> {
     private List<Item> items;
 
     public ItemList() {
@@ -35,5 +36,21 @@ public class ItemList<Item> {
                 return true;
         }
         return false;
+    }
+
+    public <T> List<T> transformItemToObject(Function<Item, T> function) {
+        return items.stream().map(function).collect(Collectors.toList());
+    }
+
+    public double transformItemToNumber(ToDoubleFunction<Item> numberFunction) {
+        return items.stream().mapToDouble(numberFunction).sum();
+    }
+
+    public void redFlush() {
+        items.forEach(Item::redFlush);
+    }
+
+    public void approve() {
+        items.forEach(Item::approve);
     }
 }

@@ -19,6 +19,8 @@ public interface CommodityDataService extends Remote {
 
     CommodityItemPO findById(String id) throws RemoteException;
 
+    CommodityCategoryPO findCategoryById(int id) throws RemoteException;
+
     ResultMessage add(CommodityItemPO commodityItemPO) throws RemoteException;
 
     ResultMessage update(CommodityCategoryPO categoryPO) throws RemoteException;

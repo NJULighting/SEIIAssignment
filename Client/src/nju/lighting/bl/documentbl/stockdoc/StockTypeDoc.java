@@ -12,7 +12,7 @@ import shared.ResultMessage;
  * 进货类单据，是进货单和进货退货单的父类
  * @author 高梦婷
  */
-abstract class StockTypeDoc extends Doc {
+abstract public class StockTypeDoc extends Doc {
 
     String customerId;
     String repository;
@@ -29,14 +29,19 @@ abstract class StockTypeDoc extends Doc {
         super(po);
     }
 
-    void setAttributes( String customerId, String repository, String remarks, double totalAmount) {
+    StockTypeDoc(DocVO vo) {
+        super(vo);
+    }
+
+    void setAttributes(String customerId, String repository, String remarks, double totalAmount) {
         this.customerId = customerId;
         this.repository = repository;
         this.remarks = remarks;
         this.totalAmount = totalAmount;
     }
 
-    public String getCustomerId() {
+    @Override
+    public String getCustomer() {
         return customerId;
     }
 
@@ -44,6 +49,7 @@ abstract class StockTypeDoc extends Doc {
         this.customerId = customerId;
     }
 
+    @Override
     public String getRepository() {
         return repository;
     }
@@ -70,6 +76,11 @@ abstract class StockTypeDoc extends Doc {
 
     @Override
     abstract public ResultMessage reject();
+
+    @Override
+    public ResultMessage redFlush() {
+        return null;
+    }
 
     @Override
     abstract public ResultMessage modify();

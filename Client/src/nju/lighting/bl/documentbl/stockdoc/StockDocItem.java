@@ -2,6 +2,7 @@ package nju.lighting.bl.documentbl.stockdoc;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
+import nju.lighting.bl.documentbl.DocItem;
 import nju.lighting.po.doc.stockdoc.StockDocItemPO;
 import nju.lighting.vo.doc.stockdoc.StockDocItemVO;
 
@@ -9,7 +10,7 @@ import nju.lighting.vo.doc.stockdoc.StockDocItemVO;
  * Description:
  * 进货类单据里的商品条目
  */
-public class StockDocItem {
+public class StockDocItem implements DocItem {
 
     private int id;
     private String commodityID;
@@ -96,5 +97,16 @@ public class StockDocItem {
         CommodityInfo commodityInfo = new CommodityInfoImpl();
         return new StockDocItemVO(id, commodityInfo.getBasicCommodityItemVO(commodityID),
                 number, totalAmount, remarks);
+    }
+
+    @Override
+    public void redFlush() {
+        number = -number;
+        totalAmount = -totalAmount;
+    }
+
+    @Override
+    public void approve() {
+
     }
 }

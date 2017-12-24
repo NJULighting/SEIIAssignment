@@ -1,5 +1,7 @@
 package shared;
 
+import java.util.Date;
+
 /**
  * Created on 2017/10/21.
  * Description
@@ -52,6 +54,4 @@ public class BusinessConditionFilter {
     public void setType(String commodity) {
         this.commodity = commodity;
     }
-
-
 }

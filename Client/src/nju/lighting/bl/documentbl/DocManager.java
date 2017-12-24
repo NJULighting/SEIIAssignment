@@ -5,6 +5,7 @@ import nju.lighting.bl.documentbl.alertdoc.AlertDocVOFactory;
 import nju.lighting.bl.documentbl.costdoc.CostDocVOFactory;
 import nju.lighting.bl.documentbl.giftdoc.GiftDocVOFactory;
 import nju.lighting.bl.documentbl.lossandgaindoc.LossAndGainDocVOFactory;
+import nju.lighting.bl.documentbl.salesdoc.SalesDoc;
 import nju.lighting.bl.documentbl.salesdoc.SalesDocVOFactory;
 import nju.lighting.bl.documentbl.salesdoc.SalesReturnDocVOFactory;
 import nju.lighting.bl.documentbl.stockdoc.StockDocVOFactory;
@@ -18,11 +19,13 @@ import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessConditionItemVO;
+import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import shared.*;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -109,13 +112,41 @@ public enum DocManager {
         }
     }
 
-    List<HistoryDocVO> findSaleRecords(DocumentFilter filter) {
+    List<BusinessConditionItemVO> findSaleRecords(DocumentFilter filter) {
         try {
-            Set<DocPO> docPOS = new HashSet<>();
+            // Get doc list and filter
+            List<DocPO> salesDocPOList = dataService.findByTypeAndState(DocType.SALES, DocState.APPROVAL);
+            List<Doc> docList = salesDocPOList.stream()
+                    .map(SalesDoc::new)
+                    .filter(filter.getPredicate())
+                    .collect(Collectors.toList());
 
+            List<BusinessConditionItemVO> res = new ArrayList<>();
+            docList.forEach(doc -> res.addAll(((SalesDoc) doc).getBusinessCondition()));
+
+            // Filter items with the commodity name given
+            Predicate<BusinessConditionItemVO> commodityFilter =
+                    item -> Optional.ofNullable(filter.getCommodity()).map(item::equals).orElse(true);
+            return res.stream().filter(commodityFilter).collect(Collectors.toList());
         } catch (RemoteException e) {
             e.printStackTrace();
+            return Collections.emptyList();
         }
-        return null;
+    }
+
+    List<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) {
+        try {
+            List<DocPO> poList = dataService.findByTime(filter.getStart(), filter.getEnd());
+
+            DocFactory factory = new DocFactory();
+            return poList.stream()
+                    .map(factory::poToDoc)
+                    .filter(filter.getPredicate())
+                    .map(Doc::toBusinessHistoryItemVO)
+                    .collect(Collectors.toList());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
     }
 }

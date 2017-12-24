@@ -4,7 +4,6 @@ import nju.lighting.blservice.initblservice.InitializationBLService;
 import nju.lighting.vo.InitVO;
 import shared.ResultMessage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,12 +13,12 @@ import java.util.List;
  */
 public class InitializationBLService_Stub implements InitializationBLService {
     @Override
-    public List<InitVO> getInitInfo()  {
+    public List<InitVO> getInitInfo() {
         return null;
     }
 
     @Override
-    public ResultMessage initiateAccount()  {
+    public ResultMessage initiateAccount() {
         return ResultMessage.FAILURE;
     }
 }

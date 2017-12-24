@@ -1,7 +1,10 @@
 package nju.lighting.presentation.documentui;
 
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.DoubleValidator;
 import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RequiredFieldValidator;
+import com.jfoenix.validation.base.ValidatorBase;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
@@ -19,14 +22,27 @@ import nju.lighting.presentation.utils.TextFieldHelper;
  *
  * @author 陈俊宇
  */
-public class EditingCell extends TableCell<CommodityItem, Integer> {
+public class EditingCell extends TableCell<CommodityItem, String> {
 
     private JFXTextField textField;
+    String type;
+    ValidatorBase validator;
 
+    public EditingCell(String type){
+        this.type=type;
+        switch (type){
+            case "int":
+                validator=new NumberValidator();break;
+            case "double":
+                validator=new DoubleValidator();break;
+            default:
+                validator=new RequiredFieldValidator();break;
+        }
+    }
 
     @Override
     public void startEdit() {
-
+        System.out.println("start");
         if (!isEmpty()) {
             CommodityItem commodityItem = getTableView().getItems().get(getIndex());
             if (!commodityItem.isGift()) {
@@ -48,7 +64,7 @@ public class EditingCell extends TableCell<CommodityItem, Integer> {
     }
 
     @Override
-    public void updateItem(Integer item, boolean empty) {
+    public void updateItem(String item, boolean empty) {
         super.updateItem(item, empty);
 
         if (empty) {
@@ -73,7 +89,7 @@ public class EditingCell extends TableCell<CommodityItem, Integer> {
         textField = new JFXTextField(getString());
         textField.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
 
-        NumberValidator validator = new NumberValidator();
+
         textField.getValidators().add(validator);
 
 
@@ -82,7 +98,7 @@ public class EditingCell extends TableCell<CommodityItem, Integer> {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if (!newValue) {
                     if (textField.validate())
-                        commitEdit(Integer.parseInt(textField.getText()));
+                        commitEdit(textField.getText());
                     else
                         cancelEdit();
                 }
@@ -101,7 +117,7 @@ public class EditingCell extends TableCell<CommodityItem, Integer> {
     }
 
     @Override
-    public void commitEdit(Integer item) {
+    public void commitEdit(String item) {
 
         if (isEditing()) {
             super.commitEdit(item);

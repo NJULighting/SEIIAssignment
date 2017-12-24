@@ -40,6 +40,7 @@ public class CustomerSearchListController implements Initializable {
     CustomerSearchListController customerSearchListController = this;
     Upper upper;
     Label title;
+
     private CustomerVO selectedCustomer;
 
     @FXML

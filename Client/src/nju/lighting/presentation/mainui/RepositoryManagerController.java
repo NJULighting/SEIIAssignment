@@ -16,13 +16,13 @@ import java.util.ResourceBundle;
  */
 public class RepositoryManagerController extends MainUIController{
     @FXML
-    Button commodityBtn, historyBtn,repositoryViewBtn,repositoryCountingBtn;
+    Button commodityBtn, historyBtn,repositoryViewBtn,repositoryCountingBtn,test;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttons = new Button[]{historyBtn,commodityBtn,repositoryViewBtn,repositoryCountingBtn};
+        buttons = new Button[]{historyBtn,commodityBtn,repositoryViewBtn,repositoryCountingBtn,test};
         urls = new String[]{"../documentui/HistoryDoc.fxml","../commodityui/CommodityManage.fxml","../repositoryui/RepositoryView.fxml",
-                "../repositoryui/RepositoryCounting.fxml"};
+                "../repositoryui/RepositoryCounting.fxml","../commodityui/CommodityCategoryUI.fxml"};
         MAIN_BUTTON_SIZE = urls.length;
         super.initialize(location, resources);
     }

@@ -1,5 +1,6 @@
 root {
 
+
     -fx-font-family: Roboto;
 
     -fx-background-color: whitesmoke;
@@ -10,8 +11,36 @@ root {
 
 
 
-/* Burgers Demo */
+.menu-item:focused {
+    -fx-background-color: lightgray;
+    -fx-text-fill: black;
+}
 
+
+/* scroll-bar Demo */
+.scroll-bar:vertical{
+    -fx-background-color:transparent;
+
+}
+
+.scroll-bar:horizontal{
+    -fx-background-color:transparent;
+
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: lightgray;
+
+}
+/* scroll-pane Demo */
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
 
 
 .jfx-hamburger {
@@ -36,8 +65,7 @@ root {
 }
 
 
-
-/* Input Demo */
+/* table view Demo */
 
 .table-view{
 
@@ -156,6 +184,8 @@ root {
 }
 
 
+
+/* jfx-text-field Demo */
 
 .jfx-text-field:error, .jfx-password-field:error, .jfx-text-area:error {
 
@@ -630,7 +660,7 @@ root {
 } */
 
 
-.t
+
 /*
 
  * TREE TABLE CSS
@@ -639,62 +669,64 @@ root {
 
 
 
-/*.tree-table-view:focused .tree-table-row-cell:selected {*/
+.tree-table-view:focused .tree-table-row-cell:selected {
 
-    /*-fx-background-color: -fx-tree-table-color;*/
+    -fx-background-color: transparent;
 
-    /*-fx-table-cell-border-color: -fx-tree-table-color;*/
+    -fx-table-cell-border-color: transparent;
 
-    /*-fx-text-fill: BLACK;*/
-
-/*}*/
-
-
-
-/*.tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell {*/
-
-    /*-fx-text-fill: BLACK;*/
-
-/*}*/
-
-
-
-/*.tree-table-view .jfx-rippler {*/
-
-    /*-jfx-rippler-fill: -fx-tree-table-rippler-color;*/
-
-/*}*/
-
-
-
-
-
-.tree-table-view .column-header,
-
-.tree-table-view .column-header-background,
-
-.tree-table-view .column-header-background .filler {
-
-    -fx-background-color: TRANSPARENT;
+    -fx-text-fill: BLACK;
 
 }
 
+
+
+.tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell {
+
+    -fx-text-fill: BLACK;
+
+}
+
+.tree-table-view{
+    -fx-background-color: transparent;
+}
+
+.tree-table-view .column-header-background{
+
+    -fx-background-color: transparent;
+
+}
+
+.tree-table-view .column-header, .tree-table-view .filler {
+    -fx-background-color: transparent;
+
+}
+
+.tree-table-view .jfx-rippler {
+
+    -jfx-rippler-fill: #5599ff;
+
+}
 
 
 .tree-table-view .column-header {
 
-    -fx-border-width: 0 1 0 1;
-
+    -fx-background-color: transparent;
+    -fx-font-weight: normal;
+    -fx-pref-height: 50px;
 
 }
 
 
+.tree-table-view .scroll-bar
+{
+    -fx-background-color: transparent;
+}
 
 .tree-table-view .column-header .label {
 
-    -fx-text-fill: #949494;
-
-    -fx-padding: 16 0 16 0;
+    -fx-alignment: center-left;
+    -fx-background-color: transparent;
 
 }
 
@@ -702,7 +734,7 @@ root {
 
 .tree-table-view .column-header .arrow, .tree-table-view .column-header .sort-order-dot {
 
-    -fx-background-color: #949494;
+    -fx-background-color: #5599ff;
 
 }
 
@@ -720,7 +752,7 @@ root {
 
     -fx-border-width: 0 0.0 0 0;
 
-    -fx-border-color: #F3F3F3;
+    -fx-border-color: transparent;
 
 }
 
@@ -738,7 +770,7 @@ root {
 
 .tree-table-view .column-overlay {
 
-    -fx-background-color: -fx-tree-table-color;
+    -fx-background-color: transparent;
 
 }
 
@@ -746,7 +778,7 @@ root {
 
 .tree-table-view .column-resize-line, .tree-table-view .column-drag-header {
 
-    -fx-background-color: -fx-tree-table-rippler-color;
+    -fx-background-color: #5599FF;
 
 }
 
@@ -754,25 +786,24 @@ root {
 
 .tree-table-view:focused {
 
-    -fx-background-color: -fx-tree-table-color, -fx-box-border, -fx-control-inner-background;
+    -fx-background-color: transparent;
 
     -fx-background-insets: -1.4, 0, 1;
 
     -fx-background-radius: 1.4, 0, 0;
 
-    /*....*/
 
-    -fx-padding: 1; /* 0.083333em; */
+    -fx-padding: 1;
 
 }
 
 
-
+/*
 .tree-table-row-cell > .tree-disclosure-node > .arrow {
 
     -fx-background-color: -fx-text-fill;
 
-    -fx-padding: 0.333333em 0.229em 0.333333em 0.229em; /* 4 */
+    -fx-padding: 0.333333em 0.229em 0.333333em 0.229em; // 4
 
     -fx-shape: "M 0 -3.5 L 4 0 L 0 3.5 z";
 
@@ -793,7 +824,7 @@ root {
     -fx-background-color: rgba(230, 230, 230, 1);
 
 }
-
+*/
 
 
 .animated-option-button {

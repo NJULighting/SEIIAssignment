@@ -1,7 +1,5 @@
 package nju.lighting.bl.documentbl;
 
-import nju.lighting.po.doc.DocPO;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -19,11 +17,15 @@ public class ItemList<Item> {
         items = new ArrayList<>();
     }
 
-    public  <T> void add(T t, Function<T, Item> function) {
+    public <T> void add(T t, Function<T, Item> function) {
         items.add(function.apply(t));
     }
 
-    public  <PO> List<PO> toPO(String docId, Function<Item, PO> function) {
+    public <PO> List<PO> toPO(String docId, Function<Item, PO> function) {
+        return items.stream().map(function).collect(Collectors.toList());
+    }
+
+    public <VO> List<VO> toVO(Function<Item, VO> function) {
         return items.stream().map(function).collect(Collectors.toList());
     }
 

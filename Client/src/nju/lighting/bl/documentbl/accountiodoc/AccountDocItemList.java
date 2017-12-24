@@ -35,4 +35,8 @@ class AccountDocItemList {
     List<AccountTransferItemPO> toPO(String docId) {
         return itemList.stream().map(docItem -> docItem.toPO(docId)).collect(Collectors.toList());
     }
+
+    List<AccountTransferItemVO> toVO() {
+        return itemList.stream().map(AccountDocItem::toVO).collect(Collectors.toList());
+    }
 }

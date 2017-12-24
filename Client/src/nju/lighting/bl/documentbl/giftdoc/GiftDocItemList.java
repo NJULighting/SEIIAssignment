@@ -5,7 +5,6 @@ import nju.lighting.po.doc.giftdoc.GiftItemPO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/21.
@@ -26,5 +25,9 @@ public class GiftDocItemList {
 
     List<GiftItemPO> toPO(String docId) {
         return itemList.toPO(docId, item -> item.toPO(docId));
+    }
+
+    List<GiftItemVO> toVO() {
+        return itemList.toVO(GiftDocItem::toVO);
     }
 }

@@ -36,4 +36,8 @@ public class CostDocItem {
     CostDocItemPO toPO(String docId) {
         return new CostDocItemPO(id, type, docId, amount, comment);
     }
+
+    CostDocItemVO toVO() {
+        return new CostDocItemVO(id, type, amount, comment);
+    }
 }

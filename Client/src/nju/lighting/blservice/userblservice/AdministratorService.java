@@ -5,7 +5,6 @@ import shared.Identity;
 import shared.ResultMessage;
 import shared.UserChangeInfo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,10 +14,11 @@ import java.util.List;
  */
 public interface AdministratorService {
     /**
-     * Get all users
+     * Get users of the identity you passed
      * @return User's list
+     * @param userIdentity identity of target users
      */
-    ArrayList<UserVO> getUserList();
+    List<UserVO> getUserList(Identity userIdentity);
 
     /**
      * Add a new user, the id, username, identity, authorized and password mustn't be null

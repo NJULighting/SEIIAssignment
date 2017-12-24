@@ -1,36 +1,45 @@
 package shared;
 
-import nju.lighting.po.doc.DocPO;
+import nju.lighting.bl.documentbl.Doc;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class DocumentFilter {
 
-    private final Predicate<DocPO> typeFilter;
-    private final Predicate<DocPO> dateFilter;
-    private final Predicate<DocPO> creatorFilter;
-    private final Predicate<DocPO> idFilter;
-    private final Predicate<DocPO> stateFilter;
+    private final Predicate<Doc> typeFilter;
+    private final Predicate<Doc> dateFilter;
+    private final Predicate<Doc> creatorFilter;
+    private final Predicate<Doc> idFilter;
+    private final Predicate<Doc> stateFilter;
+    private final Predicate<Doc> customerFilter;
+    private final Predicate<Doc> commodityFilter;
+    private final Predicate<Doc> repositoryFilter;
 
-    public Predicate<DocPO> getPredicate() {
-        return typeFilter.and(dateFilter).and(creatorFilter).and(idFilter).and(stateFilter);
+    public Predicate<Doc> getPredicate() {
+        return typeFilter.and(dateFilter).and(creatorFilter).and(idFilter).and(stateFilter)
+                .and(customerFilter).and(commodityFilter).and(repositoryFilter);
     }
 
     private DocumentFilter(Builder builder) {
-        creatorFilter = generatePredicate(builder.creatorId, DocPO::getUserId);
-        idFilter = generatePredicate(builder.docId, DocPO::getId);
-        stateFilter = generatePredicate(builder.state, DocPO::getState);
+        creatorFilter = generatePredicateByEqual(builder.creatorId, Doc::getUserId);
+        idFilter = generatePredicateByEqual(builder.docId, Doc::getId);
+        stateFilter = generatePredicateByEqual(builder.state, Doc::getState);
+
+        customerFilter = generatePredicateByContain(builder.customerId, Doc::containsCustomer);
+        commodityFilter = generatePredicateByContain(builder.commodityName, Doc::containsCommodity);
+        repositoryFilter = generatePredicateByContain(builder.repository, Doc::containsRepository);
 
         // Generate type filter
         if (builder.docTypes.size() == 0) {
-            typeFilter = generatePredicate(null, DocPO::getDocType);
+            typeFilter = generatePredicateByEqual(null, Doc::getDocType);
         } else {
-            Predicate<DocPO> typeFilter = po -> false;
+            Predicate<Doc> typeFilter = po -> false;
             for (DocType type : builder.docTypes) {
                 typeFilter = typeFilter.or(po -> po.getDocType() == type);
             }
@@ -38,7 +47,7 @@ public class DocumentFilter {
         }
 
         // Generate filter for date
-        Predicate<DocPO> endDateFilter = po -> Optional.ofNullable(builder.endDate)
+        Predicate<Doc> endDateFilter = po -> Optional.ofNullable(builder.endDate)
                 .map(date -> date.compareTo(po.getCreateTime()) >= 0)
                 .orElse(true);
         dateFilter = endDateFilter.and(po -> Optional.ofNullable(builder.startDate)
@@ -47,10 +56,20 @@ public class DocumentFilter {
 
     }
 
-    private <T> Predicate<DocPO> generatePredicate(T t, Function<DocPO, T> function) {
+    private <T> Predicate<Doc> generatePredicateByEqual(T t, Function<Doc, T> function) {
         return po -> Optional.ofNullable(t).map(target -> function.apply(po).equals(t)).orElse(true);
     }
 
+    private <T> Predicate<Doc> generatePredicateByContain(T t, BiFunction<Doc, T, Boolean> function) {
+        return doc -> Optional.ofNullable(t).map(condition -> function.apply(doc, t)).orElse(true);
+    }
+
+    /**
+     * Builder for DocumentFilter. This class uses builder pattern.
+     * This builder can build a filter of DocType(can be multi selected),
+     * duration, creator id, doc id, state of approval, customer's id(if exists),
+     * repository(if exists), commodity's name(if exists)
+     */
     public static class Builder {
         private final Set<DocType> docTypes = new HashSet<>();
         private Date startDate;
@@ -59,16 +78,16 @@ public class DocumentFilter {
         private String docId;
         private DocState state;
         private String customerId;
-        private String salesmanId;
         private String repository;
+        private String commodityName;
 
         public Builder customer(String customerId) {
             this.customerId = customerId;
             return this;
         }
 
-        public Builder salesman(String salesmanId) {
-            this.salesmanId = salesmanId;
+        public Builder commodity(String commodityName) {
+            this.commodityName = commodityName;
             return this;
         }
 
@@ -77,6 +96,10 @@ public class DocumentFilter {
             return this;
         }
 
+        /**
+         * Can add more than one type.
+         * @param docType type of doc you want
+         */
         public Builder docType(DocType docType) {
             docTypes.add(docType);
             return this;

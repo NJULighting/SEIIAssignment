@@ -46,4 +46,10 @@ class AlertDocItemList {
                 .map(alertDocItem -> alertDocItem.toPO(docId))
                 .collect(Collectors.toList());
     }
+
+    List<AlertDocItemVO> toVO() {
+        return items.stream()
+                .map(AlertDocItem::toVO)
+                .collect(Collectors.toList());
+    }
 }

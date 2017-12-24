@@ -13,16 +13,16 @@ import shared.ResultMessage;
  * 销售退货单
  * @author 高梦婷
  */
-class SalesReturnDoc extends SalesTypeDoc {
+public class SalesReturnDoc extends SalesTypeDoc {
 
-    SalesReturnDoc(HistoryDocVO historyDocVO) {
+    public SalesReturnDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
         SalesReturnDocVO docVO = (SalesReturnDocVO) historyDocVO.getDocVO();
         setAttributes(docVO.getCustomerId(), docVO.getSalesman(), docVO.getRepository(), docVO.getRemarks(),
                 docVO.getBeforeDiscountAmount(), docVO.getDiscount(), docVO.getVoucher(), docVO.getFinalAmount());
     }
 
-    SalesReturnDoc(DocPO po) {
+    public SalesReturnDoc(DocPO po) {
         super(po);
         SalesReturnDocPO docPO = (SalesReturnDocPO) po;
         setAttributes(Integer.parseInt(docPO.getCustomerId()), docPO.getSalesMan(), docPO.getRepository(),
@@ -49,7 +49,8 @@ class SalesReturnDoc extends SalesTypeDoc {
 
     @Override
     public DocVO toVO() {
-        return null;
+        return new SalesReturnDocVO(createTime, userId, id, customerId, salesman, repository,
+                remarks, beforeDiscountAmount, discount, voucher, finalAmount, itemList.toVO());
     }
 
     @Override

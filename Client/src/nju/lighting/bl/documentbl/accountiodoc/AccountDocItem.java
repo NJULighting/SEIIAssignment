@@ -46,4 +46,8 @@ class AccountDocItem {
     AccountTransferItemPO toPO(String docId) {
         return new AccountTransferItemPO(id, accountID, docId, amount, comments);
     }
+
+    AccountTransferItemVO toVO() {
+        return new AccountTransferItemVO(amount, comments, accountID, id);
+    }
 }

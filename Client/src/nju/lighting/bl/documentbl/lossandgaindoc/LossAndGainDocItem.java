@@ -63,4 +63,9 @@ class LossAndGainDocItem {
     LossAndGainItemPO toPO(String docId) {
         return new LossAndGainItemPO(id, docId, commodityId, count, type);
     }
+
+    LossAndGainDocItemVO toVO() {
+        CommodityInfo commodityInfo = new CommodityInfoImpl();
+        return new LossAndGainDocItemVO(commodityInfo.getBasicCommodityItemVO(commodityId), count, type, id);
+    }
 }

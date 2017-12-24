@@ -15,12 +15,12 @@ import java.util.ArrayList;
  * Description: 处理库存报损报溢相关业务
  * @author iznauy
  */
-class LossAndGainDoc extends Doc {
+public class LossAndGainDoc extends Doc {
 
     private String comment;
     private LossAndGainDocItemList itemList = new LossAndGainDocItemList();
 
-    LossAndGainDoc(HistoryDocVO historyDocVO) {
+    public LossAndGainDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
         LossAndGainDocVO docVO = (LossAndGainDocVO) historyDocVO.getDocVO();
         comment = docVO.getComment();
@@ -28,7 +28,7 @@ class LossAndGainDoc extends Doc {
         docVO.getItems().forEach(itemList::add);
     }
 
-    LossAndGainDoc(DocPO po) {
+    public LossAndGainDoc(DocPO po) {
         super(po);
         comment = ((LossAndGainDocPO) po).getComment();
 
@@ -52,7 +52,7 @@ class LossAndGainDoc extends Doc {
 
     @Override
     public DocVO toVO() {
-        return null;
+        return new LossAndGainDocVO(createTime, userId, id, docType, itemList.toVO(), comment);
     }
 
     @Override

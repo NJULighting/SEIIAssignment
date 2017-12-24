@@ -81,7 +81,7 @@ public class AccountIODoc extends Doc {
 
     @Override
     public DocVO toVO() {
-        return null;
+            return new AccountIODocVO(createTime, userId, id, docType, customerID, itemList.toVO());
     }
 
     @Override

@@ -34,4 +34,8 @@ class StockDocItemList {
     List<StockDocItemPO> toPO(String docId) {
         return itemList.toPO(docId, item -> item.toPO(docId));
     }
+
+    List<StockDocItemVO> toVO() {
+        return itemList.toVO(StockDocItem::toVO);
+    }
 }

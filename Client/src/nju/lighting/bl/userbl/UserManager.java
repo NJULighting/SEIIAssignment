@@ -2,6 +2,8 @@ package nju.lighting.bl.userbl;
 
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
+import nju.lighting.bl.utils.DataServiceFunction;
+import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
@@ -14,8 +16,9 @@ import shared.UserChangeInfo;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/11/6.
@@ -39,17 +42,18 @@ enum UserManager {
 
     /**
      * Get all users
+     * @param identity identity of target users
      * @return User's list
      */
-    public ArrayList<UserVO> getUserList() {
+    public List<UserVO> getUserList(Identity identity) {
         try {
-            List<UserPO> userPOs = userDataService.getAll();
-            ArrayList<UserVO> userVOS = new ArrayList<>();
-            userPOs.forEach(userPO -> userVOS.add(new User(userPO).toVO()));
-            return userVOS;
+            List<UserPO> userPOs = userDataService.getAll().stream()
+                    .filter(userPO -> userPO.getIdentity() == identity)
+                    .collect(Collectors.toList());
+            return VPOTransformer.toVPOList(userPOs, userPO -> new User(userPO).toVO());
         } catch (RemoteException e) {
             e.printStackTrace();
-            return null;
+            return Collections.emptyList();
         }
     }
 
@@ -59,17 +63,7 @@ enum UserManager {
      * @return VO object which denote this user, <code>null</code> if id didn't match any user
      */
     public UserVO getUser(String id) {
-        try {
-            UserPO po = userDataService.get(id);
-            if (po == null)
-                return null;
-
-            User target = new User(po);
-            return target.toVO();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return DataServiceFunction.findByToEntity(id, userDataService::get, userPO -> new User(userPO).toVO());
     }
 
     /**
@@ -148,8 +142,8 @@ enum UserManager {
      * @param oldPassword the old password of the user
      * @param newPassword new password of the user
      * @return <code>ResultMessage.SUCCESS</code> if password is not empty<br>
-     *     <code>ResultMessage.FAILURE</code> if oldPassword is wrong<br>
-     *         <code>ResultMessage.NETWORK_FAIL</code> if network fails
+     * <code>ResultMessage.FAILURE</code> if oldPassword is wrong<br>
+     * <code>ResultMessage.NETWORK_FAIL</code> if network fails
      */
     public ResultMessage userChangePassword(String oldPassword, String newPassword) {
         User user = LoginHelper.INSTANCE.getSignedInUser();
@@ -170,8 +164,7 @@ enum UserManager {
 
     /**
      * Change a user's attributes.
-     *
-     * @param id id of the target user
+     * @param id   id of the target user
      * @param info A <code>UserChangeInfo</code> object that contains changed information for the user
      * @return <code>ResultMessage.SUCCESS</code> if network works well
      * <code>ResultMessage.FAILURE</code> otherwise
@@ -187,7 +180,7 @@ enum UserManager {
             // Change attributes
             User target = new User(po);
             target.changeInfo(info);
-            logger.add(OPType.MODIFY, "管理员修改用户" + info.id  + " 详细信息：" + info.toString());
+            logger.add(OPType.MODIFY, "管理员修改用户" + info.id + " 详细信息：" + info.toString());
             return ResultMessage.SUCCESS;
         } catch (RemoteException e) {
             e.printStackTrace();

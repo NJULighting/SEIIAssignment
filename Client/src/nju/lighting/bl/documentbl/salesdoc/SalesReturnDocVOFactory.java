@@ -2,13 +2,11 @@ package nju.lighting.bl.documentbl.salesdoc;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
-import nju.lighting.bl.documentbl.Doc;
-import nju.lighting.bl.documentbl.DocFactory;
+import nju.lighting.bl.documentbl.DocVOFactory;
 import nju.lighting.bl.utils.VPOTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.salesdoc.SalesReturnDocPO;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocVO;
 
@@ -19,11 +17,7 @@ import java.util.List;
  * Description:
  * @author Liao
  */
-public class SalesReturnDocFactory implements DocFactory {
-    @Override
-    public Doc createDocForApproval(HistoryDocVO historyDocVO) {
-        return null;
-    }
+public class SalesReturnDocVOFactory implements DocVOFactory {
 
     @Override
     public DocVO poToDocVO(DocPO po) {

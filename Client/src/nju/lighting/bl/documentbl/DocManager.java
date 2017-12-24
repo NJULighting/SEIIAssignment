@@ -1,13 +1,13 @@
 package nju.lighting.bl.documentbl;
 
-import nju.lighting.bl.documentbl.accountiodoc.AccountDocFactory;
-import nju.lighting.bl.documentbl.alertdoc.AlertDocFactory;
-import nju.lighting.bl.documentbl.costdoc.CostDocFactory;
-import nju.lighting.bl.documentbl.giftdoc.GiftDocFactory;
-import nju.lighting.bl.documentbl.lossandgaindoc.LossAndGainDocFactory;
-import nju.lighting.bl.documentbl.salesdoc.SalesDocFactory;
-import nju.lighting.bl.documentbl.salesdoc.SalesReturnDocFactory;
-import nju.lighting.bl.documentbl.stockdoc.StockDocFactory;
+import nju.lighting.bl.documentbl.accountiodoc.AccountDocVOFactory;
+import nju.lighting.bl.documentbl.alertdoc.AlertDocVOFactory;
+import nju.lighting.bl.documentbl.costdoc.CostDocVOFactory;
+import nju.lighting.bl.documentbl.giftdoc.GiftDocVOFactory;
+import nju.lighting.bl.documentbl.lossandgaindoc.LossAndGainDocVOFactory;
+import nju.lighting.bl.documentbl.salesdoc.SalesDocVOFactory;
+import nju.lighting.bl.documentbl.salesdoc.SalesReturnDocVOFactory;
+import nju.lighting.bl.documentbl.stockdoc.StockDocVOFactory;
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
@@ -34,22 +34,22 @@ import java.util.stream.Collectors;
 public enum DocManager {
     INSTANCE;
 
-    private Map<DocType, Supplier<DocFactory>> factoryMap;
+    private Map<DocType, Supplier<DocVOFactory>> factoryMap;
     private DocDataService dataService;
     private Logger logger;
 
     DocManager() {
         factoryMap = new HashMap<>();
-        factoryMap.put(DocType.ACCOUNT_OUT, AccountDocFactory::new);
-        factoryMap.put(DocType.ACCOUNT_IN, AccountDocFactory::new);
-        factoryMap.put(DocType.ALERT, AlertDocFactory::new);
-        factoryMap.put(DocType.COST, CostDocFactory::new);
-        factoryMap.put(DocType.GIFT, GiftDocFactory::new);
-        factoryMap.put(DocType.LOSS_AND_GAIN, LossAndGainDocFactory::new);
-        factoryMap.put(DocType.SALES, SalesDocFactory::new);
-        factoryMap.put(DocType.SALES_RETURN, SalesReturnDocFactory::new);
-        factoryMap.put(DocType.STOCK, StockDocFactory::new);
-        factoryMap.put(DocType.STOCK_RETURN, StockDocFactory::new);
+        factoryMap.put(DocType.ACCOUNT_OUT, AccountDocVOFactory::new);
+        factoryMap.put(DocType.ACCOUNT_IN, AccountDocVOFactory::new);
+        factoryMap.put(DocType.ALERT, AlertDocVOFactory::new);
+        factoryMap.put(DocType.COST, CostDocVOFactory::new);
+        factoryMap.put(DocType.GIFT, GiftDocVOFactory::new);
+        factoryMap.put(DocType.LOSS_AND_GAIN, LossAndGainDocVOFactory::new);
+        factoryMap.put(DocType.SALES, SalesDocVOFactory::new);
+        factoryMap.put(DocType.SALES_RETURN, SalesReturnDocVOFactory::new);
+        factoryMap.put(DocType.STOCK, StockDocVOFactory::new);
+        factoryMap.put(DocType.STOCK_RETURN, StockDocVOFactory::new);
 
         try {
             dataService = DataFactory.getDataBase(DocDataService.class);
@@ -62,11 +62,11 @@ public enum DocManager {
     /**
      * Commit a document. If commit successfully, it'll return a tuple contains
      * id and <tt>ResultMessage.SUCCESS</tt>. Otherwise, it'll return a tuple
-     * contains <tt>ResulMessage.FAILURE</tt> and a null id;
+     * contains <tt>ResultMessage.FAILURE</tt> and a null id;
      * @param doc doc to be committed
      * @return <tt>[ID,SUCCESS]</tt> if commit successfully
      */
-    public TwoTuple<String,ResultMessage> commitDoc(DocVO doc) {
+    public TwoTuple<String, ResultMessage> commitDoc(DocVO doc) {
         TwoTuple<String, ResultMessage> res = new TwoTuple<>();
         res.r = ResultMessage.FAILURE;
 
@@ -95,11 +95,13 @@ public enum DocManager {
         try {
             UserInfo userInfo = new UserInfoImpl();
             List<DocPO> poList = dataService.findByUserId(userInfo.getIDOfSignedUser());
+            DocFactory docFactory = new DocFactory();
+            List<Doc> docList = poList.stream().map(docFactory::poToDoc).collect(Collectors.toList());
 
             // Filter them and transform them to HistoryDocVO list
-            return poList.stream()
+            return docList.stream()
                     .filter(filter.getPredicate())
-                    .map(po -> factoryMap.get(po.getDocType()).get().poToHistoryDocVO(po, userInfo))
+                    .map(Doc::toHistoryDocVO)
                     .collect(Collectors.toList());
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -107,11 +109,9 @@ public enum DocManager {
         }
     }
 
-    List<BusinessConditionItemVO> findSaleRecords(BusinessConditionFilter filter) {
+    List<HistoryDocVO> findSaleRecords(DocumentFilter filter) {
         try {
             Set<DocPO> docPOS = new HashSet<>();
-
-            List<DocPO> salesPOList = dataService.findByType(DocType.SALES);
 
         } catch (RemoteException e) {
             e.printStackTrace();

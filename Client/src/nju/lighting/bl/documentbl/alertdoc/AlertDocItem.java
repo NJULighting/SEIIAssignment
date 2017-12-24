@@ -1,7 +1,10 @@
 package nju.lighting.bl.documentbl.alertdoc;
 
+import nju.lighting.bl.commoditybl.CommodityInfo;
+import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.po.doc.alertdoc.AlertDocItemPO;
 import nju.lighting.vo.doc.alertdoc.AlertDocItemVO;
+import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 
 public class AlertDocItem {
 
@@ -39,5 +42,10 @@ public class AlertDocItem {
 
     AlertDocItemPO toPO(String docId) {
         return new AlertDocItemPO(id, docId, commodityId, count);
+    }
+
+    AlertDocItemVO toVO() {
+        CommodityInfo commodityInfo = new CommodityInfoImpl();
+        return new AlertDocItemVO(commodityInfo.getBasicCommodityItemVO(commodityId), id, count);
     }
 }

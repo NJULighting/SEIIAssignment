@@ -35,23 +35,4 @@ public class TableViewHelper {
 
 
 
-    public static void Edit( TableColumn<CommodityItem ,Integer> count){
-        Callback<TableColumn<CommodityItem, Integer>,
-                TableCell<CommodityItem, Integer>> cellFactory
-                = (TableColumn<CommodityItem, Integer> p) -> new EditingCell();
-
-        count.setCellFactory(cellFactory);
-
-        count.setOnEditCommit(
-                (TableColumn.CellEditEvent<CommodityItem, Integer> t) -> {
-                    int index= t.getTablePosition().getRow();
-
-                    CommodityItem selected = t.getTableView().getItems().get(
-                            index);
-                    selected.setCount(t.getNewValue());
-                    selected.setSubtotal(selected.getPrice() * selected.getCount());
-
-
-                });
-    }
 }

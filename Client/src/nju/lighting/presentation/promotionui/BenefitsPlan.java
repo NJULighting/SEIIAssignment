@@ -28,7 +28,7 @@ public class BenefitsPlan {
 
     PromotionVO promotionVO;
 
-    boolean canceled;
+    boolean canceled=true;
 
     @FXML
     void ok(){

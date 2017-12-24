@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="nju.lighting.presentation.homeui.SalesManagerHome"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Line endX="300.0" layoutX="130.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />
+      <Label layoutX="30.0" layoutY="14.0" text="首页">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />
+      <HBox alignment="CENTER_LEFT" layoutX="40.0" layoutY="70.0" spacing="10.0">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="50.0">
+               <image>
+                  <Image url="@../../../../images/HI.png" />
+               </image>
+            </ImageView>
+            <Label text="进货销售人员">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label text=":">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label text="名字">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <ListView layoutX="40.0" layoutY="180.0" prefHeight="462.0" prefWidth="350.0" />
+      <HBox alignment="CENTER" layoutX="40.0" layoutY="140.0">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <image>
+                  <Image url="@../../../../images/飞翔的订单.png" />
+               </image>
+            </ImageView>
+            <Label text="单据动态">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="25.0" fitWidth="25.0">
+               <image>
+                  <Image url="@../../../../images/展开.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="390.0" layoutY="315.0">
+         <image>
+            <Image url="@../../../../images/向右.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="440.0" layoutY="80.0" prefHeight="560.0" prefWidth="600.0" />
+   </children>
+</Pane>

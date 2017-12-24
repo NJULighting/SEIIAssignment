@@ -18,6 +18,9 @@ public class CommodityItem {
     SimpleStringProperty name;
     SimpleDoubleProperty subtotal;
     SimpleBooleanProperty gift;
+    SimpleStringProperty comments;
+    SimpleStringProperty modelNum;
+    SimpleStringProperty id;
     GiftItemVO giftItem;
 
     public CommodityItem(GiftItemVO vo){
@@ -36,6 +39,9 @@ public class CommodityItem {
         name =new SimpleStringProperty(vo.getCommodity().getName());
         subtotal =new SimpleDoubleProperty(vo.getSubtotal());
         gift =new SimpleBooleanProperty(false);
+        modelNum=new SimpleStringProperty(vo.getCommodity().getModelNumber());
+        id=new SimpleStringProperty(vo.getCommodity().getId());
+        comments=new SimpleStringProperty("");
     }
 
     public boolean isGift() {
@@ -98,5 +104,33 @@ public class CommodityItem {
 
     public GiftItemVO getGiftItem() {
         return giftItem;
+    }
+
+    public String getComments() {
+        return comments.get();
+    }
+
+    public SimpleStringProperty commentsProperty() {
+        return comments;
+    }
+
+    public String getModelNum() {
+        return modelNum.get();
+    }
+
+    public SimpleStringProperty modelNumProperty() {
+        return modelNum;
+    }
+
+    public void setComments(String comments) {
+        this.comments.set(comments);
+    }
+
+    public String getId() {
+        return id.get();
+    }
+
+    public SimpleStringProperty idProperty() {
+        return id;
     }
 }

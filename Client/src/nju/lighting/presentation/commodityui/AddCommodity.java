@@ -55,42 +55,14 @@ public class AddCommodity extends Dialog implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        NumberValidator repCountValidator = new NumberValidator();
-        repCountValidator.setMessage("请输入整数");
 
-        DoubleValidator inPriceValidator = new DoubleValidator();
-        inPriceValidator.setMessage("请输入小数");
-
-        DoubleValidator sellPriceValidator = new DoubleValidator();
-        sellPriceValidator.setMessage("请输入小数");
-
-        DoubleValidator recentInPriceValidator = new DoubleValidator();
-        recentInPriceValidator.setMessage("请输入小数");
-
-        DoubleValidator recentSellPriceValidator = new DoubleValidator();
-        recentSellPriceValidator.setMessage("请输入小数");
-
-
-        RequiredFieldValidator namedValidator= new RequiredFieldValidator();
-        namedValidator.setMessage("名称不能为空");
-
-        RequiredFieldValidator modelNumberValidator= new RequiredFieldValidator();
-        modelNumberValidator.setMessage("型号不能为空");
-
-
-
-        TextFieldHelper.binds(repCount, repCountValidator);
-        TextFieldHelper.binds(inPrice,inPriceValidator);
-        TextFieldHelper.binds(sellPrice,sellPriceValidator);
-        TextFieldHelper.binds(recentInPrice,recentInPriceValidator);
-        TextFieldHelper.binds(recentSellPrice,recentSellPriceValidator);
-        TextFieldHelper.binds(name,namedValidator);
-        TextFieldHelper.binds(modelNumber,modelNumberValidator);
-
-
-
-
-
+        TextFieldHelper.addNumberValidator(repCount);
+        TextFieldHelper.addDoubleValidator(inPrice);
+        TextFieldHelper.addDoubleValidator(sellPrice);
+        TextFieldHelper.addDoubleValidator(recentInPrice);
+        TextFieldHelper.addDoubleValidator(recentSellPrice);
+        TextFieldHelper.addRequiredValidator(name);
+        TextFieldHelper.addRequiredValidator(modelNumber);
 
     }
 

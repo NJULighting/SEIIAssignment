@@ -7,7 +7,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
@@ -45,13 +47,22 @@ public class GiftListEditable implements Initializable {
     TableColumn<CommodityItem, Boolean> deleteBtn;
 
     @FXML
-    public TableColumn<CommodityItem, Integer> count;
+    public TableColumn<CommodityItem,String > count;
 
     @FXML
-    public TableColumn<CommodityItem, Double> price;
+    public TableColumn<CommodityItem, String> id;
+
+    @FXML
+    public TableColumn<CommodityItem, String> price;
 
     @FXML
     public TableColumn<CommodityItem, Double> subtotal;
+
+    @FXML
+    public TableColumn<CommodityItem,String> modelNum;
+
+    @FXML
+    public TableColumn<CommodityItem,String> comments;
 
 
     public void refresh() {
@@ -96,12 +107,19 @@ public class GiftListEditable implements Initializable {
         commodityName.setCellValueFactory(cellData ->
                 cellData.getValue().nameProperty());
         count.setCellValueFactory(cellData ->
-                cellData.getValue().countProperty().asObject());
+                cellData.getValue().countProperty().asString());
         subtotal.setCellValueFactory(cellData ->
                 cellData.getValue().subtotalProperty().asObject());
-        price.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
+        price.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asString());
         deleteBtn.setCellValueFactory(cellData ->
                 cellData.getValue().giftProperty());
+        modelNum.setCellValueFactory(cellData ->
+        cellData.getValue().modelNumProperty());
+        comments.setCellValueFactory(cellData->
+        cellData.getValue().commentsProperty());
+        id.setCellValueFactory(cellData->
+        cellData.getValue().idProperty());
+
 
 
         refresh();
@@ -114,25 +132,47 @@ public class GiftListEditable implements Initializable {
         deleteBtn.setCellFactory(cellFactory);
 
 
-        Callback<TableColumn<CommodityItem, Integer>,
-                TableCell<CommodityItem, Integer>> cellFactoryForCount
-                = (TableColumn<CommodityItem, Integer> p) -> new EditingCell();
+        Callback<TableColumn<CommodityItem, String>,
+                TableCell<CommodityItem, String>> cellFactoryForCount
+                = (TableColumn<CommodityItem, String> p) -> new EditingCell("int");
 
+        Callback<TableColumn<CommodityItem, String>,
+                TableCell<CommodityItem, String>> cellFactoryForPrice
+                = (TableColumn<CommodityItem, String> p) -> new EditingCell("double");
+
+        Callback<TableColumn<CommodityItem, String>,
+                TableCell<CommodityItem, String>> cellFactoryForComments
+                = (TableColumn<CommodityItem, String> p) -> new EditingCell("string");
 
         count.setCellFactory(cellFactoryForCount);
+        price.setCellFactory(cellFactoryForPrice);
+        comments.setCellFactory(cellFactoryForComments);
 
         count.setOnEditCommit(
-                (TableColumn.CellEditEvent<CommodityItem, Integer> t) -> {
-                    int index = t.getTablePosition().getRow();
-
+                (TableColumn.CellEditEvent<CommodityItem, String> t) -> {
                     CommodityItem selected = t.getTableView().getItems().get(
-                            index);
-                    selected.setCount(t.getNewValue());
+                            t.getTablePosition().getRow());
+                    selected.setCount(Integer.parseInt(t.getNewValue()));
                     selected.setSubtotal(selected.getPrice() * selected.getCount());
-                    System.out.println();
                     calculateTotal();
 
                 });
+
+        price.setOnEditCommit(
+                (TableColumn.CellEditEvent<CommodityItem, String> t) -> {
+                    CommodityItem selected = t.getTableView().getItems().get(
+                            t.getTablePosition().getRow());
+                    selected.setPrice(Double.parseDouble(t.getNewValue()));
+                    selected.setSubtotal(selected.getPrice() * selected.getCount());
+                    calculateTotal();
+                });
+
+        comments.setOnEditCommit( (TableColumn.CellEditEvent<CommodityItem, String> t) -> {
+            CommodityItem selected = t.getTableView().getItems().get(
+                    t.getTablePosition().getRow());
+            selected.setComments(t.getNewValue());
+
+        });
 
         giftTableView.setItems(giftObservableList);
 

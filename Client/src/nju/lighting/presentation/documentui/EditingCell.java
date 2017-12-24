@@ -10,11 +10,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.input.KeyCode;
+import nju.lighting.presentation.utils.TextFieldHelper;
 
 /**
  * Created on 2017/12/10.
  * Description
- *  表格中可编辑的cell， 在这里定义cell的外观与行为
+ * 表格中可编辑的cell， 在这里定义cell的外观与行为
+ *
  * @author 陈俊宇
  */
 public class EditingCell extends TableCell<CommodityItem, Integer> {
@@ -22,15 +24,19 @@ public class EditingCell extends TableCell<CommodityItem, Integer> {
     private JFXTextField textField;
 
 
-
     @Override
     public void startEdit() {
+
         if (!isEmpty()) {
-            super.startEdit();
-            createTextField();
-            setText(null);
-            setGraphic(textField);
-            textField.selectAll();
+            CommodityItem commodityItem = getTableView().getItems().get(getIndex());
+            if (!commodityItem.isGift()) {
+                super.startEdit();
+                createTextField();
+                setText(null);
+                setGraphic(textField);
+                textField.selectAll();
+            }
+
         }
     }
 
@@ -49,7 +55,8 @@ public class EditingCell extends TableCell<CommodityItem, Integer> {
             setText(null);
             setGraphic(null);
         } else {
-            if (isEditing()) {
+            CommodityItem commodityItem = getTableView().getItems().get(getIndex());
+            if (isEditing() && !commodityItem.isGift()) {
                 if (textField != null) {
                     textField.setText(getString());
                 }

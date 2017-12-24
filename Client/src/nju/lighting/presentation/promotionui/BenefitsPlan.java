@@ -6,6 +6,7 @@ import javafx.scene.control.Pagination;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.promotion.PromotionVO;
 
 import java.io.IOException;
@@ -18,8 +19,23 @@ import java.util.List;
  * @author 陈俊宇
  */
 public class BenefitsPlan {
+    @FXML
     Pagination pagination;
+
     List <PromotionVO> promotionList;
+
+    Upper upper;
+
+    PromotionVO promotionVO;
+
+    boolean canceled;
+
+    @FXML
+    void ok(){
+        promotionVO=promotionList.get(pagination.getCurrentPageIndex());
+        canceled=false;
+        upper.back();
+    }
 
     ScrollPane createPage(int index)  {
         PromotionVO promotion=promotionList.get(index);
@@ -35,13 +51,25 @@ public class BenefitsPlan {
         return scrollPane;
     }
 
-    public BenefitsPlan(List<PromotionVO> list){
+
+    public void init(List<PromotionVO> list,Upper upper){
+        this.upper=upper;
         promotionList=list;
-        pagination=new Pagination(promotionList.size()+1);
+        pagination.setPageCount(promotionList.size());
         pagination.setPageFactory((Integer index) -> createPage(index));
         pagination.getStylesheets().add(getClass().getResource("../benefitsplan.css").toExternalForm());
 
     }
 
-    public Pagination getPagination(){return pagination;}
+    public boolean isCanceled() {
+        return canceled;
+    }
+
+    public void setCanceled(boolean canceled) {
+        this.canceled = canceled;
+    }
+
+    public PromotionVO getPromotionVO() {
+        return promotionVO;
+    }
 }

@@ -1,9 +1,6 @@
 package nju.lighting.presentation.documentui;
 
 
-import javafx.beans.binding.Bindings;
-
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -11,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.Callback;
+import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 
@@ -31,7 +29,8 @@ public class GiftListEditable implements Initializable {
 
     public static List<GiftItemVO> giftsVO;
     private double total = 0;
-    ObservableList giftObservableList;
+    ObservableList<CommodityItem> giftObservableList;
+    Upper upper;
 
     @FXML
     public TableView giftTableView;
@@ -62,10 +61,13 @@ public class GiftListEditable implements Initializable {
                 .collect(Collectors.toList()));
     }
 
-    void calculateTotal() {
-        totalLabel.setText(giftObservableList.stream()
-                .mapToDouble(x -> (((CommodityItem) x).subtotal.getValue()))
-                .sum() + "");
+    double calculateTotal() {
+        total=giftObservableList.stream()
+                .filter(x->!x.isGift())
+                .mapToDouble(x -> (( x).subtotal.getValue()))
+                .sum();
+        totalLabel.setText(total+ "");
+        return total;
     }
 
     @Override
@@ -82,8 +84,11 @@ public class GiftListEditable implements Initializable {
             public void onChanged(Change c) {
                 if (giftObservableList.size() != 0)
                     calculateTotal();
-                else
+                else{
                     totalLabel.setText("0");
+                    total=0;
+                }
+
             }
         });
 
@@ -96,7 +101,7 @@ public class GiftListEditable implements Initializable {
                 cellData.getValue().subtotalProperty().asObject());
         price.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
         deleteBtn.setCellValueFactory(cellData ->
-                cellData.getValue().boolProperty());
+                cellData.getValue().giftProperty());
 
 
         refresh();
@@ -139,6 +144,5 @@ public class GiftListEditable implements Initializable {
 
 
     }
-
 
 }

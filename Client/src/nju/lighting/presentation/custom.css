@@ -2,6 +2,8 @@ root {
 
     -fx-font-family: Roboto;
 
+    -fx-background-color: whitesmoke;
+
     src: "/resources/roboto/Roboto-Regular.ttf";
 
 }
@@ -37,11 +39,69 @@ root {
 
 /* Input Demo */
 
+.table-view{
+
+    -fx-border-width: 0 ;
+    -fx-background-color: transparent;
+
+    -fx-table-cell-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header{
+
+    -fx-font-weight: normal;
+    -fx-pref-height: 50px;
+}
+
+.table-view .column-header .label{
+
+    -fx-alignment: center-left;
+}
+
+.table-view .column-header-background{
+
+    -fx-background-color: transparent;
+
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+
+}
+
+.table-view .table-row-cell .table-cell{
+    -fx-text-fill:black;
+    -fx-alignment: center-left;
+    -fx-border-width: 0;
+    -fx-background-color:transparent;
+}
+
+.table-row-cell{
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: transparent;
+    -fx-text: black;
+}
 
 
 .text-field {
 
+    -fx-focus-color: #5599ff;
+
     -fx-max-width: 300;
+
+}
+
+.text-area {
+
+    -fx-focus-color: #5599ff;
 
 }
 
@@ -49,15 +109,13 @@ root {
 
 .jfx-text-field, .jfx-password-field {
 
-    -fx-background-color: WHITE;
-
-    -fx-font-weight: BOLD;
+    -fx-background-color: transparent;
 
     -fx-prompt-text-fill: #808080;
 
     -fx-alignment: top-left;
 
-    -jfx-focus-color: #4059A9;
+    -jfx-focus-color: #5599ff;
 
     -jfx-unfocus-color: #4d4d4d;
 
@@ -94,7 +152,6 @@ root {
 
 .jfx-text-area, .text-area {
 
-    -fx-font-weight: BOLD;
 
 }
 
@@ -338,19 +395,24 @@ root {
 
 
 
-.jfx-list-cell-container > .label {
+/*.jfx-list-cell-container .label {*/
 
-    -fx-text-fill: BLACK;
+    /*-fx-text-fill: green;*/
 
+/*}*/
+
+
+
+/*.jfx-list-cell:selected > .jfx-rippler > StackPane, .jfx-list-cell:even:selected > .jfx-rippler > StackPane {*/
+
+    /*-fx-background-color:#DCDCDC;*/
+    /*-fx-text-fill:green;*/
+
+/*}*/
+.jfx-list-cell:filled:selected {
+    -fx-background-color: #DCDCDC;
 }
 
-
-
-.jfx-list-cell:selected > .jfx-rippler > StackPane, .jfx-list-cell:even:selected > .jfx-rippler > StackPane {
-
-    -fx-background-color:#DCDCDC;
-
-}
 .jfx-list-cell:filled:hover{
     -fx-background-color: #DCDCDC;
 }
@@ -370,14 +432,14 @@ root {
 
 .jfx-list-cell:odd {
 
-    -fx-background-color: #F5F5F5;
+    -fx-background-color: transparent;
 
 }
 
 
 
 .jfx-list-cell:even{
-    -fx-background-color: #F5F5F5;
+    -fx-background-color: transparent;
 }
 
 
@@ -502,9 +564,10 @@ root {
 
 .jfx-list-cell-container .label {
 
-    -fx-text-fill: BLACK;
+    -fx-text-fill: green;
 
 }
+
 
 
 
@@ -604,6 +667,8 @@ root {
 
 
 
+
+
 .tree-table-view .column-header,
 
 .tree-table-view .column-header-background,
@@ -620,7 +685,6 @@ root {
 
     -fx-border-width: 0 1 0 1;
 
-    -fx-border-color: #F3F3F3;
 
 }
 
@@ -646,7 +710,7 @@ root {
 
 .tree-table-view .column-header:last-visible {
 
-    -fx-border-width: 0 2 0 1;
+    -fx-border-width: 0 0 0 0;
 
 }
 
@@ -654,7 +718,7 @@ root {
 
 .tree-table-view .column-header-background {
 
-    -fx-border-width: 0 0.0 1 0;
+    -fx-border-width: 0 0.0 0 0;
 
     -fx-border-color: #F3F3F3;
 

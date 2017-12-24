@@ -5,8 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox prefHeight="680.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.RepositoryManagerController">
+<VBox prefHeight="680.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.RepositoryManagerController">
    <children>
       <JFXButton fx:id="historyBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="首页">
          <graphic>
@@ -26,7 +25,16 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="库存管理">
+      <JFXButton fx:id="repositoryViewBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="库存查看">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <image>
+                  <Image url="@../../../../images/库存管理.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="repositoryCountingBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="库存盘点">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>

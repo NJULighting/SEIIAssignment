@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -7,123 +13,104 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8">
-    <children>
-        <Circle fill="#fffefe" layoutX="46.0" layoutY="46.0" radius="42.0" stroke="#b9b3b3" strokeType="INSIDE"/>
-        <ImageView fitHeight="45.0" fitWidth="63.0" layoutX="14.0" layoutY="23.0">
-            <image>
-                <Image url="@../../../../../../../../Desktop/NXV@%25ZS@23WXNHAX)PN(57Y.png"/>
-            </image>
-        </ImageView>
-        <VBox alignment="CENTER_RIGHT" layoutX="101.0" layoutY="27.0" prefHeight="63.0" prefWidth="120.0" spacing="5.0">
-            <children>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="身份：销售人员" wrappingWidth="120.0"/>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID：XXXX" wrappingWidth="120.0"/>
-                <Button alignment="CENTER" mnemonicParsing="false" text="退出"/>
-            </children>
-        </VBox>
-        <HBox layoutX="341.0" layoutY="35.0" spacing="50.0">
-            <children>
-                <Button alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="主界面" textOverrun="CLIP"/>
-                <Button alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="客户管理"/>
-                <Button alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="制定销售单"/>
-                <Button alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="制定销售退货单"/>
-                <Button alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="制定进货单"/>
-                <Button alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="制定进货退货单"/>
-            </children>
-        </HBox>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2f3f5" height="576.0" layoutX="415.0" layoutY="100.0"
-                   stroke="#8d8d8d" strokeType="INSIDE" width="702.0"/>
-        <GridPane alignment="CENTER" layoutX="441.0" layoutY="176.0" prefHeight="80.0" prefWidth="650.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-            </rowConstraints>
-            <children>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                    <children>
-                        <Label prefWidth="65.0" text="单据编号  ">
-                            <font>
-                                <Font size="14.0"/>
-                            </font>
-                        </Label>
-                        <PasswordField prefHeight="23.0" prefWidth="180.0" promptText="JHD-yyyyMMdd-xxxxx"/>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                    <children>
-                        <Label prefWidth="65.0" text="供应商">
-                            <font>
-                                <Font size="14.0"/>
-                            </font>
-                        </Label>
-                        <ComboBox editable="true" prefHeight="23.0" prefWidth="180.0" promptText="000001"/>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
-                    <children>
-                        <Label prefWidth="65.0" text="操作员">
-                            <font>
-                                <Font size="14.0"/>
-                            </font>
-                        </Label>
-                        <PasswordField prefHeight="23.0" prefWidth="180.0"/>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
-                      GridPane.rowIndex="1">
-                    <children>
-                        <Label prefWidth="65.0" text="仓库  ">
-                            <font>
-                                <Font size="14.0"/>
-                            </font>
-                        </Label>
-                        <PasswordField prefHeight="23.0" prefWidth="180.0"/>
-                    </children>
-                </HBox>
-            </children>
-        </GridPane>
-        <Label layoutX="684.0" layoutY="131.0" text="==新建进货单==">
-            <font>
-                <Font size="20.0"/>
-            </font>
-        </Label>
-        <TableView layoutX="473.0" layoutY="356.0" prefHeight="306.0" prefWidth="585.0">
-            <columns>
-                <TableColumn prefWidth="100.0" text="商品编号"/>
-                <TableColumn prefWidth="100.0" text="名称"/>
-                <TableColumn prefWidth="75.0" text="型号"/>
-                <TableColumn prefWidth="65.0" text="数量"/>
-                <TableColumn prefWidth="65.0" text="单价"/>
-                <TableColumn text="金额"/>
-                <TableColumn prefWidth="100.0" text="备注"/>
-            </columns>
-        </TableView>
-        <Button layoutX="473.0" layoutY="328.0" mnemonicParsing="false" text="+ 选择商品"/>
-        <Label layoutX="707.0" layoutY="321.0" text="--入库商品列表--">
-            <font>
-                <Font size="14.0"/>
-            </font>
-        </Label>
-        <HBox layoutX="805.0" layoutY="270.0" prefHeight="69.0" prefWidth="246.0">
-            <children>
-                <Label prefWidth="65.0" text="备注">
-                    <font>
-                        <Font size="14.0"/>
-                    </font>
-                </Label>
-                <TextArea prefHeight="71.0" prefWidth="180.0"/>
-            </children>
-        </HBox>
-        <Button layoutX="1072.0" layoutY="662.0" mnemonicParsing="false" text="完成并提交" textAlignment="CENTER">
-            <font>
-                <Font size="14.0"/>
-            </font>
-        </Button>
-    </children>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <Line endX="300.0" layoutX="130.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />
+      <Label layoutX="30.0" layoutY="14.0" text="制定进货单">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <VBox layoutX="780.0" layoutY="182.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="280.0">
+               <children>
+                  <Label prefWidth="80.0" text="供应商" />
+                  <JFXTextField fx:id="customer" focusColor="#5599ff" prefWidth="107.0">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></JFXTextField>
+                  <Button mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@../../../../images/添加.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
+               <children>
+                  <Label prefWidth="80.0" text="操作员" />
+                  <JFXTextField fx:id="userman" focusColor="#5599ff" prefWidth="150.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
+               <children>
+                  <Label prefWidth="80.0" text="仓库  " />
+                  <JFXTextField fx:id="repository" focusColor="#5599ff" prefWidth="150.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
+               <children>
+                  <Label prefWidth="80.0" text="最终总额" />
+                  <JFXTextField fx:id="account" editable="false" focusColor="#5599ff" prefWidth="150.0" style="-fx-cursor: Default;" text="0.0">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </JFXTextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0">
+               <children>
+                  <Label prefWidth="80.0" text="促销策略" />
+                  <JFXTextField focusColor="#5599ff" prefWidth="107.0">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></JFXTextField>
+                  <Button mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@../../../../images/添加.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="260.0" spacing="5.0">
+               <children>
+                  <Label prefWidth="80.0" text="备注" />
+                  <TextArea fx:id="remarks" prefHeight="100.0" prefWidth="150.0" text="无" wrapText="true" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <JFXButton layoutX="865.0" layoutY="65.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
+      <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="40.0" layoutY="63.0">
+         <image>
+            <Image url="@../../../../images/飞翔的订单.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="47.0" layoutY="103.0" prefHeight="535.0" prefWidth="702.0" />
+      <VBox layoutX="816.0" layoutY="505.0" />
+      <Label layoutX="80.0" layoutY="73.0" text="入库商品清单" />
+      <Button layoutX="170.0" layoutY="58.0" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <image>
+                  <Image url="@../../../../images/添加.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
 </Pane>

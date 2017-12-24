@@ -54,22 +54,43 @@ public class CustomerBLService_Stub implements CustomerBLService {
         customer.add(customerVO3);
         customer.add(customerVO4);
         if (keyword.equals("李杰")) {
-            customer.remove(new Integer(3));
+            customer.remove(customerVO4);
             return customer;
         } else if(keyword.equals("苏良")){
-            customer.remove(new Integer(0));
-            customer.remove(new Integer(1));
-            customer.remove(new Integer(2));
+            customer.remove(customerVO1);
+            customer.remove(customerVO2);
+            customer.remove(customerVO3);
             return customer;
         } else if(keyword.equals("销售商")){
-            customer.remove(2);
-            customer.remove(3);
+            customer.remove(customerVO3);
+            customer.remove(customerVO4);
             return customer;
         } else if(keyword.equals("供应商")){
-            customer.remove(0);
-            customer.remove(1);
+            customer.remove(customerVO1);
+            customer.remove(customerVO2);
             return customer;
-        }else
+        } else if(keyword.equals("000001")){
+            customer.remove(customerVO2);
+            customer.remove(customerVO3);
+            customer.remove(customerVO4);
+            return customer;
+        } else if(keyword.equals("000002")){
+            customer.remove(customerVO1);
+            customer.remove(customerVO3);
+            customer.remove(customerVO4);
+            return customer;
+        } else if(keyword.equals("000003")){
+            customer.remove(customerVO2);
+            customer.remove(customerVO1);
+            customer.remove(customerVO4);
+            return customer;
+        } else if(keyword.equals("000004")){
+            customer.remove(customerVO2);
+            customer.remove(customerVO3);
+            customer.remove(customerVO1);
+            return customer;
+        }
+        else
             return null;
     }
 

@@ -49,7 +49,6 @@ public class CommodityCategory implements Initializable {
     void showSelectedCommodity(CommodityItemVO commodity) {
         Commodity.setCommodity(commodity);
         container.getChildren().clear();
-        System.out.println("clicked");
         HBox commodityVBox = null;
         try {
             commodityVBox = FXMLLoader.load(getClass().getResource("Commodity.fxml"));
@@ -71,7 +70,7 @@ public class CommodityCategory implements Initializable {
         if (event.getButton().equals(MouseButton.PRIMARY)) {
             TreeItem selected = categoryTreeView.getSelectionModel().getSelectedItem();
 
-            if (selected.isLeaf() && selected.getValue().getClass().equals(CommodityItemVO.class)) {
+            if (selected!=null&&selected.isLeaf() && selected.getValue().getClass().equals(CommodityItemVO.class)) {
                 CommodityItemVO commodity = (((CommodityItemVO) selected.getValue()));
                 showSelectedCommodity(commodity);
             }
@@ -125,7 +124,7 @@ public class CommodityCategory implements Initializable {
 
         categoryTreeView.setMinHeight(460);
         categoryTreeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
+        categoryTreeView.getStylesheets().add(getClass().getResource("../category.css").toExternalForm());
 
     }
 

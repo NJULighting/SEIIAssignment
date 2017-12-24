@@ -77,37 +77,19 @@ public class CustomerDetail {
         textFields.add(emailText);
         textFields.add(addressText);
 
-        DoubleValidator receiveTextValidator=new DoubleValidator();
-        receiveTextValidator.setMessage("请输入小数");
-        DoubleValidator payTextValidator=new DoubleValidator();
-        payTextValidator.setMessage("请输入小数");
-        DoubleValidator receiveLimitTextValidator=new DoubleValidator();
-        receiveLimitTextValidator.setMessage("请输入小数");
-        RequiredFieldValidator nameValidator=new RequiredFieldValidator();
-        nameValidator.setMessage("名字不能为空");
-        RequiredFieldValidator salesmanValidator=new RequiredFieldValidator();
-        salesmanValidator.setMessage("默认销售员不能为空");
-        RequiredFieldValidator telephoneValidator=new RequiredFieldValidator();
-        telephoneValidator.setMessage("电话不能为空");
-        RequiredFieldValidator postageValidator=new RequiredFieldValidator();
-        postageValidator.setMessage("邮编不能为空");
-        RequiredFieldValidator emailValidator=new RequiredFieldValidator();
-        emailValidator.setMessage("邮箱不能为空");
-        RequiredFieldValidator addressValidator=new RequiredFieldValidator();
-        addressValidator.setMessage("地址不能为空");
 
 
+        TextFieldHelper.addDoubleValidator(receiveLimitText);
+        TextFieldHelper.addDoubleValidator(payText);
+        TextFieldHelper.addDoubleValidator(receiveText);
+        TextFieldHelper.addRequiredValidator(nameText);
+        TextFieldHelper.addRequiredValidator(salesmanText);
+        TextFieldHelper.addRequiredValidator(telephoneText);
+        TextFieldHelper.addRequiredValidator(addressText);
+        TextFieldHelper.addRequiredValidator(postageText);
+        TextFieldHelper.addRequiredValidator(emailText);
 
-        TextFieldHelper.binds(receiveText,receiveTextValidator);
-        TextFieldHelper.binds(payText,payTextValidator);
-        TextFieldHelper.binds(receiveLimitText,receiveLimitTextValidator);
-        TextFieldHelper.binds(nameText,nameValidator);
-        TextFieldHelper.binds(salesmanText,salesmanValidator);
-        TextFieldHelper.binds(telephoneText,telephoneValidator);
-        TextFieldHelper.binds(emailText,emailValidator);
-        TextFieldHelper.binds(postageText,postageValidator);
-        TextFieldHelper.binds(receiveLimitText,receiveLimitTextValidator);
-        TextFieldHelper.binds(addressText,addressValidator);
+
         //初始化JFXComboBox
         typebox.getItems().addAll(
                 "销售商",

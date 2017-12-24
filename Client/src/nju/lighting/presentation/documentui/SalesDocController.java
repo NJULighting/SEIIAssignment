@@ -249,46 +249,41 @@ public class SalesDocController implements Initializable, Upper {
         System.out.println("gift size"+commodityController.giftObservableList.size());
         commodityList = commodityController.giftObservableList;
 
-//        //监听，如果价总价变化 account跟着变化
-//        accountBeforeDis.textProperty().bind(commodityController.totalLabel.textProperty());
-//
-//        ChangeListener changeListener = new ChangeListener() {
-//            @Override
-//            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-//                account.setText("" + (
-//                        Double.parseDouble(accountBeforeDis.textProperty().get())
-//                                - Double.parseDouble(discount.textProperty().get())
-//                                - Double.parseDouble(voucher.textProperty().get())
-//                               // - Double.parseDouble(promotionOff.textProperty().get())
-//                ));
-//            }
-//        };
-//
-//        DoubleValidator discountValidator = new DoubleValidator();
-//        discountValidator.setMessage("折让必须为小数");
-//        DoubleValidator voucherValidator = new DoubleValidator();
-//        voucherValidator.setMessage("代金券金额必须为小数");
-//
-//        TextFieldHelper.binds(discount, discountValidator, false);
-//        TextFieldHelper.binds(voucher, voucherValidator, false);
-//
-//
-//        discount.textProperty().addListener(changeListener);
-//        voucher.textProperty().addListener(changeListener);
-//        //promotionOff.textProperty().addListener(changeListener);
-//
-//        accountBeforeDis.textProperty().addListener(new ChangeListener<String>() {
-//            @Override
-//            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-//                clearPromotion();
-//                account.setText("" + (
-//                        Double.parseDouble(accountBeforeDis.textProperty().get())
-//                                - Double.parseDouble(discount.textProperty().get())
-//                                - Double.parseDouble(voucher.textProperty().get())
-//                               // - Double.parseDouble(promotionOff.textProperty().get())
-//                ));
-//            }
-//        });
+        //监听，如果价总价变化 account跟着变化
+        accountBeforeDis.textProperty().bind(commodityController.totalLabel.textProperty());
+
+        ChangeListener changeListener = new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                account.setText("" + (
+                        Double.parseDouble(accountBeforeDis.textProperty().get())
+                                - Double.parseDouble(discount.textProperty().get())
+                                - Double.parseDouble(voucher.textProperty().get())
+                               // - Double.parseDouble(promotionOff.textProperty().get())
+                ));
+            }
+        };
+
+        TextFieldHelper.addDoubleValidator(discount);
+        TextFieldHelper.addDoubleValidator(voucher);
+
+
+        discount.textProperty().addListener(changeListener);
+        voucher.textProperty().addListener(changeListener);
+        //promotionOff.textProperty().addListener(changeListener);
+
+        accountBeforeDis.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                clearPromotion();
+                account.setText("" + (
+                        Double.parseDouble(accountBeforeDis.textProperty().get())
+                                - Double.parseDouble(discount.textProperty().get())
+                                - Double.parseDouble(voucher.textProperty().get())
+                               // - Double.parseDouble(promotionOff.textProperty().get())
+                ));
+            }
+        });
 
     }
 

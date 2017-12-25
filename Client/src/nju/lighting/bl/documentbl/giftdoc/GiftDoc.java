@@ -101,7 +101,7 @@ public class GiftDoc extends Doc {
 
     @Override
     public boolean containsCommodity(String commodityName) {
-        return false;
+        return itemList.containsCommodity(commodityName);
     }
 
     @Override

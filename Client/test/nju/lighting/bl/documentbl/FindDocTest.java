@@ -5,6 +5,8 @@ import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import org.junit.Before;
 import org.junit.Test;
+import shared.DocState;
+import shared.DocType;
 import shared.DocumentFilter;
 
 import java.util.Date;
@@ -36,7 +38,7 @@ public class FindDocTest {
 
         List<HistoryDocVO> docVOList = manager.findDocuments(filter);
 
-        assertEquals(ACCOUNT_DOC_SIZE, docVOList.size());
+        assertEquals(17, docVOList.size());
     }
 
     @Test
@@ -55,5 +57,42 @@ public class FindDocTest {
         List<HistoryDocVO> docVOS = manager.findDocuments(builder.build());
 
         assertEquals(ACCOUNT_DOC_SIZE, docVOS.size());
+    }
+
+    @Test
+    public void findDocumentsTest3() throws Exception {
+        builder.commodity("10W阿拉丁神灯");
+        builder.customer("1");
+
+        List<HistoryDocVO> docVOS = manager.findDocuments(builder.build());
+
+        assertEquals(5, docVOS.size());
+    }
+
+    @Test
+    public void findDocumentsTest4() throws Exception {
+        builder.repository("02");
+
+        assertEquals(0, manager.findDocuments(builder.build()).size());
+    }
+
+    @Test
+    public void findDocumentsTest5() throws Exception {
+        builder.docState(DocState.UN_CHECKED);
+
+        List<HistoryDocVO> docVOS = manager.findDocuments(builder.build());
+
+        assertEquals(17, docVOS.size());
+    }
+
+    @Test
+    public void findDocumentsTest6() throws Exception {
+        builder.docType(DocType.ACCOUNT_IN);
+        builder.docType(DocType.GIFT);
+        builder.docType(DocType.SALES);
+
+        List<HistoryDocVO> docVOS = manager.findDocuments(builder.build());
+
+        assertEquals(8, docVOS.size());
     }
 }

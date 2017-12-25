@@ -52,12 +52,10 @@ public class CommitDocTest {
     private DocManager manager = DocManager.INSTANCE;
     private UserInfo userInfo = new UserInfoImpl();
     private CommodityInfo commodityInfo = new CommodityInfoImpl();
-    private DocDataService dataService;
 
     @Before
     public void setUp() throws Exception {
         LoginTestHelper.loginAuthorizedUser();
-        dataService = DataFactory.getDataBase(DocDataService.class);
     }
 
     // Account doc

@@ -31,6 +31,8 @@ public class SalesReturnDoc extends SalesTypeDoc {
         setAttributes(Integer.parseInt(docPO.getCustomerId()), docPO.getSalesMan(), docPO.getRepository(),
                 docPO.getRemarks(), 0.0, docPO.getDiscount(), docPO.getVoucher(), docPO.getFinalAmount());
         beforeDiscountAmount = calculateBeforeDiscount();
+
+        docPO.getItemPOS().forEach(itemList::add);
     }
 
     private void assign(DocVO vo) {

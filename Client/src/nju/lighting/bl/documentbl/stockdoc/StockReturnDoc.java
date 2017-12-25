@@ -28,7 +28,7 @@ public class StockReturnDoc extends StockTypeDoc {
 
     public StockReturnDoc(DocPO po) {
         super(po);
-        StockDocPO stockDocPO = (StockDocPO) po;
+        StockReturnDocPO stockDocPO = (StockReturnDocPO) po;
         setAttributes(stockDocPO.getCustomerId(), stockDocPO.getRepository(),
                 stockDocPO.getRemarks(), stockDocPO.getTotalAmount());
 

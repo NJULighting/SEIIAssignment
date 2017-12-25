@@ -1,17 +1,16 @@
 package nju.lighting.presentation.documentui;
 
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.validation.DoubleValidator;
-import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -22,13 +21,14 @@ import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.presentation.commodityui.CommodityPicker;
 import nju.lighting.presentation.customerui.CustomerPicker;
 import nju.lighting.presentation.mainui.Client;
-import nju.lighting.presentation.mainui.Upper;
+import nju.lighting.presentation.mainui.CommodityUpper;
+import nju.lighting.presentation.mainui.CustomerUpper;
+import nju.lighting.presentation.mainui.PromotionUpper;
 import nju.lighting.presentation.promotionui.BenefitsPlan;
 import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
-import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.*;
@@ -37,10 +37,11 @@ import shared.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class SalesDocController implements Initializable, Upper {
+public class SalesDocController implements Initializable, CommodityUpper,PromotionUpper,CustomerUpper {
     private CustomerVO customerVO;
 
     private String salesDocID;
@@ -78,10 +79,13 @@ public class SalesDocController implements Initializable, Upper {
     @FXML
     Pane mainPane, commodityContainer;
 
-    ObservableList<CommodityItem> commodityList;
-    boolean commodityCancel = true, customerCanceled = true, promotionCanceled = true;
+    ObservableList<BasicCommodityItemVO> commodityList= FXCollections.observableArrayList();
+    ObservableList<CommodityItem> docItemList;
+    SimpleObjectProperty<CustomerVO> customerProperty=new SimpleObjectProperty<>();
+    SimpleObjectProperty<PromotionVO> promotionProperty=new SimpleObjectProperty<>();
+
     CommodityPicker commodityPicker;
-    GiftListEditable commodityController;
+    GiftListEditable commodityListController;
 
     CustomerPicker customerPicker;
     BenefitsPlan promotionPicker;
@@ -102,6 +106,11 @@ public class SalesDocController implements Initializable, Upper {
         }
     }
 
+    @Override
+    public void setCustomer(CustomerVO customer) {
+        customerProperty.set(customer);
+    }
+
 
     public void chooseCommodity() {
         try {
@@ -116,6 +125,10 @@ public class SalesDocController implements Initializable, Upper {
         }
     }
 
+    @Override
+    public void addCommodity(List<BasicCommodityItemVO> commodity) {
+        commodityList.addAll(commodity);
+    }
 
     public void choosePromotion() throws IOException {
         container.getChildren().clear();
@@ -127,59 +140,16 @@ public class SalesDocController implements Initializable, Upper {
 
     }
 
-    void refresh() {
-        if (!commodityCancel) {
-
-            commodityList.addAll(commodityPicker.getCommodities().stream()
-                    .map(x -> new CommodityItem(x,1))
-                    .collect(Collectors.toList()));
-            commodityPicker.setCanceled(true);
-            clearPromotion();
-        }
-       else if (!customerCanceled) {
-            customerVO = customerPicker.getCustomer();
-            customer.setText(customerVO.getName());
-            clearPromotion();
-            customerPicker.setCanceled(true);
-        }
-        else if (!promotionCanceled) {
-
-            clearPromotion();
-            promotionVO = promotionPicker.getPromotionVO();
-           // promotionOff.setText(promotionVO.getOff() + "");
-            promotionText.setText(promotionVO.getName());
-
-
-
-            if (promotionVO.getType() != PromotionType.Combo&& promotionVO.getGoods()!=null)
-
-                commodityList.addAll(
-                        promotionVO.getGoods().stream()
-                                .map(x -> new CommodityItem(x))
-                                .collect(Collectors.toList())
-                );
-
-            promotionPicker.setCanceled(true);
-        }
-
-
-
-
-
+    @Override
+    public void setPromotion(PromotionVO promotion) {
+        promotionProperty.set(promotion);
     }
+
 
     public void back() {
         container.getChildren().clear();
         container.getChildren().add(mainPane);
         sub.setText("");
-        if (commodityPicker != null)
-            commodityCancel = commodityPicker.isCanceled();
-        if (customerPicker != null)
-            customerCanceled = customerPicker.isCanceled();
-        if (promotionPicker!=null){
-            promotionCanceled=promotionPicker.isCanceled();
-        }
-        refresh();
 
     }
 
@@ -224,11 +194,11 @@ public class SalesDocController implements Initializable, Upper {
 
     //当重要参数发生变化时清除正在作用的promotion
     void clearPromotion(){
-        commodityList.removeAll(
-                commodityList.stream()
-                .filter(x-> x.isGift())
-                .collect(Collectors.toList())
-        );
+//        commodityList.removeAll(
+//                commodityList.stream()
+//                .filter(x-> x.isGift())
+//                .collect(Collectors.toList())
+//        );
       //  promotionOff.setText(0+"");
         if (promotionText!=null)
         promotionText.setText("");
@@ -245,12 +215,51 @@ public class SalesDocController implements Initializable, Upper {
             e.printStackTrace();
         }
 
-        commodityController = loader.getController();
-        System.out.println("gift size"+commodityController.giftObservableList.size());
-        commodityList = commodityController.giftObservableList;
+        commodityListController = loader.getController();
+
+        docItemList = commodityListController.giftObservableList;
+        commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
+            @Override
+            public void onChanged(Change<? extends BasicCommodityItemVO> c) {
+                while (c.next()){
+                    docItemList.addAll(c.getAddedSubList().stream()
+                    .map(x-> new CommodityItem(x,1))
+                    .collect(Collectors.toList()));
+                }
+            }
+        });
+
+        customerProperty.addListener(new ChangeListener<CustomerVO>() {
+            @Override
+            public void changed(ObservableValue<? extends CustomerVO> observable, CustomerVO oldValue, CustomerVO newValue) {
+                customer.setText(customerProperty.getValue().getName());
+                clearPromotion();
+            }
+        });
+
+        promotionProperty.addListener(new ChangeListener<PromotionVO>() {
+            @Override
+            public void changed(ObservableValue<? extends PromotionVO> observable, PromotionVO oldValue, PromotionVO newValue) {
+                clearPromotion();
+                promotionVO = promotionProperty.getValue();
+                // promotionOff.setText(promotionVO.getOff() + "");
+                promotionText.setText(promotionVO.getName());
+
+
+
+//                if (promotionVO.getType() != PromotionType.Combo&& promotionVO.getGoods()!=null)
+//
+//                    commodityList.addAll(
+//                            promotionVO.getGoods().stream()
+//                                    .map(x-> x.getCommodity())
+//                                    .collect(Collectors.toList())
+//                    );
+
+            }
+        });
 
         //监听，如果价总价变化 account跟着变化
-        accountBeforeDis.textProperty().bind(commodityController.totalLabel.textProperty());
+        accountBeforeDis.textProperty().bind(commodityListController.totalLabel.textProperty());
 
         ChangeListener changeListener = new ChangeListener() {
             @Override
@@ -291,4 +300,7 @@ public class SalesDocController implements Initializable, Upper {
         title.setText("制定销售退货单");
         verticalVBox.getChildren().remove(promotionBox);
     }
+
+
+
 }

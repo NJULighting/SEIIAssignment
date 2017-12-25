@@ -6,6 +6,7 @@ import javafx.scene.control.Pagination;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import nju.lighting.presentation.mainui.PromotionUpper;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.promotion.PromotionVO;
 
@@ -24,7 +25,7 @@ public class BenefitsPlan {
 
     List <PromotionVO> promotionList;
 
-    Upper upper;
+    PromotionUpper upper;
 
     PromotionVO promotionVO;
 
@@ -32,8 +33,7 @@ public class BenefitsPlan {
 
     @FXML
     void ok(){
-        promotionVO=promotionList.get(pagination.getCurrentPageIndex());
-        canceled=false;
+        upper.setPromotion(promotionList.get(pagination.getCurrentPageIndex()));
         upper.back();
     }
 
@@ -52,7 +52,7 @@ public class BenefitsPlan {
     }
 
 
-    public void init(List<PromotionVO> list,Upper upper){
+    public void init(List<PromotionVO> list,PromotionUpper upper){
         this.upper=upper;
         promotionList=list;
         pagination.setPageCount(promotionList.size());

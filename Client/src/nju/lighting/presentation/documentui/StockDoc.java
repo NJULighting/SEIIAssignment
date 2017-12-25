@@ -1,7 +1,7 @@
 package nju.lighting.presentation.documentui;
 
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.ObservableList;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -10,16 +10,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import nju.lighting.presentation.commodityui.CommodityPicker;
-import nju.lighting.presentation.customerui.CustomerPicker;
 import nju.lighting.presentation.mainui.Client;
-import nju.lighting.presentation.promotionui.BenefitsPlan;
-import nju.lighting.vo.promotion.PromotionVO;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import shared.CustomerType;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/24.
@@ -62,12 +60,23 @@ public class StockDoc extends SalesDocController {
             e.printStackTrace();
         }
 
-        commodityController = loader.getController();
-        commodityList = commodityController.giftObservableList;
+        commodityListController = loader.getController();
+
+        docItemList = commodityListController.giftObservableList;
+        commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
+            @Override
+            public void onChanged(Change<? extends BasicCommodityItemVO> c) {
+                while (c.next()){
+                    docItemList.addAll(c.getAddedSubList().stream()
+                            .map(x-> new CommodityItem(x,1))
+                            .collect(Collectors.toList()));
+                }
+            }
+        });
 
         user.setText(Client.getUserVO().getUsername());
 
-        account.textProperty().bind(commodityController.totalLabel.textProperty());
+        account.textProperty().bind(commodityListController.totalLabel.textProperty());
     }
 
     void setReturn(){

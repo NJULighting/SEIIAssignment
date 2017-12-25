@@ -21,6 +21,7 @@ import javafx.util.Callback;
 import nju.lighting.bl.customerbl.Customer;
 import nju.lighting.bl.customerbl.CustomerBLService_Stub;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
+import nju.lighting.presentation.mainui.CustomerUpper;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
@@ -255,14 +256,13 @@ public class CustomerSearchListController implements Initializable {
 
     }
 
-    public void setReadOnly(CustomerPicker  picker,Upper upper) {
+    public void setReadOnly(CustomerUpper upper) {
         tableView.getColumns().remove(openBtn);
         addCustomerBtn.setText("确定");
         addCustomerBtn.setOnAction(e->{
             if (!tableView.getSelectionModel().isEmpty()){
                 selectedCustomer=tableView.getItems().get(tableView.getSelectionModel().getSelectedIndex());
-                picker.setCustomer(selectedCustomer);
-                picker.setCanceled(false);
+                upper.setCustomer(selectedCustomer);
                 upper.back();
 
             }

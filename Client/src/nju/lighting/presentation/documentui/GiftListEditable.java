@@ -47,13 +47,13 @@ public class GiftListEditable implements Initializable {
     TableColumn<CommodityItem, Boolean> deleteBtn;
 
     @FXML
-    public TableColumn<CommodityItem,String > count;
+    public TableColumn<CommodityItem,Integer > count;
 
     @FXML
     public TableColumn<CommodityItem, String> id;
 
     @FXML
-    public TableColumn<CommodityItem, String> price;
+    public TableColumn<CommodityItem, Double> price;
 
     @FXML
     public TableColumn<CommodityItem, Double> subtotal;
@@ -107,10 +107,10 @@ public class GiftListEditable implements Initializable {
         commodityName.setCellValueFactory(cellData ->
                 cellData.getValue().nameProperty());
         count.setCellValueFactory(cellData ->
-                cellData.getValue().countProperty().asString());
+                cellData.getValue().countProperty().asObject());
         subtotal.setCellValueFactory(cellData ->
                 cellData.getValue().subtotalProperty().asObject());
-        price.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asString());
+        price.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
         deleteBtn.setCellValueFactory(cellData ->
                 cellData.getValue().giftProperty());
         modelNum.setCellValueFactory(cellData ->
@@ -132,36 +132,37 @@ public class GiftListEditable implements Initializable {
         deleteBtn.setCellFactory(cellFactory);
 
 
-        Callback<TableColumn<CommodityItem, String>,
-                TableCell<CommodityItem, String>> cellFactoryForCount
-                = (TableColumn<CommodityItem, String> p) -> new EditingCell("int");
+        Callback<TableColumn<CommodityItem, Integer>,
+                TableCell<CommodityItem, Integer>> cellFactoryForCount
+                = (p) -> ( new EditingCell<CommodityItem, Integer>("int"));
 
-        Callback<TableColumn<CommodityItem, String>,
-                TableCell<CommodityItem, String>> cellFactoryForPrice
-                = (TableColumn<CommodityItem, String> p) -> new EditingCell("double");
+        Callback<TableColumn<CommodityItem, Double>,
+                TableCell<CommodityItem, Double>> cellFactoryForPrice
+                = (TableColumn<CommodityItem, Double> p) -> new EditingCell<CommodityItem, Double>("double");
 
         Callback<TableColumn<CommodityItem, String>,
                 TableCell<CommodityItem, String>> cellFactoryForComments
-                = (TableColumn<CommodityItem, String> p) -> new EditingCell("string");
+                = (TableColumn<CommodityItem, String> p) -> new EditingCell<CommodityItem, String>("string");
 
         count.setCellFactory(cellFactoryForCount);
         price.setCellFactory(cellFactoryForPrice);
         comments.setCellFactory(cellFactoryForComments);
 
         count.setOnEditCommit(
-                (TableColumn.CellEditEvent<CommodityItem, String> t) -> {
+                (TableColumn.CellEditEvent<CommodityItem, Integer> t) -> {
                     CommodityItem selected = t.getTableView().getItems().get(
                             t.getTablePosition().getRow());
-                    selected.setCount(Integer.parseInt(t.getNewValue()));
+                    selected.setCount( t.getNewValue());
                     calculateTotal();
 
                 });
 
         price.setOnEditCommit(
-                (TableColumn.CellEditEvent<CommodityItem, String> t) -> {
+                (TableColumn.CellEditEvent<CommodityItem, Double> t) -> {
                     CommodityItem selected = t.getTableView().getItems().get(
                             t.getTablePosition().getRow());
-                    selected.setPrice(Double.parseDouble(t.getNewValue()));
+
+                    selected.setPrice(t.getNewValue());
                     calculateTotal();
                 });
 

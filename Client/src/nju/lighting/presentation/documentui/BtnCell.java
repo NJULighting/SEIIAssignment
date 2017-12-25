@@ -15,7 +15,7 @@ import nju.lighting.vo.doc.giftdoc.GiftItemVO;
  * @author 陈俊宇
  */
 
-public class BtnCell extends TableCell<CommodityItem, Boolean> {
+public class BtnCell<T,S> extends TableCell<T, S> {
     final Button cellButton = new Button("", ImageViewHelper.delete());
 
 
@@ -34,21 +34,14 @@ public class BtnCell extends TableCell<CommodityItem, Boolean> {
 
     //Display button if the row is not empty
     @Override
-    protected void updateItem(Boolean t, boolean empty) {
+    protected void updateItem(S t, boolean empty) {
 
         super.updateItem(t, empty);
         if (!empty) {
-            if (t){
-                setText("赠品");
-                setGraphic(null);
-            }
+            setGraphic(cellButton);
+            setText(null);
 
-            else{
-                setGraphic(cellButton);
-                setText(null);
-            }
-
-        } else{
+        } else {
             setGraphic(null);
             setText(null);
         }

@@ -22,13 +22,14 @@ public class StockDocVO extends DocVO {
      * Constructor for pre
      */
     public StockDocVO(Date time, String creatorId, String customerId,
-                      String repository, String remarks, double totalAmount, List<StockDocItemVO> items) {
+                      String repository, String remarks, List<StockDocItemVO> items) {
         super(time, DocType.STOCK, creatorId);
         this.customerId = customerId;
         this.repository = repository;
         this.remarks = remarks;
-        this.totalAmount = totalAmount;
         this.items = items;
+
+        this.totalAmount = items.stream().mapToDouble(StockDocItemVO::getTotalAmount).sum();
     }
 
     /**

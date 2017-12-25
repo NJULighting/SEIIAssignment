@@ -20,21 +20,20 @@ public class AlertDocVO extends DocVO {
     /**
      * Constructor for pre
      */
-    public AlertDocVO(String creatorID, Date time, DocType type, List<AlertDocItemVO> items, String comment,
-                      boolean triggered, boolean expired) {
-        super(time, type, creatorID);
+    public AlertDocVO(String creatorID, Date time, List<AlertDocItemVO> items, String comment) {
+        super(time, DocType.ALERT, creatorID);
         this.items = items;
         this.comment = comment;
-        this.triggered = triggered;
-        this.expired = expired;
+        this.triggered = false;
+        this.expired = false;
     }
 
     /**
      * Constructor for bl
      */
-    public AlertDocVO(Date time, String creatorId, String docId, DocType type,
+    public AlertDocVO(Date time, String creatorId, String docId,
                       List<AlertDocItemVO> items, String comment, boolean triggered, boolean expired) {
-        super(time, creatorId, docId, type);
+        super(time, creatorId, docId, DocType.ALERT);
         this.items = items;
         this.comment = comment;
         this.triggered = triggered;

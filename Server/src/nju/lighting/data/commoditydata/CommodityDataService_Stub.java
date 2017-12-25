@@ -73,6 +73,11 @@ public class CommodityDataService_Stub implements CommodityDataService {
     }
 
     @Override
+    public CommodityCategoryPO findCategoryById(int id) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public ResultMessage add(CommodityItemPO commodityItemPO) {
         String id = commodityItemPO.getId();
         for (int i = 0; i < commodityItemPOS.size(); i++) {

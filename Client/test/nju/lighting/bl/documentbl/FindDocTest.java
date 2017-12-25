@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  * @author Liao
  */
 public class FindDocTest {
-    private static final int ACCOUNT_DOC_SIZE = 2;
+    private static final int ACCOUNT_DOC_SIZE = 4;
 
     private DocManager manager = DocManager.INSTANCE;
     private DocumentFilter.Builder builder;

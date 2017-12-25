@@ -22,13 +22,13 @@ public class StockReturnDocVO extends DocVO {
      * Constructor for pre
      */
     public StockReturnDocVO(Date time, String creatorId, String customerId,
-                            String repository, String remarks, double totalAmount, List<StockDocItemVO> items) {
+                            String repository, String remarks, List<StockDocItemVO> items) {
         super(time, DocType.STOCK_RETURN, creatorId);
         this.customerId = customerId;
         this.repository = repository;
         this.remarks = remarks;
-        this.totalAmount = totalAmount;
         this.items = items;
+        this.totalAmount = items.stream().mapToDouble(StockDocItemVO::getTotalAmount).sum();
     }
 
     /**

@@ -13,7 +13,6 @@ public class SalesDocItemVO {
     private int id;
     private BasicCommodityItemVO commodity;
     private int number;
-    private int price;
     private double totalAmount;
     private String remarks = "";
 
@@ -25,16 +24,6 @@ public class SalesDocItemVO {
         this.number = number;
         this.remarks = remarks;
         totalAmount = number * commodity.getRecentSellPrice();
-    }
-
-    /**
-     * Constructor for bl
-     */
-    public SalesDocItemVO(BasicCommodityItemVO commodity, int number, double totalAmount, String remarks) {
-        this.commodity = commodity;
-        this.number = number;
-        this.totalAmount = totalAmount;
-        this.remarks = remarks;
     }
 
     public SalesDocItemVO(int id, BasicCommodityItemVO commodity, int number, double totalAmount, String remarks) {

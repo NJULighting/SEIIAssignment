@@ -45,18 +45,22 @@ public class SalesReturnDocVO extends DocVO {
      * Constructor for pre
      */
     public SalesReturnDocVO(Date time, String creatorId, int customerId,
-                            String salesman, String repository, String remarks, double beforeDiscountAmount,
-                            double discount, double voucher, double finalAmount, List<SalesDocItemVO> items) {
+                            String salesman, String repository, String remarks,
+                            double discount, double voucher, List<SalesDocItemVO> items) {
         super(time, DocType.SALES_RETURN, creatorId);
         this.customerId = customerId;
         this.salesman = salesman;
         this.repository = repository;
         this.remarks = remarks;
-        this.beforeDiscountAmount = beforeDiscountAmount;
+        this.items = items;
+        this.beforeDiscountAmount = calculateBeforeDiscount();
         this.discount = discount;
         this.voucher = voucher;
-        this.finalAmount = finalAmount;
-        this.items = items;
+        this.finalAmount = beforeDiscountAmount * (1 - discount) - voucher;
+    }
+
+    private double calculateBeforeDiscount() {
+        return items.stream().mapToDouble(SalesDocItemVO::getTotalAmount).sum();
     }
 
     public int getCustomerId() {

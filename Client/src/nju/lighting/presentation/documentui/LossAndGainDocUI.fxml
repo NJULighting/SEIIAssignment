@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Button?>
@@ -11,9 +16,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.LossAndGainDocUI">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.LossAndGainDocUI">
    <children>
-      <Button layoutX="616.0" layoutY="27.0" mnemonicParsing="false" onAction="#chooseCommodity" prefHeight="1.0" prefWidth="1.0" style="-fx-background-color: transparent;" text="增加商品">
+      <Button layoutX="616.0" layoutY="27.0" mnemonicParsing="false" onAction="#chooseCommodity" prefHeight="1.0" prefWidth="1.0" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="37.0" fitWidth="40.0">
                <image>
@@ -22,7 +27,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <VBox layoutX="689.0" layoutY="100.0" spacing="40.0">
+      <VBox layoutX="715.0" layoutY="173.0" spacing="40.0">
          <children>
             <HBox>
                <children>
@@ -33,17 +38,13 @@
             <HBox>
                <children>
                   <Label prefWidth="60.0" text="备注" />
-                  <TextArea prefHeight="200.0" prefWidth="200.0" text="无" />
+                  <TextArea prefHeight="200.0" prefWidth="220.0" text="无" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <HBox layoutX="689.0" layoutY="450.0" spacing="25.0">
-         <children>
-            <JFXButton onAction="#removeAll" prefHeight="40.0" prefWidth="85.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="取消" textFill="WHITE" />
-            <JFXButton prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
-         </children>
-      </HBox>
-      <HBox fx:id="tableContainer" layoutX="26.0" layoutY="84.0" prefHeight="100.0" prefWidth="200.0" />
+      <HBox fx:id="tableContainer" layoutX="40.0" layoutY="30.0" prefHeight="100.0" prefWidth="200.0" />
+      <JFXButton layoutX="910.0" layoutY="509.0" onAction="#removeAll" prefHeight="40.0" prefWidth="85.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="重置" textFill="WHITE" />
+      <JFXButton layoutX="872.0" layoutY="36.0" prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
    </children>
 </Pane>

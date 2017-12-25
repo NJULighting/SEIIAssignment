@@ -8,9 +8,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.repositoryui.RepositoryView">
+<AnchorPane prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.repositoryui.RepositoryView">
    <children>
       <Pagination fx:id="pagination" layoutX="15.0" layoutY="614.0" prefHeight="52.0" prefWidth="1059.0" />
       <TableView fx:id="tableView" fixedCellSize="30.0" layoutX="65.0" layoutY="126.0" minHeight="0.0" prefWidth="950.0">
@@ -22,7 +23,7 @@
             <TableColumn fx:id="date" prefWidth="150.0" text="日期" />
         </columns>
       </TableView>
-      <HBox layoutX="114.0" layoutY="24.0" spacing="80.0">
+      <HBox layoutX="116.0" layoutY="76.0" spacing="80.0">
          <children>
             <HBox alignment="CENTER" spacing="50.0">
                <children>
@@ -51,5 +52,6 @@
             </JFXButton>
          </children>
       </HBox>
+      <Line endX="100.0" layoutX="130.0" layoutY="15.0" startX="-100.0" strokeWidth="0.35" />
    </children>
 </AnchorPane>

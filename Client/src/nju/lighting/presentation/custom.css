@@ -10,12 +10,24 @@ root {
 }
 
 
+.menu-item {
+    -fx-text-fill: black;
+}
 
 .menu-item:focused {
     -fx-background-color: lightgray;
     -fx-text-fill: black;
 }
 
+.menu-item:hover{
+
+    -fx-background-color: lightgray;
+    -fx-text-fill: black;
+}
+
+.menu-item .label{
+    -fx-text-fill: black;
+}
 
 /* scroll-bar Demo */
 .scroll-bar:vertical{
@@ -671,7 +683,7 @@ root {
 
 .tree-table-view:focused .tree-table-row-cell:selected {
 
-    -fx-background-color: transparent;
+    -fx-background-color: lightgray;
 
     -fx-table-cell-border-color: transparent;
 
@@ -688,6 +700,7 @@ root {
 }
 
 .tree-table-view{
+
     -fx-background-color: transparent;
 }
 
@@ -717,12 +730,6 @@ root {
 
 }
 
-
-.tree-table-view .scroll-bar
-{
-    -fx-background-color: transparent;
-}
-
 .tree-table-view .column-header .label {
 
     -fx-alignment: center-left;
@@ -732,12 +739,17 @@ root {
 
 
 
-.tree-table-view .column-header .arrow, .tree-table-view .column-header .sort-order-dot {
+.arrow, .sort-order-dot {
 
-    -fx-background-color: #5599ff;
+    -fx-background-color: #5599FF;
 
 }
 
+.arrow:focused, .sort-order-dot:focused {
+
+    -fx-background-color: #5599FF;
+
+}
 
 
 .tree-table-view .column-header:last-visible {
@@ -795,6 +807,17 @@ root {
 
     -fx-padding: 1;
 
+}
+
+.tree-table-cell{
+
+    -fx-background-color: transparent;
+}
+
+.tree-table-row-cell{
+
+    -fx-pref-height: 50px;
+    -fx-background-color: transparent;
 }
 
 
@@ -863,20 +886,3 @@ root {
 
 }
 
-
-
-.tree-table-view .menu-item:focused {
-
-    -fx-background-color: -fx-tree-table-color;
-
-
-
-}
-
-
-
-.tree-table-view .menu-item .label {
-
-    -fx-padding: 5 0 5 0;
-
-}

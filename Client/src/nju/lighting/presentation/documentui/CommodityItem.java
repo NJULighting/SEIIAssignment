@@ -4,7 +4,10 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import nju.lighting.presentation.commodityui.Commodity;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
+import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
 
 /**
  * Created on 2017/12/10.
@@ -13,35 +16,50 @@ import nju.lighting.vo.doc.giftdoc.GiftItemVO;
  * @author 陈俊宇
  */
 public class CommodityItem {
-    SimpleDoubleProperty price;
-    SimpleIntegerProperty count;
-    SimpleStringProperty name;
-    SimpleDoubleProperty subtotal;
-    SimpleBooleanProperty gift;
-    SimpleStringProperty comments;
-    SimpleStringProperty modelNum;
-    SimpleStringProperty id;
-    GiftItemVO giftItem;
+    SimpleDoubleProperty price = new SimpleDoubleProperty();
+    SimpleIntegerProperty count = new SimpleIntegerProperty();
+    SimpleStringProperty name = new SimpleStringProperty();
+    SimpleDoubleProperty subtotal = new SimpleDoubleProperty();
+    SimpleBooleanProperty gift = new SimpleBooleanProperty(false);
+    SimpleStringProperty comments = new SimpleStringProperty();
+    SimpleStringProperty modelNum = new SimpleStringProperty();
+    SimpleStringProperty id = new SimpleStringProperty();
+    SalesDocItemVO salesDocItemVO;
 
-    public CommodityItem(GiftItemVO vo){
-        init(vo);
+
+    //创建时只需要商品和数量
+    public CommodityItem(BasicCommodityItemVO commodity, int count) {
+        this.count.set(count);
+        init(commodity);
     }
 
-    public CommodityItem(GiftItemVO vo,boolean gift){
-      init(vo);
-      this.gift.setValue(gift);
+    //查看单据时由SalesDocItem 或GiftDocItem 构造
+    public CommodityItem(SalesDocItemVO vo) {
+        comments.set(vo.getRemarks());
+        count.set(vo.getNumber());
+        init(vo.getCommodity());
+    }
+
+    public CommodityItem(GiftItemVO vo, boolean gift) {
+        count.set(vo.getCount());
+        init(vo.getCommodity());
+        price.set(vo.getPrice());
+        this.gift.setValue(gift);
 
     }
-    void init(GiftItemVO vo){
-        giftItem=vo;
-        price = new SimpleDoubleProperty(vo.getPrice());
-        count = new SimpleIntegerProperty(vo.getCount());
-        name =new SimpleStringProperty(vo.getCommodity().getName());
-        subtotal =new SimpleDoubleProperty(vo.getSubtotal());
-        gift =new SimpleBooleanProperty(false);
-        modelNum=new SimpleStringProperty(vo.getCommodity().getModelNumber());
-        id=new SimpleStringProperty(vo.getCommodity().getId());
-        comments=new SimpleStringProperty("");
+
+    public CommodityItem(GiftItemVO vo) {
+        count.set(vo.getCount());
+        init(vo.getCommodity());
+        price.set(vo.getPrice());
+    }
+
+    void init(BasicCommodityItemVO commodity) {
+        price.set(commodity.getRecentSellPrice());
+        name.set(commodity.getName());
+        id.set(commodity.getId());
+        modelNum.set(commodity.getModelNumber());
+        subtotal.bind(price.multiply(count));
     }
 
     public boolean isGift() {
@@ -55,7 +73,6 @@ public class CommodityItem {
     public double getPrice() {
         return price.get();
     }
-
 
 
     public SimpleDoubleProperty subtotalProperty() {
@@ -86,9 +103,6 @@ public class CommodityItem {
         return name.get();
     }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal.set(subtotal);
-    }
 
     public SimpleStringProperty nameProperty() {
         return name;
@@ -102,9 +116,6 @@ public class CommodityItem {
         this.gift.set(gift);
     }
 
-    public GiftItemVO getGiftItem() {
-        return giftItem;
-    }
 
     public String getComments() {
         return comments.get();

@@ -8,26 +8,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 
-import javafx.stage.Stage;
-import nju.lighting.presentation.commodityui.CommodityCategory;
-import nju.lighting.presentation.commodityui.CommodityPicker;
 import nju.lighting.presentation.documentui.GiftListEditable;
 import nju.lighting.presentation.utils.CommodityHelper;
 import nju.lighting.presentation.utils.ImageViewHelper;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
-import org.w3c.dom.NodeList;
 
 import java.io.IOException;
 import java.net.URL;
@@ -83,7 +74,7 @@ public class CreateCombo implements Initializable {
 
         try {
             FXMLLoader giftsLoader = new FXMLLoader(getClass().getResource("../documentui/giftListEditable.fxml"));
-            GiftListEditable.giftsVO=null;
+            //GiftListEditable.giftsVO=null;
             comboBox.getChildren().add(giftsLoader.load());
             giftsController=giftsLoader.getController();
         } catch (IOException e) {

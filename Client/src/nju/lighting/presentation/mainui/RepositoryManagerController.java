@@ -22,7 +22,7 @@ public class RepositoryManagerController extends MainUIController{
     public void initialize(URL location, ResourceBundle resources) {
         buttons = new Button[]{historyBtn,commodityBtn,repositoryViewBtn,repositoryCountingBtn,test};
         urls = new String[]{"../documentui/HistoryDoc.fxml","../commodityui/CommodityManage.fxml","../repositoryui/RepositoryView.fxml",
-                "../repositoryui/RepositoryCounting.fxml","../commodityui/CommodityCategoryUI.fxml"};
+                "../repositoryui/RepositoryCounting.fxml","../commodityui/CommodityCategory.fxml"};
         MAIN_BUTTON_SIZE = urls.length;
         super.initialize(location, resources);
     }

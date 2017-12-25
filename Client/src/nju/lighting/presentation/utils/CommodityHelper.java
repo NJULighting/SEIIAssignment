@@ -6,9 +6,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nju.lighting.presentation.commodityui.CommodityPicker;
+import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.GiftListEditable;
 
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/17.
@@ -22,15 +24,19 @@ public class CommodityHelper {
         AnchorPane commodityPicker = loader.load();
         CommodityPicker picker = loader.getController();
 
-        Stage stage = new Stage();
-        stage.setScene(new Scene(commodityPicker));
-        picker.setStage(stage);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.showAndWait();
+//        Stage stage = new Stage();
+//        stage.setScene(new Scene(commodityPicker));
+//        picker.setStage(stage);
+//        stage.initModality(Modality.APPLICATION_MODAL);
+//        stage.showAndWait();
 
         if (!picker.isCanceled()) {
 
-            GiftListEditable.giftsVO.addAll(picker.getCommodities());
+
+            giftsController.getGiftObservableList().addAll(
+                    picker.getCommodities().stream()
+                            .map(x -> new CommodityItem(x, 1))
+                            .collect(Collectors.toList()));
 
             giftsController.refresh();
         }

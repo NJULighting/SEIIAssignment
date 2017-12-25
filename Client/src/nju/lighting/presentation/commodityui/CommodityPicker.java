@@ -16,6 +16,7 @@ import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.Nameable;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
+import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
 
 
 import java.io.IOException;
@@ -32,7 +33,7 @@ import java.util.stream.Collectors;
  * @author 陈俊宇
  */
 public class CommodityPicker implements Initializable {
-    List<GiftItemVO> commodities=new ArrayList<>();
+    List<BasicCommodityItemVO> commodities=new ArrayList<>();
     CommodityCategory category;
     Stage stage;
     HBox father;
@@ -50,7 +51,7 @@ public class CommodityPicker implements Initializable {
             FXMLLoader loader=new FXMLLoader(getClass().getResource("CommodityCategory.fxml"));
             container.getChildren().add(loader.load());
             category=loader.getController();
-            category.categoryTreeView.setMinHeight(480);
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -59,12 +60,9 @@ public class CommodityPicker implements Initializable {
 
     @FXML
     void ok(){
-        ObservableList<TreeItem<Nameable>> temp=category.categoryTreeView.getSelectionModel().getSelectedItems();
 
-        commodities=temp.stream().
-                filter(x->x.getValue().getClass().equals(CommodityItemVO.class))
-                .map(x-> new GiftItemVO(((CommodityItemVO)x.getValue()).toBasicCommodityItem(),1))
-                .collect(Collectors.toList());
+
+        commodities=category.getSelectedCommodities();
         canceled=false;
         upper.back();
 
@@ -86,7 +84,7 @@ public class CommodityPicker implements Initializable {
         this.upper = upper;
     }
 
-    public List<GiftItemVO> getCommodities() {
+    public List<BasicCommodityItemVO> getCommodities() {
         return commodities;
     }
 

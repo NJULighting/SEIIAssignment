@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 public class GiftListEditable implements Initializable {
 
 
-    public static List<GiftItemVO> giftsVO;
+    //public static List<GiftItemVO> giftsVO;
     private double total = 0;
     ObservableList<CommodityItem> giftObservableList;
     Upper upper;
@@ -67,9 +67,9 @@ public class GiftListEditable implements Initializable {
 
     public void refresh() {
 
-        giftObservableList.setAll(giftsVO.stream()
-                .map(x -> new CommodityItem(x))
-                .collect(Collectors.toList()));
+//        giftObservableList.setAll(giftsVO.stream()
+//                .map(x -> new CommodityItem(x))
+//                .collect(Collectors.toList()));
     }
 
     double calculateTotal() {
@@ -85,8 +85,8 @@ public class GiftListEditable implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        if (giftsVO == null)
-            giftsVO = new ArrayList<>();
+//        if (giftsVO == null)
+//            giftsVO = new ArrayList<>();
 
         giftObservableList = FXCollections.observableArrayList();
 
@@ -153,7 +153,6 @@ public class GiftListEditable implements Initializable {
                     CommodityItem selected = t.getTableView().getItems().get(
                             t.getTablePosition().getRow());
                     selected.setCount(Integer.parseInt(t.getNewValue()));
-                    selected.setSubtotal(selected.getPrice() * selected.getCount());
                     calculateTotal();
 
                 });
@@ -163,7 +162,6 @@ public class GiftListEditable implements Initializable {
                     CommodityItem selected = t.getTableView().getItems().get(
                             t.getTablePosition().getRow());
                     selected.setPrice(Double.parseDouble(t.getNewValue()));
-                    selected.setSubtotal(selected.getPrice() * selected.getCount());
                     calculateTotal();
                 });
 
@@ -185,4 +183,7 @@ public class GiftListEditable implements Initializable {
 
     }
 
+    public ObservableList<CommodityItem> getGiftObservableList() {
+        return giftObservableList;
+    }
 }

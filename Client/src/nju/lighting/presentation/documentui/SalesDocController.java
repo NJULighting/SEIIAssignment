@@ -131,7 +131,7 @@ public class SalesDocController implements Initializable, Upper {
         if (!commodityCancel) {
 
             commodityList.addAll(commodityPicker.getCommodities().stream()
-                    .map(x -> new CommodityItem(x))
+                    .map(x -> new CommodityItem(x,1))
                     .collect(Collectors.toList()));
             commodityPicker.setCanceled(true);
             clearPromotion();
@@ -155,7 +155,7 @@ public class SalesDocController implements Initializable, Upper {
 
                 commodityList.addAll(
                         promotionVO.getGoods().stream()
-                                .map(x -> new CommodityItem(x, true))
+                                .map(x -> new CommodityItem(x))
                                 .collect(Collectors.toList())
                 );
 

@@ -77,12 +77,14 @@ public class AddCommodity extends Dialog implements Initializable {
     }
 
     CommodityItemVO getCommodityItem() {
-        CommodityItemVO commodityItemVO = null;
-            commodityItemVO = new CommodityItemVO(name.getText(), modelNumber.getText(),
+        if (verify())
+        return new CommodityItemVO(name.getText(), modelNumber.getText(),
                     Integer.parseInt(repCount.getText()), Double.parseDouble(inPrice.getText()),
                     Double.parseDouble(sellPrice.getText()), Double.parseDouble(recentInPrice.getText()),
                     Double.parseDouble(recentSellPrice.getText()), null, null, null);
-        return commodityItemVO;
+        else
+            return null;
+
     }
 
 

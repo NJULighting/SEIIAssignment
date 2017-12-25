@@ -7,13 +7,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
-import nju.lighting.presentation.commodityui.CommodityCategory;
 
 
 import java.io.IOException;
@@ -102,7 +99,7 @@ public class CreatePromotion implements Initializable {
 
         scrollPane.setFitToHeight(true);
         scrollPane.setFitToWidth(true);
-        CommodityCategory.setEditable(false);
+        //CommodityCategory.setEditable(false);
     }
 
 

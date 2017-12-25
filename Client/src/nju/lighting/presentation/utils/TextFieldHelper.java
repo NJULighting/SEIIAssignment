@@ -79,7 +79,7 @@ public class TextFieldHelper {
     }
 
     public static void addRequiredValidator(JFXTextField textField){
-        addDoubleValidator(textField,"不能为空");
+        addRequiredValidator(textField,"不能为空");
     }
 
     public static void addRequiredValidator(JFXTextField textField, String message){

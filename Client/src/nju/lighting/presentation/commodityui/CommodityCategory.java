@@ -1,89 +1,67 @@
 package nju.lighting.presentation.commodityui;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.util.Callback;
 import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
-import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
-import nju.lighting.vo.commodity.CommodityCategoryVO;
-import nju.lighting.vo.commodity.CommodityItemVO;
-import nju.lighting.vo.commodity.Nameable;
+import nju.lighting.vo.commodity.*;
+import nju.lighting.vo.doc.giftdoc.GiftItemVO;
+import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
- * Created on 2017/12/14.
+ * Created on 2017/12/25.
  * Description
  *
  * @author 陈俊宇
  */
 public class CommodityCategory implements Initializable {
-
-    private static CommodityCategoriesTreeVO categoriesTreeVO;
-    static boolean Editable;
-    double leftPadding = 80;
-    double topPadding = 25;
-    private CommodityBLService commodityBLService;
-
-
+    CommodityBLService commodityBLService=new CommodityBLService_Stub();
+    private  CommodityCategoriesTreeVO categoriesTreeVO;
+    private StackPane stackPane;
+    @FXML
+    TreeTableView<CommodityCategoryItem> commodityTreeTableView;
 
     @FXML
-    TreeView<Nameable> categoryTreeView;
+    TreeTableColumn<CommodityCategoryItem,String> name;
+
     @FXML
-    HBox container;
+    TreeTableColumn<CommodityCategoryItem,String> id;
+
     @FXML
-    StackPane stackPane;
+    TreeTableColumn<CommodityCategoryItem,String> modelNumber;
+
+    @FXML
+    TreeTableColumn<CommodityCategoryItem,Integer> repCount;
+
+    @FXML
+    TreeTableColumn<CommodityCategoryItem,Double> inPrice;
+
+    @FXML
+    TreeTableColumn<CommodityCategoryItem,Double> sellPrice;
+
+    @FXML
+    TreeTableColumn<CommodityCategoryItem,Double> recentInPrice;
+
+    @FXML
+    TreeTableColumn<CommodityCategoryItem,Double> recentSellPrice;
 
     TreeItem root;
-
-    void showSelectedCommodity(CommodityItemVO commodity) {
-        Commodity.setCommodity(commodity);
-        container.getChildren().clear();
-        HBox commodityVBox = null;
-        try {
-            commodityVBox = FXMLLoader.load(getClass().getResource("Commodity.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        container.getChildren().add(commodityVBox);
-        commodityVBox.setMargin(commodityVBox, new Insets(topPadding, 0, 0, leftPadding));
-    }
-
-    public static void setEditable(boolean editable) {
-        Editable = editable;
-    }
-
-
-    @FXML
-    void leftClicked(MouseEvent event) throws IOException {
-
-        if (event.getButton().equals(MouseButton.PRIMARY)) {
-            TreeItem selected = categoryTreeView.getSelectionModel().getSelectedItem();
-
-            if (selected!=null&&selected.isLeaf() && selected.getValue().getClass().equals(CommodityItemVO.class)) {
-                CommodityItemVO commodity = (((CommodityItemVO) selected.getValue()));
-                showSelectedCommodity(commodity);
-            }
-        }
-
-    }
 
     void buildTree(TreeItem root, CommodityCategoryVO commodityCategoryVO) {
         List<CommodityCategoryVO> children = commodityCategoryVO.getChildren();
 
         for (CommodityCategoryVO commodityCategory : children) {
 
-            TreeItem item = new TreeItem(commodityCategory);
+            TreeItem item = new TreeItem(new CommodityCategoryItem(commodityCategory));
 
 
             item.setExpanded(true);
@@ -99,33 +77,75 @@ public class CommodityCategory implements Initializable {
                 List<CommodityItemVO> commodities = commodityBLService.findCommodityByCategory(commodityCategory.getId());
 
                 for (CommodityItemVO commodity : commodities) {
-                    TreeItem leaf = new TreeItem(commodity);
+                    TreeItem leaf = new TreeItem(new  CommodityCategoryItem(commodity));
                     item.getChildren().add(leaf);
 
                 }
             }
         }
     }
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        commodityBLService = new CommodityBLService_Stub();
         categoriesTreeVO = commodityBLService.getCommodityCategoriesTreeVO();
-        root = new TreeItem(categoriesTreeVO.getRoot());
+        root = new TreeItem(new CommodityCategoryItem(categoriesTreeVO.getRoot()));
         root.setExpanded(true);
         buildTree(root, categoriesTreeVO.getRoot());
 
-        categoryTreeView.setRoot(root);
+        commodityTreeTableView.setRoot(root);
+
+        name.setCellValueFactory(cellData ->
+        cellData.getValue().getValue().nameProperty());
+        id.setCellValueFactory(cellData ->
+        cellData.getValue().getValue().idProperty());
+        modelNumber.setCellValueFactory(cellData->
+        cellData.getValue().getValue().modelNumberProperty());
+        repCount.setCellValueFactory(cellData ->
+        cellData.getValue().getValue().repCountProperty().asObject());
+        inPrice.setCellValueFactory(cellData->
+        cellData.getValue().getValue().inPriceProperty().asObject());
+        sellPrice.setCellValueFactory(cellData->
+        cellData.getValue().getValue().sellPriceProperty().asObject());
+        recentInPrice.setCellValueFactory(cellData->
+                cellData.getValue().getValue().recentInPriceProperty().asObject());
+        recentSellPrice.setCellValueFactory(cellData->
+                cellData.getValue().getValue().recentSellPriceProperty().asObject());
 
 
-        categoryTreeView.setCellFactory((TreeView<Nameable> p) ->
-                new MyTreeCellReadOnly());
+        id.setCellFactory(p-> new CommodityDetailTreeCell());
+        modelNumber.setCellFactory(p-> new CommodityDetailTreeCell());
+        repCount.setCellFactory(p-> new CommodityDetailTreeCell());
+        inPrice.setCellFactory(p-> new CommodityDetailTreeCell());
+        sellPrice.setCellFactory(p-> new CommodityDetailTreeCell());
+        recentInPrice.setCellFactory(p-> new CommodityDetailTreeCell());
+        recentSellPrice.setCellFactory(p-> new CommodityDetailTreeCell());
 
-        categoryTreeView.setMinHeight(460);
-        categoryTreeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        categoryTreeView.getStylesheets().add(getClass().getResource("../category.css").toExternalForm());
+        commodityTreeTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
     }
 
+    public StackPane getStackPane() {
+        return stackPane;
+    }
+
+    void setEditable(){
+        name.setCellFactory(new Callback<TreeTableColumn<CommodityCategoryItem, String>, TreeTableCell<CommodityCategoryItem, String>>() {
+            @Override
+            public TreeTableCell<CommodityCategoryItem, String> call(TreeTableColumn<CommodityCategoryItem, String> param) {
+                return new MyTreeCell(stackPane);
+            }
+        });
+
+        commodityTreeTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+    }
+    public void setStackPane(StackPane stackPane) {
+        this.stackPane = stackPane;
+    }
+
+    public List<BasicCommodityItemVO> getSelectedCommodities(){
+        return commodityTreeTableView.getSelectionModel().getSelectedItems().stream()
+                .filter(x-> x.getValue().getItem().getClass().equals(CommodityItemVO.class))
+                .map(x ->((CommodityItemVO)x.getValue().getItem()).toBasicCommodityItem())
+                .collect(Collectors.toList());
+    }
 }

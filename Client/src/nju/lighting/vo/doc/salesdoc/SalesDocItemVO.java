@@ -13,6 +13,7 @@ public class SalesDocItemVO {
     private int id;
     private BasicCommodityItemVO commodity;
     private int number;
+    private int price;
     private double totalAmount;
     private String remarks = "";
 

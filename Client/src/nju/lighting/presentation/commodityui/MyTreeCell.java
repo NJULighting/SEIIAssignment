@@ -34,7 +34,7 @@ import java.util.Locale;
  *
  * @author 陈俊宇
  */
-public class MyTreeCell extends TreeCell<Nameable> {
+public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
     CommodityBLService commodityBLService = new CommodityBLService_Stub();//new CommodityBLService() {}
     private ContextMenu categoryMenu = new ContextMenu();
     private ContextMenu commodityMenu = new ContextMenu();
@@ -43,22 +43,20 @@ public class MyTreeCell extends TreeCell<Nameable> {
     StackPane stackPane;
     MenuItem selectedMenuItem;
     Dialog dialogController;
+    MenuItem addCommodity = new MenuItem("添加商品");
+    MenuItem addCategory = new MenuItem("添加分类");
+    MenuItem refactorCategory = new MenuItem("修改分类名称");
+    MenuItem deleteCategory = new MenuItem("删除分类");
+    MenuItem refactorCommodity = new MenuItem("修改商品信息");
+    MenuItem deleteCommodity = new MenuItem("删除商品");
     TreeItem<Nameable> currentItem;
     HashMap<MenuItem, String> hashMap = new HashMap<>();
 
 
-    public MyTreeCell(CommodityCategory commodityCategory) {
+    public MyTreeCell(StackPane stackPane) {
+        this.stackPane = stackPane;
 
-
-        this.stackPane = commodityCategory.stackPane;
-        MenuItem addCommodity = new MenuItem("添加商品");
-        MenuItem addCategory = new MenuItem("添加分类");
-        MenuItem refactorCategory = new MenuItem("修改分类名称");
-        MenuItem deleteCategory = new MenuItem("删除分类");
         categoryMenu.getItems().addAll(addCommodity, addCategory, refactorCategory, deleteCategory);
-
-        MenuItem refactorCommodity = new MenuItem("修改商品信息");
-        MenuItem deleteCommodity = new MenuItem("删除商品");
 
         commodityMenu.getItems().addAll(refactorCommodity, deleteCommodity);
 
@@ -75,14 +73,15 @@ public class MyTreeCell extends TreeCell<Nameable> {
             JFXButton button = ((JFXButton) ((JFXDialogLayout) dialog.getContent()).getActions().get(0));
 
             button.setOnAction(e -> {
-                CommodityCategoryVO upperCategory = ((CommodityCategoryVO) getTreeItem().getValue());
+                TreeItem<CommodityCategoryItem> upper = getTreeTabelItem();
+                CommodityCategoryVO upperCategory = ((CommodityCategoryVO) upper.getValue().getItem());
 
                 AddCategoryDialog addCategoryController = (AddCategoryDialog) dialogController;
 
                 CommodityCategoryVO categoryVO = new CommodityCategoryVO(upperCategory, addCategoryController.getText());
                 ResultMessage resultMessage = commodityBLService.addCategory(categoryVO);
                 if (resultMessage == ResultMessage.SUCCESS) {
-                    getTreeItem().getChildren().add(new TreeItem<>(categoryVO));
+                    upper.getChildren().add(new TreeItem<CommodityCategoryItem>(new CommodityCategoryItem(categoryVO)));
                     dialog.close();
                 } else {
                     DialogHelper.dialog(resultMessage, stackPane);
@@ -93,14 +92,17 @@ public class MyTreeCell extends TreeCell<Nameable> {
         });
 
         refactorCategory.setOnAction(event -> {
+
             selectedMenuItem = addCategory;
             JFXDialog dialog = createDialog();
             JFXButton button = ((JFXButton) ((JFXDialogLayout) dialog.getContent()).getActions().get(0));
             AddCategoryDialog addCategoryDialog = (AddCategoryDialog) dialogController;
-            addCategoryDialog.init(getItem().getName());
+            addCategoryDialog.init(getItem());
 
             button.setOnAction(e -> {
-                CommodityCategoryVO category = (CommodityCategoryVO) getItem();
+                TreeItem<CommodityCategoryItem> treeItem = getTreeTabelItem();
+                ;
+                CommodityCategoryVO category = (CommodityCategoryVO) treeItem.getValue().getItem();
                 category.setName(addCategoryDialog.getText());
                 ResultMessage resultMessage = commodityBLService.changeCategoryName(category);
                 if (resultMessage.equals(ResultMessage.SUCCESS)) {
@@ -127,12 +129,16 @@ public class MyTreeCell extends TreeCell<Nameable> {
             AddCommodity addCommodityController = ((AddCommodity) dialogController);
 
             button.setOnAction(e -> {
-                if (addCommodityController.verify()) {
-                    CommodityItemVO commodityItemVO = addCommodityController.getCommodityItem();
+                CommodityItemVO commodityItemVO = addCommodityController.getCommodityItem();
+                if (commodityItemVO != null) {
+
                     ResultMessage resultMessage = commodityBLService
-                            .addCommodity(commodityItemVO, ((CommodityCategoryVO) getTreeItem().getValue()));
+                            .addCommodity(commodityItemVO, ((CommodityCategoryVO) getTreeTabelItem().getValue().getItem()));
                     if (resultMessage.equals(ResultMessage.SUCCESS)) {
-                        getTreeItem().getChildren().add(new TreeItem<>(commodityItemVO));
+                        //新建商品需要ID
+                        commodityItemVO.setId("11");
+                        getTreeTabelItem().getChildren().add(
+                                new TreeItem<CommodityCategoryItem>(new CommodityCategoryItem(commodityItemVO)));
                         dialog.close();
                     } else
                         DialogHelper.dialog(resultMessage, stackPane);
@@ -148,21 +154,21 @@ public class MyTreeCell extends TreeCell<Nameable> {
             selectedMenuItem = addCommodity;
             JFXDialog dialog = createDialog();
             JFXButton button = ((JFXButton) ((JFXDialogLayout) dialog.getContent()).getActions().get(0));
-
+            CommodityItemVO initialization = (CommodityItemVO) getTreeTabelItem().getValue().getItem();
             AddCommodity addCommodityController = ((AddCommodity) dialogController);
-            addCommodityController.init((CommodityItemVO) getTreeItem().getValue());
+            addCommodityController.init(initialization);
 
             button.setOnAction(e -> {
                 if (addCommodityController.verify()) {
                     CommodityItemVO commodityItemVO = addCommodityController.getCommodityItem();
-                    commodityItemVO.setId(((CommodityItemVO)getItem()).getId());
+                    commodityItemVO.setId(initialization.getId());
 
                     ResultMessage resultMessage = commodityBLService
                             .modifyCommodity(commodityItemVO);
                     if (resultMessage.equals(ResultMessage.SUCCESS)) {
-                        getTreeItem().setValue(commodityItemVO);
+                        getTreeTabelItem().setValue(new CommodityCategoryItem(commodityItemVO));
 
-                        commodityCategory.showSelectedCommodity(commodityItemVO);
+                        //commodityCategory.showSelectedCommodity(commodityItemVO);
 
                         dialog.close();
 
@@ -193,26 +199,27 @@ public class MyTreeCell extends TreeCell<Nameable> {
     }
 
     void delete(Delete deleteController, JFXDialog dialog) {
+        CommodityCategoryItem categoryItem = getTreeTabelItem().getValue();
         boolean isCommodity = true;
-        if (getItem().getClass().equals(CommodityCategoryVO.class))
+        if (categoryItem.getItem().getClass().equals(CommodityCategoryVO.class))
             isCommodity = false;
         if (isCommodity)
-            deleteController.setText("你确定要删除商品\n " + getItem().getName() + "?");
+            deleteController.setText("你确定要删除商品\n " + categoryItem.getItem().getName() + "?");
         else
-            deleteController.setText("你确定要删除商品分类\n" + getItem().getName() + "?");
+            deleteController.setText("你确定要删除商品分类\n" + categoryItem.getItem().getName() + "?");
 
         JFXButton button = ((JFXButton) ((JFXDialogLayout) dialog.getContent()).getActions().get(0));
         boolean finalIsCommodity = isCommodity;
         button.setOnAction(e -> {
                     ResultMessage resultMessage;
                     if (finalIsCommodity)
-                        resultMessage = commodityBLService.deleteCommodity(((CommodityItemVO) getItem()).getId());
+                        resultMessage = commodityBLService.deleteCommodity((categoryItem).getId());
                     else
                         resultMessage = commodityBLService
-                                .deleteCategory(((CommodityCategoryVO) getItem()).getId());
+                                .deleteCategory(((CommodityCategoryVO) categoryItem.getItem()).getId());
 
                     if (resultMessage.equals(ResultMessage.SUCCESS)) {
-                        getTreeItem().getParent().getChildren().remove(getTreeItem());
+                        getTreeTabelItem().getParent().getChildren().remove(getTreeTabelItem());
                         dialog.close();
                     } else
                         DialogHelper.dialog(resultMessage, stackPane);
@@ -288,7 +295,7 @@ public class MyTreeCell extends TreeCell<Nameable> {
         }
         dialogController = loader.getController();
         dialogController.setDialog(dialog);
-        dialogController.setTreeItem(getTreeItem());
+        dialogController.setTreeItem(getTreeTabelItem());
         dialogController.setCommodityBLService(commodityBLService);
         dialogController.setStackPane(stackPane);
 
@@ -299,26 +306,42 @@ public class MyTreeCell extends TreeCell<Nameable> {
     }
 
     @Override
-    protected void updateItem(Nameable item, boolean empty) {
+    protected void updateItem(String item, boolean empty) {
         super.updateItem(item, empty);
         if (empty) {
             setGraphic(null);
             setText(null);
         } else {
-            setText(item.getName());
-            if (item.getClass().equals(CommodityCategoryVO.class)) {
+            setText(item);
+
+            if (getTreeTabelItem().getValue().getItem().getClass().equals(CommodityCategoryVO.class)) {
 
                 setContextMenu(categoryMenu);
-
-                if (getTreeItem().getParent() == null) {
-
-                    getContextMenu().getItems().get(2).setDisable(true);
-                    getContextMenu().getItems().get(3).setDisable(true);
-
-                }
+                TreeItem<CommodityCategoryItem> treeItem = getTreeTabelItem();
+                //如果该分类不是叶节点，添加商品就不可用
+                if (treeItem.getChildren().size() != 0 &&
+                        getTreeTabelItem().getChildren().get(0).getValue().getItem().getClass().equals(CommodityCategoryVO.class)) {
+                    addCommodity.setDisable(true);
+                } else addCommodity.setDisable(false);
+                if (treeItem.getChildren().size() != 0 &&
+                        getTreeTabelItem().getChildren().get(0).getValue().getItem().getClass().equals(CommodityItemVO.class)) {
+                    addCategory.setDisable(true);
+                } else
+                    addCategory.setDisable(false);
+                //如果是根节点，删除分类不可用
+                if (treeItem.getParent() == null) {
+                    deleteCategory.setDisable(true);
+                } else
+                    deleteCategory.setDisable(false);
             } else
                 setContextMenu(commodityMenu);
         }
+
+
+    }
+
+    TreeItem<CommodityCategoryItem> getTreeTabelItem() {
+        return getTreeTableView().getTreeItem(getIndex());
     }
 
 }

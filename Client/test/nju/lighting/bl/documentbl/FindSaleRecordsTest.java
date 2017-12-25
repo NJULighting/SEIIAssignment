@@ -1,9 +1,12 @@
 package nju.lighting.bl.documentbl;
 
 import nju.lighting.bl.userbl.LoginTestHelper;
+import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.vo.viewtables.BusinessConditionItemVO;
+import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import org.junit.Before;
 import org.junit.Test;
+import shared.DocType;
 import shared.DocumentFilter;
 
 import java.util.List;
@@ -41,5 +44,19 @@ public class FindSaleRecordsTest {
         builder.creatorID(LoginTestHelper.AUTHORIZED_USER);
 
         assertEquals(2, manager.findSaleRecords(builder.build()).size());
+    }
+
+    @Test
+    public void test2() throws Exception {
+        builder.docType(DocType.ACCOUNT_IN);
+        builder.docType(DocType.SALES);
+
+        List<BusinessHistoryItemVO> itemList = manager.findBusinessHistory(builder.build());
+
+        assertEquals(7, itemList.size());
+    }
+
+    @Test
+    public void test3() throws Exception {
     }
 }

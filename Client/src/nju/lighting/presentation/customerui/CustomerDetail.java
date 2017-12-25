@@ -50,13 +50,13 @@ public class CustomerDetail {
     private JFXTextField idText, nameText, receiveText, payText, receiveLimitText, salesmanText, telephoneText,
             postageText, emailText, addressText;
     @FXML
-    Button modifyButton, saveButton;
+    Button modifyButton, saveButton,deleteButton;
 
     @FXML
     VBox container;
 
     @FXML
-    HBox idBox;
+    HBox idBox,buttonBox;
 
 
     CustomerSearchListController controller;
@@ -126,6 +126,7 @@ public class CustomerDetail {
             setEditable(false);
         } else {
             setEditable(true);
+            buttonBox.getChildren().remove(deleteButton);
             receiveLimitText.setText("" + DEFAULT_LIMIT);
             container.getChildren().remove(idBox);
             typebox.setValue(CustomerHelper.typeToString(CustomerType.SALESPERSON));

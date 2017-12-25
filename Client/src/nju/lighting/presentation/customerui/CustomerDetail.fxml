@@ -120,30 +120,34 @@
       <Label fx:id="failDisCount2" layoutX="388.0" layoutY="366.0" text="格式错误！" textFill="#b90000" visible="false" />
       <Label fx:id="failDisCount3" layoutX="388.0" layoutY="416.0" text="格式错误！" textFill="#b90000" visible="false" />
       <Label fx:id="failDisCount4" layoutX="388.0" layoutY="166.0" text="姓名不能为空！" textFill="#b90000" visible="false" />
-      <Button fx:id="modifyButton" layoutX="885.0" layoutY="5.0" mnemonicParsing="false" onAction="#modify" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" textFill="#5599ff">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../../../../images/修改.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="deleteButton" layoutX="946.0" layoutY="4.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" textFill="#5599ff">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../../../../images/删除.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+      <HBox fx:id="buttonBox" layoutX="885.0" layoutY="4.0">
+         <children>
+            <Button fx:id="modifyButton" mnemonicParsing="false" onAction="#modify" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" textFill="#5599ff">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@../../../../images/修改.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" textFill="#5599ff">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@../../../../images/删除.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
       <Button fx:id="saveButton" disable="true" layoutX="890.0" layoutY="11.0" mnemonicParsing="false" onAction="#save" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" textFill="#5599ff" visible="false">
          <font>
             <Font size="16.0" />

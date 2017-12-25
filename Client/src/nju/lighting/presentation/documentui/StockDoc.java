@@ -1,6 +1,8 @@
 package nju.lighting.presentation.documentui;
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import nju.lighting.presentation.mainui.Client;
+import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import shared.CustomerType;
 
@@ -71,6 +74,14 @@ public class StockDoc extends SalesDocController {
                             .map(x-> new CommodityItem(x,1))
                             .collect(Collectors.toList()));
                 }
+            }
+        });
+
+        customerProperty.addListener(new ChangeListener<CustomerVO>() {
+            @Override
+            public void changed(ObservableValue<? extends CustomerVO> observable, CustomerVO oldValue, CustomerVO newValue) {
+                customer.setText(customerProperty.getValue().getName());
+                clearPromotion();
             }
         });
 

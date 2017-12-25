@@ -2,7 +2,6 @@ package nju.lighting.bl.documentbl;
 
 import nju.lighting.bl.documentbl.accountiodoc.AccountInDoc;
 import nju.lighting.bl.documentbl.accountiodoc.AccountOutDoc;
-import nju.lighting.bl.documentbl.alertdoc.AlertDoc;
 import nju.lighting.bl.documentbl.costdoc.CostDoc;
 import nju.lighting.bl.documentbl.giftdoc.GiftDoc;
 import nju.lighting.bl.documentbl.lossandgaindoc.LossAndGainDoc;

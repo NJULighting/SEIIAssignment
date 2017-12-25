@@ -1,8 +1,12 @@
 package nju.lighting.bl.approvalbl;
 
+import nju.lighting.bl.documentbl.DocInfo;
+import nju.lighting.bl.documentbl.DocInfoImpl;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
+import shared.ResultMessage;
 
 import javax.naming.NamingException;
 import java.util.List;
@@ -15,17 +19,17 @@ import java.util.List;
 public enum ApprovalManager {
     INSTANCE;
 
-    private DocDataService dataService;
+    private DocInfo docInfo;
 
     ApprovalManager() {
-        try {
-            dataService = DataFactory.getDataBase(DocDataService.class);
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
+        docInfo = new DocInfoImpl();
     }
 
     List<DocVO> getDocumentList() {
-        return null; // TODO: 2017/12/13 complete it
+        return docInfo.findUnCheckedDoc();
+    }
+
+    ResultMessage reject(HistoryDocVO vo) {
+        return docInfo.reject(vo);
     }
 }

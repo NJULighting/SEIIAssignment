@@ -76,11 +76,6 @@ public abstract class Doc {
      */
     abstract public void approve();
 
-    /**
-     * 驳回单据，该方法在审批单据时调用
-     */
-    abstract public ResultMessage reject();
-
     abstract public void redFlush();
 
     /**
@@ -138,5 +133,9 @@ public abstract class Doc {
 
     public DocState getState() {
         return state;
+    }
+
+    public void reject() {
+        state = DocState.DISAPPROVAL;
     }
 }

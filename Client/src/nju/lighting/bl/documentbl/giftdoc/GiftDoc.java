@@ -73,11 +73,6 @@ public class GiftDoc extends Doc {
     }
 
     @Override
-    public ResultMessage reject() {
-        return null;
-    }
-
-    @Override
     public void redFlush() {
         total = -total;
         itemList.redFlush();

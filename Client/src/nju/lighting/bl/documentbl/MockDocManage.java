@@ -1,6 +1,8 @@
 package nju.lighting.bl.documentbl;
 
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,5 +20,30 @@ public class MockDocManage implements DocInfo {
 
 
         return uncheckedDocs;
+    }
+
+    @Override
+    public ResultMessage approve(HistoryDocVO vo) {
+        return null;
+    }
+
+    @Override
+    public ResultMessage approveAll(List<HistoryDocVO> voList) {
+        return null;
+    }
+
+    @Override
+    public ResultMessage reject(HistoryDocVO vo) {
+        return null;
+    }
+
+    @Override
+    public ResultMessage save(HistoryDocVO vo) {
+        return null;
+    }
+
+    @Override
+    public ResultMessage saveAndApprove(HistoryDocVO vo) {
+        return null;
     }
 }

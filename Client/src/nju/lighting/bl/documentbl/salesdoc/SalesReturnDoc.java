@@ -48,11 +48,6 @@ public class SalesReturnDoc extends SalesTypeDoc {
     }
 
     @Override
-    public ResultMessage reject() {
-        return null;
-    }
-
-    @Override
     public ResultMessage modify() {
         return null;
     }

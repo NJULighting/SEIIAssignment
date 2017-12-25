@@ -2,12 +2,9 @@ package nju.lighting.bl.documentbl.accountiodoc;
 
 import nju.lighting.bl.documentbl.ItemList;
 import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
-import nju.lighting.presentation.documentui.AccountTransferItem;
 import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/14.
@@ -31,7 +28,7 @@ class AccountDocItemList {
     }
 
     List<AccountTransferItemPO> toPO(String docId) {
-        return itemList.toPO(docId, item -> item.toPO(docId));
+        return itemList.toPO(item -> item.toPO(docId));
     }
 
     List<AccountTransferItemVO> toVO() {

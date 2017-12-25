@@ -21,12 +21,12 @@ public class LossAndGainDoc extends Doc {
 
     public LossAndGainDoc(DocVO vo) {
         super(vo);
-        assign((LossAndGainDocVO) vo);
+        assign(vo);
     }
 
     public LossAndGainDoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
-        assign((LossAndGainDocVO) historyDocVO.getDocVO());
+        assign(historyDocVO.getDocVO());
     }
 
     public LossAndGainDoc(DocPO po) {
@@ -43,7 +43,7 @@ public class LossAndGainDoc extends Doc {
     }
 
     /**
-     * 得到报损（报溢）的支出（收入）
+     * Get revenue(expenditure) of this gain(loss) doc
      */
     public double getAmount() {
         return itemList.getAmount();
@@ -52,11 +52,6 @@ public class LossAndGainDoc extends Doc {
     @Override
     public void approve() {
 
-    }
-
-    @Override
-    public ResultMessage reject() {
-        return null;
     }
 
     @Override

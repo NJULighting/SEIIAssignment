@@ -46,7 +46,6 @@ enum CustomerManager {
      * <code>ResultMessage.NETWORK</code> if network fails
      */
     ResultMessage changeCustomer(CustomerChangeInfo changeInfo) {
-        // TODO: 2017/12/6 consider the CustomerChangeInfo
         try {
             CustomerPO po = dataService.getCustomerById(changeInfo.id);
             if (po == null)

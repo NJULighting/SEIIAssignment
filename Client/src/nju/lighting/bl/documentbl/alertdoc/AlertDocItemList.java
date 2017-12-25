@@ -6,9 +6,7 @@ import nju.lighting.bl.documentbl.ItemList;
 import nju.lighting.po.doc.alertdoc.AlertDocItemPO;
 import nju.lighting.vo.doc.alertdoc.AlertDocItemVO;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/18.
@@ -37,7 +35,7 @@ class AlertDocItemList {
     }
 
     List<AlertDocItemPO> toPO(String docId) {
-        return itemList.toPO(docId, item -> item.toPO(docId));
+        return itemList.toPO(item -> item.toPO(docId));
     }
 
     List<AlertDocItemVO> toVO() {

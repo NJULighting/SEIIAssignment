@@ -1,14 +1,6 @@
 package nju.lighting.bl.documentbl;
 
-import nju.lighting.bl.documentbl.accountiodoc.AccountDocVOFactory;
-import nju.lighting.bl.documentbl.alertdoc.AlertDocVOFactory;
-import nju.lighting.bl.documentbl.costdoc.CostDocVOFactory;
-import nju.lighting.bl.documentbl.giftdoc.GiftDocVOFactory;
-import nju.lighting.bl.documentbl.lossandgaindoc.LossAndGainDocVOFactory;
 import nju.lighting.bl.documentbl.salesdoc.SalesDoc;
-import nju.lighting.bl.documentbl.salesdoc.SalesDocVOFactory;
-import nju.lighting.bl.documentbl.salesdoc.SalesReturnDocVOFactory;
-import nju.lighting.bl.documentbl.stockdoc.StockDocVOFactory;
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
@@ -26,7 +18,6 @@ import javax.naming.NamingException;
 import java.rmi.RemoteException;
 import java.util.*;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
@@ -37,23 +28,10 @@ import java.util.stream.Collectors;
 public enum DocManager {
     INSTANCE;
 
-    private Map<DocType, Supplier<DocVOFactory>> factoryMap;
     private DocDataService dataService;
     private Logger logger;
 
     DocManager() {
-        factoryMap = new HashMap<>();
-        factoryMap.put(DocType.ACCOUNT_OUT, AccountDocVOFactory::new);
-        factoryMap.put(DocType.ACCOUNT_IN, AccountDocVOFactory::new);
-        factoryMap.put(DocType.ALERT, AlertDocVOFactory::new);
-        factoryMap.put(DocType.COST, CostDocVOFactory::new);
-        factoryMap.put(DocType.GIFT, GiftDocVOFactory::new);
-        factoryMap.put(DocType.LOSS_AND_GAIN, LossAndGainDocVOFactory::new);
-        factoryMap.put(DocType.SALES, SalesDocVOFactory::new);
-        factoryMap.put(DocType.SALES_RETURN, SalesReturnDocVOFactory::new);
-        factoryMap.put(DocType.STOCK, StockDocVOFactory::new);
-        factoryMap.put(DocType.STOCK_RETURN, StockDocVOFactory::new);
-
         try {
             dataService = DataFactory.getDataBase(DocDataService.class);
             logger = new UserLogger();

@@ -23,7 +23,7 @@ public class CostDocItemList {
     }
 
     List<CostDocItemPO> toPo(String docId) {
-        return itemList.toPO(docId, item -> item.toPO(docId));
+        return itemList.toPO(item -> item.toPO(docId));
     }
 
     List<CostDocItemVO> toVO() {

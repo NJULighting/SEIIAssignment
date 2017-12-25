@@ -56,11 +56,6 @@ public class CostDoc extends Doc {
     }
 
     @Override
-    public ResultMessage reject() {
-        return null;
-    }
-
-    @Override
     public void redFlush() {
         totalAmount = -totalAmount;
         itemList.redFlush();

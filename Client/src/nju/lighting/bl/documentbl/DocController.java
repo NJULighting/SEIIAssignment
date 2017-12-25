@@ -1,6 +1,5 @@
 package nju.lighting.bl.documentbl;
 
-import nju.lighting.bl.documentbl.table.SalesDetailTable;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.blservice.documentblservice.DocBLService;
@@ -48,7 +47,7 @@ public class DocController implements DocBLService {
     @Override
     public SalesDetailVO findRevenueAndExpenditure(Date startDate, Date endDate) {
         SalesDetailTable table = new SalesDetailTable(startDate, endDate);
-        return table.findSalesDetailTable();
+        return table.getSalesDetailTable();
     }
 
     @Override

@@ -55,11 +55,6 @@ abstract class AccountIODoc extends Doc {
     }
 
     @Override
-    public ResultMessage reject() {
-        return null;
-    }
-
-    @Override
     public ResultMessage modify() {
         return null;
     }

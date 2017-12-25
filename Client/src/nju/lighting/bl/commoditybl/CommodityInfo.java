@@ -7,14 +7,18 @@ import java.util.List;
 
 public interface CommodityInfo {
 
-    CommodityCategoriesTree getCommodityCategoryTree();
-
     BasicCommodityItemVO getBasicCommodityItemVO(String id);
 
     double getCommodityRecentSellPrice(String id);
 
     String getCommodityNameByID(String commodityID);
 
+    /**
+     * Get name of the commodity's category. If the commodity is the
+     * child of the root category(id is -1), it won't query the database.
+     * @param commodityID id of the commodity
+     * @return name of the category
+     */
     String getCommodityCategory(String commodityID);
 
     double getCommodityInPrice(String id);
@@ -26,5 +30,4 @@ public interface CommodityInfo {
     boolean addCommodityItem(String id, int count);
 
     boolean reduceCommodityItem(String id, int count);
-
 }

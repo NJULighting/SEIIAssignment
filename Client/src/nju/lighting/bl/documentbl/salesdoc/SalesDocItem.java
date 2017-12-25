@@ -32,6 +32,7 @@ public class SalesDocItem implements DocItem {
     SalesDocItem(SalesDocItemVO vo) {
         id = vo.getId();
         commodityID = vo.getCommodity().getId();
+        number = vo.getNumber();
         remarks = vo.getRemarks();
 
         updatePriceAndTotal();
@@ -55,7 +56,7 @@ public class SalesDocItem implements DocItem {
         return number;
     }
 
-    public double getSalePrice() {
+    double getSalePrice() {
         return salePrice;
     }
 
@@ -65,10 +66,6 @@ public class SalesDocItem implements DocItem {
 
     public String getRemarks() {
         return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
     }
 
     SalesDocItemPO toPO(String docId) {

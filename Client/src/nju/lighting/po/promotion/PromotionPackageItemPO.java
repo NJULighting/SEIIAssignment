@@ -11,8 +11,10 @@ import java.io.Serializable;
 public class PromotionPackageItemPO implements Serializable {
     private static final long serialVersionUID = 2873143123109L;
     private String commodityId;
+    private int id;
     private int promotionId;
-    private int count;
+
+    private int commodityCount = 1;
 
     public PromotionPackageItemPO(String commodityId, int promotionId, int count) {
         this.commodityId = commodityId;
@@ -20,11 +22,23 @@ public class PromotionPackageItemPO implements Serializable {
     }
 
     public PromotionPackageItemPO(int count, String commodityId) {
-        this.count = count;
+        this.commodityCount = count;
         this.commodityId = commodityId;
     }
 
     public String getCommodityId() {
         return commodityId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getPromotionId() {
+        return promotionId;
+    }
+
+    public int getCommodityCount() {
+        return commodityCount;
     }
 }

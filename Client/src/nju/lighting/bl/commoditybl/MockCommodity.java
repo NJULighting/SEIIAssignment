@@ -42,11 +42,6 @@ public class MockCommodity implements CommodityInfo {
     }
 
     @Override
-    public CommodityCategoriesTree getCommodityCategoryTree() {
-        return tree;
-    }
-
-    @Override
     public BasicCommodityItemVO getBasicCommodityItemVO(String id) {
         return null;
     }

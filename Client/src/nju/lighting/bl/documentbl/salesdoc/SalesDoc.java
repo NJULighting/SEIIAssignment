@@ -56,11 +56,6 @@ public class SalesDoc extends SalesTypeDoc {
     }
 
     @Override
-    public ResultMessage reject() {
-        return null;
-    }
-
-    @Override
     public ResultMessage modify() {
         return null;
     }
@@ -80,7 +75,9 @@ public class SalesDoc extends SalesTypeDoc {
         return itemList.toBusinessConditionItemVO(createTime);
     }
 
-    // 销售成本
+    /**
+     * Cost of this sale.(Sum of commodities' purchase price)
+     */
     public double getTotalCost() {
         return itemList.getTotalCost();
     }

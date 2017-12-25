@@ -56,6 +56,20 @@ class LossAndGainDocItem implements DocItem {
         return id;
     }
 
+    /**
+     * Get total value of the commodity in this item. This method uses
+     * recent sell price for calculating the value. If the value is positive,
+     * its type is <tt>GAIN</tt>. If the value if negative, its type is <tt>LOSS</tt>
+     */
+    public double getValue() {
+        CommodityInfo commodityInfo = new CommodityInfoImpl();
+        double value = commodityInfo.getCommodityRecentSellPrice(commodityId) * count;
+        if (type == LossAndGainItemType.LOSS)
+            value = -value;
+
+        return value;
+    }
+
     String getCommodityName() {
         CommodityInfo info = new CommodityInfoImpl();
         return info.getCommodityNameByID(commodityId);

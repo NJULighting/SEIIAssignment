@@ -1,5 +1,7 @@
 package nju.lighting.bl.promotionbl;
 
+import nju.lighting.bl.commoditybl.CommodityInfo;
+import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.po.promotion.PromotionPackageItemPO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 
@@ -29,6 +31,7 @@ class PromotionItemList {
 
     void addAll(List<PromotionPackageItemPO> goods) {
         // TODO: 2017/12/8 commodity info
+        CommodityInfo commodityInfo = new CommodityInfoImpl();
     }
 
     List<GiftItemVO> getGoods() {

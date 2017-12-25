@@ -16,11 +16,15 @@ public class StockDocItemVO {
     private double totalAmount;
     private String remarks = "";
 
-    public StockDocItemVO(BasicCommodityItemVO commodity, int number, String remarks, double totalAmount) {
+    /**
+     * Constructor for creating a stock doc. The total amount will
+     * be calculated automatically in this constructor
+     */
+    public StockDocItemVO(BasicCommodityItemVO commodity, int number, String remarks) {
         this.commodity = commodity;
         this.number = number;
         this.remarks = remarks;
-        this.totalAmount = totalAmount;
+        this.totalAmount = number * commodity.getRecentInPrice();
     }
 
 
@@ -34,10 +38,6 @@ public class StockDocItemVO {
 
     public int getNumber() {
         return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
     }
 
     public double getTotalAmount() {

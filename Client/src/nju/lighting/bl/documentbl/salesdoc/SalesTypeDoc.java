@@ -72,6 +72,9 @@ public abstract class SalesTypeDoc extends Doc {
         return voucher;
     }
 
+    /**
+     * Get final revenue of this sale
+     */
     public double getFinalAmount() {
         return finalAmount;
     }
@@ -80,14 +83,14 @@ public abstract class SalesTypeDoc extends Doc {
         return (finalAmount + voucher) / (1 - discount);
     }
 
-    public double getTotalAmount() {
-        return itemList.getTotalRevenue();
-    }
-
     public double getDiscountAmount() {
         return beforeDiscountAmount * discount;
     }
 
+    /**
+     * If voucher's value is larger than the value after discount,
+     * then we get a revenue of voucher's value minus value after discount
+     */
     public double getVoucherCausedRevenue() {
         double afterDiscount = beforeDiscountAmount * (1 - discount);
         return voucher > afterDiscount ? voucher - afterDiscount : 0;
@@ -100,9 +103,6 @@ public abstract class SalesTypeDoc extends Doc {
 
     @Override
     abstract public void approve();
-
-    @Override
-    abstract public ResultMessage reject();
 
     @Override
     abstract public ResultMessage modify();

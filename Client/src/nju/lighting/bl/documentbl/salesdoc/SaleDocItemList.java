@@ -36,7 +36,7 @@ class SaleDocItemList {
     }
 
     List<SalesDocItemPO> toPO(String docId) {
-        return itemList.toPO(docId, item -> item.toPO(docId));
+        return itemList.toPO(item -> item.toPO(docId));
     }
 
     List<SalesDocItemVO> toVO() {
@@ -52,11 +52,9 @@ class SaleDocItemList {
         return itemList.transformItemToObject(function);
     }
 
-    double getTotalRevenue() {
-        ToDoubleFunction<SalesDocItem> function = SalesDocItem::getTotalAmount;
-        return itemList.transformItemToNumber(function);
-    }
-
+    /**
+     * Get total cost of this sale.(Sum of these commodities' purchase price)
+     */
     double getTotalCost() {
         CommodityInfo commodityInfo = new CommodityInfoImpl();
         ToDoubleFunction<SalesDocItem> function =

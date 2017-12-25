@@ -49,11 +49,6 @@ public class StockDoc extends StockTypeDoc {
     }
 
     @Override
-    public ResultMessage reject() {
-        return null;
-    }
-
-    @Override
     public ResultMessage modify() {
         return null;
     }

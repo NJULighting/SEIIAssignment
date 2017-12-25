@@ -81,7 +81,7 @@ class Promotion {
 
     PromotionPO buildPOForCreation() {
         // Transfer goods
-        List<PromotionPackageItemPO> itemPOList = itemList.toPOList(id); // TODO: 2017/12/7 See if id is nonzero, what the database will be like
+        List<PromotionPackageItemPO> itemPOList = itemList.toPOList(id);
 
         return new PromotionPO(name, userID, type, startDate, endDate, createTime, level
                 , priceTarget, itemPOList, off, vouchers, vouchersEndDate);

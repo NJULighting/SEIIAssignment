@@ -2,6 +2,8 @@ package nju.lighting.bl.documentbl;
 
 
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
+import shared.ResultMessage;
 
 import java.util.List;
 
@@ -13,6 +15,16 @@ import java.util.List;
 
 public interface DocInfo {
     List<DocVO> findUnCheckedDoc();
+
+    ResultMessage approve(HistoryDocVO vo) ;
+
+    ResultMessage approveAll(List<HistoryDocVO> voList) ;
+
+    ResultMessage reject(HistoryDocVO vo) ;
+
+    ResultMessage save(HistoryDocVO vo) ;
+
+    ResultMessage saveAndApprove(HistoryDocVO vo) ;
 }
 
 

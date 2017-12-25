@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * 商品全部信息组成的商品树
  */
 class CommodityCategoriesTree {
-    private static final String ROOT_NAME = "商品分类";
+    static final String ROOT_NAME = "商品分类";
     private CommodityCategory root;
 
     private CommodityCategoriesTree() {

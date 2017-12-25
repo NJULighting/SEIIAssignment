@@ -35,11 +35,6 @@ public class CommodityInfoImpl implements CommodityInfo {
     }
 
     @Override
-    public CommodityCategoriesTree getCommodityCategoryTree() {
-        return null;
-    }
-
-    @Override
     public BasicCommodityItemVO getBasicCommodityItemVO(String id) {
         return DataServiceFunction.findByToEntity(id, dataService::findById,
                 itemPO -> new BasicCommodityItemVO(id, itemPO.getName(), itemPO.getRepCount(),
@@ -72,9 +67,20 @@ public class CommodityInfoImpl implements CommodityInfo {
         }
     }
 
+    /**
+     * Get name of the commodity's category. If the commodity is the
+     * child of the root category(id is -1), it won't query the database.
+     * @param commodityID id of the commodity
+     * @return name of the category
+     */
     @Override
     public String getCommodityCategory(String commodityID) {
         int categoryId = CommodityPathParser.getCommodityCategory(commodityID);
+
+        // Root is a dummy node, it can't be found in the database
+        if (categoryId == -1)
+            return CommodityCategoriesTree.ROOT_NAME;
+
         return Optional.ofNullable(DataServiceFunction.findByToPO(categoryId, dataService::findCategoryById))
                 .map(CommodityCategoryPO::getName)
                 .orElseThrow(NoSuchElementException::new);

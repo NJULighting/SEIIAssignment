@@ -9,10 +9,13 @@ import nju.lighting.bl.documentbl.salesdoc.SalesDoc;
 import nju.lighting.bl.documentbl.salesdoc.SalesReturnDoc;
 import nju.lighting.bl.documentbl.stockdoc.StockDoc;
 import nju.lighting.bl.documentbl.stockdoc.StockReturnDoc;
+import nju.lighting.bl.logbl.Logger;
+import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
+import shared.OPType;
 import shared.ResultMessage;
 
 import javax.naming.NamingException;
@@ -29,27 +32,19 @@ import java.util.function.Function;
 public class RedFlush {
     public static final String RED_FLUSH_COMMENT = "红冲";
 
-    private Map<DocType, Function<DocVO, Doc>> docMap;
+    private DocFactory factory;
     private DocDataService dataService;
+    private Logger logger;
 
     RedFlush() {
-        docMap = new HashMap<>();
-
-        docMap.put(DocType.ACCOUNT_IN, AccountInDoc::new);
-        docMap.put(DocType.ACCOUNT_OUT, AccountOutDoc::new);
-        docMap.put(DocType.COST, CostDoc::new);
-        docMap.put(DocType.GIFT, GiftDoc::new);
-        docMap.put(DocType.LOSS_AND_GAIN, LossAndGainDoc::new);
-        docMap.put(DocType.SALES, SalesDoc::new);
-        docMap.put(DocType.SALES_RETURN, SalesReturnDoc::new);
-        docMap.put(DocType.STOCK, StockDoc::new);
-        docMap.put(DocType.STOCK_RETURN, StockReturnDoc::new);
-
+        factory = new DocFactory();
         try {
             dataService = DataFactory.getDataBase(DocDataService.class);
         } catch (NamingException e) {
             e.printStackTrace();
         }
+
+        logger = new UserLogger();
     }
 
     /**
@@ -58,10 +53,13 @@ public class RedFlush {
      * @return 红冲的结果
      */
     public ResultMessage redFlush(DocVO docVO) {
-        Doc doc = docMap.get(docVO.getType()).apply(docVO);
+        Doc doc = factory.voToDoc(docVO);
         doc.redFlush();
         try {
-            return dataService.commitDoc(doc.toPO()).t;
+            ResultMessage res =  dataService.commitDoc(doc.toPO()).t;
+            if (res == ResultMessage.SUCCESS)
+                logger.add(OPType.ADD, "红冲单据" + doc.getId());
+            return res;
         } catch (RemoteException e) {
             e.printStackTrace();
             return ResultMessage.NETWORK_FAIL;
@@ -73,9 +71,10 @@ public class RedFlush {
      * @param target 需要进行红冲并复制的单据对象
      * @return 相应的进行红冲过的对象
      */
-    public DocVO redFlushAndCopy(DocVO target) {
-        Doc doc = docMap.get(target.getType()).apply(target);
+    DocVO redFlushAndCopy(DocVO target) {
+        Doc doc = factory.voToDoc(target);
         doc.redFlush();
+        logger.add(OPType.ADD, "对单据" + doc.getId() + "使用了红冲并复制操作");
         return doc.toVO();
     }
 }

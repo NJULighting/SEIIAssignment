@@ -16,7 +16,6 @@ public class StockDocItem implements DocItem {
     private int id;
     private String commodityID;
     private int number;
-    private double salePrice;
     private double totalAmount;
     private String remarks = "";
 
@@ -25,8 +24,7 @@ public class StockDocItem implements DocItem {
         commodityID = po.getCommodityID();
         number = po.getNumber();
         remarks = po.getRemarks();
-
-        updatePriceAndTotal();
+        totalAmount = po.getTotalAmount();
     }
 
     StockDocItem(StockDocItemVO vo) {
@@ -34,14 +32,8 @@ public class StockDocItem implements DocItem {
         commodityID = vo.getCommodity().getId();
         number = vo.getNumber();
         remarks = vo.getRemarks();
+        totalAmount = vo.getTotalAmount();
 
-        updatePriceAndTotal();
-    }
-
-    private void updatePriceAndTotal() {
-        CommodityInfo commodityInfo = new CommodityInfoImpl();
-        salePrice = commodityInfo.getCommodityRecentSellPrice(commodityID);
-        totalAmount = number * salePrice;
     }
 
     public int getId() {
@@ -74,6 +66,11 @@ public class StockDocItem implements DocItem {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    double getRevenue() {
+        CommodityInfo commodityInfo = new CommodityInfoImpl();
+        return commodityInfo.getCommodityInPrice(commodityID) * number - totalAmount;
     }
 
     StockDocItemPO toPO(String docId) {

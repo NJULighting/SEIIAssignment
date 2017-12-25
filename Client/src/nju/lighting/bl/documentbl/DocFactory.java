@@ -11,6 +11,7 @@ import nju.lighting.bl.documentbl.salesdoc.SalesReturnDoc;
 import nju.lighting.bl.documentbl.stockdoc.StockDoc;
 import nju.lighting.bl.documentbl.stockdoc.StockReturnDoc;
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.DocType;
 
@@ -27,6 +28,7 @@ import java.util.function.Function;
 public class DocFactory {
     private Map<DocType, Function<DocPO, Doc>> docPOMap;
     private Map<DocType, Function<HistoryDocVO, Doc>> historyDocVOMap;
+    private Map<DocType, Function<DocVO, Doc>> docVOMap;
 
     DocFactory() {
         docPOMap = new HashMap<>();
@@ -52,14 +54,29 @@ public class DocFactory {
         historyDocVOMap.put(DocType.SALES_RETURN, SalesReturnDoc::new);
         historyDocVOMap.put(DocType.STOCK, StockDoc::new);
         historyDocVOMap.put(DocType.STOCK_RETURN, StockReturnDoc::new);
+
+        docVOMap = new HashMap<>();
+        docVOMap.put(DocType.ACCOUNT_IN, AccountInDoc::new);
+        docVOMap.put(DocType.ACCOUNT_OUT, AccountOutDoc::new);
+        docVOMap.put(DocType.COST, CostDoc::new);
+        docVOMap.put(DocType.GIFT, GiftDoc::new);
+        docVOMap.put(DocType.LOSS_AND_GAIN, LossAndGainDoc::new);
+        docVOMap.put(DocType.SALES, SalesDoc::new);
+        docVOMap.put(DocType.SALES_RETURN, SalesReturnDoc::new);
+        docVOMap.put(DocType.STOCK, StockDoc::new);
+        docVOMap.put(DocType.STOCK_RETURN, StockReturnDoc::new);
     }
 
-    public Doc poToDoc(DocPO po) {
+    Doc poToDoc(DocPO po) {
         return docPOMap.get(po.getDocType()).apply(po);
     }
 
-    public Doc historyDocVOToDoc(HistoryDocVO historyDocVO) {
+    Doc historyDocVOToDoc(HistoryDocVO historyDocVO) {
         DocType docVOType = historyDocVO.getDocVO().getType();
         return historyDocVOMap.get(docVOType).apply(historyDocVO);
+    }
+
+    Doc voToDoc(DocVO vo) {
+        return docVOMap.get(vo.getType()).apply(vo);
     }
 }

@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
  * Description:
  * @author Liao
  */
-public class findDocTest {
+public class FindDocTest {
     private static final int ACCOUNT_DOC_SIZE = 2;
 
     private DocManager manager = DocManager.INSTANCE;

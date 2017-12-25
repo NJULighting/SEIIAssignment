@@ -98,7 +98,7 @@ enum PromotionManager {
 
 
     /**
-     * Check the goods of po whether have same item of target commodity list
+     * Check the goods of po whether have the same item of target commodity list
      * @param commodityIDList ids of commodities
      * @param po              po to be matched
      * @return <code>true</code> if matches any, <code>false</code> if po's list is null or matches none
@@ -113,7 +113,6 @@ enum PromotionManager {
             }
         }
         return false;
-        // TODO: 2017/12/7 Something of structured programming
     }
 
     ResultMessage modify(PromotionVO vo) {

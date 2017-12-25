@@ -36,10 +36,16 @@ public class DocumentFilter {
         return commodity;
     }
 
+    /**
+     * Default start time is yesterday.
+     */
     public Date getStart() {
         return Optional.ofNullable(start).orElse(new Date(Instant.now().minus(Duration.ofDays(1)).toEpochMilli()));
     }
 
+    /**
+     * Default end time is now.
+     */
     public Date getEnd() {
         return Optional.ofNullable(end).orElse(new Date());
     }
@@ -49,6 +55,7 @@ public class DocumentFilter {
         idFilter = generatePredicateByEqual(builder.docId, Doc::getId);
         stateFilter = generatePredicateByEqual(builder.state, Doc::getState);
 
+        //
         customerFilter = generatePredicateByContain(builder.customerId, Doc::containsCustomer);
         commodityFilter = generatePredicateByContain(builder.commodityName, Doc::containsCommodity);
         repositoryFilter = generatePredicateByContain(builder.repository, Doc::containsRepository);

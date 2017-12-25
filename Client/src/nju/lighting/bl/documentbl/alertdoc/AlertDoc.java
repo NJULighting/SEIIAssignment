@@ -50,11 +50,6 @@ public class AlertDoc extends Doc {
     }
 
     @Override
-    public ResultMessage reject() {
-        return null;
-    }
-
-    @Override
     public void redFlush() {
         throw new UnsupportedOperationException();
     }

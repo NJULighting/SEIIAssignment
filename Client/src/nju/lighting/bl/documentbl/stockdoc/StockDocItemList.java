@@ -7,7 +7,6 @@ import nju.lighting.po.doc.stockdoc.StockDocItemPO;
 import nju.lighting.vo.doc.stockdoc.StockDocItemVO;
 
 import java.util.List;
-import java.util.function.ToDoubleFunction;
 
 /**
  * Created on 2017/12/21.
@@ -33,7 +32,7 @@ class StockDocItemList {
     }
 
     List<StockDocItemPO> toPO(String docId) {
-        return itemList.toPO(docId, item -> item.toPO(docId));
+        return itemList.toPO(item -> item.toPO(docId));
     }
 
     List<StockDocItemVO> toVO() {
@@ -41,10 +40,7 @@ class StockDocItemList {
     }
 
     double getRevenue() {
-        CommodityInfo commodityInfo = new CommodityInfoImpl();
-        ToDoubleFunction<StockDocItem> function =
-                item -> commodityInfo.getCommodityInPrice(item.getCommodityID()) * item.getNumber() - item.getTotalAmount();
-        return itemList.transformItemToNumber(function);
+        return itemList.transformItemToNumber(StockDocItem::getRevenue);
     }
 
     public void redFlush() {

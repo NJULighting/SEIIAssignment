@@ -1,14 +1,10 @@
 package nju.lighting.bl.documentbl.lossandgaindoc;
 
-import nju.lighting.bl.commoditybl.CommodityInfo;
-import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.documentbl.ItemList;
 import nju.lighting.po.doc.lossandgaindoc.LossAndGainItemPO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocItemVO;
-import shared.LossAndGainItemType;
 
 import java.util.List;
-import java.util.function.ToDoubleFunction;
 
 /**
  * Created on 2017/12/21.
@@ -17,7 +13,6 @@ import java.util.function.ToDoubleFunction;
  */
 class LossAndGainDocItemList {
 
-    private LossAndGainItemType lossAndGainItemType;
     private ItemList<LossAndGainDocItem> itemList = new ItemList<>();
 
     boolean containCommodity(String commodityName) {
@@ -26,7 +21,6 @@ class LossAndGainDocItemList {
 
     void add(LossAndGainItemPO po) {
         itemList.add(po, LossAndGainDocItem::new);
-        lossAndGainItemType = po.getType();
     }
 
     void add(LossAndGainDocItemVO vo) {
@@ -34,7 +28,7 @@ class LossAndGainDocItemList {
     }
 
     List<LossAndGainItemPO> toPO(String docId) {
-        return itemList.toPO(docId, item -> item.toPO(docId));
+        return itemList.toPO(item -> item.toPO(docId));
     }
 
     List<LossAndGainDocItemVO> toVO() {
@@ -42,13 +36,7 @@ class LossAndGainDocItemList {
     }
 
     double getAmount() {
-        CommodityInfo commodityInfo = new CommodityInfoImpl();
-        ToDoubleFunction<LossAndGainDocItem> function =
-                item -> commodityInfo.getCommodityRecentSellPrice(item.getCommodityId()) * item.getCount();
-        if (lossAndGainItemType == LossAndGainItemType.GAIN)
-            return itemList.transformItemToNumber(function);
-        else
-            return -itemList.transformItemToNumber(function);
+        return itemList.transformItemToNumber(LossAndGainDocItem::getValue);
     }
 
     public void redFlush() {

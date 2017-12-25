@@ -22,7 +22,7 @@ public class ItemList<Item extends DocItem> {
         items.add(function.apply(t));
     }
 
-    public <PO> List<PO> toPO(String docId, Function<Item, PO> function) {
+    public <PO> List<PO> toPO(Function<Item, PO> function) {
         return items.stream().map(function).collect(Collectors.toList());
     }
 

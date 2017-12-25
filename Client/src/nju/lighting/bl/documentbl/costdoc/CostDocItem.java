@@ -1,6 +1,7 @@
 package nju.lighting.bl.documentbl.costdoc;
 
 import nju.lighting.bl.documentbl.DocItem;
+import nju.lighting.bl.documentbl.RedFlush;
 import nju.lighting.po.doc.costdoc.CostDocItemPO;
 import nju.lighting.vo.doc.costdoc.CostDocItemVO;
 import shared.CostDocItemType;
@@ -45,6 +46,7 @@ public class CostDocItem implements DocItem {
     @Override
     public void redFlush() {
         amount = -amount;
+        comment = RedFlush.RED_FLUSH_COMMENT;
     }
 
     @Override

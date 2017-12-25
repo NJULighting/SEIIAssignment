@@ -1,6 +1,7 @@
 package nju.lighting.bl.documentbl.accountiodoc;
 
 import nju.lighting.po.doc.DocPO;
+import nju.lighting.po.doc.accountiodoc.AccountOutDocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 
@@ -20,5 +21,20 @@ public class AccountOutDoc extends AccountIODoc {
 
     public AccountOutDoc(DocPO po) {
         super(po);
+        AccountOutDocPO accountOutDocPO = (AccountOutDocPO) po;
+        customerID = accountOutDocPO.getCustomerID();
+        total = accountOutDocPO.getTotal();
+        accountOutDocPO.getTransferAccountList().forEach(itemList::add);
+    }
+
+    @Override
+    public void approve() {
+
+    }
+
+    @Override
+    public DocPO toPO() {
+        return new AccountOutDocPO(id, docType, userId, createTime, checkTime,
+                approvalComment, state, approvalId, customerID, itemList.toPO(id), total);
     }
 }

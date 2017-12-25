@@ -61,11 +61,6 @@ public class SalesDoc extends SalesTypeDoc {
     }
 
     @Override
-    public ResultMessage redFlush() {
-        return null;
-    }
-
-    @Override
     public ResultMessage modify() {
         return null;
     }

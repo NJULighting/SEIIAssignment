@@ -31,4 +31,8 @@ public class GiftDocItemList {
     List<GiftItemVO> toVO() {
         return itemList.toVO(GiftDocItem::toVO);
     }
+
+    void redFlush() {
+        itemList.redFlush();
+    }
 }

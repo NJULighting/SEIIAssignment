@@ -1,6 +1,7 @@
 package nju.lighting.bl.documentbl.lossandgaindoc;
 
 import nju.lighting.bl.documentbl.Doc;
+import nju.lighting.bl.documentbl.RedFlush;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.lossandgaindoc.LossAndGainDocPO;
 import nju.lighting.vo.DocVO;
@@ -59,8 +60,9 @@ public class LossAndGainDoc extends Doc {
     }
 
     @Override
-    public ResultMessage redFlush() {
-        return null;
+    public void redFlush() {
+        comment = RedFlush.RED_FLUSH_COMMENT;
+        itemList.redFlush();
     }
 
     @Override

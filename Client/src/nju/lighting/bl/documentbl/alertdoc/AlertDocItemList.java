@@ -2,6 +2,7 @@ package nju.lighting.bl.documentbl.alertdoc;
 
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
+import nju.lighting.bl.documentbl.ItemList;
 import nju.lighting.po.doc.alertdoc.AlertDocItemPO;
 import nju.lighting.vo.doc.alertdoc.AlertDocItemVO;
 
@@ -15,41 +16,31 @@ import java.util.stream.Collectors;
  * @author Liao
  */
 class AlertDocItemList {
-    private List<AlertDocItem> items;
+    private ItemList<AlertDocItem> itemList = new ItemList<>();
     private CommodityInfo commodityInfo;
 
     AlertDocItemList() {
-        items = new ArrayList<>();
         commodityInfo = new CommodityInfoImpl();
     }
 
     void add(AlertDocItemPO itemPO) {
-        items.add(new AlertDocItem(itemPO));
+        itemList.add(itemPO, AlertDocItem::new);
     }
 
     void add(AlertDocItemVO itemVO) {
-        items.add(new AlertDocItem(itemVO));
+        itemList.add(itemVO, AlertDocItem::new);
     }
 
     boolean containsCommodity(String commodityName) {
-        for (AlertDocItem item : items) {
-            String itemCommodityName = commodityInfo.getCommodityNameByID(item.getCommodityId());
-            if (itemCommodityName.equals(commodityName)) {
-                return true;
-            }
-        }
-        return false;
+        return itemList.containItemWithAttribute(commodityName,
+                item -> commodityInfo.getCommodityNameByID(item.getCommodityId()));
     }
 
     List<AlertDocItemPO> toPO(String docId) {
-        return items.stream()
-                .map(alertDocItem -> alertDocItem.toPO(docId))
-                .collect(Collectors.toList());
+        return itemList.toPO(docId, item -> item.toPO(docId));
     }
 
     List<AlertDocItemVO> toVO() {
-        return items.stream()
-                .map(AlertDocItem::toVO)
-                .collect(Collectors.toList());
+        return itemList.toVO(AlertDocItem::toVO);
     }
 }

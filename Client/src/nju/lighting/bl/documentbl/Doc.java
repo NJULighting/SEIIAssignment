@@ -81,7 +81,7 @@ public abstract class Doc {
      */
     abstract public ResultMessage reject();
 
-    abstract public ResultMessage redFlush();
+    abstract public void redFlush();
 
     /**
      * 保存修改后的单据，该方法在审批单据时调用

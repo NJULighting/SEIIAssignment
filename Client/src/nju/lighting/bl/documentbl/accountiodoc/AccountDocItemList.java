@@ -1,10 +1,11 @@
 package nju.lighting.bl.documentbl.accountiodoc;
 
+import nju.lighting.bl.documentbl.ItemList;
 import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
+import nju.lighting.presentation.documentui.AccountTransferItem;
 import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,25 +15,30 @@ import java.util.stream.Collectors;
  * @author Liao
  */
 class AccountDocItemList {
-    private List<AccountDocItem> itemList;
-
-    AccountDocItemList(List<AccountTransferItemPO> itemPOList) {
-        itemList = itemPOList.stream().map(AccountDocItem::new).collect(Collectors.toList());
-    }
+    private ItemList<AccountDocItem> itemList;
 
     AccountDocItemList() {
-        itemList = new ArrayList<>();
+        itemList = new ItemList<>();
     }
 
-    void addAll(Collection<AccountTransferItemVO> vos) {
-        itemList.addAll(vos.stream().map(AccountDocItem::new).collect(Collectors.toList()));
+
+    void add(AccountTransferItemVO docItem) {
+        itemList.add(docItem, AccountDocItem::new);
+    }
+
+    void add(AccountTransferItemPO docItem) {
+        itemList.add(docItem, AccountDocItem::new);
     }
 
     List<AccountTransferItemPO> toPO(String docId) {
-        return itemList.stream().map(docItem -> docItem.toPO(docId)).collect(Collectors.toList());
+        return itemList.toPO(docId, item -> item.toPO(docId));
     }
 
     List<AccountTransferItemVO> toVO() {
-        return itemList.stream().map(AccountDocItem::toVO).collect(Collectors.toList());
+        return itemList.toVO(AccountDocItem::toVO);
+    }
+
+    void redFlush() {
+        itemList.redFlush();
     }
 }

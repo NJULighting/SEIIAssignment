@@ -9,6 +9,7 @@ import shared.ResultMessage;
  * @author Liao
  */
 public class RedFlush {
+    public static final String RED_FLUSH_COMMENT = "红冲";
 
     /**
      * 直接进行红冲操作

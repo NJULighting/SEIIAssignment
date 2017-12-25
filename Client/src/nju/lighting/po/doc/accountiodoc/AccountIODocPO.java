@@ -27,7 +27,7 @@ public class AccountIODocPO extends DocPO implements Serializable {
      */
     public AccountIODocPO(String id, DocType docType, String userId, Date createTime,
                           Date checkTime, String approvalComment, DocState state, String approvalId,
-                          AccountIODocType ioType, String customerID, List<AccountTransferItemPO> transferAccountList, double total) {
+                          String customerID, List<AccountTransferItemPO> transferAccountList, double total) {
         super(id, docType, userId, createTime, checkTime, approvalComment, state, approvalId);
         this.customerID = customerID;
         this.transferAccountList = transferAccountList;

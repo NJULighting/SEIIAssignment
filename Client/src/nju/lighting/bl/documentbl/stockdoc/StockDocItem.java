@@ -3,6 +3,7 @@ package nju.lighting.bl.documentbl.stockdoc;
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.documentbl.DocItem;
+import nju.lighting.bl.documentbl.RedFlush;
 import nju.lighting.po.doc.stockdoc.StockDocItemPO;
 import nju.lighting.vo.doc.stockdoc.StockDocItemVO;
 
@@ -63,20 +64,6 @@ public class StockDocItem implements DocItem {
         return number;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
-        updatePriceAndTotal();
-    }
-
-    public double getSalePrice() {
-        return salePrice;
-    }
-
-    public void setSalePrice(double salePrice) {
-        this.salePrice = salePrice;
-        updatePriceAndTotal();
-    }
-
     public double getTotalAmount() {
         return totalAmount;
     }
@@ -103,6 +90,7 @@ public class StockDocItem implements DocItem {
     public void redFlush() {
         number = -number;
         totalAmount = -totalAmount;
+        remarks = RedFlush.RED_FLUSH_COMMENT;
     }
 
     @Override

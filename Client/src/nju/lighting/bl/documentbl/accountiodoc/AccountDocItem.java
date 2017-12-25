@@ -1,6 +1,7 @@
 package nju.lighting.bl.documentbl.accountiodoc;
 
 import nju.lighting.bl.documentbl.DocItem;
+import nju.lighting.bl.documentbl.RedFlush;
 import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 
@@ -54,7 +55,8 @@ class AccountDocItem implements DocItem {
 
     @Override
     public void redFlush() {
-
+        amount = -amount;
+        comments = RedFlush.RED_FLUSH_COMMENT;
     }
 
     @Override

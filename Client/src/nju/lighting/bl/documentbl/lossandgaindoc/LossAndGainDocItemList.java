@@ -50,4 +50,8 @@ class LossAndGainDocItemList {
         else
             return -itemList.transformItemToNumber(function);
     }
+
+    public void redFlush() {
+        itemList.redFlush();
+    }
 }

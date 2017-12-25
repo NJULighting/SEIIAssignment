@@ -1,6 +1,7 @@
 package nju.lighting.bl.documentbl.stockdoc;
 
 import nju.lighting.bl.documentbl.Doc;
+import nju.lighting.bl.documentbl.RedFlush;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
@@ -78,8 +79,10 @@ abstract public class StockTypeDoc extends Doc {
     abstract public ResultMessage reject();
 
     @Override
-    public ResultMessage redFlush() {
-        return null;
+    public void redFlush() {
+        totalAmount = -totalAmount;
+        remarks = RedFlush.RED_FLUSH_COMMENT;
+        itemList.redFlush();
     }
 
     @Override

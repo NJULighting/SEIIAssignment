@@ -63,4 +63,8 @@ class SaleDocItemList {
                 doc -> commodityInfo.getBasicCommodityItemVO(doc.getCommodityID()).getRecentInPrice() * doc.getNumber();
         return itemList.transformItemToNumber(function);
     }
+
+    public void redFlush() {
+        itemList.redFlush();
+    }
 }

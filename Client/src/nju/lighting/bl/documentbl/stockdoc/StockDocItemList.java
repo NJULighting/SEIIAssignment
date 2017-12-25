@@ -46,4 +46,8 @@ class StockDocItemList {
                 item -> commodityInfo.getCommodityInPrice(item.getCommodityID()) * item.getNumber() - item.getTotalAmount();
         return itemList.transformItemToNumber(function);
     }
+
+    public void redFlush() {
+        itemList.redFlush();
+    }
 }

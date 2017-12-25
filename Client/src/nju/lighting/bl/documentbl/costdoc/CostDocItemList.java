@@ -29,4 +29,8 @@ public class CostDocItemList {
     List<CostDocItemVO> toVO() {
         return itemList.toVO(CostDocItem::toVO);
     }
+
+    void redFlush() {
+        itemList.redFlush();
+    }
 }

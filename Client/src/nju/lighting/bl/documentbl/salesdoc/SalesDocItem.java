@@ -3,6 +3,7 @@ package nju.lighting.bl.documentbl.salesdoc;
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.documentbl.DocItem;
+import nju.lighting.bl.documentbl.RedFlush;
 import nju.lighting.po.doc.salesdoc.SalesDocItemPO;
 import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
 
@@ -84,6 +85,7 @@ public class SalesDocItem implements DocItem {
     public void redFlush() {
         number = -number;
         totalAmount = -totalAmount;
+        remarks = RedFlush.RED_FLUSH_COMMENT;
     }
 
     @Override

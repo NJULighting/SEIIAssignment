@@ -26,8 +26,8 @@ public class AccountOutDocPO extends DocPO implements Serializable {
      * Constructor for approval module
      */
     public AccountOutDocPO(String id, DocType docType, String userId, Date createTime,
-                          Date checkTime, String approvalComment, DocState state, String approvalId,
-                          AccountIODocType ioType, String customerID, List<AccountTransferItemPO> transferAccountList, double total) {
+                           Date checkTime, String approvalComment, DocState state, String approvalId,
+                           String customerID, List<AccountTransferItemPO> transferAccountList, double total) {
         super(id, docType, userId, createTime, checkTime, approvalComment, state, approvalId);
         this.customerID = customerID;
         this.transferAccountList = transferAccountList;
@@ -38,7 +38,7 @@ public class AccountOutDocPO extends DocPO implements Serializable {
      * Constructor for committing a new document.
      */
     public AccountOutDocPO(DocType type, String userId, Date createTime, AccountIODocType ioType,
-                          String customerID, List<AccountTransferItemPO> transferAccountList, double total) {
+                           String customerID, List<AccountTransferItemPO> transferAccountList, double total) {
         super(type, userId, createTime);
         this.customerID = customerID;
         this.transferAccountList = transferAccountList;

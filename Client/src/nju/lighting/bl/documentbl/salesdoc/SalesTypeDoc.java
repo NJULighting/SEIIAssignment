@@ -1,6 +1,7 @@
 package nju.lighting.bl.documentbl.salesdoc;
 
 import nju.lighting.bl.documentbl.Doc;
+import nju.lighting.bl.documentbl.RedFlush;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
@@ -37,8 +38,10 @@ public abstract class SalesTypeDoc extends Doc {
     }
 
     @Override
-    public ResultMessage redFlush() {
-        return null;
+    public void redFlush() {
+        finalAmount = -finalAmount;
+        remarks = RedFlush.RED_FLUSH_COMMENT;
+        itemList.redFlush();
     }
 
     void setAttributes(int customerId, String salesman, String repository, String remarks,

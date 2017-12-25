@@ -127,12 +127,12 @@ root {
 
 }
 
+
 .text-area {
 
     -fx-focus-color: #5599ff;
 
 }
-
 
 
 .jfx-text-field, .jfx-password-field {

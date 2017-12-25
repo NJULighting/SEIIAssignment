@@ -104,7 +104,9 @@ public enum DocManager {
 
             // Filter items with the commodity name given
             Predicate<BusinessConditionItemVO> commodityFilter =
-                    item -> Optional.ofNullable(filter.getCommodity()).map(item::equals).orElse(true);
+                    item -> Optional.ofNullable(filter.getCommodity())
+                            .map(name -> name.equals(item.getName()))
+                            .orElse(true);
             return res.stream().filter(commodityFilter).collect(Collectors.toList());
         } catch (RemoteException e) {
             e.printStackTrace();

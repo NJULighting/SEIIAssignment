@@ -43,7 +43,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定报损报溢单">
+      <JFXButton fx:id="lossAndGainDoc" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定报损报溢单">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>

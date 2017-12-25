@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import nju.lighting.bl.commoditybl.BasicCommodityItem;
+import nju.lighting.presentation.mainui.CommodityUpper;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
@@ -39,7 +40,8 @@ public class CommodityPicker implements Initializable {
     HBox father;
     boolean canceled;
     Node back;
-    Upper upper;
+    CommodityUpper upper;
+
 
 
     @FXML
@@ -60,10 +62,9 @@ public class CommodityPicker implements Initializable {
 
     @FXML
     void ok(){
-
-
-        commodities=category.getSelectedCommodities();
-        canceled=false;
+//        commodities=category.getSelectedCommodities();
+//        canceled=false;
+        upper.addCommodity(category.getSelectedCommodities());
         upper.back();
 
     }
@@ -80,7 +81,7 @@ public class CommodityPicker implements Initializable {
         this.back = back;
     }
 
-    public void setUpper(Upper upper) {
+    public void setUpper(CommodityUpper upper) {
         this.upper = upper;
     }
 

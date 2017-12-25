@@ -22,7 +22,7 @@ import nju.lighting.presentation.utils.TextFieldHelper;
  *
  * @author 陈俊宇
  */
-public class EditingCell extends TableCell<CommodityItem, String> {
+public class EditingCell<T,S> extends TableCell<T, S> {
 
     private JFXTextField textField;
     String type;
@@ -42,16 +42,16 @@ public class EditingCell extends TableCell<CommodityItem, String> {
 
     @Override
     public void startEdit() {
-        System.out.println("start");
+        System.out.println("start Edit");
         if (!isEmpty()) {
-            CommodityItem commodityItem = getTableView().getItems().get(getIndex());
-            if (!commodityItem.isGift()) {
+           // CommodityItem commodityItem = getTableView().getItems().get(getIndex());
+//            if (!commodityItem.isGift()) {
                 super.startEdit();
                 createTextField();
                 setText(null);
                 setGraphic(textField);
                 textField.selectAll();
-            }
+           // }
 
         }
     }
@@ -64,21 +64,23 @@ public class EditingCell extends TableCell<CommodityItem, String> {
     }
 
     @Override
-    public void updateItem(String item, boolean empty) {
+    public void updateItem(S item, boolean empty) {
         super.updateItem(item, empty);
 
         if (empty) {
             setText(null);
             setGraphic(null);
         } else {
-            CommodityItem commodityItem = getTableView().getItems().get(getIndex());
-            if (isEditing() && !commodityItem.isGift()) {
+            //CommodityItem commodityItem = getTableView().getItems().get(getIndex());
+            //if (isEditing() && !commodityItem.isGift()) {
+            if (isEditing()){
                 if (textField != null) {
                     textField.setText(getString());
                 }
                 setText(null);
                 setGraphic(textField);
-            } else {
+            }
+             else {
                 setText(getString());
                 setGraphic(null);
             }
@@ -97,8 +99,15 @@ public class EditingCell extends TableCell<CommodityItem, String> {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if (!newValue) {
-                    if (textField.validate())
-                        commitEdit(textField.getText());
+                    if (textField.validate()){
+                        if (type.equals("double"))
+                            commitEdit((S)(new Double(Double.parseDouble(textField.getText()))));
+                        else if (type.equals("int"))
+                            commitEdit((S)(new Integer(Integer.parseInt(textField.getText()))));
+                        else
+                            commitEdit((S)textField.getText());
+                    }
+
                     else
                         cancelEdit();
                 }
@@ -117,7 +126,7 @@ public class EditingCell extends TableCell<CommodityItem, String> {
     }
 
     @Override
-    public void commitEdit(String item) {
+    public void commitEdit(S item) {
 
         if (isEditing()) {
             super.commitEdit(item);

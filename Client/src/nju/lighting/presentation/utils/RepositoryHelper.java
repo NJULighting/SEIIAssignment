@@ -1,5 +1,6 @@
 package nju.lighting.presentation.utils;
 
+import shared.LossAndGainItemType;
 import shared.RepositoryChangeType;
 
 import java.util.HashMap;
@@ -12,6 +13,8 @@ import java.util.HashMap;
  */
 public class RepositoryHelper {
     static HashMap<RepositoryChangeType,String> hashMap=new HashMap<>();
+    static HashMap<LossAndGainItemType,String> lossAndGainItemTypeStringHashMap=new HashMap<>();
+
 
     static {
         hashMap.put(RepositoryChangeType.BUY,"进货");
@@ -21,7 +24,13 @@ public class RepositoryHelper {
         hashMap.put(RepositoryChangeType.SELL,"销售");
         hashMap.put(RepositoryChangeType.RETURN,"退货");
 
+        lossAndGainItemTypeStringHashMap.put(LossAndGainItemType.GAIN,"报溢");
+        lossAndGainItemTypeStringHashMap.put(LossAndGainItemType.LOSS,"报损");
+
     }
 
      public static String typeToString(RepositoryChangeType type){return hashMap.get(type);}
+
+     public static String lossAndGainTypeToString(LossAndGainItemType type){
+         return lossAndGainItemTypeStringHashMap.get(type);}
 }

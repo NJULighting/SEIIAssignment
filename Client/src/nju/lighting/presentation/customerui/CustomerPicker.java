@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
+import nju.lighting.presentation.mainui.CustomerUpper;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.CustomerVO;
 import shared.CustomerType;
@@ -32,7 +33,7 @@ public class CustomerPicker {
 
     boolean canceled=true;
 
-    public void init(Upper upper, CustomerType type){
+    public void init(CustomerUpper upper, CustomerType type){
         FXMLLoader loader=new FXMLLoader(getClass().getResource("CustomerSearchListUI.fxml"));
         try {
             pane.getChildren().add(loader.load());
@@ -41,7 +42,7 @@ public class CustomerPicker {
         }
 
         CustomerSearchListController controller=loader.getController();
-        controller.setReadOnly(this,upper);
+        controller.setReadOnly(upper);
         controller.search();
 
     }
@@ -54,11 +55,4 @@ public class CustomerPicker {
         this.customer = customer;
     }
 
-    public boolean isCanceled() {
-        return canceled;
-    }
-
-    public void setCanceled(boolean canceled) {
-        this.canceled = canceled;
-    }
 }

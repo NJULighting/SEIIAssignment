@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="560.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainList">
+   <children>
+      <TableView fx:id="tableView" editable="true" layoutX="10.0" prefHeight="560.0" prefWidth="560.0" stylesheets="@../../custom.css">
+         <columns>
+            <TableColumn fx:id="name" prefWidth="120.0" text="商品名称" />
+            <TableColumn fx:id="id" prefWidth="90.0" text="编号" />
+            <TableColumn fx:id="count" editable="true" prefWidth="90.0" text="数量" />
+            <TableColumn fx:id="repCount" prefWidth="90.0" text="当前库存" />
+            <TableColumn fx:id="type" prefWidth="160.0" text="报损/报溢" />
+         </columns>
+      </TableView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="50.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="570.0" />
+   </children>
+</AnchorPane>

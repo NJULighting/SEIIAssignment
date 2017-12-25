@@ -53,12 +53,14 @@ public class DocController implements DocBLService {
 
     @Override
     public ResultMessage redFlush(DocVO docVO) {
-        return null;
+        RedFlush redFlush = new RedFlush();
+        return redFlush.redFlush(docVO);
     }
 
     @Override
     public DocVO redFlushAndCopy(DocVO target) {
-        return null;
+        RedFlush redFlush = new RedFlush();
+        return redFlush.redFlushAndCopy(target);
     }
 
     @Override

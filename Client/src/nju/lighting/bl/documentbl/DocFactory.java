@@ -1,6 +1,7 @@
 package nju.lighting.bl.documentbl;
 
-import nju.lighting.bl.documentbl.accountiodoc.AccountIODoc;
+import nju.lighting.bl.documentbl.accountiodoc.AccountInDoc;
+import nju.lighting.bl.documentbl.accountiodoc.AccountOutDoc;
 import nju.lighting.bl.documentbl.alertdoc.AlertDoc;
 import nju.lighting.bl.documentbl.costdoc.CostDoc;
 import nju.lighting.bl.documentbl.giftdoc.GiftDoc;
@@ -29,8 +30,8 @@ public class DocFactory {
 
     DocFactory() {
         docPOMap = new HashMap<>();
-        docPOMap.put(DocType.ACCOUNT_IN, AccountIODoc::new);
-        docPOMap.put(DocType.ACCOUNT_OUT, AccountIODoc::new);
+        docPOMap.put(DocType.ACCOUNT_IN, AccountInDoc::new);
+        docPOMap.put(DocType.ACCOUNT_OUT, AccountOutDoc::new);
         docPOMap.put(DocType.COST, CostDoc::new);
         docPOMap.put(DocType.ALERT, AlertDoc::new);
         docPOMap.put(DocType.GIFT, GiftDoc::new);
@@ -41,8 +42,8 @@ public class DocFactory {
         docPOMap.put(DocType.STOCK_RETURN, StockReturnDoc::new);
 
         historyDocVOMap = new HashMap<>();
-        historyDocVOMap.put(DocType.ACCOUNT_IN, AccountIODoc::new);
-        historyDocVOMap.put(DocType.ACCOUNT_OUT, AccountIODoc::new);
+        historyDocVOMap.put(DocType.ACCOUNT_IN, AccountInDoc::new);
+        historyDocVOMap.put(DocType.ACCOUNT_OUT, AccountOutDoc::new);
         historyDocVOMap.put(DocType.COST, CostDoc::new);
         historyDocVOMap.put(DocType.ALERT, AlertDoc::new);
         historyDocVOMap.put(DocType.GIFT, GiftDoc::new);

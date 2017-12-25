@@ -10,6 +10,7 @@ import java.util.List;
  * Description
  * @author 陈俊宇
  */
+@Deprecated
 public class MockDocManage implements DocInfo {
     @Override
     public List<DocVO> findUnCheckedDoc() {

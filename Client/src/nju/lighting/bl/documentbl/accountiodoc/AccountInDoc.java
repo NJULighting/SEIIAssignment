@@ -39,11 +39,13 @@ public class AccountInDoc extends AccountIODoc {
     @Override
     public ResultMessage approve() {
         // Change account
-        itemList.approve();
+        ResultMessage res = itemList.approve();
+        if (res != ResultMessage.SUCCESS)
+            return res;
 
         // Change customer's payable
         CustomerInfo customerInfo = new CustomerInfoImpl();
-        return customerInfo.changePayable(Integer.parseInt(customerID), total);
+        return customerInfo.changePayable(Integer.parseInt(customerID), -total);
     }
 
     @Override

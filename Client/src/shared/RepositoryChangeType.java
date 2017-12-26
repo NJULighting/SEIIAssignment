@@ -7,6 +7,7 @@ public enum RepositoryChangeType {
     RETURN,
     BE_RETURN, // 被退货
     LOSS,
-    GAIN
+    GAIN,
+    GIFT
 
 }

@@ -4,8 +4,12 @@ import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.documentbl.DocItem;
 import nju.lighting.bl.documentbl.RedFlush;
+import nju.lighting.bl.repositorybl.RepositoryInfo;
+import nju.lighting.bl.repositorybl.RepositoryInfoImpl;
 import nju.lighting.po.doc.salesdoc.SalesDocItemPO;
 import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
+import shared.RepositoryChangeType;
+import shared.ResultMessage;
 
 /**
  * Description:
@@ -19,21 +23,24 @@ public class SalesDocItem implements DocItem {
     private double salePrice;
     private double totalAmount;
     private String remarks = "";
+    private SalesDocItemType itemType;
 
-    SalesDocItem(SalesDocItemPO po) {
+    SalesDocItem(SalesDocItemPO po, SalesDocItemType itemType) {
         id = po.getId();
         commodityID = po.getCommodityID();
         number = po.getNumber();
         remarks = po.getRemarks();
+        this.itemType = itemType;
 
         updatePriceAndTotal();
     }
 
-    SalesDocItem(SalesDocItemVO vo) {
+    SalesDocItem(SalesDocItemVO vo, SalesDocItemType itemType) {
         id = vo.getId();
         commodityID = vo.getCommodity().getId();
         number = vo.getNumber();
         remarks = vo.getRemarks();
+        this.itemType = itemType;
 
         updatePriceAndTotal();
     }
@@ -87,7 +94,11 @@ public class SalesDocItem implements DocItem {
     }
 
     @Override
-    public void approve() {
+    public ResultMessage approve() {
+        RepositoryInfo repositoryInfo = new RepositoryInfoImpl();
+        RepositoryChangeType repositoryChangeType = itemType == SalesDocItemType.RETURN ?
+                RepositoryChangeType.BE_RETURN : RepositoryChangeType.SELL;
 
+        return repositoryInfo.changeRepository(commodityID, number, totalAmount, repositoryChangeType);
     }
 }

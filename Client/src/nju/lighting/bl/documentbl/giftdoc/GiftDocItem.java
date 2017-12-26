@@ -3,8 +3,12 @@ package nju.lighting.bl.documentbl.giftdoc;
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.documentbl.DocItem;
+import nju.lighting.bl.repositorybl.RepositoryInfo;
+import nju.lighting.bl.repositorybl.RepositoryInfoImpl;
 import nju.lighting.po.doc.giftdoc.GiftItemPO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
+import shared.RepositoryChangeType;
+import shared.ResultMessage;
 
 
 /**
@@ -73,7 +77,8 @@ public class GiftDocItem implements DocItem {
     }
 
     @Override
-    public void approve() {
-
+    public ResultMessage approve() {
+        RepositoryInfo repositoryInfo = new RepositoryInfoImpl();
+        return repositoryInfo.changeRepository(commodityId, count, subtotal, RepositoryChangeType.GIFT);
     }
 }

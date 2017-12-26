@@ -3,9 +3,13 @@ package nju.lighting.bl.documentbl.lossandgaindoc;
 import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.documentbl.DocItem;
+import nju.lighting.bl.repositorybl.RepositoryInfo;
+import nju.lighting.bl.repositorybl.RepositoryInfoImpl;
 import nju.lighting.po.doc.lossandgaindoc.LossAndGainItemPO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocItemVO;
 import shared.LossAndGainItemType;
+import shared.RepositoryChangeType;
+import shared.ResultMessage;
 
 class LossAndGainDocItem implements DocItem {
 
@@ -62,8 +66,7 @@ class LossAndGainDocItem implements DocItem {
      * its type is <tt>GAIN</tt>. If the value if negative, its type is <tt>LOSS</tt>
      */
     public double getValue() {
-        CommodityInfo commodityInfo = new CommodityInfoImpl();
-        double value = commodityInfo.getCommodityRecentSellPrice(commodityId) * count;
+        double value = getAmount();
         if (type == LossAndGainItemType.LOSS)
             value = -value;
 
@@ -73,6 +76,11 @@ class LossAndGainDocItem implements DocItem {
     String getCommodityName() {
         CommodityInfo info = new CommodityInfoImpl();
         return info.getCommodityNameByID(commodityId);
+    }
+
+    private double getAmount() {
+        CommodityInfo commodityInfo = new CommodityInfoImpl();
+        return commodityInfo.getCommodityRecentSellPrice(commodityId) * count;
     }
 
     LossAndGainItemPO toPO(String docId) {
@@ -91,7 +99,10 @@ class LossAndGainDocItem implements DocItem {
     }
 
     @Override
-    public void approve() {
-
+    public ResultMessage approve() {
+        RepositoryInfo repositoryInfo = new RepositoryInfoImpl();
+        RepositoryChangeType repositoryChangeType = type == LossAndGainItemType.LOSS ?
+                RepositoryChangeType.LOSS : RepositoryChangeType.GAIN;
+        return repositoryInfo.changeRepository(commodityId, count, getAmount(), repositoryChangeType);
     }
 }

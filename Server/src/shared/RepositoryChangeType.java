@@ -7,6 +7,7 @@ public enum RepositoryChangeType {
     RETURN,
     BE_RETURN,
     LOSS,
-    GAIN
+    GAIN,
+    GIFT
 
 }

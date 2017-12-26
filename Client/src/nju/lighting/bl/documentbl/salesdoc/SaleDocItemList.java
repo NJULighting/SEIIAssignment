@@ -6,6 +6,7 @@ import nju.lighting.bl.documentbl.ItemList;
 import nju.lighting.po.doc.salesdoc.SalesDocItemPO;
 import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
 import nju.lighting.vo.viewtables.BusinessConditionItemVO;
+import shared.ResultMessage;
 
 import java.util.Date;
 import java.util.List;
@@ -19,14 +20,19 @@ import java.util.function.ToDoubleFunction;
  */
 class SaleDocItemList {
 
+    private SalesDocItemType itemType;
     private ItemList<SalesDocItem> itemList = new ItemList<>();
 
+    SaleDocItemList(SalesDocItemType itemType) {
+        this.itemType = itemType;
+    }
+
     void add(SalesDocItemPO po) {
-        itemList.add(po, SalesDocItem::new);
+        itemList.add(po, item -> new SalesDocItem(item, itemType));
     }
 
     void add(SalesDocItemVO vo) {
-        itemList.add(vo, SalesDocItem::new);
+        itemList.add(vo, item -> new SalesDocItem(item, itemType));
     }
 
     boolean containsCommodity(String commodityName) {
@@ -64,5 +70,9 @@ class SaleDocItemList {
 
     public void redFlush() {
         itemList.redFlush();
+    }
+
+    ResultMessage approve() {
+        return itemList.approve();
     }
 }

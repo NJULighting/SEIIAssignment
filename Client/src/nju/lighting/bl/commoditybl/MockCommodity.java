@@ -2,6 +2,7 @@ package nju.lighting.bl.commoditybl;
 
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.repository.RepositoryTableItemVO;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -77,7 +78,12 @@ public class MockCommodity implements CommodityInfo {
     }
 
     @Override
-    public boolean addCommodityItem(String id, int count) {
+    public ResultMessage changeCommodityNumber(String id, int count) {
+        return ResultMessage.SUCCESS;
+    }
+
+    @Override
+    public boolean achieveAlertLimit(String commodityId, int count) {
         return false;
     }
 

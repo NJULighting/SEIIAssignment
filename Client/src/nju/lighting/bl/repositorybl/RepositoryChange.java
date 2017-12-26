@@ -42,7 +42,7 @@ class RepositoryChange {
         return new RepositoryChangeVO(commodityInfo.getCommodityNameByID(commodityId), commodityId, type, count, amount, date);
     }
 
-    public RepositoryChangePO toPOForCreation() {
+    RepositoryChangePO toPOForCreation() {
         return new RepositoryChangePO(commodityId, type, count, amount, date);
     }
 }

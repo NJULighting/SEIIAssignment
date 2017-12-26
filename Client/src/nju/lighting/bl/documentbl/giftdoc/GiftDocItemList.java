@@ -5,6 +5,7 @@ import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.documentbl.ItemList;
 import nju.lighting.po.doc.giftdoc.GiftItemPO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
+import shared.ResultMessage;
 
 import java.util.List;
 
@@ -42,5 +43,9 @@ class GiftDocItemList {
         CommodityInfo commodityInfo = new CommodityInfoImpl();
         return itemList.containItemWithAttribute(name,
                 item -> commodityInfo.getCommodityNameByID(item.getCommodityId()));
+    }
+
+    ResultMessage approve() {
+        return itemList.approve();
     }
 }

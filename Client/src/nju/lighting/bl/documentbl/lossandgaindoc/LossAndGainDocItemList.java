@@ -3,6 +3,7 @@ package nju.lighting.bl.documentbl.lossandgaindoc;
 import nju.lighting.bl.documentbl.ItemList;
 import nju.lighting.po.doc.lossandgaindoc.LossAndGainItemPO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocItemVO;
+import shared.ResultMessage;
 
 import java.util.List;
 
@@ -41,5 +42,9 @@ class LossAndGainDocItemList {
 
     public void redFlush() {
         itemList.redFlush();
+    }
+
+    ResultMessage approve() {
+        return itemList.approve();
     }
 }

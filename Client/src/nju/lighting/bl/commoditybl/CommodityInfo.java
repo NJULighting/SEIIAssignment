@@ -2,6 +2,7 @@ package nju.lighting.bl.commoditybl;
 
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.repository.RepositoryTableItemVO;
+import shared.ResultMessage;
 
 import java.util.List;
 
@@ -27,7 +28,9 @@ public interface CommodityInfo {
 
     List<RepositoryTableItemVO> getRepositoryTableItemList();
 
-    boolean addCommodityItem(String id, int count);
+    ResultMessage changeCommodityNumber(String id, int count);
 
     boolean reduceCommodityItem(String id, int count);
+
+    boolean achieveAlertLimit(String commodityId, int count);
 }

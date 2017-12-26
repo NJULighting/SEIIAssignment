@@ -50,6 +50,10 @@ public class CommodityItemPO implements Serializable {
         return id;
     }
 
+    public void addRepositoryCount(int addition) {
+        repCount += addition;
+    }
+
     public int getSequenceNumber() {
         return CommodityPathParser.getLastNumOfPath(id);
     }

@@ -46,7 +46,7 @@ public class AlertDoc extends Doc {
 
     @Override
     public ResultMessage approve() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override

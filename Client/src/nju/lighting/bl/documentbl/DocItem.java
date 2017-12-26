@@ -1,5 +1,7 @@
 package nju.lighting.bl.documentbl;
 
+import shared.ResultMessage;
+
 /**
  * Created on 2017/12/24.
  * Description:
@@ -8,5 +10,5 @@ package nju.lighting.bl.documentbl;
 public interface DocItem {
     void redFlush();
 
-    void approve();
+    ResultMessage approve();
 }

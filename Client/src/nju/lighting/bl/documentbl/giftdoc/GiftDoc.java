@@ -69,8 +69,7 @@ public class GiftDoc extends Doc {
 
     @Override
     public ResultMessage approve() {
-
-        return null;
+        return itemList.approve();
     }
 
     @Override

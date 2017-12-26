@@ -1,10 +1,13 @@
 package nju.lighting.bl.documentbl.costdoc;
 
+import nju.lighting.bl.accountbl.AccountInfo;
+import nju.lighting.bl.accountbl.AccountInfoImpl;
 import nju.lighting.bl.documentbl.DocItem;
 import nju.lighting.bl.documentbl.RedFlush;
 import nju.lighting.po.doc.costdoc.CostDocItemPO;
 import nju.lighting.vo.doc.costdoc.CostDocItemVO;
 import shared.CostDocItemType;
+import shared.ResultMessage;
 
 /**
  * Created on 2017/11/12.
@@ -51,7 +54,7 @@ public class CostDocItem implements DocItem {
     }
 
     @Override
-    public void approve() {
-
+    public ResultMessage approve() {
+        throw new UnsupportedOperationException();
     }
 }

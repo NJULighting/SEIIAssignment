@@ -53,7 +53,7 @@ public class CustomerData extends UnicastRemoteObject implements CustomerDataSer
         CustomerPO customerPO = getCustomerById(customerId);
         if (customerPO == null)
             return ResultMessage.FAILURE;
-        customerPO.setReceivable(amount);
+        customerPO.setReceivable(customerPO.getReceivable() + amount);
         return updateCustomer(customerPO);
     }
 
@@ -71,7 +71,7 @@ public class CustomerData extends UnicastRemoteObject implements CustomerDataSer
         CustomerPO customerPO = getCustomerById(customerId);
         if (customerPO == null)
             return ResultMessage.FAILURE;
-        customerPO.setPayable(amount);
+        customerPO.setPayable(customerPO.getPayable() + amount);
         return updateCustomer(customerPO);
     }
 

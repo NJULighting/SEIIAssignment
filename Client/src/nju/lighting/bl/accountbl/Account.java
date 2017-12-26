@@ -5,6 +5,7 @@ import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.po.account.AccountPO;
 import nju.lighting.vo.account.AccountVO;
 import shared.AccountChangeType;
+import shared.ResultMessage;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
@@ -76,14 +77,15 @@ class Account {
         return logList;
     }
 
-    void updateAmount(double total) {
+    ResultMessage updateAmount(double total) {
         amount += total;
         logList.addLog(new Date(), total, amount, total < 0 ? AccountChangeType.OUT : AccountChangeType.IN);
         try {
             AccountDataService dataService = DataFactory.getDataBase(AccountDataService.class);
-            dataService.update(toPO());
+            return dataService.update(toPO());
         } catch (NamingException | RemoteException e) {
             e.printStackTrace();
+            return ResultMessage.FAILURE;
         }
     }
 }

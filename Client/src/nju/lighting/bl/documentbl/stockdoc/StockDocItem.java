@@ -4,8 +4,12 @@ import nju.lighting.bl.commoditybl.CommodityInfo;
 import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.documentbl.DocItem;
 import nju.lighting.bl.documentbl.RedFlush;
+import nju.lighting.bl.repositorybl.RepositoryInfo;
+import nju.lighting.bl.repositorybl.RepositoryInfoImpl;
 import nju.lighting.po.doc.stockdoc.StockDocItemPO;
 import nju.lighting.vo.doc.stockdoc.StockDocItemVO;
+import shared.RepositoryChangeType;
+import shared.ResultMessage;
 
 /**
  * Description:
@@ -18,22 +22,24 @@ public class StockDocItem implements DocItem {
     private int number;
     private double totalAmount;
     private String remarks = "";
+    private StockDocItemType itemType;
 
-    StockDocItem(StockDocItemPO po) {
+    StockDocItem(StockDocItemPO po, StockDocItemType itemType) {
         id = po.getId();
         commodityID = po.getCommodityID();
         number = po.getNumber();
         remarks = po.getRemarks();
         totalAmount = po.getTotalAmount();
+        this.itemType = itemType;
     }
 
-    StockDocItem(StockDocItemVO vo) {
+    StockDocItem(StockDocItemVO vo, StockDocItemType itemType) {
         id = vo.getId();
         commodityID = vo.getCommodity().getId();
         number = vo.getNumber();
         remarks = vo.getRemarks();
         totalAmount = vo.getTotalAmount();
-
+        this.itemType = itemType;
     }
 
     public int getId() {
@@ -92,7 +98,11 @@ public class StockDocItem implements DocItem {
     }
 
     @Override
-    public void approve() {
+    public ResultMessage approve() {
+        RepositoryInfo repositoryInfo = new RepositoryInfoImpl();
+        RepositoryChangeType changeType = itemType == StockDocItemType.RETURN ?
+                RepositoryChangeType.RETURN : RepositoryChangeType.BUY;
 
+        return repositoryInfo.changeRepository(commodityID, number, totalAmount, changeType);
     }
 }

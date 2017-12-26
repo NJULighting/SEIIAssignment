@@ -52,9 +52,7 @@ public class CostDoc extends Doc {
     @Override
     public ResultMessage approve() {
         AccountInfo accountInfo = new MockAccountInfo();
-        accountInfo.updateAmount(accountId, totalAmount);
-
-        return ResultMessage.SUCCESS;
+        return accountInfo.updateAmount(accountId, totalAmount);
     }
 
     @Override

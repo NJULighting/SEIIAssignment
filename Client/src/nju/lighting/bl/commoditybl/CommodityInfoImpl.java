@@ -9,6 +9,7 @@ import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.repository.RepositoryTableItemVO;
+import shared.ResultMessage;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
@@ -115,12 +116,31 @@ public class CommodityInfoImpl implements CommodityInfo {
     }
 
     @Override
-    public boolean addCommodityItem(String id, int count) {
-        return false;
+    public ResultMessage changeCommodityNumber(String id, int count) {
+        try {
+            CommodityItemPO item = dataService.findById(id);
+            item.addRepositoryCount(count);
+
+            return dataService.update(item);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return ResultMessage.FAILURE;
+        }
     }
 
     @Override
     public boolean reduceCommodityItem(String id, int count) {
+        return false;
+    }
+
+    @Override
+    public boolean achieveAlertLimit(String commodityId, int count) {
+        try {
+            CommodityItemPO item = dataService.findById(commodityId);
+            return item.getRepCount() >= count;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }

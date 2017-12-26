@@ -23,7 +23,7 @@ public abstract class SalesTypeDoc extends Doc {
     double discount;
     double voucher;
     double finalAmount;
-    SaleDocItemList itemList = new SaleDocItemList();
+    SaleDocItemList itemList;
 
     SalesTypeDoc(DocVO vo) {
         super(vo);

@@ -5,6 +5,7 @@ import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.documentbl.ItemList;
 import nju.lighting.po.doc.stockdoc.StockDocItemPO;
 import nju.lighting.vo.doc.stockdoc.StockDocItemVO;
+import shared.ResultMessage;
 
 import java.util.List;
 
@@ -16,6 +17,11 @@ import java.util.List;
 class StockDocItemList {
 
     private ItemList<StockDocItem> itemList = new ItemList<>();
+    private StockDocItemType itemType;
+
+    StockDocItemList(StockDocItemType itemType) {
+        this.itemType = itemType;
+    }
 
     boolean containsCommodity(String commodityName) {
         CommodityInfo commodityInfo = new CommodityInfoImpl();
@@ -24,11 +30,11 @@ class StockDocItemList {
     }
 
     void add(StockDocItemPO po) {
-        itemList.add(po, StockDocItem::new);
+        itemList.add(po, item -> new StockDocItem(item, itemType));
     }
 
     void add(StockDocItemVO vo) {
-        itemList.add(vo, StockDocItem::new);
+        itemList.add(vo, item -> new StockDocItem(item, itemType));
     }
 
     List<StockDocItemPO> toPO(String docId) {
@@ -45,5 +51,9 @@ class StockDocItemList {
 
     public void redFlush() {
         itemList.redFlush();
+    }
+
+    ResultMessage approve() {
+        return itemList.approve();
     }
 }

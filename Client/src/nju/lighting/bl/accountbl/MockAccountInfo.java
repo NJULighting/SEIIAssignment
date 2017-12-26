@@ -1,6 +1,7 @@
 package nju.lighting.bl.accountbl;
 
 import nju.lighting.vo.account.AccountVO;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +21,8 @@ public class MockAccountInfo implements AccountInfo {
     }
 
     @Override
-    public void updateAmount(String accountId, double total) {
-
+    public ResultMessage updateAmount(String accountId, double total) {
+        return ResultMessage.SUCCESS;
     }
 
     @Override

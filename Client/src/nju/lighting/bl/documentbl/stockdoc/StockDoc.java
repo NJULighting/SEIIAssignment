@@ -1,5 +1,7 @@
 package nju.lighting.bl.documentbl.stockdoc;
 
+import nju.lighting.bl.customerbl.CustomerInfo;
+import nju.lighting.bl.customerbl.CustomerInfoImpl;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.stockdoc.StockDocPO;
 import nju.lighting.vo.DocVO;
@@ -31,6 +33,7 @@ public class StockDoc extends StockTypeDoc {
         setAttributes(stockDocPO.getCustomerId(), stockDocPO.getCustomerId(),
                 stockDocPO.getRepository(), stockDocPO.getTotalAmount());
 
+        itemList = new StockDocItemList(StockDocItemType.STOCK);
         stockDocPO.getItemPOS().forEach(itemList::add);
     }
 
@@ -38,6 +41,7 @@ public class StockDoc extends StockTypeDoc {
         StockDocVO docVO = (StockDocVO) vo;
         setAttributes(docVO.getCustomerId(), docVO.getRepository(), docVO.getRemarks(), docVO.getTotalAmount());
 
+        itemList = new StockDocItemList(StockDocItemType.STOCK);
         docVO.getItems().forEach(itemList::add);
     }
 
@@ -46,7 +50,13 @@ public class StockDoc extends StockTypeDoc {
      */
     @Override
     public ResultMessage approve() {
-        return null;
+        ResultMessage res = itemList.approve();
+        if (res != ResultMessage.SUCCESS)
+            return res;
+
+        // Change customer's receivable
+        CustomerInfo customerInfo = new CustomerInfoImpl();
+        return customerInfo.changeReceivable(Integer.parseInt(customerId), totalAmount);
     }
 
     @Override

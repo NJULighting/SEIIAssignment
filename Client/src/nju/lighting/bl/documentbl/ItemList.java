@@ -1,5 +1,7 @@
 package nju.lighting.bl.documentbl;
 
+import shared.ResultMessage;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -50,7 +52,12 @@ public class ItemList<Item extends DocItem> {
         items.forEach(Item::redFlush);
     }
 
-    public void approve() {
-        items.forEach(Item::approve);
+    public ResultMessage approve() {
+        for (Item i : items) {
+            if (i.approve() != ResultMessage.SUCCESS)
+                return ResultMessage.FAILURE;
+        }
+
+        return ResultMessage.SUCCESS;
     }
 }

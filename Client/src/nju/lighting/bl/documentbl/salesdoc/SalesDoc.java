@@ -1,5 +1,7 @@
 package nju.lighting.bl.documentbl.salesdoc;
 
+import nju.lighting.bl.customerbl.CustomerInfo;
+import nju.lighting.bl.customerbl.CustomerInfoImpl;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.salesdoc.SalesDocPO;
 import nju.lighting.vo.DocVO;
@@ -35,6 +37,7 @@ public class SalesDoc extends SalesTypeDoc {
                 salesDocPO.getRemarks(), 0, salesDocPO.getDiscount(), salesDocPO.getVoucher(), salesDocPO.getFinalAmount());
         beforeDiscountAmount = calculateBeforeDiscount();
 
+        itemList = new SaleDocItemList(SalesDocItemType.RETURN);
         salesDocPO.getItemPOS().forEach(itemList::add);
     }
 
@@ -44,6 +47,7 @@ public class SalesDoc extends SalesTypeDoc {
         setAttributes(docVO.getCustomerId(), docVO.getSalesman(), docVO.getRepository(), docVO.getRemarks(),
                 docVO.getBeforeDiscountAmount(), docVO.getDiscount(), docVO.getVoucher(), docVO.getFinalAmount());
 
+        itemList = new SaleDocItemList(SalesDocItemType.SALE);
         docVO.getItems().forEach(itemList::add);
     }
 
@@ -52,7 +56,13 @@ public class SalesDoc extends SalesTypeDoc {
      */
     @Override
     public ResultMessage approve() {
-        return null;
+        ResultMessage res = itemList.approve();
+        if (res != ResultMessage.SUCCESS)
+            return res;
+
+        // Change customer's payable
+        CustomerInfo customerInfo = new CustomerInfoImpl();
+        return customerInfo.changePayable(customerId, finalAmount);
     }
 
     @Override

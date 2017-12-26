@@ -5,6 +5,7 @@ import nju.lighting.bl.utils.DataServiceSupplier;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.vo.account.AccountVO;
+import shared.ResultMessage;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
@@ -32,12 +33,13 @@ public class AccountInfoImpl implements AccountInfo {
     }
 
     @Override
-    public void updateAmount(String accountId, double total) {
+    public ResultMessage updateAmount(String accountId, double total) {
         try {
             Account account = new Account(dataService.get(accountId));
-            account.updateAmount(total);
+            return account.updateAmount(total);
         } catch (RemoteException e) {
             e.printStackTrace();
+            return ResultMessage.FAILURE;
         }
     }
 

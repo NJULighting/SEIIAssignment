@@ -5,6 +5,7 @@ import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.documentbl.DocItem;
 import nju.lighting.po.doc.alertdoc.AlertDocItemPO;
 import nju.lighting.vo.doc.alertdoc.AlertDocItemVO;
+import shared.ResultMessage;
 
 public class AlertDocItem implements DocItem {
 
@@ -55,7 +56,7 @@ public class AlertDocItem implements DocItem {
     }
 
     @Override
-    public void approve() {
-
+    public ResultMessage approve() {
+        throw new UnsupportedOperationException();
     }
 }

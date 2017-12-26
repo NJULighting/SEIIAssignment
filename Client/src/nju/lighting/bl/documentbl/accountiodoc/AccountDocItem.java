@@ -6,6 +6,7 @@ import nju.lighting.bl.documentbl.DocItem;
 import nju.lighting.bl.documentbl.RedFlush;
 import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
+import shared.ResultMessage;
 
 /**
  * Created on 2017/12/14.
@@ -66,10 +67,10 @@ class AccountDocItem implements DocItem {
     }
 
     @Override
-    public void approve() {
+    public ResultMessage approve() {
         AccountInfo accountInfo = new AccountInfoImpl();
         // If the io type is IN, increase the account amount. Otherwise, decrease the account balance
         double amountChange = ioType == AccountIOType.IN ? amount : -amount;
-        accountInfo.updateAmount(accountID, amountChange);
+        return accountInfo.updateAmount(accountID, amountChange);
     }
 }

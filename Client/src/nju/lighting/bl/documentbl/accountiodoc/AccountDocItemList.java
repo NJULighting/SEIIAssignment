@@ -3,6 +3,7 @@ package nju.lighting.bl.documentbl.accountiodoc;
 import nju.lighting.bl.documentbl.ItemList;
 import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
+import shared.ResultMessage;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ class AccountDocItemList {
         itemList.redFlush();
     }
 
-    void approve() {
-        itemList.approve();
+    ResultMessage approve() {
+        return itemList.approve();
     }
 }

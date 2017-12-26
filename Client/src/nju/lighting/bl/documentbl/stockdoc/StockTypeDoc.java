@@ -19,7 +19,7 @@ abstract public class StockTypeDoc extends Doc {
     String repository;
     String remarks;
     double totalAmount;
-    StockDocItemList itemList = new StockDocItemList();
+    StockDocItemList itemList;
 
 
     StockTypeDoc(HistoryDocVO historyDocVO) {

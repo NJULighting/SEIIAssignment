@@ -141,7 +141,7 @@ public class LossAndGainList implements Initializable {
 
                             HBox buttonBox = new HBox(toggleButton, button);
                             buttonBox.setMinHeight(40);
-                            buttonBox.setSpacing(20);
+                            buttonBox.setSpacing(10);
                             buttonBox.setAlignment(Pos.CENTER_LEFT);
 
                             setText(null);

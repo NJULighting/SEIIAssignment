@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -11,7 +16,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.commodityui.CommodityCategory">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.commodityui.CommodityCategory">
    <children>
       <TextField fx:id="search" layoutX="40.0" layoutY="21.0" promptText="输入关键词" />
       <Button fx:id="searchBtn" layoutX="241.0" layoutY="6.0" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
@@ -36,7 +41,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="70.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="1000.0" />
       <ScrollPane layoutX="40.0" layoutY="70.0" prefHeight="525.0" prefWidth="1000.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
          <content>
-            <TreeTableView fx:id="commodityTreeTableView" prefHeight="507.0" style="-fx-background-color: transparent;" stylesheets="@../custom.css">
+            <TreeTableView fx:id="commodityTreeTableView" prefHeight="507.0" prefWidth="998.0" style="-fx-background-color: transparent;" stylesheets="@../custom.css">
               <columns>
                 <TreeTableColumn fx:id="name" prefWidth="198.0" text="  商品名称" />
                 <TreeTableColumn fx:id="id" prefWidth="100.0" text="编号" />

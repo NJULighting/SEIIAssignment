@@ -76,7 +76,13 @@ public abstract class Doc {
      */
     abstract public void approve();
 
-    abstract public void redFlush();
+    public void redFlush() {
+        createTime = new Date();
+        state = DocState.UN_CHECKED;
+
+        UserInfo userInfo = new UserInfoImpl();
+        userId = userInfo.getIDOfSignedUser();
+    }
 
     /**
      * 保存修改后的单据，该方法在审批单据时调用

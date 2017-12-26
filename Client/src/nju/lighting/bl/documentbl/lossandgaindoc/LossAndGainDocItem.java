@@ -86,6 +86,7 @@ class LossAndGainDocItem implements DocItem {
 
     @Override
     public void redFlush() {
+        id = 0;
         count = -count;
     }
 

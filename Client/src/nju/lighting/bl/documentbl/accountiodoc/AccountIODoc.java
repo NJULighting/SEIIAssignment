@@ -50,6 +50,7 @@ abstract class AccountIODoc extends Doc {
 
     @Override
     public void redFlush() {
+        super.redFlush();
         total = -total;
         itemList.redFlush();
     }

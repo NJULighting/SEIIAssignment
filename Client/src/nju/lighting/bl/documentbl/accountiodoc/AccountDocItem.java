@@ -55,6 +55,7 @@ class AccountDocItem implements DocItem {
 
     @Override
     public void redFlush() {
+        id = 0;
         amount = -amount;
         comments = RedFlush.RED_FLUSH_COMMENT;
     }

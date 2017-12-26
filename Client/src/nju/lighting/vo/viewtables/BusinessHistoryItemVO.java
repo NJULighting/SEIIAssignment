@@ -73,6 +73,18 @@ public class BusinessHistoryItemVO {
         this.docVO = docVO;
     }
 
+    @Override
+    public String toString() {
+        return "BusinessHistoryItemVO{" +
+                "date=" + date +
+                ", type=" + type +
+                ", docVO=" + docVO +
+                ", salesman='" + salesman + '\'' +
+                ", customer='" + customer + '\'' +
+                ", repository='" + repository + '\'' +
+                '}';
+    }
+
     public String getSalesman() {
         return salesman;
     }

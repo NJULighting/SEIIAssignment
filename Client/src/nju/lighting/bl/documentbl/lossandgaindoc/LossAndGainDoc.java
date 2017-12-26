@@ -56,6 +56,7 @@ public class LossAndGainDoc extends Doc {
 
     @Override
     public void redFlush() {
+        super.redFlush();
         comment = RedFlush.RED_FLUSH_COMMENT;
         itemList.redFlush();
     }

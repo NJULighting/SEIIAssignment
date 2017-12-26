@@ -67,6 +67,7 @@ public class GiftDocItem implements DocItem {
 
     @Override
     public void redFlush() {
+        id = 0;
         count = -count;
         subtotal = -subtotal;
     }

@@ -39,6 +39,8 @@ public class SalesReturnDoc extends SalesTypeDoc {
         SalesReturnDocVO docVO = (SalesReturnDocVO) vo;
         setAttributes(docVO.getCustomerId(), docVO.getSalesman(), docVO.getRepository(), docVO.getRemarks(),
                 docVO.getBeforeDiscountAmount(), docVO.getDiscount(), docVO.getVoucher(), docVO.getFinalAmount());
+
+        docVO.getItems().forEach(itemList::add);
     }
 
     /**

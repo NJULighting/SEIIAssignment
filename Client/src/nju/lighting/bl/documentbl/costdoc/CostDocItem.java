@@ -45,6 +45,7 @@ public class CostDocItem implements DocItem {
 
     @Override
     public void redFlush() {
+        id = 0;
         amount = -amount;
         comment = RedFlush.RED_FLUSH_COMMENT;
     }

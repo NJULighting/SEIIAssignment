@@ -85,6 +85,7 @@ public class StockDocItem implements DocItem {
 
     @Override
     public void redFlush() {
+        id = 0;
         number = -number;
         totalAmount = -totalAmount;
         remarks = RedFlush.RED_FLUSH_COMMENT;

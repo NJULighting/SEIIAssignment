@@ -77,6 +77,7 @@ abstract public class StockTypeDoc extends Doc {
 
     @Override
     public void redFlush() {
+        super.redFlush();
         totalAmount = -totalAmount;
         remarks = RedFlush.RED_FLUSH_COMMENT;
         itemList.redFlush();

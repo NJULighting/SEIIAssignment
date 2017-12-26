@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  *
  * @author 陈俊宇
  */
-public class GiftListEditable implements Initializable {
+public class CommodityList implements Initializable {
 
 
     //public static List<GiftItemVO> giftsVO;
@@ -85,9 +85,6 @@ public class GiftListEditable implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-//        if (giftsVO == null)
-//            giftsVO = new ArrayList<>();
-
         giftObservableList = FXCollections.observableArrayList();
 
         giftObservableList.addListener(new ListChangeListener() {
@@ -122,9 +119,19 @@ public class GiftListEditable implements Initializable {
 
 
 
-        refresh();
 
-        // 设置表格中的按钮
+        giftTableView.setItems(giftObservableList);
+
+
+        TableViewHelper.commonSet(giftTableView);
+
+
+        calculateTotal();
+
+
+    }
+
+    public void setEditable(){
         Callback<TableColumn<CommodityItem, Boolean>,
                 TableCell<CommodityItem, Boolean>> cellFactory
                 = (TableColumn<CommodityItem, Boolean> p) -> new BtnCell();
@@ -172,16 +179,6 @@ public class GiftListEditable implements Initializable {
             selected.setComments(t.getNewValue());
 
         });
-
-        giftTableView.setItems(giftObservableList);
-
-
-        TableViewHelper.commonSet(giftTableView);
-
-
-        calculateTotal();
-
-
     }
 
     public ObservableList<CommodityItem> getGiftObservableList() {

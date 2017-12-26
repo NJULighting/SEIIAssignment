@@ -24,9 +24,11 @@ public class LossAndGainDocMain implements Initializable{
     HBox container;
 
     @FXML
-    Label sub;
+    Label sub,title;
 
     Pane mainPane;
+
+    LossAndGainDocUI controller;
 
 
     public void back(){
@@ -39,6 +41,11 @@ public class LossAndGainDocMain implements Initializable{
         sub.setText(title);
     }
 
+    void setAlert(){
+        title.setText("制定报警单");
+        controller.setAlert();
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,7 +56,7 @@ public class LossAndGainDocMain implements Initializable{
             e.printStackTrace();
         }
         container.getChildren().add(mainPane);
-        LossAndGainDocUI controller=loader.getController();
+         controller=loader.getController();
         controller.setMain(this);
     }
 }

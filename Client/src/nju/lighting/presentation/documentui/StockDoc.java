@@ -56,7 +56,7 @@ public class StockDoc extends SalesDocController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("GiftListEditable.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CommodityList.fxml"));
         try {
             commodityContainer.getChildren().add(loader.load());
         } catch (IOException e) {
@@ -64,6 +64,7 @@ public class StockDoc extends SalesDocController {
         }
 
         commodityListController = loader.getController();
+        commodityListController.setEditable();
 
         docItemList = commodityListController.giftObservableList;
         commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {

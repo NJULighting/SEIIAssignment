@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="680.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.AccountManagerController">
+<VBox prefHeight="680.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.AccountManagerController">
          <children>
             <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="首页">
                <graphic>
@@ -43,16 +43,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="businessConditionBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="经营情况表">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0">
-                     <image>
-                        <Image url="@../../../../images/查看经营情况表.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="businessHistoryBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="经营历程表">
+            <JFXButton fx:id="businessHistoryBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="查看经营历程表">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
@@ -61,7 +52,16 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="salesConditionBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="销售明细表">
+            <JFXButton fx:id="businessConditionBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="查看经营情况表">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@../../../../images/查看经营情况表.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="salesConditionBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="查看销售明细表">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>

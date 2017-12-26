@@ -116,8 +116,10 @@ public class SalesDetailTable {
 
     private <T> List<T> findToDoc(Class<T> type, DocType docType) {
         try {
+            DocFactory docFactory = new DocFactory();
             return dataService.findByTimeAndType(startDate, endDate, docType)
                     .stream()
+                    .map(docFactory::poToDoc)
                     .map(type::cast)
                     .collect(Collectors.toList());
         } catch (RemoteException e) {

@@ -9,6 +9,9 @@ import org.junit.Test;
 import shared.DocType;
 import shared.DocumentFilter;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -53,10 +56,14 @@ public class FindSaleRecordsTest {
 
         List<BusinessHistoryItemVO> itemList = manager.findBusinessHistory(builder.build());
 
-        assertEquals(7, itemList.size());
+        assertEquals(6, itemList.size());
     }
 
     @Test
     public void test3() throws Exception {
+        Date startDate = new Date(Instant.now().minus(Duration.ofDays(1)).toEpochMilli());
+        Date endDate = new Date(Instant.now().plus(Duration.ofDays(1)).toEpochMilli());
+        SalesDetailTable salesDetailTable = new SalesDetailTable(startDate, endDate);
+        System.out.println(salesDetailTable.getSalesDetailTable());
     }
 }

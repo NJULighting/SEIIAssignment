@@ -122,5 +122,19 @@ public class SalesDetailVO {
         this.profit = profit;
     }
 
-
+    @Override
+    public String toString() {
+        return "SalesDetailVO{" +
+                "salesRevenue=" + salesRevenue +
+                ", commodityGainRevenue=" + commodityGainRevenue +
+                ", costAdjustRevenue=" + costAdjustRevenue +
+                ", spreadRevenue=" + spreadRevenue +
+                ", voucherCausedRevenue=" + voucherCausedRevenue +
+                ", salesRevenueOff=" + salesRevenueOff +
+                ", costExpenditure=" + costExpenditure +
+                ", commodityLossExpenditure=" + commodityLossExpenditure +
+                ", giftExpenditure=" + giftExpenditure +
+                ", profit=" + profit +
+                '}';
+    }
 }

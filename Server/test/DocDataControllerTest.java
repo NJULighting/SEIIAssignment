@@ -9,7 +9,10 @@ import shared.ResultMessage;
 import shared.TwoTuple;
 
 import java.rmi.RemoteException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -95,6 +98,13 @@ public class DocDataControllerTest {
 
     @Test
     public void findByTime() throws Exception {
+        Date start = new Date(Instant.now().minus(Duration.ofDays(1)).toEpochMilli());
+        Date end = new Date(Instant.now().plus(Duration.ofDays(1)).toEpochMilli());
+        System.out.println(start);
+        System.out.println(end);
+        List<DocPO> poList = docDataController.findByTime(start, end);
+        poList.forEach(System.out::println);
+        assertNotEquals(0, poList.size());
     }
 
     @Test

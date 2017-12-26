@@ -47,7 +47,7 @@ public class DocumentFilter {
      * Default end time is now.
      */
     public Date getEnd() {
-        return Optional.ofNullable(end).orElse(new Date());
+        return Optional.ofNullable(end).orElse(new Date(Instant.now().plus(Duration.ofDays(1)).toEpochMilli()));
     }
 
     private DocumentFilter(Builder builder) {

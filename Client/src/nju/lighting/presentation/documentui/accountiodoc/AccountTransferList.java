@@ -1,4 +1,4 @@
-package nju.lighting.presentation.documentui;
+package nju.lighting.presentation.documentui.accountiodoc;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,12 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import nju.lighting.presentation.utils.TableViewHelper;
-import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/11.
@@ -22,12 +19,9 @@ import java.util.stream.Collectors;
  * @author 陈俊宇
  */
 public class AccountTransferList implements Initializable {
-    private static List<AccountTransferItemVO> accountTransferItemVOList;
 
-    public static void setAccountTransferItemVOList(
-            List<AccountTransferItemVO> accountTransferItemVOList) {
-        AccountTransferList.accountTransferItemVOList = accountTransferItemVOList;
-    }
+
+    private ObservableList<AccountTransferItem> observableList=FXCollections.observableArrayList();
 
     @FXML
     TableColumn<AccountTransferItem, String> comments, account;
@@ -41,7 +35,6 @@ public class AccountTransferList implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        ObservableList itemObservableList = FXCollections.observableArrayList();
 
         comments.setCellValueFactory(cellData ->
                 cellData.getValue().commentsProperty());
@@ -51,20 +44,16 @@ public class AccountTransferList implements Initializable {
                 cellData.getValue().amountProperty().asObject());
 
 
-        itemObservableList.addAll(
-                accountTransferItemVOList.stream()
-                        .map(x -> new AccountTransferItem(x))
-                        .collect(Collectors.toList()));
 
-        accountItemTable.setItems(itemObservableList);
-
-
-        System.out.println(accountItemTable.getItems());
-        System.out.println(comments);
+        accountItemTable.setItems(observableList);
 
 
         TableViewHelper.commonSet(accountItemTable);
 
 
+    }
+
+    public ObservableList<AccountTransferItem> getObservableList() {
+        return observableList;
     }
 }

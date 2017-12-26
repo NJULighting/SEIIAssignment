@@ -41,7 +41,7 @@ public class LossAndGainDocMain implements Initializable{
         sub.setText(title);
     }
 
-    void setAlert(){
+    public void setAlert(){
         title.setText("制定报警单");
         controller.setAlert();
     }

@@ -1,15 +1,17 @@
-package nju.lighting.presentation.documentui;
+package nju.lighting.presentation.documentui.accountiodoc;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import nju.lighting.presentation.documentui.Doc;
 import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/11.
@@ -25,10 +27,10 @@ public class AccountIODoc implements Initializable {
     HBox listBox;
 
     @FXML
-    Label creator,customer,id,total;
+    Label creator, customer, id, total;
 
-    public AccountIODoc(){
-        accountIODocVO=(AccountIODocVO)Doc.doc;
+    public AccountIODoc() {
+        accountIODocVO = (AccountIODocVO) Doc.doc;
     }
 
     @Override
@@ -38,9 +40,17 @@ public class AccountIODoc implements Initializable {
 //        id.setText(accountIODocVO.getDocId());
 //        total.setText(accountIODocVO.getTotal()+"");
 
-        AccountTransferList.setAccountTransferItemVOList(accountIODocVO.getTransferAccountList());
+
         try {
-            listBox.getChildren().add(FXMLLoader.load(getClass().getResource("AccountTransferList.fxml")));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountTransferList.fxml"));
+            listBox.getChildren().add(loader.load());
+            AccountTransferList controller = loader.getController();
+            controller.getObservableList().addAll(
+                    accountIODocVO.getTransferAccountList().stream()
+                    .map(x-> new AccountTransferItem(x))
+                    .collect(Collectors.toList())
+            );
+
         } catch (IOException e) {
             e.printStackTrace();
         }

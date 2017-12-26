@@ -15,7 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-import nju.lighting.presentation.documentui.GiftListEditable;
+import nju.lighting.presentation.documentui.CommodityList;
 import nju.lighting.presentation.utils.CommodityHelper;
 import nju.lighting.presentation.utils.ImageViewHelper;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
@@ -43,7 +43,7 @@ public class CreateCombo implements Initializable {
 
     AnchorPane commodityPicker;
 
-    GiftListEditable giftsController;
+    CommodityList giftsController;
 
     double height;
     @FXML
@@ -74,7 +74,7 @@ public class CreateCombo implements Initializable {
 
         try {
             FXMLLoader giftsLoader = new FXMLLoader(getClass().getResource("../documentui/giftListEditable.fxml"));
-            //GiftListEditable.giftsVO=null;
+            //CommodityList.giftsVO=null;
             comboBox.getChildren().add(giftsLoader.load());
             giftsController=giftsLoader.getController();
         } catch (IOException e) {

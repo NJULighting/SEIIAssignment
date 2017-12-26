@@ -1,4 +1,4 @@
-package nju.lighting.presentation.documentui;
+package nju.lighting.presentation.documentui.accountiodoc;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;

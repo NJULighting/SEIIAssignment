@@ -1,13 +1,10 @@
 package nju.lighting.presentation.utils;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import nju.lighting.presentation.commodityui.CommodityPicker;
 import nju.lighting.presentation.documentui.CommodityItem;
-import nju.lighting.presentation.documentui.GiftListEditable;
+import nju.lighting.presentation.documentui.CommodityList;
 
 import java.io.IOException;
 import java.util.stream.Collectors;
@@ -19,7 +16,7 @@ import java.util.stream.Collectors;
  * @author 陈俊宇
  */
 public class CommodityHelper {
-    public static void addCommodity(GiftListEditable giftsController) throws IOException {
+    public static void addCommodity(CommodityList giftsController) throws IOException {
         FXMLLoader loader = new FXMLLoader(CommodityPicker.class.getResource("commodityPicker.fxml"));
         AnchorPane commodityPicker = loader.load();
         CommodityPicker picker = loader.getController();

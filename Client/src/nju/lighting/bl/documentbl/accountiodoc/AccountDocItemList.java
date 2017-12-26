@@ -13,18 +13,20 @@ import java.util.List;
  */
 class AccountDocItemList {
     private ItemList<AccountDocItem> itemList;
+    private AccountIOType ioType;
 
-    AccountDocItemList() {
+    AccountDocItemList(AccountIOType ioType) {
         itemList = new ItemList<>();
+        this.ioType = ioType;
     }
 
 
     void add(AccountTransferItemVO docItem) {
-        itemList.add(docItem, AccountDocItem::new);
+        itemList.add(docItem, item -> new AccountDocItem(docItem, ioType));
     }
 
     void add(AccountTransferItemPO docItem) {
-        itemList.add(docItem, AccountDocItem::new);
+        itemList.add(docItem, item -> new AccountDocItem(docItem, ioType));
     }
 
     List<AccountTransferItemPO> toPO(String docId) {
@@ -37,5 +39,9 @@ class AccountDocItemList {
 
     void redFlush() {
         itemList.redFlush();
+    }
+
+    void approve() {
+        itemList.approve();
     }
 }

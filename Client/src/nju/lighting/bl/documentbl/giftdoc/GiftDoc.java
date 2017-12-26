@@ -68,13 +68,13 @@ public class GiftDoc extends Doc {
     }
 
     @Override
-    public void approve() {
+    public ResultMessage approve() {
 
+        return null;
     }
 
     @Override
     public void redFlush() {
-        super.redFlush();
         total = -total;
         itemList.redFlush();
     }

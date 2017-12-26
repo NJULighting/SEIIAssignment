@@ -47,8 +47,8 @@ public class SalesReturnDoc extends SalesTypeDoc {
      * Reduce customer's receivable
      */
     @Override
-    public void approve() {
-
+    public ResultMessage approve() {
+        return null;
     }
 
     @Override

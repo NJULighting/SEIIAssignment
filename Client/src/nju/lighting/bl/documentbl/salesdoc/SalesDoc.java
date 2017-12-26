@@ -51,8 +51,8 @@ public class SalesDoc extends SalesTypeDoc {
      * Add Customer's account payable
      */
     @Override
-    public void approve() {
-
+    public ResultMessage approve() {
+        return null;
     }
 
     @Override

@@ -45,8 +45,8 @@ public class AlertDoc extends Doc {
     }
 
     @Override
-    public void approve() {
-
+    public ResultMessage approve() {
+        return null;
     }
 
     @Override

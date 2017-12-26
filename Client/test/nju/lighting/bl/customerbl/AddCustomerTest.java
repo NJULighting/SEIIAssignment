@@ -24,7 +24,7 @@ public class AddCustomerTest {
         LoginTestHelper.loginAuthorizedUser();
     }
 
-    @Test @Ignore
+    @Test
     public void addCustomerTest() throws Exception {
         CustomerVO customerVO = new CustomerVO(0, CustomerType.SALESPERSON, CustomerGrade.FIVE, "SuperFrog", "6666666"
         , "上海交通大学", "210046", "excited@frogmail.com", 666666, 0, 0, "LittleFrog");

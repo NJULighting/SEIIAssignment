@@ -12,11 +12,15 @@ import java.util.Date;
  * @author Liao
  */
 class AccountChangeLog {
+    private int id;
     private Date time;
     private double delta;
     private double amount; // After change
     private AccountChangeType type;
 
+    /**
+     * Constructor for adding a new log.
+     */
     AccountChangeLog(Date time, double delta, double amount, AccountChangeType type) {
         this.time = time;
         this.delta = delta;
@@ -30,6 +34,7 @@ class AccountChangeLog {
 
     AccountChangeLog(AccountLogPO po) {
         this(po.getTime(), po.getDelta(), po.getAmount(), po.getType());
+        id = po.getId();
     }
 
     /**
@@ -38,10 +43,10 @@ class AccountChangeLog {
      * @return corresponding <code>AccountLogVO</code>
      */
     AccountLogPO toPO(String accountID) {
-        return new AccountLogPO(time, delta, amount, type, accountID);
+        return new AccountLogPO(id, time, delta, amount, accountID, type);
     }
 
     public AccountLogVO toVO() {
-        return new AccountLogVO(time, delta, amount, type);
+        return new AccountLogVO(id, time, delta, amount, type);
     }
 }

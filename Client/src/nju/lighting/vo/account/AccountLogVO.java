@@ -11,12 +11,13 @@ import java.util.Date;
  */
 public class AccountLogVO {
 
+    private int id;
     private Date time;
     private double delta;
     private double amount;
     private AccountChangeType type;
 
-    public AccountLogVO(Date time, double delta, double amount, AccountChangeType type) {
+    public AccountLogVO(int id, Date time, double delta, double amount, AccountChangeType type) {
         this.time = time;
         this.delta = delta;
         this.amount = amount;

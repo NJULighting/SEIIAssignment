@@ -50,13 +50,12 @@ public class LossAndGainDoc extends Doc {
     }
 
     @Override
-    public void approve() {
-
+    public ResultMessage approve() {
+        return null;
     }
 
     @Override
     public void redFlush() {
-        super.redFlush();
         comment = RedFlush.RED_FLUSH_COMMENT;
         itemList.redFlush();
     }

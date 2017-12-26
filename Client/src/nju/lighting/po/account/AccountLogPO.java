@@ -12,6 +12,7 @@ import java.util.Date;
  */
 public class AccountLogPO implements Serializable{
     private static final long serialVersionUID = 21314312314L;
+    private int id;
     private Date time;
     private double delta;
     private double amount;
@@ -24,6 +25,19 @@ public class AccountLogPO implements Serializable{
         this.delta = delta;
         this.amount = amount;
         this.type = type;
+    }
+
+    public AccountLogPO(int id, Date time, double delta, double amount, String accountID, AccountChangeType type) {
+        this.id = id;
+        this.time = time;
+        this.delta = delta;
+        this.amount = amount;
+        this.accountID = accountID;
+        this.type = type;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Date getTime() {

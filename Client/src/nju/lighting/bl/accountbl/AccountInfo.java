@@ -1,7 +1,6 @@
 package nju.lighting.bl.accountbl;
 
 import nju.lighting.vo.account.AccountVO;
-import shared.ResultMessage;
 
 import java.util.List;
 
@@ -13,7 +12,7 @@ import java.util.List;
 public interface AccountInfo {
     List<AccountVO> getAccountList();
 
-    ResultMessage updateAmount(String targetName, double total);
+    void updateAmount(String accountId, double total);
 
     AccountVO getAccountByID(String accountID);
 }

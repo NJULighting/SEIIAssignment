@@ -4,8 +4,11 @@ import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;
+import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.ResultMessage;
+
+import java.util.List;
 
 /**
  * Created on 2017/11/7.
@@ -16,8 +19,11 @@ abstract class AccountIODoc extends Doc {
 
     String customerID;
     double total;
-    AccountDocItemList itemList = new AccountDocItemList();
+    AccountDocItemList itemList;
 
+    /**
+     * Constructor for red flushing
+     */
     AccountIODoc(DocVO vo) {
         super(vo);
         assign(vo);
@@ -28,8 +34,6 @@ abstract class AccountIODoc extends Doc {
      */
     AccountIODoc(HistoryDocVO historyDocVO) {
         super(historyDocVO);
-
-        // Assign specific fields
         assign(historyDocVO.getDocVO());
     }
 
@@ -40,17 +44,30 @@ abstract class AccountIODoc extends Doc {
         super(po);
     }
 
+    /**
+     * Assign specific fields. The vo will be casted to <tt>AccountIODocVO</tt>,
+     * and the customerID, total will be assigned. <tt>ItemList</tt> need to be
+     * assigned in child classes <tt>AccountInDoc</tt> and <tt>AccountOutDoc</tt>
+     */
     private void assign(DocVO vo) {
         AccountIODocVO docVO = (AccountIODocVO) vo;
         customerID = docVO.getCustomer();
         total = docVO.getTotal();
-        itemList = new AccountDocItemList();
-        docVO.getTransferAccountList().forEach(itemList::add);
+    }
+
+    /**
+     * Assign the <tt>AccountDocItemList</tt>. <tt>AccountInDoc</tt> will pass
+     * <tt>IN</tt> as the second parameter,and <tt>AccountOutDoc</tt> will pass
+     * <tt>OUT</tt> as the second parameters
+     */
+    void assignItemList(DocVO docVO, AccountIOType ioType) {
+        itemList = new AccountDocItemList(ioType);
+        List<AccountTransferItemVO> voItemList = ((AccountIODocVO) docVO).getTransferAccountList();
+        voItemList.forEach(itemList::add);
     }
 
     @Override
     public void redFlush() {
-        super.redFlush();
         total = -total;
         itemList.redFlush();
     }
@@ -64,7 +81,6 @@ abstract class AccountIODoc extends Doc {
     public DocVO toVO() {
         return new AccountIODocVO(createTime, userId, id, docType, customerID, itemList.toVO());
     }
-
 
     @Override
     public boolean containsCustomer(String customerId) {
@@ -90,5 +106,4 @@ abstract class AccountIODoc extends Doc {
     public String getRepository() {
         return null;
     }
-
 }

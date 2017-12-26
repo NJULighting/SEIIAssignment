@@ -73,11 +73,10 @@ abstract public class StockTypeDoc extends Doc {
 
 
     @Override
-    abstract public void approve();
+    abstract public ResultMessage approve();
 
     @Override
     public void redFlush() {
-        super.redFlush();
         totalAmount = -totalAmount;
         remarks = RedFlush.RED_FLUSH_COMMENT;
         itemList.redFlush();

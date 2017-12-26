@@ -50,14 +50,15 @@ public class CostDoc extends Doc {
     }
 
     @Override
-    public void approve() {
+    public ResultMessage approve() {
         AccountInfo accountInfo = new MockAccountInfo();
         accountInfo.updateAmount(accountId, totalAmount);
+
+        return ResultMessage.SUCCESS;
     }
 
     @Override
     public void redFlush() {
-        super.redFlush();
         totalAmount = -totalAmount;
         itemList.redFlush();
     }

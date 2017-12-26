@@ -45,7 +45,8 @@ public class StockDoc extends StockTypeDoc {
      * 审批单据，增加客户应收，增加商品数量
      */
     @Override
-    public void approve() {
+    public ResultMessage approve() {
+        return null;
     }
 
     @Override

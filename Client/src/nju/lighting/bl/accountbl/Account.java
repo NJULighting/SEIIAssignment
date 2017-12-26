@@ -1,10 +1,15 @@
 package nju.lighting.bl.accountbl;
 
+import nju.lighting.dataservice.DataFactory;
+import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.po.account.AccountPO;
 import nju.lighting.vo.account.AccountVO;
 import shared.AccountChangeType;
 
+import javax.naming.NamingException;
+import java.rmi.RemoteException;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created on 2017/11/12.
@@ -18,7 +23,7 @@ class Account {
     private AccountChangeLogList logList;
 
     Account(AccountPO po) {
-        id = po.getId();
+            id = po.getId();
         amount = po.getAmount();
         name = po.getName();
         logList = new AccountChangeLogList(po.getChangeLogs());
@@ -71,10 +76,14 @@ class Account {
         return logList;
     }
 
-    /**
-     * 更新账户金额，同时更新账户日志
-     */
-    public void updateAmount() {
-
+    void updateAmount(double total) {
+        amount += total;
+        logList.addLog(new Date(), total, amount, total < 0 ? AccountChangeType.OUT : AccountChangeType.IN);
+        try {
+            AccountDataService dataService = DataFactory.getDataBase(AccountDataService.class);
+            dataService.update(toPO());
+        } catch (NamingException | RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }

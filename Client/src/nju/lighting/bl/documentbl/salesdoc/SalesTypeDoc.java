@@ -39,7 +39,6 @@ public abstract class SalesTypeDoc extends Doc {
 
     @Override
     public void redFlush() {
-        super.redFlush();
         finalAmount = -finalAmount;
         remarks = RedFlush.RED_FLUSH_COMMENT;
         itemList.redFlush();
@@ -103,7 +102,7 @@ public abstract class SalesTypeDoc extends Doc {
     }
 
     @Override
-    abstract public void approve();
+    abstract public ResultMessage approve();
 
     @Override
     abstract public ResultMessage modify();

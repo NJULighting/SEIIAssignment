@@ -1,6 +1,7 @@
 import nju.lighting.data.accountdata.AccountData;
 import nju.lighting.po.account.AccountLogPO;
 import nju.lighting.po.account.AccountPO;
+import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import org.junit.Test;
 import shared.AccountChangeType;
 import shared.ResultMessage;
@@ -27,7 +28,9 @@ public class AccountDataTest {
 
     @Test
     public void insert() throws RemoteException {
-        AccountPO accountPO = new AccountPO("161250068", "BbidA的校园卡", 2333, new ArrayList<>());
+        List<AccountLogPO> itemList = new ArrayList<>();
+        itemList.add(new AccountLogPO(new Date(), 300, 100, AccountChangeType.IN, "284983325"));
+        AccountPO accountPO = new AccountPO("161250068", "BbidA的校园卡", 2333, itemList);
         ResultMessage resultMessage = accountData.insert(accountPO);
         assertEquals(ResultMessage.SUCCESS, resultMessage);
     }
@@ -56,9 +59,12 @@ public class AccountDataTest {
 
     @Test
     public void update() throws Exception {
-        AccountPO accountPO0 = new AccountPO("161250068", "BbidA的校园卡", 2333, new ArrayList<>());
+        List<AccountLogPO> itemList = new ArrayList<>();
+        itemList.add(new AccountLogPO(new Date(), 300, 100, AccountChangeType.IN, "161250068"));
+        AccountPO accountPO0 = new AccountPO("161250068", "BbidA的校园卡", 2333, itemList);
         accountData.insert(accountPO0);
-        AccountPO accountPO = new AccountPO("161250068", "BbidA的校园卡", 6666, new ArrayList<>());
+        itemList.add(new AccountLogPO(new Date(), 300, 100, AccountChangeType.IN, "161250068"));
+        AccountPO accountPO = new AccountPO("161250068", "BbidA的校园卡", 6666, itemList);
         ResultMessage message = accountData.update(accountPO);
         assertEquals(ResultMessage.SUCCESS, message);
     }

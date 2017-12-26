@@ -47,7 +47,8 @@ public abstract class Doc {
     }
 
     /**
-     * Constructor for approval module
+     * Constructor for approval module. The basic information should
+     * initialized in presentation layer
      */
     protected Doc(HistoryDocVO historyDocVO) {
         this(historyDocVO.getDocVO());
@@ -72,17 +73,26 @@ public abstract class Doc {
     }
 
     /**
-     * 通过单据，该方法应在审批单据时调用
+     * Invoke this method when approve a document. This method
+     * will change other module's information in this method.
      */
-    abstract public void approve();
+    abstract protected ResultMessage approve();
 
-    public void redFlush() {
+    /**
+     * Basic red flush method. It will change the create time, state
+     * of doc and creator's id.
+     */
+    public void executeRedFlush() {
         createTime = new Date();
         state = DocState.UN_CHECKED;
 
         UserInfo userInfo = new UserInfoImpl();
         userId = userInfo.getIDOfSignedUser();
+
+        redFlush();
     }
+
+    abstract protected void redFlush();
 
     /**
      * 保存修改后的单据，该方法在审批单据时调用

@@ -1,7 +1,6 @@
 package nju.lighting.bl.documentbl.stockdoc;
 
 import nju.lighting.po.doc.DocPO;
-import nju.lighting.po.doc.stockdoc.StockDocPO;
 import nju.lighting.po.doc.stockdoc.StockReturnDocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
@@ -46,7 +45,8 @@ public class StockReturnDoc extends StockTypeDoc {
      * 审批单据，减少客户应收
      */
     @Override
-    public void approve() {
+    public ResultMessage approve() {
+        return null;
     }
 
     @Override

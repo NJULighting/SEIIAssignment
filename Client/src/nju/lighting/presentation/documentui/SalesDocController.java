@@ -85,7 +85,7 @@ public class SalesDocController implements Initializable, CommodityUpper,Promoti
     SimpleObjectProperty<PromotionVO> promotionProperty=new SimpleObjectProperty<>();
 
     CommodityPicker commodityPicker;
-    GiftListEditable commodityListController;
+    CommodityList commodityListController;
 
     CustomerPicker customerPicker;
     BenefitsPlan promotionPicker;
@@ -208,7 +208,7 @@ public class SalesDocController implements Initializable, CommodityUpper,Promoti
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("GiftListEditable.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CommodityList.fxml"));
         try {
             commodityContainer.getChildren().add(loader.load());
         } catch (IOException e) {
@@ -216,6 +216,7 @@ public class SalesDocController implements Initializable, CommodityUpper,Promoti
         }
 
         commodityListController = loader.getController();
+        commodityListController.setEditable();
 
         docItemList = commodityListController.giftObservableList;
         commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {

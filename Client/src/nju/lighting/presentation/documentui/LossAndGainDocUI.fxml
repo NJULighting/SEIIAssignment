@@ -32,7 +32,7 @@
             <HBox>
                <children>
                   <Label prefWidth="60.0" text="操作员" />
-                  <JFXTextField prefWidth="180.0" />
+                  <JFXTextField fx:id="creatorText" editable="false" prefWidth="180.0" />
                </children>
             </HBox>
             <HBox>

@@ -1,5 +1,6 @@
 package nju.lighting.presentation.documentui;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -12,6 +13,7 @@ import javafx.scene.layout.HBox;
 import nju.lighting.presentation.commodityui.CommodityPicker;
 import nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainItem;
 import nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainList;
+import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.CommodityUpper;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
@@ -39,6 +41,10 @@ public class LossAndGainDocUI implements Initializable,CommodityUpper {
 
     @FXML
     HBox tableContainer;
+    @FXML
+    JFXTextField creatorText;
+
+    LossAndGainList listController;
 
     @Override
     public void back() {
@@ -70,15 +76,16 @@ public class LossAndGainDocUI implements Initializable,CommodityUpper {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        creatorText.setText(Client.getUserVO().getUsername());
         loader=new FXMLLoader(getClass().getResource("lossandgaindoc/LossAndGainList.fxml"));
         try {
             tableContainer.getChildren().add(loader.load());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        LossAndGainList controller=loader.getController();
-        controller.setEditable();
-        docItemList=controller.getData();
+        listController=loader.getController();
+        listController.setEditable();
+        docItemList=listController.getData();
 
         commodities.addListener(new ListChangeListener<BasicCommodityItemVO>() {
             @Override
@@ -96,6 +103,10 @@ public class LossAndGainDocUI implements Initializable,CommodityUpper {
         });
 
 
+    }
+
+    void setAlert(){
+            listController.setAlert();
     }
 
 

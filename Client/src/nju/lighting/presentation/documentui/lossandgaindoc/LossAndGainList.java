@@ -164,6 +164,11 @@ public class LossAndGainList implements Initializable {
         });
     }
 
+    public void setAlert(){
+        count.setText("警戒数量");
+        tableView.getColumns().remove(type);
+    }
+
 
     public ObservableList<LossAndGainItem> getData() {
         return data;

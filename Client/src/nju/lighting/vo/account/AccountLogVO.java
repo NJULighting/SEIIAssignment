@@ -16,7 +16,6 @@ public class AccountLogVO {
     private double delta;
     private double amount;
     private AccountChangeType type;
-
     public AccountLogVO(int id, Date time, double delta, double amount, AccountChangeType type) {
         this.time = time;
         this.delta = delta;

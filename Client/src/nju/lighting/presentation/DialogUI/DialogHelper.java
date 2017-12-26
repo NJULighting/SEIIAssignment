@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXDialogLayout;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -27,6 +28,71 @@ public class DialogHelper {
     static {
         hashMap.put(ResultMessage.DUPLICATE,"名称重复");
         hashMap.put(ResultMessage.FAILURE,"此次行为失败");
+    }
+
+    public static void addDialog(Node content, StackPane stackPane, EventHandler eventHandler){
+        JFXDialogLayout layout=new JFXDialogLayout();
+        JFXButton button=new JFXButton("确认");
+
+
+        layout.setBody(content);
+        JFXDialog dialog= new JFXDialog(stackPane,layout, JFXDialog.DialogTransition.BOTTOM);
+        dialog.setPrefSize(280,135);
+        dialog.show();
+
+        button.setOnAction(e->{
+
+            eventHandler.handle(e);
+
+            dialog.close();
+        });
+        layout.setActions(button);
+    }
+
+    public static void addDialog(Node content, StackPane stackPane, ValidateEventHandle eventHandler){
+        JFXDialogLayout layout=new JFXDialogLayout();
+        JFXButton button=new JFXButton("确认");
+
+
+        layout.setBody(content);
+        JFXDialog dialog= new JFXDialog(stackPane,layout, JFXDialog.DialogTransition.BOTTOM);
+        dialog.setPrefSize(280,135);
+        dialog.show();
+
+        button.setOnAction(e->{
+
+
+            if ( eventHandler.validate())
+            dialog.close();
+        });
+        layout.setActions(button);
+    }
+
+
+    public static void addDialog(String message, StackPane stackPane, EventHandler eventHandler){
+        JFXDialogLayout layout=new JFXDialogLayout();
+        JFXButton button=new JFXButton("确认");
+        FXMLLoader loader= new FXMLLoader(DialogHelper.class.getResource("DialogPane.fxml"));
+
+        try {
+            layout.setBody((AnchorPane)loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        DialogPane controller=loader.getController();
+        Label label=controller.getLabel();
+        label.setText(message);
+
+
+        JFXDialog dialog= new JFXDialog(stackPane,layout, JFXDialog.DialogTransition.BOTTOM);
+        dialog.setPrefSize(280,135);
+        dialog.show();
+
+        button.setOnAction(e->{
+            eventHandler.handle(e);
+            dialog.close();
+        });
+        layout.setActions(button);
     }
 
     public  static void dialog(ResultMessage resultMessage, StackPane stackPane)  {

@@ -1,6 +1,5 @@
 package nju.lighting.po.doc.accountiodoc;
 
-import nju.lighting.presentation.documentui.AccountTransferItem;
 import shared.Item;
 
 import java.io.Serializable;

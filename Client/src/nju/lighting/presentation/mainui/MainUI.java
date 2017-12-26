@@ -89,9 +89,9 @@ public class MainUI {
             MainUIController controller=loader.getController();
             center=new Node[controller.MAIN_BUTTON_SIZE];
             controller.setMainUI(this);
-            for (int i=0;i<center.length;i++){
-                controller.jumpTo(i);
-            }
+//            for (int i=0;i<center.length;i++){
+//                controller.jumpTo(i);
+//            }
             controller.jumpTo(0);
         }else
             root.setRight(loader.load());

@@ -29,11 +29,6 @@ public class PromotionController implements PromotionBLService {
     }
 
     @Override
-    public CommodityCategoriesTreeVO create() {
-        return null;
-    }
-
-    @Override
     public TwoTuple<ResultMessage, PromotionVO> commit(PromotionBuildInfo info) {
         return manager.commit(info);
     }

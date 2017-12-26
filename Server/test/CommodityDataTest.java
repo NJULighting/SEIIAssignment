@@ -100,7 +100,7 @@ public class CommodityDataTest {
     @Test
     public void addCategory() throws Exception {
         CommodityCategoryPO categoryPO = new CommodityCategoryPO ("意大利炮", -1);
-        ResultMessage message = commodityData.add(categoryPO);
+        ResultMessage message = commodityData.add(categoryPO).t;
         assertEquals(ResultMessage.SUCCESS, message);
     }
 

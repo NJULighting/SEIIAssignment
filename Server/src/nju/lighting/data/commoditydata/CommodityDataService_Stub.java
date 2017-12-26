@@ -4,6 +4,7 @@ import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import shared.ResultMessage;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
+import shared.TwoTuple;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -123,14 +124,14 @@ public class CommodityDataService_Stub implements CommodityDataService {
     }
 
     @Override
-    public ResultMessage add(CommodityCategoryPO commodityCategoryPO) {
-        int catId = commodityCategoryPO.getId();
-        for (int i = 0; i < commodityCategoryPOS.size(); i++) {
-            if (commodityCategoryPOS.get(i).getId() == catId)
-                return ResultMessage.FAILURE;
-        }
-        commodityCategoryPOS.add(commodityCategoryPO);
-        return ResultMessage.SUCCESS;
+    public TwoTuple<ResultMessage, Integer> add(CommodityCategoryPO commodityCategoryPO) {
+//        int catId = commodityCategoryPO.getId();
+//        for (int i = 0; i < commodityCategoryPOS.size(); i++) {
+//            if (commodityCategoryPOS.get(i).getId() == catId)
+//                return ResultMessage.FAILURE;
+//        }
+//        commodityCategoryPOS.add(commodityCategoryPO);
+        return null;
     }
 
     @Override

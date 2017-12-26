@@ -3,6 +3,7 @@ package nju.lighting.dataservice.commoditydataservice;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -33,7 +34,7 @@ public interface CommodityDataService extends Remote {
 
     List<CommodityCategoryPO> getAllCommodityCategory() throws RemoteException;
 
-    ResultMessage add(CommodityCategoryPO commodityCategoryPO) throws RemoteException;
+    TwoTuple<ResultMessage, Integer> add(CommodityCategoryPO commodityCategoryPO) throws RemoteException;
 
     ResultMessage deleteCategory(int id) throws RemoteException;
 

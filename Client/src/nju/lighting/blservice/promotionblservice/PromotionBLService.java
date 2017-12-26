@@ -22,8 +22,6 @@ public interface PromotionBLService {
 
     List<PromotionVO> getPromotionList();
 
-    CommodityCategoriesTreeVO create();
-
     TwoTuple<ResultMessage, PromotionVO> commit(PromotionBuildInfo info);
 
     ResultMessage modify(PromotionVO vo);

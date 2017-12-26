@@ -5,6 +5,7 @@ import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.io.*;
 import java.rmi.RemoteException;
@@ -109,11 +110,15 @@ public class CommodityData extends UnicastRemoteObject implements CommodityDataS
     }
 
     @Override
-    public ResultMessage add(CommodityCategoryPO commodityCategoryPO) throws RemoteException {
+    public TwoTuple<ResultMessage, Integer> add(CommodityCategoryPO commodityCategoryPO) throws RemoteException {
+        TwoTuple<ResultMessage, Integer> res = new TwoTuple<>();
         ResultMessage resultMessage =  categoryPOCommonOperation.add(commodityCategoryPO);
-        if (resultMessage == ResultMessage.SUCCESS)
+        res.t = resultMessage;
+        if (resultMessage == ResultMessage.SUCCESS) {
             updateRecentChangeTime();
-        return resultMessage;
+            res.r = commodityCategoryPO.getId();
+        }
+        return res;
     }
 
     @Override

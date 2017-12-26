@@ -6,6 +6,7 @@ import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ class CommodityController implements CommodityBLService {
     }
 
     @Override
-    public ResultMessage addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category) {
+    public TwoTuple<ResultMessage, String> addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category) {
         return manager.addCommodity(newCommodity, category.getPath());
     }
 
@@ -38,6 +39,11 @@ class CommodityController implements CommodityBLService {
     }
 
     @Override
+    public List<CommodityItemVO> searchCommodity(String keyword) {
+        return null;
+    }
+
+    @Override
     public CommodityItemVO findCommodityVOById(String id) {
         return manager.findCommodityVOById(id);
     }
@@ -53,7 +59,7 @@ class CommodityController implements CommodityBLService {
     }
 
     @Override
-    public ResultMessage addCategory(CommodityCategoryVO newCategory) {
+    public TwoTuple<ResultMessage, Integer> addCategory(CommodityCategoryVO newCategory) {
         return manager.addCategory(newCategory);
     }
 

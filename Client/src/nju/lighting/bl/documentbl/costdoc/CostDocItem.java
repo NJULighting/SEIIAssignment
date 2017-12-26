@@ -1,7 +1,5 @@
 package nju.lighting.bl.documentbl.costdoc;
 
-import nju.lighting.bl.accountbl.AccountInfo;
-import nju.lighting.bl.accountbl.AccountInfoImpl;
 import nju.lighting.bl.documentbl.DocItem;
 import nju.lighting.bl.documentbl.RedFlush;
 import nju.lighting.po.doc.costdoc.CostDocItemPO;

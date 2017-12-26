@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.util.Date;
 
@@ -25,7 +26,7 @@ public class AdditionTest {
     private static final String NONEXISTENT_PATH = "1-6";
     private static final String NOT_LEAF_PATH = "1";
     private static final String RIGHT_PATH = "1-4";
-    private static final int CURRENT_INDEX_OF_CATEGORIES = 9; // Remember to increase it after every test
+    private static final int CURRENT_INDEX_OF_CATEGORIES = 10; // Remember to increase it after every test
     private static final int NO_ITEMS_CATEGORY_INDEX = 6;
 
     private CommodityManager manager = CommodityManager.INSTANCE;
@@ -37,21 +38,21 @@ public class AdditionTest {
 
     @Test
     public void addCommodity() throws Exception {
-        ResultMessage res = manager.addCommodity(TARGET_COMMODITY, RIGHT_PATH);
+        ResultMessage res = manager.addCommodity(TARGET_COMMODITY, RIGHT_PATH).t;
 
         assertEquals(ResultMessage.SUCCESS, res);
     }
 
     @Test
     public void addCommodityFailTest0() throws Exception {
-        ResultMessage res = manager.addCommodity(TARGET_COMMODITY, NONEXISTENT_PATH);
+        ResultMessage res = manager.addCommodity(TARGET_COMMODITY, NONEXISTENT_PATH).t;
 
         assertEquals(ResultMessage.FAILURE, res);
     }
 
     @Test
     public void addCommodityFailTest1() throws Exception {
-        ResultMessage res = manager.addCommodity(TARGET_COMMODITY, NOT_LEAF_PATH);
+        ResultMessage res = manager.addCommodity(TARGET_COMMODITY, NOT_LEAF_PATH).t;
 
         assertEquals(ResultMessage.FAILURE, res);
     }
@@ -62,7 +63,7 @@ public class AdditionTest {
         CommodityCategoriesTreeVO treeVO = manager.getCommodityCategoriesTreeVO();
         CommodityCategoryVO vo = new CommodityCategoryVO(treeVO.getRoot(), "Big Frog Light");
 
-        ResultMessage res = manager.addCategory(vo);
+        ResultMessage res = manager.addCategory(vo).t;
 
         assertEquals(ResultMessage.SUCCESS, res);
     }
@@ -73,7 +74,7 @@ public class AdditionTest {
         CommodityCategoryVO parent = treeVO.getRoot().findChild(3); // Get a category already contains items
         CommodityCategoryVO addition = new CommodityCategoryVO(parent, "Excited Light");
 
-        ResultMessage res = manager.addCategory(addition);
+        ResultMessage res = manager.addCategory(addition).t;
 
         assertEquals(ResultMessage.FAILURE, res);
     }
@@ -85,7 +86,7 @@ public class AdditionTest {
         CommodityCategoryVO father = new CommodityCategoryVO(grandfather, 2, "Naive", true);
         CommodityCategoryVO addition = new CommodityCategoryVO(father, "Excited");
 
-        ResultMessage res = manager.addCategory(addition);
+        ResultMessage res = manager.addCategory(addition).t;
 
         assertEquals(ResultMessage.FAILURE, res);
     }
@@ -96,11 +97,13 @@ public class AdditionTest {
         CommodityCategoriesTreeVO treeVO = manager.getCommodityCategoriesTreeVO();
         CommodityCategoryVO addition = new CommodityCategoryVO(treeVO.getRoot(), "TooYoungLight");
 
-        ResultMessage res1 = manager.addCategory(addition);
+        TwoTuple<ResultMessage, Integer> addResult = manager.addCategory(addition);
+        ResultMessage res1 = addResult.t;
+        System.out.println(addResult.r);
         // Update the tree
         treeVO = manager.getCommodityCategoriesTreeVO();
         addition = treeVO.getRoot().findChild(CURRENT_INDEX_OF_CATEGORIES);
-        ResultMessage res2 = manager.addCommodity(TARGET_COMMODITY, addition.getPath());
+        ResultMessage res2 = manager.addCommodity(TARGET_COMMODITY, addition.getPath()).t;
 
         assertEquals(ResultMessage.SUCCESS, res1);
         assertEquals(ResultMessage.SUCCESS, res2);
@@ -113,8 +116,8 @@ public class AdditionTest {
         CommodityCategoryVO parent = treeVO.getRoot().findChild(NO_ITEMS_CATEGORY_INDEX);
         CommodityCategoryVO addition = new CommodityCategoryVO(parent, "NaiveLight");
 
-        ResultMessage res1 = manager.addCommodity(TARGET_COMMODITY, parent.getPath());
-        ResultMessage res2 = manager.addCategory(addition);
+        ResultMessage res1 = manager.addCommodity(TARGET_COMMODITY, parent.getPath()).t;
+        ResultMessage res2 = manager.addCategory(addition).t;
 
         assertEquals(ResultMessage.SUCCESS, res1);
         assertEquals(ResultMessage.FAILURE, res2);

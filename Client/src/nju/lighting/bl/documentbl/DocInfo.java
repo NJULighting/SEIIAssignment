@@ -16,15 +16,15 @@ import java.util.List;
 public interface DocInfo {
     List<DocVO> findUnCheckedDoc();
 
-    ResultMessage approve(HistoryDocVO vo) ;
+    ResultMessage approve(HistoryDocVO vo);
 
-    ResultMessage approveAll(List<HistoryDocVO> voList) ;
+    ResultMessage approveAll(List<HistoryDocVO> voList);
 
-    ResultMessage reject(HistoryDocVO vo) ;
+    ResultMessage reject(HistoryDocVO vo);
 
-    ResultMessage save(HistoryDocVO vo) ;
+    ResultMessage save(HistoryDocVO vo);
 
-    ResultMessage saveAndApprove(HistoryDocVO vo) ;
+    ResultMessage saveAndApprove(HistoryDocVO vo);
 }
 
 

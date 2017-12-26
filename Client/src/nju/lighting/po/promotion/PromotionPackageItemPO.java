@@ -19,11 +19,15 @@ public class PromotionPackageItemPO implements Serializable {
     public PromotionPackageItemPO(String commodityId, int promotionId, int count) {
         this.commodityId = commodityId;
         this.promotionId = promotionId;
+        commodityCount = count;
+
     }
 
-    public PromotionPackageItemPO(int count, String commodityId) {
+    public PromotionPackageItemPO(int id, int count, String commodityId, int promotionId) {
         this.commodityCount = count;
         this.commodityId = commodityId;
+        this.id = id;
+        this.promotionId = promotionId;
     }
 
     public String getCommodityId() {

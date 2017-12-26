@@ -7,6 +7,7 @@ import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -68,8 +69,8 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public ResultMessage addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category) {
-        return ResultMessage.SUCCESS;
+    public TwoTuple<ResultMessage, String> addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category) {
+        return null;
     }
 
     @Override
@@ -97,6 +98,11 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
+    public List<CommodityItemVO> searchCommodity(String keyword) {
+        return null;
+    }
+
+    @Override
     public CommodityItemVO findCommodityVOById(String id) {
         for (CommodityItem item : items) {
             if (item.getId().equals(id)) {
@@ -117,15 +123,16 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public ResultMessage addCategory(CommodityCategoryVO newCategory) {
+    public TwoTuple<ResultMessage, Integer> addCategory(CommodityCategoryVO newCategory) {
 
         String name = newCategory.getName();
 
-        if (name.equals("1"))
-            return ResultMessage.DUPLICATE;
-        else if (name.equals("2"))
-            return ResultMessage.FAILURE;
-        else return ResultMessage.SUCCESS;
+//        if (name.equals("1"))
+//            return ResultMessage.DUPLICATE;
+//        else if (name.equals("2"))
+//            return ResultMessage.FAILURE;
+//        else return ResultMessage.SUCCESS;
+        return null;
     }
 
     @Override

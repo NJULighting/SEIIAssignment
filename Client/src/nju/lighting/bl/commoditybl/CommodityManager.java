@@ -14,6 +14,7 @@ import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.OPType;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
@@ -43,11 +44,14 @@ enum CommodityManager {
     }
 
 
-    ResultMessage addCommodity(CommodityItemVO newCommodity, String categoryPath) {
+    TwoTuple<ResultMessage, String> addCommodity(CommodityItemVO newCommodity, String categoryPath) {
         // Check category id
         updateFromDatabase();
-        if (!commodityTree.isLeaf(categoryPath))
-            return ResultMessage.FAILURE;
+        TwoTuple<ResultMessage, String> res = new TwoTuple<>();
+        if (!commodityTree.isLeaf(categoryPath)) {
+             res.t = ResultMessage.FAILURE;
+             return res;
+        }
 
         try {
             // Generate commodity id
@@ -62,14 +66,17 @@ enum CommodityManager {
             // Create po and add it to the database
             newCommodity.setId(commodityID);
             CommodityItem commodityItem = new CommodityItem(newCommodity, parentCategoryID);
-            ResultMessage res = dataService.add(commodityItem.toPO());
-            if (res == ResultMessage.SUCCESS) {
+            ResultMessage addResult = dataService.add(commodityItem.toPO());
+            res.t = addResult;
+            if (addResult == ResultMessage.SUCCESS) {
                 logger.add(OPType.ADD, "添加商品" + commodityID);
+                res.r = commodityID;
             }
             return res;
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.NETWORK_FAIL;
+            res.t =  ResultMessage.NETWORK_FAIL;
+            return res;
         }
 
     }
@@ -123,24 +130,33 @@ enum CommodityManager {
      * @return <tt>SUCCESS</tt> if add successfully,
      * <tt>FAILURE</tt> if parent category don't exists any more or it contains commodity items.
      */
-    ResultMessage addCategory(CommodityCategoryVO newCategory) {
+    TwoTuple<ResultMessage, Integer> addCategory(CommodityCategoryVO newCategory) {
         // Update and check
         updateFromDatabase();
+        TwoTuple<ResultMessage, Integer> res = new TwoTuple<>();
         if (!commodityTree.contains(newCategory.getParentPath())
                 || containsItem(newCategory.getUpperCategory().getId())) {
-            return ResultMessage.FAILURE;
+            res.t = ResultMessage.FAILURE;
+            return res;
         }
 
         // Add to the database
         try {
-            ResultMessage res = dataService.add(new CommodityCategoryPO(newCategory.getName(), newCategory.getUpperCategory().getId()));
-            if (res == ResultMessage.SUCCESS)
+            TwoTuple<ResultMessage, Integer> insertResult =
+                    dataService.add(new CommodityCategoryPO(newCategory.getName(),
+                            newCategory.getUpperCategory().getId()));
+            ResultMessage addResult = insertResult.t;
+            if (addResult == ResultMessage.SUCCESS) {
                 logger.add(OPType.ADD, "添加商品目录 " + newCategory.getName());
-            return res;
+                res.r = insertResult.r;
+            }
+            res.t = addResult;
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.NETWORK_FAIL;
+            res.t = ResultMessage.NETWORK_FAIL;
         }
+
+        return res;
     }
 
     private boolean containsItem(int category) {

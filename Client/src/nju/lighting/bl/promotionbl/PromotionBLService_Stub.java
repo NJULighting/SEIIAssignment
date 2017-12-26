@@ -6,7 +6,6 @@ import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
-import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.promotion.PromotionVO;
@@ -77,11 +76,6 @@ public class PromotionBLService_Stub implements PromotionBLService {
         promotionVOs.add(vo4);
 
         return promotionVOs;
-    }
-
-    @Override
-    public CommodityCategoriesTreeVO create() {
-        return null;
     }
 
     @Override

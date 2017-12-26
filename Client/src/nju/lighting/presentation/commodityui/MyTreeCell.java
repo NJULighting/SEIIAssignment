@@ -23,6 +23,7 @@ import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.Nameable;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -79,8 +80,10 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
                 AddCategoryDialog addCategoryController = (AddCategoryDialog) dialogController;
 
                 CommodityCategoryVO categoryVO = new CommodityCategoryVO(upperCategory, addCategoryController.getText());
-                ResultMessage resultMessage = commodityBLService.addCategory(categoryVO);
+                TwoTuple<ResultMessage, Integer> res = commodityBLService.addCategory(categoryVO);
+                ResultMessage resultMessage = res.t;
                 if (resultMessage == ResultMessage.SUCCESS) {
+                    categoryVO.setId(res.r);
                     upper.getChildren().add(new TreeItem<CommodityCategoryItem>(new CommodityCategoryItem(categoryVO)));
                     dialog.close();
                 } else {
@@ -132,11 +135,12 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
                 CommodityItemVO commodityItemVO = addCommodityController.getCommodityItem();
                 if (commodityItemVO != null) {
 
-                    ResultMessage resultMessage = commodityBLService
+                    TwoTuple<ResultMessage, String> res = commodityBLService
                             .addCommodity(commodityItemVO, ((CommodityCategoryVO) getTreeTabelItem().getValue().getItem()));
+                    ResultMessage resultMessage = res.t;
                     if (resultMessage.equals(ResultMessage.SUCCESS)) {
                         //新建商品需要ID
-                        commodityItemVO.setId("11");
+                        commodityItemVO.setId(res.r);
                         getTreeTabelItem().getChildren().add(
                                 new TreeItem<CommodityCategoryItem>(new CommodityCategoryItem(commodityItemVO)));
                         dialog.close();

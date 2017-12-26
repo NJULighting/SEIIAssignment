@@ -5,12 +5,15 @@ import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.util.List;
 
 public interface CommodityBLService {
 
-    /** Used to separate commodity's id. Just like the document system's separator*/
+    /**
+     * Used to separate commodity's id. Just like the document system's separator
+     */
     String SEPARATOR = "-";
 
     /**
@@ -27,7 +30,7 @@ public interface CommodityBLService {
      * @param category     id of the commodity's category
      * @return <tt>SUCCESS</tt> if category's id is right and database works well, <tt>FAILURE</tt> otherwise
      */
-    ResultMessage addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category);
+    TwoTuple<ResultMessage, String> addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category);
 
     /**
      * Find commodities by id of its parent category
@@ -52,6 +55,9 @@ public interface CommodityBLService {
      */
     CommodityItemVO findCommodityVOById(String id);
 
+
+    List<CommodityItemVO> searchCommodity(String keyword);
+
     /**
      * Delete a commodity
      * @param id id of the commodity
@@ -74,7 +80,7 @@ public interface CommodityBLService {
      * @return <tt>SUCCESS</tt> if add successfully,
      * <tt>FAILURE</tt> if parent category don't exists any more or it contains commodity items.
      */
-    ResultMessage addCategory(CommodityCategoryVO newCategory);
+    TwoTuple<ResultMessage, Integer> addCategory(CommodityCategoryVO newCategory);
 
     /**
      * Delete a category. The id of the category can be obtained from the vo.
@@ -89,7 +95,7 @@ public interface CommodityBLService {
      * a category, 'cause we think it's trivial. Category vo should be obtained
      * from the categories tree vo. This method don't allow to change name of the
      * dummy node(the root node).
-     * @param categoryVO  vo of the category
+     * @param categoryVO vo of the category
      * @return <tt>SUCCESS</tt> if modify successfully, <tt>FAILURE</tt> if try
      * to change the dummy node or the category vo has a invalid path. <tt>NETWORK_FAIL</tt>
      * if network fails.

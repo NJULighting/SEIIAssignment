@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXButton fx:id="addCustomerBtn" layoutX="890.0" layoutY="1.0" prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="完成并保存" textFill="WHITE">
+         <contextMenu>
+            <ContextMenu>
+               <items>
+                  <MenuItem mnemonicParsing="false" text="组合商品降价" />
+                  <MenuItem mnemonicParsing="false" text="针对不同总价" />
+                  <MenuItem mnemonicParsing="false" text="针对不同级别用户" />
+               </items>
+            </ContextMenu>
+         </contextMenu>
+      </JFXButton>
+      <Button fx:id="deleteSearch" disable="true" layoutX="199.0" layoutY="4.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" visible="false">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <image>
+                  <Image url="@../../../../images/详情关闭.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="noResult" layoutX="301.0" layoutY="31.0" text="无结果！" visible="false" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="30.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="700.0" />
+      <Pane layoutX="40.0" layoutY="30.0" prefHeight="550.0" prefWidth="700.0" />
+      <VBox layoutX="807.0" layoutY="105.0">
+         <children>
+            <Label text="from">
+               <font>
+                  <Font name="Bauhaus 93" size="24.0" />
+               </font>
+            </Label>
+            <DatePicker>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </DatePicker>
+            <Label text="to">
+               <font>
+                  <Font name="Bauhaus 93" size="24.0" />
+               </font>
+            </Label>
+            <DatePicker>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </DatePicker>
+            <Label text="设置折让">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField />
+         </children>
+      </VBox>
+      <Button fx:id="chooseCommodityBtn" layoutX="740.0" layoutY="27.0" mnemonicParsing="false" prefHeight="1.0" prefWidth="1.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="37.0" fitWidth="40.0">
+               <image>
+                  <Image url="@../../../../images/商品.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="765.0" layoutY="500.0" text="2000.00" textFill="#5599ff">
+         <font>
+            <Font name="Bauhaus 93" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="855.0" layoutY="520.0" text="- 63.9" textFill="#ff6193">
+         <font>
+            <Font name="Bauhaus 93" size="72.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

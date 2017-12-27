@@ -10,6 +10,7 @@ import nju.lighting.po.init.InitPO;
 import nju.lighting.vo.InitVO;
 import shared.OPType;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
@@ -57,17 +58,24 @@ enum InitHelper {
      * @return <code>SUCCESS</code> if build successfully<br>
      * <code>FAILURE</code> if there's an exception when create the information file or the network fails
      */
-    ResultMessage createInit() {
+    TwoTuple<ResultMessage, InitVO> createInit() {
+        TwoTuple<ResultMessage, InitVO> createResult = new TwoTuple<>();
         UserInfo userInfo = new UserInfoImpl();
         try {
-            ResultMessage res = dataService.createInit(userInfo.getIDOfSignedUser(), new Date());
-            if (res == ResultMessage.SUCCESS)
+            TwoTuple<ResultMessage, InitPO> addResult = dataService.createInit(userInfo.getIDOfSignedUser(), new Date());
+            ResultMessage resultMessage = addResult.t;
+            createResult.t = addResult.t;
+            if (resultMessage == ResultMessage.SUCCESS) {
                 logger.add(OPType.ADD, "完成期初建账");
-            return res;
+                InitPO po = addResult.r;
+                createResult.r = new InitVO(po.getId(), po.getTime(), po.getUrl(), userInfo.getUserVOByID(po.getUserID()));
+            }
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.FAILURE;
+            createResult.t = ResultMessage.FAILURE;
         }
+
+        return createResult;
     }
 
     /**
@@ -77,7 +85,7 @@ enum InitHelper {
      */
     private List<InitVO> transformPOs(List<InitPO> poList) {
         UserInfo userInfo = new UserInfoImpl();
-        return poList.stream().map(po -> new InitVO(po.getId(), po.getTime(), po.getUserID(), po.getUrl(), userInfo.getNameByID(po.getUserID())))
+        return poList.stream().map(po -> new InitVO(po.getId(), po.getTime(), po.getUrl(), userInfo.getUserVOByID(po.getUserID())))
                 .collect(Collectors.toList());
     }
 }

@@ -2,10 +2,7 @@ package nju.lighting.bl.customerbl;
 
 import nju.lighting.blservice.customerblservice.CustomerBLService;
 import nju.lighting.vo.CustomerVO;
-import shared.CustomerChangeInfo;
-import shared.CustomerGrade;
-import shared.CustomerType;
-import shared.ResultMessage;
+import shared.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +35,8 @@ public class CustomerBLService_Stub implements CustomerBLService {
 
 
     //增加客户
-    public ResultMessage createCustomer(CustomerVO vo) {
-        return ResultMessage.SUCCESS;
+    public TwoTuple<ResultMessage, Integer> createCustomer(CustomerVO vo) {
+        return null;
     }
 
     @Override

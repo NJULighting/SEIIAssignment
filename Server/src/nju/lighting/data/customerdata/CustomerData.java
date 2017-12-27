@@ -4,6 +4,7 @@ import nju.lighting.data.utils.CommonOperation;
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
 import nju.lighting.po.customer.CustomerPO;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -29,8 +30,9 @@ public class CustomerData extends UnicastRemoteObject implements CustomerDataSer
     }
 
     @Override
-    public ResultMessage insertCustomer(CustomerPO po) throws RemoteException {
-        return commonOperation.add(po);
+    public TwoTuple<ResultMessage, Integer> insertCustomer(CustomerPO po) throws RemoteException {
+        ResultMessage res = commonOperation.add(po);
+        return new TwoTuple<>(res, po.getID());
     }
 
     @Override

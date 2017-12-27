@@ -2,6 +2,7 @@ package nju.lighting.dataservice.customerdataservice;
 
 import nju.lighting.po.customer.CustomerPO;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -11,7 +12,7 @@ public interface CustomerDataService extends Remote {
 
      List<CustomerPO> getAllCustomer() throws RemoteException;
 
-     ResultMessage insertCustomer(CustomerPO po) throws RemoteException;
+     TwoTuple<ResultMessage, Integer> insertCustomer(CustomerPO po) throws RemoteException;
 
      ResultMessage deleteCustomer(int id) throws RemoteException;
 

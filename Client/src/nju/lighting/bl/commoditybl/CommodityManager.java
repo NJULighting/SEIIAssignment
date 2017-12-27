@@ -9,6 +9,7 @@ import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
@@ -84,6 +85,11 @@ enum CommodityManager {
 
     List<CommodityItemVO> findCommodityByCategory(int categoryID) {
         return findByToList(categoryID, dataService::findByCategory);
+    }
+
+    List<BasicCommodityItemVO> findBasicCommodityByCategory(int categoryID) {
+        return DataServiceFunction.findByToList(categoryID, dataService::findByCategory,
+                po -> new CommodityItem(po).toBasicCommodityItem().toVo());
     }
 
     List<CommodityItemVO> findCommodityVOByName(String commodityName) {

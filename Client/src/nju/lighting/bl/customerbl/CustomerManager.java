@@ -9,10 +9,7 @@ import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
 import nju.lighting.po.customer.CustomerPO;
 import nju.lighting.vo.CustomerVO;
-import shared.CustomerChangeInfo;
-import shared.CustomerType;
-import shared.OPType;
-import shared.ResultMessage;
+import shared.*;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
@@ -98,17 +95,22 @@ enum CustomerManager {
      * <code>FAILURE</code> if there's an exception in database
      * <code>NETWORK_FAIL</code> if network fails
      */
-    ResultMessage createCustomer(CustomerVO vo) {
+    TwoTuple<ResultMessage, Integer> createCustomer(CustomerVO vo) {
+        TwoTuple<ResultMessage, Integer> createResult = new TwoTuple<>();
         Customer customer = new Customer(vo);
         try {
-            ResultMessage res = dataService.insertCustomer(customer.toPO());
-            if (res == ResultMessage.SUCCESS)
+            TwoTuple<ResultMessage, Integer> res = dataService.insertCustomer(customer.toPO());
+            ResultMessage addResult = res.t;
+            createResult.t = res.t;
+            if (addResult == ResultMessage.SUCCESS) {
                 logger.add(OPType.ADD, "添加新客户" + vo.getName());
-            return res;
+                createResult.r = res.r;
+            }
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.NETWORK_FAIL;
+            createResult.t = ResultMessage.NETWORK_FAIL;
         }
+        return createResult;
     }
 
     /**

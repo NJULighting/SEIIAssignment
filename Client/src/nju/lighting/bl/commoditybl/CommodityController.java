@@ -30,7 +30,7 @@ class CommodityController implements CommodityBLService {
 
     @Override
     public List<BasicCommodityItemVO> findBasicCommodityByCategory(int categoryID) {
-        return null;
+        return manager.findBasicCommodityByCategory(categoryID);
     }
 
     @Override
@@ -40,7 +40,7 @@ class CommodityController implements CommodityBLService {
 
     @Override
     public List<CommodityItemVO> searchCommodity(String keyword) {
-        return null;
+        return null;// TODO: 2017/12/27 complete the method
     }
 
     @Override

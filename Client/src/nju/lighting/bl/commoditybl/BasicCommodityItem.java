@@ -13,14 +13,17 @@ public class BasicCommodityItem {
     private int repCount;
     private double recentInPrice;
     private double recentSellPrice;
+    private String modelNumber;
 
-    BasicCommodityItem(String id, String name, int categoryID, int repCount, double recentInPrice, double recentSellPrice) {
+    BasicCommodityItem(String id, String name, int categoryID, int repCount,
+                       double recentInPrice, double recentSellPrice, String modelNumber) {
         this.id = id;
         this.name = name;
         this.categoryID = categoryID;
         this.repCount = repCount;
         this.recentInPrice = recentInPrice;
         this.recentSellPrice = recentSellPrice;
+        this.modelNumber = modelNumber;
     }
 
     public String getId() {
@@ -71,7 +74,11 @@ public class BasicCommodityItem {
         this.recentSellPrice = recentSellPrice;
     }
 
-    public BasicCommodityItemVO toVo() {
-        return null;
+    public String getModelNumber() {
+        return modelNumber;
+    }
+
+    BasicCommodityItemVO toVo() {
+        return new BasicCommodityItemVO(id, name, repCount, recentInPrice, recentSellPrice, modelNumber);
     }
 }

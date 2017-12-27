@@ -10,16 +10,14 @@ import java.util.Date;
 public class InitVO {
     private final int id;
     private final Date time;
-    private final String userID;
     private String url;
-    private String username;
+    private final UserVO userVO;
 
-    public InitVO(int id, Date time, String userID, String url, String username) {
+    public InitVO(int id, Date time, String url, UserVO userVO) {
         this.id = id;
         this.time = time;
-        this.userID = userID;
         this.url = url;
-        this.username = username;
+        this.userVO = userVO;
     }
 
     public int getId() {
@@ -30,15 +28,11 @@ public class InitVO {
         return time;
     }
 
-    public String getUserID() {
-        return userID;
-    }
-
     public String getUrl() {
         return url;
     }
 
-    public String getUsername() {
-        return username;
+    public UserVO getUserVO() {
+        return userVO;
     }
 }

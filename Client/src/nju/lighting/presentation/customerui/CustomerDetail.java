@@ -23,10 +23,7 @@ import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.CustomerVO;
-import shared.CustomerChangeInfo;
-import shared.CustomerGrade;
-import shared.CustomerType;
-import shared.ResultMessage;
+import shared.*;
 
 import java.net.URL;
 import java.rmi.RemoteException;
@@ -163,7 +160,10 @@ public class CustomerDetail {
 
     private void saveNew() {
         CustomerVO customerVO = getCurrentCustomer();
-        customerBLService.createCustomer(customerVO);
+        TwoTuple<ResultMessage, Integer> addResult = customerBLService.createCustomer(customerVO);
+        if (addResult.t == ResultMessage.SUCCESS) {
+            customerVO.setID(addResult.r);
+        }
         TableView tableView = controller.getTableView();
         tableView.getItems().add(getCurrentCustomer());
         back();

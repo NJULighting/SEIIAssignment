@@ -1,8 +1,15 @@
 package nju.lighting.presentation.utils;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.fxml.FXMLLoader;
+import nju.lighting.presentation.customerui.CustomerPicker;
+import nju.lighting.presentation.customerui.CustomerSearchListController;
+import nju.lighting.presentation.mainui.Upper;
+import nju.lighting.vo.CustomerVO;
 import shared.CustomerGrade;
 import shared.CustomerType;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -45,4 +52,31 @@ public class CustomerHelper {
    public static CustomerGrade stringToGrade(String string){return stringGradeHashMap.get(string);}
    public static CustomerType stringToType(String string){return stringTypeHashMap.get(string);}
    public static String typeToString(CustomerType type){return typeStringHashMap.get(type);}
+
+   public static void setCustomer(Upper upper, SimpleObjectProperty<CustomerVO> customer,CustomerType type){
+
+       CustomerSearchListController controller=loadCustomerPicker(upper, customer);
+       controller.setReadOnly(upper, customer, type);
+       controller.search();
+
+   }
+
+    public static void setCustomer(Upper upper, SimpleObjectProperty<CustomerVO> customer){
+
+        CustomerSearchListController controller=loadCustomerPicker(upper, customer);
+        controller.setReadOnly(upper, customer);
+        controller.search();
+
+    }
+
+    private static CustomerSearchListController loadCustomerPicker(Upper upper, SimpleObjectProperty<CustomerVO> customer){
+        FXMLLoader loader=new FXMLLoader(CustomerHelper.class.getResource("../customerui/CustomerSearchListUI.fxml"));
+        try {
+            upper.setChildren(loader.load(),"选择客户");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return (CustomerSearchListController)loader.getController();
+    }
 }

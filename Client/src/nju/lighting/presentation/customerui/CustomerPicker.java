@@ -1,21 +1,14 @@
 package nju.lighting.presentation.customerui;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
-import nju.lighting.presentation.mainui.CustomerUpper;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.CustomerVO;
 import shared.CustomerType;
-
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 
 /**
  * Created on 2017/12/23.
@@ -33,7 +26,7 @@ public class CustomerPicker {
 
     boolean canceled=true;
 
-    public void init(CustomerUpper upper, CustomerType type){
+    public void init(Upper upper, SimpleObjectProperty<CustomerVO> customer, CustomerType type){
         FXMLLoader loader=new FXMLLoader(getClass().getResource("CustomerSearchListUI.fxml"));
         try {
             pane.getChildren().add(loader.load());
@@ -42,7 +35,8 @@ public class CustomerPicker {
         }
 
         CustomerSearchListController controller=loader.getController();
-        controller.setReadOnly(upper);
+
+        controller.setReadOnly(upper, customer, type);
         controller.search();
 
     }

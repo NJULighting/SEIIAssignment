@@ -7,21 +7,17 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import nju.lighting.presentation.commodityui.CommodityPicker;
 import nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainItem;
 import nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainList;
 import nju.lighting.presentation.mainui.Client;
-import nju.lighting.presentation.mainui.CommodityUpper;
-import nju.lighting.presentation.mainui.Upper;
+import nju.lighting.presentation.utils.CommodityHelper;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import shared.LossAndGainItemType;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -31,7 +27,7 @@ import java.util.stream.Collectors;
  *
  * @author 陈俊宇
  */
-public class LossAndGainDocUI implements Initializable,CommodityUpper {
+public class LossAndGainDocUI implements Initializable {
 
     LossAndGainDocMain main;
     ObservableList<BasicCommodityItemVO> commodities= FXCollections.observableArrayList();
@@ -46,15 +42,9 @@ public class LossAndGainDocUI implements Initializable,CommodityUpper {
 
     LossAndGainList listController;
 
-    @Override
-    public void back() {
-        main.back();
-    }
+    @FXML
+    Button chooseCommodityBtn;
 
-    @Override
-    public void addCommodity(List<BasicCommodityItemVO> commodity) {
-        commodities.addAll(commodity);
-    }
 
 
     public void setMain(LossAndGainDocMain main) {
@@ -66,16 +56,13 @@ public class LossAndGainDocUI implements Initializable,CommodityUpper {
         docItemList.clear();
     }
 
-    @FXML
-    void chooseCommodity() throws IOException {
-        loader=new FXMLLoader(getClass().getResource("../commodityui/CommodityPicker.fxml"));
-        main.setChildren(loader.load(),">选择商品");
-        CommodityPicker controller=loader.getController();
-        controller.setUpper(this);
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        chooseCommodityBtn.setOnAction(event -> {
+            CommodityHelper.chooseCommodity(main,commodities);
+
+        });
+
         creatorText.setText(Client.getUserVO().getUsername());
         loader=new FXMLLoader(getClass().getResource("lossandgaindoc/LossAndGainList.fxml"));
         try {

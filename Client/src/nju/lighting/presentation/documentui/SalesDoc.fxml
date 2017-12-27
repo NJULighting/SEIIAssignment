@@ -80,7 +80,7 @@
                                  <HBox.margin>
                                     <Insets left="5.0" />
                                  </HBox.margin></JFXTextField>
-                              <Button mnemonicParsing="false" onAction="#choosePromotion" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+                              <Button fx:id="promotionBtn" disable="true" mnemonicParsing="false" onAction="#choosePromotion" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
                                  <graphic>
                                     <ImageView>
                                        <image>
@@ -153,7 +153,7 @@
                      </image>
                   </ImageView>
                   <Pane fx:id="commodityContainer" layoutX="48.0" layoutY="52.0" prefHeight="480.0" prefWidth="702.0" />
-                  <JFXButton layoutX="48.0" layoutY="14.0" onAction="#chooseCommodity" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #5599FF;" text="增加商品" textFill="WHITE" />
+                  <JFXButton fx:id="commodityBtn" layoutX="48.0" layoutY="14.0" onAction="#chooseCommodity" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #5599FF;" text="增加商品" textFill="WHITE" />
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="7.0" layoutY="500.0" opacity="0.5">
                      <image>
                         <Image url="@../../../../images/指向.png" />

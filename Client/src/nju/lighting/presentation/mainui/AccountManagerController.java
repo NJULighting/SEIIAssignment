@@ -23,7 +23,7 @@ public class AccountManagerController extends MainUIController{
     @Override
     public void initialize(URL location, ResourceBundle resources){
         buttons = new Button[]{accountManage,makeAccountIODoc,makeCostDoc,businessConditionBtn,salesConditionBtn,businessHistoryBtn};
-        urls = new String[]{"../accountui/Account.fxml","../documentui/accountiodoc/AccountIODoc.fxml","../documentui/CostDoc.fxml",
+        urls = new String[]{"../accountui/Account.fxml","../documentui/accountiodoc/AddAccountIODoc.fxml","../documentui/CostDoc.fxml",
                 "../documentui/BusinessConditionTable.fxml","../documentui/SalesConditionTable.fxml","../documentui/HistoryDoc"};
         MAIN_BUTTON_SIZE = 6;
         super.initialize(location, resources);

@@ -1,13 +1,15 @@
 package nju.lighting.presentation.utils;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import nju.lighting.presentation.commodityui.CommodityPicker;
-import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
+import nju.lighting.presentation.mainui.Upper;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
 
 import java.io.IOException;
-import java.util.stream.Collectors;
+import java.util.List;
 
 /**
  * Created on 2017/12/17.
@@ -27,15 +29,29 @@ public class CommodityHelper {
 //        stage.initModality(Modality.APPLICATION_MODAL);
 //        stage.showAndWait();
 
-        if (!picker.isCanceled()) {
+//        if (!picker.isCanceled()) {
+//
+//
+//            giftsController.getGiftObservableList().addAll(
+//                    picker.getCommodities().stream()
+//                            .map(x -> new CommodityItem(x, 1))
+//                            .collect(Collectors.toList()));
+//
+//            giftsController.refresh();
+//        }
+    }
 
+    public static void chooseCommodity(Upper upper, ObservableList<BasicCommodityItemVO> commodities){
 
-            giftsController.getGiftObservableList().addAll(
-                    picker.getCommodities().stream()
-                            .map(x -> new CommodityItem(x, 1))
-                            .collect(Collectors.toList()));
+        FXMLLoader loader=new FXMLLoader(CommodityHelper.class.getResource("../commodityui/CommodityPicker.fxml"));
 
-            giftsController.refresh();
+        try {
+
+            upper.setChildren(loader.load(),"选择商品");
+            CommodityPicker controller=loader.getController();
+            controller.init(upper,commodities);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

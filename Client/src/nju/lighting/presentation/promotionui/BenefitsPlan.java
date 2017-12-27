@@ -1,12 +1,10 @@
 package nju.lighting.presentation.promotionui;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
-import nju.lighting.presentation.mainui.PromotionUpper;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.promotion.PromotionVO;
 
@@ -25,15 +23,16 @@ public class BenefitsPlan {
 
     List <PromotionVO> promotionList;
 
-    PromotionUpper upper;
+    Upper upper;
 
+    SimpleObjectProperty<PromotionVO> promotionProperty;
     PromotionVO promotionVO;
 
     boolean canceled=true;
 
     @FXML
     void ok(){
-        upper.setPromotion(promotionList.get(pagination.getCurrentPageIndex()));
+       promotionProperty.set(promotionList.get(pagination.getCurrentPageIndex()));
         upper.back();
     }
 
@@ -52,8 +51,9 @@ public class BenefitsPlan {
     }
 
 
-    public void init(List<PromotionVO> list,PromotionUpper upper){
+    public void init(List<PromotionVO> list, Upper upper, SimpleObjectProperty<PromotionVO> promotionProperty){
         this.upper=upper;
+        this.promotionProperty=promotionProperty;
         promotionList=list;
         pagination.setPageCount(promotionList.size());
         pagination.setPageFactory((Integer index) -> createPage(index));

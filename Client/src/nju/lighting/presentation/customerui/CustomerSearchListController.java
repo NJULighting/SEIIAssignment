@@ -4,6 +4,7 @@ package nju.lighting.presentation.customerui;
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,11 +22,11 @@ import javafx.util.Callback;
 import nju.lighting.bl.customerbl.Customer;
 import nju.lighting.bl.customerbl.CustomerBLService_Stub;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
-import nju.lighting.presentation.mainui.CustomerUpper;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.CustomerVO;
+import shared.CustomerType;
 import shared.ResultMessage;
 
 import java.io.IOException;
@@ -255,20 +256,24 @@ public class CustomerSearchListController implements Initializable {
         controller.init(add);
 
     }
-
-    public void setReadOnly(CustomerUpper upper) {
+    public void setReadOnly(Upper upper, SimpleObjectProperty<CustomerVO> customer) {
         tableView.getColumns().remove(openBtn);
         addCustomerBtn.setText("确定");
         addCustomerBtn.setOnAction(e->{
             if (!tableView.getSelectionModel().isEmpty()){
                 selectedCustomer=tableView.getItems().get(tableView.getSelectionModel().getSelectedIndex());
-                upper.setCustomer(selectedCustomer);
+                customer.set(selectedCustomer);
                 upper.back();
 
             }
 
 
         });
+    }
+
+    public void setReadOnly(Upper upper, SimpleObjectProperty<CustomerVO> customer, CustomerType type) {
+        setReadOnly(upper, customer);
+
     }
 
     public CustomerBLService getCustomerBLService() {

@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
  *制定报损报溢单的主界面，库存人员界面上制定报损报溢单即跳转到此界面
  * @author 陈俊宇
  */
-public class LossAndGainDocMain implements Initializable{
+public class LossAndGainDocMain implements Initializable,Upper{
     @FXML
     HBox container;
 
@@ -35,9 +35,13 @@ public class LossAndGainDocMain implements Initializable{
         setChildren(mainPane,"");
     }
 
+
+    public void set(Node node) {
+        container.getChildren().setAll(node);
+    }
+
     public void setChildren(Node children,String title){
-        container.getChildren().clear();
-        container.getChildren().add(children);
+        container.getChildren().setAll(children);
         sub.setText(title);
     }
 

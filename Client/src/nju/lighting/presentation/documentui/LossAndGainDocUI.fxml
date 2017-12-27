@@ -18,7 +18,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.LossAndGainDocUI">
    <children>
-      <Button layoutX="616.0" layoutY="27.0" mnemonicParsing="false" onAction="#chooseCommodity" prefHeight="1.0" prefWidth="1.0" style="-fx-background-color: transparent;">
+      <Button fx:id="chooseCommodityBtn" layoutX="616.0" layoutY="27.0" mnemonicParsing="false" prefHeight="1.0" prefWidth="1.0" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="37.0" fitWidth="40.0">
                <image>

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXTreeViewPath;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -30,6 +31,11 @@ public class CustomerManageController implements Initializable, Upper {
         child.getChildren().clear();
         child.getChildren().add(mainPane);
         sub.setText("");
+    }
+
+    @Override
+    public void setChildren(Node node, String title) {
+
     }
 
     @Override

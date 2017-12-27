@@ -1,5 +1,6 @@
 package nju.lighting.presentation.documentui;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
@@ -10,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -20,11 +22,11 @@ import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.presentation.commodityui.CommodityPicker;
 import nju.lighting.presentation.customerui.CustomerPicker;
-import nju.lighting.presentation.mainui.Client;
-import nju.lighting.presentation.mainui.CommodityUpper;
-import nju.lighting.presentation.mainui.CustomerUpper;
-import nju.lighting.presentation.mainui.PromotionUpper;
+import nju.lighting.presentation.mainui.*;
 import nju.lighting.presentation.promotionui.BenefitsPlan;
+import nju.lighting.presentation.utils.CommodityHelper;
+import nju.lighting.presentation.utils.CustomerHelper;
+import nju.lighting.presentation.utils.PromotionHelper;
 import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.DocVO;
@@ -41,7 +43,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class SalesDocController implements Initializable, CommodityUpper,PromotionUpper,CustomerUpper {
+public class SalesDocController implements Initializable, Upper {
     private CustomerVO customerVO;
 
     private String salesDocID;
@@ -58,7 +60,10 @@ public class SalesDocController implements Initializable, CommodityUpper,Promoti
     private DocBLService docBLService = new DocController();
 
     @FXML
-    private Button choseCustomBtn, finishBtn;
+    private Button choseCustomBtn, finishBtn,promotionBtn;
+
+    @FXML
+    private JFXButton commodityBtn;
 
     @FXML
     private JFXTextField customer, salesman, userman, repository, accountBeforeDis, discount,
@@ -84,73 +89,42 @@ public class SalesDocController implements Initializable, CommodityUpper,Promoti
     SimpleObjectProperty<CustomerVO> customerProperty=new SimpleObjectProperty<>();
     SimpleObjectProperty<PromotionVO> promotionProperty=new SimpleObjectProperty<>();
 
-    CommodityPicker commodityPicker;
-    CommodityList commodityListController;
 
-    CustomerPicker customerPicker;
-    BenefitsPlan promotionPicker;
+    CommodityList commodityListController;
     PromotionVO promotionVO;
     CustomerType type=CustomerType.SALESPERSON;
 
+    public void chooseCommodity(){
+        CommodityHelper.chooseCommodity(this,commodityList);
+    }
 
     public void chooseCustomer() {
-        try {
-            container.getChildren().clear();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../customerui/CustomerPicker.fxml"));
-            container.getChildren().add(loader.load());
-            customerPicker = loader.getController();
-            customerPicker.init(this,type);
-            sub.setText(">选择客户");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void setCustomer(CustomerVO customer) {
-        customerProperty.set(customer);
+        CustomerHelper.setCustomer(this,customerProperty,CustomerType.SUPPLIER);
     }
 
 
-    public void chooseCommodity() {
-        try {
-            container.getChildren().clear();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../commodityui/CommodityPicker.fxml"));
-            container.getChildren().add(loader.load());
-            commodityPicker = loader.getController();
-            commodityPicker.setUpper(this);
-            sub.setText(">选择商品");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
-    @Override
-    public void addCommodity(List<BasicCommodityItemVO> commodity) {
-        commodityList.addAll(commodity);
-    }
 
     public void choosePromotion() throws IOException {
-        container.getChildren().clear();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../promotionui/BenefitsPlan.fxml"));
-        container.getChildren().add(loader.load());
-        promotionPicker = loader.getController();
-        promotionPicker.init(promotionBLService.getPromotionList(), this);
-        sub.setText(">选择促销策略");
+        PromotionHelper.setPromotion(this,promotionProperty,promotionBLService.getBenefitsPlan(
+                customerProperty.getValue().getGrade(),
+                commodityList.stream()
+                .map(x-> x.getId())
+                .collect(Collectors.toList()),
+                commodityListController.calculateTotal()
+        ));
 
-    }
-
-    @Override
-    public void setPromotion(PromotionVO promotion) {
-        promotionProperty.set(promotion);
     }
 
 
     public void back() {
-        container.getChildren().clear();
-        container.getChildren().add(mainPane);
-        sub.setText("");
+       setChildren(mainPane,"");
+    }
 
+    @Override
+    public void setChildren(Node node, String title) {
+        container.getChildren().setAll(node);
+        sub .setText(title);
     }
 
 
@@ -219,6 +193,15 @@ public class SalesDocController implements Initializable, CommodityUpper,Promoti
         commodityListController.setEditable();
 
         docItemList = commodityListController.giftObservableList;
+
+        customer.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (newValue!=null&&newValue!="")
+                    promotionBtn.setDisable(false);
+            }
+        });
+
         commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
             @Override
             public void onChanged(Change<? extends BasicCommodityItemVO> c) {
@@ -294,6 +277,8 @@ public class SalesDocController implements Initializable, CommodityUpper,Promoti
                 ));
             }
         });
+
+
 
     }
 

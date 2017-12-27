@@ -35,7 +35,14 @@ public class AccountData extends UnicastRemoteObject implements AccountDataServi
 
     @Override
     public ResultMessage insert(AccountPO po) throws RemoteException {
-        return accountPOCommonOperation.add(po);
+        ResultMessage resultMessage1 =  accountPOCommonOperation.add(po);
+        List<AccountLogPO> logPOS = po.getChangeLogs();
+        ResultMessage resultMessage2 = accountLogPOCommonOperation.addList(logPOS);
+        if (resultMessage1 == ResultMessage.SUCCESS && resultMessage2 == ResultMessage.SUCCESS)
+            return ResultMessage.SUCCESS;
+        else {
+            return ResultMessage.FAILURE;
+        }
     }
 
     @Override

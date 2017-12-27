@@ -1,5 +1,7 @@
 package nju.lighting.bl.commoditybl;
 
+import nju.lighting.bl.documentbl.DocInfo;
+import nju.lighting.bl.documentbl.DocInfoImpl;
 import nju.lighting.bl.utils.CommodityPathParser;
 import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.bl.utils.DataServiceSupplier;
@@ -82,14 +84,14 @@ public class CommodityInfoImpl implements CommodityInfo {
         if (categoryId == -1)
             return CommodityCategoriesTree.ROOT_NAME;
 
-        return Optional.ofNullable(DataServiceFunction.findByToPO(categoryId, dataService::findCategoryById))
+        return Optional.ofNullable(DataServiceFunction.findByToEntity(categoryId, dataService::findCategoryById))
                 .map(CommodityCategoryPO::getName)
                 .orElseThrow(NoSuchElementException::new);
     }
 
     @Override
     public double getCommodityInPrice(String id) {
-        return Optional.ofNullable(DataServiceFunction.findByToPO(id, dataService::findById))
+        return Optional.ofNullable(DataServiceFunction.findByToEntity(id, dataService::findById))
                 .map(CommodityItemPO::getInPrice)
                 .orElseThrow(NoSuchElementException::new);
     }
@@ -121,7 +123,15 @@ public class CommodityInfoImpl implements CommodityInfo {
             CommodityItemPO item = dataService.findById(id);
             item.addRepositoryCount(count);
 
-            return dataService.update(item);
+            ResultMessage res = dataService.update(item);
+
+            if (res == ResultMessage.SUCCESS) {
+                // See whether triggered an alert document
+                DocInfo docInfo = new DocInfoImpl();
+                docInfo.triggerAlertDoc(id, item.getRepCount());
+            }
+
+            return res;
         } catch (RemoteException e) {
             e.printStackTrace();
             return ResultMessage.FAILURE;

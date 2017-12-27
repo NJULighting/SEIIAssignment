@@ -1,12 +1,17 @@
 package nju.lighting.bl.documentbl.alertdoc;
 
 import nju.lighting.bl.documentbl.Doc;
+import nju.lighting.dataservice.DataFactory;
+import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.alertdoc.AlertDocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.ResultMessage;
+
+import javax.naming.NamingException;
+import java.rmi.RemoteException;
 
 /**
  * Created on 2017/11/7.
@@ -42,6 +47,22 @@ public class AlertDoc extends Doc {
         // Item list
         itemList = new AlertDocItemList();
         alertDocPO.getItemPOS().forEach(itemList::add);
+    }
+
+    public void triggerAlert(String commodityId, int count) {
+        if (!expired) {
+            triggered = itemList.triggered(commodityId, count);
+        }
+
+        // If the document is triggered, update to the database
+        if (triggered) {
+            try {
+                DocDataService dataService = DataFactory.getDataBase(DocDataService.class);
+                dataService.updateDoc(toPO());
+            } catch (NamingException | RemoteException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

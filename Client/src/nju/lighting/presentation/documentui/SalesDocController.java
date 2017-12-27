@@ -166,10 +166,10 @@ public class SalesDocController implements Initializable, CommodityUpper,Promoti
                     Double.parseDouble(accountBeforeDis.getText()), Double.parseDouble(discount.getText()),
                     Double.parseDouble(voucher.getText()), Double.parseDouble(account.getText()));
 
-            TwoTuple<String, ResultMessage> result = docBLService.commitDoc(salesDocVO);
-            switch (result.r) {
+            TwoTuple<ResultMessage, String> result = docBLService.commitDoc(salesDocVO);
+            switch (result.t) {
                 case SUCCESS:
-                    salesDocID = result.t;
+                    salesDocID = result.r;
                     successtoCommit();
                     break;
                 case FAILURE:

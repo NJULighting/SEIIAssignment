@@ -46,4 +46,9 @@ public class MockDocManage implements DocInfo {
     public ResultMessage saveAndApprove(HistoryDocVO vo) {
         return null;
     }
+
+    @Override
+    public void triggerAlertDoc(String commodityId, int count) {
+
+    }
 }

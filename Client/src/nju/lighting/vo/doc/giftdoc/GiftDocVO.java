@@ -1,7 +1,7 @@
 package nju.lighting.vo.doc.giftdoc;
 
 
-import nju.lighting.bl.utils.VPOTransformer;
+import nju.lighting.bl.utils.ListTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.giftdoc.GiftDocPO;
 import nju.lighting.po.doc.giftdoc.GiftItemPO;
@@ -69,7 +69,7 @@ public class GiftDocVO extends DocVO {
 
     @Override
     public DocPO toPO() {
-        List<GiftItemPO> poList = VPOTransformer.toVPOList(gifts, GiftItemVO::toPO);
+        List<GiftItemPO> poList = ListTransformer.toList(gifts, GiftItemVO::toPO);
         return new GiftDocPO(getType(), getCreatorId(), getTime(), poList, customerID, total, promotionID);
     }
 }

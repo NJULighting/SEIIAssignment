@@ -4,6 +4,7 @@ import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
+import nju.lighting.bl.utils.DataServiceBiFunction;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.initdataservice.InitDataService;
 import nju.lighting.po.init.InitPO;
@@ -61,19 +62,17 @@ enum InitHelper {
     TwoTuple<ResultMessage, InitVO> createInit() {
         TwoTuple<ResultMessage, InitVO> createResult = new TwoTuple<>();
         UserInfo userInfo = new UserInfoImpl();
-        try {
-            TwoTuple<ResultMessage, InitPO> addResult = dataService.createInit(userInfo.getIDOfSignedUser(), new Date());
-            ResultMessage resultMessage = addResult.t;
-            createResult.t = addResult.t;
-            if (resultMessage == ResultMessage.SUCCESS) {
-                logger.add(OPType.ADD, "完成期初建账");
-                InitPO po = addResult.r;
-                createResult.r = new InitVO(po.getId(), po.getTime(), po.getUrl(), userInfo.getUserVOByID(po.getUserID()));
-            }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            createResult.t = ResultMessage.FAILURE;
+
+        TwoTuple<ResultMessage, InitPO> addResult =
+                DataServiceBiFunction.commit(userInfo.getIDOfSignedUser(), new Date(), dataService::createInit);
+
+        if (addResult.t == ResultMessage.SUCCESS) {
+            logger.add(OPType.ADD, "完成期初建账");
+            InitPO po = addResult.r;
+            createResult.r = new InitVO(po.getId(), po.getTime(), po.getUrl(), userInfo.getUserVOByID(po.getUserID()));
         }
+
+        createResult.t = addResult.t;
 
         return createResult;
     }

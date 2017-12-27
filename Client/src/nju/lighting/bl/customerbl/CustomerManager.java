@@ -5,6 +5,7 @@ import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
+import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
 import nju.lighting.po.customer.CustomerPO;
@@ -96,20 +97,11 @@ enum CustomerManager {
      * <code>NETWORK_FAIL</code> if network fails
      */
     TwoTuple<ResultMessage, Integer> createCustomer(CustomerVO vo) {
-        TwoTuple<ResultMessage, Integer> createResult = new TwoTuple<>();
         Customer customer = new Customer(vo);
-        try {
-            TwoTuple<ResultMessage, Integer> res = dataService.insertCustomer(customer.toPO());
-            ResultMessage addResult = res.t;
-            createResult.t = res.t;
-            if (addResult == ResultMessage.SUCCESS) {
-                logger.add(OPType.ADD, "添加新客户" + vo.getName());
-                createResult.r = res.r;
-            }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            createResult.t = ResultMessage.NETWORK_FAIL;
-        }
+        TwoTuple<ResultMessage, Integer> createResult =
+                DataServiceFunction.commit(customer.toPO(), dataService::insertCustomer);
+        if (createResult.t == ResultMessage.SUCCESS)
+            logger.add(OPType.ADD, "添加客户" + vo.getName() + "成功");
         return createResult;
     }
 

@@ -25,7 +25,7 @@ public class DocController implements DocBLService {
     private DocManager manager = DocManager.INSTANCE;
 
     @Override
-    public TwoTuple<String, ResultMessage> commitDoc(DocVO doc) {
+    public TwoTuple<ResultMessage, String> commitDoc(DocVO doc) {
         return manager.commitDoc(doc);
     }
 

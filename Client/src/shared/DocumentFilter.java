@@ -14,20 +14,56 @@ import java.util.function.Predicate;
 
 public class DocumentFilter {
 
-    private final Predicate<Doc> typeFilter;
-    private final Predicate<Doc> dateFilter;
-    private final Predicate<Doc> creatorFilter;
-    private final Predicate<Doc> idFilter;
-    private final Predicate<Doc> stateFilter;
-    private final Predicate<Doc> customerFilter;
-    private final Predicate<Doc> commodityFilter;
-    private final Predicate<Doc> repositoryFilter;
-
     private final String commodity;
     private final Date start;
     private final Date end;
+    private final Set<DocType> docTypes;
+    private final String creatorId;
+    private final String docId;
+    private final DocState state;
+    private final String customerId;
+    private final String repository;
 
-    public Predicate<Doc> getPredicate() {
+    private DocumentFilter(Builder builder) {
+
+        commodity = builder.commodityName;
+        start = Optional.ofNullable(builder.startDate)
+                .orElse(new Date(Instant.now().minus(Duration.ofDays(1)).toEpochMilli()));
+        end = Optional.ofNullable(builder.endDate)
+                .orElse(new Date(Instant.now().plus(Duration.ofDays(1)).toEpochMilli()));
+        docTypes = builder.docTypes;
+        creatorId = builder.creatorId;
+        docId = builder.docId;
+        state = builder.state;
+        customerId = builder.customerId;
+        repository = builder.repository;
+
+    }
+
+    public Predicate<Doc> getPredicateForDoc() {
+        Predicate<Doc> creatorFilter = generatePredicateByEqual(creatorId, Doc::getUserId);
+        Predicate<Doc> idFilter = generatePredicateByEqual(docId, Doc::getId);
+        Predicate<Doc> stateFilter = generatePredicateByEqual(state, Doc::getState);
+
+        Predicate<Doc> customerFilter = generatePredicateByContain(customerId, Doc::containsCustomer);
+        Predicate<Doc> commodityFilter = generatePredicateByContain(commodity, Doc::containsCommodity);
+        Predicate<Doc> repositoryFilter = generatePredicateByContain(repository, Doc::containsRepository);
+
+        // Generate type filter
+        Predicate<Doc> typeFilter;
+        if (docTypes.size() == 0) {
+            typeFilter = generatePredicateByEqual(null, Doc::getDocType);
+        } else {
+            typeFilter = po -> false;
+            for (DocType type : docTypes) {
+                typeFilter = typeFilter.or(po -> po.getDocType() == type);
+            }
+        }
+
+        // Generate filter for date
+        Predicate<Doc> endDateFilter = po -> end.after(po.getCreateTime());
+        Predicate<Doc> dateFilter = endDateFilter.and(po -> start.before(po.getCreateTime()));
+
         return typeFilter.and(dateFilter).and(creatorFilter).and(idFilter).and(stateFilter)
                 .and(customerFilter).and(commodityFilter).and(repositoryFilter);
     }
@@ -38,50 +74,43 @@ public class DocumentFilter {
 
     /**
      * Default start time is yesterday.
+     * @return start date of the filter
      */
     public Date getStart() {
-        return Optional.ofNullable(start).orElse(new Date(Instant.now().minus(Duration.ofDays(1)).toEpochMilli()));
+        return start;
     }
 
     /**
-     * Default end time is now.
+     * Default end time is tomorrow.
+     * @return end date of the filter
+     *
      */
     public Date getEnd() {
-        return Optional.ofNullable(end).orElse(new Date(Instant.now().plus(Duration.ofDays(1)).toEpochMilli()));
+        return end;
     }
 
-    private DocumentFilter(Builder builder) {
-        creatorFilter = generatePredicateByEqual(builder.creatorId, Doc::getUserId);
-        idFilter = generatePredicateByEqual(builder.docId, Doc::getId);
-        stateFilter = generatePredicateByEqual(builder.state, Doc::getState);
+    public Set<DocType> getDocTypes() {
+        return docTypes;
+    }
 
-        customerFilter = generatePredicateByContain(builder.customerId, Doc::containsCustomer);
-        commodityFilter = generatePredicateByContain(builder.commodityName, Doc::containsCommodity);
-        repositoryFilter = generatePredicateByContain(builder.repository, Doc::containsRepository);
+    public String getCreatorId() {
+        return creatorId;
+    }
 
-        commodity = builder.commodityName;
-        start = builder.startDate;
-        end = builder.endDate;
+    public String getDocId() {
+        return docId;
+    }
 
-        // Generate type filter
-        if (builder.docTypes.size() == 0) {
-            typeFilter = generatePredicateByEqual(null, Doc::getDocType);
-        } else {
-            Predicate<Doc> typeFilter = po -> false;
-            for (DocType type : builder.docTypes) {
-                typeFilter = typeFilter.or(po -> po.getDocType() == type);
-            }
-            this.typeFilter = typeFilter;
-        }
+    public DocState getState() {
+        return state;
+    }
 
-        // Generate filter for date
-        Predicate<Doc> endDateFilter = po -> Optional.ofNullable(builder.endDate)
-                .map(date -> date.compareTo(po.getCreateTime()) >= 0)
-                .orElse(true);
-        dateFilter = endDateFilter.and(po -> Optional.ofNullable(builder.startDate)
-                .map(date -> date.compareTo(po.getCreateTime()) <= 0)
-                .orElse(true));
+    public String getCustomerId() {
+        return customerId;
+    }
 
+    public String getRepository() {
+        return repository;
     }
 
     private <T> Predicate<Doc> generatePredicateByEqual(T t, Function<Doc, T> function) {
@@ -157,6 +186,7 @@ public class DocumentFilter {
             this.state = state;
             return this;
         }
+
         public DocumentFilter build() {
             return new DocumentFilter(this);
         }

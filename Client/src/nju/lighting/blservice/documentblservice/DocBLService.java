@@ -22,7 +22,7 @@ public interface DocBLService {
      * @param doc doc to be committed
      * @return <tt>[ID,SUCCESS]</tt> if commit successfully
      */
-    TwoTuple<String, ResultMessage> commitDoc(DocVO doc);
+    TwoTuple<ResultMessage, String> commitDoc(DocVO doc);
 
     /**
      * Find documents with the constraints the filter defined. The user can only

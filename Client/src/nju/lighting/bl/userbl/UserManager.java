@@ -3,7 +3,7 @@ package nju.lighting.bl.userbl;
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.utils.DataServiceFunction;
-import nju.lighting.bl.utils.VPOTransformer;
+import nju.lighting.bl.utils.ListTransformer;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
@@ -50,7 +50,7 @@ enum UserManager {
             List<UserPO> userPOs = userDataService.getAll().stream()
                     .filter(userPO -> userPO.getIdentity() == identity)
                     .collect(Collectors.toList());
-            return VPOTransformer.toVPOList(userPOs, userPO -> new User(userPO).toVO());
+            return ListTransformer.toList(userPOs, userPO -> new User(userPO).toVO());
         } catch (RemoteException e) {
             e.printStackTrace();
             return Collections.emptyList();

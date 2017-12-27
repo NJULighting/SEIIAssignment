@@ -1,6 +1,6 @@
 package nju.lighting.vo.doc.costdoc;
 
-import nju.lighting.bl.utils.VPOTransformer;
+import nju.lighting.bl.utils.ListTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.costdoc.CostDocItemPO;
 import nju.lighting.po.doc.costdoc.CostDocPO;
@@ -8,7 +8,6 @@ import nju.lighting.vo.DocVO;
 import nju.lighting.vo.account.AccountVO;
 import shared.DocType;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -62,7 +61,7 @@ public class CostDocVO extends DocVO {
 
     @Override
     public DocPO toPO() {
-        List<CostDocItemPO> poList = VPOTransformer.toVPOList(itemList, CostDocItemVO::toPO);
+        List<CostDocItemPO> poList = ListTransformer.toList(itemList, CostDocItemVO::toPO);
         return new CostDocPO(getType(), getCreatorId(), getTime(), account.getId(), poList, total);
     }
 }

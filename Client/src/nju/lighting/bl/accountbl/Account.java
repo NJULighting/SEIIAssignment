@@ -2,6 +2,7 @@ package nju.lighting.bl.accountbl;
 
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
+import nju.lighting.po.account.AccountLogPO;
 import nju.lighting.po.account.AccountPO;
 import nju.lighting.vo.account.AccountVO;
 import shared.AccountChangeType;
@@ -24,7 +25,7 @@ class Account {
     private AccountChangeLogList logList;
 
     Account(AccountPO po) {
-            id = po.getId();
+        id = po.getId();
         amount = po.getAmount();
         name = po.getName();
         logList = new AccountChangeLogList(po.getChangeLogs());
@@ -79,9 +80,9 @@ class Account {
 
     ResultMessage updateAmount(double total) {
         amount += total;
-        logList.addLog(new Date(), total, amount, total < 0 ? AccountChangeType.OUT : AccountChangeType.IN);
         try {
             AccountDataService dataService = DataFactory.getDataBase(AccountDataService.class);
+            dataService.add(new AccountLogPO(new Date(), total, amount, total < 0 ? AccountChangeType.OUT : AccountChangeType.IN, id));
             return dataService.update(toPO());
         } catch (NamingException | RemoteException e) {
             e.printStackTrace();

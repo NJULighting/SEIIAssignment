@@ -12,10 +12,11 @@ import java.util.function.Function;
  */
 @FunctionalInterface
 public interface DataServiceSupplier<T> {
+
     static <VO, PO> List<VO> getAll(DataServiceSupplier<List<PO>> supplier, Function<PO, VO> poTransformer) {
         try {
             List<PO> poList = supplier.get();
-            return VPOTransformer.toVPOList(poList, poTransformer);
+            return ListTransformer.toList(poList, poTransformer);
         } catch (RemoteException e) {
             e.printStackTrace();
             return Collections.emptyList();

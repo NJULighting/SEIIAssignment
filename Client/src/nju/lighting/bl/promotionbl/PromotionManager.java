@@ -2,6 +2,7 @@ package nju.lighting.bl.promotionbl;
 
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
+import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
 import nju.lighting.po.promotion.PromotionPO;
@@ -11,6 +12,7 @@ import shared.*;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
+import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -36,26 +38,21 @@ enum PromotionManager {
     }
 
     TwoTuple<ResultMessage, PromotionVO> commit(PromotionBuildInfo info) {
-        Promotion promotion = new Promotion(info);
-        PromotionPO po = promotion.buildPOForCreation();
         TwoTuple<ResultMessage, PromotionVO> res = new TwoTuple<>();
 
-        // Write to database
-        try {
-            TwoTuple<ResultMessage, Integer> insertResult = dataService.insert(po);
-            res.t = insertResult.t;
-            if (insertResult.t == ResultMessage.SUCCESS) {
-                logger.add(OPType.ADD, "创建促销策略" + insertResult.r);
-                promotion.setId(insertResult.r);
-                res.r = promotion.toVO();
-            }
+        // Get po for committing
+        Promotion promotion = new Promotion(info);
+        PromotionPO po = promotion.buildPOForCreation();
 
-            return res;
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            res.t = ResultMessage.NETWORK_FAIL;
-            return res;
+        TwoTuple<ResultMessage, Integer> commitResult = DataServiceFunction.commit(po, dataService::insert);
+
+        // Set return value
+        if (commitResult.t == ResultMessage.SUCCESS) {
+            logger.add(OPType.ADD, "创建促销策略" + commitResult.r);
+            promotion.setId(commitResult.r);
+            res.r = promotion.toVO();
         }
+        return res;
     }
 
     /**
@@ -73,10 +70,14 @@ enum PromotionManager {
         }
         try {
             List<PromotionPO> poList = dataService.getPromotionList();
+            Date currentDate = new Date();
             Predicate<PromotionPO> filterPredicate =
-                    promotionPO -> promotionPO.getLevel().compareTo(customerLevel) <= 0
+                    promotionPO -> promotionPO.getEndDate().after(currentDate)
+                            && promotionPO.getStartDate().before(currentDate)
+                            && (promotionPO.getLevel().compareTo(customerLevel) <= 0
                             || containsItemOfList(commodityIDList, promotionPO)
-                            || promotionPO.getTotal() < total;
+                            || promotionPO.getTotal() < total);
+
             return poList.stream()
                     .filter(filterPredicate)
                     .map(po -> new Promotion(po).toVO()).collect(Collectors.toList());

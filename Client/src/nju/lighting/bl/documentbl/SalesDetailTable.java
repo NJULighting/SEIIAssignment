@@ -116,7 +116,7 @@ public class SalesDetailTable {
 
     private <T> List<T> findToDoc(Class<T> type, DocType docType) {
         try {
-            DocFactory docFactory = new DocFactory();
+            DocFactory docFactory = DocFactory.INSTANT;
             return dataService.findByTimeAndType(startDate, endDate, docType)
                     .stream()
                     .map(docFactory::poToDoc)

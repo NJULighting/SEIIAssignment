@@ -35,7 +35,7 @@ public class AccountDocApproveTest {
 
     @Test
     public void test0() throws Exception {
-        DocFactory docFactory = new DocFactory();
+        DocFactory docFactory = DocFactory.INSTANT;
         List<DocPO> poList = dataService.findByType(DocType.ACCOUNT_IN);
         List<DocVO> voList = poList.stream().map(po -> docFactory.poToDoc(po).toVO()).collect(Collectors.toList());
 
@@ -45,9 +45,8 @@ public class AccountDocApproveTest {
                         userInfo.getUserVOByID(userInfo.getIDOfSignedUser())))
                 .collect(Collectors.toList());
 
-        List<Doc> docList = historyDocVOList.stream().map(docFactory::historyDocVOToDoc).collect(Collectors.toList());
-        for (Doc doc : docList) {
-            Assert.assertEquals(ResultMessage.SUCCESS, doc.approve());
-        }
+        DocInfo docInfo = new DocInfoImpl();
+        ResultMessage res = docInfo.approveAll(historyDocVOList);
+        Assert.assertEquals(ResultMessage.SUCCESS, res);
     }
 }

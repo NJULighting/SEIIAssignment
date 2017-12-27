@@ -37,7 +37,7 @@ public abstract class Doc {
     }
 
     /**
-     * Constructor for red flush
+     * Constructor for red flush.(only)
      */
     protected Doc(DocVO docVO) {
         id = docVO.getDocId();
@@ -82,7 +82,7 @@ public abstract class Doc {
      * Basic red flush method. It will change the create time, state
      * of doc and creator's id.
      */
-    public void executeRedFlush() {
+    void executeRedFlush() {
         createTime = new Date();
         state = DocState.UN_CHECKED;
 

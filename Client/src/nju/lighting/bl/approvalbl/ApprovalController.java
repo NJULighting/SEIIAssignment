@@ -1,5 +1,7 @@
 package nju.lighting.bl.approvalbl;
 
+import nju.lighting.bl.documentbl.DocInfo;
+import nju.lighting.bl.documentbl.DocInfoImpl;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
@@ -13,35 +15,31 @@ import java.util.List;
  * @author 陈俊宇
  */
 public class ApprovalController implements ApprovalBLService {
-    private ApprovalManager manager = ApprovalManager.INSTANCE;
+    private DocInfo docInfo = new DocInfoImpl();
 
     @Override
     public List<DocVO> getDocumentList() {
-        return manager.getDocumentList();
+        return docInfo.findUnCheckedDoc();
     }
 
     @Override
     public ResultMessage approve(HistoryDocVO vo) {
-        return null;
+        return docInfo.approve(vo);
     }
 
     @Override
     public ResultMessage approveAll(List<HistoryDocVO> voList) {
-        return null;
+        return docInfo.approveAll(voList);
     }
 
     @Override
     public ResultMessage reject(HistoryDocVO vo) {
-        return null;
+        return docInfo.reject(vo);
     }
 
     @Override
     public ResultMessage save(HistoryDocVO vo) {
-        return null;
+        return docInfo.save(vo);
     }
 
-    @Override
-    public ResultMessage saveAndApprove(HistoryDocVO vo) {
-        return null;
-    }
 }

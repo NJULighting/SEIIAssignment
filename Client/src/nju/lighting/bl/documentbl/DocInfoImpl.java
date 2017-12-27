@@ -2,8 +2,10 @@ package nju.lighting.bl.documentbl;
 
 import nju.lighting.bl.documentbl.alertdoc.AlertDoc;
 import nju.lighting.bl.utils.DataServiceFunction;
+import nju.lighting.bl.utils.ListTransformer;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
+import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.DocState;
@@ -21,9 +23,11 @@ import java.util.List;
  */
 public class DocInfoImpl implements DocInfo {
     private DocDataService dataService;
+    private DocFactory docFactory;
 
     public DocInfoImpl() {
         try {
+            docFactory = DocFactory.INSTANT;
             dataService = DataFactory.getDataBase(DocDataService.class);
         } catch (NamingException e) {
             e.printStackTrace();
@@ -32,52 +36,67 @@ public class DocInfoImpl implements DocInfo {
 
     @Override
     public List<DocVO> findUnCheckedDoc() {
-        DocFactory docFactory = new DocFactory();
         return DataServiceFunction.findByToList(DocState.UN_CHECKED,
                 dataService::findByState, po -> docFactory.poToDoc(po).toVO());
     }
 
     @Override
     public ResultMessage approve(HistoryDocVO vo) {
-        return null;
-    }
-
-    @Override
-    public ResultMessage approveAll(List<HistoryDocVO> voList) {
-        return null;
-    }
-
-    @Override
-    public ResultMessage reject(HistoryDocVO vo) {
-        DocFactory docFactory = new DocFactory();
         Doc doc = docFactory.historyDocVOToDoc(vo);
-        doc.reject();
+
+        // Approve
+        ResultMessage res = doc.approve();
+        if (res == ResultMessage.FAILURE)
+            return res;
+
+        // Update
         try {
             return dataService.updateDoc(doc.toPO());
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.NETWORK_FAIL;
+            return ResultMessage.FAILURE;
         }
     }
 
     @Override
+    public ResultMessage approveAll(List<HistoryDocVO> voList) {
+        List<Doc> docList = ListTransformer.toList(voList, docFactory::historyDocVOToDoc);
+        if (docList.stream().anyMatch(doc -> doc.approve() != ResultMessage.SUCCESS))
+            return ResultMessage.FAILURE;
+
+        return docList.stream()
+                .anyMatch(doc -> updateDoc(doc.toPO()) != ResultMessage.SUCCESS) ?
+                ResultMessage.FAILURE : ResultMessage.SUCCESS;
+    }
+
+    @Override
+    public ResultMessage reject(HistoryDocVO vo) {
+        Doc doc = docFactory.historyDocVOToDoc(vo);
+        doc.reject();
+        return updateDoc(doc.toPO());
+    }
+
+    @Override
     public ResultMessage save(HistoryDocVO vo) {
-        return null;
+        Doc doc = docFactory.historyDocVOToDoc(vo);
+        return updateDoc(doc.toPO());
     }
 
     @Override
     public void triggerAlertDoc(String commodityId, int count) {
-        DocFactory factory = new DocFactory();
-        List<Doc> alertDocs = DataServiceFunction.findByToList(DocType.ALERT, dataService::findByType, factory::poToDoc);
+        List<Doc> alertDocs = DataServiceFunction.findByToList(DocType.ALERT, dataService::findByType, docFactory::poToDoc);
         for (Doc doc : alertDocs) {
             ((AlertDoc) doc).triggerAlert(commodityId, count);
         }
     }
 
-    @Override
-    public ResultMessage saveAndApprove(HistoryDocVO vo) {
-        return null;
+    private ResultMessage updateDoc(DocPO po) {
+        try {
+            return dataService.updateDoc(po);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return ResultMessage.FAILURE;
+        }
     }
-
 
 }

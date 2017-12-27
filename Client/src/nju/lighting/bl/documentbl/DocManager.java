@@ -65,7 +65,7 @@ public enum DocManager {
      */
     public List<HistoryDocVO> findDocuments(DocumentFilter filter) {
         UserInfo userInfo = new UserInfoImpl();
-        DocFactory docFactory = new DocFactory();
+        DocFactory docFactory = DocFactory.INSTANT;
         List<Doc> docList = DataServiceFunction
                 .findAndFilterToList(userInfo.getIDOfSignedUser(), dataService::findByUserId,
                         docFactory::poToDoc, filter.getPredicateForDoc());
@@ -94,7 +94,7 @@ public enum DocManager {
     }
 
     List<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) {
-        DocFactory factory = new DocFactory();
+        DocFactory factory = DocFactory.INSTANT;
         List<Doc> docList = DataServiceBiFunction.findAndFilterToList(filter.getStart(), filter.getEnd(),
                 dataService::findByTime, factory::poToDoc, filter.getPredicateForDoc());
 

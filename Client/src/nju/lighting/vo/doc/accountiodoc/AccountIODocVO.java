@@ -3,6 +3,7 @@ package nju.lighting.vo.doc.accountiodoc;
 import nju.lighting.bl.utils.ListTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.accountiodoc.AccountIODocPO;
+import nju.lighting.po.doc.accountiodoc.AccountOutDocPO;
 import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import nju.lighting.vo.DocVO;
 import shared.AccountIODocType;
@@ -67,6 +68,9 @@ public class AccountIODocVO extends DocVO {
         AccountIODocType ioDocType = getType() == DocType.ACCOUNT_IN ? AccountIODocType.IN : AccountIODocType.OUT;
         List<AccountTransferItemPO> itemPOList = ListTransformer.toList(transferAccountList, AccountTransferItemVO::toPO);
 
-        return new AccountIODocPO(getType(), getCreatorId(), getTime(), ioDocType, customer, itemPOList, total);
+        if (getType() == DocType.ACCOUNT_IN)
+            return new AccountIODocPO(getType(), getCreatorId(), getTime(), ioDocType, customer, itemPOList, total);
+
+        return new AccountOutDocPO(getType(), getCreatorId(), getTime(), ioDocType, customer, itemPOList, total);
     }
 }

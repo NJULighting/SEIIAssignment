@@ -5,8 +5,10 @@ import javafx.fxml.FXMLLoader;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.promotionui.BenefitsPlan;
 import nju.lighting.vo.promotion.PromotionVO;
+import shared.PromotionType;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -16,6 +18,17 @@ import java.util.List;
  * @author 陈俊宇
  */
 public class PromotionHelper {
+
+    static HashMap<PromotionType,String> typeStringHashMap=new HashMap<>();
+
+    static {
+        typeStringHashMap.put(PromotionType.CustomerOriented,"针对客户");
+        typeStringHashMap.put(PromotionType.Combo,"组合商品降价");
+        typeStringHashMap.put(PromotionType.PriceOriented,"针对总价");
+    }
+
+    public static String typeToString(PromotionType type){return typeStringHashMap.get(type);}
+
     public static void setPromotion(Upper upper, SimpleObjectProperty<PromotionVO> promotionProperty, List<PromotionVO> list) {
         FXMLLoader loader = new FXMLLoader(CustomerHelper.class.getResource("../promotionui/BenefitsPlan.fxml"));
         try {

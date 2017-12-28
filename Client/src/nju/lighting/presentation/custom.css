@@ -115,7 +115,8 @@ root {
 }
 
 .table-view .table-row-cell .table-cell{
-    -fx-text-fill:black;
+    /*-fx-text-fill:black;*/
+    -fx-text-alignment: left;
     -fx-alignment: center-left;
     -fx-border-width: 0;
     -fx-background-color:transparent;
@@ -125,9 +126,22 @@ root {
     -fx-background-color: transparent;
 }
 
+.table-row-cell:hover{
+    -fx-background-color: #c1dcff;
+}
+
+
+
 .table-row-cell:selected {
-    -fx-background-color: transparent;
-    -fx-text: black;
+
+    -fx-background-color: #c1dcff;
+ }
+
+
+.table-row-cell:selected .text {
+  -fx-font-weight: bold;
+
+
 }
 
 

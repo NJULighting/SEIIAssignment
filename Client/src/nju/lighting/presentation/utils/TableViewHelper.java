@@ -17,14 +17,14 @@ import nju.lighting.presentation.documentui.EditingCell;
  */
 public class  TableViewHelper {
 
-    public static void commonSet(TableView tableView){
-        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
-
+    public static void setHeight(TableView tableView){
         //设置表格的高度和与数据的多少一致，否则数据多的时候表中就会出现滚动条
-//        if(tableView.fixedCellSizeProperty().getValue()!=-1)
-//        tableView.prefHeightProperty().bind(tableView.fixedCellSizeProperty().multiply(Bindings.size(tableView.getItems()).add(0.86)));
+        tableView.prefHeightProperty().bind(tableView.fixedCellSizeProperty().multiply(Bindings.size(tableView.getItems()).add(0.86)));
 
+    }
+
+    public static void commonSet(TableView tableView){
+       tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tableView.skinProperty().addListener((obs, oldSkin, newSkin) -> {
             final TableHeaderRow header = (TableHeaderRow) tableView.lookup("TableHeaderRow");
             header.reorderingProperty().addListener((o, oldVal, newVal) -> header.setReordering(false));

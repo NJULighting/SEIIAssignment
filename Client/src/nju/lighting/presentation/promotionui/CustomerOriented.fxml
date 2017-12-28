@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="container" maxHeight="1.7976931348623157E308" prefWidth="540.0" spacing="30.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.promotionui.CustomerOriented">
+<VBox fx:id="container" maxHeight="1.7976931348623157E308" prefWidth="540.0" spacing="30.0"  xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.promotionui.CustomerOriented">
    <children>
       <HBox spacing="10.0">
          <children>
             <Label text="触发条件： ">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
                <HBox.margin>
                   <Insets />
@@ -20,7 +20,7 @@
             </Label>
             <Label text="" fx:id="trigger">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>
@@ -32,12 +32,12 @@
          <children>
             <Label text="价格折让： ">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label fx:id="off" text="Label">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>
@@ -48,12 +48,12 @@
                <children>
                   <Label text="代金券金额： ">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="voucher" text="Label">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                </children>
@@ -62,12 +62,12 @@
                <children>
                   <Label text="代金券截止日期： ">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="voucherEndTime" text="1">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                </children>
@@ -78,7 +78,7 @@
          <children>
             <Label text="赠品清单：">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>

@@ -209,4 +209,13 @@ public class CreatePromotion implements Initializable {
         this.upper = upper;
         blService=upper.blService;
     }
+
+    public void setReadOnly(PromotionVO promotion){
+        typeLoader = new FXMLLoader(getClass().getResource(typeToUrl.get(promotion.getType())));
+        try {
+            verticalBox.getChildren().add(typeLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

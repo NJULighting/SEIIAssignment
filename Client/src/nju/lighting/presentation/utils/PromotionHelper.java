@@ -2,6 +2,9 @@ package nju.lighting.presentation.utils;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import nju.lighting.presentation.documentui.CommodityItem;
+import nju.lighting.presentation.documentui.GiftListController;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.promotionui.BenefitsPlan;
 import nju.lighting.vo.promotion.PromotionVO;
@@ -41,6 +44,20 @@ public class PromotionHelper {
         controller.init(list, upper, promotionProperty);
 
 
+    }
+
+    public static Node loadGiftList(List<CommodityItem> commodityList){
+        Node res=null;
+        try {
+            FXMLLoader loader=new FXMLLoader(PromotionHelper.class.getResource("../documentui/GiftList.fxml"));
+             res= loader.load();
+             GiftListController controller=loader.getController();
+                controller.getGiftObservableList().setAll(commodityList);
+             controller.setFlexibleHeight();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
     }
 }
 

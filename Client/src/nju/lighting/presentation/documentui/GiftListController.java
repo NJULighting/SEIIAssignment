@@ -33,6 +33,8 @@ public class GiftListController implements Initializable {
     @FXML
     public Label totalLabel;
 
+    ObservableList<CommodityItem> giftObservableList = FXCollections.observableArrayList();
+
     @FXML
     public TableColumn<CommodityItem, String> commodityName;
 
@@ -54,14 +56,18 @@ public class GiftListController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        total = giftsVO.stream()
-                .mapToDouble(GiftItemVO::getSubtotal)
-                .sum();
+        if (giftsVO!=null){
+            total = giftsVO.stream()
+                    .mapToDouble(GiftItemVO::getSubtotal)
+                    .sum();
 
 
-        if (giftsVO != null) {
+            giftObservableList.addAll(giftsVO.stream()
+                    .map(x -> new CommodityItem(x))
+                    .collect(Collectors.toList())
+            );
+        }
 
-            ObservableList giftObservableList = FXCollections.observableArrayList();
 
             commodityName.setCellValueFactory(cellData ->
                     cellData.getValue().nameProperty());
@@ -72,10 +78,7 @@ public class GiftListController implements Initializable {
             price.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
 
 
-            giftObservableList.addAll(giftsVO.stream()
-                    .map(x -> new CommodityItem(x))
-                    .collect(Collectors.toList())
-            );
+
 
             giftTableView.setItems(giftObservableList);
 
@@ -86,6 +89,14 @@ public class GiftListController implements Initializable {
         }
 
 
+
+
+    public ObservableList getGiftObservableList() {
+        return giftObservableList;
+    }
+
+    public void setFlexibleHeight(){
+        TableViewHelper.setHeight(giftTableView,1.25);
     }
 }
 

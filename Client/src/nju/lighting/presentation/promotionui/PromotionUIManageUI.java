@@ -193,7 +193,15 @@ public class PromotionUIManageUI implements Initializable, Upper {
                                 blService.modify(promotion);
                                 getTableView().getItems().set(getIndex(),promotion);
                             });
-                            //open.setOnAction();
+                            open.setOnAction(e->{
+                                FXMLLoader loader=new FXMLLoader(getClass().getResource("Promotion.fxml"));
+                                try {
+                                    setChildren(loader.load(),">促销策略详情");
+                                } catch (IOException e1) {
+                                    e1.printStackTrace();
+                                }
+                                ((Promotion)loader. getController()).init((PromotionVO) getTableView().getItems().get(getIndex()));
+                            });
                         }
                     }
                 };

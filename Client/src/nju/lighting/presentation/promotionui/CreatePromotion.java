@@ -1,106 +1,86 @@
 package nju.lighting.presentation.promotionui;
 
-import com.jfoenix.controls.JFXComboBox;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.util.StringConverter;
-
+import nju.lighting.presentation.documentui.CommodityItem;
+import nju.lighting.presentation.documentui.CommodityList;
+import nju.lighting.presentation.mainui.Upper;
+import nju.lighting.presentation.utils.CommodityHelper;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
+import shared.PromotionType;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
- * Created on 2017/12/11.
+ * Created on 2017/12/28.
  * Description
  *
  * @author 陈俊宇
  */
 public class CreatePromotion implements Initializable {
-
-    private final String COMBO = "组合商品降价";
-    private final String PRICE_ORIENTED = "针对不同总价";
-    private final String CUSTOMER_ORIENTED = "针对不同级别用户";
+    Upper upper;
 
 
-    HashMap<String, String> hashMap = new HashMap<>();
+    ObservableList<BasicCommodityItemVO> commodities = FXCollections.observableArrayList();
+    ObservableList<CommodityItem> itemList;
+
+    HashMap<PromotionType,String > typeToUrl=new HashMap<>();
+    @FXML
+    VBox verticalBox;
+
+    FXMLLoader typeLoader;
 
     @FXML
-    JFXComboBox type;
+    Button chooseCommodityBtn;
 
     @FXML
-    VBox container;
+    Pane tableContainer;
 
-    @FXML
-    ScrollPane scrollPane;
-
-    @FXML
-    AnchorPane anchorPane;
-
-    void initTypeComboBox() {
-        type.getItems().add(new Label(COMBO));
-        type.getItems().add(new Label(PRICE_ORIENTED));
-        type.getItems().add(new Label(CUSTOMER_ORIENTED));
-
-        type.setConverter(new StringConverter<Label>() {
-
-            @Override
-
-            public String toString(Label object) {
-
-                return object == null ? "" : object.getText();
-
-            }
-
-
-            @Override
-
-            public Label fromString(String string) {
-
-                return new Label(string);
-
-            }
-
-        });
+    public void setType(PromotionType type) throws IOException {
+        typeLoader =new FXMLLoader(getClass().getResource(typeToUrl.get(type)));
+        verticalBox.getChildren().add(typeLoader.load());
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        typeToUrl.put(PromotionType.Combo,"CreateCombo.fxml");
+        typeToUrl.put(PromotionType.CustomerOriented,"CreateCustomerOrientedUI.fxml");
+        typeToUrl.put(PromotionType.PriceOriented,"CreatePriceOrientedUI.fxml");
+        chooseCommodityBtn.setOnAction(e -> CommodityHelper.chooseCommodity(upper, commodities));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../documentui/CommodityList.fxml"));
+        try {
+            tableContainer.getChildren().add(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        CommodityList controller = loader.getController();
+        controller.setGiftAndEditable();
+        itemList = controller.getGiftObservableList();
 
-        hashMap.put(COMBO,"createCombo.fxml");
-
-
-        initTypeComboBox();
-
-        type.focusedProperty().addListener(new ChangeListener<Boolean>() {
+        commodities.addListener(new ListChangeListener<BasicCommodityItemVO>() {
             @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (!newValue) {
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource( hashMap.get(((Label) type.getValue()).getText())));
-                        if (container.getChildren().size()>4)
-                            container.getChildren().remove(4);
-                        container.getChildren().add(loader.load());
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+            public void onChanged(Change<? extends BasicCommodityItemVO> c) {
+                while (c.next()){
+                    itemList.addAll(c.getAddedSubList().stream()
+                            .map(x-> new CommodityItem(x,1))
+                            .collect(Collectors.toList()));
                 }
             }
         });
-
-        scrollPane.setFitToHeight(true);
-        scrollPane.setFitToWidth(true);
-        //CommodityCategory.setEditable(false);
     }
 
-
+    public void setUpper(Upper upper) {
+        this.upper = upper;
+    }
 }

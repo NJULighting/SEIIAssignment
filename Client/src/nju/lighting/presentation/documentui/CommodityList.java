@@ -181,6 +181,15 @@ public class CommodityList implements Initializable {
         });
     }
 
+    public void setGift(){
+        giftTableView.getColumns().remove(comments);
+        price.setEditable(false);
+    }
+    public void setGiftAndEditable(){
+        setEditable();
+        setGift();
+    }
+
     public ObservableList<CommodityItem> getGiftObservableList() {
         return giftObservableList;
     }

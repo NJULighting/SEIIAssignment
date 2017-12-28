@@ -8,13 +8,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created on 2017/12/17.
+ * Created on 2017/12/28.
  * Description
  *
  * @author 陈俊宇
  */
-public class CreatePriceOriented  {
-
-
+public class CreateCustomerOriented  {
 
 }

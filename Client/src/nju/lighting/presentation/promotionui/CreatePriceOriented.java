@@ -1,6 +1,8 @@
 package nju.lighting.presentation.promotionui;
 
-import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,10 +13,8 @@ import java.util.ResourceBundle;
  *
  * @author 陈俊宇
  */
-public class CreatePriceOriented implements Initializable {
+public class CreatePriceOriented  {
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-    }
+
 }

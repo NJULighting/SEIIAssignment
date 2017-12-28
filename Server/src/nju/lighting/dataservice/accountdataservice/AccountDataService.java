@@ -28,4 +28,5 @@ public interface AccountDataService extends Remote {
     ResultMessage add(AccountLogPO logPO) throws RemoteException;
 
     List<AccountPO> fuzzySearchById(String key) throws RemoteException;
+
 }

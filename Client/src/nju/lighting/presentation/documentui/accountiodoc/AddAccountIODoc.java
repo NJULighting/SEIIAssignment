@@ -4,7 +4,11 @@ import com.jfoenix.controls.JFXToggleButton;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -13,10 +17,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
+import javafx.scene.layout.StackPane;
+import nju.lighting.presentation.accountui.AccountList;
 import nju.lighting.presentation.mainui.Upper;
+import nju.lighting.presentation.utils.AccountHelper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.vo.CustomerVO;
+import nju.lighting.vo.account.AccountVO;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,7 +44,7 @@ public class AddAccountIODoc implements Initializable,Upper {
     Pane mainPane;
 
     @FXML
-    HBox container;
+    HBox container,tableContainer;
 
     @FXML
     Label sub;
@@ -46,7 +55,19 @@ public class AddAccountIODoc implements Initializable,Upper {
     @FXML
     Button addTransferItemBtn;
 
+    @FXML
+    StackPane stackPane;
+
+    SimpleObjectProperty<AccountVO> accountProperty=new SimpleObjectProperty<>();
+    ObservableList<AccountTransferItem> itemList;
+
+
     SimpleObjectProperty<CustomerVO> customerProperty=new SimpleObjectProperty<>();
+
+    @FXML
+    void commit(){
+
+    }
 
     @FXML
     void chooseCustomer(){
@@ -56,8 +77,27 @@ public class AddAccountIODoc implements Initializable,Upper {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        addTransferItemBtn.setOnAction(e->{
 
+
+        try {
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("AccountTransferList.fxml"));
+            tableContainer.getChildren().add(loader.load());
+            AccountTransferList controller= loader.getController();
+            controller.setEditable();
+            itemList=controller.getObservableList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        accountProperty.addListener(new ChangeListener<AccountVO>() {
+            @Override
+            public void changed(ObservableValue<? extends AccountVO> observable, AccountVO oldValue, AccountVO newValue) {
+                itemList.add(new AccountTransferItem(newValue));
+            }
+        });
+
+        addTransferItemBtn.setOnAction(e->{
+            AccountHelper.addAccount(stackPane,accountProperty);
         });
 
         customerProperty.addListener(new ChangeListener<CustomerVO>() {

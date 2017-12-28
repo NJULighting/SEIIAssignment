@@ -47,7 +47,7 @@ public class CommodityHelper {
 
         try {
 
-            upper.setChildren(loader.load(),"选择商品");
+            upper.setChildren(loader.load(),">选择商品");
             CommodityPicker controller=loader.getController();
             controller.init(upper,commodities);
         } catch (IOException e) {

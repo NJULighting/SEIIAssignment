@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -9,15 +14,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.CommodityList">
+<AnchorPane minHeight="0.0" minWidth="0.0" stylesheets="@../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.CommodityList">
     <children>
-      <VBox fx:id="vbox1" alignment="CENTER" layoutX="10.0" layoutY="10.0" spacing="30.0">
+      <VBox fx:id="vbox1" alignment="CENTER" layoutX="10.0" spacing="30.0">
          <children>
-            <TableView fx:id="giftTableView" editable="true" fixedCellSize="40.0" focusTraversable="false" prefHeight="400.0" prefWidth="700.0" snapToPixel="false" stylesheets="@../tableview.css">
+            <TableView fx:id="giftTableView" editable="true" fixedCellSize="40.0" focusTraversable="false" prefHeight="400.0" prefWidth="700.0" snapToPixel="false">
                <columns>
-                  <TableColumn fx:id="id" editable="false" prefWidth="60.0" sortable="false" text="编号" />
+                  <TableColumn fx:id="id" editable="false" prefWidth="100.0" sortable="false" text="编号" />
                   <TableColumn fx:id="commodityName" editable="false" prefWidth="120.0" sortable="false" text="商品名" />
-                  <TableColumn fx:id="modelNum" editable="false" sortable="false" text="型号" />
+                  <TableColumn fx:id="modelNum" editable="false" prefWidth="100.0" sortable="false" text="型号" />
                   <TableColumn fx:id="count" editable="true" sortable="false" text="数量" />
                   <TableColumn fx:id="price" minWidth="0.0" sortable="false" text="单价" />
                   <TableColumn fx:id="subtotal" editable="false" prefWidth="100.0" sortable="false" text="小计" />

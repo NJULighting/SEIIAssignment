@@ -15,7 +15,7 @@ import nju.lighting.presentation.documentui.EditingCell;
  *
  * @author 陈俊宇
  */
-public class TableViewHelper {
+public class  TableViewHelper {
 
     public static void commonSet(TableView tableView){
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);

@@ -32,6 +32,7 @@ class AccountDocItem implements DocItem {
         accountID = itemVO.getAccountID();
         amount = itemVO.getAmount();
         comments = itemVO.getComments();
+        id = itemVO.getId();
         this.ioType = ioType;
     }
 

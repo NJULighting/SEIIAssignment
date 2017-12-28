@@ -41,4 +41,8 @@ public class AccountTransferItemVO {
     AccountTransferItemPO toPO() {
         return new AccountTransferItemPO(accountID, amount, comments);
     }
+
+    public int getId() {
+        return id;
+    }
 }

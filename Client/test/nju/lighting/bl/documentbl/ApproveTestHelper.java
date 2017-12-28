@@ -1,9 +1,11 @@
 package nju.lighting.bl.documentbl;
 
+import nju.lighting.bl.userbl.LoginTestHelper;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.bl.utils.DataServiceBiFunction;
 import nju.lighting.bl.utils.DataServiceFunction;
+import nju.lighting.bl.utils.DataServiceSupplier;
 import nju.lighting.bl.utils.ListTransformer;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
@@ -25,9 +27,11 @@ import java.util.List;
 public class ApproveTestHelper {
 
     private static DocDataService dataService;
+    private static DocFactory docFactory = DocFactory.INSTANT;
 
     static {
         try {
+            LoginTestHelper.loginAuthorizedUser();
             dataService = DataFactory.getDataBase(DocDataService.class);
         } catch (NamingException e) {
             e.printStackTrace();
@@ -35,14 +39,34 @@ public class ApproveTestHelper {
     }
 
     public static List<HistoryDocVO> getDocsForApproving(DocType docType) {
-        DocFactory docFactory = DocFactory.INSTANT;
+        return getDocs(getDocOfType(docType), DocState.APPROVAL);
+    }
+
+    public static List<HistoryDocVO> getDocsForApproving() {
+        return getDocs(getAll(), DocState.APPROVAL);
+    }
+
+    public static List<HistoryDocVO> getDocsForSaving(DocType docType) {
+        return getDocs(getDocOfType(docType), DocState.UN_CHECKED);
+    }
+
+    private static List<HistoryDocVO> getDocs(List<DocVO> voList, DocState state) {
         UserInfo userInfo = new UserInfoImpl();
-        List<DocVO> voList = DataServiceBiFunction
-                .findToList(docType, DocState.UN_CHECKED,
-                        dataService::findByTypeAndState, po -> docFactory.poToDoc(po).toVO());
 
         return ListTransformer.toList(voList, vo -> new HistoryDocVO(userInfo.getUserVOByID(vo.getCreatorId()), vo,
-                "test", DocState.APPROVAL, new Date(),
+                "test", state, new Date(),
                 userInfo.getUserVOByID(userInfo.getIDOfSignedUser())));
+    }
+
+    private static List<DocVO> getAll() {
+        return DataServiceFunction
+                .findAndFilterToList(DocState.UN_CHECKED, dataService::findByState,
+                        po -> docFactory.poToDoc(po).toVO(), vo -> vo.getType() != DocType.ALERT);
+    }
+
+    private static List<DocVO> getDocOfType(DocType type) {
+        return DataServiceBiFunction
+                .findToList(type, DocState.UN_CHECKED,
+                        dataService::findByTypeAndState, po -> docFactory.poToDoc(po).toVO());
     }
 }

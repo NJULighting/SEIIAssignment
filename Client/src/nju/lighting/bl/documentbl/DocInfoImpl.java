@@ -36,8 +36,8 @@ public class DocInfoImpl implements DocInfo {
 
     @Override
     public List<DocVO> findUnCheckedDoc() {
-        return DataServiceFunction.findByToList(DocState.UN_CHECKED,
-                dataService::findByState, po -> docFactory.poToDoc(po).toVO());
+        return DataServiceFunction.findAndFilterToList(DocState.UN_CHECKED,
+                dataService::findByState, po -> docFactory.poToDoc(po).toVO(), vo -> vo.getType() != DocType.ALERT);
     }
 
     @Override

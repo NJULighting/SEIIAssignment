@@ -55,7 +55,7 @@ class SaleDocItemList {
                 commodityInfo.getCommodityNameByID(item.getCommodityID()),
                 commodityInfo.getCommodityCategory(item.getCommodityID()),
                 item.getNumber(), item.getSalePrice(), item.getTotalAmount());
-        return itemList.transformItemToObject(function);
+        return itemList.transform(function);
     }
 
     /**
@@ -65,7 +65,7 @@ class SaleDocItemList {
         CommodityInfo commodityInfo = new CommodityInfoImpl();
         ToDoubleFunction<SalesDocItem> function =
                 doc -> commodityInfo.getBasicCommodityItemVO(doc.getCommodityID()).getRecentInPrice() * doc.getNumber();
-        return itemList.transformItemToNumber(function);
+        return itemList.transformAndSum(function);
     }
 
     public void redFlush() {

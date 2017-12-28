@@ -1,10 +1,10 @@
 package nju.lighting.blservice.customerblservice;
 
-import nju.lighting.bl.customerbl.Customer;
 import nju.lighting.vo.CustomerVO;
 import shared.CustomerChangeInfo;
 import shared.CustomerType;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public interface CustomerBLService {
      *     <code>FAILURE</code> if there's an exception in database
      *     <code>NETWORK_FAIL</code> if network fails
      */
-    ResultMessage createCustomer(CustomerVO vo);
+    TwoTuple<ResultMessage, Integer> createCustomer(CustomerVO vo);
 
     /**
      * Change a customer's upper limit of receivables

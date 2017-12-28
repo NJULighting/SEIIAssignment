@@ -28,7 +28,7 @@ class CommodityItem {
         this.batch = batch;
         this.batchNumber = batchNumber;
         this.dateOfProduction = dateOfProduction;
-        this.basicCommodityItem = new BasicCommodityItem(id, name, category, repCount, recentInPrice, recentSellPrice);
+        this.basicCommodityItem = new BasicCommodityItem(id, name, category, repCount, recentInPrice, recentSellPrice, modelNumber);
     }
 
     CommodityItem(CommodityItemPO po) {
@@ -38,7 +38,8 @@ class CommodityItem {
     }
 
     CommodityItem(CommodityItemVO vo, int categoryID) {
-        basicCommodityItem = new BasicCommodityItem(vo.getId(), vo.getName(), categoryID, vo.getRepCount(), vo.getRecentInPrice(), vo.getRecentSellPrice());
+        basicCommodityItem = new BasicCommodityItem(vo.getId(), vo.getName(), categoryID, vo.getRepCount(),
+                vo.getRecentInPrice(), vo.getRecentSellPrice(), vo.getModelNumber());
         modelNumber = vo.getModelNumber();
         inPrice = vo.getInPrice();
         sellPrice = vo.getSellPrice();

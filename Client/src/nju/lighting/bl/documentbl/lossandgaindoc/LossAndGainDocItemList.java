@@ -37,7 +37,7 @@ class LossAndGainDocItemList {
     }
 
     double getAmount() {
-        return itemList.transformItemToNumber(LossAndGainDocItem::getValue);
+        return itemList.transformAndSum(LossAndGainDocItem::getValue);
     }
 
     public void redFlush() {

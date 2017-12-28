@@ -2,6 +2,7 @@ package nju.lighting.dataservice.initdataservice;
 
 import nju.lighting.po.init.InitPO;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public interface InitDataService extends Remote{
 
-    ResultMessage createInit(String userId, Date date) throws RemoteException;
+    TwoTuple<ResultMessage, InitPO> createInit(String userId, Date date) throws RemoteException;
 
     List<InitPO> getAllInit() throws RemoteException;
 

@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
  * Description:
  * @author Liao
  */
-public class VPOTransformer {
-    public static <IN, OUT> List<OUT> toVPOList(List<IN> list, Function<IN, OUT> function) {
+public class ListTransformer {
+    public static <IN, OUT> List<OUT> toList(List<IN> list, Function<IN, OUT> function) {
         return list.stream()
                 .map(function)
                 .collect(Collectors.toList());

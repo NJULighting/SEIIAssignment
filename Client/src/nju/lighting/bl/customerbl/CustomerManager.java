@@ -5,14 +5,12 @@ import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
+import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
 import nju.lighting.po.customer.CustomerPO;
 import nju.lighting.vo.CustomerVO;
-import shared.CustomerChangeInfo;
-import shared.CustomerType;
-import shared.OPType;
-import shared.ResultMessage;
+import shared.*;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
@@ -98,17 +96,13 @@ enum CustomerManager {
      * <code>FAILURE</code> if there's an exception in database
      * <code>NETWORK_FAIL</code> if network fails
      */
-    ResultMessage createCustomer(CustomerVO vo) {
+    TwoTuple<ResultMessage, Integer> createCustomer(CustomerVO vo) {
         Customer customer = new Customer(vo);
-        try {
-            ResultMessage res = dataService.insertCustomer(customer.toPO());
-            if (res == ResultMessage.SUCCESS)
-                logger.add(OPType.ADD, "添加新客户" + vo.getName());
-            return res;
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return ResultMessage.NETWORK_FAIL;
-        }
+        TwoTuple<ResultMessage, Integer> createResult =
+                DataServiceFunction.commit(customer.toPO(), dataService::insertCustomer);
+        if (createResult.t == ResultMessage.SUCCESS)
+            logger.add(OPType.ADD, "添加客户" + vo.getName() + "成功");
+        return createResult;
     }
 
     /**

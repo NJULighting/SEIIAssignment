@@ -1,7 +1,5 @@
 package nju.lighting.po.doc.stockdoc;
 
-import shared.Item;
-
 import java.io.Serializable;
 
 /**

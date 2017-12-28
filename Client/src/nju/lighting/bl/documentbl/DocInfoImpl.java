@@ -1,11 +1,13 @@
 package nju.lighting.bl.documentbl;
 
+import nju.lighting.bl.documentbl.alertdoc.AlertDoc;
 import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.DocState;
+import shared.DocType;
 import shared.ResultMessage;
 
 import javax.naming.NamingException;
@@ -61,6 +63,15 @@ public class DocInfoImpl implements DocInfo {
     @Override
     public ResultMessage save(HistoryDocVO vo) {
         return null;
+    }
+
+    @Override
+    public void triggerAlertDoc(String commodityId, int count) {
+        DocFactory factory = new DocFactory();
+        List<Doc> alertDocs = DataServiceFunction.findByToList(DocType.ALERT, dataService::findByType, factory::poToDoc);
+        for (Doc doc : alertDocs) {
+            ((AlertDoc) doc).triggerAlert(commodityId, count);
+        }
     }
 
     @Override

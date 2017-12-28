@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="from">
+         <font>
+            <Font name="Sitka Subheading" size="24.0" />
+         </font>
+      </Label>
+      <JFXDatePicker>
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin>
+      </JFXDatePicker>
+      <Label text="to">
+         <font>
+            <Font name="Sitka Subheading" size="24.0" />
+         </font>
+      </Label>
+      <JFXDatePicker>
+         <VBox.margin>
+            <Insets bottom="30.0" />
+         </VBox.margin>
+      </JFXDatePicker>
+      <Label text="当总价大于">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField>
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <Label text="赠送代金券金额">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField>
+         <VBox.margin>
+            <Insets bottom="25.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <Label text="代金券截止于">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="3.0" />
+         </VBox.margin>
+      </Label>
+      <JFXDatePicker />
+   </children>
+</VBox>

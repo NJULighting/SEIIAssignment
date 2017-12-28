@@ -17,7 +17,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-
 import javafx.stage.Stage;
 import nju.lighting.bl.promotionbl.PromotionBLService_Stub;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
@@ -32,7 +31,6 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/4.
  * Description
- *
  * @author 陈俊宇
  */
 public class PromotionManageController implements Initializable {
@@ -48,14 +46,12 @@ public class PromotionManageController implements Initializable {
     @FXML
     JFXButton create;
 
-
     @FXML
     void create() throws IOException {
-        Stage stage =new Stage();
+        Stage stage = new Stage();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("createPromotion.fxml"))));
         stage.show();
     }
-
 
 
     ListView createPage(int index) {
@@ -73,7 +69,7 @@ public class PromotionManageController implements Initializable {
         promotionVOJFXListView.setItems(data);
         promotionVOJFXListView.setCellFactory((ListView<PromotionVO> l) -> new myListCell());
         System.out.println(promotionVOJFXListView.getStylesheets());
-        promotionVOJFXListView.getStylesheets().add(0,getClass().getResource("../label.css").toExternalForm());
+        promotionVOJFXListView.getStylesheets().add(0, getClass().getResource("../label.css").toExternalForm());
         System.out.println(promotionVOJFXListView.getStylesheets());
         return promotionVOJFXListView;
     }
@@ -84,39 +80,36 @@ public class PromotionManageController implements Initializable {
         pagination.getStylesheets().add(getClass().getResource("../promotionManage.css").toExternalForm());
         pagination.setPageCount((promotions.size() / itemsPerPage) + 1);
         pagination.setPageFactory((Integer index) -> createPage(index));
-
-
     }
 
-
     class myListCell extends ListCell<PromotionVO> {
-        Label name,type,time;
+        Label name, type, time;
         HBox buttonBox;
-        JFXButton openBtn,invalidBtn;
+        JFXButton openBtn, invalidBtn;
 
 
         @Override
         public void updateItem(PromotionVO item, boolean empty) {
-            super.updateItem(item,empty);
+            super.updateItem(item, empty);
             if (item != null) {
-                name=new Label(item.getName());
-                type=new Label(item.getType().toString());
-                time=new Label(DateHelper.approximateTime(item.getStartDate())+" - "+
+                name = new Label(item.getName());
+                type = new Label(item.getType().toString());
+                time = new Label(DateHelper.approximateTime(item.getStartDate()) + " - " +
                         DateHelper.approximateTime(item.getEndDate()));
-                openBtn=new JFXButton("打开");
-                invalidBtn=new JFXButton("失效");
-                buttonBox=new HBox(openBtn,invalidBtn);
+                openBtn = new JFXButton("打开");
+                invalidBtn = new JFXButton("失效");
+                buttonBox = new HBox(openBtn, invalidBtn);
                 buttonBox.setVisible(false);
                 buttonBox.setSpacing(25);
-                buttonBox.setPadding(new Insets(0,0,0,15));
+                buttonBox.setPadding(new Insets(0, 0, 0, 15));
 
                 openBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        PromotionManageController.selectedPromotion=item;
+                        PromotionManageController.selectedPromotion = item;
                         try {
 //                            new Promotion(item).init();
-                            Promotion.promotion=item;
+                            Promotion.promotion = item;
                             FXMLLoader.load(getClass().getResource("Promotion.fxml"));
 
                         } catch (IOException e) {
@@ -125,7 +118,7 @@ public class PromotionManageController implements Initializable {
                     }
                 });
 
-                setGraphic(new HBox(name,type,time,buttonBox));
+                setGraphic(new HBox(name, type, time, buttonBox));
                 setOnMouseEntered(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
@@ -140,12 +133,6 @@ public class PromotionManageController implements Initializable {
                     }
                 });
             }
-
-
         }
-
-
-
-
     }
 }

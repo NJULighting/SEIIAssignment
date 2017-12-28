@@ -5,9 +5,11 @@ import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
+import nju.lighting.bl.utils.DataServiceBiFunction;
+import nju.lighting.bl.utils.DataServiceFunction;
+import nju.lighting.bl.utils.ListTransformer;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
-import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessConditionItemVO;
@@ -17,10 +19,7 @@ import shared.*;
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -50,21 +49,10 @@ public enum DocManager {
      * @param doc doc to be committed
      * @return <tt>[ID,SUCCESS]</tt> if commit successfully
      */
-    public TwoTuple<String, ResultMessage> commitDoc(DocVO doc) {
-        TwoTuple<String, ResultMessage> res = new TwoTuple<>();
-        res.r = ResultMessage.FAILURE;
-
-        // Commit to the database
-        try {
-            TwoTuple<ResultMessage, String> commitRes = dataService.commitDoc(doc.toPO());
-            if (commitRes.t == ResultMessage.SUCCESS) {
-                logger.add(OPType.ADD, "提交单据" + commitRes.r);
-                res.t = commitRes.r;
-                res.r = commitRes.t;
-            }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+    public TwoTuple<ResultMessage, String> commitDoc(DocVO doc) {
+        TwoTuple<ResultMessage, String> res = DataServiceFunction.commit(doc.toPO(), dataService::commitDoc);
+        if (res.t == ResultMessage.SUCCESS)
+            logger.add(OPType.ADD, "提交单据" + res.r);
         return res;
     }
 
@@ -76,60 +64,40 @@ public enum DocManager {
      * @return documents that satisfy these constraints
      */
     public List<HistoryDocVO> findDocuments(DocumentFilter filter) {
-        try {
-            UserInfo userInfo = new UserInfoImpl();
-            List<DocPO> poList = dataService.findByUserId(userInfo.getIDOfSignedUser());
-            DocFactory docFactory = new DocFactory();
-            List<Doc> docList = poList.stream().map(docFactory::poToDoc).collect(Collectors.toList());
+        UserInfo userInfo = new UserInfoImpl();
+        DocFactory docFactory = new DocFactory();
+        List<Doc> docList = DataServiceFunction
+                .findAndFilterToList(userInfo.getIDOfSignedUser(), dataService::findByUserId,
+                        docFactory::poToDoc, filter.getPredicateForDoc());
 
-            // Filter them and transform them to HistoryDocVO list
-            return docList.stream()
-                    .filter(filter.getPredicate())
-                    .map(Doc::toHistoryDocVO)
-                    .collect(Collectors.toList());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return Collections.emptyList();
-        }
+        // Filter them and transform them to HistoryDocVO list
+        return ListTransformer.toList(docList, Doc::toHistoryDocVO);
     }
 
     List<BusinessConditionItemVO> findSaleRecords(DocumentFilter filter) {
-        try {
-            // Get doc list and filter
-            List<DocPO> salesDocPOList = dataService.findByTypeAndState(DocType.SALES, DocState.APPROVAL);
-            List<Doc> docList = salesDocPOList.stream()
-                    .map(SalesDoc::new)
-                    .filter(filter.getPredicate())
-                    .collect(Collectors.toList());
+        // Get doc list and filter it
+        List<Doc> docList = DataServiceBiFunction
+                .findAndFilterToList(DocType.SALES, DocState.APPROVAL,
+                        dataService::findByTypeAndState, SalesDoc::new, filter.getPredicateForDoc());
 
-            List<BusinessConditionItemVO> res = new ArrayList<>();
-            docList.forEach(doc -> res.addAll(((SalesDoc) doc).getBusinessCondition()));
+        List<BusinessConditionItemVO> res = new ArrayList<>();
+        docList.forEach(doc -> res.addAll(((SalesDoc) doc).getBusinessCondition()));
 
-            // Filter items with the commodity name given
-            Predicate<BusinessConditionItemVO> commodityFilter =
-                    item -> Optional.ofNullable(filter.getCommodity())
-                            .map(name -> name.equals(item.getName()))
-                            .orElse(true);
-            return res.stream().filter(commodityFilter).collect(Collectors.toList());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return Collections.emptyList();
+        if (filter.getCommodity() == null) {
+            return res;
         }
+
+        // Filter items with the commodity name given
+        return res.stream()
+                .filter(item -> item.getName().equals(filter.getCommodity()))
+                .collect(Collectors.toList());
     }
 
     List<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) {
-        try {
-            List<DocPO> poList = dataService.findByTime(filter.getStart(), filter.getEnd());
+        DocFactory factory = new DocFactory();
+        List<Doc> docList = DataServiceBiFunction.findAndFilterToList(filter.getStart(), filter.getEnd(),
+                dataService::findByTime, factory::poToDoc, filter.getPredicateForDoc());
 
-            DocFactory factory = new DocFactory();
-            return poList.stream()
-                    .map(factory::poToDoc)
-                    .filter(filter.getPredicate())
-                    .map(Doc::toBusinessHistoryItemVO)
-                    .collect(Collectors.toList());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return Collections.emptyList();
-        }
+        return ListTransformer.toList(docList, Doc::toBusinessHistoryItemVO);
     }
 }

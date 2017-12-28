@@ -46,7 +46,7 @@ class StockDocItemList {
     }
 
     double getRevenue() {
-        return itemList.transformItemToNumber(StockDocItem::getRevenue);
+        return itemList.transformAndSum(StockDocItem::getRevenue);
     }
 
     public void redFlush() {

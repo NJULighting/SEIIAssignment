@@ -4,6 +4,7 @@ import shared.ResultMessage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToDoubleFunction;
 import java.util.stream.Collectors;
@@ -25,11 +26,11 @@ public class ItemList<Item extends DocItem> {
     }
 
     public <PO> List<PO> toPO(Function<Item, PO> function) {
-        return items.stream().map(function).collect(Collectors.toList());
+        return transform(function);
     }
 
     public <VO> List<VO> toVO(Function<Item, VO> function) {
-        return items.stream().map(function).collect(Collectors.toList());
+        return transform(function);
     }
 
     public <Attribute> boolean containItemWithAttribute(Attribute attribute, Function<Item, Attribute> function) {
@@ -40,11 +41,11 @@ public class ItemList<Item extends DocItem> {
         return false;
     }
 
-    public <T> List<T> transformItemToObject(Function<Item, T> function) {
+    public <T> List<T> transform(Function<Item, T> function) {
         return items.stream().map(function).collect(Collectors.toList());
     }
 
-    public double transformItemToNumber(ToDoubleFunction<Item> numberFunction) {
+    public double transformAndSum(ToDoubleFunction<Item> numberFunction) {
         return items.stream().mapToDouble(numberFunction).sum();
     }
 
@@ -59,5 +60,9 @@ public class ItemList<Item extends DocItem> {
         }
 
         return ResultMessage.SUCCESS;
+    }
+
+    public List<Item> getItems() {
+        return items;
     }
 }

@@ -19,7 +19,7 @@ public class PromotionHelper {
     public static void setPromotion(Upper upper, SimpleObjectProperty<PromotionVO> promotionProperty, List<PromotionVO> list) {
         FXMLLoader loader = new FXMLLoader(CustomerHelper.class.getResource("../promotionui/BenefitsPlan.fxml"));
         try {
-            upper.setChildren(loader.load(), "选择商品");
+            upper.setChildren(loader.load(), ">选择促销策略");
         } catch (IOException e) {
             e.printStackTrace();
         }

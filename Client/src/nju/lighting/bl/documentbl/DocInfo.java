@@ -25,6 +25,8 @@ public interface DocInfo {
     ResultMessage save(HistoryDocVO vo);
 
     ResultMessage saveAndApprove(HistoryDocVO vo);
+
+    void triggerAlertDoc(String commodityId, int count);
 }
 
 

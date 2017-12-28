@@ -28,7 +28,7 @@ public interface CommodityBLService {
      * 'cause <tt>CommodityVO</tt> doesn't contains its category's id.
      * @param newCommodity new commodity's vo
      * @param category     id of the commodity's category
-     * @return <tt>SUCCESS</tt> if category's id is right and database works well, <tt>FAILURE</tt> otherwise
+     * @return <tt>[SUCCESS, ID]</tt> if category's id is right and database works well, <tt>[FAILURE, null]</tt> otherwise
      */
     TwoTuple<ResultMessage, String> addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category);
 
@@ -39,6 +39,11 @@ public interface CommodityBLService {
      */
     List<CommodityItemVO> findCommodityByCategory(int categoryID);
 
+    /**
+     * Basic commodity vo version of <tt>findCommodityByCategory(int)</tt>
+     * @param categoryID id of the category
+     * @return list of commodities(basic commodity vo) that belongs to the same category
+     */
     List<BasicCommodityItemVO> findBasicCommodityByCategory(int categoryID);
 
     /**

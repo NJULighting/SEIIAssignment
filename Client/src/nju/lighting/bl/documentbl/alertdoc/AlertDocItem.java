@@ -50,6 +50,10 @@ public class AlertDocItem implements DocItem {
         return new AlertDocItemVO(commodityInfo.getBasicCommodityItemVO(commodityId), id, count);
     }
 
+    boolean triggered(String commodityId, int count) {
+        return this.commodityId.equals(commodityId) && this.count >= count;
+    }
+
     @Override
     public void redFlush() {
         throw new UnsupportedOperationException();

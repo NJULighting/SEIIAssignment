@@ -64,10 +64,10 @@ public class CommitDocTest {
         DocVO docVO = new AccountIODocVO(new Date(), DocType.ACCOUNT_IN,
                 "2", userInfo.getIDOfSignedUser(), ITEM_LIST);
 
-        TwoTuple<String, ResultMessage> commitRes = manager.commitDoc(docVO);
+        TwoTuple<ResultMessage, String> commitRes = manager.commitDoc(docVO);
 
-        assertEquals(ResultMessage.SUCCESS, commitRes.r);
-        assertTrue(commitRes.t.contains("SKD"));
+        assertEquals(ResultMessage.SUCCESS, commitRes.t);
+        assertTrue(commitRes.r.contains("SKD"));
     }
 
     // Account doc
@@ -76,10 +76,10 @@ public class CommitDocTest {
         DocVO docVO = new AccountIODocVO(new Date(), DocType.ACCOUNT_OUT,
                 "2", userInfo.getIDOfSignedUser(), ITEM_LIST);
 
-        TwoTuple<String, ResultMessage> res = manager.commitDoc(docVO);
+        TwoTuple<ResultMessage, String> res = manager.commitDoc(docVO);
 
-        assertEquals(ResultMessage.SUCCESS, res.r);
-        assertTrue(res.t.contains("FKD"));
+        assertEquals(ResultMessage.SUCCESS, res.t);
+        assertTrue(res.r.contains("FKD"));
     }
 
     @Test
@@ -161,9 +161,9 @@ public class CommitDocTest {
     }
 
     private void testResult(String docId, DocVO docVO) {
-        TwoTuple<String, ResultMessage> res = manager.commitDoc(docVO);
+        TwoTuple<ResultMessage, String> res = manager.commitDoc(docVO);
 
-        assertEquals(ResultMessage.SUCCESS, res.r);
-        assertTrue(res.t.contains(docId));
+        assertEquals(ResultMessage.SUCCESS, res.t);
+        assertTrue(res.r.contains(docId));
     }
 }

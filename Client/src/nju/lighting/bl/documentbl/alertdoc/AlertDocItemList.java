@@ -41,4 +41,13 @@ class AlertDocItemList {
     List<AlertDocItemVO> toVO() {
         return itemList.toVO(AlertDocItem::toVO);
     }
+
+    boolean triggered(String commodityId, int count) {
+        List<AlertDocItem> docItemList = itemList.getItems();
+        for (AlertDocItem docItem : docItemList) {
+            if (docItem.triggered(commodityId, count))
+                return true;
+        }
+        return false;
+    }
 }

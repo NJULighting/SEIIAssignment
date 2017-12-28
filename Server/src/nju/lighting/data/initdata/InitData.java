@@ -74,7 +74,7 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
 
     @Override
     public ResultMessage createInit(String userId, Date date) throws RemoteException {
-        String url = date.toString().replace(" ", "_");
+        String url = "/var/www/html/table/" + date.toString().replace(" ", "_");
         try {
             createCSVFile(url);
         } catch (Exception e) {

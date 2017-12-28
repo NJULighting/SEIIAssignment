@@ -73,4 +73,9 @@ public class RepositoryData extends UnicastRemoteObject implements RepositoryDat
     public ResultMessage changeRepository(RepositoryChangePO repositoryChangePO) throws RemoteException {
         return changePOCommonOperation.add(repositoryChangePO);
     }
+
+    @Override
+    public String exportExcel() throws RemoteException {
+        return null;
+    }
 }

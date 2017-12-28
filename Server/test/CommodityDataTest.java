@@ -74,7 +74,7 @@ public class CommodityDataTest {
 
     @Test
     public void add() throws Exception {
-        CommodityItemPO po = new CommodityItemPO("2-0007", "美国大燃油灯", 2, "燃油",
+        CommodityItemPO po = new CommodityItemPO("2-0009", "美国大燃油灯", 2, "燃油",
                 100, 100, 1000,
                 1000, 1000, "第三批", "003", new Date());
         ResultMessage message = commodityData.add(po);
@@ -83,7 +83,7 @@ public class CommodityDataTest {
 
     @Test
     public void update() throws Exception {
-        CommodityItemPO po = new CommodityItemPO("2-0007", "美国燃油灯", 2, "燃油",
+        CommodityItemPO po = new CommodityItemPO("2-0009", "美国燃油灯", 2, "燃油",
                 1000, 1000, 1000,
                 1000, 1000, "第三批", "003", new Date());
         ResultMessage message = commodityData.update(po);

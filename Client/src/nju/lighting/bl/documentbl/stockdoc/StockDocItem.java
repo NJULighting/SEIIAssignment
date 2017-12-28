@@ -99,6 +99,7 @@ public class StockDocItem implements DocItem {
 
     @Override
     public ResultMessage approve() {
+        // Change repository
         RepositoryInfo repositoryInfo = new RepositoryInfoImpl();
         RepositoryChangeType changeType = itemType == StockDocItemType.RETURN ?
                 RepositoryChangeType.RETURN : RepositoryChangeType.BUY;

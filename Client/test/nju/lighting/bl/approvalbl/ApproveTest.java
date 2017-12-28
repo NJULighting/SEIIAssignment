@@ -21,6 +21,7 @@ import static org.junit.Assert.assertEquals;
 public class ApproveTest {
     private ApprovalBLService blService = new ApprovalController();
 
+    // Approve test
     @Test
     public void test0() throws Exception {
         List<HistoryDocVO> docVOS = ApproveTestHelper.getDocsForApproving();
@@ -30,6 +31,7 @@ public class ApproveTest {
         assertEquals(ResultMessage.SUCCESS, res);
     }
 
+    // Reject test
     @Test
     public void test1() throws Exception {
         List<HistoryDocVO> docVOS = ApproveTestHelper.getDocsForApproving();
@@ -41,6 +43,7 @@ public class ApproveTest {
         assertEquals(ResultMessage.SUCCESS, res);
     }
 
+    // Save test
     @Test
     public void test2() throws Exception {
         List<HistoryDocVO> docVOS = ApproveTestHelper.getDocsForSaving(DocType.ACCOUNT_IN);

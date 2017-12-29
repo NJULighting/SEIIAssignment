@@ -188,6 +188,7 @@ public class CommodityList implements Initializable {
     public void setGiftAndEditable(){
         setEditable();
         setGift();
+        totalLabel.setVisible(false);
     }
 
     public ObservableList<CommodityItem> getGiftObservableList() {

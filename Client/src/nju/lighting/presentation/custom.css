@@ -9,11 +9,25 @@ root {
 
 }
 
+.menu-button {
+    -fx-background-color: #5599FF;
+}
+
+.menu-button > .arrow-button > .arrow {
+    -fx-background-color: white;
+}
+
+.menu-button .text{
+    -fx-fill: white;
+}
 
 .menu-item {
     -fx-text-fill: black;
 }
 
+.menu-item .text{
+    -fx-fill: black;
+}
 .menu-item:focused {
     -fx-background-color: lightgray;
     -fx-text-fill: black;
@@ -115,7 +129,8 @@ root {
 }
 
 .table-view .table-row-cell .table-cell{
-    -fx-text-fill:black;
+    /*-fx-text-fill:black;*/
+    -fx-text-alignment: left;
     -fx-alignment: center-left;
     -fx-border-width: 0;
     -fx-background-color:transparent;
@@ -125,9 +140,22 @@ root {
     -fx-background-color: transparent;
 }
 
+.table-row-cell:hover{
+    -fx-background-color: #c1dcff;
+}
+
+
+
 .table-row-cell:selected {
-    -fx-background-color: transparent;
-    -fx-text: black;
+
+    -fx-background-color: #c1dcff;
+ }
+
+
+.table-row-cell:selected .text {
+  -fx-font-weight: bold;
+
+
 }
 
 
@@ -885,4 +913,3 @@ root {
     -fx-background-color: rgb(203, 104, 96);
 
 }
-

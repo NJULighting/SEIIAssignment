@@ -3,6 +3,7 @@ package nju.lighting.bl.promotionbl;
 import nju.lighting.bl.approvalbl.ApprovalBLService_Stub;
 import nju.lighting.bl.userbl.UserBLServie_Stub;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
+import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
@@ -18,6 +19,7 @@ import java.util.List;
 /**
  * Created on 2017/10/21.
  * Description
+ *
  * @author 陈俊宇
  */
 public class PromotionBLService_Stub implements PromotionBLService {
@@ -56,11 +58,12 @@ public class PromotionBLService_Stub implements PromotionBLService {
         UserVO creator = new UserBLServie_Stub().getUser("0");
         List<DocVO> gifts = ((new ApprovalBLService_Stub().getDocumentList()));
 
+        Date date = new Date();
+        date.setYear(300);
         PromotionVO vo1 = new PromotionVO(1, "店庆酬宾", creator, PromotionType.CustomerOriented,
-                new Date(), new Date(), CustomerGrade.FIVE, 0, null, 30, 0, new Date());
-        PromotionVO vo2 = new PromotionVO(2, "店庆酬宾", creator, PromotionType.PriceOriented, new Date(), new Date(),
-                null, 150,
-                ((GiftDocVO) gifts.get(0)).getGifts(),
+                new Date(), date, CustomerGrade.FIVE, 0, null, 30, 0, new Date());
+        PromotionVO vo2 = new PromotionVO(2, "店庆酬宾", creator, PromotionType.PriceOriented,
+                new Date(), date, null, 150, ((GiftDocVO) gifts.get(0)).getGifts(),
                 0, 300, new Date());
         PromotionVO vo3 = new PromotionVO(3, "店庆酬宾", creator, PromotionType.PriceOriented, new Date(), new Date(),
                 null, 150, null, 0, 300, new Date());
@@ -80,7 +83,10 @@ public class PromotionBLService_Stub implements PromotionBLService {
 
     @Override
     public TwoTuple<ResultMessage, PromotionVO> commit(PromotionBuildInfo info) {
-        return null;
+        if (info.getType().equals(PromotionType.Combo))
+            return new TwoTuple<ResultMessage, PromotionVO>(ResultMessage.SUCCESS, getPromotionList().get(0));
+        else
+            return new TwoTuple<ResultMessage, PromotionVO>(ResultMessage.FAILURE, getPromotionList().get(0));
     }
 
     @Override

@@ -90,7 +90,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
     public List<CommodityItemVO> findCommodityVOByName(String commodityName) {
         ArrayList<CommodityItemVO> itemVOS = new ArrayList<>();
         for (CommodityItem item : items) {
-            if (item.getName().equals(commodityName)) {
+            if (item.getName().contains(commodityName)) {
                 itemVOS.add(item.toVO());
             }
         }
@@ -99,7 +99,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
 
     @Override
     public List<CommodityItemVO> searchCommodity(String keyword) {
-        return null;
+        return findCommodityVOByName(keyword);
     }
 
     @Override

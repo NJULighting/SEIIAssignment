@@ -26,6 +26,7 @@ public class DialogHelper {
     static HashMap<ResultMessage,String> hashMap= new HashMap<>();
 
     static {
+        hashMap.put(ResultMessage.SUCCESS,"成功");
         hashMap.put(ResultMessage.DUPLICATE,"名称重复");
         hashMap.put(ResultMessage.FAILURE,"此次行为失败");
     }

@@ -1,21 +1,15 @@
 package nju.lighting.data.accountdata;
 
 import nju.lighting.data.utils.CommonOperation;
-import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.po.account.AccountLogPO;
 import nju.lighting.po.account.AccountPO;
-import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 import shared.ResultMessage;
 
-import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.List;
-import java.util.TreeSet;
 
 /**
  * Created on 2017/11/26.
@@ -23,6 +17,8 @@ import java.util.TreeSet;
  * @author iznauy
  */
 public class AccountData extends UnicastRemoteObject implements AccountDataService {
+
+    private static final long serialVersionUID = -3411519234284580798L;
 
     private CommonOperation<AccountPO> accountPOCommonOperation;
 

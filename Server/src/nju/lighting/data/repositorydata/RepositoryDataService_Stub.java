@@ -5,6 +5,7 @@ import nju.lighting.po.repository.RepositoryChangePO;
 import nju.lighting.po.repository.RepositoryTablePO;
 import shared.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,6 +23,11 @@ public class RepositoryDataService_Stub implements RepositoryDataService {
 
     @Override
     public ResultMessage changeRepository(RepositoryChangePO changePO) {
+        return null;
+    }
+
+    @Override
+    public String exportExcel() throws RemoteException {
         return null;
     }
 }

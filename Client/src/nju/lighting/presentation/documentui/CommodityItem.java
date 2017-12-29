@@ -24,11 +24,12 @@ public class CommodityItem {
     SimpleStringProperty comments = new SimpleStringProperty();
     SimpleStringProperty modelNum = new SimpleStringProperty();
     SimpleStringProperty id = new SimpleStringProperty();
-    SalesDocItemVO salesDocItemVO;
+    BasicCommodityItemVO commodity;
 
 
     //创建时只需要商品和数量
     public CommodityItem(BasicCommodityItemVO commodity, int count) {
+        this.commodity=commodity;
         this.count.set(count);
         init(commodity);
     }
@@ -143,5 +144,9 @@ public class CommodityItem {
 
     public SimpleStringProperty idProperty() {
         return id;
+    }
+
+    public BasicCommodityItemVO getCommodity() {
+        return commodity;
     }
 }

@@ -20,6 +20,8 @@ import java.util.List;
  */
 public class CommodityData extends UnicastRemoteObject implements CommodityDataService, CommodityService {
 
+    private static final long serialVersionUID = 370426418407640273L;
+
     private CommonOperation<CommodityItemPO> commodityItemPOCommonOperation;
 
     private CommonOperation<CommodityCategoryPO> categoryPOCommonOperation;
@@ -143,4 +145,7 @@ public class CommodityData extends UnicastRemoteObject implements CommodityDataS
     public List<CommodityItemPO> fuzzySearchByModel(String key) throws RemoteException {
         return commodityItemPOCommonOperation.fuzzySearch("modelNumber", key);
     }
+
+
+
 }

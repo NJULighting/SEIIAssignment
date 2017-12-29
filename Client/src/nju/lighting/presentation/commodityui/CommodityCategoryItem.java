@@ -25,6 +25,7 @@ public class CommodityCategoryItem {
     private SimpleDoubleProperty recentSellPrice = new SimpleDoubleProperty();
     private Nameable item;
 
+
     public CommodityCategoryItem(Nameable item) {
         this.item=item;
         name.set(item.getName());
@@ -40,6 +41,16 @@ public class CommodityCategoryItem {
         }
     }
 
+
+    public CommodityCategoryItem(String name){
+        this.name.set(name);
+        item=new Nameable() {
+            @Override
+            public String getName() {
+                return name;
+            }
+        };
+    }
     public String getName() {
         return name.get();
     }

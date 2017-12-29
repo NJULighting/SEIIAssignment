@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -101,19 +103,17 @@ public class CustomerSearchListController implements Initializable {
     @FXML
     TableColumn<CustomerVO, String> openBtn;
 
+    ObservableList<CustomerVO> observableList = FXCollections.observableArrayList();
+
     HBox father;
 
 
     //清除搜索，列表显示所有客户
     public void setDeleteSearch() {
         search.setText("");
-        customerVOList = customerBLService.getCustomerList();
-        // setCustomerList();
-
-        noResult.setVisible(false);
-
         deleteSearch.setDisable(true);
         deleteSearch.setVisible(false);
+        refresh();
     }
 
     //关键字字数不超过8个字
@@ -125,27 +125,43 @@ public class CustomerSearchListController implements Initializable {
     public void search() {
         String keywords = search.getText();
         if (keywords == null || keywords.length() == 0) {//无关键词，则显示所有列表
-            customerVOList = customerBLService.getCustomerList();
-            // setCustomerList();
+
+
         } else {//有关键词，删除搜索键可见
             deleteSearch.setDisable(false);
             deleteSearch.setVisible(true);
 
-            List<CustomerVO> customerVOS = customerBLService.search(keywords);
-            if (customerVOS != null) {
-                noResult.setVisible(false);
-                customerVOList = customerVOS;
-                // setCustomerList();
-            } else {
-                noResult.setVisible(true);
-            }
+            List list = customerBLService.search(keywords);
+            System.out.println(list);
+            if (list==null)
+                observableList.clear();
+            else
+                observableList.setAll(list);
         }
+    }
+
+    void refresh() {
+        customerVOList = customerBLService.getCustomerList();
+        observableList.setAll(customerVOList.stream()
+                .collect(Collectors.toList()));
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        customerVOList = customerBLService.getCustomerList();
+        search.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (newValue.length() == 0) {
+                    refresh();
+                    setDeleteSearch();
+                }
+            }
+        });
+
+        search.setOnAction(e -> search());
+
+        refresh();
 
         customerId.setCellValueFactory(p ->
                 new SimpleIntegerProperty(p.getValue().getID()).asObject());
@@ -207,7 +223,7 @@ public class CustomerSearchListController implements Initializable {
                             buttonBox.setVisible(false);
                             buttonBox.setSpacing(50);
                             openBtn.setOnAction(e -> {
-                                customerDetail(false,customerVO);
+                                customerDetail(false, customerVO);
                             });
 
                             deleteBtn.setOnAction(e -> {
@@ -220,21 +236,17 @@ public class CustomerSearchListController implements Initializable {
             }
         });
 
-        ObservableList<CustomerVO> observableList = FXCollections.observableArrayList();
-
-        observableList.addAll(customerVOList.stream()
-                .collect(Collectors.toList()));
 
         tableView.setItems(observableList);
         TableViewHelper.commonSet(tableView);
 
         addCustomerBtn.setOnAction(e -> {
-            customerDetail(true,null);
+            customerDetail(true, null);
         });
 
     }
 
-    void customerDetail(boolean add,CustomerVO customerVO){
+    void customerDetail(boolean add, CustomerVO customerVO) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerDetail.fxml"));
         father.getChildren().clear();
         try {
@@ -246,7 +258,7 @@ public class CustomerSearchListController implements Initializable {
         CustomerDetail controller = loader.getController();
         if (add)
             title.setText(">增加客户");
-        else{
+        else {
             title.setText(">客户详情");
         }
 
@@ -256,12 +268,13 @@ public class CustomerSearchListController implements Initializable {
         controller.init(add);
 
     }
+
     public void setReadOnly(Upper upper, SimpleObjectProperty<CustomerVO> customer) {
         tableView.getColumns().remove(openBtn);
         addCustomerBtn.setText("确定");
-        addCustomerBtn.setOnAction(e->{
-            if (!tableView.getSelectionModel().isEmpty()){
-                selectedCustomer=tableView.getItems().get(tableView.getSelectionModel().getSelectedIndex());
+        addCustomerBtn.setOnAction(e -> {
+            if (!tableView.getSelectionModel().isEmpty()) {
+                selectedCustomer = tableView.getItems().get(tableView.getSelectionModel().getSelectedIndex());
                 customer.set(selectedCustomer);
                 upper.back();
 

@@ -87,4 +87,13 @@ public class TextFieldHelper {
         binds(textField,validator,message);
     }
 
+    public static double getDouble(JFXTextField textField){
+
+            if (textField.validate()&&textField.getText()!=null&&textField.getText().length()!=0)
+                return Double.parseDouble(textField.getText());
+            else
+                return 0;
+
+    }
+
 }

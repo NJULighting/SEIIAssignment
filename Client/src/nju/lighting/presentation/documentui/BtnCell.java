@@ -19,7 +19,7 @@ public class BtnCell<T,S> extends TableCell<T, S> {
     final Button cellButton = new Button("", ImageViewHelper.delete());
 
 
-    BtnCell() {
+    public BtnCell() {
 
 
         cellButton.setOnAction(new EventHandler<ActionEvent>() {

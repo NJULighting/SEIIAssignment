@@ -6,8 +6,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.GiftListController;
 import nju.lighting.presentation.utils.DateHelper;
+import nju.lighting.presentation.utils.PromotionHelper;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.promotion.PromotionVO;
 
@@ -15,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/7.
@@ -22,7 +25,7 @@ import java.util.ResourceBundle;
  *
  * @author 陈俊宇
  */
-public class CustomerOriented  implements Initializable{
+public class CustomerOriented implements Initializable {
     private PromotionVO promotion;
 
     private String validTimeStr;
@@ -48,7 +51,7 @@ public class CustomerOriented  implements Initializable{
             container.getChildren().remove(voucherBox);
         else {
             voucher.setText(""+promotion.getVouchers());
-            voucherEndTime.setText(validTimeStr);
+            voucherEndTime.setText(DateHelper.approximateTime(promotion.getVouchersEndDate()));
         }
 
         if(promotion.getOff()==0)
@@ -59,12 +62,9 @@ public class CustomerOriented  implements Initializable{
             container.getChildren().remove(giftBox);
         else{
             List<GiftItemVO> giftItemListVO = promotion.getGoods();
-            GiftListController.setGiftItemListVO(giftItemListVO);
-            try {
-                giftBox.getChildren().add(FXMLLoader.load(getClass().getResource("../documentui/GiftList.fxml")));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            giftBox.getChildren().add(PromotionHelper.loadGiftList(giftItemListVO.stream()
+                    .map(x-> new CommodityItem(x))
+                    .collect(Collectors.toList())));
         }
     }
 }

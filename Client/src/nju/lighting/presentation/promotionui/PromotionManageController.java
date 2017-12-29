@@ -11,10 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Pagination;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -34,8 +31,9 @@ import java.util.ResourceBundle;
  * @author 陈俊宇
  */
 public class PromotionManageController implements Initializable {
-    private List<PromotionVO> promotions;
+
     private PromotionBLService promotionBLService = new PromotionBLService_Stub();
+    private List<PromotionVO> promotions=promotionBLService.getPromotionList();
     private int itemsPerPage = 10;
     double PREF_WIDTH = 300, PREF_HEIGHT = 30;
     static PromotionVO selectedPromotion;
@@ -45,6 +43,9 @@ public class PromotionManageController implements Initializable {
 
     @FXML
     JFXButton create;
+
+    @FXML
+    TableView tableView;
 
     @FXML
     void create() throws IOException {

@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  *
  * @author 陈俊宇
  */
-public class Promotion implements Initializable{
+public class Promotion {
 
     static PromotionVO promotion;
     @FXML
@@ -46,9 +46,9 @@ public class Promotion implements Initializable{
     }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
+    public void init(PromotionVO promotion){
+        this.promotion=promotion;
         validTimeStr = DateHelper.approximateTime(promotion.getStartDate()) + " - "
                 + DateHelper.approximateTime(promotion.getEndDate());
 
@@ -62,8 +62,5 @@ public class Promotion implements Initializable{
             e.printStackTrace();
         }
 
-        Stage stage=new Stage();
-        stage.setScene(new Scene(scrollpane));
-        stage.show();
     }
 }

@@ -2,8 +2,7 @@ package nju.lighting.bl.commoditybl;
 
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
-import nju.lighting.bl.utils.CommodityPathParser;
-import nju.lighting.bl.utils.DataServiceFunction;
+import nju.lighting.bl.utils.*;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
@@ -19,8 +18,7 @@ import shared.TwoTuple;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 enum CommodityManager {
     INSTANCE;
@@ -28,12 +26,18 @@ enum CommodityManager {
     private CommodityCategoriesTree commodityTree;
     private CommodityDataService dataService;
     private Logger logger;
+    private FuzzySeekingHelper<CommodityItemPO, CommodityItemVO> fuzzySeekingHelper;
 
     CommodityManager() {
         try {
             dataService = DataFactory.getDataBase(CommodityDataService.class);
             logger = new UserLogger();
             buildCommodityTree();
+
+            // Initialize fuzzy seeking helper
+            fuzzySeekingHelper = new FuzzySeekingHelper<>(po -> new CommodityItem(po).toVO());
+            fuzzySeekingHelper.registerFunctionForString(dataService::fuzzySearchByName, dataService::fuzzySearchByModel,
+                    dataService::fuzzySearchById);
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -147,19 +151,12 @@ enum CommodityManager {
         }
 
         // Add to the database
-        try {
-            TwoTuple<ResultMessage, Integer> insertResult =
-                    dataService.add(new CommodityCategoryPO(newCategory.getName(),
-                            newCategory.getUpperCategory().getId()));
-            ResultMessage addResult = insertResult.t;
-            if (addResult == ResultMessage.SUCCESS) {
-                logger.add(OPType.ADD, "添加商品目录 " + newCategory.getName());
-                res.r = insertResult.r;
-            }
-            res.t = addResult;
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            res.t = ResultMessage.NETWORK_FAIL;
+        CommodityCategoryPO categoryPO = new CommodityCategoryPO(newCategory.getName(),
+                newCategory.getUpperCategory().getId());
+        res = DataServiceFunction.commit(categoryPO, dataService::add);
+
+        if (res.t == ResultMessage.SUCCESS) {
+            logger.add(OPType.ADD, "添加商品目录 " + newCategory.getName());
         }
 
         return res;
@@ -228,4 +225,7 @@ enum CommodityManager {
         buildCommodityTree();
     }
 
+    List<CommodityItemVO> searchCommodity(String keyword) {
+        return fuzzySeekingHelper.executeSeeking(keyword);
+    }
 }

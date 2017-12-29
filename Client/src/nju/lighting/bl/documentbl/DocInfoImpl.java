@@ -2,7 +2,7 @@ package nju.lighting.bl.documentbl;
 
 import nju.lighting.bl.documentbl.alertdoc.AlertDoc;
 import nju.lighting.bl.utils.DataServiceFunction;
-import nju.lighting.bl.utils.ListTransformer;
+import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.po.doc.DocPO;
@@ -60,7 +60,7 @@ public class DocInfoImpl implements DocInfo {
 
     @Override
     public ResultMessage approveAll(List<HistoryDocVO> voList) {
-        List<Doc> docList = ListTransformer.toList(voList, docFactory::historyDocVOToDoc);
+        List<Doc> docList = CollectionTransformer.toList(voList, docFactory::historyDocVOToDoc);
         if (docList.stream().anyMatch(doc -> doc.approve() != ResultMessage.SUCCESS))
             return ResultMessage.FAILURE;
 

@@ -4,6 +4,7 @@ import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
+import nju.lighting.bl.utils.FuzzySeekingHelper;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.po.account.AccountPO;
@@ -30,11 +31,16 @@ enum AccountManager {
 
     private AccountDataService accountDataService;
     private Logger logger;
+    private FuzzySeekingHelper<AccountPO, AccountVO> helper;
 
     AccountManager() {
         try {
             accountDataService = DataFactory.getAccountDataBase();
             logger = new UserLogger();
+
+            // Initialize fuzzy seeking helper
+            helper = new FuzzySeekingHelper<>(po -> new Account(po).toVO());
+            helper.registerFunctionForString(accountDataService::fuzzySearchById);
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -185,5 +191,9 @@ enum AccountManager {
     private boolean currentUserAuthorized() {
         UserInfo userInfo = new UserInfoImpl();
         return userInfo.authorized();
+    }
+
+    List<AccountVO> findAccounts(String keyword) {
+        return helper.executeSeeking(keyword);
     }
 }

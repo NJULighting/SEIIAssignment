@@ -1,6 +1,6 @@
 package nju.lighting.vo.doc.accountiodoc;
 
-import nju.lighting.bl.utils.ListTransformer;
+import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.accountiodoc.AccountIODocPO;
 import nju.lighting.po.doc.accountiodoc.AccountOutDocPO;
@@ -66,7 +66,7 @@ public class AccountIODocVO extends DocVO {
     public DocPO toPO() {
         // Transform items
         AccountIODocType ioDocType = getType() == DocType.ACCOUNT_IN ? AccountIODocType.IN : AccountIODocType.OUT;
-        List<AccountTransferItemPO> itemPOList = ListTransformer.toList(transferAccountList, AccountTransferItemVO::toPO);
+        List<AccountTransferItemPO> itemPOList = CollectionTransformer.toList(transferAccountList, AccountTransferItemVO::toPO);
 
         if (getType() == DocType.ACCOUNT_IN)
             return new AccountIODocPO(getType(), getCreatorId(), getTime(), ioDocType, customer, itemPOList, total);

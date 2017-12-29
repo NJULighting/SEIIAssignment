@@ -5,8 +5,7 @@ import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.bl.utils.DataServiceBiFunction;
 import nju.lighting.bl.utils.DataServiceFunction;
-import nju.lighting.bl.utils.DataServiceSupplier;
-import nju.lighting.bl.utils.ListTransformer;
+import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.vo.DocVO;
@@ -15,7 +14,6 @@ import shared.DocState;
 import shared.DocType;
 
 import javax.naming.NamingException;
-import javax.print.DocFlavor;
 import java.util.Date;
 import java.util.List;
 
@@ -53,7 +51,7 @@ public class ApproveTestHelper {
     private static List<HistoryDocVO> getDocs(List<DocVO> voList, DocState state) {
         UserInfo userInfo = new UserInfoImpl();
 
-        return ListTransformer.toList(voList, vo -> new HistoryDocVO(userInfo.getUserVOByID(vo.getCreatorId()), vo,
+        return CollectionTransformer.toList(voList, vo -> new HistoryDocVO(userInfo.getUserVOByID(vo.getCreatorId()), vo,
                 "test", state, new Date(),
                 userInfo.getUserVOByID(userInfo.getIDOfSignedUser())));
     }

@@ -25,7 +25,6 @@ public class NameChecker {
      * @return true is not empty and only contains number and letter
      */
     public static boolean validID(String id) {
-        // TODO: 2017/11/30 Add checking length of id
         return !id.trim().isEmpty() && matchRegex(id, "[a-zA-z0-9]{6,}");
     }
 

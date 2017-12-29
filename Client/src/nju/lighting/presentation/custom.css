@@ -9,11 +9,25 @@ root {
 
 }
 
+.menu-button {
+    -fx-background-color: #5599FF;
+}
+
+.menu-button > .arrow-button > .arrow {
+    -fx-background-color: white;
+}
+
+.menu-button .text{
+    -fx-fill: white;
+}
 
 .menu-item {
     -fx-text-fill: black;
 }
 
+.menu-item .text{
+    -fx-fill: black;
+}
 .menu-item:focused {
     -fx-background-color: lightgray;
     -fx-text-fill: black;
@@ -899,4 +913,3 @@ root {
     -fx-background-color: rgb(203, 104, 96);
 
 }
-

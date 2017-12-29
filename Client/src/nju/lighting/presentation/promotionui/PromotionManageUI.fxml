@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.promotionui.PromotionUIManageUI">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.promotionui.PromotionUIManageUI">
    <children>
       <Line endX="300.0" layoutX="130.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />
       <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />
@@ -42,18 +42,18 @@
                      </graphic>
                   </Button>
                   <Label fx:id="noResult" layoutX="301.0" layoutY="31.0" text="无结果！" visible="false" />
-                  <TableView fx:id="tableView" fixedCellSize="57" layoutX="64.0" layoutY="70.0" maxHeight="525.0">
+                  <TableView fx:id="tableView" fixedCellSize="57" layoutX="64.0" layoutY="30.0" prefHeight="560.0">
                      <columns>
-                        <TableColumn fx:id="promotionName" editable="false" prefWidth="200.0" resizable="false" text="促销策略名称" />
-                        <TableColumn fx:id="type" editable="false" prefWidth="200.0" resizable="false" sortable="false" text="类型" />
+                        <TableColumn fx:id="promotionName" editable="false" prefWidth="150.0" resizable="false" text="促销策略名称" />
+                        <TableColumn fx:id="type" editable="false" prefWidth="150.0" resizable="false" sortable="false" text="类型" />
                         <TableColumn fx:id="creator" editable="false" prefWidth="120.0" resizable="false" sortable="false" text="制定人" />
-                        <TableColumn fx:id="startDate" editable="false" prefWidth="148.0" resizable="false" sortable="false" text="起止时间" />
-                        <TableColumn fx:id="endDate" editable="false" prefWidth="124.0" resizable="false" sortable="false" text="截止日期" />
-                        <TableColumn fx:id="openBtn" prefWidth="178.0" text="" />
+                        <TableColumn fx:id="startDate" editable="false" prefWidth="150.0" resizable="false" sortable="false" text="起始时间" />
+                        <TableColumn fx:id="endDate" editable="false" prefWidth="120.0" resizable="false" sortable="false" text="截止日期" />
+                        <TableColumn fx:id="openBtn" prefWidth="130.0" text="" />
                      </columns>
                   </TableView>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="70.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="1000.0" />
-                  <MenuButton fx:id="createPromotionMenu" layoutX="920.0" layoutY="23.0" mnemonicParsing="false" text="新建促销策略">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="30.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="830.0" />
+                  <MenuButton fx:id="createPromotionMenu" layoutX="890.0" layoutY="1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="    新建促销策略">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Action 1" />
                       <MenuItem mnemonicParsing="false" text="Action 2" />

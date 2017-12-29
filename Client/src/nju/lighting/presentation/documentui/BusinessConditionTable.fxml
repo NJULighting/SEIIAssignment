@@ -90,16 +90,16 @@
                   </VBox>
                   <HBox layoutX="40.0" layoutY="8.0" spacing="100.0">
                      <children>
-                        <PieChart prefHeight="300.0" prefWidth="300.0" title="收入" />
-                        <PieChart prefHeight="300.0" prefWidth="300.0" title="支出" />
+                        <PieChart prefHeight="250.0" prefWidth="250.0" title="收入" />
+                        <PieChart prefHeight="250.0" prefWidth="250.0" title="支出" />
                      </children>
                   </HBox>
-                  <HBox layoutX="40.0" layoutY="334.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+                  <HBox layoutX="31.0" layoutY="258.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label text="收入类" />
-                              <HBox alignment="CENTER_RIGHT">
+                              <HBox alignment="CENTER_RIGHT" prefWidth="350.0">
                                  <children>
                                     <Label text="￥" textFill="#5599ff">
                                        <font>
@@ -133,7 +133,7 @@
                                                 <Insets bottom="10.0" />
                                              </VBox.margin>
                                           </Line>
-                                          <HBox>
+                                          <HBox alignment="BOTTOM_LEFT">
                                              <children>
                                                 <Label text="￥" textFill="#5599ff">
                                                    <font>
@@ -145,6 +145,12 @@
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="BOTTOM_RIGHT">
+                                             <children>
+                                                <Label text="折" textFill="#797979" />
+                                                <Label text="2000.00" textFill="#797979" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -176,6 +182,12 @@
                                                 </Label>
                                              </children>
                                           </HBox>
+                                          <HBox alignment="BOTTOM_RIGHT">
+                                             <children>
+                                                <Label text="折" textFill="#797979" />
+                                                <Label text="2000.00" textFill="#797979" />
+                                             </children>
+                                          </HBox>
                                           <Label text="成本调价输入" />
                                           <HBox>
                                              <children>
@@ -189,6 +201,12 @@
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="BOTTOM_RIGHT">
+                                             <children>
+                                                <Label text="折" textFill="#797979" />
+                                                <Label text="2000.00" textFill="#797979" />
                                              </children>
                                           </HBox>
                                           <Label text="进退货差价" />
@@ -206,6 +224,12 @@
                                                 </Label>
                                              </children>
                                           </HBox>
+                                          <HBox alignment="BOTTOM_RIGHT">
+                                             <children>
+                                                <Label text="折" textFill="#797979" />
+                                                <Label text="2000.00" textFill="#797979" />
+                                             </children>
+                                          </HBox>
                                           <Label text="代金券差额" />
                                           <HBox>
                                              <children>
@@ -219,6 +243,12 @@
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="BOTTOM_RIGHT">
+                                             <children>
+                                                <Label text="折" textFill="#797979" />
+                                                <Label text="2000.00" textFill="#797979" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -277,6 +307,12 @@
                                                 </Label>
                                              </children>
                                           </HBox>
+                                          <HBox alignment="BOTTOM_RIGHT">
+                                             <children>
+                                                <Label text="折" textFill="#797979" />
+                                                <Label text="2000.00" textFill="#797979" />
+                                             </children>
+                                          </HBox>
                                        </children>
                                     </VBox>
                                     <VBox>
@@ -306,6 +342,12 @@
                                                 </Label>
                                              </children>
                                           </HBox>
+                                          <HBox alignment="BOTTOM_RIGHT">
+                                             <children>
+                                                <Label text="折" textFill="#797979" />
+                                                <Label text="2000.00" textFill="#797979" />
+                                             </children>
+                                          </HBox>
                                           <Label text="商品赠出支出" />
                                           <HBox>
                                              <children>
@@ -319,6 +361,12 @@
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="BOTTOM_RIGHT">
+                                             <children>
+                                                <Label text="折" textFill="#797979" />
+                                                <Label text="2000.00" textFill="#797979" />
                                              </children>
                                           </HBox>
                                        </children>

@@ -1,6 +1,6 @@
 package nju.lighting.vo.doc.costdoc;
 
-import nju.lighting.bl.utils.ListTransformer;
+import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.costdoc.CostDocItemPO;
 import nju.lighting.po.doc.costdoc.CostDocPO;
@@ -61,7 +61,7 @@ public class CostDocVO extends DocVO {
 
     @Override
     public DocPO toPO() {
-        List<CostDocItemPO> poList = ListTransformer.toList(itemList, CostDocItemVO::toPO);
+        List<CostDocItemPO> poList = CollectionTransformer.toList(itemList, CostDocItemVO::toPO);
         return new CostDocPO(getType(), getCreatorId(), getTime(), account.getId(), poList, total);
     }
 }

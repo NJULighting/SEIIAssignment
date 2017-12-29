@@ -6,6 +6,7 @@ import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.bl.utils.DataServiceFunction;
+import nju.lighting.bl.utils.FuzzySeekingHelper;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
 import nju.lighting.po.customer.CustomerPO;
@@ -15,6 +16,7 @@ import shared.*;
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -27,11 +29,18 @@ enum CustomerManager {
 
     private CustomerDataService dataService;
     private Logger logger;
+    private FuzzySeekingHelper<CustomerPO, CustomerVO> seekingHelper;
 
     CustomerManager() {
         try {
             dataService = DataFactory.getDataBase(CustomerDataService.class);
             logger = new UserLogger();
+
+            // Initialize fuzzy seeking helper
+            seekingHelper = new FuzzySeekingHelper<>(po -> new Customer(po).toVO());
+            seekingHelper.registerFunctionForString(dataService::fuzzySearchByName, dataService::fuzzySearchByAddress,
+                    dataService::fuzzySearchByEmail, dataService::fuzzySearchByTelephone, dataService::fuzzySearchByGrade);
+            seekingHelper.registerFunctionForInteger(dataService::fuzzySearchById);
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -168,5 +177,13 @@ enum CustomerManager {
             e.printStackTrace();
             return ResultMessage.NETWORK_FAIL;
         }
+    }
+
+    List<CustomerVO> search(String keyword) {
+        return seekingHelper.executeSeeking(keyword);
+    }
+
+    List<CustomerVO> searchInType(String keyword, CustomerType type) {
+        return search(keyword).stream().filter(vo -> vo.getType() == type).collect(Collectors.toList());
     }
 }

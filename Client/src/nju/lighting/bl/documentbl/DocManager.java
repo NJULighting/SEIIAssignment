@@ -7,7 +7,7 @@ import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.bl.utils.DataServiceBiFunction;
 import nju.lighting.bl.utils.DataServiceFunction;
-import nju.lighting.bl.utils.ListTransformer;
+import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.vo.DocVO;
@@ -17,7 +17,6 @@ import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import shared.*;
 
 import javax.naming.NamingException;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -65,13 +64,13 @@ public enum DocManager {
      */
     public List<HistoryDocVO> findDocuments(DocumentFilter filter) {
         UserInfo userInfo = new UserInfoImpl();
-        DocFactory docFactory = new DocFactory();
+        DocFactory docFactory = DocFactory.INSTANT;
         List<Doc> docList = DataServiceFunction
                 .findAndFilterToList(userInfo.getIDOfSignedUser(), dataService::findByUserId,
                         docFactory::poToDoc, filter.getPredicateForDoc());
 
         // Filter them and transform them to HistoryDocVO list
-        return ListTransformer.toList(docList, Doc::toHistoryDocVO);
+        return CollectionTransformer.toList(docList, Doc::toHistoryDocVO);
     }
 
     List<BusinessConditionItemVO> findSaleRecords(DocumentFilter filter) {
@@ -94,10 +93,10 @@ public enum DocManager {
     }
 
     List<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) {
-        DocFactory factory = new DocFactory();
+        DocFactory factory = DocFactory.INSTANT;
         List<Doc> docList = DataServiceBiFunction.findAndFilterToList(filter.getStart(), filter.getEnd(),
                 dataService::findByTime, factory::poToDoc, filter.getPredicateForDoc());
 
-        return ListTransformer.toList(docList, Doc::toBusinessHistoryItemVO);
+        return CollectionTransformer.toList(docList, Doc::toBusinessHistoryItemVO);
     }
 }

@@ -1,6 +1,6 @@
 package nju.lighting.vo.doc.stockdoc;
 
-import nju.lighting.bl.utils.ListTransformer;
+import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.stockdoc.StockDocItemPO;
 import nju.lighting.po.doc.stockdoc.StockDocPO;
@@ -84,7 +84,7 @@ public class StockDocVO extends DocVO {
 
     @Override
     public DocPO toPO() {
-        List<StockDocItemPO> itemPOList = ListTransformer.toList(items, StockDocItemVO::toPO);
+        List<StockDocItemPO> itemPOList = CollectionTransformer.toList(items, StockDocItemVO::toPO);
         return new StockDocPO(getType(), getCreatorId(), getTime(), customerId, repository,
                 remarks, totalAmount, itemPOList);
     }

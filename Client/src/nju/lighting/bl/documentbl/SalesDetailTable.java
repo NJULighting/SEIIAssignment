@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  * Description: 处理销售明细表业务相关功能
  * @author Liao
  */
-public class SalesDetailTable {
+class SalesDetailTable {
     private double salesRevenue;
     private double commodityGainRevenue;
     private double costAdjustRevenue;
@@ -45,7 +45,7 @@ public class SalesDetailTable {
 
     private DocDataService dataService;
 
-    public SalesDetailTable(Date startDate, Date endDate) {
+    SalesDetailTable(Date startDate, Date endDate) {
 
         try {
             dataService = DataFactory.getDataBase(DocDataService.class);
@@ -78,7 +78,7 @@ public class SalesDetailTable {
      * 根据所给的日期区间生成经营情况表
      * @return 相对应的经营情况表的值对象
      */
-    public SalesDetailVO getSalesDetailTable() {
+    SalesDetailVO getSalesDetailTable() {
         return new SalesDetailVO(salesRevenue, commodityGainRevenue, costAdjustRevenue, spreadRevenue,
                 voucherCausedRevenue, salesRevenueOff, costExpenditure, commodityLossExpenditure,
                 giftExpenditure, profit);
@@ -116,7 +116,7 @@ public class SalesDetailTable {
 
     private <T> List<T> findToDoc(Class<T> type, DocType docType) {
         try {
-            DocFactory docFactory = new DocFactory();
+            DocFactory docFactory = DocFactory.INSTANT;
             return dataService.findByTimeAndType(startDate, endDate, docType)
                     .stream()
                     .map(docFactory::poToDoc)

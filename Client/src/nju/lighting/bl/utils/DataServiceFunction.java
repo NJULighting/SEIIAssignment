@@ -1,14 +1,11 @@
 package nju.lighting.bl.utils;
 
-import nju.lighting.bl.logbl.Logger;
-import shared.OPType;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
 import java.rmi.RemoteException;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -23,7 +20,7 @@ public interface DataServiceFunction<T, R> {
     static <C, VO, PO> List<VO> findByToList(C condition, DataServiceFunction<C, List<PO>> function, Function<PO, VO> poTransformer) {
         try {
             List<PO> poList = function.apply(condition);
-            return ListTransformer.toList(poList, poTransformer);
+            return CollectionTransformer.toList(poList, poTransformer);
         } catch (RemoteException e) {
             e.printStackTrace();
             return Collections.emptyList();

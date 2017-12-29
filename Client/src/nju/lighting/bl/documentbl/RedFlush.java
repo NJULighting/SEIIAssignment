@@ -24,7 +24,7 @@ public class RedFlush {
     private Logger logger;
 
     RedFlush() {
-        factory = new DocFactory();
+        factory = DocFactory.INSTANT;
         try {
             dataService = DataFactory.getDataBase(DocDataService.class);
         } catch (NamingException e) {
@@ -41,7 +41,7 @@ public class RedFlush {
      */
     public ResultMessage redFlush(DocVO docVO) {
         Doc doc = factory.voToDoc(docVO);
-        doc.redFlush();
+        doc.executeRedFlush();
         try {
             ResultMessage res = dataService.commitDoc(doc.toPO()).t;
             if (res == ResultMessage.SUCCESS)

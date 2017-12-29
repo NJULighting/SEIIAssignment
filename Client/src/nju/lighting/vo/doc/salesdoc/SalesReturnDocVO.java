@@ -1,6 +1,6 @@
 package nju.lighting.vo.doc.salesdoc;
 
-import nju.lighting.bl.utils.ListTransformer;
+import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.salesdoc.SalesDocItemPO;
 import nju.lighting.po.doc.salesdoc.SalesReturnDocPO;
@@ -133,7 +133,7 @@ public class SalesReturnDocVO extends DocVO {
 
     @Override
     public DocPO toPO() {
-        List<SalesDocItemPO> poList = ListTransformer.toList(items, SalesDocItemVO::toPO);
+        List<SalesDocItemPO> poList = CollectionTransformer.toList(items, SalesDocItemVO::toPO);
         return new SalesReturnDocPO(getType(), getCreatorId(), getTime(), salesman, customerId + "", repository,
                 remarks, discount, voucher, finalAmount, poList);
     }

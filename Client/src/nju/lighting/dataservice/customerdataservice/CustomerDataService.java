@@ -24,6 +24,14 @@ public interface CustomerDataService extends Remote {
 
      List<CustomerPO> fuzzySearchById(Integer id) throws RemoteException;
 
+     List<CustomerPO> fuzzySearchByTelephone(String key) throws RemoteException;
+
+     List<CustomerPO> fuzzySearchByAddress(String key) throws RemoteException;
+
+     List<CustomerPO> fuzzySearchByGrade(String key) throws RemoteException;
+
+     List<CustomerPO> fuzzySearchByEmail(String key) throws RemoteException;
+
      /**
       * 若增加客户应收，amount为正数，反之为负
       * @param amount

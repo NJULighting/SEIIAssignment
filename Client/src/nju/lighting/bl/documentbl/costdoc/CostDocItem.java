@@ -31,6 +31,7 @@ public class CostDocItem implements DocItem {
     }
 
     CostDocItem(CostDocItemPO po) {
+        id = po.getId();
         type = po.getType();
         amount = po.getAmount();
         comment = po.getComment();

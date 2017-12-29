@@ -25,7 +25,9 @@ import java.util.function.Function;
  * HistoryDocVO and DocPO
  * @author Liao
  */
-public class DocFactory {
+enum DocFactory {
+    INSTANT;
+
     private Map<DocType, Function<DocPO, Doc>> docPOMap;
     private Map<DocType, Function<HistoryDocVO, Doc>> historyDocVOMap;
     private Map<DocType, Function<DocVO, Doc>> docVOMap;

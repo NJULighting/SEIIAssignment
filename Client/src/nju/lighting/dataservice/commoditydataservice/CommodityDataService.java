@@ -38,4 +38,9 @@ public interface CommodityDataService extends Remote {
 
     ResultMessage deleteCategory(int id) throws RemoteException;
 
+    List<CommodityItemPO> fuzzySearchByName(String key) throws RemoteException;
+
+    List<CommodityItemPO> fuzzySearchById(String key) throws RemoteException;
+
+    List<CommodityItemPO> fuzzySearchByModel(String key) throws RemoteException;
 }

@@ -27,8 +27,7 @@ public class AccountController implements AccountBLService {
 
     @Override
     public List<AccountVO> findAccounts(String keyword) {
-        return null;
-        // TODO: 2017/11/28 wait for data level
+        return accountManager.findAccounts(keyword);
     }
 
     @Override

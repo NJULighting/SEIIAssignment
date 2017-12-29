@@ -26,8 +26,8 @@ public class AddCustomerTest {
 
     @Test
     public void addCustomerTest() throws Exception {
-        CustomerVO customerVO = new CustomerVO(0, CustomerType.SALESPERSON, CustomerGrade.FIVE, "SuperFrog", "6666666",
-                "上海交通大学", "210046", "excited@frogmail.com", 666666, 0, 0, "LittleFrog");
+        CustomerVO customerVO = new CustomerVO(0, CustomerType.SALESPERSON, CustomerGrade.FIVE, "VeryNaive", "6666666",
+                "上海交通大学", "210046", "excited@naivemail.com", 666666, 0, 0, "LittleFrog");
 
         TwoTuple<ResultMessage, Integer> addResult = customerBLService.createCustomer(customerVO);
         ResultMessage res = addResult.t;

@@ -95,6 +95,7 @@ public class SalesDocItem implements DocItem {
 
     @Override
     public ResultMessage approve() {
+        // Change repository
         RepositoryInfo repositoryInfo = new RepositoryInfoImpl();
         RepositoryChangeType repositoryChangeType = itemType == SalesDocItemType.RETURN ?
                 RepositoryChangeType.BE_RETURN : RepositoryChangeType.SELL;

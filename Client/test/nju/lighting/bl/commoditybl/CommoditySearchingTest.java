@@ -44,7 +44,7 @@ public class CommoditySearchingTest {
     public void findCommodityVOByNameTest0() throws Exception {
         List<CommodityItemVO> voList = manager.findCommodityVOByName(COMMODITY_NAME);
 
-        assertEquals(4, voList.size());
+        assertEquals(10, voList.size());
     }
 
     @Test
@@ -69,5 +69,22 @@ public class CommoditySearchingTest {
         CommodityItemVO target = manager.findCommodityVOById(WRONG_COMMODITY_ID);
 
         assertNull(target);
+    }
+
+    @Test
+    public void searchingTest0() throws Exception {
+        searchingHelper("Fr", 10);
+    }
+
+    @Test
+    public void searchingTest1() throws Exception {
+        searchingHelper("10", 7);
+    }
+
+    private void searchingHelper(String keyword, int expectedSize) {
+        List<CommodityItemVO> itemList = manager.searchCommodity(keyword);
+
+        itemList.forEach(System.out::println);
+        assertEquals(expectedSize, itemList.size());
     }
 }

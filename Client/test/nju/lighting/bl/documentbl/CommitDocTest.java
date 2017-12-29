@@ -44,9 +44,9 @@ import static org.junit.Assert.*;
  * @author Liao
  */
 public class CommitDocTest {
-    private static final AccountTransferItemVO ITEM_0 = new AccountTransferItemVO(312.2, "Naive", "1234567");
-    private static final AccountTransferItemVO ITEM_1 = new AccountTransferItemVO(312.2, "Excited", "1234567");
-    private static final AccountTransferItemVO ITEM_2 = new AccountTransferItemVO(312.2, "Too Young", "1254567");
+    private static final AccountTransferItemVO ITEM_0 = new AccountTransferItemVO(312.2, "Naive", "284983325");
+    private static final AccountTransferItemVO ITEM_1 = new AccountTransferItemVO(312.2, "Excited", "284983325");
+    private static final AccountTransferItemVO ITEM_2 = new AccountTransferItemVO(312.2, "Too Young", "284983325");
     private static final List<AccountTransferItemVO> ITEM_LIST = Arrays.asList(ITEM_0, ITEM_1, ITEM_2);
 
     private DocManager manager = DocManager.INSTANCE;

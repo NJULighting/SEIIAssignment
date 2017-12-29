@@ -196,6 +196,25 @@ public class CommonOperation<T> implements Serializable {
         return results;
     }
 
+    public List<T> fuzzySearch(String fieldName, Enum key) {
+        List<T> results = null;
+        Session session = HibernateUtils.getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            String sql = "select t from " + className + " t where cast(t." + fieldName + " as string) like :field";
+            Query<T> query = session.createQuery(sql);
+            query.setParameter("field",  "%" + key + "%");
+            results = query.getResultList();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            HibernateUtils.closeSession();
+        }
+        return results;
+    }
+
     public List<T> fuzzySearchByInt(String fieldName, Integer integer) {
         List<T> results = null;
         Session session = HibernateUtils.getCurrentSession();

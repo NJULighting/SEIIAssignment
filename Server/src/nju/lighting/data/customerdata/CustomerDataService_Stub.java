@@ -98,6 +98,26 @@ public class CustomerDataService_Stub implements CustomerDataService {
     }
 
     @Override
+    public List<CustomerPO> fuzzySearchByTelephone(String key) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<CustomerPO> fuzzySearchByAddress(String key) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<CustomerPO> fuzzySearchByGrade(String key) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<CustomerPO> fuzzySearchByEmail(String key) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public List<CustomerPO> fuzzySearchById(Integer id) throws RemoteException {
         return null;
     }

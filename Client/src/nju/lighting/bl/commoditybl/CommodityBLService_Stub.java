@@ -35,7 +35,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
         CommodityCategoriesTree.TreeBuilder builder = new CommodityCategoriesTree.TreeBuilder(poList);
         tree = builder.build();
 
-        CommodityItem com1 = new CommodityItem("01", "天才灯具", 3, "2017",
+        CommodityItem com1 = new CommodityItem("01", "01", 3, "2017",
                 100, 1000, 1000, 1000, 1000, "a", "01", new Date(111111111));
         CommodityItem com2 = new CommodityItem("02", "天才灯炮", 3, "2017",
                 100, 1000, 1000, 1000, 1000, "a", "01", new Date(111111111));
@@ -102,7 +102,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
 
     @Override
     public List<CommodityItemVO> searchCommodity(String keyword) {
-        return findCommodityVOByName(keyword);
+        return findCommodityVOByName(keyword) ;
     }
 
     @Override

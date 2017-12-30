@@ -20,7 +20,7 @@ public class Doc{
     public static DocVO doc;
     static HashMap<DocType,String> map=new HashMap<>();
     static {
-        map.put(DocType.GIFT, "giftdoc.fxml");
+        map.put(DocType.GIFT, "giftdoc/GiftDoc.fxml");
         map.put(DocType.ACCOUNT_IN,"AccountIODoc.fxml");
     }
 

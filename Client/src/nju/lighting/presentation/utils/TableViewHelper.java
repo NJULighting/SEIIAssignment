@@ -1,7 +1,10 @@
 package nju.lighting.presentation.utils;
 
+import com.jfoenix.controls.JFXSlider;
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -24,7 +27,7 @@ public class TableViewHelper {
 
     public static void setHeight(TableView tableView) {
         //设置表格的高度和与数据的多少一致，否则数据多的时候表中就会出现滚动条
-        tableView.prefHeightProperty().bind(tableView.fixedCellSizeProperty().multiply(Bindings.size(tableView.getItems()).add(0.86)));
+        tableView.prefHeightProperty().bind(tableView.fixedCellSizeProperty().multiply(Bindings.size(tableView.getItems()).add(0.83)));
 
     }
 
@@ -58,5 +61,12 @@ public class TableViewHelper {
         return new HBox(first, second, third);
     }
 
+    public static void setSliderMarch(JFXSlider slider,TableView tableView){
 
+        //滑块控制表格的左右滑动
+        slider.valueProperty().addListener((ObservableValue<? extends Number> ov,
+                                            Number old_value,Number new_value) -> {
+            tableView.setLayoutX(-new_value.doubleValue());
+        });
+    }
 }

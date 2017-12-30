@@ -1,6 +1,6 @@
 package nju.lighting.vo.doc.lossandgaindoc;
 
-import nju.lighting.bl.utils.ListTransformer;
+import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.lossandgaindoc.LossAndGainDocPO;
 import nju.lighting.po.doc.lossandgaindoc.LossAndGainItemPO;
@@ -44,7 +44,7 @@ public class LossAndGainDocVO extends DocVO {
 
     @Override
     public DocPO toPO() {
-        List<LossAndGainItemPO> itemPOList = ListTransformer.toList(items, LossAndGainDocItemVO::toPO);
+        List<LossAndGainItemPO> itemPOList = CollectionTransformer.toList(items, LossAndGainDocItemVO::toPO);
         return new LossAndGainDocPO(getType(), getCreatorId(), getTime(), comment, itemPOList);
     }
 }

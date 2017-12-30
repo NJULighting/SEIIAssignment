@@ -1,6 +1,6 @@
 package nju.lighting.vo.doc.alertdoc;
 
-import nju.lighting.bl.utils.ListTransformer;
+import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.alertdoc.AlertDocItemPO;
 import nju.lighting.po.doc.alertdoc.AlertDocPO;
@@ -42,7 +42,7 @@ public class AlertDocVO extends DocVO {
 
     @Override
     public DocPO toPO() {
-        List<AlertDocItemPO> itemPOList = ListTransformer.toList(items, AlertDocItemVO::toPO);
+        List<AlertDocItemPO> itemPOList = CollectionTransformer.toList(items, AlertDocItemVO::toPO);
         return new AlertDocPO(getType(), getCreatorId(), getTime(), comment, triggered, expired, itemPOList);
     }
 

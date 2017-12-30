@@ -143,5 +143,35 @@ public class CommodityItemVO implements Nameable {
         return new BasicCommodityItemVO(id, name, repCount, recentInPrice, recentSellPrice,modelNumber);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        CommodityItemVO that = (CommodityItemVO) o;
+
+        return id != null ? id.equals(that.id) : that.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "CommodityItemVO{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", modelNumber='" + modelNumber + '\'' +
+                ", repCount=" + repCount +
+                ", inPrice=" + inPrice +
+                ", sellPrice=" + sellPrice +
+                ", recentInPrice=" + recentInPrice +
+                ", recentSellPrice=" + recentSellPrice +
+                ", batch='" + batch + '\'' +
+                ", batchNumber='" + batchNumber + '\'' +
+                ", dateOfProduction=" + dateOfProduction +
+                '}';
+    }
 }

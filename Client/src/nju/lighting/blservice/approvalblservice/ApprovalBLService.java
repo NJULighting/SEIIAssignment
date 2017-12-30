@@ -23,5 +23,4 @@ public interface ApprovalBLService {
 
     ResultMessage save(HistoryDocVO vo) ;
 
-    ResultMessage saveAndApprove(HistoryDocVO vo) ;
 }

@@ -130,5 +130,36 @@ public class CustomerVO {
         this.salesman = salesman;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        CustomerVO that = (CustomerVO) o;
+
+        return ID == that.ID;
+    }
+
+    @Override
+    public int hashCode() {
+        return ID;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerVO{" +
+                "ID=" + ID +
+                ", type=" + type +
+                ", grade=" + grade +
+                ", name='" + name + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", address='" + address + '\'' +
+                ", postage='" + postage + '\'' +
+                ", email='" + email + '\'' +
+                ", receivableLimit=" + receivableLimit +
+                ", receivable=" + receivable +
+                ", payable=" + payable +
+                ", salesman='" + salesman + '\'' +
+                '}';
+    }
 }

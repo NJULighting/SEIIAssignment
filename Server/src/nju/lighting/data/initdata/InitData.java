@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipOutputStream;
+import shared.TwoTuple;
 
 /**
  * Created on 2017/11/27.
@@ -73,7 +74,8 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
     }
 
     @Override
-    public ResultMessage createInit(String userId, Date date) throws RemoteException {
+    public TwoTuple<ResultMessage, InitPO> createInit(String userId, Date date) throws RemoteException {
+        TwoTuple<ResultMessage, InitPO> result = new TwoTuple<>();
         String url = "/var/www/html/table/" + date.toString().replace(" ", "_");
         try {
             createCSVFile(url);
@@ -82,12 +84,15 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
             File file = new File(url);
             if (file.exists())
                 file.delete();
-            return ResultMessage.FAILURE;
+            result.t = ResultMessage.FAILURE;
+            return result;
         }
         zip(new File(url), url + ".zip");
         InitPO initPO = new InitPO(date, userId, url + ".zip");
         System.out.println("Before Return");
-        return commonOperation.add(initPO);
+        result.t = commonOperation.add(initPO);
+        result.r = initPO;
+        return result;
     }
 
     @Override

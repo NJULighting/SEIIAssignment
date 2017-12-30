@@ -20,6 +20,7 @@ import java.util.List;
  * Description
  * @author 陈俊宇
  */
+@Deprecated
 public class ApprovalBLService_Stub implements ApprovalBLService {
     @Override
     public ArrayList<DocVO> getDocumentList() {
@@ -131,8 +132,4 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         return ResultMessage.SUCCESS;
     }
 
-    @Override
-    public ResultMessage saveAndApprove(HistoryDocVO vo) {
-        return ResultMessage.SUCCESS;
-    }
 }

@@ -22,7 +22,7 @@ public interface DataServiceBiFunction<T, R, Y> {
                                                 Function<PO, VO> poTransformer) {
         try {
             List<PO> poList = biFunction.apply(condition1, condition2);
-            return ListTransformer.toList(poList, poTransformer);
+            return CollectionTransformer.toList(poList, poTransformer);
         } catch (RemoteException e) {
             e.printStackTrace();
             return Collections.emptyList();

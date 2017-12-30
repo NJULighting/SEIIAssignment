@@ -40,7 +40,7 @@ class CommodityController implements CommodityBLService {
 
     @Override
     public List<CommodityItemVO> searchCommodity(String keyword) {
-        return null;// TODO: 2017/12/27 complete the method
+        return manager.searchCommodity(keyword);
     }
 
     @Override

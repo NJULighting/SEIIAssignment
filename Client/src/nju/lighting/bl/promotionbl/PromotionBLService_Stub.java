@@ -3,7 +3,6 @@ package nju.lighting.bl.promotionbl;
 import nju.lighting.bl.approvalbl.ApprovalBLService_Stub;
 import nju.lighting.bl.userbl.UserBLServie_Stub;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
-import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
@@ -94,8 +93,4 @@ public class PromotionBLService_Stub implements PromotionBLService {
         return null;
     }
 
-    @Override
-    public ResultMessage delete(int promotionID) {
-        return ResultMessage.FAILURE;
-    }
 }

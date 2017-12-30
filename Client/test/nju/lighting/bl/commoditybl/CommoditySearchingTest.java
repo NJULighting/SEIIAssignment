@@ -73,7 +73,7 @@ public class CommoditySearchingTest {
 
     @Test
     public void searchingTest0() throws Exception {
-        searchingHelper("Fr", 10);
+        searchingHelper("W", 504);
     }
 
     @Test

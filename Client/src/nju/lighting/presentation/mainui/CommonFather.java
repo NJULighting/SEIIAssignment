@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import nju.lighting.bl.userbl.UserController;
+import nju.lighting.blservice.userblservice.LoginService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,6 +35,8 @@ public abstract class CommonFather implements Initializable {
     void close() {
         Platform.exit();
         System.out.println("close");
+        LoginService loginService = new UserController();
+        loginService.logout();
     }
 
     //窗口最小化

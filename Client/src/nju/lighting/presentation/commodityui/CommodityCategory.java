@@ -1,11 +1,13 @@
 package nju.lighting.presentation.commodityui;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
+import nju.lighting.bl.commoditybl.CommodityController;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.vo.commodity.*;
 
@@ -21,9 +23,10 @@ import java.util.stream.Collectors;
  * @author 陈俊宇
  */
 public class CommodityCategory implements Initializable {
-    CommodityBLService blService = new CommodityBLService_Stub();
+    CommodityBLService blService = new CommodityController();
     private CommodityCategoriesTreeVO categoriesTreeVO;
     private StackPane stackPane;
+    SimpleStringProperty keyWord=new SimpleStringProperty();
     @FXML
     TreeTableView<CommodityCategoryItem> commodityTreeTableView;
 
@@ -60,8 +63,10 @@ public class CommodityCategory implements Initializable {
 
     void search() {
 
-        if (searchText.getText().length()==0)
+        if (searchText.getText().length()==0){
             refresh();
+        }
+
         else {
             root.getChildren().clear();
             root.setValue(new CommodityCategoryItem("搜索结果"));
@@ -112,6 +117,7 @@ public class CommodityCategory implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        keyWord.bind(searchText.textProperty());
         searchText.setOnAction(e -> search());
         categoriesTreeVO = blService.getCommodityCategoriesTreeVO();
         root = new TreeItem();
@@ -138,13 +144,13 @@ public class CommodityCategory implements Initializable {
                 cellData.getValue().getValue().recentSellPriceProperty().asObject());
 
 
-        id.setCellFactory(p -> new CommodityDetailTreeCell());
-        modelNumber.setCellFactory(p -> new CommodityDetailTreeCell());
-        repCount.setCellFactory(p -> new CommodityDetailTreeCell());
-        inPrice.setCellFactory(p -> new CommodityDetailTreeCell());
-        sellPrice.setCellFactory(p -> new CommodityDetailTreeCell());
-        recentInPrice.setCellFactory(p -> new CommodityDetailTreeCell());
-        recentSellPrice.setCellFactory(p -> new CommodityDetailTreeCell());
+        id.setCellFactory(p -> new CommodityDetailTreeCell(keyWord));
+        modelNumber.setCellFactory(p -> new CommodityDetailTreeCell(keyWord));
+        repCount.setCellFactory(p -> new CommodityDetailTreeCell(keyWord));
+        inPrice.setCellFactory(p -> new CommodityDetailTreeCell(keyWord));
+        sellPrice.setCellFactory(p -> new CommodityDetailTreeCell(keyWord));
+        recentInPrice.setCellFactory(p -> new CommodityDetailTreeCell(keyWord));
+        recentSellPrice.setCellFactory(p -> new CommodityDetailTreeCell(keyWord));
 
         commodityTreeTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -158,7 +164,7 @@ public class CommodityCategory implements Initializable {
         name.setCellFactory(new Callback<TreeTableColumn<CommodityCategoryItem, String>, TreeTableCell<CommodityCategoryItem, String>>() {
             @Override
             public TreeTableCell<CommodityCategoryItem, String> call(TreeTableColumn<CommodityCategoryItem, String> param) {
-                return new MyTreeCell(stackPane);
+                return new MyTreeCell(stackPane,keyWord,blService);
             }
         });
 

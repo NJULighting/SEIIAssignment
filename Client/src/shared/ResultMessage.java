@@ -6,5 +6,9 @@ package shared;
  * @author Liao
  */
 public enum ResultMessage {
-    SUCCESS, FAILURE, NETWORK_FAIL, INVALID_NAME, INVALID_ID, DUPLICATE
+    SUCCESS, FAILURE, NETWORK_FAIL, INVALID_NAME, INVALID_ID, DUPLICATE;
+
+    public boolean success() {
+        return this == SUCCESS;
+    }
 }

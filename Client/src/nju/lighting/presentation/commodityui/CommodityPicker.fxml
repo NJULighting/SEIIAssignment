@@ -11,11 +11,11 @@
 
 <AnchorPane prefHeight="630.0" prefWidth="1080.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.commodityui.CommodityPicker">
    <children>
+      <VBox fx:id="container" prefHeight="630.0" prefWidth="1080.0" />
       <JFXButton layoutX="970.0" layoutY="1.0" onAction="#ok" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #5599FF;" text="确认" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <VBox fx:id="container" prefHeight="630.0" prefWidth="1080.0" />
    </children>
 </AnchorPane>

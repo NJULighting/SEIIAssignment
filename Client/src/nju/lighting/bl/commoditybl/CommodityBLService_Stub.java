@@ -1,11 +1,14 @@
 package nju.lighting.bl.commoditybl;
 
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
+import nju.lighting.builder.Builder;
+import nju.lighting.builder.commodity.CommodityBuildInfo;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
+import shared.Result;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
@@ -32,7 +35,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
         CommodityCategoriesTree.TreeBuilder builder = new CommodityCategoriesTree.TreeBuilder(poList);
         tree = builder.build();
 
-        CommodityItem com1 = new CommodityItem("01", "天才灯具", 3, "2017",
+        CommodityItem com1 = new CommodityItem("01", "01", 3, "2017",
                 100, 1000, 1000, 1000, 1000, "a", "01", new Date(111111111));
         CommodityItem com2 = new CommodityItem("02", "天才灯炮", 3, "2017",
                 100, 1000, 1000, 1000, 1000, "a", "01", new Date(111111111));
@@ -69,7 +72,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public TwoTuple<ResultMessage, String> addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category) {
+    public Result<CommodityItemVO> addCommodity(Builder<CommodityBuildInfo> builder) {
         return null;
     }
 
@@ -99,7 +102,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
 
     @Override
     public List<CommodityItemVO> searchCommodity(String keyword) {
-        return findCommodityVOByName(keyword);
+        return findCommodityVOByName(keyword) ;
     }
 
     @Override

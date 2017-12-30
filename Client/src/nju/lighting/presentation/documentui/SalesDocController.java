@@ -12,7 +12,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -20,10 +22,8 @@ import nju.lighting.bl.documentbl.DocController;
 import nju.lighting.bl.promotionbl.PromotionBLService_Stub;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
-import nju.lighting.presentation.commodityui.CommodityPicker;
-import nju.lighting.presentation.customerui.CustomerPicker;
-import nju.lighting.presentation.mainui.*;
-import nju.lighting.presentation.promotionui.BenefitsPlan;
+import nju.lighting.presentation.mainui.Client;
+import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CommodityHelper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.PromotionHelper;
@@ -33,13 +33,14 @@ import nju.lighting.vo.DocVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocVO;
 import nju.lighting.vo.promotion.PromotionVO;
-import shared.*;
-
+import shared.CustomerType;
+import shared.DocType;
+import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -60,23 +61,23 @@ public class SalesDocController implements Initializable, Upper {
     private DocBLService docBLService = new DocController();
 
     @FXML
-    private Button choseCustomBtn, finishBtn,promotionBtn;
+    private Button choseCustomBtn, finishBtn, promotionBtn;
 
     @FXML
     private JFXButton commodityBtn;
 
     @FXML
     private JFXTextField customer, salesman, userman, repository, accountBeforeDis, discount,
-            voucher, account,promotionText;
+            voucher, account, promotionText;
 
     @FXML
     private TextArea remarks;
 
     @FXML
-    private Label failMessage, failDisCount, failVoucher, failCustomer, sub,title;
+    private Label failMessage, failDisCount, failVoucher, failCustomer, sub, title;
 
     @FXML
-    HBox container,promotionBox;
+    HBox container, promotionBox;
 
     @FXML
     VBox verticalVBox;
@@ -84,33 +85,31 @@ public class SalesDocController implements Initializable, Upper {
     @FXML
     Pane mainPane, commodityContainer;
 
-    ObservableList<BasicCommodityItemVO> commodityList= FXCollections.observableArrayList();
+    ObservableList<BasicCommodityItemVO> commodityList = FXCollections.observableArrayList();
     ObservableList<CommodityItem> docItemList;
-    SimpleObjectProperty<CustomerVO> customerProperty=new SimpleObjectProperty<>();
-    SimpleObjectProperty<PromotionVO> promotionProperty=new SimpleObjectProperty<>();
+    SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
+    SimpleObjectProperty<PromotionVO> promotionProperty = new SimpleObjectProperty<>();
 
 
     CommodityList commodityListController;
     PromotionVO promotionVO;
-    CustomerType type=CustomerType.SALESPERSON;
+    CustomerType type = CustomerType.SALESPERSON;
 
-    public void chooseCommodity(){
-        CommodityHelper.chooseCommodity(this,commodityList);
+    public void chooseCommodity() {
+        CommodityHelper.chooseCommodity(this, commodityList);
     }
 
     public void chooseCustomer() {
-        CustomerHelper.setCustomer(this,customerProperty,CustomerType.SUPPLIER);
+        CustomerHelper.setCustomer(this, customerProperty, CustomerType.SUPPLIER);
     }
 
 
-
-
     public void choosePromotion() throws IOException {
-        PromotionHelper.setPromotion(this,promotionProperty,promotionBLService.getBenefitsPlan(
+        PromotionHelper.setPromotion(this, promotionProperty, promotionBLService.getBenefitsPlan(
                 customerProperty.getValue().getGrade(),
                 commodityList.stream()
-                .map(x-> x.getId())
-                .collect(Collectors.toList()),
+                        .map(x -> x.getId())
+                        .collect(Collectors.toList()),
                 commodityListController.calculateTotal()
         ));
 
@@ -118,13 +117,13 @@ public class SalesDocController implements Initializable, Upper {
 
 
     public void back() {
-       setChildren(mainPane,"");
+        setChildren(mainPane, "");
     }
 
     @Override
     public void setChildren(Node node, String title) {
         container.getChildren().setAll(node);
-        sub .setText(title);
+        sub.setText(title);
     }
 
 
@@ -133,7 +132,7 @@ public class SalesDocController implements Initializable, Upper {
 
         if (customerVO == null) {
             failCustomer.setVisible(true); //未选择客户
-        } else if (true) {
+        } else {
 
             DocVO salesDocVO = new SalesDocVO(new Date(), Client.getUserVO().getID(), null, DocType.SALES
                     , customerVO.getID(), customerVO.getSalesman(), repository.getText(), remarks.getText(),
@@ -153,7 +152,6 @@ public class SalesDocController implements Initializable, Upper {
                     failtoCommit();
                     break;
             }
-
         }
 
     }
@@ -167,16 +165,16 @@ public class SalesDocController implements Initializable, Upper {
     }
 
     //当重要参数发生变化时清除正在作用的promotion
-    void clearPromotion(){
+    void clearPromotion() {
 //        commodityList.removeAll(
 //                commodityList.stream()
 //                .filter(x-> x.isGift())
 //                .collect(Collectors.toList())
 //        );
-      //  promotionOff.setText(0+"");
-        if (promotionText!=null)
-        promotionText.setText("");
-        promotionVO=null;
+        //  promotionOff.setText(0+"");
+        if (promotionText != null)
+            promotionText.setText("");
+        promotionVO = null;
 
     }
 
@@ -197,7 +195,7 @@ public class SalesDocController implements Initializable, Upper {
         customer.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (newValue!=null&&newValue!="")
+                if (newValue != null && newValue != "")
                     promotionBtn.setDisable(false);
             }
         });
@@ -205,10 +203,10 @@ public class SalesDocController implements Initializable, Upper {
         commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
             @Override
             public void onChanged(Change<? extends BasicCommodityItemVO> c) {
-                while (c.next()){
+                while (c.next()) {
                     docItemList.addAll(c.getAddedSubList().stream()
-                    .map(x-> new CommodityItem(x,1))
-                    .collect(Collectors.toList()));
+                            .map(x -> new CommodityItem(x, 1))
+                            .collect(Collectors.toList()));
                 }
             }
         });
@@ -228,7 +226,6 @@ public class SalesDocController implements Initializable, Upper {
                 promotionVO = promotionProperty.getValue();
                 // promotionOff.setText(promotionVO.getOff() + "");
                 promotionText.setText(promotionVO.getName());
-
 
 
 //                if (promotionVO.getType() != PromotionType.Combo&& promotionVO.getGoods()!=null)
@@ -252,7 +249,7 @@ public class SalesDocController implements Initializable, Upper {
                         Double.parseDouble(accountBeforeDis.textProperty().get())
                                 - Double.parseDouble(discount.textProperty().get())
                                 - Double.parseDouble(voucher.textProperty().get())
-                               // - Double.parseDouble(promotionOff.textProperty().get())
+                        // - Double.parseDouble(promotionOff.textProperty().get())
                 ));
             }
         };
@@ -273,20 +270,18 @@ public class SalesDocController implements Initializable, Upper {
                         Double.parseDouble(accountBeforeDis.textProperty().get())
                                 - Double.parseDouble(discount.textProperty().get())
                                 - Double.parseDouble(voucher.textProperty().get())
-                               // - Double.parseDouble(promotionOff.textProperty().get())
+                        // - Double.parseDouble(promotionOff.textProperty().get())
                 ));
             }
         });
 
 
-
     }
 
-    void setReturn(){
+    void setReturn() {
         title.setText("制定销售退货单");
         verticalVBox.getChildren().remove(promotionBox);
     }
-
 
 
 }

@@ -26,5 +26,4 @@ public interface PromotionBLService {
 
     ResultMessage modify(PromotionVO vo);
 
-    ResultMessage delete(int promotionID);
 }

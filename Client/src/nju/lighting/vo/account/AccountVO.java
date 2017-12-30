@@ -1,6 +1,7 @@
 package nju.lighting.vo.account;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2017/10/21.
@@ -11,7 +12,7 @@ public class AccountVO {
     private String id;
     private String name;
     private double amount;
-    private ArrayList<AccountLogVO> accountLogs;
+    private List<AccountLogVO> accountLogs;
 
     public AccountVO(String id, String name, double amount, ArrayList<AccountLogVO> accountLogs) {
         this.id = id;
@@ -20,7 +21,7 @@ public class AccountVO {
         this.accountLogs = accountLogs;
     }
 
-    public ArrayList<AccountLogVO> getAccountLogs() {
+    public List<AccountLogVO> getAccountLogs() {
         return accountLogs;
     }
 

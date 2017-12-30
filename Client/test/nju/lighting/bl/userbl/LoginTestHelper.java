@@ -7,9 +7,9 @@ package nju.lighting.bl.userbl;
  */
 public class LoginTestHelper {
     public static final String AUTHORIZED_USER = "161250068";
-    private static final String NOT_AUTHORIZED_USER = "1611200xx";
-    private static final String AUTHORIZED_USER_PASSWORD = "2333";
-    private static final String NOT_AUTHORIZED_USER_PASSWORD = "9999";
+    private static final String NOT_AUTHORIZED_USER = "161120030";
+    private static final String AUTHORIZED_USER_PASSWORD = "1";
+    private static final String NOT_AUTHORIZED_USER_PASSWORD = "1";
 
     private static LoginHelper loginHelper = LoginHelper.INSTANCE;
 

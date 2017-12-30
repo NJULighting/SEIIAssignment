@@ -37,10 +37,4 @@ public class PromotionController implements PromotionBLService {
     public ResultMessage modify(PromotionVO vo) {
         return manager.modify(vo);
     }
-
-
-    @Override
-    public ResultMessage delete(int promotionID) {
-        return null; // TODO: 2017/12/7 Need this?
-    }
 }

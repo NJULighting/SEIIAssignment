@@ -65,6 +65,17 @@ public class ExcelHelper {
         return workbook;
     }
 
+    /**
+     * 导出excel的方法
+     * @param file 给定一个已经存在的xls后缀的文件
+     * @param objects 要导出excel的对象的集合
+     * @param head 大字标题
+     * @param headSize 大字标题的size，一般和大字标题汉字数相等就ok
+     * @param secendProperty 每个属性的中文名称
+     * @param beanProperty 每个属性的中文名称对应的原本object对象的字段名称（出现在代码中的名称）
+     * @param <T>
+     * @return
+     */
     public static <T> boolean exportExcel(File file, List<T> objects, String head, int headSize, String[] secendProperty, String[] beanProperty) {
         try {
             HSSFWorkbook workbook1 = makeExcelHead(head, headSize);

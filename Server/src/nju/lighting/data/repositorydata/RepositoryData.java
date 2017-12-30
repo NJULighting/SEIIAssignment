@@ -13,6 +13,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import shared.ResultMessage;
 
+import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
@@ -26,6 +27,8 @@ import java.util.List;
  */
 public class RepositoryData extends UnicastRemoteObject implements RepositoryDataService {
 
+    private static final long serialVersionUID = 2958007402413291382L;
+
     private CommonOperation<RepositoryChangePO> changePOCommonOperation;
 
     /**
@@ -35,23 +38,13 @@ public class RepositoryData extends UnicastRemoteObject implements RepositoryDat
         this.changePOCommonOperation = new CommonOperation<>(RepositoryChangePO.class.getName());
     }
 
-    /**
-     * 获取商品变化情况
-     * @param startDate 开始时间
-     * @param endDate 结束时间
-     * @return
-     * @throws RemoteException
-     */
+
     @Override
     public List<RepositoryChangePO> getRepositoryChanges(Date startDate, Date endDate) throws RemoteException {
         return changePOCommonOperation.getDataBetweenTime(startDate, endDate, "date");
     }
 
-    /**
-     *
-     * @return
-     * @throws RemoteException
-     */
+
     @Override
     public RepositoryTablePO getRepositoryTable() throws RemoteException {
         RepositoryTablePO tablePO = new RepositoryTablePO();
@@ -63,12 +56,7 @@ public class RepositoryData extends UnicastRemoteObject implements RepositoryDat
         return tablePO;
     }
 
-    /**
-     * 变更库存情况
-     * @param repositoryChangePO
-     * @return
-     * @throws RemoteException
-     */
+
     @Override
     public ResultMessage changeRepository(RepositoryChangePO repositoryChangePO) throws RemoteException {
         return changePOCommonOperation.add(repositoryChangePO);
@@ -76,6 +64,11 @@ public class RepositoryData extends UnicastRemoteObject implements RepositoryDat
 
     @Override
     public String exportExcel() throws RemoteException {
+        RepositoryTablePO repositoryTablePO = getRepositoryTable();
+        List<RepositoryTableItemPO> items = repositoryTablePO.getRepositoryTableItemPOS();
+        String head = "库存盘点";
+        int headSize = 4;
+        File file = new File("");
         return null;
     }
 }

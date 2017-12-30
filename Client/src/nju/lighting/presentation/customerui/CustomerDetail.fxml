@@ -35,13 +35,13 @@
                   <HBox alignment="CENTER_RIGHT">
                      <children>
                         <Label text="分类：" />
-                        <JFXComboBox fx:id="typebox" focusColor="#5599ff" prefWidth="150.0" />
+                        <JFXComboBox fx:id="typeBox" focusColor="#5599ff" prefWidth="150.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT">
                      <children>
                         <Label text="级别：" />
-                        <JFXComboBox fx:id="gradebox" focusColor="#5599ff" prefWidth="150.0" />
+                        <JFXComboBox fx:id="gradeBox" focusColor="#5599ff" prefWidth="150.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT">

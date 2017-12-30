@@ -19,6 +19,7 @@ import nju.lighting.bl.accountbl.AccountBLService_Stub;
 import nju.lighting.blservice.accountblservice.AccountBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.DialogUI.ValidateEventHandle;
+import nju.lighting.presentation.factory.AccountBLServiceFactory;
 import nju.lighting.vo.account.AccountLogVO;
 import nju.lighting.vo.account.AccountVO;
 import shared.ResultMessage;
@@ -34,8 +35,8 @@ import java.util.ResourceBundle;
  *
  * @author 陈俊宇
  */
-public class AccountList  implements Initializable{
-    AccountBLService blService=new AccountBLService_Stub();
+public class AccountList implements Initializable {
+    AccountBLService blService = AccountBLServiceFactory.getAccountBLService();
 
     @FXML
     TableView<AccountVO> accountTableView;
@@ -71,9 +72,9 @@ public class AccountList  implements Initializable{
 
     }
 
-    void setEditable(StackPane stackPane ,ObservableList<AccountLogVO> logVOObservableList){
-        SimpleObjectProperty<AccountVO> selected=new SimpleObjectProperty<>();
-        this.logVOObservableList=logVOObservableList;
+    void setEditable(StackPane stackPane, ObservableList<AccountLogVO> logVOObservableList) {
+        SimpleObjectProperty<AccountVO> selected = new SimpleObjectProperty<>();
+        this.logVOObservableList = logVOObservableList;
         //账户列表右击菜单栏
         //删除按钮
         MenuItem delete = new MenuItem("删除");
@@ -132,10 +133,10 @@ public class AccountList  implements Initializable{
         accountVOObservableList.addListener(new ListChangeListener<AccountVO>() {
             @Override
             public void onChanged(Change<? extends AccountVO> c) {
-               while (c.next()){
-                   if (accountVOObservableList.size()==0||c.getRemoved().contains(selected.getValue()))
-                       logVOObservableList.clear();
-               }
+                while (c.next()) {
+                    if (accountVOObservableList.size() == 0 || c.getRemoved().contains(selected.getValue()))
+                        logVOObservableList.clear();
+                }
 
             }
         });
@@ -145,8 +146,8 @@ public class AccountList  implements Initializable{
             if (e.getButton() == MouseButton.PRIMARY) {
                 System.out.println("clicked");
                 if (!accountTableView.getSelectionModel().isEmpty()) {
-                    selected.setValue( accountTableView.getSelectionModel().getSelectedItem());
-                    List<AccountLogVO> list =selected.getValue().getAccountLogs();
+                    selected.setValue(accountTableView.getSelectionModel().getSelectedItem());
+                    List<AccountLogVO> list = selected.getValue().getAccountLogs();
                     if (list != null)
                         logVOObservableList.setAll(list);
                     else
@@ -160,15 +161,18 @@ public class AccountList  implements Initializable{
     }
 
 
-
     public ObservableList<AccountVO> getAccountVOObservableList() {
         return accountVOObservableList;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        searchBtn.setOnAction(e->{search();});
-        searchText.setOnAction(e->{search();});
+        searchBtn.setOnAction(e -> {
+            search();
+        });
+        searchText.setOnAction(e -> {
+            search();
+        });
 
         //表格数据初始化
         accountVOObservableList.addAll(blService.getAccountList());
@@ -183,7 +187,7 @@ public class AccountList  implements Initializable{
 
     }
 
-    public AccountVO getAccount(){
+    public AccountVO getAccount() {
         return accountTableView.getSelectionModel().getSelectedItem();
     }
 }

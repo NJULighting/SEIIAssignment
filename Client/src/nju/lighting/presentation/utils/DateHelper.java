@@ -24,6 +24,10 @@ public class DateHelper {
 
     }
 
+    public static LocalDate dateToLocalDate(Date date) {
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
     public static String approximateTime(Date date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(date).toString();
@@ -34,7 +38,7 @@ public class DateHelper {
         return dateFormat.format(date).toString();
     }
 
-    public static Date WeekAgo() {
+    public static Date weekAgo() {
         return findDateByDay(-7);
     }
 
@@ -42,7 +46,7 @@ public class DateHelper {
         return findDateByDay(-15);
     }
 
-    public static Date MonthAgo() {
+    public static Date monthAgo() {
         return findDateByMonth(-1);
     }
 

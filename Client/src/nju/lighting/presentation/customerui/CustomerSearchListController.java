@@ -21,6 +21,7 @@ import javafx.util.Callback;
 import nju.lighting.bl.customerbl.Customer;
 import nju.lighting.bl.customerbl.CustomerBLService_Stub;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
+import nju.lighting.presentation.factory.CustomerBLServiceFactory;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
@@ -36,10 +37,10 @@ import java.util.stream.Collectors;
 
 public class CustomerSearchListController implements Initializable {
 
-    private CustomerBLService customerBLService = new CustomerBLService_Stub();
+    private CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
     private List<CustomerVO> customerVOList;
-    CustomerSearchListController customerSearchListController = this;
-    Upper upper;
+    private CustomerSearchListController customerSearchListController = this;
+    private Upper upper;
     Label title;
 
     private CustomerVO selectedCustomer;
@@ -101,7 +102,7 @@ public class CustomerSearchListController implements Initializable {
     TableColumn<CustomerVO, String> openBtn;
 
     ObservableList<CustomerVO> observableList = FXCollections.observableArrayList();
-    StringProperty keyWord=new SimpleStringProperty();
+    StringProperty keyWord = new SimpleStringProperty();
 
     HBox father;
 
@@ -131,7 +132,7 @@ public class CustomerSearchListController implements Initializable {
 
             List list = customerBLService.search(keywords, CustomerType.ALL);
             System.out.println(list);
-            if (list==null)
+            if (list == null)
                 observableList.clear();
             else
                 observableList.setAll(list);
@@ -166,38 +167,37 @@ public class CustomerSearchListController implements Initializable {
                 new SimpleIntegerProperty(p.getValue().getID()).asObject());
 
 
-
         type.setCellValueFactory(p ->
                 new SimpleStringProperty(CustomerHelper.typeToString(p.getValue().getType())));
-        type.setCellFactory(p-> new HighLightCell(keyWord));
+        type.setCellFactory(p -> new HighLightCell(keyWord));
 
         name.setCellValueFactory(p ->
                 new SimpleStringProperty(p.getValue().getName()));
-        name.setCellFactory(p->new HighLightCell(keyWord));
+        name.setCellFactory(p -> new HighLightCell(keyWord));
 
         grade.setCellValueFactory(p ->
                 new SimpleStringProperty(CustomerHelper.gradeToString(p.getValue().getGrade())));
-        grade.setCellFactory(p->new HighLightCell(keyWord));
+        grade.setCellFactory(p -> new HighLightCell(keyWord));
 
         receive.setCellValueFactory(p ->
                 new SimpleDoubleProperty(p.getValue().getReceivable()).asObject());
-        receive.setCellFactory(p->new HighLightCell(keyWord));
+        receive.setCellFactory(p -> new HighLightCell(keyWord));
 
         pay.setCellValueFactory(p ->
                 new SimpleDoubleProperty(p.getValue().getPayable()).asObject());
-        pay.setCellFactory(p->new HighLightCell(keyWord));
+        pay.setCellFactory(p -> new HighLightCell(keyWord));
 
         receiveLimit.setCellValueFactory(p ->
                 new SimpleDoubleProperty(p.getValue().getReceivableLimit()).asObject());
-        receiveLimit.setCellFactory(p->new HighLightCell(keyWord));
+        receiveLimit.setCellFactory(p -> new HighLightCell(keyWord));
 
         telephone.setCellValueFactory(p ->
                 new SimpleStringProperty(p.getValue().getTelephone()));
-        telephone.setCellFactory(p->new HighLightCell(keyWord));
+        telephone.setCellFactory(p -> new HighLightCell(keyWord));
 
         salesman.setCellValueFactory(p ->
                 new SimpleStringProperty(p.getValue().getSalesman()));
-        salesman.setCellFactory(p->new HighLightCell(keyWord));
+        salesman.setCellFactory(p -> new HighLightCell(keyWord));
 
         openBtn.setCellValueFactory(p ->
                 new SimpleStringProperty(p.getValue().getSalesman()));

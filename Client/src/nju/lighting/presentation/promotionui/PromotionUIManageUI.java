@@ -19,6 +19,7 @@ import javafx.scene.text.Font;
 import javafx.util.Callback;
 import nju.lighting.bl.promotionbl.PromotionBLService_Stub;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
+import nju.lighting.presentation.factory.PromotionBLServiceFactory;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.presentation.utils.PromotionHelper;
@@ -69,12 +70,12 @@ public class PromotionUIManageUI implements Initializable, Upper {
     @FXML
     TableColumn openBtn;
 
-    ObservableList<PromotionVO> promotionList = FXCollections.observableArrayList();
-    PromotionBLService blService = new PromotionBLService_Stub();
+    private ObservableList<PromotionVO> promotionList = FXCollections.observableArrayList();
+    private PromotionBLService blService = PromotionBLServiceFactory.getPromotionBLService();
 
-    Node createPromotion;
+    private Node createPromotion;
 
-    HashMap<PromotionType, String> typeToTitle = new HashMap<>();
+    private HashMap<PromotionType, String> typeToTitle = new HashMap<>();
 
     public void back() {
         container.getChildren().setAll(createPromotion);
@@ -82,7 +83,7 @@ public class PromotionUIManageUI implements Initializable, Upper {
         subLabelBox.getChildren().remove(1, subLabelBox.getChildren().size());
     }
 
-    public void backToMain(){
+    public void backToMain() {
         container.getChildren().setAll(mainPane);
         subLabelBox.getChildren().clear();
     }
@@ -139,14 +140,14 @@ public class PromotionUIManageUI implements Initializable, Upper {
         endDate.setCellFactory(new Callback<TableColumn<PromotionVO, Date>, TableCell<PromotionVO, Date>>() {
             @Override
             public TableCell<PromotionVO, Date> call(TableColumn<PromotionVO, Date> param) {
-                return new TableCell<PromotionVO, Date>(){
+                return new TableCell<PromotionVO, Date>() {
                     @Override
                     protected void updateItem(Date item, boolean empty) {
                         super.updateItem(item, empty);
-                        if (empty){
+                        if (empty) {
                             setText(null);
                             setGraphic(null);
-                        }else {
+                        } else {
                             setText(DateHelper.approximateTime(getItem()));
                             if (getItem().before(new Date()))
                                 setTextFill(Color.RED);
@@ -187,20 +188,20 @@ public class PromotionUIManageUI implements Initializable, Upper {
                             getTableRow().setOnMouseEntered(e -> buttonBox.setVisible(true));
 
 
-                            invalidate.setOnAction(e->{
-                                PromotionVO promotion=(PromotionVO) getTableView().getItems().get(getIndex());
+                            invalidate.setOnAction(e -> {
+                                PromotionVO promotion = (PromotionVO) getTableView().getItems().get(getIndex());
                                 promotion.setEndDate(new Date());
                                 blService.modify(promotion);
-                                getTableView().getItems().set(getIndex(),promotion);
+                                getTableView().getItems().set(getIndex(), promotion);
                             });
-                            open.setOnAction(e->{
-                                FXMLLoader loader=new FXMLLoader(getClass().getResource("Promotion.fxml"));
+                            open.setOnAction(e -> {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Promotion.fxml"));
                                 try {
-                                    setChildren(loader.load(),">促销策略详情");
+                                    setChildren(loader.load(), ">促销策略详情");
                                 } catch (IOException e1) {
                                     e1.printStackTrace();
                                 }
-                                ((Promotion)loader. getController()).init((PromotionVO) getTableView().getItems().get(getIndex()));
+                                ((Promotion) loader.getController()).init((PromotionVO) getTableView().getItems().get(getIndex()));
                             });
                         }
                     }
@@ -232,5 +233,7 @@ public class PromotionUIManageUI implements Initializable, Upper {
 
     }
 
-
+    public ObservableList<PromotionVO> getPromotionList() {
+        return promotionList;
+    }
 }

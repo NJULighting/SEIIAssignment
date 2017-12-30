@@ -293,7 +293,6 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
         dialogController = loader.getController();
         dialogController.setDialog(dialog);
         dialogController.setTreeItem(getTreeTableItem());
-        dialogController.setCommodityBLService(commodityBLService);
         dialogController.setStackPane(stackPane);
 
         dialog.setContent(layout);

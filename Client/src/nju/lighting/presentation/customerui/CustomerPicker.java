@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.CustomerVO;
 import shared.CustomerType;
+
 import java.io.IOException;
 
 
@@ -22,19 +23,18 @@ public class CustomerPicker {
     @FXML
     Pane pane;
 
-    CustomerVO customer;
+    private CustomerVO customer;
 
-    boolean canceled=true;
 
-    public void init(Upper upper, SimpleObjectProperty<CustomerVO> customer, CustomerType type){
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("CustomerSearchListUI.fxml"));
+    public void init(Upper upper, SimpleObjectProperty<CustomerVO> customer, CustomerType type) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerSearchListUI.fxml"));
         try {
             pane.getChildren().add(loader.load());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        CustomerSearchListController controller=loader.getController();
+        CustomerSearchListController controller = loader.getController();
 
         controller.setReadOnly(upper, customer, type);
         controller.search();

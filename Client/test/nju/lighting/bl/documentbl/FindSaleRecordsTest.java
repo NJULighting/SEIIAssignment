@@ -1,8 +1,7 @@
 package nju.lighting.bl.documentbl;
 
 import nju.lighting.bl.userbl.LoginTestHelper;
-import nju.lighting.blservice.documentblservice.DocBLService;
-import nju.lighting.vo.viewtables.BusinessConditionItemVO;
+import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +36,7 @@ public class FindSaleRecordsTest {
         builder.commodity("LED5W灯泡");
         builder.customer("1");
 
-        List<BusinessConditionItemVO> itemList = manager.findSaleRecords(builder.build());
+        List<SalesDetailItemVO> itemList = manager.findSaleRecords(builder.build());
 
         assertEquals(1, itemList.size());
     }

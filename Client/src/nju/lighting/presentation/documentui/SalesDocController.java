@@ -22,6 +22,7 @@ import nju.lighting.bl.documentbl.DocController;
 import nju.lighting.bl.promotionbl.PromotionBLService_Stub;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
+import nju.lighting.presentation.factory.PromotionBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CommodityHelper;
@@ -48,7 +49,7 @@ public class SalesDocController implements Initializable, Upper {
     private CustomerVO customerVO;
 
     private String salesDocID;
-    PromotionBLService promotionBLService = new PromotionBLService_Stub();
+    PromotionBLService promotionBLService = PromotionBLServiceFactory.getPromotionBLService();
 
     private double accountBeforeDisNum = 0;
 

@@ -27,7 +27,7 @@ public class RepositoryDataService_Stub implements RepositoryDataService {
     }
 
     @Override
-    public String exportExcel() throws RemoteException {
-        return null;
+    public byte[] exportExcel() throws RemoteException {
+        return new byte[0];
     }
 }

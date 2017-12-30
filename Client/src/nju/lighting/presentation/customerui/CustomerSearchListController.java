@@ -2,10 +2,7 @@ package nju.lighting.presentation.customerui;
 
 
 import com.jfoenix.controls.JFXButton;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -104,6 +101,7 @@ public class CustomerSearchListController implements Initializable {
     TableColumn<CustomerVO, String> openBtn;
 
     ObservableList<CustomerVO> observableList = FXCollections.observableArrayList();
+    StringProperty keyWord=new SimpleStringProperty();
 
     HBox father;
 
@@ -149,6 +147,7 @@ public class CustomerSearchListController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        keyWord.bind(search.textProperty());
         search.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -166,29 +165,39 @@ public class CustomerSearchListController implements Initializable {
         customerId.setCellValueFactory(p ->
                 new SimpleIntegerProperty(p.getValue().getID()).asObject());
 
+
+
         type.setCellValueFactory(p ->
                 new SimpleStringProperty(CustomerHelper.typeToString(p.getValue().getType())));
+        type.setCellFactory(p-> new HighLightCell(keyWord));
 
         name.setCellValueFactory(p ->
                 new SimpleStringProperty(p.getValue().getName()));
+        name.setCellFactory(p->new HighLightCell(keyWord));
 
         grade.setCellValueFactory(p ->
                 new SimpleStringProperty(CustomerHelper.gradeToString(p.getValue().getGrade())));
+        grade.setCellFactory(p->new HighLightCell(keyWord));
 
         receive.setCellValueFactory(p ->
                 new SimpleDoubleProperty(p.getValue().getReceivable()).asObject());
+        receive.setCellFactory(p->new HighLightCell(keyWord));
 
         pay.setCellValueFactory(p ->
                 new SimpleDoubleProperty(p.getValue().getPayable()).asObject());
+        pay.setCellFactory(p->new HighLightCell(keyWord));
 
         receiveLimit.setCellValueFactory(p ->
                 new SimpleDoubleProperty(p.getValue().getReceivableLimit()).asObject());
+        receiveLimit.setCellFactory(p->new HighLightCell(keyWord));
 
         telephone.setCellValueFactory(p ->
                 new SimpleStringProperty(p.getValue().getTelephone()));
+        telephone.setCellFactory(p->new HighLightCell(keyWord));
 
         salesman.setCellValueFactory(p ->
                 new SimpleStringProperty(p.getValue().getSalesman()));
+        salesman.setCellFactory(p->new HighLightCell(keyWord));
 
         openBtn.setCellValueFactory(p ->
                 new SimpleStringProperty(p.getValue().getSalesman()));

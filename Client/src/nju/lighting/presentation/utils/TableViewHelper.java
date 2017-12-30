@@ -2,9 +2,14 @@ package nju.lighting.presentation.utils;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import javafx.beans.binding.Bindings;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.util.Callback;
 import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.EditingCell;
@@ -23,7 +28,7 @@ public class TableViewHelper {
 
     }
 
-    public static void setHeight(TableView tableView,double multiple) {
+    public static void setHeight(TableView tableView, double multiple) {
         //设置表格的高度和与数据的多少一致，否则数据多的时候表中就会出现滚动条
         tableView.prefHeightProperty().bind(tableView.fixedCellSizeProperty().multiply(Bindings.size(tableView.getItems()).add(multiple)));
 
@@ -35,6 +40,22 @@ public class TableViewHelper {
             final TableHeaderRow header = (TableHeaderRow) tableView.lookup("TableHeaderRow");
             header.reorderingProperty().addListener((o, oldVal, newVal) -> header.setReordering(false));
         });
+    }
+
+    public static HBox getHighlightBox(String itemStr, String key) {
+        int beginIndex = 0;
+        for (int i = 0; i <= itemStr.length() - key.length(); i++) {
+            if (itemStr.substring(i, i + key.length()).equals(key)) {
+                beginIndex = i;
+                break;
+            }
+
+        }
+        Label first = new Label(itemStr.substring(0, beginIndex));
+        Label second = new Label(itemStr.substring(beginIndex, beginIndex + key.length()));
+        Label third = new Label(itemStr.substring(beginIndex + key.length()));
+        second.setBackground(new Background(new BackgroundFill(Color.YELLOW, null, null)));
+        return new HBox(first, second, third);
     }
 
 

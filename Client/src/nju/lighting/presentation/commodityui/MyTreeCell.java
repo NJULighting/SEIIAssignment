@@ -4,6 +4,7 @@ package nju.lighting.presentation.commodityui;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -19,6 +20,7 @@ import javafx.scene.layout.StackPane;
 import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
+import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.Nameable;
@@ -36,7 +38,7 @@ import java.util.Locale;
  * @author 陈俊宇
  */
 public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
-    CommodityBLService commodityBLService = new CommodityBLService_Stub();//new CommodityBLService() {}
+    CommodityBLService commodityBLService ;//new CommodityBLService() {}
     private ContextMenu categoryMenu = new ContextMenu();
     private ContextMenu commodityMenu = new ContextMenu();
 
@@ -50,12 +52,14 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
     MenuItem deleteCategory = new MenuItem("删除分类");
     MenuItem refactorCommodity = new MenuItem("修改商品信息");
     MenuItem deleteCommodity = new MenuItem("删除商品");
-    TreeItem<Nameable> currentItem;
     HashMap<MenuItem, String> hashMap = new HashMap<>();
+    StringProperty keyWord;
 
 
-    public MyTreeCell(StackPane stackPane) {
+    public MyTreeCell(StackPane stackPane, StringProperty keyWord,CommodityBLService commodityBLService) {
         this.stackPane = stackPane;
+        this.keyWord=keyWord;
+        this.commodityBLService=commodityBLService;
 
         categoryMenu.getItems().addAll(addCommodity, addCategory, refactorCategory, deleteCategory);
 
@@ -316,7 +320,15 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
             setGraphic(null);
             setText(null);
         } else {
-            setText(item);
+            String key=keyWord.getValue();
+            String itemStr=item.toString();
+            if (key!=null&& itemStr.contains(key)){
+                setGraphic(TableViewHelper.getHighlightBox(itemStr,key));
+                setText(null);
+            }else {
+                setGraphic(null);
+                setText(itemStr);
+            }
 
             if (getTreeTabelItem().getValue().getItem().getClass().equals(CommodityCategoryVO.class)) {
 

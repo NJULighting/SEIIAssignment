@@ -179,11 +179,13 @@ enum CustomerManager {
         }
     }
 
-    List<CustomerVO> search(String keyword) {
+    private List<CustomerVO> search(String keyword) {
         return seekingHelper.executeSeeking(keyword);
     }
 
-    List<CustomerVO> searchInType(String keyword, CustomerType type) {
+    List<CustomerVO> search(String keyword, CustomerType type) {
+        if (type == CustomerType.ALL)
+            return search(keyword);
         return search(keyword).stream().filter(vo -> vo.getType() == type).collect(Collectors.toList());
     }
 }

@@ -44,55 +44,8 @@ public class CustomerBLService_Stub implements CustomerBLService {
         return ResultMessage.SUCCESS;
     }
 
-    //查找客户
-    public List<CustomerVO> search(String keyword) {
-        List<CustomerVO> customer = new ArrayList<CustomerVO>();
-        customer.add(customerVO1);
-        customer.add(customerVO2);
-        customer.add(customerVO3);
-        customer.add(customerVO4);
-        if (keyword.equals("李杰")) {
-            customer.remove(customerVO4);
-            return customer;
-        } else if (keyword.equals("苏良")) {
-            customer.remove(customerVO1);
-            customer.remove(customerVO2);
-            customer.remove(customerVO3);
-            return customer;
-        } else if (keyword.equals("销售商")) {
-            customer.remove(customerVO3);
-            customer.remove(customerVO4);
-            return customer;
-        } else if (keyword.equals("供应商")) {
-            customer.remove(customerVO1);
-            customer.remove(customerVO2);
-            return customer;
-        } else if (keyword.equals("000001")) {
-            customer.remove(customerVO2);
-            customer.remove(customerVO3);
-            customer.remove(customerVO4);
-            return customer;
-        } else if (keyword.equals("000002")) {
-            customer.remove(customerVO1);
-            customer.remove(customerVO3);
-            customer.remove(customerVO4);
-            return customer;
-        } else if (keyword.equals("000003")) {
-            customer.remove(customerVO2);
-            customer.remove(customerVO1);
-            customer.remove(customerVO4);
-            return customer;
-        } else if (keyword.equals("000004")) {
-            customer.remove(customerVO2);
-            customer.remove(customerVO3);
-            customer.remove(customerVO1);
-            return customer;
-        } else
-            return null;
-    }
-
     @Override
-    public List<CustomerVO> searchInType(String keyword, CustomerType type) {
+    public List<CustomerVO> search(String keyword, CustomerType type) {
         return null;
     }
 

@@ -28,13 +28,8 @@ class CustomerController implements CustomerBLService {
     }
 
     @Override
-    public List<CustomerVO> search(String keyword) {
-        return manager.search(keyword);
-    }
-
-    @Override
-    public List<CustomerVO> searchInType(String keyword, CustomerType type) {
-        return manager.searchInType(keyword, type);
+    public List<CustomerVO> search(String keyword, CustomerType type) {
+        return manager.search(keyword, type);
     }
 
     @Override

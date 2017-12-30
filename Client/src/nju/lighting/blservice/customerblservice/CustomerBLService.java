@@ -35,10 +35,7 @@ public interface CustomerBLService {
      */
     ResultMessage changeReceivableLimit(int customerID, double newLimit);
 
-    //查找客户
-    List<CustomerVO> search(String keyword);
-
-    List<CustomerVO> searchInType(String keyword, CustomerType type);
+    List<CustomerVO> search(String keyword, CustomerType type);
 
     /**
      * Delete a customer

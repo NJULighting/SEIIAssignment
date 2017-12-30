@@ -129,7 +129,7 @@ public class CustomerSearchListController implements Initializable {
             deleteSearch.setDisable(false);
             deleteSearch.setVisible(true);
 
-            List list = customerBLService.search(keywords);
+            List list = customerBLService.search(keywords, CustomerType.ALL);
             System.out.println(list);
             if (list==null)
                 observableList.clear();

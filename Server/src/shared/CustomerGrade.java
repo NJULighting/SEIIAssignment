@@ -11,7 +11,7 @@ public enum CustomerGrade {
 
     public static CustomerGrade get(String name) {
         for (CustomerGrade grade : values()) {
-            if (grade.chineseRepresentation.equals(name)) {
+            if (grade.chineseRepresentation.contains(name)) {
                 return grade;
             }
         }

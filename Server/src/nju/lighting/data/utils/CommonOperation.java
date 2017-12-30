@@ -182,7 +182,7 @@ public class CommonOperation<T> implements Serializable {
         Session session = HibernateUtils.getCurrentSession();
         try {
             session.getTransaction().begin();
-            String sql = "select t from " + className + " t where t." + fieldName + " like :field";
+            String sql = "select t from " + className + " t where cast(t." + fieldName + " as string) like :field";
             Query<T> query = session.createQuery(sql);
             query.setParameter("field",  "%" + key.toString() + "%");
             results = query.getResultList();

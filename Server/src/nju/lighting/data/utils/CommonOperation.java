@@ -177,14 +177,14 @@ public class CommonOperation<T> implements Serializable {
         return ResultMessage.SUCCESS;
     }
 
-    public List<T> fuzzySearch(String fieldName, String key) {
+    public <V> List<T> fuzzySearch(String fieldName, V key) {
         List<T> results = null;
         Session session = HibernateUtils.getCurrentSession();
         try {
             session.getTransaction().begin();
             String sql = "select t from " + className + " t where t." + fieldName + " like :field";
             Query<T> query = session.createQuery(sql);
-            query.setParameter("field",  "%" + key + "%");
+            query.setParameter("field",  "%" + key.toString() + "%");
             results = query.getResultList();
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -195,43 +195,43 @@ public class CommonOperation<T> implements Serializable {
         }
         return results;
     }
-
-    public List<T> fuzzySearch(String fieldName, Enum key) {
-        List<T> results = null;
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            String sql = "select t from " + className + " t where cast(t." + fieldName + " as string) like :field";
-            Query<T> query = session.createQuery(sql);
-            query.setParameter("field",  "%" + key + "%");
-            results = query.getResultList();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return results;
-    }
-
-    public List<T> fuzzySearchByInt(String fieldName, Integer integer) {
-        List<T> results = null;
-        Session session = HibernateUtils.getCurrentSession();
-        try {
-            session.getTransaction().begin();
-            String sql = "select t from " + className + " t where cast(t." + fieldName + " as string) like :field";
-            Query<T> query = session.createQuery(sql);
-            query.setParameter("field",  "%" + integer.toString() + "%");
-            results = query.getResultList();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-        } finally {
-            HibernateUtils.closeSession();
-        }
-        return results;
-    }
+//
+//    public List<T> fuzzySearch(String fieldName, Enum key) {
+//        List<T> results = null;
+//        Session session = HibernateUtils.getCurrentSession();
+//        try {
+//            session.getTransaction().begin();
+//            String sql = "select t from " + className + " t where cast(t." + fieldName + " as string) like :field";
+//            Query<T> query = session.createQuery(sql);
+//            query.setParameter("field",  "%" + key + "%");
+//            results = query.getResultList();
+//            session.getTransaction().commit();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            session.getTransaction().rollback();
+//        } finally {
+//            HibernateUtils.closeSession();
+//        }
+//        return results;
+//    }
+//
+//    public List<T> fuzzySearchByInt(String fieldName, Integer integer) {
+//        List<T> results = null;
+//        Session session = HibernateUtils.getCurrentSession();
+//        try {
+//            session.getTransaction().begin();
+//            String sql = "select t from " + className + " t where cast(t." + fieldName + " as string) like :field";
+//            Query<T> query = session.createQuery(sql);
+//            query.setParameter("field",  "%" + integer.toString() + "%");
+//            results = query.getResultList();
+//            session.getTransaction().commit();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            session.getTransaction().rollback();
+//        } finally {
+//            HibernateUtils.closeSession();
+//        }
+//        return results;
+//    }
 
 }

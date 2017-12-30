@@ -109,6 +109,6 @@ public class CustomerData extends UnicastRemoteObject implements CustomerDataSer
 
     @Override
     public List<CustomerPO> fuzzySearchById(Integer id) throws RemoteException {
-        return commonOperation.fuzzySearchByInt("id", id);
+        return commonOperation.fuzzySearch("id", id);
     }
 }

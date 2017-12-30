@@ -9,6 +9,7 @@ import java.util.Date;
 public class RepositoryTableItemPO implements Serializable{
 
     private static final long serialVersionUID = 4231752295432771700L;
+
     private String name;
 
     private String commodityId;

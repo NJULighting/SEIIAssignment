@@ -63,7 +63,7 @@ public class RepositoryData extends UnicastRemoteObject implements RepositoryDat
     }
 
     @Override
-    public String exportExcel() throws RemoteException {
+    public byte[] exportExcel() throws RemoteException {
         RepositoryTablePO repositoryTablePO = getRepositoryTable();
         List<RepositoryTableItemPO> items = repositoryTablePO.getRepositoryTableItemPOS();
         String head = "库存盘点";

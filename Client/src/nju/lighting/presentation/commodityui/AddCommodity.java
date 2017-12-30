@@ -14,6 +14,7 @@ import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -76,7 +77,8 @@ public class AddCommodity extends Dialog implements Initializable {
             CommodityBuildInfo.CommodityBuilder builder = new CommodityBuildInfo.CommodityBuilder(parentCategory);
             builder.name(name.getText()).modelNumber(modelNumber.getText()).repCount(parseInt(repCount.getText()))
                     .inPrice(parseDouble(inPrice.getText())).sellPrice(parseDouble(sellPrice.getText()))
-                    .recentInPrice(parseDouble(recentInPrice.getText())).recentSellPrice(parseDouble(recentSellPrice.getText()));
+                    .recentInPrice(parseDouble(recentInPrice.getText())).recentSellPrice(parseDouble(recentSellPrice.getText()))
+                    .batchNumber("").batch("").dateOfProduction(new Date());
             return builder;
         } else
             return null;
@@ -87,7 +89,7 @@ public class AddCommodity extends Dialog implements Initializable {
             return new CommodityItemVO(name.getText(), modelNumber.getText(),
                     Integer.parseInt(repCount.getText()), Double.parseDouble(inPrice.getText()),
                     Double.parseDouble(sellPrice.getText()), Double.parseDouble(recentInPrice.getText()),
-                    Double.parseDouble(recentSellPrice.getText()), null, null, null);
+                    Double.parseDouble(recentSellPrice.getText()), "", "", null);
         else return null;
     }
 

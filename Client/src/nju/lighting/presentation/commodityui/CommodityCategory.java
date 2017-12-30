@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
+import nju.lighting.bl.commoditybl.CommodityController;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.vo.commodity.*;
 
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
  * @author 陈俊宇
  */
 public class CommodityCategory implements Initializable {
-    CommodityBLService blService = new CommodityBLService_Stub();
+    CommodityBLService blService = new CommodityController();
     private CommodityCategoriesTreeVO categoriesTreeVO;
     private StackPane stackPane;
     @FXML

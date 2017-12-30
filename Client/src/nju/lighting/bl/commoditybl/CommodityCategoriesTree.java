@@ -40,7 +40,7 @@ class CommodityCategoriesTree {
     }
 
     CommodityCategory get(String path) {
-        if (path.isEmpty())
+        if (path.equals("-1") || path.isEmpty())
             return root;
 
         String[] categories = path.split(CommodityBLService.SEPARATOR);
@@ -86,7 +86,6 @@ class CommodityCategoriesTree {
             // Check and set
             if (children.isEmpty()) {
                 node.isLeaf = true;
-                return;
             }
             node.children = children;
 
@@ -137,6 +136,7 @@ class CommodityCategoriesTree {
          * @return <tt>CommodityCategory</tt> if find the child, <tt>null</tt> otherwise
          */
         CommodityCategory findChild(int categoryID) {
+
             return children.stream()
                     .filter(child -> child.categoryID == categoryID)
                     .findAny().orElse(null);

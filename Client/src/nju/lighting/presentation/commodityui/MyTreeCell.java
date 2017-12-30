@@ -17,6 +17,7 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
+import nju.lighting.bl.commoditybl.CommodityController;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.builder.Builder;
 import nju.lighting.builder.commodity.CommodityBuildInfo;
@@ -39,7 +40,7 @@ import java.util.Locale;
  * @author 陈俊宇
  */
 public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
-    CommodityBLService commodityBLService = new CommodityBLService_Stub();//new CommodityBLService() {}
+    CommodityBLService commodityBLService = new CommodityController();//new CommodityBLService() {}
     private ContextMenu categoryMenu = new ContextMenu();
     private ContextMenu commodityMenu = new ContextMenu();
 
@@ -107,7 +108,6 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
 
             button.setOnAction(e -> {
                 TreeItem<CommodityCategoryItem> treeItem = getTreeTabelItem();
-                ;
                 CommodityCategoryVO category = (CommodityCategoryVO) treeItem.getValue().getItem();
                 category.setName(addCategoryDialog.getText());
                 ResultMessage resultMessage = commodityBLService.changeCategoryName(category);
@@ -135,7 +135,6 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
             AddCommodity addCommodityController = ((AddCommodity) dialogController);
 
             button.setOnAction(e -> {
-                CommodityItemVO commodityItemVO = addCommodityController.getCommodityItem();
                 Builder<CommodityBuildInfo> builder = addCommodityController
                         .getCommodityItem(((CommodityCategoryVO) getTreeTabelItem().getValue().getItem()));
 
@@ -179,6 +178,7 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
                 if (addCommodityController.verify()) {
                     CommodityItemVO commodityItemVO = addCommodityController.getCommodityItem();
                     commodityItemVO.setId(initialization.getId());
+                    commodityItemVO.setDateOfProduction(initialization.getDateOfProduction());
 
                     ResultMessage resultMessage = commodityBLService
                             .modifyCommodity(commodityItemVO);

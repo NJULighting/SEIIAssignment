@@ -13,7 +13,7 @@ import shared.TwoTuple;
 
 import java.util.List;
 
-class CommodityController implements CommodityBLService {
+public class CommodityController implements CommodityBLService {
     private CommodityManager manager = CommodityManager.INSTANCE;
 
     @Override

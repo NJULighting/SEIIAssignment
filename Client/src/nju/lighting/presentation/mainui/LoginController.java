@@ -1,30 +1,22 @@
 package nju.lighting.presentation.mainui;
 
-import javafx.application.Platform;
-import javafx.beans.binding.*;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
+import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import nju.lighting.bl.userbl.UserBLServie_Stub;
-import nju.lighting.blservice.userblservice.UserBLService;
+import nju.lighting.bl.userbl.UserController;
+import nju.lighting.blservice.userblservice.LoginService;
 import nju.lighting.vo.UserVO;
-import shared.Identity;
 import shared.LoginReturnState;
 import shared.TwoTuple;
 
@@ -35,11 +27,9 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/11/27.
  * Description
- *
  * @author 陈俊宇
  */
-public class LoginController extends CommonFather{
-    UserBLService userBLService;
+public class LoginController extends CommonFather {
 
 
     static Parent root;
@@ -53,7 +43,7 @@ public class LoginController extends CommonFather{
     private PasswordField password;
 
     @FXML
-    private  Button closeBtn;
+    private Button closeBtn;
 
     @FXML
     private Button loginBtn;
@@ -72,8 +62,8 @@ public class LoginController extends CommonFather{
 
     @FXML
     public void login() throws IOException {
-        userBLService=new UserBLServie_Stub();
-        TwoTuple<UserVO, LoginReturnState> result= userBLService.login(account.getText(),password.getText());
+        LoginService userBLService = new UserController();
+        TwoTuple<UserVO, LoginReturnState> result = userBLService.login(account.getText(), password.getText());
 
         switch (result.r) {
 
@@ -98,45 +88,46 @@ public class LoginController extends CommonFather{
                 break;
 
             case SUCCESS:
-                System.out.println("Succ");{
+                System.out.println("Succ");
+            {
                 Client.setUserVO(result.t);
                 new MainUI(result.t.getIdentity());
             }
 
-                break;
+            break;
         }
     }
 
     @FXML
     public void loginByEnter(KeyEvent event) throws IOException {
-        if (event.getCode()== KeyCode.ENTER)
+        if (event.getCode() == KeyCode.ENTER)
             login();
     }
 
     @FXML
-    public void closeDialog(Event event){
+    public void closeDialog(Event event) {
         dialogPane.setVisible(false);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        stage=Client.primaryStage;
+        stage = Client.primaryStage;
 
-        buttons=new Button[]{closeBtn,miniBtn};
+        buttons = new Button[]{closeBtn, miniBtn};
         super.initialize(location, resources);
 
 
         //登录按钮是否可点与两textfield是否为空绑定
         loginBtn.disableProperty()
                 .bind(account.textProperty().isEmpty()
-                .or(password.textProperty().isEmpty()));
+                        .or(password.textProperty().isEmpty()));
         loginBtn.disableProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 
                 //登录按钮是否高亮与disable绑定
                 loginBtn.opacityProperty()
-                        .bind(Bindings.createDoubleBinding(()->(loginBtn.disableProperty().get())?MISS_OPACITY:1));
+                        .bind(Bindings.createDoubleBinding(() -> (loginBtn.disableProperty().get()) ? MISS_OPACITY : 1));
             }
         });
 

@@ -75,6 +75,10 @@ public class CommodityBuildInfo {
             categoryPath = parentCategory.getPath();
         }
 
+        public CommodityBuilder(String categoryPath) {
+            this.categoryPath = categoryPath;
+        }
+
         public CommodityBuilder name(String name) {
             this.name = name;
             return this;

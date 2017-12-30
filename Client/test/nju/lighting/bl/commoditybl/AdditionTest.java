@@ -10,6 +10,7 @@ import nju.lighting.vo.commodity.CommodityItemVO;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import shared.Result;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
@@ -23,16 +24,14 @@ import static org.junit.Assert.*;
  * @author Liao
  */
 public class AdditionTest {
-    private static final Builder<CommodityBuildInfo> BUILDER = new CommodityBuildInfo.CommodityBuilder()
-    private static final CommodityItemVO TARGET_COMMODITY = new CommodityItemVO("Frog", "4W", 10, 10,
-            20, 10, 20, "第一批", "001", new Date());
     private static final String NONEXISTENT_PATH = "1-6";
     private static final String NOT_LEAF_PATH = "1";
-    private static final String RIGHT_PATH = "1-4";
-    private static final int CURRENT_INDEX_OF_CATEGORIES = 10; // Remember to increase it after every test
-    private static final int NO_ITEMS_CATEGORY_INDEX = 6;
-
+    private static final String RIGHT_PATH = "1";
+    private static final int CURRENT_INDEX_OF_CATEGORIES = 8; // Remember to increase it after every test
+    private static final int NO_ITEMS_CATEGORY_INDEX = 5;
     private CommodityManager manager = CommodityManager.INSTANCE;
+
+    private CommodityBuildInfo.CommodityBuilder builder;
 
     @Before
     public void setUp() throws Exception {
@@ -41,34 +40,40 @@ public class AdditionTest {
 
     @Test
     public void addCommodity() throws Exception {
-        ResultMessage res = manager.addCommodity(TARGET_COMMODITY, RIGHT_PATH).t;
+        builder = new CommodityBuildInfo.CommodityBuilder(RIGHT_PATH);
+        setUpCommodity();
+        Result<CommodityItemVO> result = manager.addCommodity(builder);
 
-        assertEquals(ResultMessage.SUCCESS, res);
+        assertTrue(result.hasValue());
+        System.out.println(result.getValue());
     }
 
     @Test
     public void addCommodityFailTest0() throws Exception {
-        ResultMessage res = manager.addCommodity(TARGET_COMMODITY, NONEXISTENT_PATH).t;
+        builder = new CommodityBuildInfo.CommodityBuilder(NONEXISTENT_PATH);
+        Result<CommodityItemVO> result = manager.addCommodity(builder);
 
-        assertEquals(ResultMessage.FAILURE, res);
+        assertFalse(result.hasValue());
     }
 
     @Test
     public void addCommodityFailTest1() throws Exception {
-        ResultMessage res = manager.addCommodity(TARGET_COMMODITY, NOT_LEAF_PATH).t;
+        builder = new CommodityBuildInfo.CommodityBuilder(NOT_LEAF_PATH);
+        Result<CommodityItemVO> result = manager.addCommodity(builder);
 
-        assertEquals(ResultMessage.FAILURE, res);
+        assertFalse(result.hasValue());
     }
 
     @Test
     public void addCategoryTest0() throws Exception {
         // Add to the root test
         CommodityCategoriesTreeVO treeVO = manager.getCommodityCategoriesTreeVO();
-        CommodityCategoryVO vo = new CommodityCategoryVO(treeVO.getRoot(), "Big Frog Light");
+        builder = new CommodityBuildInfo.CommodityBuilder(treeVO.getRoot());
+        setUpCommodity();
 
-        ResultMessage res = manager.addCategory(vo).t;
+        Result<CommodityItemVO> result = manager.addCommodity(builder);
 
-        assertEquals(ResultMessage.SUCCESS, res);
+        assertFalse(result.hasValue());
     }
 
     @Test
@@ -106,10 +111,13 @@ public class AdditionTest {
         // Update the tree
         treeVO = manager.getCommodityCategoriesTreeVO();
         addition = treeVO.getRoot().findChild(CURRENT_INDEX_OF_CATEGORIES);
-        ResultMessage res2 = manager.addCommodity(TARGET_COMMODITY, addition.getPath()).t;
 
+        builder = new CommodityBuildInfo.CommodityBuilder(addition);
+        setUpCommodity();
+        Result<CommodityItemVO> result = manager.addCommodity(builder);
+
+        assertTrue(result.hasValue());
         assertEquals(ResultMessage.SUCCESS, res1);
-        assertEquals(ResultMessage.SUCCESS, res2);
     }
 
     @Test
@@ -119,10 +127,15 @@ public class AdditionTest {
         CommodityCategoryVO parent = treeVO.getRoot().findChild(NO_ITEMS_CATEGORY_INDEX);
         CommodityCategoryVO addition = new CommodityCategoryVO(parent, "NaiveLight");
 
-        ResultMessage res1 = manager.addCommodity(TARGET_COMMODITY, parent.getPath()).t;
+        // Add commodity
+        builder = new CommodityBuildInfo.CommodityBuilder(parent);
+        setUpCommodity();
+        Result<CommodityItemVO> result = manager.addCommodity(builder);
+
+        // Add category
         ResultMessage res2 = manager.addCategory(addition).t;
 
-        assertEquals(ResultMessage.SUCCESS, res1);
+        assertTrue(result.hasValue());
         assertEquals(ResultMessage.FAILURE, res2);
     }
 
@@ -130,5 +143,10 @@ public class AdditionTest {
     public void tearDown() throws Exception {
         manager.deleteCommodity("1-4-3");
         manager.deleteCommodity(NO_ITEMS_CATEGORY_INDEX + CommodityBLService.SEPARATOR + "1");
+    }
+
+    private void setUpCommodity() {
+        builder.name("Frog").modelNumber("4W").repCount(10).inPrice(50).sellPrice(50)
+                .recentInPrice(100).recentSellPrice(100).batch("第一批").batchNumber("001").dateOfProduction(new Date());
     }
 }

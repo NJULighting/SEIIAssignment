@@ -18,10 +18,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
+import nju.lighting.builder.Builder;
+import nju.lighting.builder.commodity.CommodityBuildInfo;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.Nameable;
+import shared.Result;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
@@ -133,22 +136,32 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
 
             button.setOnAction(e -> {
                 CommodityItemVO commodityItemVO = addCommodityController.getCommodityItem();
-                if (commodityItemVO != null) {
+                Builder<CommodityBuildInfo> builder = addCommodityController
+                        .getCommodityItem(((CommodityCategoryVO) getTreeTabelItem().getValue().getItem()));
 
-                    TwoTuple<ResultMessage, String> res = commodityBLService
-                            .addCommodity(commodityItemVO, ((CommodityCategoryVO) getTreeTabelItem().getValue().getItem()));
-                    ResultMessage resultMessage = res.t;
-                    if (resultMessage.equals(ResultMessage.SUCCESS)) {
-                        //新建商品需要ID
-                        commodityItemVO.setId(res.r);
+                if (builder != null) {
+                    Result<CommodityItemVO> result = commodityBLService.addCommodity(builder);
+                    if (result.hasValue()) {
                         getTreeTabelItem().getChildren().add(
-                                new TreeItem<CommodityCategoryItem>(new CommodityCategoryItem(commodityItemVO)));
+                                new TreeItem<>(new CommodityCategoryItem(result.getValue())));
                         dialog.close();
                     } else
-                        DialogHelper.dialog(resultMessage, stackPane);
+                        DialogHelper.dialog(result.getResultMessage(), stackPane);
                 }
-
-
+//                if (commodityItemVO != null) {
+//
+//                    TwoTuple<ResultMessage, String> res = commodityBLService
+//                            .addCommodity(commodityItemVO, ((CommodityCategoryVO) getTreeTabelItem().getValue().getItem()));
+//                    ResultMessage resultMessage = res.t;
+//                    if (resultMessage.equals(ResultMessage.SUCCESS)) {
+//                        //新建商品需要ID
+//                        commodityItemVO.setId(res.r);
+//                        getTreeTabelItem().getChildren().add(
+//                                new TreeItem<CommodityCategoryItem>(new CommodityCategoryItem(commodityItemVO)));
+//                        dialog.close();
+//                    } else
+//                        DialogHelper.dialog(resultMessage, stackPane);
+//                }
             });
 
 

@@ -2,8 +2,12 @@ package nju.lighting.bl.commoditybl;
 
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
-import nju.lighting.bl.utils.*;
+import nju.lighting.bl.utils.CommodityPathParser;
+import nju.lighting.bl.utils.DataServiceFunction;
+import nju.lighting.bl.utils.FuzzySeekingHelper;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
+import nju.lighting.builder.Builder;
+import nju.lighting.builder.commodity.CommodityBuildInfo;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
@@ -13,12 +17,14 @@ import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.OPType;
+import shared.Result;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
 
 enum CommodityManager {
     INSTANCE;
@@ -49,41 +55,42 @@ enum CommodityManager {
     }
 
 
-    TwoTuple<ResultMessage, String> addCommodity(CommodityItemVO newCommodity, String categoryPath) {
-        // Check category id
+    Result<CommodityItemVO> addCommodity(Builder<CommodityBuildInfo> builder) {
         updateFromDatabase();
-        TwoTuple<ResultMessage, String> res = new TwoTuple<>();
-        if (!commodityTree.isLeaf(categoryPath)) {
-             res.t = ResultMessage.FAILURE;
-             return res;
-        }
+
+        CommodityBuildInfo buildInfo = builder.build();
+        String categoryPath = buildInfo.getCategoryPath();
+
+        if (!commodityTree.isLeaf(categoryPath))
+            return new Result<>(ResultMessage.FAILURE, null);
 
         try {
-            // Generate commodity id
-            int parentCategoryID = CommodityPathParser.getLastNumOfPath(categoryPath);
-            List<CommodityItemPO> poList = dataService.findByCategory(parentCategoryID);
-            int sequenceNum = poList.stream()
-                    .max(Comparator.comparing(CommodityItemPO::getSequenceNumber))
-                    .map(CommodityItemPO::getSequenceNumber)
-                    .orElse(0) + 1;
-            String commodityID = categoryPath + CommodityBLService.SEPARATOR + sequenceNum;
+            String commodityID = getCommodityId(categoryPath);
 
             // Create po and add it to the database
-            newCommodity.setId(commodityID);
-            CommodityItem commodityItem = new CommodityItem(newCommodity, parentCategoryID);
-            ResultMessage addResult = dataService.add(commodityItem.toPO());
-            res.t = addResult;
-            if (addResult == ResultMessage.SUCCESS) {
+            ResultMessage addResult = dataService.add(buildInfo.toPO(commodityID));
+            if (addResult.success()) {
                 logger.add(OPType.ADD, "添加商品" + commodityID);
-                res.r = commodityID;
+                return new Result<>(addResult, buildInfo.toVO(commodityID));
             }
-            return res;
+
+            return new Result<>(ResultMessage.FAILURE, null);
         } catch (RemoteException e) {
             e.printStackTrace();
-            res.t =  ResultMessage.NETWORK_FAIL;
-            return res;
+            return new Result<>(ResultMessage.NETWORK_FAIL, null);
         }
+    }
 
+    private String getCommodityId(String categoryPath) throws RemoteException {
+
+        int parentCategoryID = CommodityPathParser.getLastNumOfPath(categoryPath);
+        List<CommodityItemPO> poList = dataService.findByCategory(parentCategoryID);
+        // Get max number and plus one, then we get the id of the commodity
+        int sequenceNum = poList.stream()
+                .max(Comparator.comparing(CommodityItemPO::getSequenceNumber))
+                .map(CommodityItemPO::getSequenceNumber)
+                .orElse(0) + 1;
+        return categoryPath + CommodityBLService.SEPARATOR + sequenceNum;
     }
 
 

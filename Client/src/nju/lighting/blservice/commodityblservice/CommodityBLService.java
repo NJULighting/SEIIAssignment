@@ -1,9 +1,12 @@
 package nju.lighting.blservice.commodityblservice;
 
+import nju.lighting.builder.Builder;
+import nju.lighting.builder.commodity.CommodityBuildInfo;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
+import shared.Result;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
@@ -26,11 +29,10 @@ public interface CommodityBLService {
     /**
      * Add a new commodity to the system. You need to pass category's id for the new commodity,
      * 'cause <tt>CommodityVO</tt> doesn't contains its category's id.
-     * @param newCommodity new commodity's vo
-     * @param category     id of the commodity's category
+     * @param builder new commodity's vo
      * @return <tt>[SUCCESS, ID]</tt> if category's id is right and database works well, <tt>[FAILURE, null]</tt> otherwise
      */
-    TwoTuple<ResultMessage, String> addCommodity(CommodityItemVO newCommodity, CommodityCategoryVO category);
+    Result<CommodityItemVO> addCommodity(Builder<CommodityBuildInfo> builder);
 
     /**
      * Find commodities by id of its parent category

@@ -21,4 +21,9 @@ public class CollectionTransformer {
     public static <IN, OUT> Set<OUT> toSet(Collection<IN> collection, Function<IN, OUT> function) {
         return collection.stream().map(function).collect(Collectors.toSet());
     }
+
+    // Suppress instantiation
+    private CollectionTransformer() {
+        throw new AssertionError();
+    }
 }

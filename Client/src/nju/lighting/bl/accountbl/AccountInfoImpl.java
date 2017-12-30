@@ -1,7 +1,6 @@
 package nju.lighting.bl.accountbl;
 
 import nju.lighting.bl.utils.DataServiceFunction;
-import nju.lighting.bl.utils.DataServiceSupplier;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
 import nju.lighting.vo.account.AccountVO;
@@ -9,7 +8,6 @@ import shared.ResultMessage;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
-import java.util.List;
 
 /**
  * Created on 2017/12/14.
@@ -25,11 +23,6 @@ public class AccountInfoImpl implements AccountInfo {
         } catch (NamingException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public List<AccountVO> getAccountList() {
-        return DataServiceSupplier.getAll(dataService::getAll, accountPO -> new Account(accountPO).toVO());
     }
 
     @Override

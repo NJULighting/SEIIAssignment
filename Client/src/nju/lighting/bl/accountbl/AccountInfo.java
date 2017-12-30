@@ -11,7 +11,6 @@ import java.util.List;
  * @author Liao
  */
 public interface AccountInfo {
-    List<AccountVO> getAccountList();
 
     ResultMessage updateAmount(String accountId, double total);
 

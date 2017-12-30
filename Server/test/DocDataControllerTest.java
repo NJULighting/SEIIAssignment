@@ -111,4 +111,11 @@ public class DocDataControllerTest {
     public void findByTimeAndType() throws Exception {
     }
 
+    @Test //发送到学生邮箱中
+    public void mail() throws Exception {
+        String id = "161250220";
+        String header = "我系古天乐";
+        String content = "我系渣渣辉";
+        docDataController.sentMail(id, header, content);
+    }
 }

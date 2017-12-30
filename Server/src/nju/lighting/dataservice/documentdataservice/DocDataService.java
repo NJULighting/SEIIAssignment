@@ -25,4 +25,13 @@ public interface DocDataService extends Remote {
     List<DocPO> findByTimeAndType(Date from, Date to, DocType type) throws RemoteException;
 
     List<DocPO> findByTypeAndState(DocType type, DocState state) throws RemoteException;
+
+    /**
+     * 发送邮件
+     * @param creatorId 单据创建者id
+     * @param header 邮件标题（要求不能有空格）
+     * @param content 邮件内容（要求不能有空格）
+     * @throws RemoteException RMI远程调用必备Exception
+     */
+    void sentMail(String creatorId, String header, String content) throws RemoteException;
 }

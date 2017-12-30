@@ -25,6 +25,7 @@ import org.hibernate.Session;
 import shared.*;
 
 import javax.print.Doc;
+import java.lang.management.RuntimeMXBean;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -42,7 +43,13 @@ import java.util.stream.Collectors;
 public class DocDataController extends UnicastRemoteObject implements DocDataService {
 
 
-    protected static HashMap<DocType, TwoTuple<String, String>> typeToName = new HashMap<>();
+    private static final long serialVersionUID = -7280919102677075630L;
+
+    private static final String suffix;
+
+    private static final String absoluteMailScriptAddress = "/Users/iznauy/SEIIAssignment/python/mail/send_mail.py";
+
+    private static HashMap<DocType, TwoTuple<String, String>> typeToName = new HashMap<>();
 
     static {
         typeToName.put(DocType.ALERT, new TwoTuple<>(AlertDocPO.class.getName(), AlertDocItemPO.class.getName()));
@@ -55,6 +62,7 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
         typeToName.put(DocType.GIFT, new TwoTuple<>(GiftDocPO.class.getName(), GiftItemPO.class.getName()));
         typeToName.put(DocType.STOCK, new TwoTuple<>(StockDocPO.class.getName(), StockDocItemPO.class.getName()));
         typeToName.put(DocType.STOCK_RETURN, new TwoTuple<>(StockReturnDocPO.class.getName(), StockDocItemPO.class.getName()));
+        suffix = "@iznauy.top";
     }
 
     private DocOperation docOperation;
@@ -188,5 +196,18 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
                 .collect(Collectors.toList());
     }
 
-
+    @Override
+    public void sentMail(String creatorId, String header, String content) throws RemoteException {
+        new Thread(()-> {
+            String mailAddress = creatorId + suffix;
+            String command = "python " + absoluteMailScriptAddress + " " + mailAddress + " " + header + " " + content;
+            System.out.println(command);
+            try {
+                Process process = Runtime.getRuntime().exec(command);
+                process.waitFor();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).run();
+    }
 }

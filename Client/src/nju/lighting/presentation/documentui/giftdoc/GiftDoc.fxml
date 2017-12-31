@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.giftdoc.GiftDocController">
    <children>
@@ -31,7 +31,7 @@
                                     <Font name="Bauhaus 93" size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="某客户名">
+                              <Label fx:id="customer" text="某客户名">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -41,27 +41,14 @@
                               <Insets bottom="10.0" top="20.0" />
                            </VBox.margin>
                         </HBox>
-                        <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" hmax="0.0" prefHeight="292.0" vbarPolicy="NEVER" vmax="0.0">
+                        <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" hmax="0.0" vbarPolicy="NEVER" vmax="0.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0">
-                                 <children>
-                                    <TableView fx:id="giftTableView" layoutX="20.0">
-                                       <columns>
-                                          <TableColumn fx:id="id" editable="false" prefWidth="120.0" text="商品编号" />
-                                          <TableColumn fx:id="commodityName" editable="false" prefWidth="120.0" sortable="false" text="名称" />
-                                          <TableColumn editable="false" prefWidth="120.0" text="型号" />
-                                          <TableColumn fx:id="price" editable="false" prefWidth="100.0" text="单价" />
-                                          <TableColumn fx:id="count" editable="false" prefWidth="100.0" text="数量" />
-                                          <TableColumn fx:id="subtotal" editable="false" prefWidth="100.0" text="小计" />
-                                       </columns>
-                                    </TableView>
-                                 </children>
-                              </AnchorPane>
+                            <AnchorPane fx:id="tablePane" minHeight="0.0" minWidth="0.0" />
                           </content>
                         </ScrollPane>
                         <HBox alignment="CENTER_RIGHT">
                            <children>
-                              <Label style="-fx-text-fill: #5599ff;" text="2000.00">
+                              <Label fx:id="account" style="-fx-text-fill: #5599ff;" text="2000.00">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -74,7 +61,7 @@
                         <HBox alignment="BOTTOM_CENTER">
                            <children>
                               <Label text="————" textFill="#838383" />
-                              <Label text="2017年12月26日" textFill="#838383" />
+                              <Label fx:id="date" text="未注明时间" textFill="#838383" />
                               <Label text="————" textFill="#838383" />
                            </children>
                            <VBox.margin>
@@ -88,7 +75,7 @@
                                     <Font name="Bauhaus 93" size="18.0" />
                                  </font>
                               </Label>
-                              <Label text="某制定人名" textFill="#838383" />
+                              <Label fx:id="maker" text="未注明指定人" textFill="#838383" />
                            </children>
                            <VBox.margin>
                               <Insets />
@@ -96,7 +83,7 @@
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
-                              <Label fx:id="totalLabel" text="ZPD-XXXX-XXXXX" textFill="#838383" />
+                              <Label fx:id="id" text="ZPD-XXXX-XXXXX" textFill="#838383" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
@@ -104,7 +91,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <JFXSlider fx:id="slider" layoutY="100.0" />
+                  <JFXSlider fx:id="slider" layoutX="10.0" layoutY="100.0" />
                </children>
             </AnchorPane>
         </content>

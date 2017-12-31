@@ -42,7 +42,7 @@
                      </graphic>
                   </Button>
                   <Label fx:id="noResult" layoutX="301.0" layoutY="31.0" text="无结果！" visible="false" />
-                  <TableView fx:id="tableView" fixedCellSize="57" layoutX="64.0" layoutY="30.0" prefHeight="560.0">
+                  <TableView fx:id="tableView" fixedCellSize="57" layoutX="50.0" layoutY="30.0" prefHeight="560.0">
                      <columns>
                         <TableColumn fx:id="promotionName" editable="false" prefWidth="150.0" resizable="false" text="促销策略名称" />
                         <TableColumn fx:id="type" editable="false" prefWidth="150.0" resizable="false" sortable="false" text="类型" />
@@ -52,8 +52,8 @@
                         <TableColumn fx:id="openBtn" prefWidth="130.0" text="" />
                      </columns>
                   </TableView>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="30.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="830.0" />
-                  <MenuButton fx:id="createPromotionMenu" layoutX="890.0" layoutY="1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="    新建促销策略">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="30.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="840.0" />
+                  <MenuButton fx:id="createPromotionMenu" layoutX="891.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="    新建促销策略">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Action 1" />
                       <MenuItem mnemonicParsing="false" text="Action 2" />

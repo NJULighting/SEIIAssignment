@@ -8,7 +8,10 @@ import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
+import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocItemVO;
+import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocVO;
 import shared.DocType;
+import shared.LossAndGainItemType;
 import shared.ResultMessage;
 
 import java.util.ArrayList;
@@ -97,6 +100,16 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         GiftDocVO vo4 = new GiftDocVO(null, "00001", "ZPD-20171021-0012", gifts2, 1, 4);
         GiftDocVO vo5 = new GiftDocVO(null, "00001", "ZPD-20171021-0013", gifts2, 1, 1);
         GiftDocVO vo6 = new GiftDocVO(null, "00001", "ZPD-20171021-0015", gifts2, 1, 1);
+
+        ArrayList< LossAndGainDocItemVO > items = new ArrayList<>();
+        LossAndGainDocItemVO lossItemVO1 = new LossAndGainDocItemVO(commodityVO1,17, LossAndGainItemType.LOSS);
+        LossAndGainDocItemVO lossItemVO2 = new LossAndGainDocItemVO(commodityVO2,5, LossAndGainItemType.GAIN);
+        LossAndGainDocItemVO lossItemVO3 = new LossAndGainDocItemVO(commodityVO3,80, LossAndGainItemType.LOSS);
+        items.add(lossItemVO1);
+        items.add(lossItemVO2);
+        items.add(lossItemVO3);
+        LossAndGainDocVO lossAndGainDocVO = new LossAndGainDocVO(null, "00001", items, "我就觉得好玩然后创建了一个:)");
+
         ArrayList<DocVO> DocVOs = new ArrayList<>();
         DocVOs.add(vo1);
         DocVOs.add(vo2);
@@ -105,6 +118,7 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         DocVOs.add(vo5);
         DocVOs.add(vo6);
         DocVOs.add(accountIODocVO);
+        DocVOs.add(lossAndGainDocVO);
 
 
         return DocVOs;

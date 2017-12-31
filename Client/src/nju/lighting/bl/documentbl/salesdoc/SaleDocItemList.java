@@ -5,7 +5,7 @@ import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.documentbl.ItemList;
 import nju.lighting.po.doc.salesdoc.SalesDocItemPO;
 import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
-import nju.lighting.vo.viewtables.BusinessConditionItemVO;
+import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import shared.ResultMessage;
 
 import java.util.Date;
@@ -49,9 +49,9 @@ class SaleDocItemList {
         return itemList.toVO(SalesDocItem::toVO);
     }
 
-    List<BusinessConditionItemVO> toBusinessConditionItemVO(Date date) {
+    List<SalesDetailItemVO> toBusinessConditionItemVO(Date date) {
         CommodityInfo commodityInfo = new CommodityInfoImpl();
-        Function<SalesDocItem, BusinessConditionItemVO> function = item -> new BusinessConditionItemVO(date,
+        Function<SalesDocItem, SalesDetailItemVO> function = item -> new SalesDetailItemVO(date,
                 commodityInfo.getCommodityNameByID(item.getCommodityID()),
                 commodityInfo.getCommodityCategory(item.getCommodityID()),
                 item.getNumber(), item.getSalePrice(), item.getTotalAmount());

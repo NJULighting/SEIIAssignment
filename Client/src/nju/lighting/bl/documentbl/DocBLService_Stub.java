@@ -1,14 +1,12 @@
 package nju.lighting.bl.documentbl;
 
-import nju.lighting.bl.userbl.UserInfo;
-import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
+import nju.lighting.vo.viewtables.BusinessConditionTableVO;
 import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
-import nju.lighting.vo.viewtables.BusinessConditionTableVO;
 import shared.DocumentFilter;
 import shared.ResultMessage;
 import shared.TwoTuple;
@@ -17,54 +15,56 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created on 2017/11/7.
- * Description:
- * @author Liao
+ * Created on 2017/12/30.
+ * Description
+ *
+ * @author 陈俊宇
  */
-public class DocController implements DocBLService {
-    private DocManager manager = DocManager.INSTANCE;
-
+public class DocBLService_Stub implements DocBLService {
     @Override
     public TwoTuple<ResultMessage, String> commitDoc(DocVO doc) {
-        return manager.commitDoc(doc);
+        return null;
     }
 
     @Override
     public List<HistoryDocVO> findDocuments(DocumentFilter filter) {
-        return manager.findDocuments(filter);
+        return null;
     }
 
     @Override
     public List<SalesDetailItemVO> findSaleRecords(DocumentFilter filter) {
-        return manager.findSaleRecords(filter);
+        return null;
     }
 
     @Override
     public List<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) {
-        return manager.findBusinessHistory(filter);
+        return null;
     }
 
     @Override
     public BusinessConditionTableVO findRevenueAndExpenditure(Date startDate, Date endDate) {
-        SalesDetailTable table = new SalesDetailTable(startDate, endDate);
-        return table.getSalesDetailTable();
+        if (startDate.equals(endDate))
+            return new BusinessConditionTableVO(111, 112, 113,
+                    114, 115, 116, 117,
+                    118, 119);
+        else
+            return new BusinessConditionTableVO(160,213,124,
+                    25,624,23,234,
+                    643,123);
     }
 
     @Override
     public ResultMessage redFlush(DocVO docVO) {
-        RedFlush redFlush = new RedFlush();
-        return redFlush.redFlush(docVO);
+        return null;
     }
 
     @Override
     public DocVO redFlushAndCopy(DocVO target) {
-        RedFlush redFlush = new RedFlush();
-        return redFlush.redFlushAndCopy(target);
+        return null;
     }
 
     @Override
     public UserVO getCreatorInfo(String creatorID) {
-        UserInfo userInfo = new UserInfoImpl();
-        return userInfo.getUserVOByID(creatorID);
+        return null;
     }
 }

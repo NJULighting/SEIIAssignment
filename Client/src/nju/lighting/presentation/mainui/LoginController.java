@@ -16,6 +16,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import nju.lighting.bl.userbl.UserController;
 import nju.lighting.blservice.userblservice.LoginService;
+import nju.lighting.blservice.userblservice.UserBLService;
+import nju.lighting.presentation.factory.UserBLServiceFactory;
 import nju.lighting.vo.UserVO;
 import shared.LoginReturnState;
 import shared.TwoTuple;
@@ -60,9 +62,10 @@ public class LoginController extends CommonFather {
     @FXML
     private Label dialogLabel;
 
+    UserBLService userBLService= UserBLServiceFactory.getUserBLService();
     @FXML
     public void login() throws IOException {
-        LoginService userBLService = new UserController();
+
         TwoTuple<UserVO, LoginReturnState> result = userBLService.login(account.getText(), password.getText());
 
         switch (result.r) {

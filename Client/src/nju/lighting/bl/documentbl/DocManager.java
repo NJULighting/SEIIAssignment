@@ -12,7 +12,7 @@ import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
-import nju.lighting.vo.viewtables.BusinessConditionItemVO;
+import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import shared.*;
 
@@ -73,13 +73,13 @@ public enum DocManager {
         return CollectionTransformer.toList(docList, Doc::toHistoryDocVO);
     }
 
-    List<BusinessConditionItemVO> findSaleRecords(DocumentFilter filter) {
+    List<SalesDetailItemVO> findSaleRecords(DocumentFilter filter) {
         // Get doc list and filter it
         List<Doc> docList = DataServiceBiFunction
                 .findAndFilterToList(DocType.SALES, DocState.APPROVAL,
                         dataService::findByTypeAndState, SalesDoc::new, filter.getPredicateForDoc());
 
-        List<BusinessConditionItemVO> res = new ArrayList<>();
+        List<SalesDetailItemVO> res = new ArrayList<>();
         docList.forEach(doc -> res.addAll(((SalesDoc) doc).getBusinessCondition()));
 
         if (filter.getCommodity() == null) {

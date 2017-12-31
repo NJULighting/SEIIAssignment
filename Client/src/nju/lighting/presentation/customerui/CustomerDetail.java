@@ -2,22 +2,14 @@ package nju.lighting.presentation.customerui;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.validation.DoubleValidator;
-import com.jfoenix.validation.RequiredFieldValidator;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
+import nju.lighting.presentation.factory.CustomerBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CustomerHelper;
@@ -25,10 +17,7 @@ import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.CustomerVO;
 import shared.*;
 
-import java.net.URL;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/22.
@@ -38,10 +27,10 @@ import java.util.ResourceBundle;
  */
 public class CustomerDetail {
 
-    private CustomerBLService customerBLService;
+    private CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
 
     @FXML
-    private JFXComboBox<String> typebox, gradebox;
+    private JFXComboBox<String> typeBox, gradeBox;
 
     @FXML
     private JFXTextField idText, nameText, receiveText, payText, receiveLimitText, salesmanText, telephoneText,
@@ -56,10 +45,10 @@ public class CustomerDetail {
     HBox idBox,buttonBox;
 
 
-    CustomerSearchListController controller;
+    private CustomerSearchListController controller;
     private CustomerVO customerVO ;
     private ArrayList<TextField> textFields = new ArrayList<>();
-    Upper upper;
+    private Upper upper;
     private boolean add;
     private final double DEFAULT_LIMIT = 2000;
 
@@ -88,12 +77,12 @@ public class CustomerDetail {
 
 
         //初始化JFXComboBox
-        typebox.getItems().addAll(
+        typeBox.getItems().addAll(
                 "销售商",
                 "供应商"
         );
 
-        gradebox.getItems().addAll(
+        gradeBox.getItems().addAll(
                 "一级",
                 "二级",
                 "三级",
@@ -106,11 +95,11 @@ public class CustomerDetail {
             idText.setText(String.format("%06d", customerVO.getID()));
 
             if (customerVO.getType() == CustomerType.SALESPERSON)
-                typebox.setValue("销售商");
+                typeBox.setValue("销售商");
             else
-                typebox.setValue("供应商");
+                typeBox.setValue("供应商");
             nameText.setText(customerVO.getName());
-            gradebox.setValue(CustomerHelper.gradeToString(customerVO.getGrade()));
+            gradeBox.setValue(CustomerHelper.gradeToString(customerVO.getGrade()));
             receiveText.setText(String.valueOf(customerVO.getReceivable()));
             payText.setText(String.valueOf(customerVO.getPayable()));
             receiveLimitText.setText(String.valueOf(customerVO.getReceivableLimit()));
@@ -126,8 +115,8 @@ public class CustomerDetail {
             buttonBox.getChildren().remove(deleteButton);
             receiveLimitText.setText("" + DEFAULT_LIMIT);
             container.getChildren().remove(idBox);
-            typebox.setValue(CustomerHelper.typeToString(CustomerType.SALESPERSON));
-            gradebox.setValue(CustomerHelper.gradeToString(CustomerGrade.ONE));
+            typeBox.setValue(CustomerHelper.typeToString(CustomerType.SALESPERSON));
+            gradeBox.setValue(CustomerHelper.gradeToString(CustomerGrade.ONE));
         }
 
 
@@ -176,12 +165,12 @@ public class CustomerDetail {
 //            CustomerChangeInfo.Builder builder = new CustomerChangeInfo.Builder(customerVO.getID());
 //            builder.changeAddress(addressText.getText())
 //                    .changeEmail(emailText.getText())
-//                    .changeGrade(CustomerHelper.stringToGrade(gradebox.getValue()))
+//                    .changeGrade(CustomerHelper.stringToGrade(gradeBox.getValue()))
 //                    .changePostage(postageText.getText())
 //                    .changeName(nameText.getText())
 //                    .changeSalesMan(salesmanText.getText())
 //                    .changeTelephone(telephoneText.getText())
-//                    .changeType(CustomerHelper.stringToType(typebox.getValue()));
+//                    .changeType(CustomerHelper.stringToType(typeBox.getValue()));
 //
 //            customerBLService.changeCustomer(builder.build());
 
@@ -204,8 +193,8 @@ public class CustomerDetail {
         int id = (customerVO == null) ? controller.getTableView().getItems().size()+1 : customerVO.getID();
         return new CustomerVO(
                 id,
-                CustomerHelper.stringToType(typebox.getValue()),
-                CustomerHelper.stringToGrade(gradebox.getValue()),
+                CustomerHelper.stringToType(typeBox.getValue()),
+                CustomerHelper.stringToGrade(gradeBox.getValue()),
                 nameText.getText(),
                 telephoneText.getText(),
                 addressText.getText(),
@@ -226,16 +215,16 @@ public class CustomerDetail {
         modifyButton.setDisable(editable);
         saveButton.setDisable(!editable);
         saveButton.setVisible(editable);
-        for (int i = 0; i < textFields.size(); i++) {
-            textFields.get(i).setEditable(editable);
+        for (TextField textField : textFields) {
+            textField.setEditable(editable);
         }
         if (Client.getUserVO().isAuthority()) {
             receiveLimitText.setEditable(editable);
         } else {
             receiveLimitText.setEditable(!editable);
         }
-        gradebox.setDisable(!editable);
-        typebox.setDisable(!editable);
+        gradeBox.setDisable(!editable);
+        typeBox.setDisable(!editable);
     }
 
     public void delete() {
@@ -255,6 +244,5 @@ public class CustomerDetail {
 
     public void setController(CustomerSearchListController controller) {
         this.controller = controller;
-        customerBLService = controller.getCustomerBLService();
     }
 }

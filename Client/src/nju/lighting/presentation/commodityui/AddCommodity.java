@@ -35,20 +35,6 @@ public class AddCommodity extends Dialog implements Initializable {
                 & recentInPrice.validate() & recentSellPrice.validate() & name.validate() & modelNumber.validate();
     }
 
-    void binds(JFXTextField textField, ValidatorBase validator) {
-
-        textField.getValidators().add(validator);
-        textField.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (!newValue) {
-                    textField.validate();
-                } else
-                    textField.resetValidation();
-            }
-        });
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

@@ -20,6 +20,7 @@ import nju.lighting.bl.accountbl.AccountBLService_Stub;
 import nju.lighting.blservice.accountblservice.AccountBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.DialogUI.ValidateEventHandle;
+import nju.lighting.presentation.factory.AccountBLServiceFactory;
 import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.vo.account.AccountLogVO;
 import nju.lighting.vo.account.AccountVO;
@@ -39,7 +40,7 @@ import java.util.ResourceBundle;
  */
 public class Account implements Initializable {
 
-    AccountBLService blService = new AccountBLService_Stub();
+    AccountBLService blService = AccountBLServiceFactory.getAccountBLService();
 
     @FXML
     HBox accountTableContainer;
@@ -69,7 +70,7 @@ public class Account implements Initializable {
     JFXButton addBtn;
 
 
-    ObservableList<AccountVO> accountVOObservableList ;
+    ObservableList<AccountVO> accountVOObservableList;
     ObservableList<AccountLogVO> logVOObservableList = FXCollections.observableArrayList();
 
 
@@ -78,11 +79,11 @@ public class Account implements Initializable {
 
 
         try {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("AccountList.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountList.fxml"));
             accountTableContainer.getChildren().add(loader.load());
-            AccountList listController=loader.getController();
-            listController.setEditable(stackPane,logVOObservableList);
-            accountVOObservableList=listController.getAccountVOObservableList();
+            AccountList listController = loader.getController();
+            listController.setEditable(stackPane, logVOObservableList);
+            accountVOObservableList = listController.getAccountVOObservableList();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -118,7 +119,6 @@ public class Account implements Initializable {
         });
 
         logTableView.setItems(logVOObservableList);
-
 
 
         addBtn.setOnAction(e -> {

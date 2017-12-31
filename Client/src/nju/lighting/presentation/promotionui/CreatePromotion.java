@@ -20,6 +20,7 @@ import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
+import nju.lighting.presentation.factory.PromotionBLServiceFactory;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CommodityHelper;
 import nju.lighting.presentation.utils.DateHelper;
@@ -47,21 +48,24 @@ import java.util.stream.Collectors;
  * @author 陈俊宇
  */
 public class CreatePromotion implements Initializable {
-    PromotionUIManageUI upper;
+    private PromotionUIManageUI upper;
 
     //是否正确
     boolean alright = false;
 
 
-    ObservableList<BasicCommodityItemVO> commodities = FXCollections.observableArrayList();
-    ObservableList<CommodityItem> itemList;
+    private ObservableList<BasicCommodityItemVO> commodities = FXCollections.observableArrayList();
+    private ObservableList<CommodityItem> itemList;
 
-    HashMap<PromotionType, String> typeToUrl = new HashMap<>();
-    HashMap<PromotionType, EventHandler> typeToEventHandle = new HashMap<>();
+    private HashMap<PromotionType, String> typeToUrl = new HashMap<>();
+    private HashMap<PromotionType, EventHandler> typeToEventHandle = new HashMap<>();
+    private FXMLLoader typeLoader;
+
+    private PromotionBLService blService = PromotionBLServiceFactory.getPromotionBLService();
     @FXML
     VBox verticalBox;
 
-    FXMLLoader typeLoader;
+
 
     @FXML
     Button chooseCommodityBtn;
@@ -81,7 +85,7 @@ public class CreatePromotion implements Initializable {
     @FXML
     StackPane stackPane;
 
-    PromotionBLService blService;
+
 
 
     TwoTuple<ResultMessage, PromotionVO> commitPriceOriented() {
@@ -145,7 +149,7 @@ public class CreatePromotion implements Initializable {
                 }
                 if (res != null) {
                     if (res.t == ResultMessage.SUCCESS) {
-                        upper.promotionList.add(res.r);
+                        upper.getPromotionList().add(res.r);
                         upper.backToMain();
                     } else
                         DialogHelper.dialog(res.t, stackPane);
@@ -207,10 +211,9 @@ public class CreatePromotion implements Initializable {
 
     public void setUpper(PromotionUIManageUI upper) {
         this.upper = upper;
-        blService=upper.blService;
     }
 
-    public void setReadOnly(PromotionVO promotion){
+    public void setReadOnly(PromotionVO promotion) {
         typeLoader = new FXMLLoader(getClass().getResource(typeToUrl.get(promotion.getType())));
         try {
             verticalBox.getChildren().add(typeLoader.load());

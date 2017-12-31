@@ -8,7 +8,7 @@ import nju.lighting.bl.documentbl.salesdoc.SalesDoc;
 import nju.lighting.bl.documentbl.stockdoc.StockReturnDoc;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
-import nju.lighting.vo.viewtables.SalesDetailVO;
+import nju.lighting.vo.viewtables.BusinessConditionTableVO;
 import shared.DocType;
 
 import javax.naming.NamingException;
@@ -78,8 +78,8 @@ class SalesDetailTable {
      * 根据所给的日期区间生成经营情况表
      * @return 相对应的经营情况表的值对象
      */
-    SalesDetailVO getSalesDetailTable() {
-        return new SalesDetailVO(salesRevenue, commodityGainRevenue, costAdjustRevenue, spreadRevenue,
+    BusinessConditionTableVO getSalesDetailTable() {
+        return new BusinessConditionTableVO(salesRevenue, commodityGainRevenue, costAdjustRevenue, spreadRevenue,
                 voucherCausedRevenue, salesRevenueOff, costExpenditure, commodityLossExpenditure,
                 giftExpenditure, profit);
     }

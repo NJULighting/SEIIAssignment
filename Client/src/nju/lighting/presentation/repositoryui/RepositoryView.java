@@ -10,18 +10,15 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Pagination;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
-import javafx.util.Callback;
-import nju.lighting.bl.repositorybl.RepositoryBLService_Stub;
 import nju.lighting.blservice.repositoryblservice.RepositoryBLService;
+import nju.lighting.presentation.factory.RepositoryBLServiceFactory;
 import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.presentation.utils.RepositoryHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.repository.RepositoryChangeVO;
-import shared.RepositoryChangeType;
 
 import java.net.URL;
 import java.util.Date;
@@ -38,7 +35,7 @@ import java.util.ResourceBundle;
 public class RepositoryView implements Initializable {
 
     List<RepositoryChangeVO> repositoryChangeList;
-    RepositoryBLService blService = new RepositoryBLService_Stub();
+    RepositoryBLService blService = RepositoryBLServiceFactory.getRepositoryBLService();
     int itemsPerPage = 15;
 
     @FXML
@@ -93,7 +90,7 @@ public class RepositoryView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        repositoryChangeList = blService.getRepositoryChanges(DateHelper.WeekAgo(), new Date());
+        repositoryChangeList = blService.getRepositoryChanges(DateHelper.weekAgo(), new Date());
 
         pagination.setPageFactory((Integer index) -> createPage(index));
         pagination.getStylesheets().add(getClass().getResource("../repository.css").toExternalForm());
@@ -118,7 +115,7 @@ public class RepositoryView implements Initializable {
                         DateHelper.localDateToDate(endDate.getValue())
                 );
             else
-                repositoryChangeList = blService.getRepositoryChanges(DateHelper.WeekAgo(), new Date());
+                repositoryChangeList = blService.getRepositoryChanges(DateHelper.weekAgo(), new Date());
             refresh();
         });
     }

@@ -9,7 +9,7 @@ import java.util.Date;
  * Description
  * @author 陈俊宇
  */
-public class BusinessConditionItemVO {
+public class SalesDetailItemVO {
     private Date date;
 
     private String commodityName;
@@ -22,7 +22,7 @@ public class BusinessConditionItemVO {
 
     private double totalAmount;
 
-    public BusinessConditionItemVO(Date date, String commodityName, String commodityType, int number, double salePrice, double totalAmount) {
+    public SalesDetailItemVO(Date date, String commodityName, String commodityType, int number, double salePrice, double totalAmount) {
         this.date = date;
         this.commodityName = commodityName;
         this.commodityType = commodityType;

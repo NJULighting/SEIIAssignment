@@ -7,7 +7,7 @@ import nju.lighting.po.doc.salesdoc.SalesDocPO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocVO;
-import nju.lighting.vo.viewtables.BusinessConditionItemVO;
+import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import shared.ResultMessage;
 
 import java.util.List;
@@ -81,7 +81,7 @@ public class SalesDoc extends SalesTypeDoc {
                 voucher, finalAmount, itemList.toPO(id));
     }
 
-    public List<BusinessConditionItemVO> getBusinessCondition() {
+    public List<SalesDetailItemVO> getBusinessCondition() {
         return itemList.toBusinessConditionItemVO(createTime);
     }
 

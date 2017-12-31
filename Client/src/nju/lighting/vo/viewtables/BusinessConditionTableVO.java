@@ -5,7 +5,7 @@ package nju.lighting.vo.viewtables;
  * Description
  * @author 陈俊宇
  */
-public class SalesDetailVO {
+public class BusinessConditionTableVO {
     private double salesRevenue; //销售收入
 
     private double commodityGainRevenue; //商品报溢收入
@@ -26,10 +26,14 @@ public class SalesDetailVO {
 
     private double profit;
 
+    private double revenue;
 
-    public SalesDetailVO(double salesRevenue, double commodityGainRevenue, double costAdjustRevenue, double spreadRevenue,
-                         double voucherCausedRevenue, double salesRevenueOff, double costExpenditure, double commodityLossExpenditure,
-                         double giftExpenditure, double profit) {
+    private double expenditure;
+
+
+    public BusinessConditionTableVO(double salesRevenue, double commodityGainRevenue, double costAdjustRevenue, double spreadRevenue,
+                                    double voucherCausedRevenue, double salesRevenueOff, double costExpenditure, double commodityLossExpenditure,
+                                    double giftExpenditure, double profit) {
         this.salesRevenue = salesRevenue;
         this.commodityGainRevenue = commodityGainRevenue;
         this.costAdjustRevenue = costAdjustRevenue;
@@ -40,6 +44,27 @@ public class SalesDetailVO {
         this.commodityLossExpenditure = commodityLossExpenditure;
         this.giftExpenditure = giftExpenditure;
         this.profit = profit;
+        revenue=salesRevenue+commodityGainRevenue+costAdjustRevenue+spreadRevenue+voucherCausedRevenue;
+        expenditure=costExpenditure+commodityLossExpenditure+giftExpenditure;
+    }
+
+    /*
+    for stub
+     */
+    public BusinessConditionTableVO(double salesRevenue, double commodityGainRevenue, double costAdjustRevenue, double spreadRevenue, double voucherCausedRevenue, double salesRevenueOff,
+                                    double costExpenditure, double commodityLossExpenditure, double giftExpenditure) {
+        this.salesRevenue = salesRevenue;
+        this.commodityGainRevenue = commodityGainRevenue;
+        this.costAdjustRevenue = costAdjustRevenue;
+        this.spreadRevenue = spreadRevenue;
+        this.voucherCausedRevenue = voucherCausedRevenue;
+        this.salesRevenueOff = salesRevenueOff;
+        this.costExpenditure = costExpenditure;
+        this.commodityLossExpenditure = commodityLossExpenditure;
+        this.giftExpenditure = giftExpenditure;
+        revenue=salesRevenue+commodityGainRevenue+costAdjustRevenue+spreadRevenue+voucherCausedRevenue;
+        expenditure=costExpenditure+commodityLossExpenditure+giftExpenditure;
+        profit=revenue-expenditure;
     }
 
     public double getSalesRevenue() {
@@ -122,9 +147,17 @@ public class SalesDetailVO {
         this.profit = profit;
     }
 
+    public double getRevenue() {
+        return revenue;
+    }
+
+    public double getExpenditure() {
+        return expenditure;
+    }
+
     @Override
     public String toString() {
-        return "SalesDetailVO{" +
+        return "BusinessConditionTableVO{" +
                 "salesRevenue=" + salesRevenue +
                 ", commodityGainRevenue=" + commodityGainRevenue +
                 ", costAdjustRevenue=" + costAdjustRevenue +

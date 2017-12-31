@@ -14,6 +14,7 @@ import javafx.scene.control.Pagination;
 import javafx.scene.layout.HBox;
 import nju.lighting.bl.logbl.LogBLService_Stub;
 import nju.lighting.blservice.logblservice.LogBLService;
+import nju.lighting.presentation.factory.LogBLServiceFactory;
 import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.vo.LogVO;
 
@@ -41,7 +42,7 @@ public class LogController implements Initializable {
      */
     int currentListLevel = 0;
     int itemsPerPage = 15;
-    LogBLService logBLService = new LogBLService_Stub();
+    LogBLService logBLService = LogBLServiceFactory.getLogBLService();
 
     @FXML
     Pagination pagination;
@@ -88,7 +89,7 @@ public class LogController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         startDate = new Date();
 
-        //endDate = DateHelper.WeekAgo();
+        //endDate = DateHelper.weekAgo();
         initPagination();
 
 

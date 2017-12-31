@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane minHeight="680.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.SystemManager">
+<VBox prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.SystemManagerController">
    <children>
-      <HBox>
-         <children>
-            <JFXListView fx:id="categoryListView" prefHeight="680.0" prefWidth="250.0" />
-            <JFXListView fx:id="userListView" />
-            <HBox fx:id="detailContainer" prefHeight="650.0" />
-         </children>
-      </HBox>
+      <JFXButton fx:id="userManageBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="系统用户管理">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <image>
+                  <Image url="@../../../../images/账户管理.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="logBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="日志">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <image>
+                  <Image url="@../../../../images/日志.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
-</StackPane>
+</VBox>

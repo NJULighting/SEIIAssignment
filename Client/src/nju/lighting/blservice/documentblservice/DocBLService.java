@@ -3,9 +3,9 @@ package nju.lighting.blservice.documentblservice;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
-import nju.lighting.vo.viewtables.BusinessConditionItemVO;
+import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
-import nju.lighting.vo.viewtables.SalesDetailVO;
+import nju.lighting.vo.viewtables.BusinessConditionTableVO;
 import shared.DocumentFilter;
 import shared.ResultMessage;
 import shared.TwoTuple;
@@ -33,11 +33,11 @@ public interface DocBLService {
      */
     List<HistoryDocVO> findDocuments(DocumentFilter filter);
 
-    List<BusinessConditionItemVO> findSaleRecords(DocumentFilter filter);
+    List<SalesDetailItemVO> findSaleRecords(DocumentFilter filter);
 
     List<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter);
 
-    SalesDetailVO findRevenueAndExpenditure(Date startDate, Date endDate);
+    BusinessConditionTableVO findRevenueAndExpenditure(Date startDate, Date endDate);
 
     ResultMessage redFlush(DocVO docVO);
 

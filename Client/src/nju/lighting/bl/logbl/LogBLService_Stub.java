@@ -19,7 +19,7 @@ public class LogBLService_Stub implements LogBLService {
 
     @Override
     public List<LogVO> getLogListByTime(Date from, Date to) {
-        Date aWeekAgo = DateHelper.WeekAgo();
+        Date aWeekAgo = DateHelper.weekAgo();
         LogVO logVO0 = new LogVO(aWeekAgo, "Too young", "Frog0", Identity.FINANCE);
         LogVO logVO1 = new LogVO(new Date(), "Too simple", "Frog1", Identity.GENERAL);
 

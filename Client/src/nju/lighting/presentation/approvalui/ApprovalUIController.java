@@ -19,6 +19,7 @@ import javafx.util.Callback;
 import nju.lighting.bl.approvalbl.ApprovalBLService_Stub;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import nju.lighting.presentation.documentui.Doc;
+import nju.lighting.presentation.factory.ApprovalBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
@@ -35,7 +36,7 @@ import java.util.ResourceBundle;
  * @author 陈俊宇
  */
 public class ApprovalUIController implements Initializable {
-    ApprovalBLService approvalBLService;
+    ApprovalBLService approvalBLService = ApprovalBLServiceFactory.getApprovalBLService();
     List<DocVO> docs;
     ObservableList<DocVO> selectedDocList;
     String comment;
@@ -69,7 +70,7 @@ public class ApprovalUIController implements Initializable {
 
     @FXML
     void approve() {
-        approvalBLService = new ApprovalBLService_Stub();
+
         if (selectedDocList != null && selectedDocList.size() != 0) {
             DocVO currentDoc;
             for (int i = 0; i < selectedDocList.size(); i++) {
@@ -144,7 +145,7 @@ public class ApprovalUIController implements Initializable {
 
         try {
             FXMLLoader  loader = Doc.getLoader();
-            ScrollPane doc=loader.load();
+            Pane doc=loader.load();
             detail.getChildren().add(doc);
         } catch (IOException e) {
             e.printStackTrace();
@@ -164,7 +165,7 @@ public class ApprovalUIController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        approvalBLService = new ApprovalBLService_Stub();
+
         docs = approvalBLService.getDocumentList();
         for (int i = 0; i < docs.size(); i++) {
 

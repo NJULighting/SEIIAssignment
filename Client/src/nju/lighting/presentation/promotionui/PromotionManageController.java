@@ -17,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import nju.lighting.bl.promotionbl.PromotionBLService_Stub;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
+import nju.lighting.presentation.factory.PromotionBLServiceFactory;
 import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.vo.promotion.PromotionVO;
 
@@ -32,7 +33,7 @@ import java.util.ResourceBundle;
  */
 public class PromotionManageController implements Initializable {
 
-    private PromotionBLService promotionBLService = new PromotionBLService_Stub();
+    private PromotionBLService promotionBLService = PromotionBLServiceFactory.getPromotionBLService();
     private List<PromotionVO> promotions=promotionBLService.getPromotionList();
     private int itemsPerPage = 10;
     double PREF_WIDTH = 300, PREF_HEIGHT = 30;

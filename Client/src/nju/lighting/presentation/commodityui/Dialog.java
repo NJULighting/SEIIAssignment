@@ -15,7 +15,7 @@ public abstract class Dialog {
 
     TreeItem treeItem;
     JFXDialog dialog;
-    CommodityBLService commodityBLService;
+
     StackPane stackPane;
 
     public void setTreeItem(TreeItem treeItem) {
@@ -30,9 +30,7 @@ public abstract class Dialog {
         this.stackPane = stackPane;
     }
 
-    public void setCommodityBLService(CommodityBLService commodityBLService) {
-        this.commodityBLService = commodityBLService;
-    }
+
 
 
 

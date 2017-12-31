@@ -9,6 +9,7 @@ import javafx.util.Callback;
 import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
 import nju.lighting.bl.commoditybl.CommodityController;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
+import nju.lighting.presentation.factory.CommodityBLServiceFactory;
 import nju.lighting.vo.commodity.*;
 
 import java.net.URL;
@@ -23,10 +24,10 @@ import java.util.stream.Collectors;
  * @author 陈俊宇
  */
 public class CommodityCategory implements Initializable {
-    CommodityBLService blService = new CommodityController();
+    CommodityBLService blService = CommodityBLServiceFactory.getCommodityBLService();
     private CommodityCategoriesTreeVO categoriesTreeVO;
     private StackPane stackPane;
-    SimpleStringProperty keyWord=new SimpleStringProperty();
+    SimpleStringProperty keyWord = new SimpleStringProperty();
     @FXML
     TreeTableView<CommodityCategoryItem> commodityTreeTableView;
 
@@ -58,16 +59,14 @@ public class CommodityCategory implements Initializable {
     TextField searchText;
 
 
-    TreeItem root;
+    private TreeItem root;
 
-
+    @FXML
     void search() {
 
-        if (searchText.getText().length()==0){
+        if (searchText.getText().length() == 0) {
             refresh();
-        }
-
-        else {
+        } else {
             root.getChildren().clear();
             root.setValue(new CommodityCategoryItem("搜索结果"));
             root.getChildren().addAll(blService.searchCommodity(searchText.getText()).stream()
@@ -164,7 +163,7 @@ public class CommodityCategory implements Initializable {
         name.setCellFactory(new Callback<TreeTableColumn<CommodityCategoryItem, String>, TreeTableCell<CommodityCategoryItem, String>>() {
             @Override
             public TreeTableCell<CommodityCategoryItem, String> call(TreeTableColumn<CommodityCategoryItem, String> param) {
-                return new MyTreeCell(stackPane,keyWord,blService);
+                return new MyTreeCell(stackPane, keyWord, blService);
             }
         });
 

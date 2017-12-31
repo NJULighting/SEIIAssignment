@@ -10,10 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
-import nju.lighting.bl.customerbl.CustomerBLService_Stub;
-import nju.lighting.bl.userbl.UserBLServie_Stub;
-import nju.lighting.bl.userbl.UserController;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
 import nju.lighting.blservice.userblservice.UserBLService;
 import nju.lighting.presentation.documentui.CommodityItem;
@@ -21,7 +17,6 @@ import nju.lighting.presentation.documentui.CommodityList;
 import nju.lighting.presentation.documentui.Doc;
 import nju.lighting.presentation.factory.CustomerBLServiceFactory;
 import nju.lighting.presentation.factory.UserBLServiceFactory;
-import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
 
 import java.io.IOException;
@@ -32,7 +27,7 @@ import java.util.stream.Collectors;
 public class GiftDocController implements Initializable {
 
     CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
-    //UserBLService userBLService = UserBLServiceFactory.getUserBLService();
+    UserBLService userBLService = UserBLServiceFactory.getUserBLService();
     GiftDocVO giftDocVO;
 
     @FXML
@@ -56,9 +51,6 @@ public class GiftDocController implements Initializable {
     private JFXSlider slider;
 
     @FXML
-    private TableView giftTableView;
-
-    @FXML
     private ScrollPane scrollpane;
 
     @FXML
@@ -71,8 +63,14 @@ public class GiftDocController implements Initializable {
 
         customer.setText(customerBLService.findCustomerByID(giftDocVO.getCustomerID()).getName());
         id.setText(giftDocVO.getDocId());
-        //date.setText(giftDocVO.getTime().toString());
-        //maker.setText(userBLService.getUser(giftDocVO.getCreatorId()).getUsername());
+        if(giftDocVO.getTime()!=null){
+            date.setText(giftDocVO.getTime().toString());
+        }
+        if(userBLService.getUser(giftDocVO.getCreatorId())!=null){
+            date.setText(giftDocVO.getTime().toString());
+            maker.setText(userBLService.getUser(giftDocVO.getCreatorId()).getUsername());
+        }
+
         account.setText(String.valueOf(giftDocVO.getTotal()));
 
         try {

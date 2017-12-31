@@ -61,7 +61,7 @@
                         <HBox alignment="BOTTOM_CENTER">
                            <children>
                               <Label text="————" textFill="#838383" />
-                              <Label fx:id="date" text="2017年12月26日" textFill="#838383" />
+                              <Label fx:id="date" text="未注明时间" textFill="#838383" />
                               <Label text="————" textFill="#838383" />
                            </children>
                            <VBox.margin>
@@ -75,7 +75,7 @@
                                     <Font name="Bauhaus 93" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="maker" text="某制定人名" textFill="#838383" />
+                              <Label fx:id="maker" text="未注明指定人" textFill="#838383" />
                            </children>
                            <VBox.margin>
                               <Insets />

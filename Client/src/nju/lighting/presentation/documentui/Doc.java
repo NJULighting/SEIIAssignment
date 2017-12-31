@@ -22,6 +22,7 @@ public class Doc{
     static {
         map.put(DocType.GIFT, "giftdoc/GiftDoc.fxml");
         map.put(DocType.ACCOUNT_IN,"AccountIODoc.fxml");
+        map.put(DocType.LOSS_AND_GAIN,"lossandgaindoc/LossAndGainDoc.fxml");
     }
 
 

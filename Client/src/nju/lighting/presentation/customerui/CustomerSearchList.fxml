@@ -39,9 +39,9 @@
          </graphic>
       </Button>
       <Label fx:id="noResult" layoutX="301.0" layoutY="31.0" text="无结果！" visible="false" />
-      <TableView fx:id="tableView" layoutX="50.0" layoutY="70.0" prefHeight="525.0">
+      <TableView fx:id="tableView" layoutX="40.0" layoutY="70.0" prefHeight="525.0" prefWidth="1000.0">
         <columns>
-          <TableColumn fx:id="customerId" editable="false" prefWidth="89.0" resizable="false" text="客户编号" />
+          <TableColumn fx:id="customerId" editable="false" prefWidth="89.0" resizable="false" text="  客户编号" />
           <TableColumn fx:id="type" editable="false" prefWidth="69.0" resizable="false" sortable="false" text="分类" />
             <TableColumn fx:id="name" editable="false" prefWidth="84.0" resizable="false" sortable="false" text="姓名" />
             <TableColumn fx:id="grade" editable="false" prefWidth="83.0" resizable="false" sortable="false" text="级别" />

@@ -82,7 +82,7 @@ public class MainUI {
 
 
 
-        if(identity!=Identity.SYSTEM_ADMIN){
+        //if(identity!=Identity.SYSTEM_ADMIN){
             left=loader.load();
 
             root.setLeft(left);
@@ -93,8 +93,8 @@ public class MainUI {
 //                controller.jumpTo(i);
 //            }
             controller.jumpTo(0);
-        }else
-            root.setRight(loader.load());
+        //}else
+        //   root.setRight(loader.load());
 
         stage.setScene(new Scene(root));
         stage.getScene().getStylesheets().add(Client.class.getResource("../custom.css").toExternalForm());

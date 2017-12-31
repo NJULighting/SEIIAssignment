@@ -1,6 +1,7 @@
 package nju.lighting.presentation.documentui;
 
 
+import com.jfoenix.controls.JFXSlider;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -77,7 +78,7 @@ public class CommodityList implements Initializable {
                 .filter(x->!x.isGift())
                 .mapToDouble(x -> (( x).subtotal.getValue()))
                 .sum();
-        totalLabel.setText(total+ "");
+        //totalLabel.setText(total+ "");
         return total;
     }
 
@@ -86,7 +87,7 @@ public class CommodityList implements Initializable {
 
 
         giftObservableList = FXCollections.observableArrayList();
-
+/*
         giftObservableList.addListener(new ListChangeListener() {
             @Override
             public void onChanged(Change c) {
@@ -99,7 +100,7 @@ public class CommodityList implements Initializable {
 
             }
         });
-
+*/
 
         commodityName.setCellValueFactory(cellData ->
                 cellData.getValue().nameProperty());
@@ -124,7 +125,7 @@ public class CommodityList implements Initializable {
 
 
         TableViewHelper.commonSet(giftTableView);
-
+        TableViewHelper.setHeight(giftTableView,1.3);
 
         calculateTotal();
 
@@ -160,7 +161,9 @@ public class CommodityList implements Initializable {
                     CommodityItem selected = t.getTableView().getItems().get(
                             t.getTablePosition().getRow());
                     selected.setCount( t.getNewValue());
+
                     calculateTotal();
+
 
                 });
 
@@ -170,7 +173,9 @@ public class CommodityList implements Initializable {
                             t.getTablePosition().getRow());
 
                     selected.setPrice(t.getNewValue());
+
                     calculateTotal();
+
                 });
 
         comments.setOnEditCommit( (TableColumn.CellEditEvent<CommodityItem, String> t) -> {
@@ -193,5 +198,9 @@ public class CommodityList implements Initializable {
 
     public ObservableList<CommodityItem> getGiftObservableList() {
         return giftObservableList;
+    }
+
+    public void setSilder(JFXSlider silder){
+        TableViewHelper.setSliderMarch(silder,giftTableView);
     }
 }

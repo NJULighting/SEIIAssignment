@@ -145,7 +145,7 @@ public class ApprovalUIController implements Initializable {
 
         try {
             FXMLLoader  loader = Doc.getLoader();
-            ScrollPane doc=loader.load();
+            Pane doc=loader.load();
             detail.getChildren().add(doc);
         } catch (IOException e) {
             e.printStackTrace();

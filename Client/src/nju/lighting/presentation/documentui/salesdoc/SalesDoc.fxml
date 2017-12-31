@@ -38,10 +38,39 @@
                                     <Font size="18.0" />
                                  </font>
                               </Label>
+                              <Label text="/">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="业务员">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label text="业务员名">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
                            </children>
                            <VBox.margin>
                               <Insets bottom="10.0" top="20.0" />
                            </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" spacing="10.0">
+                           <children>
+                              <Label text="仓库">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label text="仓库名">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
                         </HBox>
                         <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" hmax="0.0" prefHeight="292.0" prefWidth="700.0" vbarPolicy="NEVER" vmax="0.0">
                            <content>
@@ -62,17 +91,76 @@
                               </AnchorPane>
                            </content>
                         </ScrollPane>
-                        <HBox alignment="CENTER_RIGHT">
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
                            <children>
+                              <Label text="折让前总额">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label text="2400.00">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="18.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                           <children>
+                              <Label text="折让">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label text="200.00">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="18.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                           <children>
+                              <Label text="代金券">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label text="200.00">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="18.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                           <children>
+                              <Label text="总额">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
                               <Label style="-fx-text-fill: #5599ff;" text="2000.00">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets right="28.0" top="10.0" />
+                                    <Insets right="18.0" />
                                  </HBox.margin>
                               </Label>
                            </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </HBox>
                         <HBox alignment="BOTTOM_CENTER">
                            <children>
@@ -107,7 +195,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <JFXSlider fx:id="slider" layoutY="100.0" />
+                  <JFXSlider fx:id="slider" layoutX="10.0" layoutY="125.0" />
                </children>
             </AnchorPane>
          </content>

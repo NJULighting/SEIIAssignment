@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.giftdoc.GiftDocController">
+   <children>
+      <ScrollPane fx:id="scrollpaneMain" hbarPolicy="NEVER" hmax="0.0" prefHeight="560.0" prefWidth="700.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0">
+               <children>
+                  <VBox fx:id="vbox" alignment="TOP_CENTER" prefWidth="700.0" stylesheets="@../../custom.css">
+                     <children>
+                        <ImageView fitHeight="45.0" fitWidth="120.0">
+                           <image>
+                              <Image url="@../../../../../images/字/赠品单.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </ImageView>
+                        <HBox alignment="CENTER" spacing="10.0">
+                           <children>
+                              <Label text="for">
+                                 <font>
+                                    <Font name="Bauhaus 93" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="customer" text="某客户名">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" hmax="0.0" vbarPolicy="NEVER" vmax="0.0">
+                          <content>
+                            <AnchorPane fx:id="tablePane" minHeight="0.0" minWidth="0.0" />
+                          </content>
+                        </ScrollPane>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label fx:id="account" style="-fx-text-fill: #5599ff;" text="2000.00">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="28.0" top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="BOTTOM_CENTER">
+                           <children>
+                              <Label text="————" textFill="#838383" />
+                              <Label fx:id="date" text="2017年12月26日" textFill="#838383" />
+                              <Label text="————" textFill="#838383" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" spacing="10.0">
+                           <children>
+                              <Label text="Made by" textFill="#838383">
+                                 <font>
+                                    <Font name="Bauhaus 93" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="maker" text="某制定人名" textFill="#838383" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label fx:id="id" text="ZPD-XXXX-XXXXX" textFill="#838383" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <JFXSlider fx:id="slider" layoutX="10.0" layoutY="100.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</Pane>

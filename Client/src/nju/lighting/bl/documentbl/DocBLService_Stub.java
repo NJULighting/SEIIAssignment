@@ -43,9 +43,14 @@ public class DocBLService_Stub implements DocBLService {
 
     @Override
     public BusinessConditionTableVO findRevenueAndExpenditure(Date startDate, Date endDate) {
-        return new BusinessConditionTableVO(111,112,113,
-                114, 115,116,117,
-                118,119);
+        if (startDate.equals(endDate))
+            return new BusinessConditionTableVO(111, 112, 113,
+                    114, 115, 116, 117,
+                    118, 119);
+        else
+            return new BusinessConditionTableVO(160,213,124,
+                    25,624,23,234,
+                    643,123);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package nju.lighting.data.commoditydata;
 
+import javafx.scene.image.Image;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import shared.ResultMessage;
 import nju.lighting.po.commodity.CommodityCategoryPO;
@@ -172,6 +173,11 @@ public class CommodityDataService_Stub implements CommodityDataService {
 
     @Override
     public List<CommodityItemPO> fuzzySearchByModel(String key) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public Image getTrend(String commodityId) throws RemoteException {
         return null;
     }
 }

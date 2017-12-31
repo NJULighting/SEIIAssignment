@@ -125,7 +125,7 @@ def main(start, end):
         pred_p = np.empty_like(raw_p)
         pred_p[:, :] = np.nan
         pred_p[look_back:, :] = predicts
-        result_list.append((c_id + "_" + c_name, raw_p, pred_p))
+        result_list.append((c_id, raw_p, pred_p))
     return result_list
 
 if __name__ == '__main__':

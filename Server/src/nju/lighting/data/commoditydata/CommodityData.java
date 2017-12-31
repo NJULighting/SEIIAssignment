@@ -1,5 +1,6 @@
 package nju.lighting.data.commoditydata;
 
+import javafx.scene.image.Image;
 import nju.lighting.data.utils.CommonOperation;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
@@ -146,6 +147,9 @@ public class CommodityData extends UnicastRemoteObject implements CommodityDataS
         return commodityItemPOCommonOperation.fuzzySearch("modelNumber", key);
     }
 
-
-
+    @Override
+    public Image getTrend(String commodityId) throws RemoteException {
+        Image image = new Image("/Users/iznauy/SEIIAssignment/python/analysis/" + commodityId + ".jpg");
+        return image;
+    }
 }

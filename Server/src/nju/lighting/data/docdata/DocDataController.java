@@ -1,5 +1,6 @@
 package nju.lighting.data.docdata;
 
+import javafx.scene.image.Image;
 import nju.lighting.data.utils.CommonOperation;
 import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.dataservice.documentdataservice.DocDataService;

@@ -1,5 +1,6 @@
 package nju.lighting.dataservice.commoditydataservice;
 
+import javafx.scene.image.Image;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 import shared.ResultMessage;
@@ -44,4 +45,5 @@ public interface CommodityDataService extends Remote {
 
     List<CommodityItemPO> fuzzySearchByModel(String key) throws RemoteException;
 
+    Image getTrend(String commodityId) throws RemoteException;
 }

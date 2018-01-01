@@ -16,6 +16,8 @@ import java.util.List;
  */
 public class CommonOperation<T> implements Serializable {
 
+    private static final long serialVersionUID = -453255076555043380L;
+
     /**
      * 用于存储类的完全名称，通过T.class.getName方法获取
      */
@@ -159,7 +161,6 @@ public class CommonOperation<T> implements Serializable {
         return ResultMessage.SUCCESS;
     }
 
-
     public ResultMessage update(T tpo) {
         Session session = HibernateUtils.getCurrentSession();
         try {
@@ -195,43 +196,5 @@ public class CommonOperation<T> implements Serializable {
         }
         return results;
     }
-//
-//    public List<T> fuzzySearch(String fieldName, Enum key) {
-//        List<T> results = null;
-//        Session session = HibernateUtils.getCurrentSession();
-//        try {
-//            session.getTransaction().begin();
-//            String sql = "select t from " + className + " t where cast(t." + fieldName + " as string) like :field";
-//            Query<T> query = session.createQuery(sql);
-//            query.setParameter("field",  "%" + key + "%");
-//            results = query.getResultList();
-//            session.getTransaction().commit();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            session.getTransaction().rollback();
-//        } finally {
-//            HibernateUtils.closeSession();
-//        }
-//        return results;
-//    }
-//
-//    public List<T> fuzzySearchByInt(String fieldName, Integer integer) {
-//        List<T> results = null;
-//        Session session = HibernateUtils.getCurrentSession();
-//        try {
-//            session.getTransaction().begin();
-//            String sql = "select t from " + className + " t where cast(t." + fieldName + " as string) like :field";
-//            Query<T> query = session.createQuery(sql);
-//            query.setParameter("field",  "%" + integer.toString() + "%");
-//            results = query.getResultList();
-//            session.getTransaction().commit();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            session.getTransaction().rollback();
-//        } finally {
-//            HibernateUtils.closeSession();
-//        }
-//        return results;
-//    }
 
 }

@@ -24,7 +24,7 @@ public class Predicate {
 
     void init(CommodityItemVO commodityItemVO){
 
-        imageContainer.getChildren().add(new ImageView("file:C:/Users/92434/Documents/SEIIAssignment/python/analysis/image/"+commodityItemVO.getId()+".jpg"));
+        imageContainer.getChildren().add(new ImageView("file:/Users/iznauy/SEIIAssignment/python/analysis/image/"+commodityItemVO.getId()+".jpg"));
 
 
     }

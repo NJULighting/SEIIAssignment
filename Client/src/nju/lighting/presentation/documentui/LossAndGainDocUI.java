@@ -1,6 +1,7 @@
 package nju.lighting.presentation.documentui;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import nju.lighting.blservice.documentblservice.DocBLService;
@@ -62,7 +64,8 @@ public class LossAndGainDocUI implements Initializable {
     JFXButton commitBtn;
 
     @FXML
-    JFXTextField comments;
+
+    TextArea comments;
 
 
 

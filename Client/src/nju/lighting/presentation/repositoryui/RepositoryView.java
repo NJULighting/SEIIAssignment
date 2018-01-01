@@ -90,7 +90,7 @@ public class RepositoryView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        repositoryChangeList = blService.getRepositoryChanges(DateHelper.weekAgo(), new Date());
+        repositoryChangeList = blService.getRepositoryChanges(DateHelper.localDateToDate(DateHelper.weekAgo()), new Date());
 
         pagination.setPageFactory((Integer index) -> createPage(index));
         pagination.getStylesheets().add(getClass().getResource("../repository.css").toExternalForm());
@@ -115,7 +115,7 @@ public class RepositoryView implements Initializable {
                         DateHelper.localDateToDate(endDate.getValue())
                 );
             else
-                repositoryChangeList = blService.getRepositoryChanges(DateHelper.weekAgo(), new Date());
+                repositoryChangeList = blService.getRepositoryChanges(DateHelper.localDateToDate(DateHelper.weekAgo()), new Date());
             refresh();
         });
     }

@@ -3,9 +3,8 @@ package nju.lighting.presentation.mainui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import shared.Identity;
 
@@ -79,6 +78,15 @@ public class MainUI {
         up=FXMLLoader.load(getClass().getResource("Title.fxml"));
         root.setTop(up);
 
+
+        Image background = new Image("images/待选背景/蓝色水2.jpg",1280,720,false,true);
+
+        BackgroundImage backgroundImage = new BackgroundImage(background,
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+
+//then you set to your node
+        root.setBackground(new Background(backgroundImage));
 
 
 

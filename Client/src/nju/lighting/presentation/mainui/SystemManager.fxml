@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<VBox prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.SystemManagerController">
+<VBox prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.SystemManagerController">
    <children>
       <JFXButton fx:id="userManageBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="系统用户管理">
          <graphic>

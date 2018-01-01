@@ -19,6 +19,11 @@
 
 <AnchorPane minHeight="200.0" onMouseDragged="#Drag" onMousePressed="#getOffSet" prefHeight="330.0" prefWidth="430.0" style="-fx-background-radius: 10px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.LoginController">
    <children>
+      <ImageView fitHeight="330.0" fitWidth="438.0" layoutX="-0.0" layoutY="-0.0">
+         <image>
+            <Image url="@../../../../images/待选背景/背景图1.png" />
+         </image>
+      </ImageView>
       <JFXTextField fx:id="account" focusColor="#5599ff" layoutX="133.0" layoutY="109.0" prefHeight="23.0" prefWidth="162.0" />
       <JFXPasswordField fx:id="password" focusColor="#5599ff" layoutX="133.0" layoutY="150.0" onKeyPressed="#loginByEnter" prefHeight="23.0" prefWidth="162.0" />
       <JFXButton fx:id="loginBtn" layoutX="133.0" layoutY="242.0" onAction="#login" opacity="0.5" prefHeight="23.0" prefWidth="162.0" style="-fx-background-color: #5599FF; -fx-background-radius: 5px;" text="登录" textFill="WHITE" />

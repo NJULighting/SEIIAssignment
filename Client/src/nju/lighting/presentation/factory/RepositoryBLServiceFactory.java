@@ -1,6 +1,7 @@
 package nju.lighting.presentation.factory;
 
 import nju.lighting.bl.repositorybl.RepositoryBLService_Stub;
+import nju.lighting.bl.repositorybl.RepositoryController;
 import nju.lighting.blservice.repositoryblservice.RepositoryBLService;
 
 /**
@@ -10,7 +11,7 @@ import nju.lighting.blservice.repositoryblservice.RepositoryBLService;
  * @author 陈俊宇
  */
 public class RepositoryBLServiceFactory {
-    private static RepositoryBLService repositoryBLService=new RepositoryBLService_Stub();
+    private static RepositoryBLService repositoryBLService=new RepositoryController();
 
     public static RepositoryBLService getRepositoryBLService() {
         return repositoryBLService;

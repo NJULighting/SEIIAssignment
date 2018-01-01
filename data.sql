@@ -8,10 +8,10 @@ insert into account values ('0033029935110547923','高总的建设银行2',18453
 insert into account values ('3084855013556811791','高总的建设银行3',2963101.24);
 insert into account values ('2200190872099969197','陈经理的工商银行2',1472104.63);
 insert into account values ('8642988550342275003','高总的工商银行3',5229075.45);
-insert into commodity_category (id, name) values (1,'日本灯');
-insert into commodity_category (id, name) values (2,'美国灯');
-insert into commodity_category (id, name) values (3,'中国灯');
-insert into commodity_category (id, name) values (4,'阿拉伯灯');
+insert into commodity_category (id, name, upper_category_id) values (1,'日本灯', -1);
+insert into commodity_category (id, name, upper_category_id) values (2,'美国灯', -1);
+insert into commodity_category (id, name, upper_category_id) values (3,'中国灯', -1);
+insert into commodity_category (id, name, upper_category_id) values (4,'阿拉伯灯', -1);
 insert into commodity values ('2-1', '坑人的5W的灯泡', 2, '5W', 671, 10.00, 10.00, 10.00, 10.00, '第一批', '001', NOW());
 insert into commodity values ('4-1', '坑人的5W的LED灯泡', 4, '5W', 414, 9.00, 9.00, 9.00, 9.00, '第一批', '001', NOW());
 insert into commodity values ('3-1', '坑人的5W的节能灯', 3, '5W', 374, 23.00, 23.00, 23.00, 23.00, '第一批', '001', NOW());

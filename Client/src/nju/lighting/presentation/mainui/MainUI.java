@@ -68,10 +68,15 @@ public class MainUI {
     public Pane up;
     public VBox left;
     public Node[] center;
+    Stage stage =new Stage();
+
+    public void setStage(){
+        Client.setPrimaryStage(stage);;
+    }
 
     public MainUI(Identity identity) throws IOException{
-        Stage stage =new Stage();
-        Client.setPrimaryStage(stage);
+
+
 
         FXMLLoader loader=new FXMLLoader(getClass().getResource(hashMap.get(identity)));
 

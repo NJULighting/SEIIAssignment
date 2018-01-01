@@ -1,5 +1,7 @@
 package nju.lighting.presentation.mainui;
 
+import com.jfoenix.controls.JFXSpinner;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Effect;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
@@ -29,6 +33,7 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/11/27.
  * Description
+ *
  * @author 陈俊宇
  */
 public class LoginController extends CommonFather {
@@ -45,16 +50,10 @@ public class LoginController extends CommonFather {
     private PasswordField password;
 
     @FXML
-    private Button closeBtn;
+    private Button closeBtn, loginBtn, miniBtn;
 
     @FXML
-    private Button loginBtn;
-
-    @FXML
-    private Button miniBtn;
-
-    @FXML
-    private Pane dialogPane;
+    private Pane dialogPane, mainPane;
 
     @FXML
     private Button closeDialogBtn;
@@ -62,9 +61,17 @@ public class LoginController extends CommonFather {
     @FXML
     private Label dialogLabel;
 
-    UserBLService userBLService= UserBLServiceFactory.getUserBLService();
+    @FXML
+    private JFXSpinner spinner;
+
+
+    private UserBLService userBLService = UserBLServiceFactory.getUserBLService();
+
+
+
     @FXML
     public void login() throws IOException {
+
 
         TwoTuple<UserVO, LoginReturnState> result = userBLService.login(account.getText(), password.getText());
 
@@ -94,7 +101,25 @@ public class LoginController extends CommonFather {
                 System.out.println("Succ");
             {
                 Client.setUserVO(result.t);
-                new MainUI(result.t.getIdentity());
+                mainPane.setEffect(new GaussianBlur());
+                spinner.setVisible(true);
+                MainUI mainUI = new MainUI(result.t.getIdentity());
+                System.out.println("start");
+                new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        Platform.runLater(() -> {
+                            System.out.println("1");
+                            mainUI.setStage();
+                        });
+                    }
+                }.start();
+
             }
 
             break;

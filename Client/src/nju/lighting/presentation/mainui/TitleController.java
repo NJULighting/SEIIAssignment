@@ -35,9 +35,9 @@ public class TitleController extends CommonFather{
 
     public void exit() throws IOException{
         Stage stage =new Stage();
-        Client.setPrimaryStage(stage);
         AnchorPane root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         stage.setScene(new Scene(root));
+        Client.setPrimaryStage(stage);
     }
 
     @Override

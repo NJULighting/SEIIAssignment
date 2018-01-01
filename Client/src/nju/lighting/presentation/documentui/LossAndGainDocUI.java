@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import nju.lighting.blservice.documentblservice.DocBLService;
@@ -62,7 +63,7 @@ public class LossAndGainDocUI implements Initializable {
     JFXButton commitBtn;
 
     @FXML
-    JFXTextField comments;
+    TextArea comments;
 
 
 

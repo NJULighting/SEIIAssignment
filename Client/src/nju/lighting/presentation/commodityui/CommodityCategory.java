@@ -78,7 +78,7 @@ public class CommodityCategory implements Initializable {
 
     @FXML
     void refresh() {
-        root.setValue(new CommodityCategoryItem(categoriesTreeVO.getRoot()));
+        root.setValue(new CommodityCategoryItem(blService.getCommodityCategoriesTreeVO().getRoot()));
         root.setExpanded(true);
         root.getChildren().clear();
         buildTree(root, categoriesTreeVO.getRoot());
@@ -122,6 +122,10 @@ public class CommodityCategory implements Initializable {
         root = new TreeItem();
         refresh();
         commodityTreeTableView.setRoot(root);
+        searchText.textProperty().addListener(c->{
+            if (searchText.getText().length()==0)
+                refresh();
+        });
 
 
         name.setCellValueFactory(cellData ->

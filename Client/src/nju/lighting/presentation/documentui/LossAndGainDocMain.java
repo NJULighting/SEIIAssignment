@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import nju.lighting.presentation.mainui.Upper;
 
 import java.io.IOException;
@@ -29,6 +30,9 @@ public class LossAndGainDocMain implements Initializable,Upper{
     Pane mainPane;
 
     LossAndGainDocUI controller;
+
+    @FXML
+    StackPane stackPane;
 
 
     public void back(){
@@ -62,5 +66,9 @@ public class LossAndGainDocMain implements Initializable,Upper{
         container.getChildren().add(mainPane);
          controller=loader.getController();
         controller.setMain(this);
+    }
+
+    public StackPane getStackPane() {
+        return stackPane;
     }
 }

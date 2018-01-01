@@ -11,8 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.approvalui.ApprovalUIController">
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.approvalui.ApprovalUIController">
    <children>
       <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0">
          <children>
@@ -69,6 +68,18 @@
                   <Image url="@../../../../images/展开.png" />
                </image>
             </ImageView>
+            <JFXButton fx:id="refreshBtn" layoutX="190.0" layoutY="11.0" prefWidth="100.0" style="-fx-background-color: #5599ff;" text="刷新" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0">
+                     <image>
+                        <Image url="@../../../../images/同意.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
       </Pane>
    </children>

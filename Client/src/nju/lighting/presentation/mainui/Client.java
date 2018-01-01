@@ -5,14 +5,19 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import nju.lighting.bl.userbl.UserBLServie_Stub;
@@ -75,8 +80,12 @@ public class Client extends Application {
         this.primaryStage=primaryStage;
 
         try{
-            root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-            primaryStage.setScene(new Scene(root));
+            AnchorPane node = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            node.setBackground(new Background(null,new BackgroundImage(
+                    new Image("/images/蓝色灯泡.jpg"),null,null,null,null)));
+
+            //root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            primaryStage.setScene(new Scene(node));
             primaryStage.setResizable(false);
             primaryStage.initStyle(StageStyle.TRANSPARENT);
             primaryStage.show();

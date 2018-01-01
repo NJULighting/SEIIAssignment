@@ -109,7 +109,7 @@ public class LoginController extends CommonFather {
                     @Override
                     public void run() {
                         try {
-                            Thread.sleep(2000);
+                            Thread.sleep(1000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -119,7 +119,7 @@ public class LoginController extends CommonFather {
                         });
                     }
                 }.start();
-
+                mainUI.setStage();
             }
 
             break;

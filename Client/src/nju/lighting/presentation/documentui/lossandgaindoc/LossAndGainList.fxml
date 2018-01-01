@@ -13,10 +13,10 @@
    <children>
       <TableView fx:id="tableView" editable="true" stylesheets="@../../custom.css">
          <columns>
-            <TableColumn fx:id="name" prefWidth="120.0" text="   商品名称" />
-            <TableColumn fx:id="id" prefWidth="90.0" text="编号" />
-            <TableColumn fx:id="count" editable="true" prefWidth="90.0" text="数量" />
-            <TableColumn fx:id="repCount" prefWidth="90.0" text="当前库存" />
+            <TableColumn fx:id="name" prefWidth="200.0" text="商品名称" />
+            <TableColumn fx:id="id" prefWidth="120.0" text="编号" />
+            <TableColumn fx:id="count" editable="true" prefWidth="100.0" text="数量" />
+            <TableColumn fx:id="repCount" prefWidth="100.0" text="当前库存" />
             <TableColumn fx:id="type" prefWidth="160.0" text="报损/报溢" />
          </columns>
       </TableView>

@@ -138,16 +138,17 @@ root {
 }
 
 .table-row-cell:hover {
-    -fx-background-color: #c1dcff;
+    -fx-background-color: lightgrey;
 }
 
 .table-row-cell:selected {
 
-    -fx-background-color: #c1dcff;
+    -fx-background-color: lightgrey;
 }
 
 .table-row-cell:selected .text {
     -fx-font-weight: bold;
+    -fx-fill: black;
 
 }
 
@@ -589,6 +590,7 @@ root {
 
  */
 
+
 .tree-table-view:focused .tree-table-row-cell:selected {
 
     -fx-background-color: lightgray;
@@ -599,9 +601,9 @@ root {
 
 }
 
-.tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell {
+.tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell .text{
 
-    -fx-text-fill: BLACK;
+    -fx-fill: BLACK;
 
 }
 
@@ -709,6 +711,10 @@ root {
 
     -fx-pref-height: 50px;
     -fx-background-color: transparent;
+}
+
+.tree-table-row-cell:hover {
+    -fx-background-color: lightgrey;
 }
 
 /*

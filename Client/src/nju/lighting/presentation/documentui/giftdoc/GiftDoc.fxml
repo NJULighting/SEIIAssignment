@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.giftdoc.GiftDocController">
    <children>
       <ScrollPane fx:id="scrollpaneMain" hbarPolicy="NEVER" hmax="0.0" prefHeight="560.0" prefWidth="700.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0">
+          <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="557.0">
                <children>
                   <VBox fx:id="vbox" alignment="TOP_CENTER" prefWidth="700.0" stylesheets="@../../custom.css">
                      <children>
@@ -41,7 +52,7 @@
                               <Insets bottom="10.0" top="20.0" />
                            </VBox.margin>
                         </HBox>
-                        <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" hmax="0.0" vbarPolicy="NEVER" vmax="0.0">
+                        <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" hmax="0.0" prefHeight="292.0" vbarPolicy="NEVER" vmax="0.0">
                           <content>
                             <AnchorPane fx:id="tablePane" minHeight="0.0" minWidth="0.0" />
                           </content>

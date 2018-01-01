@@ -18,6 +18,7 @@ import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.vo.viewtables.BusinessConditionTableVO;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -116,8 +117,8 @@ public class BusinessConditionTable implements Initializable {
      * 将传入的起始时间设置为起始时间，并以当前时间为截止时间，设置到datePicker中,并进行搜索，刷新界面
      * @param start Date类型的起始时间
      */
-    private void setTime(Date start) {
-        startDate.setValue(DateHelper.dateToLocalDate(start));
+    private void setTime(LocalDate start) {
+        startDate.setValue(start);
         endDate.setValue(DateHelper.dateToLocalDate(new Date()));
         refresh();
     }
@@ -125,18 +126,14 @@ public class BusinessConditionTable implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
-        //  businessConditionTable = blService.findRevenueAndExpenditure(DateHelper.weekAgo(), new Date());
-        startDate.setValue(DateHelper.dateToLocalDate(DateHelper.weekAgo()));
-        endDate.setValue(DateHelper.dateToLocalDate(new Date()));
-
+        DateHelper.setDefaultTime(startDate,DateHelper.weekAgo());
+        DateHelper.setDefaultTime(endDate,DateHelper.dateToLocalDate(new Date()));
         refresh();
-
 
         revenuePieChart.setData(revenueData);
         expenditurePieChart.setData(expenditureData);
         setPieChart(revenuePieChart, Side.LEFT);
-        setPieChart(expenditurePieChart, Side.RIGHT);
+        setPieChart(expenditurePieChart, Side.LEFT);
 
 
         salesRevenueText.textProperty().bind(salesRevenue.asString());
@@ -153,7 +150,7 @@ public class BusinessConditionTable implements Initializable {
         expenditureText.textProperty().bind(expenditure.asString());
         salesRevenueOffText.textProperty().bind(salesRevenueOff.asString());
 
-        todayBtn.setOnAction(e -> setTime(new Date()));
+        todayBtn.setOnAction(e -> setTime(DateHelper.dateToLocalDate(new Date())));
         weekBtn.setOnAction(e -> setTime(DateHelper.weekAgo()));
         monthBtn.setOnAction(e -> setTime(DateHelper.monthAgo()));
         threeMonthBtn.setOnAction(e->setTime(DateHelper.threeMonthsAgo()));

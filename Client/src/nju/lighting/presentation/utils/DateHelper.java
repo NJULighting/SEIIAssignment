@@ -1,5 +1,7 @@
 package nju.lighting.presentation.utils;
 
+import com.jfoenix.controls.JFXDatePicker;
+
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -16,6 +18,19 @@ import java.util.Locale;
  * @author 陈俊宇
  */
 public class DateHelper {
+
+    /**
+     * 查表是在给定的时间区间内查询，所以时间区间需要有默认值
+     * @param datePicker 要设置的datePicker
+     * @param date  默认时间
+     */
+    public static void setDefaultTime(JFXDatePicker datePicker, LocalDate date){
+        datePicker.setValue(date);
+        datePicker.valueProperty().addListener(c-> {
+            if (datePicker.getValue()==null)
+                datePicker.setValue(date);
+        });
+    }
 
     public static Date localDateToDate(LocalDate localDate) {
         ZoneId zone = ZoneId.systemDefault();
@@ -38,28 +53,28 @@ public class DateHelper {
         return dateFormat.format(date).toString();
     }
 
-    public static Date weekAgo() {
-        return findDateByDay(-7);
+    public static LocalDate weekAgo() {
+        return dateToLocalDate(findDateByDay(-7));
     }
 
-    public static Date halfMonthAgo() {
-        return findDateByDay(-15);
+    public static LocalDate halfMonthAgo() {
+        return dateToLocalDate(findDateByDay(-15));
     }
 
-    public static Date monthAgo() {
-        return findDateByMonth(-1);
+    public static LocalDate monthAgo() {
+        return dateToLocalDate(findDateByMonth(-1));
     }
 
-    public static Date threeMonthsAgo() {
-        return findDateByMonth(-3);
+    public static LocalDate threeMonthsAgo() {
+        return dateToLocalDate(findDateByMonth(-3));
     }
 
-    public static Date halfYearAgo() {
-        return findDateByMonth(-6);
+    public static LocalDate halfYearAgo() {
+        return dateToLocalDate(findDateByMonth(-6));
     }
 
-    public static Date yearAgo() {
-        return findDateByMonth(-12);
+    public static LocalDate yearAgo() {
+        return dateToLocalDate(findDateByMonth(-12));
     }
 
     private static Date findDateByDay(int delay) {

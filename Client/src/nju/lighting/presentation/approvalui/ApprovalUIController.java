@@ -4,13 +4,17 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -18,11 +22,15 @@ import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import nju.lighting.bl.approvalbl.ApprovalBLService_Stub;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
+import nju.lighting.presentation.DialogUI.DialogHelper;
+import nju.lighting.presentation.DialogUI.ValidateEventHandle;
 import nju.lighting.presentation.documentui.Doc;
 import nju.lighting.presentation.factory.ApprovalBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
+import shared.ResultMessage;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,8 +48,7 @@ public class ApprovalUIController implements Initializable {
     List<DocVO> docs;
     ObservableList<DocVO> selectedDocList;
     String comment;
-    boolean cancel;
-    Stage dialog;
+
 
     @FXML
     JFXListView<DocVO> docList;
@@ -49,23 +56,15 @@ public class ApprovalUIController implements Initializable {
     @FXML
     Pane detail;
 
-    @FXML
-    Text detailNum;
-
-    @FXML
-    Label test;
-
-    @FXML
-    JFXButton massApprove;
-
-    @FXML
-    JFXButton closeMassApprove;
 
     @FXML
     JFXButton approveBtn;
 
     @FXML
     JFXButton rejectBtn;
+
+    @FXML
+    StackPane stackPane;
 
 
     @FXML
@@ -83,25 +82,28 @@ public class ApprovalUIController implements Initializable {
 
     @FXML
     void reject() throws IOException {
-        dialog = new Stage();
-        DocVO currentDoc =  selectedDocList.get(0);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("comments.fxml"));
-        dialog.setScene(new Scene(loader.load()));
-        CommentsController controller = loader.getController();
-        controller.setApprovalUIController(this);
-        controller.setDialog(dialog);
-        dialog.initStyle(StageStyle.TRANSPARENT);
-        //在对话框关闭之前无法返回主界面
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.showAndWait();
+        Node node=loader.load();
+        CommentsController controller=loader.getController();
 
-        if (cancel) {
-
-        } else {
-            approvalBLService.reject(new HistoryDocVO(Client.getUserVO(), comment, currentDoc));
-            refresh();
-        }
+        ValidateEventHandle rejectHandler=new ValidateEventHandle() {
+            @Override
+            public boolean validate() {
+                ResultMessage resultMessage=approvalBLService.reject(new HistoryDocVO(
+                        Client.getUserVO(),
+                        controller.getComments(),
+                        selectedDocList.get(0)
+                ));
+                DialogHelper.dialog(resultMessage,stackPane);
+                if (resultMessage==ResultMessage.SUCCESS){
+                    refresh();
+                    return true;
+            }else
+                return false;
+        };
+        };
+        DialogHelper.addDialog(node,stackPane,rejectHandler);
     }
 
 
@@ -155,9 +157,6 @@ public class ApprovalUIController implements Initializable {
 
 
 
-    public void setCancel(boolean cancel) {
-        this.cancel = cancel;
-    }
 
     public void setComment(String comment) {
         this.comment = comment;

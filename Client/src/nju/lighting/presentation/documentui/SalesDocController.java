@@ -111,7 +111,7 @@ public class SalesDocController implements Initializable, Upper {
                 commodityList.stream()
                         .map(x -> x.getId())
                         .collect(Collectors.toList()),
-                commodityListController.calculateTotal()
+                commodityListController.getTotal().doubleValue()
         ));
 
     }
@@ -190,15 +190,13 @@ public class SalesDocController implements Initializable, Upper {
 
         commodityListController = loader.getController();
         commodityListController.setEditable();
+        commodityListController.setMaxSize(480,700);
 
-        docItemList = commodityListController.giftObservableList;
+        docItemList = commodityListController.getGiftObservableList();
 
-        customer.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (newValue != null && newValue != "")
-                    promotionBtn.setDisable(false);
-            }
+        customer.textProperty().addListener(c-> {
+            if (customer.getText() != "")
+                promotionBtn.setDisable(false);
         });
 
         commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
@@ -241,7 +239,7 @@ public class SalesDocController implements Initializable, Upper {
         });
 
         //监听，如果价总价变化 account跟着变化
-        accountBeforeDis.textProperty().bind(commodityListController.totalLabel.textProperty());
+        accountBeforeDis.textProperty().bind(commodityListController.getTotal().asString());
 
         ChangeListener changeListener = new ChangeListener() {
             @Override
@@ -263,17 +261,14 @@ public class SalesDocController implements Initializable, Upper {
         voucher.textProperty().addListener(changeListener);
         //promotionOff.textProperty().addListener(changeListener);
 
-        accountBeforeDis.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                clearPromotion();
-                account.setText("" + (
-                        Double.parseDouble(accountBeforeDis.textProperty().get())
-                                - Double.parseDouble(discount.textProperty().get())
-                                - Double.parseDouble(voucher.textProperty().get())
-                        // - Double.parseDouble(promotionOff.textProperty().get())
-                ));
-            }
+        accountBeforeDis.textProperty().addListener(c->{
+            clearPromotion();
+            account.setText("" + (
+                    Double.parseDouble(accountBeforeDis.textProperty().get())
+                            - Double.parseDouble(discount.textProperty().get())
+                            - Double.parseDouble(voucher.textProperty().get())
+                    // - Double.parseDouble(promotionOff.textProperty().get())
+            ));
         });
 
 

@@ -181,4 +181,5 @@ public class CommodityCategory implements Initializable {
                 .map(x -> ((CommodityItemVO) x.getValue().getItem()).toBasicCommodityItem())
                 .collect(Collectors.toList());
     }
+    public void setSingle(){commodityTreeTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);}
 }

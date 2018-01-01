@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="680.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.AccountManagerController">
+<VBox prefHeight="680.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.AccountManagerController">
          <children>
             <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="首页">
                <graphic>
@@ -70,7 +74,7 @@
             </ImageView>
          </graphic>
             </JFXButton>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="期初建账">
+            <JFXButton fx:id="initaccountBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="期初建账">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
@@ -79,7 +83,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="日志">
+            <JFXButton fx:id="logBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="日志">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>

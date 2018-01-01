@@ -2,6 +2,7 @@ package nju.lighting.presentation.documentui;
 
 
 import com.jfoenix.controls.JFXSlider;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -31,15 +32,13 @@ public class CommodityList implements Initializable {
 
 
     //public static List<GiftItemVO> giftsVO;
-    private double total = 0;
-    ObservableList<CommodityItem> giftObservableList;
-    Upper upper;
+    private SimpleDoubleProperty total = new SimpleDoubleProperty();
+    private ObservableList<CommodityItem> giftObservableList;
+    private Upper upper;
 
     @FXML
     public TableView giftTableView;
 
-    @FXML
-    public Label totalLabel;
 
     @FXML
     public TableColumn<CommodityItem, String> commodityName;
@@ -48,7 +47,7 @@ public class CommodityList implements Initializable {
     TableColumn<CommodityItem, Boolean> deleteBtn;
 
     @FXML
-    public TableColumn<CommodityItem,Integer > count;
+    public TableColumn<CommodityItem, Integer> count;
 
     @FXML
     public TableColumn<CommodityItem, String> id;
@@ -60,10 +59,10 @@ public class CommodityList implements Initializable {
     public TableColumn<CommodityItem, Double> subtotal;
 
     @FXML
-    public TableColumn<CommodityItem,String> modelNum;
+    public TableColumn<CommodityItem, String> modelNum;
 
     @FXML
-    public TableColumn<CommodityItem,String> comments;
+    public TableColumn<CommodityItem, String> comments;
 
 
     public void refresh() {
@@ -73,13 +72,13 @@ public class CommodityList implements Initializable {
 //                .collect(Collectors.toList()));
     }
 
-    double calculateTotal() {
-        total=giftObservableList.stream()
-                .filter(x->!x.isGift())
-                .mapToDouble(x -> (( x).subtotal.getValue()))
-                .sum();
+    public void calculateTotal() {
+        total.set(giftObservableList.stream()
+                .filter(x -> !x.isGift())
+                .mapToDouble(x -> ((x).subtotal.getValue()))
+                .sum());
         //totalLabel.setText(total+ "");
-        return total;
+
     }
 
     @Override
@@ -87,20 +86,15 @@ public class CommodityList implements Initializable {
 
 
         giftObservableList = FXCollections.observableArrayList();
-/*
-        giftObservableList.addListener(new ListChangeListener() {
-            @Override
-            public void onChanged(Change c) {
-                if (giftObservableList.size() != 0)
-                    calculateTotal();
-                else{
-                    totalLabel.setText("0");
-                    total=0;
-                }
 
+        giftObservableList.addListener((ListChangeListener<? super CommodityItem>) c -> {
+            if (giftObservableList.size() != 0)
+                calculateTotal();
+            else {
+                total.set(0);
             }
         });
-*/
+
 
         commodityName.setCellValueFactory(cellData ->
                 cellData.getValue().nameProperty());
@@ -109,30 +103,28 @@ public class CommodityList implements Initializable {
         subtotal.setCellValueFactory(cellData ->
                 cellData.getValue().subtotalProperty().asObject());
         price.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
-        deleteBtn.setCellValueFactory(cellData ->
-                cellData.getValue().giftProperty());
+//        deleteBtn.setCellValueFactory(cellData ->
+//                cellData.getValue().giftProperty());
         modelNum.setCellValueFactory(cellData ->
-        cellData.getValue().modelNumProperty());
-        comments.setCellValueFactory(cellData->
-        cellData.getValue().commentsProperty());
-        id.setCellValueFactory(cellData->
-        cellData.getValue().idProperty());
-
-
+                cellData.getValue().modelNumProperty());
+        comments.setCellValueFactory(cellData ->
+                cellData.getValue().commentsProperty());
+        id.setCellValueFactory(cellData ->
+                cellData.getValue().idProperty());
 
 
         giftTableView.setItems(giftObservableList);
 
 
         TableViewHelper.commonSet(giftTableView);
-        TableViewHelper.setHeight(giftTableView,1.3);
+        TableViewHelper.setHeight(giftTableView, 1.2);
 
         calculateTotal();
 
 
     }
 
-    public void setEditable(){
+    public void setEditable() {
         Callback<TableColumn<CommodityItem, Boolean>,
                 TableCell<CommodityItem, Boolean>> cellFactory
                 = (TableColumn<CommodityItem, Boolean> p) -> new BtnCell();
@@ -142,7 +134,7 @@ public class CommodityList implements Initializable {
 
         Callback<TableColumn<CommodityItem, Integer>,
                 TableCell<CommodityItem, Integer>> cellFactoryForCount
-                = (p) -> ( new EditingCell<CommodityItem, Integer>("int"));
+                = (p) -> (new EditingCell<CommodityItem, Integer>("int"));
 
         Callback<TableColumn<CommodityItem, Double>,
                 TableCell<CommodityItem, Double>> cellFactoryForPrice
@@ -160,7 +152,7 @@ public class CommodityList implements Initializable {
                 (TableColumn.CellEditEvent<CommodityItem, Integer> t) -> {
                     CommodityItem selected = t.getTableView().getItems().get(
                             t.getTablePosition().getRow());
-                    selected.setCount( t.getNewValue());
+                    selected.setCount(t.getNewValue());
 
                     calculateTotal();
 
@@ -178,7 +170,7 @@ public class CommodityList implements Initializable {
 
                 });
 
-        comments.setOnEditCommit( (TableColumn.CellEditEvent<CommodityItem, String> t) -> {
+        comments.setOnEditCommit((TableColumn.CellEditEvent<CommodityItem, String> t) -> {
             CommodityItem selected = t.getTableView().getItems().get(
                     t.getTablePosition().getRow());
             selected.setComments(t.getNewValue());
@@ -186,21 +178,36 @@ public class CommodityList implements Initializable {
         });
     }
 
-    public void setGift(){
-        giftTableView.getColumns().remove(comments);
+    public void setGift() {
+        giftTableView.getColumns().removeAll(comments, deleteBtn);
         price.setEditable(false);
     }
-    public void setGiftAndEditable(){
+
+    public void setGiftAndEditable() {
         setEditable();
         setGift();
-        totalLabel.setVisible(false);
+
+    }
+
+    /**
+     * 设置商品列表的最大高度以及宽度
+     *
+     * @param maxHeight 最大高度
+     * @param maxWidth  最大宽度
+     */
+    public void setMaxSize(double maxHeight, double maxWidth) {
+        giftTableView.setMaxSize(maxWidth, maxHeight);
     }
 
     public ObservableList<CommodityItem> getGiftObservableList() {
         return giftObservableList;
     }
 
-    public void setSilder(JFXSlider silder){
-        TableViewHelper.setSliderMarch(silder,giftTableView);
+    public void setSilder(JFXSlider silder) {
+        TableViewHelper.setSliderMarch(silder, giftTableView);
+    }
+
+    public SimpleDoubleProperty getTotal() {
+        return total;
     }
 }

@@ -1,4 +1,4 @@
-package nju.lighting.presentation.documentui.giftdoc;
+package nju.lighting.presentation.documentui.lossandgaindoc;
 
 import com.jfoenix.controls.JFXSlider;
 import javafx.beans.value.ChangeListener;
@@ -20,22 +20,25 @@ import nju.lighting.presentation.documentui.Doc;
 import nju.lighting.presentation.factory.CustomerBLServiceFactory;
 import nju.lighting.presentation.factory.UserBLServiceFactory;
 import nju.lighting.presentation.utils.ScrollPaneHelper;
-import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
+import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocVO;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class GiftDocController implements Initializable {
+public class LossAndGainDocController implements Initializable {
 
     CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
     UserBLService userBLService = UserBLServiceFactory.getUserBLService();
-    GiftDocVO giftDocVO;
+    LossAndGainDocVO lossAndGainDocVO;
 
     @FXML
     AnchorPane tablePane;
+
+    @FXML
+    HBox tableContainer;
 
     @FXML
     private AnchorPane anchorPane;
@@ -47,41 +50,45 @@ public class GiftDocController implements Initializable {
     private JFXSlider slider;
 
     @FXML
+    private Label commentsLabel;
+
+    @FXML
     private ScrollPane scrollpane;
 
     @FXML
     private ScrollPane scrollpaneMain;
 
 
-    public GiftDocController(){
-        giftDocVO=(GiftDocVO) Doc.doc;
+    public LossAndGainDocController(){
+        lossAndGainDocVO=(LossAndGainDocVO) Doc.doc;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         double prePosition = slider.getLayoutY();
 
-        CommodityList listController;
+        LossAndGainList listController;
 
-        customer.setText(customerBLService.findCustomerByID(giftDocVO.getCustomerID()).getName());
-        id.setText(giftDocVO.getDocId());
-        if(giftDocVO.getTime()!=null){
-            date.setText(giftDocVO.getTime().toString());
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("LossAndGainList.fxml"));
+
+        commentsLabel.setText(lossAndGainDocVO.getComment());
+        try {
+            tableContainer.getChildren().add(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        if(userBLService.getUser(giftDocVO.getCreatorId())!=null){
-            date.setText(giftDocVO.getTime().toString());
-            maker.setText(userBLService.getUser(giftDocVO.getCreatorId()).getUsername());
-        }
+        listController=loader.getController();
+        listController.getData().setAll(lossAndGainDocVO.getItems().stream()
+        .map(x-> new LossAndGainItem(x))
+        .collect(Collectors.toList()));
 
-        account.setText(String.valueOf(giftDocVO.getTotal()));
-
+/*
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
             tablePane.getChildren().add(loader.load());
             listController=loader.getController();
-            listController.setGift();
-            listController.getGiftObservableList().addAll(
-                    giftDocVO.getGifts().stream()
+            listController.getData().addAll(
+                    lossAndGainDocVO.getItems().stream()
                             .map(x-> new CommodityItem(x))
                             .collect(Collectors.toList())
             );
@@ -89,17 +96,14 @@ public class GiftDocController implements Initializable {
             //调整滑动面板高度以适应总高度
             ScrollPaneHelper.marchHeight(listController.giftTableView,scrollpane,anchorPane);
             //滑块控制表格的左右移动
-            TableViewHelper.setSliderMarch(slider,listController.giftTableView);
-
-
-            System.out.println(listController.giftTableView.getPrefWidth());
+            listController.setSilder(slider);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+*/
         //滑块不离开界面
-        ScrollPaneHelper.sliderFload(slider,scrollpaneMain,anchorPane,prePosition,557);
+        //ScrollPaneHelper.sliderFload(slider,scrollpaneMain,anchorPane,prePosition,557);
 
 
     }

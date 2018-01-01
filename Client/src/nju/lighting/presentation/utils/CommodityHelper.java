@@ -1,5 +1,6 @@
 package nju.lighting.presentation.utils;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -42,16 +43,21 @@ public class CommodityHelper {
     }
 
     public static void chooseCommodity(Upper upper, ObservableList<BasicCommodityItemVO> commodities){
+        getPicker(upper).init(upper, commodities);
+    }
 
+    public static void setCommodity(Upper upper, SimpleObjectProperty<BasicCommodityItemVO> commodity){
+        getPicker(upper).init(upper, commodity);
+    }
+
+    private static CommodityPicker getPicker(Upper upper){
         FXMLLoader loader=new FXMLLoader(CommodityHelper.class.getResource("../commodityui/CommodityPicker.fxml"));
-
         try {
-
             upper.setChildren(loader.load(),">选择商品");
-            CommodityPicker controller=loader.getController();
-            controller.init(upper,commodities);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return loader.getController();
     }
+
 }

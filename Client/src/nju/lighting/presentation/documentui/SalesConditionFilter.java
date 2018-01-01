@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
  * @author 陈俊宇
  */
 public class SalesConditionFilter implements Initializable{
-    private SalesConditionTable salesConditionTable;
+    private SalesDetailTable salesConditionTable;
 
     @FXML
     JFXButton okBtn;
@@ -29,7 +29,7 @@ public class SalesConditionFilter implements Initializable{
         burgTask.play();
     }
 
-    public void setSalesConditionTable(SalesConditionTable salesConditionTable) {
+    public void setSalesConditionTable(SalesDetailTable salesConditionTable) {
         this.salesConditionTable = salesConditionTable;
     }
 

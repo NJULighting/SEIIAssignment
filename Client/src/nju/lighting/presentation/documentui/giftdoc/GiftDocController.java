@@ -77,6 +77,7 @@ public class GiftDocController implements Initializable {
             FXMLLoader loader=new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
             tablePane.getChildren().add(loader.load());
             listController=loader.getController();
+            listController.setGift();
             listController.getGiftObservableList().addAll(
                     giftDocVO.getGifts().stream()
                             .map(x-> new CommodityItem(x))

@@ -1,5 +1,7 @@
 package nju.lighting.presentation.commodityui;
 
+import com.jfoenix.controls.JFXButton;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,22 +23,43 @@ import java.util.List;
  */
 public class CommodityPicker {
 
-    List<BasicCommodityItemVO> commodities = new ArrayList<>();
     CommodityCategory category;
 
-
-    ObservableList<BasicCommodityItemVO> commodityList;
-    CustomerType type;
     Upper upper;
 
 
     @FXML
     VBox container;
 
+    @FXML
+    JFXButton okBtn;
+
+
 
     public void init(Upper upper, ObservableList<BasicCommodityItemVO> commodityList) {
+        init(upper);
+        okBtn.setOnAction(e->{
+            if (category.getSelectedCommodities().size()!=0){
+                commodityList.addAll(category.getSelectedCommodities());
+                upper.back();
+            }
+        });
+    }
+
+    public void init(Upper upper, SimpleObjectProperty<BasicCommodityItemVO> commodity){
+        init(upper);
+        category.setSingle();
+        okBtn.setOnAction(e->{
+            if (category.getSelectedCommodities().size()!=0){
+                commodity.set(category.getSelectedCommodities().get(0));
+                upper.back();
+            }
+        });
+    }
+
+    private void init(Upper upper){
         this.upper = upper;
-        this.commodityList = commodityList;
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CommodityCategory.fxml"));
         try {
             container.getChildren().add(loader.load());
@@ -48,23 +71,5 @@ public class CommodityPicker {
 
 
 
-    public void addCommodity(List<BasicCommodityItemVO> commodity) {
-        commodityList.addAll(commodity);
-    }
-
-    @FXML
-    void ok() {
-
-        addCommodity(category.getSelectedCommodities());
-        upper.back();
-
-    }
-
-
-
-
-    public List<BasicCommodityItemVO> getCommodities() {
-        return commodities;
-    }
 
 }

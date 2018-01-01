@@ -109,8 +109,8 @@ public class CommodityList implements Initializable {
         subtotal.setCellValueFactory(cellData ->
                 cellData.getValue().subtotalProperty().asObject());
         price.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
-        deleteBtn.setCellValueFactory(cellData ->
-                cellData.getValue().giftProperty());
+//        deleteBtn.setCellValueFactory(cellData ->
+//                cellData.getValue().giftProperty());
         modelNum.setCellValueFactory(cellData ->
         cellData.getValue().modelNumProperty());
         comments.setCellValueFactory(cellData->
@@ -187,7 +187,7 @@ public class CommodityList implements Initializable {
     }
 
     public void setGift(){
-        giftTableView.getColumns().remove(comments);
+        giftTableView.getColumns().removeAll(comments,deleteBtn);
         price.setEditable(false);
     }
     public void setGiftAndEditable(){

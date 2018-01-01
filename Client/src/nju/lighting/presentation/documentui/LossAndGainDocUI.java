@@ -61,6 +61,9 @@ public class LossAndGainDocUI implements Initializable {
     @FXML
     JFXButton commitBtn;
 
+    @FXML
+    JFXTextField comments;
+
 
 
 
@@ -81,7 +84,7 @@ public class LossAndGainDocUI implements Initializable {
                     docItemList.stream()
                             .map(x -> x.toLossAndGainDocItemVO())
                             .collect(Collectors.toList()),
-                    ""));
+                    comments.getText()));
 
             DialogHelper.dialog(res.t,main.getStackPane());
         });

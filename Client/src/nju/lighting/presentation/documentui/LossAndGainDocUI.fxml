@@ -34,7 +34,7 @@
             <HBox>
                <children>
                   <Label prefWidth="60.0" text="备注" />
-                  <TextArea prefHeight="200.0" prefWidth="220.0" text="无" />
+                  <TextArea fx:id="comments" prefHeight="200.0" prefWidth="220.0" text="无" />
                </children>
             </HBox>
          </children>

@@ -714,8 +714,8 @@ root {
     -fx-background-color: transparent;
 }
 
-.tree-table-row-cell:hover {
-    -fx-background-color: whitesmoke;
+.tree-table-row-cell:hover .text{
+    -fx-font-weight: bold;
 }
 
 /*

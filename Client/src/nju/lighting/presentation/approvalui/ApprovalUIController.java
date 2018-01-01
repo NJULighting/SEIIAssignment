@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
@@ -52,7 +53,10 @@ public class ApprovalUIController implements Initializable {
 
 
     @FXML
-    JFXButton approveBtn,rejectBtn,refreshBtn;
+    JFXButton approveBtn,rejectBtn;
+
+    @FXML
+    private Button refreshBtn;
 
     @FXML
     StackPane stackPane;

@@ -74,7 +74,7 @@ public class BusinessConditionTable implements Initializable {
         end.setDate(end.getDate() + 1);
         businessConditionTable = blService.findRevenueAndExpenditure(
                 DateHelper.localDateToDate(startDate.getValue()),
-                DateHelper.localDateToDate(endDate.getValue()));
+               end);
 
 
         salesRevenue.set(businessConditionTable.getSalesRevenue());

@@ -13,6 +13,14 @@ public class InitVO {
     private String url;
     private final UserVO userVO;
 
+    // for pre
+    public InitVO( Date time, String url, UserVO userVO) {
+        this.id = 0;
+        this.time = time;
+        this.url = url;
+        this.userVO = userVO;
+    }
+
     public InitVO(int id, Date time, String url, UserVO userVO) {
         this.id = id;
         this.time = time;

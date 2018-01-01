@@ -81,7 +81,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label layoutX="605.0" layoutY="570.0" text="2000.00" textFill="#5599ff">
+            <Label fx:id="totalLabel" layoutX="605.0" layoutY="570.0" text="2000.00" textFill="#5599ff">
                <font>
                   <Font name="Sitka Subheading" size="36.0" />
                </font>

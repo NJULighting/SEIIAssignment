@@ -10,9 +10,9 @@ import nju.lighting.blservice.initblservice.InitializationBLService;
  * @author 陈俊宇
  */
 public class InitializationBLServiceFactory {
-    private InitializationBLService initializationBLService=new InitializationBLService_Stub();
+    private static InitializationBLService initializationBLService=new InitializationBLService_Stub();
 
-    public InitializationBLService getInitializationBLService() {
+    public static InitializationBLService getInitializationBLService() {
         return initializationBLService;
     }
 }

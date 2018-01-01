@@ -139,12 +139,12 @@ root {
 }
 
 .table-row-cell:hover {
-    -fx-background-color: lightgray;
+    -fx-background-color: transparent;
 }
 
 .table-row-cell:selected {
 
-    -fx-background-color: lightgray;
+    -fx-background-color: transparent;
 }
 
 .table-row-cell:selected .text {

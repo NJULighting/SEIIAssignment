@@ -31,6 +31,7 @@ public class CommodityPathParser {
         return Integer.parseInt(tmp[tmp.length - 2]);
     }
 
+    // Suppress instantiation
     private CommodityPathParser() {
         throw new AssertionError();
     }

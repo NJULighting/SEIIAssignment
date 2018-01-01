@@ -113,7 +113,8 @@ public class DocDataControllerTest {
 
     @Test //发送到学生邮箱中
     public void mail() throws Exception {
-        String id = "161250220";
+        System.out.println(System.getProperty("user.dir"));
+        String id = "161250068";
         String header = "我系古天乐";
         String content = "我系渣渣辉";
         docDataController.sentMail(id, header, content);

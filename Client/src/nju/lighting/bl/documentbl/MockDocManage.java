@@ -46,4 +46,5 @@ public class MockDocManage implements DocInfo {
     public void triggerAlertDoc(String commodityId, int count) {
 
     }
+
 }

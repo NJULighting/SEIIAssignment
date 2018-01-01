@@ -2,6 +2,8 @@ package nju.lighting.bl.commoditybl;
 
 import nju.lighting.bl.documentbl.DocInfo;
 import nju.lighting.bl.documentbl.DocInfoImpl;
+import nju.lighting.bl.logbl.Logger;
+import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.utils.CommodityPathParser;
 import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.bl.utils.DataServiceSupplier;
@@ -11,6 +13,7 @@ import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.repository.RepositoryTableItemVO;
+import shared.OPType;
 import shared.ResultMessage;
 
 import javax.naming.NamingException;
@@ -18,6 +21,7 @@ import java.rmi.RemoteException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 /**
@@ -28,9 +32,11 @@ import java.util.function.Function;
 public class CommodityInfoImpl implements CommodityInfo {
 
     private CommodityDataService dataService;
+    private Logger logger;
 
     public CommodityInfoImpl() {
         try {
+            logger = new UserLogger();
             dataService = DataFactory.getDataBase(CommodityDataService.class);
         } catch (NamingException e) {
             e.printStackTrace();
@@ -41,7 +47,7 @@ public class CommodityInfoImpl implements CommodityInfo {
     public BasicCommodityItemVO getBasicCommodityItemVO(String id) {
         return DataServiceFunction.findByToEntity(id, dataService::findById,
                 itemPO -> new BasicCommodityItemVO(id, itemPO.getName(), itemPO.getRepCount(),
-                        itemPO.getRecentInPrice(), itemPO.getRecentSellPrice()));
+                        itemPO.getRecentInPrice(), itemPO.getRecentSellPrice(), itemPO.getModelNumber()));
     }
 
     @Override
@@ -139,6 +145,25 @@ public class CommodityInfoImpl implements CommodityInfo {
     }
 
     @Override
+    public void updateCommodityRecentSellPrice(String id, double price) {
+        ResultMessage res = updateRecentPrice(id, price, CommodityItemPO::getRecentSellPrice,
+                CommodityItemPO::setRecentSellPrice);
+
+        if (res.success())
+            logger.add(OPType.MODIFY, "修改商品" + id + "的最近售价为" + price);
+
+    }
+
+    @Override
+    public void updateCommodityRecentInPrice(String id, double price) {
+        ResultMessage res = updateRecentPrice(id, price, CommodityItemPO::getRecentInPrice,
+                CommodityItemPO::setRecentInPrice);
+
+        if (res.success())
+            logger.add(OPType.MODIFY, "商品" + id + "的最近进价更新为");
+    }
+
+    @Override
     public boolean reduceCommodityItem(String id, int count) {
         return false;
     }
@@ -153,4 +178,20 @@ public class CommodityInfoImpl implements CommodityInfo {
         }
         return false;
     }
+
+    private ResultMessage updateRecentPrice(String id, double price, Function<CommodityItemPO, Double> getPrice,
+                                            BiConsumer<CommodityItemPO, Double> setPrice) {
+        try {
+            CommodityItemPO po = dataService.findById(id);
+            if (price == getPrice.apply(po))
+                return ResultMessage.FAILURE;
+
+            setPrice.accept(po, price);
+            return dataService.update(po);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return ResultMessage.FAILURE;
+        }
+    }
+
 }

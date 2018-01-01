@@ -1,8 +1,8 @@
 package nju.lighting.bl.documentbl;
 
 import nju.lighting.bl.documentbl.alertdoc.AlertDoc;
-import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.bl.utils.CollectionTransformer;
+import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.po.doc.DocPO;
@@ -14,6 +14,8 @@ import shared.ResultMessage;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,6 +24,12 @@ import java.util.List;
  * @author Liao
  */
 public class DocInfoImpl implements DocInfo {
+
+    private static final String APPROVAL_MAIL_HEADER = "审批结果";
+    private static final String APPROVAL_MAIL_CONTENT = "您提交的单据";
+    private static final String APPROVAL_PASS = "通过了";
+    private static final String APPROVAL_REJECT = "被拒绝了";
+
     private DocDataService dataService;
     private DocFactory docFactory;
 
@@ -50,12 +58,7 @@ public class DocInfoImpl implements DocInfo {
             return res;
 
         // Update
-        try {
-            return dataService.updateDoc(doc.toPO());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return ResultMessage.FAILURE;
-        }
+        return sentMailAndUpdate(doc, APPROVAL_PASS);
     }
 
     @Override
@@ -65,7 +68,7 @@ public class DocInfoImpl implements DocInfo {
             return ResultMessage.FAILURE;
 
         return docList.stream()
-                .anyMatch(doc -> updateDoc(doc.toPO()) != ResultMessage.SUCCESS) ?
+                .anyMatch(doc -> sentMailAndUpdate(doc, APPROVAL_PASS) != ResultMessage.SUCCESS) ?
                 ResultMessage.FAILURE : ResultMessage.SUCCESS;
     }
 
@@ -73,7 +76,7 @@ public class DocInfoImpl implements DocInfo {
     public ResultMessage reject(HistoryDocVO vo) {
         Doc doc = docFactory.historyDocVOToDoc(vo);
         doc.reject();
-        return updateDoc(doc.toPO());
+        return sentMailAndUpdate(doc, APPROVAL_REJECT);
     }
 
     @Override
@@ -87,6 +90,17 @@ public class DocInfoImpl implements DocInfo {
         List<Doc> alertDocs = DataServiceFunction.findByToList(DocType.ALERT, dataService::findByType, docFactory::poToDoc);
         for (Doc doc : alertDocs) {
             ((AlertDoc) doc).triggerAlert(commodityId, count);
+        }
+    }
+
+    private ResultMessage sentMailAndUpdate(Doc target, String result) {
+        try {
+            dataService.sentMail(target.getUserId(), APPROVAL_MAIL_HEADER,
+                    APPROVAL_MAIL_CONTENT + target.getId() + result);
+            return dataService.updateDoc(target.toPO());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return ResultMessage.FAILURE;
         }
     }
 

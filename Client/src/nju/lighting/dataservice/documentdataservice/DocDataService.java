@@ -26,4 +26,5 @@ public interface DocDataService extends Remote {
 
     List<DocPO> findByTypeAndState(DocType type, DocState state) throws RemoteException;
 
+    void sentMail(String creatorId, String header, String content) throws RemoteException;
 }

@@ -1,5 +1,6 @@
 package nju.lighting.bl.commoditybl;
 
+import javafx.scene.image.Image;
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.utils.CommodityPathParser;
@@ -81,6 +82,16 @@ enum CommodityManager {
         }
     }
 
+    Image getTrend(String commodityId) {
+        try {
+            return dataService.getTrend(commodityId);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            throw new IllegalStateException();
+        }
+    }
+
+
     private String getCommodityId(String categoryPath) throws RemoteException {
 
         int parentCategoryID = CommodityPathParser.getLastNumOfPath(categoryPath);
@@ -92,7 +103,6 @@ enum CommodityManager {
                 .orElse(0) + 1;
         return categoryPath + CommodityBLService.SEPARATOR + sequenceNum;
     }
-
 
     List<CommodityItemVO> findCommodityByCategory(int categoryID) {
         return findByToList(categoryID, dataService::findByCategory);

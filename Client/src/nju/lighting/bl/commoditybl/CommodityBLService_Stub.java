@@ -1,5 +1,6 @@
 package nju.lighting.bl.commoditybl;
 
+import javafx.scene.image.Image;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.builder.Builder;
 import nju.lighting.builder.commodity.CommodityBuildInfo;
@@ -148,5 +149,10 @@ public class CommodityBLService_Stub implements CommodityBLService {
     @Override
     public ResultMessage changeCategoryName(CommodityCategoryVO categoryVO) {
         return ResultMessage.SUCCESS;
+    }
+
+    @Override
+    public Image getTrend(String commodityId) {
+        return null;
     }
 }

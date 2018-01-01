@@ -38,6 +38,9 @@ public class LossAndGainDocController implements Initializable {
     AnchorPane tablePane;
 
     @FXML
+    HBox tableContainer;
+
+    @FXML
     private AnchorPane anchorPane;
 
     @FXML
@@ -45,6 +48,9 @@ public class LossAndGainDocController implements Initializable {
 
     @FXML
     private JFXSlider slider;
+
+    @FXML
+    private Label commentsLabel;
 
     @FXML
     private ScrollPane scrollpane;
@@ -62,6 +68,20 @@ public class LossAndGainDocController implements Initializable {
         double prePosition = slider.getLayoutY();
 
         LossAndGainList listController;
+
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("LossAndGainList.fxml"));
+
+        commentsLabel.setText(lossAndGainDocVO.getComment());
+        try {
+            tableContainer.getChildren().add(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        listController=loader.getController();
+        listController.getData().setAll(lossAndGainDocVO.getItems().stream()
+        .map(x-> new LossAndGainItem(x))
+        .collect(Collectors.toList()));
+
 /*
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
@@ -83,7 +103,7 @@ public class LossAndGainDocController implements Initializable {
         }
 */
         //滑块不离开界面
-        ScrollPaneHelper.sliderFload(slider,scrollpaneMain,anchorPane,prePosition,557);
+        //ScrollPaneHelper.sliderFload(slider,scrollpaneMain,anchorPane,prePosition,557);
 
 
     }

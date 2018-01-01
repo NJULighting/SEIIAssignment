@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXSlider?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainDocController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainDocController">
    <children>
       <ScrollPane fx:id="scrollpaneMain" hbarPolicy="NEVER" hmax="0.0" prefHeight="560.0" prefWidth="700.0">
          <content>
@@ -38,11 +28,7 @@
                               <Insets />
                            </VBox.margin>
                         </ImageView>
-                        <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" hmax="0.0" prefHeight="198.0" vbarPolicy="NEVER" vmax="0.0">
-                           <content>
-                              <AnchorPane fx:id="tablePane" minHeight="0.0" minWidth="0.0" />
-                           </content>
-                        </ScrollPane>
+                        <HBox fx:id="tableContainer" prefHeight="100.0" prefWidth="200.0" />
                         <HBox alignment="CENTER_RIGHT">
                            <children>
                               <Label style="-fx-text-fill: #5599ff;" text="2000.00">
@@ -69,7 +55,11 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <TextArea prefWidth="350.0" />
+                              <Label fx:id="commentsLabel" alignment="TOP_LEFT" prefHeight="102.0" prefWidth="290.0" text="无">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </HBox>
                         <HBox alignment="BOTTOM_CENTER">

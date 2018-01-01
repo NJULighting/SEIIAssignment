@@ -103,6 +103,7 @@ public class PromotionUIManageUI implements Initializable, Upper {
     }
 
     void loadCreatePromotion(PromotionType type) {
+        backToMain();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CreatePromotionUI.fxml"));
 
         try {
@@ -148,11 +149,20 @@ public class PromotionUIManageUI implements Initializable, Upper {
                             setText(null);
                             setGraphic(null);
                         } else {
-                            setText(DateHelper.approximateTime(getItem()));
+//                            setText(DateHelper.approximateTime(getItem()));
+//                            if (getItem().before(new Date()))
+//                                setTextFill(Color.RED);
+//                            else
+                            // setTextFill(Color.BLACK);
+                            setText(null);
+                            Label label=new Label(DateHelper.approximateTime(getItem()));
                             if (getItem().before(new Date()))
-                                setTextFill(Color.RED);
+                               label.setTextFill(Color.RED);
                             else
-                                setTextFill(Color.BLACK);
+                                label.setTextFill(Color.BLACK);
+
+                            setGraphic(label);
+
                         }
                     }
                 };
@@ -229,7 +239,7 @@ public class PromotionUIManageUI implements Initializable, Upper {
 
         createPromotionMenu.getItems().setAll(createComboBtn, createCustomerBtn, createPriceBtn);
         TableViewHelper.commonSet(tableView);
-        TableViewHelper.setHeight(tableView);
+        TableViewHelper.setHeight(tableView, 0.86);
 
     }
 

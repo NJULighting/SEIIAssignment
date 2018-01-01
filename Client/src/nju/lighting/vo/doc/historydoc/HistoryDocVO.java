@@ -31,11 +31,12 @@ public class HistoryDocVO {
     /**
      * Constructor for approval pre
      */
-    public HistoryDocVO(UserVO creator, String comment, DocVO docVO) {
-        this.creator = creator;
+    public HistoryDocVO(UserVO approver, String comment, DocVO docVO, DocState state, Date checkTime) {
+        this.approver = approver;
         this.comment = comment;
         this.docVO = docVO;
-        checkTime = new Date();
+        this.state = state;
+        this.checkTime = checkTime;
     }
 
     public DocVO getDocVO() {

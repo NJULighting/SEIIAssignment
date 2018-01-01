@@ -19,13 +19,19 @@ public class AccountManagerController extends MainUIController{
     private Button salesConditionBtn;
     @FXML
     private Button businessHistoryBtn;
+    @FXML
+    private Button initaccountBtn;
+    @FXML
+    private Button logBtn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        buttons = new Button[]{accountManage,makeAccountIODoc,makeCostDoc,businessConditionBtn,salesConditionBtn,businessHistoryBtn};
+        buttons = new Button[]{accountManage,makeAccountIODoc,makeCostDoc,businessConditionBtn,salesConditionBtn,businessHistoryBtn,
+                initaccountBtn,logBtn};
         urls = new String[]{"../accountui/Account.fxml","../documentui/accountiodoc/AddAccountIODoc.fxml","../documentui/CostDoc.fxml",
-                "../documentui/BusinessConditionTable.fxml","../documentui/SalesConditionTable.fxml","../documentui/HistoryDoc"};
-        MAIN_BUTTON_SIZE = 6;
+                "../documentui/BusinessConditionTable.fxml","../documentui/SalesConditionTable.fxml","../documentui/HistoryDoc",
+                "../initui/InitAccount.fxml","../logui/Log.fxml"};
+        MAIN_BUTTON_SIZE = 8;
         super.initialize(location, resources);
     }
 }

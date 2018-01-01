@@ -56,6 +56,7 @@ public abstract class Doc {
         approvalComment = historyDocVO.getComment();
         state = historyDocVO.getState();
         approvalId = historyDocVO.getApprover().getID();
+        userId = historyDocVO.getDocVO().getCreatorId();
     }
 
     /**

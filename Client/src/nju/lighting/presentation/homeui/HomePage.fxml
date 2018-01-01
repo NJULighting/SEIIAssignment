@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Line endX="300.0" layoutX="130.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />
       <Label layoutX="30.0" layoutY="14.0" text="首页">
@@ -44,7 +42,6 @@
             </Label>
          </children>
       </HBox>
-      <ListView layoutX="40.0" layoutY="180.0" prefHeight="462.0" prefWidth="350.0" />
       <HBox alignment="CENTER" layoutX="40.0" layoutY="140.0">
          <children>
             <ImageView fitHeight="40.0" fitWidth="40.0">
@@ -52,7 +49,7 @@
                   <Image url="@../../../../images/飞翔的订单.png" />
                </image>
             </ImageView>
-            <Label text="单据动态">
+            <Label text="历史单据">
                <font>
                   <Font size="16.0" />
                </font>
@@ -70,5 +67,6 @@
          </image>
       </ImageView>
       <Pane layoutX="440.0" layoutY="80.0" prefHeight="560.0" prefWidth="600.0" />
+      <JFXListView fx:id="listView" layoutX="45.0" layoutY="191.0" prefHeight="443.0" prefWidth="320.0" style="-fx-background-color: transparent;" />
    </children>
 </Pane>

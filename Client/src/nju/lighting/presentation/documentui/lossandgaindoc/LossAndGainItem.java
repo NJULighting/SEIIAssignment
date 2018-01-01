@@ -16,13 +16,16 @@ import shared.LossAndGainItemType;
  * @author 陈俊宇
  */
 public class LossAndGainItem {
-    SimpleStringProperty name=new SimpleStringProperty();
-    SimpleStringProperty id=new SimpleStringProperty();
-    SimpleIntegerProperty count=new SimpleIntegerProperty();
-    SimpleIntegerProperty repCount=new SimpleIntegerProperty();
-    SimpleObjectProperty<LossAndGainItemType> type=new SimpleObjectProperty<>();
+    private SimpleStringProperty name=new SimpleStringProperty();
+    private SimpleStringProperty id=new SimpleStringProperty();
+    private SimpleIntegerProperty count=new SimpleIntegerProperty();
+    private SimpleIntegerProperty repCount=new SimpleIntegerProperty();
+    private SimpleObjectProperty<LossAndGainItemType> type=new SimpleObjectProperty<>();
+    private BasicCommodityItemVO commodity;
+
 
     public LossAndGainItem(BasicCommodityItemVO commodity, int number, LossAndGainItemType type){
+        this.commodity=commodity;
         name.set(commodity.getName());
         id.set(commodity.getId());
         repCount.set(commodity.getRepCount());
@@ -35,6 +38,10 @@ public class LossAndGainItem {
         id.set(vo.getCommodity().getId());
         repCount.set(vo.getCommodity().getRepCount());
         type.set(vo.getType());
+    }
+
+    public LossAndGainDocItemVO toLossAndGainDocItemVO(){
+        return new LossAndGainDocItemVO(commodity,count.getValue(),type.getValue());
     }
 
     public String getName() {
@@ -96,5 +103,9 @@ public class LossAndGainItem {
 
     public void setCount(int count) {
         this.count.set(count);
+    }
+
+    public BasicCommodityItemVO getCommodity() {
+        return commodity;
     }
 }

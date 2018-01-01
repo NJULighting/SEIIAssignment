@@ -137,7 +137,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
 //        else if (name.equals("2"))
 //            return ResultMessage.FAILURE;
 //        else return ResultMessage.SUCCESS;
-        return null;
+       return new TwoTuple<>(ResultMessage.SUCCESS,1);
     }
 
     @Override

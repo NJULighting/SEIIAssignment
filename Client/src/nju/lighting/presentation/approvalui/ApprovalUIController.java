@@ -58,10 +58,7 @@ public class ApprovalUIController implements Initializable {
 
 
     @FXML
-    JFXButton approveBtn;
-
-    @FXML
-    JFXButton rejectBtn;
+    JFXButton approveBtn,rejectBtn,refreshBtn;
 
     @FXML
     StackPane stackPane;
@@ -164,6 +161,9 @@ public class ApprovalUIController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        refreshBtn.setOnAction(e->{
+            docList.getItems().setAll(approvalBLService.getDocumentList());
+        });
 
         docs = approvalBLService.getDocumentList();
         for (int i = 0; i < docs.size(); i++) {

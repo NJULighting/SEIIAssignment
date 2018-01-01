@@ -44,9 +44,12 @@ import static org.junit.Assert.*;
  * @author Liao
  */
 public class CommitDocTest {
-    private static final AccountTransferItemVO ITEM_0 = new AccountTransferItemVO(312.2, "Naive", "0388558966291648503");
-    private static final AccountTransferItemVO ITEM_1 = new AccountTransferItemVO(312.2, "Excited", "0388558966291648503");
-    private static final AccountTransferItemVO ITEM_2 = new AccountTransferItemVO(312.2, "Too Young", "0388558966291648503");
+
+    private static String id = "0033029935110547923";
+
+    private static final AccountTransferItemVO ITEM_0 = new AccountTransferItemVO(312.2, "Naive", id);
+    private static final AccountTransferItemVO ITEM_1 = new AccountTransferItemVO(312.2, "Excited", id);
+    private static final AccountTransferItemVO ITEM_2 = new AccountTransferItemVO(312.2, "Too Young", id);
     private static final List<AccountTransferItemVO> ITEM_LIST = Arrays.asList(ITEM_0, ITEM_1, ITEM_2);
 
     private DocManager manager = DocManager.INSTANCE;
@@ -86,7 +89,7 @@ public class CommitDocTest {
     public void commitDocTest2() throws Exception {
         List<AlertDocItemVO> itemVOList = new ArrayList<>();
         itemVOList.add(new AlertDocItemVO(commodityInfo.getBasicCommodityItemVO("1-1"), 4));
-        itemVOList.add(new AlertDocItemVO(commodityInfo.getBasicCommodityItemVO("1-101"), 2));
+        itemVOList.add(new AlertDocItemVO(commodityInfo.getBasicCommodityItemVO("1-2"), 2));
         DocVO docVO = new AlertDocVO(userInfo.getIDOfSignedUser(), new Date(), itemVOList, "Excited");
 
         testResult("BJD", docVO);
@@ -100,7 +103,7 @@ public class CommitDocTest {
 
         AccountInfo accountInfo = new AccountInfoImpl();
         DocVO docVO = new CostDocVO(new Date(), userInfo.getIDOfSignedUser(),
-                accountInfo.getAccountByID("0388558966291648503"), itemList);
+                accountInfo.getAccountByID(id), itemList);
 
         testResult("XJFYD", docVO);
     }
@@ -110,7 +113,7 @@ public class CommitDocTest {
         List<GiftItemVO> itemList = new ArrayList<>();
 
         itemList.add(new GiftItemVO(commodityInfo.getBasicCommodityItemVO("1-1"), 5));
-        itemList.add(new GiftItemVO(commodityInfo.getBasicCommodityItemVO("1-101"), 5));
+        itemList.add(new GiftItemVO(commodityInfo.getBasicCommodityItemVO("1-2"), 5));
 
         DocVO docVO = new GiftDocVO(new Date(), userInfo.getIDOfSignedUser(), itemList, 1, 0);
 
@@ -122,7 +125,7 @@ public class CommitDocTest {
         List<LossAndGainDocItemVO> itemList = new ArrayList<>();
 
         itemList.add(new LossAndGainDocItemVO(commodityInfo.getBasicCommodityItemVO("1-1"), 4, LossAndGainItemType.GAIN));
-        itemList.add(new LossAndGainDocItemVO(commodityInfo.getBasicCommodityItemVO("1-101"), 4, LossAndGainItemType.LOSS));
+        itemList.add(new LossAndGainDocItemVO(commodityInfo.getBasicCommodityItemVO("1-2"), 4, LossAndGainItemType.LOSS));
 
         DocVO docVO = new LossAndGainDocVO(new Date(), userInfo.getIDOfSignedUser(), itemList, "TooYoung");
 
@@ -134,7 +137,7 @@ public class CommitDocTest {
         List<SalesDocItemVO> itemList = new ArrayList<>();
 
         itemList.add(new SalesDocItemVO(10, "TooSimple", commodityInfo.getBasicCommodityItemVO("1-1")));
-        itemList.add(new SalesDocItemVO(10, "TooSimple", commodityInfo.getBasicCommodityItemVO("1-101")));
+        itemList.add(new SalesDocItemVO(10, "TooSimple", commodityInfo.getBasicCommodityItemVO("1-2")));
 
         DocVO docVO = new SalesDocVO(new Date(), userInfo.getIDOfSignedUser(), 1, userInfo.getIDOfSignedUser(), "01",
                 "Anyway", 0.2, 100, itemList);
@@ -151,7 +154,7 @@ public class CommitDocTest {
         List<StockDocItemVO> itemList = new ArrayList<>();
 
         itemList.add(new StockDocItemVO(commodityInfo.getBasicCommodityItemVO("1-1"), 20, "Excited"));
-        itemList.add(new StockDocItemVO(commodityInfo.getBasicCommodityItemVO("1-101"), 20, "Excited"));
+        itemList.add(new StockDocItemVO(commodityInfo.getBasicCommodityItemVO("1-2"), 20, "Excited"));
 
         DocVO docVO = new StockDocVO(new Date(), userInfo.getIDOfSignedUser(), "1", "01", "Naive", itemList);
         DocVO returnDocVO = new StockReturnDocVO(new Date(), userInfo.getIDOfSignedUser(), "1", "01", "Excited", itemList);

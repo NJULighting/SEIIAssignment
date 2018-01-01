@@ -66,7 +66,7 @@ public class TableViewHelper {
         //滑块控制表格的左右滑动
         slider.valueProperty().addListener((ObservableValue<? extends Number> ov,
                                             Number old_value,Number new_value) -> {
-            tableView.setLayoutX(-new_value.doubleValue());
+            tableView.setLayoutX(-(new_value.doubleValue()/100*(tableView.getPrefWidth()-700)));
         });
     }
 }

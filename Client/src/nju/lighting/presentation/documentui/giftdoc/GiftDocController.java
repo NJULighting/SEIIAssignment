@@ -91,6 +91,9 @@ public class GiftDocController implements Initializable {
             //滑块控制表格的左右移动
             TableViewHelper.setSliderMarch(slider,listController.giftTableView);
 
+
+            System.out.println(listController.giftTableView.getPrefWidth());
+
         } catch (IOException e) {
             e.printStackTrace();
         }

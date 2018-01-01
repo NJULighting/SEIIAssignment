@@ -69,6 +69,18 @@ public class DialogHelper {
         layout.setActions(button);
     }
 
+    public static void addDialog(Node content, StackPane stackPane){
+        JFXDialogLayout layout=new JFXDialogLayout();
+
+        layout.setBody(content);
+        JFXDialog dialog= new JFXDialog(stackPane,layout, JFXDialog.DialogTransition.BOTTOM);
+        dialog.setPrefSize(280,135);
+        dialog.show();
+
+
+    }
+
+
 
     public static void addDialog(String message, StackPane stackPane, EventHandler eventHandler){
         JFXDialogLayout layout=new JFXDialogLayout();

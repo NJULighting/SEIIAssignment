@@ -35,25 +35,16 @@ public class LossAndGainDocController implements Initializable {
     LossAndGainDocVO lossAndGainDocVO;
 
     @FXML
-    AnchorPane tablePane;
-
-    @FXML
     HBox tableContainer;
 
     @FXML
     private AnchorPane anchorPane;
 
     @FXML
-    private Label customer,id,date,maker,account;
-
-    @FXML
-    private JFXSlider slider;
+    private Label id,date,maker;
 
     @FXML
     private Label commentsLabel;
-
-    @FXML
-    private ScrollPane scrollpane;
 
     @FXML
     private ScrollPane scrollpaneMain;
@@ -65,7 +56,15 @@ public class LossAndGainDocController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        double prePosition = slider.getLayoutY();
+
+        id.setText(lossAndGainDocVO.getDocId());
+        if(lossAndGainDocVO.getTime()!=null){
+            date.setText(lossAndGainDocVO.getTime().toString());
+        }
+        if(userBLService.getUser(lossAndGainDocVO.getCreatorId())!=null){
+            maker.setText(userBLService.getUser(lossAndGainDocVO.getCreatorId()).getUsername());
+        }
+
 
         LossAndGainList listController;
 
@@ -82,29 +81,7 @@ public class LossAndGainDocController implements Initializable {
         .map(x-> new LossAndGainItem(x))
         .collect(Collectors.toList()));
 
-/*
-        try {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
-            tablePane.getChildren().add(loader.load());
-            listController=loader.getController();
-            listController.getData().addAll(
-                    lossAndGainDocVO.getItems().stream()
-                            .map(x-> new CommodityItem(x))
-                            .collect(Collectors.toList())
-            );
-
-            //调整滑动面板高度以适应总高度
-            ScrollPaneHelper.marchHeight(listController.giftTableView,scrollpane,anchorPane);
-            //滑块控制表格的左右移动
-            listController.setSilder(slider);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-*/
-        //滑块不离开界面
-        //ScrollPaneHelper.sliderFload(slider,scrollpaneMain,anchorPane,prePosition,557);
-
+        ScrollPaneHelper.marchHeight(listController.tableView,scrollpaneMain,anchorPane);
 
     }
 }

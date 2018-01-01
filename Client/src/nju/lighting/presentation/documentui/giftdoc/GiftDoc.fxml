@@ -102,7 +102,6 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <JFXSlider fx:id="slider" layoutX="10.0" layoutY="100.0" value="1.0" />
                </children>
             </AnchorPane>
         </content>

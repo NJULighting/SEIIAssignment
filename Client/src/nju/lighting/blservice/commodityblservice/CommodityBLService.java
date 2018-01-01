@@ -1,5 +1,6 @@
 package nju.lighting.blservice.commodityblservice;
 
+import javafx.scene.image.Image;
 import nju.lighting.builder.Builder;
 import nju.lighting.builder.commodity.CommodityBuildInfo;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
@@ -10,6 +11,7 @@ import shared.Result;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 public interface CommodityBLService {
@@ -108,4 +110,6 @@ public interface CommodityBLService {
      * if network fails.
      */
     ResultMessage changeCategoryName(CommodityCategoryVO categoryVO);
+
+    Image getTrend(String commodityId);
 }

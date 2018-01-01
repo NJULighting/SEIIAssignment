@@ -1,5 +1,6 @@
 package nju.lighting.bl.commoditybl;
 
+import javafx.scene.image.Image;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.builder.Builder;
 import nju.lighting.builder.commodity.CommodityBuildInfo;
@@ -69,6 +70,11 @@ public class CommodityController implements CommodityBLService {
     @Override
     public ResultMessage deleteCategory(int id) {
         return manager.deleteCategory(id);
+    }
+
+    @Override
+    public Image getTrend(String commodityId) {
+        return manager.getTrend(commodityId);
     }
 
     @Override

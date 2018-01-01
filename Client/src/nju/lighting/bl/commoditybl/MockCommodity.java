@@ -83,6 +83,16 @@ public class MockCommodity implements CommodityInfo {
     }
 
     @Override
+    public void updateCommodityRecentSellPrice(String id, double price) {
+
+    }
+
+    @Override
+    public void updateCommodityRecentInPrice(String id, double price) {
+
+    }
+
+    @Override
     public boolean achieveAlertLimit(String commodityId, int count) {
         return false;
     }

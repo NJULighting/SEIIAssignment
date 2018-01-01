@@ -1,8 +1,5 @@
 package nju.lighting.data.docdata;
 
-import javafx.scene.image.Image;
-import nju.lighting.data.utils.CommonOperation;
-import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.accountiodoc.AccountIODocPO;
@@ -22,11 +19,8 @@ import nju.lighting.po.doc.salesdoc.SalesReturnDocPO;
 import nju.lighting.po.doc.stockdoc.StockDocItemPO;
 import nju.lighting.po.doc.stockdoc.StockDocPO;
 import nju.lighting.po.doc.stockdoc.StockReturnDocPO;
-import org.hibernate.Session;
 import shared.*;
 
-import javax.print.Doc;
-import java.lang.management.RuntimeMXBean;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -48,7 +42,7 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
 
     private static final String suffix;
 
-    private static final String absoluteMailScriptAddress = "/Users/iznauy/SEIIAssignment/python/mail/send_mail.py";
+    private static final String absoluteMailScriptAddress = "\\Users\\liao\\Documents\\SEIIAssignment\\python\\mail\\send_mail.py";
 
     private static HashMap<DocType, TwoTuple<String, String>> typeToName = new HashMap<>();
 
@@ -63,7 +57,7 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
         typeToName.put(DocType.GIFT, new TwoTuple<>(GiftDocPO.class.getName(), GiftItemPO.class.getName()));
         typeToName.put(DocType.STOCK, new TwoTuple<>(StockDocPO.class.getName(), StockDocItemPO.class.getName()));
         typeToName.put(DocType.STOCK_RETURN, new TwoTuple<>(StockReturnDocPO.class.getName(), StockDocItemPO.class.getName()));
-        suffix = "@iznauy.top";
+        suffix = "@smail.nju.edu.cn";
     }
 
     private DocOperation docOperation;
@@ -201,7 +195,7 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
     public void sentMail(String creatorId, String header, String content) throws RemoteException {
         new Thread(()-> {
             String mailAddress = creatorId + suffix;
-            String command = "python " + absoluteMailScriptAddress + " " + mailAddress + " " + header + " " + content;
+            String command = "C:\\Python27\\python.exe " + absoluteMailScriptAddress + " " + mailAddress + " " + header + " " + content;
             System.out.println(command);
             try {
                 Process process = Runtime.getRuntime().exec(command);

@@ -10,6 +10,7 @@ public class BasicCommodityItemVO {
     private String modelNumber;
 
     // 过气的构造函数， 但桩里大多用的这个，先留着不删
+    @Deprecated
     public BasicCommodityItemVO(String id, String name, int repCount, double recentInPrice, double recentSellPrice) {
         this.id = id;
         this.name = name;

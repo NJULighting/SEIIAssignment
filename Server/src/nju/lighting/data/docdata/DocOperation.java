@@ -5,7 +5,6 @@ import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.po.doc.DocPO;
 import org.hibernate.Session;
 import shared.DocState;
-import shared.DocType;
 import shared.ResultMessage;
 
 import java.util.Date;
@@ -14,7 +13,6 @@ import java.util.List;
 /**
  * Created on 2017/11/29.
  * Description:
- *
  * @author iznauy
  */
 public class DocOperation {
@@ -40,7 +38,7 @@ public class DocOperation {
         Session session = HibernateUtils.getCurrentSession();
         try {
             session.getTransaction().begin();
-            for(Object obj: list)
+            for (Object obj : list)
                 session.persist(obj);
             session.flush();
             session.getTransaction().commit();
@@ -75,7 +73,7 @@ public class DocOperation {
         Session session = HibernateUtils.getCurrentSession();
         try {
             session.getTransaction().begin();
-            for(Object obj: list)
+            for (Object obj : list)
                 session.saveOrUpdate(obj);
             session.flush();
             session.getTransaction().commit();
@@ -115,7 +113,7 @@ public class DocOperation {
 
     public List<DocPO> getByState(DocState docState, String className) {
         CommonOperation<DocPO> commonOperation = new CommonOperation<>(className);
-        List<DocPO> pos =  commonOperation.getListBySingleField("state", docState);
+        List<DocPO> pos = commonOperation.getListBySingleField("state", docState);
         return DocTypeSetter.setType(className, pos);
     }
 

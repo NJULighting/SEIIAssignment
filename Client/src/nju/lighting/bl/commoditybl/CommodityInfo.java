@@ -30,6 +30,10 @@ public interface CommodityInfo {
 
     ResultMessage changeCommodityNumber(String id, int count);
 
+    void updateCommodityRecentSellPrice(String id, double price);
+
+    void updateCommodityRecentInPrice(String id, double price);
+
     boolean reduceCommodityItem(String id, int count);
 
     boolean achieveAlertLimit(String commodityId, int count);

@@ -181,6 +181,13 @@ public class CommodityList implements Initializable {
     public void setGift() {
         giftTableView.getColumns().removeAll(comments, deleteBtn);
         price.setEditable(false);
+        id.setPrefWidth(100);
+        commodityName.setPrefWidth(230);
+        modelNum.setPrefWidth(70);
+        price.setPrefWidth(100);
+        subtotal.setPrefWidth(100);
+        count.setPrefWidth(100);
+
     }
 
     public void setGiftAndEditable() {

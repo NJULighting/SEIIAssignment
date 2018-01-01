@@ -44,13 +44,14 @@ public class GiftDocController implements Initializable {
     private Label customer,id,date,maker,account;
 
     @FXML
+    private ScrollPane scrollpane;
+/*
+    @FXML
     private JFXSlider slider;
 
     @FXML
-    private ScrollPane scrollpane;
-
-    @FXML
     private ScrollPane scrollpaneMain;
+*/
 
 
     public GiftDocController(){
@@ -59,7 +60,7 @@ public class GiftDocController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        double prePosition = slider.getLayoutY();
+        //double prePosition = slider.getLayoutY();
 
         CommodityList listController;
 
@@ -69,7 +70,6 @@ public class GiftDocController implements Initializable {
             date.setText(giftDocVO.getTime().toString());
         }
         if(userBLService.getUser(giftDocVO.getCreatorId())!=null){
-            date.setText(giftDocVO.getTime().toString());
             maker.setText(userBLService.getUser(giftDocVO.getCreatorId()).getUsername());
         }
 
@@ -88,18 +88,18 @@ public class GiftDocController implements Initializable {
 
             //调整滑动面板高度以适应总高度
             ScrollPaneHelper.marchHeight(listController.giftTableView,scrollpane,anchorPane);
+            /*
             //滑块控制表格的左右移动
             TableViewHelper.setSliderMarch(slider,listController.giftTableView);
-
-
-            System.out.println(listController.giftTableView.getPrefWidth());
+            */
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        /*
         //滑块不离开界面
         ScrollPaneHelper.sliderFload(slider,scrollpaneMain,anchorPane,prePosition,557);
+        */
 
 
     }

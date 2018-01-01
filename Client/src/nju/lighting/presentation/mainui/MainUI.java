@@ -65,6 +65,7 @@ public class MainUI {
 //    }
 
     public BorderPane root= new BorderPane();
+    private static StackPane stackPane;
     public Pane up;
     public VBox left;
     public Node[] center;
@@ -109,10 +110,14 @@ public class MainUI {
         //}else
         //   root.setRight(loader.load());
 
-        stage.setScene(new Scene(root));
+        stackPane=new StackPane(root);
+        stage.setScene(new Scene(stackPane));
         stage.getScene().getStylesheets().add(Client.class.getResource("../custom.css").toExternalForm());
 
 
     }
 
+    public static StackPane getStackPane() {
+        return stackPane;
+    }
 }

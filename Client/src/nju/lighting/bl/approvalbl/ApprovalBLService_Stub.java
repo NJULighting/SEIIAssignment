@@ -138,6 +138,8 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
 
     @Override
     public ResultMessage reject(HistoryDocVO vo) {
+        if (vo.getComment().length()!=0)
+            return ResultMessage.SUCCESS;
         return ResultMessage.FAILURE;
     }
 

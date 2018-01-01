@@ -10,7 +10,7 @@ from sklearn.preprocessing import MinMaxScaler
 from datetime import date, timedelta
 import pickle
 
-look_back = 10 # 用最近10天数据进行预测
+look_back = 10 # 用最近30天数据进行预测
 append = 30 # 预测接下来30天的走势
 scaler_path = "scaler.obj"
 model_path = "model.h5"
@@ -21,6 +21,8 @@ def _pre_process(init_price, records, start, end):
     p_records = [[0, 0] for x in range(length)]
     for record in records:
         ord = record[3].toordinal() - start.toordinal()
+        if ord < 0 or ord >= length:
+            continue
         p_records[ord][0] += record[1]
         p_records[ord][1] += record[2]
     p_records.append([0, init_price])
@@ -73,7 +75,7 @@ def raw_analysis(start, end):
     model.add(Dense(2))
     model.compile(loss='mean_squared_error', optimizer='adam')
 
-    model.fit(trainX, trainY, epochs=20, batch_size=32, verbose=2)
+    model.fit(trainX, trainY, epochs=10, batch_size=32, verbose=2)
     model.save(model_path)
     with open(scaler_path, 'wb') as f:
         pickle.dump(scaler, f)
@@ -81,9 +83,9 @@ def raw_analysis(start, end):
 
 # 加载已经存在的模型
 def load_exist_model():
-    with open("scaler.data") as f:
+    with open("scaler.obj") as f:
         scaler = pickle.load(f)
-    model = load_model("my_model.h5")
+    model = load_model("model.h5")
     return scaler, model
 
 
@@ -103,7 +105,7 @@ def predict(model, scaler, c_id, init_price, start, end):
     for i in range(append):
         next = in_predict[-look_back:, :]
         next = next[np.newaxis, :, :]
-        result = model.predict(next) * 0.99 # 蜜汁变动 发现预测数据会大幅度上扬，很奇怪，加个系数抑制下过快上涨的趋势
+        result = model.predict(next) * 0.98 # 蜜汁变动 发现预测数据会大幅度上扬，很奇怪，加个系数抑制下过快上涨的趋势
         in_predict = np.append(in_predict, result, axis=0)
     in_predict = scaler.inverse_transform(in_predict)
     return in_predict
@@ -116,7 +118,6 @@ def main(start, end):
     td = timedelta(append - 1)
     for commodity in commodities:
         c_id = commodity[0]
-        c_name = commodity[1]
         c_price = commodity[5]
         predicts = predict(model, scaler, c_id, c_price, start, end)
         dataset = data.load_sell_record(c_id)
@@ -135,6 +136,7 @@ if __name__ == '__main__':
         plt.plot(s[i][2])
         plt.savefig("image/%s.jpg" % s[i][0])
         plt.close()
+   #raw_analysis(date(2018, 1, 1), date(2018, 7, 1))
 
 
 

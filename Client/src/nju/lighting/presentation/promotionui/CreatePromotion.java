@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -84,6 +85,9 @@ public class CreatePromotion implements Initializable {
 
     @FXML
     StackPane stackPane;
+
+    @FXML
+    Label totalLabel;
 
 
 
@@ -196,6 +200,7 @@ public class CreatePromotion implements Initializable {
         CommodityList controller = loader.getController();
         controller.setGiftAndEditable();
         itemList = controller.getGiftObservableList();
+        totalLabel.textProperty().bind(controller.getTotal().asString());
 
         commodities.addListener(new ListChangeListener<BasicCommodityItemVO>() {
             @Override

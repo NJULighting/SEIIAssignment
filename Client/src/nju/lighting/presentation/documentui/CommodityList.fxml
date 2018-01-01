@@ -10,7 +10,7 @@
 
 <AnchorPane minHeight="0.0" minWidth="0.0" stylesheets="@../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.CommodityList">
     <children>
-      <TableView fx:id="giftTableView" editable="true" fixedCellSize="40.0" focusTraversable="false" snapToPixel="false">
+      <TableView fx:id="giftTableView" editable="true" fixedCellSize="55.0" focusTraversable="false" snapToPixel="false">
          <columns>
             <TableColumn fx:id="id" editable="false" prefWidth="100.0" sortable="false" text="  编号" />
             <TableColumn fx:id="commodityName" editable="false" prefWidth="120.0" sortable="false" text="商品名" />

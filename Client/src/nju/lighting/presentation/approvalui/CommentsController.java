@@ -19,53 +19,16 @@ import java.util.ResourceBundle;
  *
  * @author 陈俊宇
  */
-public class CommentsController extends CommonFather {
-    @FXML
-    JFXButton okBtn;
+public class CommentsController  {
 
-    @FXML
-    JFXButton cancelBtn;
 
     @FXML
     JFXTextArea comment;
 
-    ApprovalUIController approvalUIController;
-
-    Stage dialog;
 
 
 
-    public void setApprovalUIController(ApprovalUIController approvalUIController) {
-        this.approvalUIController = approvalUIController;
-    }
-
-    @FXML
-    void ok() {
-        approvalUIController.setCancel(false);
-        approvalUIController.setComment(comment.getText());
-        dialog.hide();
+    String getComments(){return comment.getText();}
 
 
-    }
-
-    @FXML
-    void cancel() {
-        approvalUIController.setCancel(true);
-        dialog.hide();
-    }
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(dialog);
-
-        stage = dialog;
-        MISS_OPACITY = 0.9;
-        buttons = new Button[]{okBtn, cancelBtn};
-        super.initialize(location, resources);
-    }
-
-    public void setDialog(Stage dialog) {
-        this.dialog = dialog;
-    }
 }

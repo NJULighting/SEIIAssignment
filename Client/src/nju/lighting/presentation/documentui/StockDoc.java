@@ -65,8 +65,9 @@ public class StockDoc extends SalesDocController {
 
         commodityListController = loader.getController();
         commodityListController.setEditable();
+        commodityListController.setMaxSize(480,700);
 
-        docItemList = commodityListController.giftObservableList;
+        docItemList = commodityListController.getGiftObservableList();
         commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
             @Override
             public void onChanged(Change<? extends BasicCommodityItemVO> c) {
@@ -88,7 +89,7 @@ public class StockDoc extends SalesDocController {
 
         user.setText(Client.getUserVO().getUsername());
 
-        account.textProperty().bind(commodityListController.totalLabel.textProperty());
+        account.textProperty().bind(commodityListController.getTotal().asString());
     }
 
     void setReturn(){

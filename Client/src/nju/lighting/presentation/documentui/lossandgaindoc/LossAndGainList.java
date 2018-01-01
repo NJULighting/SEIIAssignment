@@ -22,6 +22,7 @@ import javafx.util.Callback;
 import nju.lighting.presentation.documentui.EditingCell;
 import nju.lighting.presentation.utils.ImageViewHelper;
 import nju.lighting.presentation.utils.RepositoryHelper;
+import nju.lighting.presentation.utils.TableViewHelper;
 import shared.LossAndGainItemType;
 
 
@@ -91,6 +92,8 @@ public class LossAndGainList implements Initializable {
         });
 
         tableView.setItems(data);
+        TableViewHelper.commonSet(tableView);
+        TableViewHelper.setHeight(tableView,0.9);
 
     }
 

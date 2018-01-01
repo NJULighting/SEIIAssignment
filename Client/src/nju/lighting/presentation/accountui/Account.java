@@ -16,6 +16,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import nju.lighting.bl.accountbl.AccountBLService_Stub;
 import nju.lighting.blservice.accountblservice.AccountBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
@@ -104,14 +105,16 @@ public class Account implements Initializable {
                         setText(null);
                         setGraphic(null);
                     } else {
-                        setGraphic(null);
+                        Label label;
                         if (item > 0) {
-                            setText("+" + getItem());
-                            setTextFill(Color.GREEN);
+                            label=new Label("+"+getItem());
+                            label.setTextFill(Color.GREEN);
                         } else {
-                            setText("-" + Math.abs(getItem()));
-                            setTextFill(Color.RED);
+                            label=new Label(getItem()+"");
+                            label.setTextFill(Color.RED);
                         }
+                        setGraphic(label);
+                        setText(null);
 
                     }
                 }

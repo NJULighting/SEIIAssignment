@@ -38,7 +38,7 @@ public class TableViewHelper {
     }
 
     public static void commonSet(TableView tableView) {
-        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        tableView.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
         tableView.skinProperty().addListener((obs, oldSkin, newSkin) -> {
             final TableHeaderRow header = (TableHeaderRow) tableView.lookup("TableHeaderRow");
             header.reorderingProperty().addListener((o, oldVal, newVal) -> header.setReordering(false));
@@ -66,7 +66,7 @@ public class TableViewHelper {
         //滑块控制表格的左右滑动
         slider.valueProperty().addListener((ObservableValue<? extends Number> ov,
                                             Number old_value,Number new_value) -> {
-            tableView.setLayoutX(-new_value.doubleValue());
+            tableView.setLayoutX(-(new_value.doubleValue()/100*(tableView.getPrefWidth()-700)));
         });
     }
 }

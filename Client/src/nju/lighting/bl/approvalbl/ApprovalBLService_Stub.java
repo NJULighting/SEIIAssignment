@@ -108,7 +108,7 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         items.add(lossItemVO1);
         items.add(lossItemVO2);
         items.add(lossItemVO3);
-        LossAndGainDocVO lossAndGainDocVO = new LossAndGainDocVO(null, "00001", items, "我就觉得好玩然后创建了一个:)");
+        LossAndGainDocVO lossAndGainDocVO = new LossAndGainDocVO(null, "00001","BSBY_01",DocType.LOSS_AND_GAIN, items, "我就觉得好玩然后创建了一个:)");
 
         ArrayList<DocVO> DocVOs = new ArrayList<>();
         DocVOs.add(vo1);
@@ -138,6 +138,8 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
 
     @Override
     public ResultMessage reject(HistoryDocVO vo) {
+        if (vo.getComment().length()!=0)
+            return ResultMessage.SUCCESS;
         return ResultMessage.FAILURE;
     }
 

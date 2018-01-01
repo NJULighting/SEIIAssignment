@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainList">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainList">
    <children>
-      <TableView fx:id="tableView" editable="true" stylesheets="@../../custom.css">
+      <TableView fx:id="tableView" editable="true" fixedCellSize="55" maxHeight="400.0" prefWidth="690.0" stylesheets="@../../custom.css">
          <columns>
-            <TableColumn fx:id="name" prefWidth="120.0" text="   商品名称" />
-            <TableColumn fx:id="id" prefWidth="90.0" text="编号" />
-            <TableColumn fx:id="count" editable="true" prefWidth="90.0" text="数量" />
-            <TableColumn fx:id="repCount" prefWidth="90.0" text="当前库存" />
+            <TableColumn fx:id="name" prefWidth="200.0" text="商品名称" />
+            <TableColumn fx:id="id" prefWidth="120.0" text="编号" />
+            <TableColumn fx:id="count" editable="true" prefWidth="100.0" text="数量" />
+            <TableColumn fx:id="repCount" prefWidth="100.0" text="当前库存" />
             <TableColumn fx:id="type" prefWidth="160.0" text="报损/报溢" />
          </columns>
       </TableView>

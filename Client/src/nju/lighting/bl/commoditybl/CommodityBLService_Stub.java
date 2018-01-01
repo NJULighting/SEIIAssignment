@@ -74,7 +74,9 @@ public class CommodityBLService_Stub implements CommodityBLService {
 
     @Override
     public Result<CommodityItemVO> addCommodity(Builder<CommodityBuildInfo> builder) {
-        return null;
+        return new Result<CommodityItemVO>(
+                ResultMessage.SUCCESS,builder.build().toVO("11")
+        );
     }
 
     @Override

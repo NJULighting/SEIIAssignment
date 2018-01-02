@@ -84,10 +84,12 @@ public class Client extends Application {
             node.setBackground(new Background(null,new BackgroundImage(
                     new Image("/images/蓝色灯泡.jpg"),null,null,null,null)));
 
+            Image icon = new Image("images/待选背景/简约灯泡.png");
             //root = FXMLLoader.load(getClass().getResource("Login.fxml"));
             primaryStage.setScene(new Scene(node));
             primaryStage.setResizable(false);
             primaryStage.initStyle(StageStyle.TRANSPARENT);
+            primaryStage.getIcons().add(icon);
             primaryStage.show();
 
         }catch (IOException e){

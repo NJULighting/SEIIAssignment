@@ -161,7 +161,8 @@ public class CommodityCategory implements Initializable {
                         setGraphic(null);
                     }else {
                         setText(item);
-                        if (!getTreeTableRow().getTreeItem().getValue().getClass().equals(CommodityCategoryVO.class)){
+                        if (getTreeTableRow().getTreeItem()!=null
+                                &&!getTreeTableRow().getTreeItem().getValue().getItem().getClass().equals(CommodityCategoryVO.class)){
                             MenuItem predicate=new MenuItem("预测趋势");
                             setContextMenu(new ContextMenu(predicate));
                             predicate.setOnAction(e->{

@@ -44,12 +44,6 @@ public class Client extends Application {
     private static UserVO userVO;
 
 
-    private double XOffset;
-    private double YOffSet;
-    private Button[] buttons;
-
-
-    static Parent root;
 
     static Stage primaryStage;
 
@@ -81,11 +75,7 @@ public class Client extends Application {
 
         try{
             AnchorPane node = FXMLLoader.load(getClass().getResource("Login.fxml"));
-            node.setBackground(new Background(null,new BackgroundImage(
-                    new Image("/images/蓝色灯泡.jpg"),null,null,null,null)));
-
             Image icon = new Image("images/待选背景/简约灯泡.png");
-            //root = FXMLLoader.load(getClass().getResource("Login.fxml"));
             primaryStage.setScene(new Scene(node));
             primaryStage.setResizable(false);
             primaryStage.initStyle(StageStyle.TRANSPARENT);

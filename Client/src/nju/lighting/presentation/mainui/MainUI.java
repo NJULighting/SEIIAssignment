@@ -70,9 +70,11 @@ public class MainUI {
     public VBox left;
     public Node[] center;
     Stage stage =new Stage();
+    TitleController titleController;
 
     public void setStage(){
-        Client.setPrimaryStage(stage);;
+        Client.setPrimaryStage(stage);
+        titleController.setStage(stage);
     }
 
     public MainUI(Identity identity) throws IOException{
@@ -81,7 +83,9 @@ public class MainUI {
 
         FXMLLoader loader=new FXMLLoader(getClass().getResource(hashMap.get(identity)));
 
-        up=FXMLLoader.load(getClass().getResource("Title.fxml"));
+        FXMLLoader titleLoader=new FXMLLoader(getClass().getResource("Title.fxml"));
+        up=titleLoader.load();
+        titleController=titleLoader.getController();
         root.setTop(up);
 
 

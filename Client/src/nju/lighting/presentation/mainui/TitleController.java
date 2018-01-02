@@ -40,10 +40,15 @@ public class TitleController extends CommonFather{
         Client.setPrimaryStage(stage);
     }
 
+    public void setStage(Stage stage){
+        this.stage=stage;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttons=new Button[]{close,mini,exit};
         stage=Client.primaryStage;
+        System.out.println(stage+"");
         super.initialize(location, resources);
         userName.setText(Client.getUserVO().getUsername());
         userID.setText(Client.getUserVO().getID());

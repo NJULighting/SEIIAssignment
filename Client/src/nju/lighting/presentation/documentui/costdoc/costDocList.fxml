@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.costdoc.CostDocListController">
+   <children>
+      <TableView stylesheets="@../../custom.css">
+        <columns>
+          <TableColumn prefWidth="200.0" text="条目" />
+          <TableColumn prefWidth="200.0" text="金额" />
+            <TableColumn prefWidth="300.0" text="备注" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -26,7 +26,7 @@ import java.util.NoSuchElementException;
  * @author 陈俊宇
  */
 class Promotion {
-    private int id;
+    private int id = 0;
     private String name;
     private PromotionType type;
     private String userID;
@@ -35,7 +35,7 @@ class Promotion {
     private Date createTime;
     private CustomerGrade level;
     private double priceTarget;
-    private PromotionItemList itemList;
+    private PromotionItemList itemList = new PromotionItemList();
     private double off;
     private double vouchers;
     private Date vouchersEndDate;
@@ -47,17 +47,13 @@ class Promotion {
         endDate = info.getEndDate();
         level = info.getLevel();
         priceTarget = info.getPrice();
-        itemList = new PromotionItemList(info.getGoods());
         off = info.getOff();
         vouchers = info.getVouchers();
         vouchersEndDate = info.getVouchersEndDate();
+        userID = info.getCreatorId();
+        createTime = info.getCreateTime();
 
-        createTime = new Date();
-        id = 0;
-
-        // Get user's id
-        UserInfo userInfo = new UserInfoImpl();
-        userID = userInfo.getIDOfSignedUser();
+        itemList.addAllVO(info.getGoods());
     }
 
     Promotion(PromotionPO po) {
@@ -72,14 +68,13 @@ class Promotion {
         vouchersEndDate = po.getVouchersEndDate();
         vouchers = po.getVouchers();
         createTime = po.getTime();
-        userID = po.getCreatorID();
+        userID = po.getCreatorId();
 
-        itemList = new PromotionItemList();
-        itemList.addAll(po.getGoods());
+        itemList.addAllPO(po.getGoods());
     }
 
 
-    PromotionPO buildPOForCreation() {
+    PromotionPO toPO() {
         // Transfer goods
         List<PromotionPackageItemPO> itemPOList = itemList.toPOList(id);
 
@@ -92,7 +87,7 @@ class Promotion {
         UserVO creatorVO = info.getUserVOByID(userID);
         if (creatorVO == null)
             throw new NoSuchElementException("Invalid user id");
-        return new PromotionVO(id, name, creatorVO, type, startDate, endDate, level, priceTarget, itemList.getGoods(), off, vouchers, vouchersEndDate);
+        return new PromotionVO(id, name, creatorVO, type, startDate, endDate, level, priceTarget, itemList.toVOList(), off, vouchers, vouchersEndDate);
     }
 
     ResultMessage changeInfo(PromotionVO vo) {
@@ -102,10 +97,10 @@ class Promotion {
         endDate = vo.getEndDate();
         level = vo.getLevel();
         priceTarget = vo.getPrice();
-        itemList = new PromotionItemList(vo.getGoods());
         off = vo.getOff();
         vouchers = vo.getVouchers();
         vouchersEndDate = vo.getVouchersEndDate();
+        itemList.addAllVO(vo.getGoods());
         return updateToDatabase();
     }
 

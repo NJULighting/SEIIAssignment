@@ -19,7 +19,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import nju.lighting.bl.documentbl.DocController;
-import nju.lighting.bl.promotionbl.PromotionBLService_Stub;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.presentation.factory.PromotionBLServiceFactory;
@@ -190,11 +189,11 @@ public class SalesDocController implements Initializable, Upper {
 
         commodityListController = loader.getController();
         commodityListController.setEditable();
-        commodityListController.setMaxSize(480,700);
+        commodityListController.setMaxSize(480, 700);
 
         docItemList = commodityListController.getGiftObservableList();
 
-        customer.textProperty().addListener(c-> {
+        customer.textProperty().addListener(c -> {
             if (customer.getText() != "")
                 promotionBtn.setDisable(false);
         });
@@ -261,7 +260,7 @@ public class SalesDocController implements Initializable, Upper {
         voucher.textProperty().addListener(changeListener);
         //promotionOff.textProperty().addListener(changeListener);
 
-        accountBeforeDis.textProperty().addListener(c->{
+        accountBeforeDis.textProperty().addListener(c -> {
             clearPromotion();
             account.setText("" + (
                     Double.parseDouble(accountBeforeDis.textProperty().get())

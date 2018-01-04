@@ -15,7 +15,7 @@ public class Result<T> {
     }
 
     public boolean hasValue() {
-        return resultMessage == ResultMessage.SUCCESS;
+        return resultMessage.success();
     }
 
     public T getValue() {

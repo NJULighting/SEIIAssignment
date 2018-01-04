@@ -17,20 +17,21 @@ import java.util.List;
 /**
  * Created on 2017/12/27.
  * Description
- *
  * @author 陈俊宇
  */
 public class PromotionHelper {
 
-    static HashMap<PromotionType,String> typeStringHashMap=new HashMap<>();
+    static HashMap<PromotionType, String> typeStringHashMap = new HashMap<>();
 
     static {
-        typeStringHashMap.put(PromotionType.CustomerOriented,"针对客户");
-        typeStringHashMap.put(PromotionType.Combo,"组合商品降价");
-        typeStringHashMap.put(PromotionType.PriceOriented,"针对总价");
+        typeStringHashMap.put(PromotionType.CustomerOriented, "针对客户");
+        typeStringHashMap.put(PromotionType.Combo, "组合商品降价");
+        typeStringHashMap.put(PromotionType.PriceOriented, "针对总价");
     }
 
-    public static String typeToString(PromotionType type){return typeStringHashMap.get(type);}
+    public static String typeToString(PromotionType type) {
+        return typeStringHashMap.get(type);
+    }
 
     public static void setPromotion(Upper upper, SimpleObjectProperty<PromotionVO> promotionProperty, List<PromotionVO> list) {
         FXMLLoader loader = new FXMLLoader(CustomerHelper.class.getResource("../promotionui/BenefitsPlan.fxml"));
@@ -46,14 +47,14 @@ public class PromotionHelper {
 
     }
 
-    public static Node loadGiftList(List<CommodityItem> commodityList){
-        Node res=null;
+    public static Node loadGiftList(List<CommodityItem> commodityList) {
+        Node res = null;
         try {
-            FXMLLoader loader=new FXMLLoader(PromotionHelper.class.getResource("../documentui/GiftList.fxml"));
-             res= loader.load();
-             GiftListController controller=loader.getController();
-                controller.getGiftObservableList().setAll(commodityList);
-             controller.setFlexibleHeight();
+            FXMLLoader loader = new FXMLLoader(PromotionHelper.class.getResource("../documentui/GiftList.fxml"));
+            res = loader.load();
+            GiftListController controller = loader.getController();
+            controller.getGiftObservableList().setAll(commodityList);
+            controller.setFlexibleHeight();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,9 +1,17 @@
 package shared;
 
+import nju.lighting.bl.utils.CollectionTransformer;
+import nju.lighting.po.promotion.PromotionPO;
+import nju.lighting.po.promotion.PromotionPackageItemPO;
+import nju.lighting.vo.UserVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
+import nju.lighting.vo.promotion.PromotionVO;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created on 2017/12/7.
@@ -12,11 +20,13 @@ import java.util.List;
  */
 public class PromotionBuildInfo {
     private final String name;
+    private final String creatorId;
     private final PromotionType type;
     private final Date startDate;
     private final Date endDate;
+    private final Date createTime;
     private final CustomerGrade level;
-    private final double price;
+    private final double price; // Price target
     private final List<GiftItemVO> goods;
     private final double off;
     private final double vouchers;
@@ -27,12 +37,14 @@ public class PromotionBuildInfo {
         type = builder.type;
         startDate = builder.startDate;
         endDate = builder.endDate;
-        level = builder.level;
+        createTime = new Date();
+        level = Optional.ofNullable(builder.level).orElse(CustomerGrade.ONE);
         price = builder.price;
         goods = builder.goods;
         off = builder.off;
         vouchers = builder.vouchers;
-        vouchersEndDate = builder.vouchersEndDate;
+        vouchersEndDate = Optional.ofNullable(builder.vouchersEndDate).orElse(new Date());
+        creatorId = builder.userId;
     }
 
     public static class Builder {
@@ -46,6 +58,7 @@ public class PromotionBuildInfo {
         private double off;
         private double vouchers;
         private Date vouchersEndDate;
+        private String userId;
 
         /**
          * This constructor should be used by presentation level
@@ -53,12 +66,14 @@ public class PromotionBuildInfo {
          * @param type type of promotion
          * @param startDate start time of promotion
          * @param endDate end time of promotion
+         * @param user creator of this promotion strategy
          */
-        public Builder(String name, PromotionType type, Date startDate, Date endDate) {
+        public Builder(String name, PromotionType type, Date startDate, Date endDate, UserVO user) {
             this.name = name;
             this.type = type;
             this.startDate = startDate;
             this.endDate = endDate;
+            userId = user.getID();
         }
 
         public Builder level(CustomerGrade level) {
@@ -90,6 +105,10 @@ public class PromotionBuildInfo {
         public PromotionBuildInfo build() {
             return new PromotionBuildInfo(this);
         }
+    }
+
+    public Date getCreateTime() {
+        return createTime;
     }
 
     public String getName() {
@@ -130,5 +149,9 @@ public class PromotionBuildInfo {
 
     public Date getVouchersEndDate() {
         return vouchersEndDate;
+    }
+
+    public String getCreatorId() {
+        return creatorId;
     }
 }

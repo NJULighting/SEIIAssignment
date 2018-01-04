@@ -18,7 +18,7 @@
       <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />
       <HBox layoutX="30.0" layoutY="14.0">
          <children>
-            <Label fx:id="title" onMouseClicked="#back" text="制定现金费用单">
+            <Label fx:id="title" text="制定现金费用单">
                <font>
                   <Font size="20.0" />
                </font>

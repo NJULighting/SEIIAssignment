@@ -31,13 +31,19 @@ public class CostDocItemVO {
         return type;
     }
 
+    public void setType(CostDocItemType type){this.type = type;}
+
     public double getAmount() {
         return amount;
     }
 
+    public void setAmount(double amount){this.amount = amount;}
+
     public String getComment() {
         return comment;
     }
+
+    public void setComment(String comment){this.comment = comment;}
 
     public int getId() {
         return id;

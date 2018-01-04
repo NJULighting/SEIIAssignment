@@ -43,11 +43,11 @@ import static org.junit.Assert.assertTrue;
  */
 public class CommitDocTest {
 
-    private static final List<AccountTransferItemVO> ITEM_LIST = Arrays.asList(ITEM_0, ITEM_1, ITEM_2);
     private static String id = "0033029935110547923";
     private static final AccountTransferItemVO ITEM_0 = new AccountTransferItemVO(312.2, "Naive", id);
     private static final AccountTransferItemVO ITEM_1 = new AccountTransferItemVO(312.2, "Excited", id);
     private static final AccountTransferItemVO ITEM_2 = new AccountTransferItemVO(312.2, "Too Young", id);
+    private static final List<AccountTransferItemVO> ITEM_LIST = Arrays.asList(ITEM_0, ITEM_1, ITEM_2);
     private DocManager manager = DocManager.INSTANCE;
     private UserInfo userInfo = new UserInfoImpl();
     private CommodityInfo commodityInfo = new CommodityInfoImpl();

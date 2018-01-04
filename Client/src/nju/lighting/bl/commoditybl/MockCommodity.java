@@ -1,12 +1,10 @@
 package nju.lighting.bl.commoditybl;
 
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
-import nju.lighting.vo.repository.RepositoryTableItemVO;
 import shared.ResultMessage;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class MockCommodity implements CommodityInfo {
 
@@ -70,11 +68,6 @@ public class MockCommodity implements CommodityInfo {
     @Override
     public double getCostAdjustRevenue() {
         return 0;
-    }
-
-    @Override
-    public List<RepositoryTableItemVO> getRepositoryTableItemList() {
-        return null;
     }
 
     @Override

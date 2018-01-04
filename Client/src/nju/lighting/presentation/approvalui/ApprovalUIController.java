@@ -65,7 +65,7 @@ public class ApprovalUIController implements Initializable {
             DocVO currentDoc;
             for (int i = 0; i < selectedDocList.size(); i++) {
                 currentDoc = selectedDocList.get(i);
-                approvalBLService.approve(new HistoryDocVO(Client.getUserVO(), "", currentDoc, DocState.APPROVAL, new Date()));
+                approvalBLService.approve(new HistoryDocVO(Client.getUserVO(), "无可奉告", currentDoc, DocState.APPROVAL, new Date()));
             }
         }
         refresh();

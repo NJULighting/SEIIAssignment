@@ -69,7 +69,7 @@ public enum DocManager {
                 .findAndFilterToList(userInfo.getIDOfSignedUser(), dataService::findByUserId,
                         docFactory::poToDoc, filter.getPredicateForDoc());
 
-        // Filter them and transform them to HistoryDocVO list
+        // Filter and transform them to list of HistoryDocVO
         return CollectionTransformer.toList(docList, Doc::toHistoryDocVO);
     }
 

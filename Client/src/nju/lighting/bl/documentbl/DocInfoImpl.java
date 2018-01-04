@@ -58,7 +58,7 @@ public class DocInfoImpl implements DocInfo {
             return res;
 
         // Update
-        return sentMailAndUpdate(doc, APPROVAL_PASS);
+        return sentMailAndUpdate(doc, APPROVAL_PASS, vo.getComment());
     }
 
     @Override
@@ -68,7 +68,7 @@ public class DocInfoImpl implements DocInfo {
             return ResultMessage.FAILURE;
 
         return docList.stream()
-                .anyMatch(doc -> sentMailAndUpdate(doc, APPROVAL_PASS) != ResultMessage.SUCCESS) ?
+                .anyMatch(doc -> sentMailAndUpdate(doc, APPROVAL_PASS, doc.approvalComment) != ResultMessage.SUCCESS) ?
                 ResultMessage.FAILURE : ResultMessage.SUCCESS;
     }
 
@@ -76,7 +76,7 @@ public class DocInfoImpl implements DocInfo {
     public ResultMessage reject(HistoryDocVO vo) {
         Doc doc = docFactory.historyDocVOToDoc(vo);
         doc.reject();
-        return sentMailAndUpdate(doc, APPROVAL_REJECT);
+        return sentMailAndUpdate(doc, APPROVAL_REJECT, vo.getComment());
     }
 
     @Override
@@ -87,16 +87,17 @@ public class DocInfoImpl implements DocInfo {
 
     @Override
     public void triggerAlertDoc(String commodityId, int count) {
-        List<Doc> alertDocs = DataServiceFunction.findByToList(DocType.ALERT, dataService::findByType, docFactory::poToDoc);
+        List<Doc> alertDocs = DataServiceFunction.findByToList(DocType.ALERT,
+                dataService::findByType, docFactory::poToDoc);
         for (Doc doc : alertDocs) {
             ((AlertDoc) doc).triggerAlert(commodityId, count);
         }
     }
 
-    private ResultMessage sentMailAndUpdate(Doc target, String result) {
+    private ResultMessage sentMailAndUpdate(Doc target, String result, String comment) {
         try {
             dataService.sentMail(target.getUserId(), APPROVAL_MAIL_HEADER,
-                    APPROVAL_MAIL_CONTENT + target.getId() + result);
+                    APPROVAL_MAIL_CONTENT + target.getId() + result + "\32审批意见：" + comment);
             return dataService.updateDoc(target.toPO());
         } catch (RemoteException e) {
             e.printStackTrace();

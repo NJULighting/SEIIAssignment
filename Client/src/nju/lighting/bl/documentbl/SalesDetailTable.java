@@ -9,6 +9,7 @@ import nju.lighting.bl.documentbl.stockdoc.StockReturnDoc;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.vo.viewtables.BusinessConditionTableVO;
+import shared.DocState;
 import shared.DocType;
 
 import javax.naming.NamingException;
@@ -120,6 +121,7 @@ class SalesDetailTable {
             return dataService.findByTimeAndType(startDate, endDate, docType)
                     .stream()
                     .map(docFactory::poToDoc)
+                    .filter(doc -> doc.getState() == DocState.APPROVAL)
                     .map(type::cast)
                     .collect(Collectors.toList());
         } catch (RemoteException e) {

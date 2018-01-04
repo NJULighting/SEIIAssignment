@@ -26,8 +26,8 @@ public interface DocBLService {
 
     /**
      * Find documents with the constraints the filter defined. The user can only
-     * see his own documents in this method. This method should be used when user
-     * want to see the commit history, and shouldn't be used in approving.
+     * see his own documents with this method. This method should be used when user
+     * want to see his commit history, and shouldn't be used in approval module.
      * @param filter constraints for finding documents
      * @return documents that satisfy these constraints
      */

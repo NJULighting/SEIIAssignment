@@ -1,10 +1,13 @@
 package nju.lighting.bl.documentbl;
 
 import nju.lighting.bl.userbl.LoginTestHelper;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import shared.DocState;
 import shared.DocType;
 import shared.DocumentFilter;
 
@@ -25,6 +28,7 @@ public class FindSaleRecordsTest {
     private DocManager manager = DocManager.INSTANCE;
     private DocumentFilter.Builder builder;
 
+
     @Before
     public void setUp() throws Exception {
         builder = new DocumentFilter.Builder();
@@ -33,8 +37,7 @@ public class FindSaleRecordsTest {
 
     @Test
     public void test0() throws Exception {
-        builder.commodity("LED5W灯泡");
-        builder.customer("1");
+        builder.commodity("LED5W灯泡").customer("1");
 
         List<SalesDetailItemVO> itemList = manager.findSaleRecords(builder.build());
 
@@ -50,8 +53,7 @@ public class FindSaleRecordsTest {
 
     @Test
     public void test2() throws Exception {
-        builder.docType(DocType.ACCOUNT_IN);
-        builder.docType(DocType.SALES);
+        builder.docType(DocType.ACCOUNT_IN).docType(DocType.SALES);
 
         List<BusinessHistoryItemVO> itemList = manager.findBusinessHistory(builder.build());
 
@@ -64,5 +66,14 @@ public class FindSaleRecordsTest {
         Date endDate = new Date(Instant.now().plus(Duration.ofDays(1)).toEpochMilli());
         SalesDetailTable salesDetailTable = new SalesDetailTable(startDate, endDate);
         System.out.println(salesDetailTable.getSalesDetailTable());
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        DocumentFilter.Builder builder = new DocumentFilter.Builder();
+        builder.customer("Frog").creatorID("161250068").docState(DocState.UN_CHECKED)
+                .docType(DocType.SALES).docType(DocType.GIFT);
+
+        List<HistoryDocVO> voList = manager.findDocuments(builder.build());
     }
 }

@@ -8,62 +8,46 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.util.Callback;
-import javafx.util.StringConverter;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.TableViewHelper;
-import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/10.
  * Description
- *
  * @author 陈俊宇
  */
 public class CommodityList implements Initializable {
 
 
+    @FXML
+    public TableView giftTableView;
+    @FXML
+    public TableColumn<CommodityItem, String> commodityName;
+    @FXML
+    public TableColumn<CommodityItem, Integer> count;
+    @FXML
+    public TableColumn<CommodityItem, String> id;
+    @FXML
+    public TableColumn<CommodityItem, Double> price;
+    @FXML
+    public TableColumn<CommodityItem, Double> subtotal;
+    @FXML
+    public TableColumn<CommodityItem, String> modelNum;
+    @FXML
+    public TableColumn<CommodityItem, String> comments;
+    @FXML
+    TableColumn<CommodityItem, Boolean> deleteBtn;
     //public static List<GiftItemVO> giftsVO;
     private SimpleDoubleProperty total = new SimpleDoubleProperty();
     private ObservableList<CommodityItem> giftObservableList;
     private Upper upper;
-
-    @FXML
-    public TableView giftTableView;
-
-
-    @FXML
-    public TableColumn<CommodityItem, String> commodityName;
-
-    @FXML
-    TableColumn<CommodityItem, Boolean> deleteBtn;
-
-    @FXML
-    public TableColumn<CommodityItem, Integer> count;
-
-    @FXML
-    public TableColumn<CommodityItem, String> id;
-
-    @FXML
-    public TableColumn<CommodityItem, Double> price;
-
-    @FXML
-    public TableColumn<CommodityItem, Double> subtotal;
-
-    @FXML
-    public TableColumn<CommodityItem, String> modelNum;
-
-    @FXML
-    public TableColumn<CommodityItem, String> comments;
-
 
     public void refresh() {
 
@@ -194,15 +178,14 @@ public class CommodityList implements Initializable {
         setEditable();
         setGift();
         giftTableView.getColumns().add(deleteBtn);
-        commodityName.setPrefWidth(commodityName.getPrefWidth()+40);
-        modelNum.setPrefWidth(modelNum.getPrefWidth()+30);
+        commodityName.setPrefWidth(commodityName.getPrefWidth() + 40);
+        modelNum.setPrefWidth(modelNum.getPrefWidth() + 30);
         TableViewHelper.setHeight(giftTableView, 0.9);
 
     }
 
     /**
      * 设置商品列表的最大高度以及宽度
-     *
      * @param maxHeight 最大高度
      * @param maxWidth  最大宽度
      */

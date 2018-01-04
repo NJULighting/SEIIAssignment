@@ -12,14 +12,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.Effect;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import nju.lighting.bl.userbl.UserController;
-import nju.lighting.blservice.userblservice.LoginService;
 import nju.lighting.blservice.userblservice.UserBLService;
 import nju.lighting.presentation.factory.UserBLServiceFactory;
 import nju.lighting.vo.UserVO;
@@ -33,7 +30,6 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/11/27.
  * Description
- *
  * @author 陈俊宇
  */
 public class LoginController extends CommonFather {
@@ -66,7 +62,6 @@ public class LoginController extends CommonFather {
 
 
     private UserBLService userBLService = UserBLServiceFactory.getUserBLService();
-
 
 
     @FXML
@@ -119,7 +114,7 @@ public class LoginController extends CommonFather {
                         });
                     }
                 }.start();
-                
+
             }
 
             break;

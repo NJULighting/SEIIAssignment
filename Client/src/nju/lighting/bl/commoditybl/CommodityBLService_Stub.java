@@ -75,7 +75,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
     @Override
     public Result<CommodityItemVO> addCommodity(Builder<CommodityBuildInfo> builder) {
         return new Result<CommodityItemVO>(
-                ResultMessage.SUCCESS,builder.build().toVO("11")
+                ResultMessage.SUCCESS, builder.build().toVO("11")
         );
     }
 
@@ -105,7 +105,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
 
     @Override
     public List<CommodityItemVO> searchCommodity(String keyword) {
-        return findCommodityVOByName(keyword) ;
+        return findCommodityVOByName(keyword);
     }
 
     @Override
@@ -138,7 +138,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
 //        else if (name.equals("2"))
 //            return ResultMessage.FAILURE;
 //        else return ResultMessage.SUCCESS;
-       return new TwoTuple<>(ResultMessage.SUCCESS,1);
+        return new TwoTuple<>(ResultMessage.SUCCESS, 1);
     }
 
     @Override

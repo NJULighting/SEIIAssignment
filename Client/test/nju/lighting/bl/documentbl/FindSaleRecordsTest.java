@@ -2,8 +2,8 @@ package nju.lighting.bl.documentbl;
 
 import nju.lighting.bl.userbl.LoginTestHelper;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
-import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
+import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created on 2017/12/25.

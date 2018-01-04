@@ -19,7 +19,8 @@ public class LoginTestHelper {
     }
 
     public static void loginNotAuthorizedUser() {
-        loginHelper.logout();;
+        loginHelper.logout();
+        ;
         loginHelper.login(NOT_AUTHORIZED_USER, NOT_AUTHORIZED_USER_PASSWORD);
     }
 }

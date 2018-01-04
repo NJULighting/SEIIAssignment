@@ -3,12 +3,10 @@ package nju.lighting.presentation.commodityui;
 import com.jfoenix.controls.JFXDialog;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.StackPane;
-import nju.lighting.blservice.commodityblservice.CommodityBLService;
 
 /**
  * Created on 2017/12/17.
  * Description
- *
  * @author 陈俊宇
  */
 public abstract class Dialog {
@@ -29,9 +27,6 @@ public abstract class Dialog {
     public void setStackPane(StackPane stackPane) {
         this.stackPane = stackPane;
     }
-
-
-
 
 
 }

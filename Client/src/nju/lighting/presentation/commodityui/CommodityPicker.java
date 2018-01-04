@@ -8,17 +8,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
-import shared.CustomerType;
-
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created on 2017/12/17.
  * Description
- *
  * @author 陈俊宇
  */
 public class CommodityPicker {
@@ -35,29 +30,28 @@ public class CommodityPicker {
     JFXButton okBtn;
 
 
-
     public void init(Upper upper, ObservableList<BasicCommodityItemVO> commodityList) {
         init(upper);
-        okBtn.setOnAction(e->{
-            if (category.getSelectedCommodities().size()!=0){
+        okBtn.setOnAction(e -> {
+            if (category.getSelectedCommodities().size() != 0) {
                 commodityList.addAll(category.getSelectedCommodities());
                 upper.back();
             }
         });
     }
 
-    public void init(Upper upper, SimpleObjectProperty<BasicCommodityItemVO> commodity){
+    public void init(Upper upper, SimpleObjectProperty<BasicCommodityItemVO> commodity) {
         init(upper);
         category.setSingle();
-        okBtn.setOnAction(e->{
-            if (category.getSelectedCommodities().size()!=0){
+        okBtn.setOnAction(e -> {
+            if (category.getSelectedCommodities().size() != 0) {
                 commodity.set(category.getSelectedCommodities().get(0));
                 upper.back();
             }
         });
     }
 
-    private void init(Upper upper){
+    private void init(Upper upper) {
         this.upper = upper;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CommodityCategory.fxml"));
@@ -68,8 +62,6 @@ public class CommodityPicker {
         }
         category = loader.getController();
     }
-
-
 
 
 }

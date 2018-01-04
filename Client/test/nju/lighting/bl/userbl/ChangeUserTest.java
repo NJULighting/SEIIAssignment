@@ -1,7 +1,6 @@
 package nju.lighting.bl.userbl;
 
 import nju.lighting.blservice.userblservice.AdministratorService;
-import nju.lighting.blservice.userblservice.LoginService;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
@@ -16,7 +15,6 @@ import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.fail;
 
 /**
  * Created on 2017/12/3.

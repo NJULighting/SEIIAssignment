@@ -1,17 +1,12 @@
 
-
-
-
 .list-cell {
 
     -fx-background-insets: 0.0;
 
     -fx-text-fill: BLACK;
-    -fx-font-size:16;
+    -fx-font-size: 16;
 
 }
-
-
 
 .list-cell:odd {
 
@@ -19,18 +14,16 @@
 
 }
 
-
-
-.list-cell:even{
+.list-cell:even {
     -fx-background-color: white;
 }
 
-.list-cell:filled:hover{
+.list-cell:filled:hover {
     -fx-background-color: #DCDCDC;
 
 }
 
-.list-cell .label{
+.list-cell .label {
     -fx-pref-width: 300;
     -fx-pref-height: 30;
     -fx-text-alignment: center;
@@ -39,6 +32,6 @@
     -fx-text-fill: black;
 }
 
-.button{
+.button {
     -fx-text-fill: #5599FF;
 }

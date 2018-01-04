@@ -7,6 +7,6 @@ import java.io.Serializable;
  * Description:
  * @author Liao
  */
-public enum AccountChangeType implements Serializable{
+public enum AccountChangeType implements Serializable {
     IN, OUT
 }

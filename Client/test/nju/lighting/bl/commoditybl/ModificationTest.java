@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import shared.ResultMessage;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created on 2017/12/12.
@@ -22,7 +22,7 @@ public class ModificationTest {
     private static final String TARGET_CATEGORY_NEW_NAME = "LifeExperience";
 
     private CommodityManager manager = CommodityManager.INSTANCE;
-    private CommodityItemVO oldData= manager.findCommodityVOById(TARGET_COMMODITY_ID);
+    private CommodityItemVO oldData = manager.findCommodityVOById(TARGET_COMMODITY_ID);
     private CommodityCategoryVO oldCategoryData = manager.getCommodityCategoriesTreeVO().getRoot().findChild(TARGET_CATEGORY_ID);
 
     @Before

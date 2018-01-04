@@ -12,9 +12,9 @@ import java.util.regex.Pattern;
  * @author Liao
  */
 public class FuzzySeekingHelper<PO, VO> {
+    private final Function<PO, VO> transformer;
     private List<DataServiceFunction<String, List<PO>>> stringFunctions = new ArrayList<>();
     private List<DataServiceFunction<Integer, List<PO>>> integerFunctions = new ArrayList<>();
-    private final Function<PO, VO> transformer;
 
     public FuzzySeekingHelper(Function<PO, VO> transformer) {
         this.transformer = transformer;

@@ -1,64 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-
-<Pane onMouseDragged="#Drag" onMousePressed="#getOffSet" prefHeight="40.0" prefWidth="1280.0" style="-fx-background-color: #5599FF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.TitleController">
-   <children>
-      <Label layoutX="14.0" layoutY="9.0" text="进销存管理平台" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <HBox alignment="CENTER" layoutX="1143.0" layoutY="-2.0" prefHeight="40.0" prefWidth="137.0">
-         <children>
-            <Button fx:id="mini" mnemonicParsing="false" onAction="#mini" opacity="0.6" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="25.0">
-                     <image>
-                        <Image url="@../../../../images/最小化.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="exit" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="47.0" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
-               <graphic>
-                  <ImageView fitHeight="27.0" fitWidth="27.0" opacity="0.6">
-                     <image>
-                        <Image url="@../../../../images/退出登录.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="close" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.6">
-                     <image>
-                        <Image url="@../../../../images/关闭.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER_RIGHT" layoutX="843.0" prefHeight="40.0" prefWidth="300.0">
-         <children>
-            <Label text="hi~ " textFill="WHITE" />
-            <Label fx:id="userName" text="登陆者" textFill="WHITE" />
-            <Label text="! [" textFill="WHITE" />
-            <Label fx:id="userID" text="0000000" textFill="WHITE" />
-            <Label text="] " textFill="WHITE" />
-         </children>
-      </HBox>
-   </children>
+<Pane xmlns:fx="http://javafx.com/fxml/1" onMouseDragged="#Drag" onMousePressed="#getOffSet" prefHeight="40.0"
+      prefWidth="1280.0" style="-fx-background-color: #5599FF;" xmlns="http://javafx.com/javafx/8"
+      fx:controller="nju.lighting.presentation.mainui.TitleController">
+    <children>
+        <Label layoutX="14.0" layoutY="9.0" text="进销存管理平台" textFill="WHITE">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+        <HBox alignment="CENTER" layoutX="1143.0" layoutY="-2.0" prefHeight="40.0" prefWidth="137.0">
+            <children>
+                <Button fx:id="mini" mnemonicParsing="false" onAction="#mini" opacity="0.6" prefHeight="40.0"
+                        prefWidth="45.0"
+                        style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0">
+                            <image>
+                                <Image url="@../../../../images/最小化.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="exit" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="47.0"
+                        style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+                    <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="27.0" opacity="0.6">
+                            <image>
+                                <Image url="@../../../../images/退出登录.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="close" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="45.0"
+                        style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.6">
+                            <image>
+                                <Image url="@../../../../images/关闭.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_RIGHT" layoutX="843.0" prefHeight="40.0" prefWidth="300.0">
+            <children>
+                <Label text="hi~ " textFill="WHITE"/>
+                <Label fx:id="userName" text="登陆者" textFill="WHITE"/>
+                <Label text="! [" textFill="WHITE"/>
+                <Label fx:id="userID" text="0000000" textFill="WHITE"/>
+                <Label text="] " textFill="WHITE"/>
+            </children>
+        </HBox>
+    </children>
 </Pane>

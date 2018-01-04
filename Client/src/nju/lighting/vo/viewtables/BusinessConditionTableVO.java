@@ -44,8 +44,8 @@ public class BusinessConditionTableVO {
         this.commodityLossExpenditure = commodityLossExpenditure;
         this.giftExpenditure = giftExpenditure;
         this.profit = profit;
-        revenue=salesRevenue+commodityGainRevenue+costAdjustRevenue+spreadRevenue+voucherCausedRevenue;
-        expenditure=costExpenditure+commodityLossExpenditure+giftExpenditure;
+        revenue = salesRevenue + commodityGainRevenue + costAdjustRevenue + spreadRevenue + voucherCausedRevenue;
+        expenditure = costExpenditure + commodityLossExpenditure + giftExpenditure;
     }
 
     /*
@@ -62,9 +62,9 @@ public class BusinessConditionTableVO {
         this.costExpenditure = costExpenditure;
         this.commodityLossExpenditure = commodityLossExpenditure;
         this.giftExpenditure = giftExpenditure;
-        revenue=salesRevenue+commodityGainRevenue+costAdjustRevenue+spreadRevenue+voucherCausedRevenue;
-        expenditure=costExpenditure+commodityLossExpenditure+giftExpenditure;
-        profit=revenue-expenditure;
+        revenue = salesRevenue + commodityGainRevenue + costAdjustRevenue + spreadRevenue + voucherCausedRevenue;
+        expenditure = costExpenditure + commodityLossExpenditure + giftExpenditure;
+        profit = revenue - expenditure;
     }
 
     public double getSalesRevenue() {

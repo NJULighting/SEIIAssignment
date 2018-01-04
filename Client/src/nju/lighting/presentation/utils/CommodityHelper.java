@@ -10,12 +10,10 @@ import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Created on 2017/12/17.
  * Description
- *
  * @author 陈俊宇
  */
 public class CommodityHelper {
@@ -42,18 +40,18 @@ public class CommodityHelper {
 //        }
     }
 
-    public static void chooseCommodity(Upper upper, ObservableList<BasicCommodityItemVO> commodities){
+    public static void chooseCommodity(Upper upper, ObservableList<BasicCommodityItemVO> commodities) {
         getPicker(upper).init(upper, commodities);
     }
 
-    public static void setCommodity(Upper upper, SimpleObjectProperty<BasicCommodityItemVO> commodity){
+    public static void setCommodity(Upper upper, SimpleObjectProperty<BasicCommodityItemVO> commodity) {
         getPicker(upper).init(upper, commodity);
     }
 
-    private static CommodityPicker getPicker(Upper upper){
-        FXMLLoader loader=new FXMLLoader(CommodityHelper.class.getResource("../commodityui/CommodityPicker.fxml"));
+    private static CommodityPicker getPicker(Upper upper) {
+        FXMLLoader loader = new FXMLLoader(CommodityHelper.class.getResource("../commodityui/CommodityPicker.fxml"));
         try {
-            upper.setChildren(loader.load(),">选择商品");
+            upper.setChildren(loader.load(), ">选择商品");
         } catch (IOException e) {
             e.printStackTrace();
         }

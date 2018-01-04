@@ -5,8 +5,6 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.presentation.utils.TextFieldHelper;
@@ -19,7 +17,6 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/28.
  * Description
- *
  * @author 陈俊宇
  */
 public class CreateCustomerOriented implements Initializable {
@@ -27,12 +24,11 @@ public class CreateCustomerOriented implements Initializable {
     JFXComboBox<String> gradePicker;
 
     @FXML
-    JFXTextField offText, voucherText ;
+    JFXTextField offText, voucherText;
 
 
     @FXML
     JFXDatePicker voucherEndDatePicker;
-
 
 
     @Override
@@ -49,7 +45,7 @@ public class CreateCustomerOriented implements Initializable {
     }
 
     public double getOff() {
-       return TextFieldHelper.getDouble(offText);
+        return TextFieldHelper.getDouble(offText);
     }
 
     public double getVoucher() {
@@ -57,9 +53,8 @@ public class CreateCustomerOriented implements Initializable {
     }
 
 
-
     public Date getVoucherEndDate() {
-        if (voucherEndDatePicker.getValue() != null&&getVoucher()>0)
+        if (voucherEndDatePicker.getValue() != null && getVoucher() > 0)
             return DateHelper.localDateToDate(voucherEndDatePicker.getValue());
         else
             return null;

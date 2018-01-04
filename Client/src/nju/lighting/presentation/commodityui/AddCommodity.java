@@ -2,9 +2,6 @@ package nju.lighting.presentation.commodityui;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.validation.base.ValidatorBase;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import nju.lighting.builder.Builder;

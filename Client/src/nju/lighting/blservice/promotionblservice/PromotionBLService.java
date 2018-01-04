@@ -2,14 +2,16 @@ package nju.lighting.blservice.promotionblservice;
 
 
 import nju.lighting.vo.promotion.PromotionVO;
-import shared.*;
+import shared.CustomerGrade;
+import shared.PromotionBuildInfo;
+import shared.Result;
+import shared.ResultMessage;
 
 import java.util.List;
 
 /**
  * Created on 2017/10/21.
  * Description
- *
  * @author 陈俊宇
  */
 public interface PromotionBLService {

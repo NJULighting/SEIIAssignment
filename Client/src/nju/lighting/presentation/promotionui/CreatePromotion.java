@@ -27,8 +27,9 @@ import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.promotion.PromotionVO;
-import shared.*;
-
+import shared.PromotionBuildInfo;
+import shared.PromotionType;
+import shared.Result;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,52 +41,34 @@ import java.util.stream.Collectors;
 /**
  * Created on 2017/12/28.
  * Description
- *
  * @author 陈俊宇
  */
 public class CreatePromotion implements Initializable {
-    private PromotionUIManageUI upper;
-
     //是否正确
     boolean alright = false;
-
-
+    @FXML
+    VBox verticalBox;
+    @FXML
+    Button chooseCommodityBtn;
+    @FXML
+    Pane tableContainer;
+    @FXML
+    JFXButton commit;
+    @FXML
+    JFXTextField nameText;
+    @FXML
+    JFXDatePicker startDatePicker, endDatePicker;
+    @FXML
+    StackPane stackPane;
+    @FXML
+    Label totalLabel;
+    private PromotionUIManageUI upper;
     private ObservableList<BasicCommodityItemVO> commodities = FXCollections.observableArrayList();
     private ObservableList<CommodityItem> itemList;
-
     private HashMap<PromotionType, String> typeToUrl = new HashMap<>();
     private HashMap<PromotionType, EventHandler> typeToEventHandle = new HashMap<>();
     private FXMLLoader typeLoader;
-
     private PromotionBLService blService = PromotionBLServiceFactory.getPromotionBLService();
-    @FXML
-    VBox verticalBox;
-
-
-
-    @FXML
-    Button chooseCommodityBtn;
-
-    @FXML
-    Pane tableContainer;
-
-    @FXML
-    JFXButton commit;
-
-    @FXML
-    JFXTextField nameText;
-
-    @FXML
-    JFXDatePicker startDatePicker, endDatePicker;
-
-    @FXML
-    StackPane stackPane;
-
-    @FXML
-    Label totalLabel;
-
-
-
 
     Result<PromotionVO> commitPriceOriented() {
         PromotionBuildInfo.Builder builder = createBuilder(PromotionType.PriceOriented);

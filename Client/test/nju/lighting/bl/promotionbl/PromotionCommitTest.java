@@ -5,7 +5,6 @@ import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.userbl.LoginTestHelper;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
-import nju.lighting.vo.UserVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import org.junit.Before;
@@ -19,7 +18,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created on 2018/1/4.
@@ -62,7 +62,7 @@ public class PromotionCommitTest {
         promotionVO.setName("Excited promotion");
         promotionVO.getGoods().add(new GiftItemVO(commodityInfo.getBasicCommodityItemVO("1-1"), 10));
 
-        ResultMessage res =  manager.modify(promotionVO);
+        ResultMessage res = manager.modify(promotionVO);
 
         assertTrue(res.success());
         assertEquals(2, manager.getPromotionList().size());

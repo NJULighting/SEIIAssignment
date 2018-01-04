@@ -15,7 +15,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import nju.lighting.bl.promotionbl.PromotionBLService_Stub;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.presentation.factory.PromotionBLServiceFactory;
 import nju.lighting.presentation.utils.DateHelper;
@@ -33,20 +32,17 @@ import java.util.ResourceBundle;
  */
 public class PromotionManageController implements Initializable {
 
-    private PromotionBLService promotionBLService = PromotionBLServiceFactory.getPromotionBLService();
-    private List<PromotionVO> promotions=promotionBLService.getPromotionList();
-    private int itemsPerPage = 10;
-    double PREF_WIDTH = 300, PREF_HEIGHT = 30;
     static PromotionVO selectedPromotion;
-
+    double PREF_WIDTH = 300, PREF_HEIGHT = 30;
     @FXML
     Pagination pagination;
-
     @FXML
     JFXButton create;
-
     @FXML
     TableView tableView;
+    private PromotionBLService promotionBLService = PromotionBLServiceFactory.getPromotionBLService();
+    private List<PromotionVO> promotions = promotionBLService.getPromotionList();
+    private int itemsPerPage = 10;
 
     @FXML
     void create() throws IOException {

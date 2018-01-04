@@ -2,7 +2,10 @@ package nju.lighting.bl.promotionbl;
 
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.vo.promotion.PromotionVO;
-import shared.*;
+import shared.CustomerGrade;
+import shared.PromotionBuildInfo;
+import shared.Result;
+import shared.ResultMessage;
 
 import java.util.List;
 

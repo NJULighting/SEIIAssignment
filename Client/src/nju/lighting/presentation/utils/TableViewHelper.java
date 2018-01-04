@@ -3,24 +3,17 @@ package nju.lighting.presentation.utils;
 import com.jfoenix.controls.JFXSlider;
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import javafx.beans.binding.Bindings;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.util.Callback;
-import nju.lighting.presentation.documentui.CommodityItem;
-import nju.lighting.presentation.documentui.EditingCell;
 
 /**
  * Created on 2017/12/10.
  * Description
- *
  * @author 陈俊宇
  */
 public class TableViewHelper {
@@ -61,12 +54,12 @@ public class TableViewHelper {
         return new HBox(first, second, third);
     }
 
-    public static void setSliderMarch(JFXSlider slider,TableView tableView){
+    public static void setSliderMarch(JFXSlider slider, TableView tableView) {
 
         //滑块控制表格的左右滑动
         slider.valueProperty().addListener((ObservableValue<? extends Number> ov,
-                                            Number old_value,Number new_value) -> {
-            tableView.setLayoutX(-(new_value.doubleValue()/100*(tableView.getPrefWidth()-700)));
+                                            Number old_value, Number new_value) -> {
+            tableView.setLayoutX(-(new_value.doubleValue() / 100 * (tableView.getPrefWidth() - 700)));
         });
     }
 }

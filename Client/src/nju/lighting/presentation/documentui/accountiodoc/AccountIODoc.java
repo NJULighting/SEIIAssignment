@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 /**
  * Created on 2017/12/11.
  * Description
- *
  * @author 陈俊宇
  */
 public class AccountIODoc implements Initializable {
@@ -47,8 +46,8 @@ public class AccountIODoc implements Initializable {
             AccountTransferList controller = loader.getController();
             controller.getObservableList().addAll(
                     accountIODocVO.getTransferAccountList().stream()
-                    .map(x-> new AccountTransferItem(x))
-                    .collect(Collectors.toList())
+                            .map(x -> new AccountTransferItem(x))
+                            .collect(Collectors.toList())
             );
 
         } catch (IOException e) {

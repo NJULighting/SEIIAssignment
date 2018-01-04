@@ -7,7 +7,6 @@ import nju.lighting.bl.utils.DataServiceSupplier;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
 import nju.lighting.po.promotion.PromotionPO;
-import nju.lighting.po.promotion.PromotionPackageItemPO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.*;
 

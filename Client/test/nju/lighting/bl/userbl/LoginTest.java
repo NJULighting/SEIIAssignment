@@ -1,13 +1,10 @@
 package nju.lighting.bl.userbl;
 
 import nju.lighting.blservice.userblservice.LoginService;
-import nju.lighting.blservice.userblservice.UserBLService;
 import nju.lighting.vo.UserVO;
 import org.junit.Test;
 import shared.LoginReturnState;
 import shared.TwoTuple;
-
-import java.util.List;
 
 import static org.junit.Assert.*;
 

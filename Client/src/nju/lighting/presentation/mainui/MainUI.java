@@ -9,13 +9,11 @@ import javafx.stage.Stage;
 import shared.Identity;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created on 2017/11/23.
  * Description
- *
  * @author 陈俊宇
  */
 public class MainUI {
@@ -32,16 +30,8 @@ public class MainUI {
 //    public Pane[] bottoms;
 
 
-    static HashMap<Identity,String> hashMap=new HashMap<>();
-
-    static {
-        hashMap.put(Identity.GENERAL,"GeneralManager.fxml");
-        hashMap.put(Identity.REPOSITORY,"RepositoryManager.fxml");
-        hashMap.put(Identity.SALE,"SalesManager.fxml");
-        hashMap.put(Identity.SALE_MANAGER,"SalesManager.fxml");
-        hashMap.put(Identity.FINANCE,"AccountManager.fxml");
-        hashMap.put(Identity.SYSTEM_ADMIN,"SystemManager.fxml");
-    }
+    static HashMap<Identity, String> hashMap = new HashMap<>();
+    private static StackPane stackPane;
 
 //    public MainUI(Identity identity) throws IOException {
 //
@@ -64,32 +54,34 @@ public class MainUI {
 //
 //    }
 
-    public BorderPane root= new BorderPane();
-    private static StackPane stackPane;
+    static {
+        hashMap.put(Identity.GENERAL, "GeneralManager.fxml");
+        hashMap.put(Identity.REPOSITORY, "RepositoryManager.fxml");
+        hashMap.put(Identity.SALE, "SalesManager.fxml");
+        hashMap.put(Identity.SALE_MANAGER, "SalesManager.fxml");
+        hashMap.put(Identity.FINANCE, "AccountManager.fxml");
+        hashMap.put(Identity.SYSTEM_ADMIN, "SystemManager.fxml");
+    }
+
+    public BorderPane root = new BorderPane();
     public Pane up;
     public VBox left;
     public Node[] center;
-    Stage stage =new Stage();
+    Stage stage = new Stage();
     TitleController titleController;
 
-    public void setStage(){
-        Client.setPrimaryStage(stage);
-        titleController.setStage(stage);
-    }
-
-    public MainUI(Identity identity) throws IOException{
+    public MainUI(Identity identity) throws IOException {
 
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(hashMap.get(identity)));
 
-        FXMLLoader loader=new FXMLLoader(getClass().getResource(hashMap.get(identity)));
-
-        FXMLLoader titleLoader=new FXMLLoader(getClass().getResource("Title.fxml"));
-        up=titleLoader.load();
-        titleController=titleLoader.getController();
+        FXMLLoader titleLoader = new FXMLLoader(getClass().getResource("Title.fxml"));
+        up = titleLoader.load();
+        titleController = titleLoader.getController();
         root.setTop(up);
 
 
-        Image background = new Image("images/待选背景/蓝色水2.jpg",1280,720,false,true);
+        Image background = new Image("images/待选背景/蓝色水2.jpg", 1280, 720, false, true);
 
         BackgroundImage backgroundImage = new BackgroundImage(background,
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -99,22 +91,21 @@ public class MainUI {
         root.setBackground(new Background(backgroundImage));
 
 
-
         //if(identity!=Identity.SYSTEM_ADMIN){
-            left=loader.load();
+        left = loader.load();
 
-            root.setLeft(left);
-            MainUIController controller=loader.getController();
-            center=new Node[controller.MAIN_BUTTON_SIZE];
-            controller.setMainUI(this);
+        root.setLeft(left);
+        MainUIController controller = loader.getController();
+        center = new Node[controller.MAIN_BUTTON_SIZE];
+        controller.setMainUI(this);
 //            for (int i=0;i<center.length;i++){
 //                controller.jumpTo(i);
 //            }
-            controller.jumpTo(0);
+        controller.jumpTo(0);
         //}else
         //   root.setRight(loader.load());
 
-        stackPane=new StackPane(root);
+        stackPane = new StackPane(root);
         stage.setScene(new Scene(stackPane));
         stage.getScene().getStylesheets().add(Client.class.getResource("../custom.css").toExternalForm());
 
@@ -125,5 +116,10 @@ public class MainUI {
 
     public static StackPane getStackPane() {
         return stackPane;
+    }
+
+    public void setStage() {
+        Client.setPrimaryStage(stage);
+        titleController.setStage(stage);
     }
 }

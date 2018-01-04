@@ -153,7 +153,7 @@ root {
 
 }
 
-.table-row-cell:selected .label  {
+.table-row-cell:selected .label {
     -fx-text-fill: black;
 
 }
@@ -591,7 +591,6 @@ root {
 
  */
 
-
 .tree-table-view:focused .tree-table-row-cell:selected {
 
     -fx-background-color: transparent;
@@ -602,7 +601,7 @@ root {
 
 }
 
-.tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell .text{
+.tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell .text {
 
     -fx-fill: BLACK;
 
@@ -714,11 +713,11 @@ root {
     -fx-background-color: transparent;
 }
 
-.tree-table-row-cell:hover .text{
+.tree-table-row-cell:hover .text {
     -fx-font-weight: bold;
 }
 
-.tree-table-row-cell:selected .text{
+.tree-table-row-cell:selected .text {
     -fx-font-weight: bold;
 }
 

@@ -45,55 +45,38 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class SalesDocController implements Initializable, Upper {
-    private CustomerVO customerVO;
-
-    private String salesDocID;
     PromotionBLService promotionBLService = PromotionBLServiceFactory.getPromotionBLService();
-
-    private double accountBeforeDisNum = 0;
-
-    private double discountNum = 0;
-
-    private double voucherNum = 0;
-
-    private double accountNum = 0;
-
-    private DocBLService docBLService = new DocController();
-
-    @FXML
-    private Button choseCustomBtn, finishBtn, promotionBtn;
-
-    @FXML
-    private JFXButton commodityBtn;
-
-    @FXML
-    private JFXTextField customer, salesman, userman, repository, accountBeforeDis, discount,
-            voucher, account, promotionText;
-
-    @FXML
-    private TextArea remarks;
-
-    @FXML
-    private Label failMessage, failDisCount, failVoucher, failCustomer, sub, title;
-
     @FXML
     HBox container, promotionBox;
-
     @FXML
     VBox verticalVBox;
-
     @FXML
     Pane mainPane, commodityContainer;
-
     ObservableList<BasicCommodityItemVO> commodityList = FXCollections.observableArrayList();
     ObservableList<CommodityItem> docItemList;
     SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
     SimpleObjectProperty<PromotionVO> promotionProperty = new SimpleObjectProperty<>();
-
-
     CommodityList commodityListController;
     PromotionVO promotionVO;
     CustomerType type = CustomerType.SALESPERSON;
+    private CustomerVO customerVO;
+    private String salesDocID;
+    private double accountBeforeDisNum = 0;
+    private double discountNum = 0;
+    private double voucherNum = 0;
+    private double accountNum = 0;
+    private DocBLService docBLService = new DocController();
+    @FXML
+    private Button choseCustomBtn, finishBtn, promotionBtn;
+    @FXML
+    private JFXButton commodityBtn;
+    @FXML
+    private JFXTextField customer, salesman, userman, repository, accountBeforeDis, discount,
+            voucher, account, promotionText;
+    @FXML
+    private TextArea remarks;
+    @FXML
+    private Label failMessage, failDisCount, failVoucher, failCustomer, sub, title;
 
     public void chooseCommodity() {
         CommodityHelper.chooseCommodity(this, commodityList);

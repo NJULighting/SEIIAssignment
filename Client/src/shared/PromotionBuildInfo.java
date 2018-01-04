@@ -1,14 +1,8 @@
 package shared;
 
-import nju.lighting.bl.utils.CollectionTransformer;
-import nju.lighting.po.promotion.PromotionPO;
-import nju.lighting.po.promotion.PromotionPackageItemPO;
 import nju.lighting.vo.UserVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
-import nju.lighting.vo.promotion.PromotionVO;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -45,66 +39,6 @@ public class PromotionBuildInfo {
         vouchers = builder.vouchers;
         vouchersEndDate = Optional.ofNullable(builder.vouchersEndDate).orElse(new Date());
         creatorId = builder.userId;
-    }
-
-    public static class Builder {
-        private String name;
-        private PromotionType type;
-        private Date startDate;
-        private Date endDate;
-        private CustomerGrade level;
-        private double price;
-        private List<GiftItemVO> goods;
-        private double off;
-        private double vouchers;
-        private Date vouchersEndDate;
-        private String userId;
-
-        /**
-         * This constructor should be used by presentation level
-         * @param name name of promotion
-         * @param type type of promotion
-         * @param startDate start time of promotion
-         * @param endDate end time of promotion
-         * @param user creator of this promotion strategy
-         */
-        public Builder(String name, PromotionType type, Date startDate, Date endDate, UserVO user) {
-            this.name = name;
-            this.type = type;
-            this.startDate = startDate;
-            this.endDate = endDate;
-            userId = user.getID();
-        }
-
-        public Builder level(CustomerGrade level) {
-            this.level = level;
-            return this;
-        }
-
-        public Builder price(double price) {
-            this.price = price;
-            return this;
-        }
-
-        public Builder goods(List<GiftItemVO> goods) {
-            this.goods = goods;
-            return this;
-        }
-
-        public Builder off(double off) {
-            this.off = off;
-            return this;
-        }
-
-        public Builder vouchers(double vouchers, Date vouchersEndDate) {
-            this.vouchers = vouchers;
-            this.vouchersEndDate= vouchersEndDate;
-            return this;
-        }
-
-        public PromotionBuildInfo build() {
-            return new PromotionBuildInfo(this);
-        }
     }
 
     public Date getCreateTime() {
@@ -153,5 +87,65 @@ public class PromotionBuildInfo {
 
     public String getCreatorId() {
         return creatorId;
+    }
+
+    public static class Builder {
+        private String name;
+        private PromotionType type;
+        private Date startDate;
+        private Date endDate;
+        private CustomerGrade level;
+        private double price;
+        private List<GiftItemVO> goods;
+        private double off;
+        private double vouchers;
+        private Date vouchersEndDate;
+        private String userId;
+
+        /**
+         * This constructor should be used by presentation level
+         * @param name      name of promotion
+         * @param type      type of promotion
+         * @param startDate start time of promotion
+         * @param endDate   end time of promotion
+         * @param user      creator of this promotion strategy
+         */
+        public Builder(String name, PromotionType type, Date startDate, Date endDate, UserVO user) {
+            this.name = name;
+            this.type = type;
+            this.startDate = startDate;
+            this.endDate = endDate;
+            userId = user.getID();
+        }
+
+        public Builder level(CustomerGrade level) {
+            this.level = level;
+            return this;
+        }
+
+        public Builder price(double price) {
+            this.price = price;
+            return this;
+        }
+
+        public Builder goods(List<GiftItemVO> goods) {
+            this.goods = goods;
+            return this;
+        }
+
+        public Builder off(double off) {
+            this.off = off;
+            return this;
+        }
+
+        public Builder vouchers(double vouchers, Date vouchersEndDate) {
+            this.vouchers = vouchers;
+            this.vouchersEndDate = vouchersEndDate;
+            return this;
+        }
+
+        public PromotionBuildInfo build() {
+            return new PromotionBuildInfo(this);
+        }
     }
 }

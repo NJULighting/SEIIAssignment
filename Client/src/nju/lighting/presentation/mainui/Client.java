@@ -1,59 +1,34 @@
 package nju.lighting.presentation.mainui;
 
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import nju.lighting.bl.userbl.UserBLServie_Stub;
 import nju.lighting.blservice.userblservice.UserBLService;
-import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.vo.UserVO;
-import shared.Identity;
-import shared.LoginReturnState;
-import shared.TwoTuple;
-
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
  * Created on 2017/11/21.
  * Description
- *
  * @author 陈俊宇
  */
 public class Client extends Application {
-    UserBLService userBLService;
-    private static UserVO userVO;
-
-
-
     static Stage primaryStage;
+    private static UserVO userVO;
+    UserBLService userBLService;
 
-    public static void setScene(Scene  scene){
+    public static void setScene(Scene scene) {
         primaryStage.setScene(scene);
     }
 
-    public static void setPrimaryStage(Stage stage){
+    public static void setPrimaryStage(Stage stage) {
         primaryStage.hide();
-        primaryStage=stage;
+        primaryStage = stage;
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
 
@@ -68,12 +43,16 @@ public class Client extends Application {
         Client.userVO = userVO;
     }
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
-    public void start(Stage primaryStage){
+    public void start(Stage primaryStage) {
 
-        this.primaryStage=primaryStage;
+        this.primaryStage = primaryStage;
 
-        try{
+        try {
             AnchorPane node = FXMLLoader.load(getClass().getResource("Login.fxml"));
             Image icon = new Image("images/待选背景/简约灯泡.png");
             primaryStage.setScene(new Scene(node));
@@ -82,12 +61,8 @@ public class Client extends Application {
             primaryStage.getIcons().add(icon);
             primaryStage.show();
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args){
-        launch(args);
     }
 }

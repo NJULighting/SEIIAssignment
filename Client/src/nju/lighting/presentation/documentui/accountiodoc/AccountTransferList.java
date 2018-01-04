@@ -19,22 +19,18 @@ import java.util.ResourceBundle;
  * Created on 2017/12/11.
  * Description
  * 收付款单的转账列表的 controller
- *
  * @author 陈俊宇
  */
 public class AccountTransferList implements Initializable {
 
 
-    private ObservableList<AccountTransferItem> observableList=FXCollections.observableArrayList();
-
     @FXML
     TableColumn<AccountTransferItem, String> comments, account;
-
     @FXML
     TableColumn<AccountTransferItem, Double> amount;
-
     @FXML
     TableView accountItemTable;
+    private ObservableList<AccountTransferItem> observableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -46,7 +42,6 @@ public class AccountTransferList implements Initializable {
                 cellData.getValue().accountNameProperty());
         amount.setCellValueFactory(cellData ->
                 cellData.getValue().amountProperty().asObject());
-
 
 
         accountItemTable.setItems(observableList);
@@ -62,9 +57,8 @@ public class AccountTransferList implements Initializable {
     }
 
 
-
-    public void setEditable(){
-        TableColumn delete=new TableColumn();
+    public void setEditable() {
+        TableColumn delete = new TableColumn();
         delete.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {

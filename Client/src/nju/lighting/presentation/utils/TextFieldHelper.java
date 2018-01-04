@@ -11,7 +11,6 @@ import javafx.beans.value.ObservableValue;
 /**
  * Created on 2017/12/23.
  * Description
- *
  * @author 陈俊宇
  */
 public class TextFieldHelper {
@@ -46,7 +45,7 @@ public class TextFieldHelper {
         });
     }
 
-    private static void binds(JFXTextField textField,ValidatorBase validator,String message){
+    private static void binds(JFXTextField textField, ValidatorBase validator, String message) {
         validator.setMessage(message);
         textField.getValidators().add(validator);
         textField.focusedProperty().addListener(new ChangeListener<Boolean>() {
@@ -60,39 +59,39 @@ public class TextFieldHelper {
         });
     }
 
-    public static void addDoubleValidator(JFXTextField textField){
-        addDoubleValidator(textField,"请输入小数");
+    public static void addDoubleValidator(JFXTextField textField) {
+        addDoubleValidator(textField, "请输入小数");
     }
 
-    public static void addDoubleValidator(JFXTextField textField,String message){
-        DoubleValidator validator= new DoubleValidator();
-        binds(textField,validator,message);
+    public static void addDoubleValidator(JFXTextField textField, String message) {
+        DoubleValidator validator = new DoubleValidator();
+        binds(textField, validator, message);
     }
 
-    public static void addNumberValidator(JFXTextField textField){
-        addDoubleValidator(textField,"请输入整数");
+    public static void addNumberValidator(JFXTextField textField) {
+        addDoubleValidator(textField, "请输入整数");
     }
 
-    public static void addNumberValidator(JFXTextField textField, String message){
-        NumberValidator validator=new NumberValidator();
-        binds(textField,validator,message);
+    public static void addNumberValidator(JFXTextField textField, String message) {
+        NumberValidator validator = new NumberValidator();
+        binds(textField, validator, message);
     }
 
-    public static void addRequiredValidator(JFXTextField textField){
-        addRequiredValidator(textField,"不能为空");
+    public static void addRequiredValidator(JFXTextField textField) {
+        addRequiredValidator(textField, "不能为空");
     }
 
-    public static void addRequiredValidator(JFXTextField textField, String message){
-        RequiredFieldValidator validator=new RequiredFieldValidator();
-        binds(textField,validator,message);
+    public static void addRequiredValidator(JFXTextField textField, String message) {
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        binds(textField, validator, message);
     }
 
-    public static double getDouble(JFXTextField textField){
+    public static double getDouble(JFXTextField textField) {
 
-            if (textField.validate()&&textField.getText()!=null&&textField.getText().length()!=0)
-                return Double.parseDouble(textField.getText());
-            else
-                return 0;
+        if (textField.validate() && textField.getText() != null && textField.getText().length() != 0)
+            return Double.parseDouble(textField.getText());
+        else
+            return 0;
 
     }
 

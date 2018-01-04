@@ -4,17 +4,17 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
-import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
-import nju.lighting.bl.commoditybl.CommodityController;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.factory.CommodityBLServiceFactory;
 import nju.lighting.presentation.mainui.MainUI;
-import nju.lighting.vo.commodity.*;
+import nju.lighting.vo.commodity.BasicCommodityItemVO;
+import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
+import nju.lighting.vo.commodity.CommodityCategoryVO;
+import nju.lighting.vo.commodity.CommodityItemVO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,45 +25,33 @@ import java.util.stream.Collectors;
 /**
  * Created on 2017/12/25.
  * Description
- *
  * @author 陈俊宇
  */
 public class CommodityCategory implements Initializable {
     CommodityBLService blService = CommodityBLServiceFactory.getCommodityBLService();
-    private CommodityCategoriesTreeVO categoriesTreeVO;
-    private StackPane stackPane;
     SimpleStringProperty keyWord = new SimpleStringProperty();
     @FXML
     TreeTableView<CommodityCategoryItem> commodityTreeTableView;
-
     @FXML
     TreeTableColumn<CommodityCategoryItem, String> name;
-
     @FXML
     TreeTableColumn<CommodityCategoryItem, String> id;
-
     @FXML
     TreeTableColumn<CommodityCategoryItem, String> modelNumber;
-
     @FXML
     TreeTableColumn<CommodityCategoryItem, Integer> repCount;
-
     @FXML
     TreeTableColumn<CommodityCategoryItem, Double> inPrice;
-
     @FXML
     TreeTableColumn<CommodityCategoryItem, Double> sellPrice;
-
     @FXML
     TreeTableColumn<CommodityCategoryItem, Double> recentInPrice;
-
     @FXML
     TreeTableColumn<CommodityCategoryItem, Double> recentSellPrice;
-
     @FXML
     TextField searchText;
-
-
+    private CommodityCategoriesTreeVO categoriesTreeVO;
+    private StackPane stackPane;
     private TreeItem root;
 
     @FXML
@@ -127,8 +115,8 @@ public class CommodityCategory implements Initializable {
         root = new TreeItem();
         refresh();
         commodityTreeTableView.setRoot(root);
-        searchText.textProperty().addListener(c->{
-            if (searchText.getText().length()==0)
+        searchText.textProperty().addListener(c -> {
+            if (searchText.getText().length() == 0)
                 refresh();
         });
 
@@ -151,28 +139,28 @@ public class CommodityCategory implements Initializable {
         recentSellPrice.setCellValueFactory(cellData ->
                 cellData.getValue().getValue().recentSellPriceProperty().asObject());
 
-        name.setCellFactory(c->{
-            return new TreeTableCell<CommodityCategoryItem, String>(){
+        name.setCellFactory(c -> {
+            return new TreeTableCell<CommodityCategoryItem, String>() {
                 @Override
                 protected void updateItem(String item, boolean empty) {
                     super.updateItem(item, empty);
-                    if (empty){
+                    if (empty) {
                         setText(null);
                         setGraphic(null);
-                    }else {
+                    } else {
                         setText(item);
-                        if (getTreeTableRow().getTreeItem()!=null
-                                &&!getTreeTableRow().getTreeItem().getValue().getItem().getClass().equals(CommodityCategoryVO.class)){
-                            MenuItem predicate=new MenuItem("预测趋势");
+                        if (getTreeTableRow().getTreeItem() != null
+                                && !getTreeTableRow().getTreeItem().getValue().getItem().getClass().equals(CommodityCategoryVO.class)) {
+                            MenuItem predicate = new MenuItem("预测趋势");
                             setContextMenu(new ContextMenu(predicate));
-                            predicate.setOnAction(e->{
-                                FXMLLoader loader=new FXMLLoader(getClass().getResource("Predicate.fxml"));
+                            predicate.setOnAction(e -> {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Predicate.fxml"));
                                 try {
                                     DialogHelper.addDialog(loader.load(), MainUI.getStackPane());
                                 } catch (IOException e1) {
                                     e1.printStackTrace();
                                 }
-                                Predicate controller=loader.getController();
+                                Predicate controller = loader.getController();
                                 controller.init(((CommodityItemVO) getTreeTableRow().getTreeItem().getValue().getItem()));
                             });
                         }
@@ -196,6 +184,10 @@ public class CommodityCategory implements Initializable {
         return stackPane;
     }
 
+    public void setStackPane(StackPane stackPane) {
+        this.stackPane = stackPane;
+    }
+
     void setEditable() {
         name.setCellFactory(new Callback<TreeTableColumn<CommodityCategoryItem, String>, TreeTableCell<CommodityCategoryItem, String>>() {
             @Override
@@ -208,15 +200,14 @@ public class CommodityCategory implements Initializable {
 
     }
 
-    public void setStackPane(StackPane stackPane) {
-        this.stackPane = stackPane;
-    }
-
     public List<BasicCommodityItemVO> getSelectedCommodities() {
         return commodityTreeTableView.getSelectionModel().getSelectedItems().stream()
                 .filter(x -> x.getValue().getItem().getClass().equals(CommodityItemVO.class))
                 .map(x -> ((CommodityItemVO) x.getValue().getItem()).toBasicCommodityItem())
                 .collect(Collectors.toList());
     }
-    public void setSingle(){commodityTreeTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);}
+
+    public void setSingle() {
+        commodityTreeTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
 }

@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Description:
  * @author Liao
  */
-public class UserPO implements Serializable{
+public class UserPO implements Serializable {
 
     private static final long serialVersionUID = 2418792659434004685L;
     private String name;

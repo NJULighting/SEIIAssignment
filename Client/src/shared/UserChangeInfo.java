@@ -7,7 +7,6 @@ import nju.lighting.po.user.UserPO;
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
 import java.util.NoSuchElementException;
-import java.util.function.Consumer;
 
 /**
  * Created on 2017/12/2.
@@ -29,7 +28,6 @@ public class UserChangeInfo {
     private final String description;
 
 
-
     private UserChangeInfo(Builder builder) {
         id = builder.id;
         name = builder.name;
@@ -37,6 +35,11 @@ public class UserChangeInfo {
         identity = builder.identity;
         authorized = builder.authorized;
         description = builder.description;
+    }
+
+    @Override
+    public String toString() {
+        return description;
     }
 
     public static class Builder {
@@ -51,7 +54,7 @@ public class UserChangeInfo {
         /**
          * Builder pattern to create <code>UserChangeInfo</code>（感觉好像有点多余QAQ）
          * @param userID id of the user
-         * @throws RemoteException if network fail
+         * @throws RemoteException        if network fail
          * @throws NoSuchElementException if this id matches no user
          */
         public Builder(String userID) throws RemoteException {
@@ -108,10 +111,5 @@ public class UserChangeInfo {
         public UserChangeInfo build() {
             return new UserChangeInfo(this);
         }
-    }
-
-    @Override
-    public String toString() {
-        return description;
     }
 }

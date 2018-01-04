@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXDatePicker;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
@@ -14,7 +13,6 @@ import java.util.Locale;
 /**
  * Created on 2017/12/5.
  * Description
- *
  * @author 陈俊宇
  */
 public class DateHelper {
@@ -22,12 +20,12 @@ public class DateHelper {
     /**
      * 查表是在给定的时间区间内查询，所以时间区间需要有默认值
      * @param datePicker 要设置的datePicker
-     * @param date  默认时间
+     * @param date       默认时间
      */
-    public static void setDefaultTime(JFXDatePicker datePicker, LocalDate date){
+    public static void setDefaultTime(JFXDatePicker datePicker, LocalDate date) {
         datePicker.setValue(date);
-        datePicker.valueProperty().addListener(c-> {
-            if (datePicker.getValue()==null)
+        datePicker.valueProperty().addListener(c -> {
+            if (datePicker.getValue() == null)
                 datePicker.setValue(date);
         });
     }

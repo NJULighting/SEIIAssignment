@@ -13,10 +13,9 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/14.
  * Description
- *
  * @author 陈俊宇
  */
-public class CommodityManage implements Initializable{
+public class CommodityManage implements Initializable {
     @FXML
     StackPane stackPane;
 
@@ -28,10 +27,10 @@ public class CommodityManage implements Initializable{
         try {
 
 
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("CommodityCategory.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CommodityCategory.fxml"));
 
             container.getChildren().add(loader.load());
-            CommodityCategory controller=loader.getController();
+            CommodityCategory controller = loader.getController();
             controller.setStackPane(stackPane);
             controller.setEditable();
 

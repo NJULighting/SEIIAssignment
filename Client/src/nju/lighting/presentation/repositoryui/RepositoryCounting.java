@@ -7,19 +7,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
-import nju.lighting.bl.repositorybl.RepositoryBLService_Stub;
 import nju.lighting.blservice.repositoryblservice.RepositoryBLService;
 import nju.lighting.presentation.factory.RepositoryBLServiceFactory;
 import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.repository.RepositoryTableItemVO;
-import nju.lighting.vo.repository.RepositoryTableVO;
 
 import java.net.URL;
 import java.util.List;
@@ -29,7 +25,6 @@ import java.util.stream.Collectors;
 /**
  * Created on 2017/12/21.
  * Description
- *
  * @author 陈俊宇
  */
 public class RepositoryCounting implements Initializable {

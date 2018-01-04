@@ -13,10 +13,10 @@ import shared.CustomerGrade;
 import shared.ResultMessage;
 
 import javax.naming.NamingException;
-
 import java.rmi.RemoteException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Created on 2017/12/5.

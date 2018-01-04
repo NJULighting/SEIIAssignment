@@ -2,7 +2,6 @@ package nju.lighting.bl.commoditybl;
 
 import nju.lighting.bl.userbl.LoginTestHelper;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
-import nju.lighting.builder.Builder;
 import nju.lighting.builder.commodity.CommodityBuildInfo;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;

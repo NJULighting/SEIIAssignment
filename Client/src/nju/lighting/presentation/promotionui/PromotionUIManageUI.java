@@ -149,11 +149,6 @@ public class PromotionUIManageUI implements Initializable, Upper {
                             setText(null);
                             setGraphic(null);
                         } else {
-//                            setText(DateHelper.approximateTime(getItem()));
-//                            if (getItem().before(new Date()))
-//                                setTextFill(Color.RED);
-//                            else
-                            // setTextFill(Color.BLACK);
                             setText(null);
                             Label label=new Label(DateHelper.approximateTime(getItem()));
                             if (getItem().before(new Date()))
@@ -193,9 +188,7 @@ public class PromotionUIManageUI implements Initializable, Upper {
                             setGraphic(buttonBox);
                             setText(null);
 
-
-                            getTableRow().setOnMouseExited(e -> buttonBox.setVisible(false));
-                            getTableRow().setOnMouseEntered(e -> buttonBox.setVisible(true));
+                            TableViewHelper.setNodeVisibleOnlyMouseEntered(getTableRow(),buttonBox);
 
 
                             invalidate.setOnAction(e -> {

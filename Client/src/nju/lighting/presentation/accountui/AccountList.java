@@ -35,7 +35,8 @@ import java.util.ResourceBundle;
  *
  * @author 陈俊宇
  */
-public class AccountList implements Initializable {
+public class
+AccountList implements Initializable {
     AccountBLService blService = AccountBLServiceFactory.getAccountBLService();
 
     @FXML

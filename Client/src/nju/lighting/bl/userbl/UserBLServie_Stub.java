@@ -20,6 +20,10 @@ public class UserBLServie_Stub implements UserBLService {
         ArrayList<UserVO> userList = new ArrayList<>();
         userList.add(getUser("0"));
         userList.add(getUser("1"));
+        userList.add(getUser("2"));
+        userList.add(getUser("3"));
+        userList.add(getUser("4"));
+        userList.add(getUser("5"));
         return userList;
     }
 
@@ -37,28 +41,28 @@ public class UserBLServie_Stub implements UserBLService {
     @Override
     public UserVO getUser(String id) {
         if (id.equals("0"))
-            return new UserVO("Frog 0", "0000", Identity.GENERAL, true);
+            return new UserVO("Frog 0", "0", Identity.GENERAL, true);
         else if (id.equals("1"))
-            return new UserVO("Frog 1", "0001", Identity.REPOSITORY, false);
+            return new UserVO("Frog 1", "1", Identity.REPOSITORY, false);
         else if (id.equals("2"))
-            return new UserVO("Frog 2", "0002", Identity.SALE, false);
+            return new UserVO("Frog 2", "2", Identity.SALE, false);
         else if (id.equals("3"))
-            return new UserVO("Frog 3", "0003", Identity.SALE_MANAGER, true);
+            return new UserVO("Frog 3", "3", Identity.SALE_MANAGER, true);
         else if (id.equals("4"))
-            return new UserVO("Frog 4", "0004", Identity.FINANCE, false);
+            return new UserVO("Frog 4", "4", Identity.FINANCE, false);
         else if (id.equals("5"))
-            return new UserVO("Admin", "0000", Identity.SYSTEM_ADMIN, true);
+            return new UserVO("Admin", "5", Identity.SYSTEM_ADMIN, true);
         return null;
     }
 
     @Override
     public ResultMessage changeUser(UserChangeInfo changeInfo) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
     public ResultMessage deleteUser(String id) {
-        return id.equals("0") || id.equals("1") || id.equals("2") || id.equals("3") || id.equals("4") ? ResultMessage.SUCCESS : ResultMessage.FAILURE;
+        return id.equals("0") || id.equals("1") || id.equals("2")  ? ResultMessage.SUCCESS : ResultMessage.FAILURE;
     }
 
     @Override
@@ -136,7 +140,7 @@ public class UserBLServie_Stub implements UserBLService {
 
     @Override
     public ResultMessage userChangePassword(String oldPassword, String newPassword) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override

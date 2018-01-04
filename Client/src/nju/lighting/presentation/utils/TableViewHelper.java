@@ -5,10 +5,8 @@ import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
@@ -59,6 +57,12 @@ public class TableViewHelper {
         Label third = new Label(itemStr.substring(beginIndex + key.length()));
         second.setBackground(new Background(new BackgroundFill(Color.YELLOW, null, null)));
         return new HBox(first, second, third);
+    }
+
+    public static void setNodeVisibleOnlyMouseEntered(TableRow row, Node node){
+        node.setVisible(false);
+        row.setOnMouseEntered(e->node.setVisible(true));
+        row.setOnMouseExited(e-> node.setVisible(false));
     }
 
     public static void setSliderMarch(JFXSlider slider,TableView tableView){

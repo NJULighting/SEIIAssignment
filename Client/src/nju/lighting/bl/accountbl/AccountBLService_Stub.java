@@ -35,20 +35,20 @@ public class AccountBLService_Stub implements AccountBLService {
     @Override
     public List<AccountVO> findAccounts(String keyword) {
         if (keyword.contains("1"))
-            return getAccountList().subList(0,1);
+            return getAccountList().subList(0, 1);
         else return getAccountList();
     }
 
     @Override
     public AccountVO getAccount(String id) {
-        ArrayList<AccountLogVO> list1=new ArrayList<>();
-        list1.add(new AccountLogVO(1,new Date(),100,8000, AccountChangeType.IN));
-        list1.add(new AccountLogVO(1,new Date(),-100,8100, AccountChangeType.OUT));
-        list1.add(new AccountLogVO(1,new Date(),3000,11000, AccountChangeType.IN));
-        list1.add(new AccountLogVO(1,new Date(),-8000,3000, AccountChangeType.OUT));
-        list1.add(new AccountLogVO(1,new Date(),10,3100, AccountChangeType.IN));
-        list1.add(new AccountLogVO(1,new Date(),-20,11000, AccountChangeType.OUT));
-        ArrayList<AccountLogVO> list2=new ArrayList<>();
+        ArrayList<AccountLogVO> list1 = new ArrayList<>();
+        list1.add(new AccountLogVO(1, new Date(), 100, 8000, AccountChangeType.IN));
+        list1.add(new AccountLogVO(1, new Date(), -100, 8100, AccountChangeType.OUT));
+        list1.add(new AccountLogVO(1, new Date(), 3000, 11000, AccountChangeType.IN));
+        list1.add(new AccountLogVO(1, new Date(), -8000, 3000, AccountChangeType.OUT));
+        list1.add(new AccountLogVO(1, new Date(), 10, 3100, AccountChangeType.IN));
+        list1.add(new AccountLogVO(1, new Date(), -20, 11000, AccountChangeType.OUT));
+        ArrayList<AccountLogVO> list2 = new ArrayList<>();
         list2.addAll(list1);
         list2.addAll(list1);
 

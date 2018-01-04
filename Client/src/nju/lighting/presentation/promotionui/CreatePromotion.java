@@ -6,7 +6,6 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,13 +15,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import nju.lighting.bl.promotionbl.PromotionBLService_Stub;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
 import nju.lighting.presentation.factory.PromotionBLServiceFactory;
-import nju.lighting.presentation.mainui.Upper;
+import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.utils.CommodityHelper;
 import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.presentation.utils.TextFieldHelper;
@@ -31,9 +29,7 @@ import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.PromotionBuildInfo;
 import shared.PromotionType;
-import shared.ResultMessage;
-import shared.TwoTuple;
-
+import shared.Result;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,54 +41,36 @@ import java.util.stream.Collectors;
 /**
  * Created on 2017/12/28.
  * Description
- *
  * @author 陈俊宇
  */
 public class CreatePromotion implements Initializable {
-    private PromotionUIManageUI upper;
-
     //是否正确
     boolean alright = false;
-
-
+    @FXML
+    VBox verticalBox;
+    @FXML
+    Button chooseCommodityBtn;
+    @FXML
+    Pane tableContainer;
+    @FXML
+    JFXButton commit;
+    @FXML
+    JFXTextField nameText;
+    @FXML
+    JFXDatePicker startDatePicker, endDatePicker;
+    @FXML
+    StackPane stackPane;
+    @FXML
+    Label totalLabel;
+    private PromotionUIManageUI upper;
     private ObservableList<BasicCommodityItemVO> commodities = FXCollections.observableArrayList();
     private ObservableList<CommodityItem> itemList;
-
     private HashMap<PromotionType, String> typeToUrl = new HashMap<>();
     private HashMap<PromotionType, EventHandler> typeToEventHandle = new HashMap<>();
     private FXMLLoader typeLoader;
-
     private PromotionBLService blService = PromotionBLServiceFactory.getPromotionBLService();
-    @FXML
-    VBox verticalBox;
 
-
-
-    @FXML
-    Button chooseCommodityBtn;
-
-    @FXML
-    Pane tableContainer;
-
-    @FXML
-    JFXButton commit;
-
-    @FXML
-    JFXTextField nameText;
-
-    @FXML
-    JFXDatePicker startDatePicker, endDatePicker;
-
-    @FXML
-    StackPane stackPane;
-
-    @FXML
-    Label totalLabel;
-
-
-
-
-    TwoTuple<ResultMessage, PromotionVO> commitPriceOriented() {
+    Result<PromotionVO> commitPriceOriented() {
         PromotionBuildInfo.Builder builder = createBuilder(PromotionType.PriceOriented);
         CreatePriceOriented controller = typeLoader.getController();
         if (itemList.size() != 0 || (controller.getVoucherEndDate() != null)) {
@@ -100,21 +78,21 @@ public class CreatePromotion implements Initializable {
                     .goods(getGiftList())
                     .vouchers(controller.getVoucher(), controller.getVoucherEndDate());
             System.out.println("succ commit");
-            return blService.commit(builder.build());
+            return blService.commit(builder);
         } else return null;
     }
 
-    TwoTuple<ResultMessage, PromotionVO> commitCombo() {
+    Result<PromotionVO> commitCombo() {
         CreateCombo controller = typeLoader.getController();
         if (itemList.size() != 0 & controller.getOff() > 0) {
             PromotionBuildInfo.Builder builder = createBuilder(PromotionType.Combo);
             builder.goods(getGiftList())
                     .off(controller.getOff());
-            return blService.commit(builder.build());
+            return blService.commit(builder);
         } else return null;
     }
 
-    TwoTuple<ResultMessage, PromotionVO> commitCustomerOriented() {
+    Result<PromotionVO> commitCustomerOriented() {
         CreateCustomerOriented controller = typeLoader.getController();
 
         PromotionBuildInfo.Builder builder = createBuilder(PromotionType.CustomerOriented);
@@ -124,7 +102,7 @@ public class CreatePromotion implements Initializable {
                     .off(controller.getOff())
                     .vouchers(controller.getVoucher(), controller.getVoucherEndDate());
 
-            return blService.commit(builder.build());
+            return blService.commit(builder);
         } else
             return null;
     }
@@ -136,7 +114,7 @@ public class CreatePromotion implements Initializable {
         verticalBox.getChildren().add(typeLoader.load());
         commit.setOnAction(event -> {
             if (verify()) {
-                TwoTuple<ResultMessage, PromotionVO> res;
+                Result<PromotionVO> res;
                 switch (type) {
                     case Combo:
                         res = commitCombo();
@@ -152,11 +130,11 @@ public class CreatePromotion implements Initializable {
                         break;
                 }
                 if (res != null) {
-                    if (res.t == ResultMessage.SUCCESS) {
-                        upper.getPromotionList().add(res.r);
+                    if (res.hasValue()) {
+                        upper.getPromotionList().add(res.getValue());
                         upper.backToMain();
                     } else
-                        DialogHelper.dialog(res.t, stackPane);
+                        DialogHelper.dialog(res.getResultMessage(), stackPane);
                 }
             }
         });
@@ -172,7 +150,7 @@ public class CreatePromotion implements Initializable {
                 nameText.getText(),
                 type,
                 DateHelper.localDateToDate(startDatePicker.getValue()),
-                DateHelper.localDateToDate(endDatePicker.getValue()));
+                DateHelper.localDateToDate(endDatePicker.getValue()), Client.getUserVO());
     }
 
     List<GiftItemVO> getGiftList() {

@@ -43,7 +43,7 @@ public interface DataServiceBiFunction<T, R, Y> {
     }
 
     static <Target1, Target2, Result> TwoTuple<ResultMessage, Result> commit(Target1 target1, Target2 target2,
-                                                                    DataServiceBiFunction<Target1, Target2, TwoTuple<ResultMessage, Result>> function) {
+                                                                             DataServiceBiFunction<Target1, Target2, TwoTuple<ResultMessage, Result>> function) {
         TwoTuple<ResultMessage, Result> commitResult = new TwoTuple<>();
         commitResult.t = ResultMessage.FAILURE;
 

@@ -3,11 +3,8 @@ package nju.lighting.presentation.mainui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,18 +13,19 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/11/26.
  * Description 四种 MainUI 的抽象父类，提供了下部分界面跳转等方法
- *
  * @author 陈俊宇
  */
 
 public abstract class MainUIController extends CommonFather {
 
-    String[] urls;
     final Button[] currentBtn = new Button[1];
+    String[] urls;
     int MAIN_BUTTON_SIZE;
     MainUI mainUI;  //MainUiController的持有者，因为界面跳转需要控制 mainUI的bottom部分；
 
-    void setMainUI(MainUI mainUI){this.mainUI=mainUI;}
+    void setMainUI(MainUI mainUI) {
+        this.mainUI = mainUI;
+    }
 
     //界面跳转
     void jumpTo(int index) {
@@ -39,12 +37,12 @@ public abstract class MainUIController extends CommonFather {
         //设置下半部分界面
         if (center == null) {
             try {
-                center = (Node)FXMLLoader.load(getClass().getResource(url));
+                center = (Node) FXMLLoader.load(getClass().getResource(url));
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            mainUI.center[index]=center;
+            mainUI.center[index] = center;
         }
 
 
@@ -61,7 +59,7 @@ public abstract class MainUIController extends CommonFather {
 
     public void mouseExit(MouseEvent event) {
         if (!((Button) event.getSource()).equals(currentBtn[0]))
-        ((Button) event.getSource()).setOpacity(MISS_OPACITY);
+            ((Button) event.getSource()).setOpacity(MISS_OPACITY);
     }
 
     @Override

@@ -6,7 +6,6 @@ import nju.lighting.vo.commodity.Nameable;
 /**
  * Created on 2017/12/17.
  * Description
- *
  * @author 陈俊宇
  */
 public class MyTreeCellReadOnly extends TreeCell<Nameable> {

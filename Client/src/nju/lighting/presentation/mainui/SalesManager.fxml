@@ -1,73 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import com.jfoenix.validation.*?>
 <?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Text?>
-
-<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.SalesManagerController">
-         <children>
-            <JFXButton fx:id="mainBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="首页">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0">
-                     <image>
-                        <Image url="@../../../../images/个人.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="customerManageBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="客户管理">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0">
-                     <image>
-                        <Image url="@../../../../images/客户管理.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="makeSalesDocBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定销售单">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0">
-                     <image>
-                        <Image url="@../../../../images/销售单.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="makeSalesReturnDocBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定销售退货单">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0">
-                     <image>
-                        <Image url="@../../../../images/销售退货单.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="makeStockDocBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定进货单">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0">
-                     <image>
-                        <Image url="@../../../../images/进货单.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="makeStockReturnBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定进货退货单">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0">
-                     <image>
-                        <Image url="@../../../../images/进货退货单.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-         </children>
-      </VBox>
+<VBox xmlns:fx="http://javafx.com/fxml/1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0"
+      prefWidth="200.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8"
+      fx:controller="nju.lighting.presentation.mainui.SalesManagerController">
+    <children>
+        <JFXButton fx:id="mainBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="首页">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/个人.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="customerManageBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="客户管理">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/客户管理.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="makeSalesDocBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定销售单">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/销售单.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="makeSalesReturnDocBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0"
+                   text="制定销售退货单">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/销售退货单.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="makeStockDocBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="制定进货单">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/进货单.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="makeStockReturnBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0"
+                   text="制定进货退货单">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/进货退货单.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+    </children>
+</VBox>

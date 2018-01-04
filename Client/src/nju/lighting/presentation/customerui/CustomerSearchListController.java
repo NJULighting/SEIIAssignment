@@ -11,15 +11,10 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
-import nju.lighting.bl.customerbl.Customer;
-import nju.lighting.bl.customerbl.CustomerBLService_Stub;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
 import nju.lighting.presentation.factory.CustomerBLServiceFactory;
 import nju.lighting.presentation.mainui.Upper;
@@ -37,75 +32,51 @@ import java.util.stream.Collectors;
 
 public class CustomerSearchListController implements Initializable {
 
-    private CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
-    private List<CustomerVO> customerVOList;
-    private CustomerSearchListController customerSearchListController = this;
-    private Upper upper;
     Label title;
-
-    private CustomerVO selectedCustomer;
-
-    @FXML
-    private TableView<CustomerVO> tableView;
-
-
-    @FXML
-    private Pane pane;
-
-
-    @FXML
-    private TextField search;
-
-    @FXML
-    private Button searchBtn;
-
-    @FXML
-    private Button deleteSearch;
-
-    @FXML
-    private Button addCustomerBtn;
-
-    @FXML
-    private Pagination customerList;
-
-    @FXML
-    private Label noResult;
-
     @FXML
     TableColumn<CustomerVO, Integer> customerId;
-
     @FXML
     TableColumn<CustomerVO, String> type;
-
     @FXML
     TableColumn<CustomerVO, String> name;
-
     @FXML
     TableColumn<CustomerVO, String> grade;
-
-
     @FXML
     TableColumn<CustomerVO, Double> receive;
-
     @FXML
     TableColumn<CustomerVO, Double> pay;
-
     @FXML
     TableColumn<CustomerVO, Double> receiveLimit;
-
     @FXML
     TableColumn<CustomerVO, String> telephone;
     @FXML
     TableColumn<CustomerVO, String> salesman;
-
     @FXML
     TableColumn<CustomerVO, String> openBtn;
-
     ObservableList<CustomerVO> observableList = FXCollections.observableArrayList();
     StringProperty keyWord = new SimpleStringProperty();
-
     HBox father;
-
+    private CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
+    private List<CustomerVO> customerVOList;
+    private CustomerSearchListController customerSearchListController = this;
+    private Upper upper;
+    private CustomerVO selectedCustomer;
+    @FXML
+    private TableView<CustomerVO> tableView;
+    @FXML
+    private Pane pane;
+    @FXML
+    private TextField search;
+    @FXML
+    private Button searchBtn;
+    @FXML
+    private Button deleteSearch;
+    @FXML
+    private Button addCustomerBtn;
+    @FXML
+    private Pagination customerList;
+    @FXML
+    private Label noResult;
 
     //清除搜索，列表显示所有客户
     public void setDeleteSearch() {

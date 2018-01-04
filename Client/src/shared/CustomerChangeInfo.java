@@ -38,6 +38,11 @@ public class CustomerChangeInfo {
         description = builder.description;
     }
 
+    @Override
+    public String toString() {
+        return description;
+    }
+
     public static class Builder {
         private final int id;
         private CustomerType type;
@@ -51,9 +56,8 @@ public class CustomerChangeInfo {
         private String description;
 
         /**
-         *
          * @param customerID id of the customer
-         * @throws RemoteException if network failed
+         * @throws RemoteException        if network failed
          * @throws NoSuchElementException If the id is invalid
          */
         public Builder(int customerID) throws RemoteException {
@@ -151,10 +155,5 @@ public class CustomerChangeInfo {
         public CustomerChangeInfo build() {
             return new CustomerChangeInfo(this);
         }
-    }
-
-    @Override
-    public String toString() {
-        return description;
     }
 }

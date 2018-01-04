@@ -21,8 +21,8 @@ public abstract class DocPO implements Serializable {
     /**
      * Constructor for committing. No need to pass id, the id of the
      * committed document will be returned from the data layer
-     * @param type document's type
-     * @param userId user's id
+     * @param type       document's type
+     * @param userId     user's id
      * @param createTime the time that the document was created
      */
     public DocPO(DocType type, String userId, Date createTime) {
@@ -34,14 +34,14 @@ public abstract class DocPO implements Serializable {
     /**
      * Constructor for approval module, which should be used when a history doc
      * which was approved want to transform to a doc po.
-     * @param id id of the doc
-     * @param docType type of the doc
-     * @param userId user's id
-     * @param createTime time when it was created
-     * @param checkTime time when it was checked
+     * @param id              id of the doc
+     * @param docType         type of the doc
+     * @param userId          user's id
+     * @param createTime      time when it was created
+     * @param checkTime       time when it was checked
      * @param approvalComment approver's comment
-     * @param state result state for this approving
-     * @param approvalId approver's id
+     * @param state           result state for this approving
+     * @param approvalId      approver's id
      */
     public DocPO(String id, DocType docType, String userId, Date createTime, Date checkTime,
                  String approvalComment, DocState state, String approvalId) {

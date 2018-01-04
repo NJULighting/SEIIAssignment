@@ -13,7 +13,7 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created on 2017/12/26.

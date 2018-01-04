@@ -16,7 +16,6 @@ import shared.*;
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**

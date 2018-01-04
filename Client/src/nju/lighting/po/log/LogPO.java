@@ -8,7 +8,7 @@ import java.util.Date;
  * Description:
  * @author Liao
  */
-public class LogPO implements Serializable{
+public class LogPO implements Serializable {
     private static final long serialVersionUID = 124623587452L;
 
     private int id;

@@ -7,44 +7,44 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" spacing="3.0" xmlns="http://javafx.com/javafx/8.0.112"
+      fx:controller="nju.lighting.presentation.promotionui.CreateCustomerOriented">
+    <children>
+        <Label text="当客户等级大于">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <JFXComboBox fx:id="gradePicker" prefHeight="23.0" prefWidth="182.0"/>
 
-<VBox spacing="3.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.promotionui.CreateCustomerOriented">
-   <children>
-      <Label text="当客户等级大于">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <JFXComboBox fx:id="gradePicker" prefHeight="23.0" prefWidth="182.0" />
-
-      <Label text="赠送代金券金额">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <JFXTextField fx:id="voucherText">
-         <VBox.margin>
-            <Insets bottom="20.0" />
-         </VBox.margin>
-      </JFXTextField>
-      <Label text="代金券截止于">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <VBox.margin>
-            <Insets bottom="3.0" />
-         </VBox.margin>
-      </Label>
-      <JFXDatePicker fx:id="voucherEndDatePicker">
-         <VBox.margin>
-            <Insets bottom="20.0" />
-         </VBox.margin>
-      </JFXDatePicker>
-      <Label text="设置折让">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <JFXTextField fx:id="offText" />
-   </children>
+        <Label text="赠送代金券金额">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <JFXTextField fx:id="voucherText">
+            <VBox.margin>
+                <Insets bottom="20.0"/>
+            </VBox.margin>
+        </JFXTextField>
+        <Label text="代金券截止于">
+            <font>
+                <Font size="18.0"/>
+            </font>
+            <VBox.margin>
+                <Insets bottom="3.0"/>
+            </VBox.margin>
+        </Label>
+        <JFXDatePicker fx:id="voucherEndDatePicker">
+            <VBox.margin>
+                <Insets bottom="20.0"/>
+            </VBox.margin>
+        </JFXDatePicker>
+        <Label text="设置折让">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <JFXTextField fx:id="offText"/>
+    </children>
 </VBox>

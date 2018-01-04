@@ -2,14 +2,10 @@ package nju.lighting.presentation.documentui.lossandgaindoc;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
-import javafx.beans.InvalidationListener;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -17,7 +13,6 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
 import javafx.util.Callback;
 import nju.lighting.presentation.documentui.EditingCell;
 import nju.lighting.presentation.utils.ImageViewHelper;
@@ -25,14 +20,12 @@ import nju.lighting.presentation.utils.RepositoryHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import shared.LossAndGainItemType;
 
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/25.
  * Description
- *
  * @author 陈俊宇
  */
 public class LossAndGainList implements Initializable {
@@ -93,7 +86,7 @@ public class LossAndGainList implements Initializable {
 
         tableView.setItems(data);
         TableViewHelper.commonSet(tableView);
-        TableViewHelper.setHeight(tableView,0.9);
+        TableViewHelper.setHeight(tableView, 0.9);
 
     }
 
@@ -116,13 +109,13 @@ public class LossAndGainList implements Initializable {
                             setText(null);
                         } else {
                             toggleButton.setSelected(isGain());
-                            if (isGain()){
+                            if (isGain()) {
                                 toggleButton.setText("报溢");
-                            }else
+                            } else
                                 toggleButton.setText("报损");
 
                             toggleButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
-                               //如果选中 就是报溢
+                                //如果选中 就是报溢
                                 @Override
                                 public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                                     if (newValue) {
@@ -156,7 +149,7 @@ public class LossAndGainList implements Initializable {
 
         Callback<TableColumn<LossAndGainItem, Integer>,
                 TableCell<LossAndGainItem, Integer>> cellFactoryForCount
-                = (p) -> ( new EditingCell<LossAndGainItem, Integer>("int"));
+                = (p) -> (new EditingCell<LossAndGainItem, Integer>("int"));
 
         count.setCellFactory(cellFactoryForCount);
         count.setOnEditCommit((TableColumn.CellEditEvent<LossAndGainItem, Integer> t) -> {
@@ -167,7 +160,7 @@ public class LossAndGainList implements Initializable {
         });
     }
 
-    public void setAlert(){
+    public void setAlert() {
         count.setText("警戒数量");
         tableView.getColumns().remove(type);
     }

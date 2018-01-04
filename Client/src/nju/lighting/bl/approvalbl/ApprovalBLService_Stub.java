@@ -101,14 +101,14 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         GiftDocVO vo5 = new GiftDocVO(null, "00001", "ZPD-20171021-0013", gifts2, 1, 1);
         GiftDocVO vo6 = new GiftDocVO(null, "00001", "ZPD-20171021-0015", gifts2, 1, 1);
 
-        ArrayList< LossAndGainDocItemVO > items = new ArrayList<>();
-        LossAndGainDocItemVO lossItemVO1 = new LossAndGainDocItemVO(commodityVO1,17, LossAndGainItemType.LOSS);
-        LossAndGainDocItemVO lossItemVO2 = new LossAndGainDocItemVO(commodityVO2,5, LossAndGainItemType.GAIN);
-        LossAndGainDocItemVO lossItemVO3 = new LossAndGainDocItemVO(commodityVO3,80, LossAndGainItemType.LOSS);
+        ArrayList<LossAndGainDocItemVO> items = new ArrayList<>();
+        LossAndGainDocItemVO lossItemVO1 = new LossAndGainDocItemVO(commodityVO1, 17, LossAndGainItemType.LOSS);
+        LossAndGainDocItemVO lossItemVO2 = new LossAndGainDocItemVO(commodityVO2, 5, LossAndGainItemType.GAIN);
+        LossAndGainDocItemVO lossItemVO3 = new LossAndGainDocItemVO(commodityVO3, 80, LossAndGainItemType.LOSS);
         items.add(lossItemVO1);
         items.add(lossItemVO2);
         items.add(lossItemVO3);
-        LossAndGainDocVO lossAndGainDocVO = new LossAndGainDocVO(null, "00001","BSBY_01",DocType.LOSS_AND_GAIN, items, "我就觉得好玩然后创建了一个:)");
+        LossAndGainDocVO lossAndGainDocVO = new LossAndGainDocVO(null, "00001", "BSBY_01", DocType.LOSS_AND_GAIN, items, "我就觉得好玩然后创建了一个:)");
 
         ArrayList<DocVO> DocVOs = new ArrayList<>();
         DocVOs.add(vo1);
@@ -138,7 +138,7 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
 
     @Override
     public ResultMessage reject(HistoryDocVO vo) {
-        if (vo.getComment().length()!=0)
+        if (vo.getComment().length() != 0)
             return ResultMessage.SUCCESS;
         return ResultMessage.FAILURE;
     }

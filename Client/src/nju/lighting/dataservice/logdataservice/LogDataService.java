@@ -2,12 +2,10 @@ package nju.lighting.dataservice.logdataservice;
 
 import nju.lighting.po.log.LogPO;
 import shared.Identity;
-import shared.LogFilter;
 import shared.ResultMessage;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

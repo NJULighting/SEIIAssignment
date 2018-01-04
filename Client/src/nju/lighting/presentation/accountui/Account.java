@@ -5,19 +5,17 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.input.MouseButton;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import nju.lighting.bl.accountbl.AccountBLService_Stub;
 import nju.lighting.blservice.accountblservice.AccountBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.DialogUI.ValidateEventHandle;
@@ -27,16 +25,13 @@ import nju.lighting.vo.account.AccountLogVO;
 import nju.lighting.vo.account.AccountVO;
 import shared.ResultMessage;
 
-
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/26.
  * Description
- *
  * @author 陈俊宇
  */
 public class Account implements Initializable {
@@ -107,10 +102,10 @@ public class Account implements Initializable {
                     } else {
                         Label label;
                         if (item > 0) {
-                            label=new Label("+"+getItem());
+                            label = new Label("+" + getItem());
                             label.setTextFill(Color.GREEN);
                         } else {
-                            label=new Label(getItem()+"");
+                            label = new Label(getItem() + "");
                             label.setTextFill(Color.RED);
                         }
                         setGraphic(label);

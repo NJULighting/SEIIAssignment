@@ -83,7 +83,6 @@ public class DocumentFilter {
     /**
      * Default end time is tomorrow.
      * @return end date of the filter
-     *
      */
     public Date getEnd() {
         return end;

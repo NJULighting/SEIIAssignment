@@ -15,8 +15,8 @@ import java.util.List;
 public interface AdministratorService {
     /**
      * Get users of the identity you passed
-     * @return User's list
      * @param userIdentity identity of target users
+     * @return User's list
      */
     List<UserVO> getUserList(Identity userIdentity);
 
@@ -46,7 +46,6 @@ public interface AdministratorService {
 
     /**
      * Change a user's attributes.
-     *
      * @param changeInfo A <code>UserChangeInfo</code> object that contains changed information for the user
      * @return <code>ResultMessage.SUCCESS</code> if network works well
      * <code>ResultMessage.FAILURE</code> otherwise

@@ -149,7 +149,8 @@ public class CommodityData extends UnicastRemoteObject implements CommodityDataS
 
     @Override
     public Image getTrend(String commodityId) throws RemoteException {
-        Image image = new Image("/Users/iznauy/SEIIAssignment/python/analysis/image/" + commodityId + ".jpg");
+        Image image = new Image("file:C:\\Users\\liao\\Documents\\SEIIAssignment\\python\\analysis\\image\\" + commodityId + ".jpg");
+        System.out.println(image);
         return image;
     }
 }

@@ -20,8 +20,8 @@ public interface CustomerBLService {
      * Create a new customer, id should be ignored 'cause the database will generate a id for it automatically
      * @param vo vo contains all information except id of a customer
      * @return <code>SUCCESS</code> if add successfully<br>
-     *     <code>FAILURE</code> if there's an exception in database
-     *     <code>NETWORK_FAIL</code> if network fails
+     * <code>FAILURE</code> if there's an exception in database
+     * <code>NETWORK_FAIL</code> if network fails
      */
     TwoTuple<ResultMessage, Integer> createCustomer(CustomerVO vo);
 
@@ -57,7 +57,7 @@ public interface CustomerBLService {
      * Get a customer with this id
      * @param id type of target customers
      * @return customer with the id you passed <br>
-     *     or <code>null</code> if network fails
+     * or <code>null</code> if network fails
      */
     CustomerVO findCustomerByID(int id);
 
@@ -65,7 +65,7 @@ public interface CustomerBLService {
      * Get vo list of customers by type
      * @param type type of target customers
      * @return customers with the type you passed <br>
-     *     or <code>null</code> if network fails
+     * or <code>null</code> if network fails
      */
     List<CustomerVO> findCustomerByType(CustomerType type);
 }

@@ -16,9 +16,8 @@ public class PromotionPackageItemPO implements Serializable {
 
     private int commodityCount = 1;
 
-    public PromotionPackageItemPO(String commodityId, int promotionId, int count) {
+    public PromotionPackageItemPO(String commodityId, int count) {
         this.commodityId = commodityId;
-        this.promotionId = promotionId;
         commodityCount = count;
 
     }

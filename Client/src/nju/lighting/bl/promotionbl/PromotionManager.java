@@ -3,10 +3,10 @@ package nju.lighting.bl.promotionbl;
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.utils.DataServiceFunction;
+import nju.lighting.bl.utils.DataServiceSupplier;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
 import nju.lighting.po.promotion.PromotionPO;
-import nju.lighting.po.promotion.PromotionPackageItemPO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.*;
 
@@ -15,7 +15,6 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  * Created on 2017/11/14.
@@ -37,22 +36,20 @@ enum PromotionManager {
         }
     }
 
-    TwoTuple<ResultMessage, PromotionVO> commit(PromotionBuildInfo info) {
-        TwoTuple<ResultMessage, PromotionVO> res = new TwoTuple<>();
+    Result<PromotionVO> commit(PromotionBuildInfo.Builder builder) {
+        // Commit and get result
+        Promotion promotion = new Promotion(builder.build());
+        TwoTuple<ResultMessage, Integer> commitResult = DataServiceFunction.commit(promotion.toPO(), dataService::insert);
 
-        // Get po for committing
-        Promotion promotion = new Promotion(info);
-        PromotionPO po = promotion.buildPOForCreation();
-
-        TwoTuple<ResultMessage, Integer> commitResult = DataServiceFunction.commit(po, dataService::insert);
-
-        // Set return value
-        if (commitResult.t == ResultMessage.SUCCESS) {
+        // Commit successfully
+        if (commitResult.t.success()) {
             logger.add(OPType.ADD, "创建促销策略" + commitResult.r);
             promotion.setId(commitResult.r);
-            res.r = promotion.toVO();
+            return new Result<>(commitResult.t, promotion.toVO());
         }
-        return res;
+
+        // Failed to commit
+        return new Result<>(commitResult.t, null);
     }
 
     /**
@@ -64,37 +61,25 @@ enum PromotionManager {
      * @throws IllegalArgumentException if customerLevel or commodityIDList is null
      */
     List<PromotionVO> getBenefitsPlan(CustomerGrade customerLevel, List<String> commodityIDList, double total) {
-        // Check null todo time's problem
+        // Check null
         if (customerLevel == null || commodityIDList == null) {
             throw new IllegalArgumentException("CustomerGrade and commodityList mustn't be null");
         }
-        try {
-            List<PromotionPO> poList = dataService.getPromotionList();
-            Date currentDate = new Date();
-            Predicate<PromotionPO> filterPredicate =
-                    promotionPO -> promotionPO.getEndDate().after(currentDate)
-                            && promotionPO.getStartDate().before(currentDate)
-                            && (promotionPO.getLevel().compareTo(customerLevel) <= 0
-                            || containsItemOfList(commodityIDList, promotionPO)
-                            || promotionPO.getTotal() < total);
 
-            return poList.stream()
-                    .filter(filterPredicate)
-                    .map(po -> new Promotion(po).toVO()).collect(Collectors.toList());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
-        }
+        Date currentDate = new Date();
+        Predicate<PromotionPO> filter =
+                promotionPO -> promotionPO.getEndDate().after(currentDate)
+                        && promotionPO.getStartDate().before(currentDate)
+                        && (promotionPO.getLevel().compareTo(customerLevel) <= 0
+                        || containsItemOfList(commodityIDList, promotionPO)
+                        || promotionPO.getTotal() < total);
+
+        return DataServiceSupplier.getAllAndFilter(dataService::getPromotionList, po -> new Promotion(po).toVO(), filter);
+
     }
 
     List<PromotionVO> getPromotionList() {
-        try {
-            List<PromotionPO> poList = dataService.getPromotionList();
-            return poList.stream().map(po -> new Promotion(po).toVO()).collect(Collectors.toList());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return DataServiceSupplier.getAll(dataService::getPromotionList, po -> new Promotion(po).toVO());
     }
 
 
@@ -105,15 +90,9 @@ enum PromotionManager {
      * @return <code>true</code> if matches any, <code>false</code> if po's list is null or matches none
      */
     private boolean containsItemOfList(List<String> commodityIDList, PromotionPO po) {
-        if (po.getGoods() == null)
-            return false;
+        return po.getGoods() != null
+                && po.getGoods().stream().anyMatch(item -> commodityIDList.contains(item.getCommodityId()));
 
-        for (PromotionPackageItemPO itemPO : po.getGoods()) {
-            if (commodityIDList.contains(itemPO.getCommodityId())) {
-                return true;
-            }
-        }
-        return false;
     }
 
     ResultMessage modify(PromotionVO vo) {

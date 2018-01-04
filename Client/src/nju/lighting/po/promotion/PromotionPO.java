@@ -5,7 +5,6 @@ import shared.CustomerGrade;
 import shared.PromotionType;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,22 +19,22 @@ public class PromotionPO implements Serializable {
 
     private int id;
     private String name;
-    private String creatorID;
+    private String creatorId;
     private PromotionType type;
     private Date startDate;
     private Date endDate;
     private Date time;
     private CustomerGrade level;
-    private double total;
+    private double total; // Price target
     private List<PromotionPackageItemPO> goods;
     private double off;
     private double vouchers;
     private Date vouchersEndDate;
 
-    public PromotionPO(int id, String creatorID, String name, PromotionType type, Date startDate, Date endDate, Date time, CustomerGrade level
+    public PromotionPO(int id, String creatorId, String name, PromotionType type, Date startDate, Date endDate, Date time, CustomerGrade level
             , double total, List<PromotionPackageItemPO> goods, double off, double vouchers, Date vouchersEndDate) {
         this.id = id;
-        this.creatorID = creatorID;
+        this.creatorId = creatorId;
         this.name = name;
         this.type = type;
         this.startDate = startDate;
@@ -49,10 +48,13 @@ public class PromotionPO implements Serializable {
         this.vouchersEndDate = vouchersEndDate;
     }
 
-    public PromotionPO(String name, String creatorID, PromotionType type, Date startDate, Date endDate, Date time, CustomerGrade level
+    /**
+     * Constructor for bl to data
+     */
+    public PromotionPO(String name, String creatorId, PromotionType type, Date startDate, Date endDate, Date time, CustomerGrade level
             , double total, List<PromotionPackageItemPO> goods, double off, double vouchers, Date vouchersEndDate) {
         this.name = name;
-        this.creatorID = creatorID;
+        this.creatorId = creatorId;
         this.type = type;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -73,8 +75,8 @@ public class PromotionPO implements Serializable {
         return name;
     }
 
-    public String getCreatorID() {
-        return creatorID;
+    public String getCreatorId() {
+        return creatorId;
     }
 
     public PromotionType getType() {

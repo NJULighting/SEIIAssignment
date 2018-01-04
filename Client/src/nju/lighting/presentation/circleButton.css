@@ -1,4 +1,4 @@
-.button{
+.button {
 
     -fx-pref-width: 30px;
     -fx-min-width: 0;
@@ -9,6 +9,5 @@
     -fx-pref-height: 30px;
 
     -fx-border-width: 0;
-
 
 }

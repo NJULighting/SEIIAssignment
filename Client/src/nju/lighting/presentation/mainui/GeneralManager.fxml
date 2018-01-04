@@ -1,69 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
-
-<VBox prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.GeneralManagerController">
-   <children>
-      <JFXButton fx:id="approvalBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="审批单据">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../../../../images/审批单据.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="promotionManageBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="管理促销策略">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../../../../images/管理促销策略.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="BusinessHistoryBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="查看经营历程表">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../../../../images/查看经营历程表.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="BusinessConditionBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="查看经营情况表">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../../../../images/查看经营情况表.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="SalesConditionBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="查看销售明细表">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../../../../images/销售明细表.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="logBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="日志">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../../../../images/日志.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-   </children>
+<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: transparent;"
+      xmlns="http://javafx.com/javafx/8" fx:controller="nju.lighting.presentation.mainui.GeneralManagerController">
+    <children>
+        <JFXButton fx:id="approvalBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="审批单据">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/审批单据.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="promotionManageBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="管理促销策略">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/管理促销策略.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="BusinessHistoryBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0"
+                   text="查看经营历程表">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/查看经营历程表.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="BusinessConditionBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0"
+                   text="查看经营情况表">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/查看经营情况表.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="SalesConditionBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="查看销售明细表">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/销售明细表.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="logBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="日志">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/日志.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+    </children>
 </VBox>

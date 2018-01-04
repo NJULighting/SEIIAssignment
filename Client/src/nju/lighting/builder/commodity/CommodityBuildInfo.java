@@ -59,6 +59,7 @@ public class CommodityBuildInfo {
     }
 
     public static class CommodityBuilder implements Builder<CommodityBuildInfo> {
+        private final String categoryPath;
         private String name;
         private String modelNumber;
         private int repCount;
@@ -69,7 +70,6 @@ public class CommodityBuildInfo {
         private String batch;
         private String batchNumber;
         private Date dateOfProduction;
-        private final String categoryPath;
 
         public CommodityBuilder(CommodityCategoryVO parentCategory) {
             categoryPath = parentCategory.getPath();

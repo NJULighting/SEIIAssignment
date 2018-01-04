@@ -53,14 +53,11 @@ public class ApprovalUIController implements Initializable {
 
 
     @FXML
-    JFXButton approveBtn,rejectBtn;
-
-    @FXML
-    private Button refreshBtn;
-
+    JFXButton approveBtn, rejectBtn;
     @FXML
     StackPane stackPane;
-
+    @FXML
+    private Button refreshBtn;
 
     @FXML
     void approve() {
@@ -69,7 +66,7 @@ public class ApprovalUIController implements Initializable {
             DocVO currentDoc;
             for (int i = 0; i < selectedDocList.size(); i++) {
                 currentDoc = selectedDocList.get(i);
-                approvalBLService.approve(new HistoryDocVO(Client.getUserVO(), "", currentDoc, DocState.APPROVAL, new Date()));
+                approvalBLService.approve(new HistoryDocVO(Client.getUserVO(), "无可奉告", currentDoc, DocState.APPROVAL, new Date()));
             }
         }
         refresh();
@@ -159,7 +156,7 @@ public class ApprovalUIController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        refreshBtn.setOnAction(e->{
+        refreshBtn.setOnAction(e -> {
             docList.getItems().setAll(approvalBLService.getDocumentList());
         });
 

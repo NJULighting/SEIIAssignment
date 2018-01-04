@@ -1,7 +1,6 @@
 package nju.lighting.presentation.documentui;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -12,17 +11,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
-import nju.lighting.presentation.commodityui.Dialog;
 import nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainItem;
 import nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainList;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.utils.CommodityHelper;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
-import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocItemVO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocVO;
 import shared.LossAndGainItemType;
 import shared.ResultMessage;
@@ -37,7 +33,6 @@ import java.util.stream.Collectors;
 /**
  * Created on 2017/12/25.
  * Description
- *
  * @author 陈俊宇
  */
 public class LossAndGainDocUI implements Initializable {
@@ -68,8 +63,6 @@ public class LossAndGainDocUI implements Initializable {
     TextArea comments;
 
 
-
-
     public void setMain(LossAndGainDocMain main) {
         this.main = main;
     }
@@ -89,7 +82,7 @@ public class LossAndGainDocUI implements Initializable {
                             .collect(Collectors.toList()),
                     comments.getText()));
 
-            DialogHelper.dialog(res.t,main.getStackPane());
+            DialogHelper.dialog(res.t, main.getStackPane());
         });
 
         chooseCommodityBtn.setOnAction(event -> {

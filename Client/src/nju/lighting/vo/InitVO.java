@@ -10,11 +10,11 @@ import java.util.Date;
 public class InitVO {
     private final int id;
     private final Date time;
-    private String url;
     private final UserVO userVO;
+    private String url;
 
     // for pre
-    public InitVO( Date time, String url, UserVO userVO) {
+    public InitVO(Date time, String url, UserVO userVO) {
         this.id = 0;
         this.time = time;
         this.url = url;

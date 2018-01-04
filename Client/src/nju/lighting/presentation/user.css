@@ -1,14 +1,14 @@
 
-.list-cell:even{
+.list-cell:even {
     -fx-background-color: white;
 }
 
-.list-cell:filled:hover{
+.list-cell:filled:hover {
     -fx-background-color: #DCDCDC;
 
 }
 
-.list-cell .label{
+.list-cell .label {
     -fx-pref-width: 150;
     -fx-pref-height: 30;
     -fx-text-alignment: left;

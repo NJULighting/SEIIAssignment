@@ -18,9 +18,9 @@ import java.util.List;
 public class InitializationBLService_Stub implements InitializationBLService {
     @Override
     public List<InitVO> getInitInfo() {
-        InitVO vo1=new InitVO(new Date(),"http://lol.qq.com/", new  UserBLServie_Stub().getUser("1"));
-        InitVO vo2=new InitVO(new Date(),"http://jw.nju.edu.cn/", new  UserBLServie_Stub().getUser("1"));
-        List<InitVO> list=new ArrayList<>();
+        InitVO vo1 = new InitVO(new Date(), "http://lol.qq.com/", new UserBLServie_Stub().getUser("1"));
+        InitVO vo2 = new InitVO(new Date(), "http://jw.nju.edu.cn/", new UserBLServie_Stub().getUser("1"));
+        List<InitVO> list = new ArrayList<>();
         list.add(vo1);
         list.add(vo2);
         return list;
@@ -29,7 +29,7 @@ public class InitializationBLService_Stub implements InitializationBLService {
     @Override
     public TwoTuple<ResultMessage, InitVO> initiateAccount() {
 
-        return  new TwoTuple<>(ResultMessage.SUCCESS,new InitVO(
-                new Date(),"http://www.bing.com/", new  UserBLServie_Stub().getUser("1")));
+        return new TwoTuple<>(ResultMessage.SUCCESS, new InitVO(
+                new Date(), "http://www.bing.com/", new UserBLServie_Stub().getUser("1")));
     }
 }

@@ -7,41 +7,44 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.LossAndGainDocUI">
-   <children>
-      <Button fx:id="chooseCommodityBtn" layoutX="720.0" layoutY="27.0" mnemonicParsing="false" prefHeight="1.0" prefWidth="1.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="37.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../../../../images/商品.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <VBox layoutX="748.0" layoutY="162.0" spacing="40.0">
-         <children>
-            <HBox>
-               <children>
-                  <Label prefWidth="60.0" text="操作员" />
-                  <JFXTextField fx:id="creatorText" editable="false" prefWidth="180.0" />
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <Label prefWidth="60.0" text="备注" />
-                  <TextArea fx:id="comments" prefHeight="200.0" prefWidth="220.0" text="无" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <HBox fx:id="tableContainer" layoutX="40.0" layoutY="30.0" prefHeight="100.0" prefWidth="200.0" />
-      <JFXButton layoutX="910.0" layoutY="509.0" onAction="#removeAll" prefHeight="40.0" prefWidth="85.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="重置" textFill="WHITE" />
-      <JFXButton fx:id="commitBtn" layoutX="872.0" layoutY="36.0" prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="30.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="680.0" />
-   </children>
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css"
+      xmlns="http://javafx.com/javafx/8.0.112" fx:controller="nju.lighting.presentation.documentui.LossAndGainDocUI">
+    <children>
+        <Button fx:id="chooseCommodityBtn" layoutX="720.0" layoutY="27.0" mnemonicParsing="false" prefHeight="1.0"
+                prefWidth="1.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="37.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/商品.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <VBox layoutX="748.0" layoutY="162.0" spacing="40.0">
+            <children>
+                <HBox>
+                    <children>
+                        <Label prefWidth="60.0" text="操作员"/>
+                        <JFXTextField fx:id="creatorText" editable="false" prefWidth="180.0"/>
+                    </children>
+                </HBox>
+                <HBox>
+                    <children>
+                        <Label prefWidth="60.0" text="备注"/>
+                        <TextArea fx:id="comments" prefHeight="200.0" prefWidth="220.0" text="无"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <HBox fx:id="tableContainer" layoutX="40.0" layoutY="30.0" prefHeight="100.0" prefWidth="200.0"/>
+        <JFXButton layoutX="910.0" layoutY="509.0" onAction="#removeAll" prefHeight="40.0" prefWidth="85.0"
+                   ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="重置" textFill="WHITE"/>
+        <JFXButton fx:id="commitBtn" layoutX="872.0" layoutY="36.0" prefHeight="40.0" prefWidth="150.0"
+                   ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE"/>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="30.0"
+                   stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="680.0"/>
+    </children>
 </Pane>

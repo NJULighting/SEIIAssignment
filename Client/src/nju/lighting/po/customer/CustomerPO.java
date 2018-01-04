@@ -5,7 +5,7 @@ import shared.CustomerType;
 
 import java.io.Serializable;
 
-public class CustomerPO implements Serializable{
+public class CustomerPO implements Serializable {
     private static final long serialVersionUID = 12498946452L;
 
     private int ID;

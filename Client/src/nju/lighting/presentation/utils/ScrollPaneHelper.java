@@ -6,41 +6,39 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 public class ScrollPaneHelper {
 
     //调整滑动面板高度以适应总高度
-    public static void marchHeight(TableView tableView, ScrollPane scrollPane,AnchorPane anchorPane){
+    public static void marchHeight(TableView tableView, ScrollPane scrollPane, AnchorPane anchorPane) {
         double initHeight = scrollPane.getPrefHeight();
         double initAnchor = anchorPane.getPrefHeight();
-        if(tableView.getPrefHeight()>initHeight){
+        if (tableView.getPrefHeight() > initHeight) {
             scrollPane.setPrefHeight(tableView.getPrefHeight());
-            anchorPane.setPrefHeight(initAnchor+tableView.getPrefHeight()-initHeight);
+            anchorPane.setPrefHeight(initAnchor + tableView.getPrefHeight() - initHeight);
         }
 
         tableView.prefHeightProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if(newValue.doubleValue()>initHeight){
+                if (newValue.doubleValue() > initHeight) {
                     scrollPane.setPrefHeight(newValue.doubleValue());
-                    anchorPane.setPrefHeight(initAnchor+tableView.getPrefHeight()-initHeight);
+                    anchorPane.setPrefHeight(initAnchor + tableView.getPrefHeight() - initHeight);
                 }
             }
         });
     }
 
     //滑块不会消失在视野中
-    public static void sliderFload(JFXSlider slider, ScrollPane scrollPane, AnchorPane anchorPane, double prePosition, double paneSize){
+    public static void sliderFload(JFXSlider slider, ScrollPane scrollPane, AnchorPane anchorPane, double prePosition, double paneSize) {
 
         scrollPane.vvalueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 
-                if(newValue.doubleValue()*(anchorPane.getPrefHeight()-paneSize)>prePosition){
+                if (newValue.doubleValue() * (anchorPane.getPrefHeight() - paneSize) > prePosition) {
 
-                    slider.setLayoutY(newValue.doubleValue()*(anchorPane.getPrefHeight()-paneSize));
+                    slider.setLayoutY(newValue.doubleValue() * (anchorPane.getPrefHeight() - paneSize));
                 }
 
             }

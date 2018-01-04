@@ -29,7 +29,6 @@ import java.util.ResourceBundle;
  * Created on 2017/12/21.
  * Description
  * 库存查看
- *
  * @author 陈俊宇
  */
 public class RepositoryView implements Initializable {
@@ -96,9 +95,9 @@ public class RepositoryView implements Initializable {
         pagination.getStylesheets().add(getClass().getResource("../repository.css").toExternalForm());
 
         commodity.setCellValueFactory(cellData ->
-               new SimpleStringProperty( cellData.getValue().getCommodityName()));
+                new SimpleStringProperty(cellData.getValue().getCommodityName()));
         type.setCellValueFactory(cellData ->
-                new SimpleStringProperty(RepositoryHelper.typeToString( cellData.getValue().getType())));
+                new SimpleStringProperty(RepositoryHelper.typeToString(cellData.getValue().getType())));
         count.setCellValueFactory(cellData ->
                 new SimpleIntegerProperty(cellData.getValue().getCount()).asObject());
         amount.setCellValueFactory(cellData ->

@@ -7,29 +7,25 @@ import javafx.fxml.FXML;
 /**
  * Created on 2017/12/17.
  * Description
- *
  * @author 陈俊宇
  */
-public class AddCategoryDialog extends Dialog  {
+public class AddCategoryDialog extends Dialog {
 
 
     @FXML
     JFXTextField textField;
 
 
-
-
-
-   String getText(){
-       return textField.getText();
-   }
+    String getText() {
+        return textField.getText();
+    }
 
     @FXML
-    void cancel(){
+    void cancel() {
         dialog.close();
     }
 
-    void init(String text){
+    void init(String text) {
         textField.setText(text);
     }
 

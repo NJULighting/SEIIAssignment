@@ -15,42 +15,38 @@ import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.CustomerVO;
-import shared.*;
+import shared.CustomerGrade;
+import shared.CustomerType;
+import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.util.ArrayList;
 
 /**
  * Created on 2017/12/22.
  * Description
- *
  * @author 陈俊宇
  */
 public class CustomerDetail {
 
+    private final double DEFAULT_LIMIT = 2000;
+    @FXML
+    Button modifyButton, saveButton, deleteButton;
+    @FXML
+    VBox container;
+    @FXML
+    HBox idBox, buttonBox;
     private CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
-
     @FXML
     private JFXComboBox<String> typeBox, gradeBox;
-
     @FXML
     private JFXTextField idText, nameText, receiveText, payText, receiveLimitText, salesmanText, telephoneText,
             postageText, emailText, addressText;
-    @FXML
-    Button modifyButton, saveButton,deleteButton;
-
-    @FXML
-    VBox container;
-
-    @FXML
-    HBox idBox,buttonBox;
-
-
     private CustomerSearchListController controller;
-    private CustomerVO customerVO ;
+    private CustomerVO customerVO;
     private ArrayList<TextField> textFields = new ArrayList<>();
     private Upper upper;
     private boolean add;
-    private final double DEFAULT_LIMIT = 2000;
 
     void init(boolean add) {
         this.add = add;
@@ -62,7 +58,6 @@ public class CustomerDetail {
         textFields.add(postageText);
         textFields.add(emailText);
         textFields.add(addressText);
-
 
 
         TextFieldHelper.addDoubleValidator(receiveLimitText);
@@ -128,7 +123,7 @@ public class CustomerDetail {
 
 
     public void back() {
-            upper.back();
+        upper.back();
     }
 
     //保存失败
@@ -136,15 +131,15 @@ public class CustomerDetail {
     }
 
     public void save() {
-       if(receiveText.validate()&payText.validate()&receiveLimitText.validate() &
-               nameText.validate()&salesmanText.validate()&salesmanText.validate()&
-               telephoneText.validate()&emailText.validate()&postageText.validate()&
-               receiveLimitText.validate()&addressText.validate()){
-           if (add)
-               saveNew();
-           else
-               saveModification();
-       }
+        if (receiveText.validate() & payText.validate() & receiveLimitText.validate() &
+                nameText.validate() & salesmanText.validate() & salesmanText.validate() &
+                telephoneText.validate() & emailText.validate() & postageText.validate() &
+                receiveLimitText.validate() & addressText.validate()) {
+            if (add)
+                saveNew();
+            else
+                saveModification();
+        }
     }
 
     private void saveNew() {
@@ -190,7 +185,7 @@ public class CustomerDetail {
 
     //得到现在界面中的客户，用于修改或新建客户
     private CustomerVO getCurrentCustomer() {
-        int id = (customerVO == null) ? controller.getTableView().getItems().size()+1 : customerVO.getID();
+        int id = (customerVO == null) ? controller.getTableView().getItems().size() + 1 : customerVO.getID();
         return new CustomerVO(
                 id,
                 CustomerHelper.stringToType(typeBox.getValue()),

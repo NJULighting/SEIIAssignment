@@ -140,7 +140,7 @@ public class CommodityItemVO implements Nameable {
     }
 
     public BasicCommodityItemVO toBasicCommodityItem() {
-        return new BasicCommodityItemVO(id, name, repCount, recentInPrice, recentSellPrice,modelNumber);
+        return new BasicCommodityItemVO(id, name, repCount, recentInPrice, recentSellPrice, modelNumber);
     }
 
     @Override

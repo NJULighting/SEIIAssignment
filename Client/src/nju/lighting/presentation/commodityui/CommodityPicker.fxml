@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="630.0" prefWidth="1080.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.commodityui.CommodityPicker">
-   <children>
-      <VBox fx:id="container" prefHeight="630.0" prefWidth="1080.0" />
-      <JFXButton fx:id="okBtn" layoutX="970.0" layoutY="1.0"  prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #5599FF;" text="确认" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </JFXButton>
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="630.0" prefWidth="1080.0"
+            style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8"
+            fx:controller="nju.lighting.presentation.commodityui.CommodityPicker">
+    <children>
+        <VBox fx:id="container" prefHeight="630.0" prefWidth="1080.0"/>
+        <JFXButton fx:id="okBtn" layoutX="970.0" layoutY="1.0" prefHeight="40.0" prefWidth="70.0"
+                   style="-fx-background-color: #5599FF;" text="确认" textFill="WHITE">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </JFXButton>
+    </children>
 </AnchorPane>

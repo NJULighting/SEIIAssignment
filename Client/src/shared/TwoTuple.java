@@ -2,7 +2,7 @@ package shared;
 
 import java.io.Serializable;
 
-public class TwoTuple<T, R> implements Serializable{
+public class TwoTuple<T, R> implements Serializable {
 
     public static final long serialVersionUID = 1230458482314L;
 

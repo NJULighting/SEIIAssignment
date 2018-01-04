@@ -123,12 +123,12 @@ public class SalesReturnDocVO extends DocVO {
         return finalAmount;
     }
 
-    public List<SalesDocItemVO> getItems() {
-        return items;
-    }
-
     public void setFinalAmount(double finalAmount) {
         this.beforeDiscountAmount = beforeDiscountAmount;
+    }
+
+    public List<SalesDocItemVO> getItems() {
+        return items;
     }
 
     @Override

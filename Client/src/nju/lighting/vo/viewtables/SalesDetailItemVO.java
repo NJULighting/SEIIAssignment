@@ -1,7 +1,5 @@
 package nju.lighting.vo.viewtables;
 
-import nju.lighting.vo.DocVO;
-
 import java.util.Date;
 
 /**

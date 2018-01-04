@@ -10,6 +10,11 @@ import nju.lighting.blservice.commodityblservice.CommodityBLService;
 public class CommodityPathParser {
     private static final String SEPARATOR = CommodityBLService.SEPARATOR;
 
+    // Suppress instantiation
+    private CommodityPathParser() {
+        throw new AssertionError();
+    }
+
     public static int getLastNumOfPath(String path) {
         // Check whether is the root
         if (path.isEmpty()) {
@@ -29,10 +34,5 @@ public class CommodityPathParser {
         // Get its category id
         String[] tmp = commodityPath.split(SEPARATOR);
         return Integer.parseInt(tmp[tmp.length - 2]);
-    }
-
-    // Suppress instantiation
-    private CommodityPathParser() {
-        throw new AssertionError();
     }
 }

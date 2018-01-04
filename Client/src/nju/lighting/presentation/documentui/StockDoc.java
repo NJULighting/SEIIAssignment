@@ -25,32 +25,25 @@ import java.util.stream.Collectors;
 /**
  * Created on 2017/12/24.
  * Description
- *
  * @author 陈俊宇
  */
 public class StockDoc extends SalesDocController {
     @FXML
-    private Button choseCustomBtn, finishBtn;
-
-    @FXML
-    private JFXTextField customer, salesman, user,account;
-
-    @FXML
-    private TextArea remarks;
-
-    @FXML
-    private Label sub,title;
-
-    @FXML
     HBox container;
-
     @FXML
     VBox verticalVBox;
-
     @FXML
     Pane mainPane, commodityContainer;
+    @FXML
+    private Button choseCustomBtn, finishBtn;
+    @FXML
+    private JFXTextField customer, salesman, user, account;
+    @FXML
+    private TextArea remarks;
+    @FXML
+    private Label sub, title;
 
-    public StockDoc(){
+    public StockDoc() {
         type = CustomerType.SUPPLIER;
     }
 
@@ -65,15 +58,15 @@ public class StockDoc extends SalesDocController {
 
         commodityListController = loader.getController();
         commodityListController.setEditable();
-        commodityListController.setMaxSize(480,700);
+        commodityListController.setMaxSize(480, 700);
 
         docItemList = commodityListController.getGiftObservableList();
         commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
             @Override
             public void onChanged(Change<? extends BasicCommodityItemVO> c) {
-                while (c.next()){
+                while (c.next()) {
                     docItemList.addAll(c.getAddedSubList().stream()
-                            .map(x-> new CommodityItem(x,1))
+                            .map(x -> new CommodityItem(x, 1))
                             .collect(Collectors.toList()));
                 }
             }
@@ -92,7 +85,7 @@ public class StockDoc extends SalesDocController {
         account.textProperty().bind(commodityListController.getTotal().asString());
     }
 
-    void setReturn(){
+    void setReturn() {
         title.setText("制定进货退货单");
     }
 }

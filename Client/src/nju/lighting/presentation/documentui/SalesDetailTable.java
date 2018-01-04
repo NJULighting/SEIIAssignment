@@ -9,13 +9,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -24,7 +24,10 @@ import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.factory.UserBLServiceFactory;
 import nju.lighting.presentation.mainui.Upper;
-import nju.lighting.presentation.utils.*;
+import nju.lighting.presentation.utils.CommodityHelper;
+import nju.lighting.presentation.utils.CustomerHelper;
+import nju.lighting.presentation.utils.DateHelper;
+import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
@@ -32,78 +35,56 @@ import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import shared.DocumentFilter;
 import shared.Identity;
 
-import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/9.
  * Description
- *
  * @author 陈俊宇
  */
 public class SalesDetailTable implements Initializable, Upper {
+    @FXML
+    AnchorPane mainPane;
+    @FXML
+    HBox container;
+    @FXML
+    Label sub;
+    @FXML
+    JFXHamburger hamburger;
+    @FXML
+    JFXTextField customerText, commodityText;
+    @FXML
+    Button setCommodityBtn, setCustomerBtn;
+    @FXML
+    JFXComboBox creatorBox;
+    @FXML
+    Pane filterBox, pane;
+    @FXML
+    JFXDatePicker startDate, endDate;
+    @FXML
+    JFXButton okBtn, resetBtn;
+    ObservableList<SalesDetailItemVO> observableList = FXCollections.observableArrayList();
+    @FXML
+    TableColumn<SalesDetailItemVO, String> commodity, modelNumber, time;
+    @FXML
+    TableColumn<SalesDetailItemVO, Double> price, total;
+    @FXML
+    TableColumn<SalesDetailItemVO, Integer> count;
+    @FXML
+    TableColumn openBtn;
+    @FXML
+    TableView<SalesDetailItemVO> tableView;
     //    private JFXNodesList nodeList;
 //
     private HamburgerBasicCloseTransition burgerTask;
     private JFXNodesList nodesList = new JFXNodesList();
-
     private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
     private SimpleObjectProperty<UserVO> creatorProperty = new SimpleObjectProperty<>();
     private SimpleObjectProperty<BasicCommodityItemVO> commodityProperty = new SimpleObjectProperty<>();
     private DocumentFilter.Builder builder = new DocumentFilter.Builder();
     private DocBLService blService = DocBLServiceFactory.getDocBLService();
-
-    @FXML
-    AnchorPane mainPane;
-
-    @FXML
-    HBox container;
-
-    @FXML
-    Label sub;
-
-    @FXML
-    JFXHamburger hamburger;
-
-    @FXML
-    JFXTextField customerText, commodityText;
-
-    @FXML
-    Button setCommodityBtn, setCustomerBtn;
-
-    @FXML
-    JFXComboBox creatorBox;
-
-    @FXML
-    Pane filterBox, pane;
-
-    @FXML
-    JFXDatePicker startDate, endDate;
-
-    @FXML
-    JFXButton okBtn, resetBtn;
-
-
-    ObservableList<SalesDetailItemVO> observableList = FXCollections.observableArrayList();
-
-    @FXML
-    TableColumn<SalesDetailItemVO, String> commodity, modelNumber, time;
-
-    @FXML
-    TableColumn<SalesDetailItemVO, Double> price, total;
-
-    @FXML
-    TableColumn<SalesDetailItemVO, Integer> count;
-
-    @FXML
-    TableColumn openBtn;
-
-    @FXML
-    TableView<SalesDetailItemVO> tableView;
 
     @Override
 
@@ -173,7 +154,7 @@ public class SalesDetailTable implements Initializable, Upper {
 
         tableView.setItems(observableList);
         TableViewHelper.commonSet(tableView);
-        TableViewHelper.setHeight(tableView,1.1);
+        TableViewHelper.setHeight(tableView, 1.1);
         tableView.requestFocus();
 
         DateHelper.setDefaultTime(startDate, DateHelper.weekAgo());
@@ -183,14 +164,14 @@ public class SalesDetailTable implements Initializable, Upper {
         setCustomerBtn.setOnAction(e -> CustomerHelper.setCustomer(this, customerProperty));
         setCommodityBtn.setOnAction(e -> CommodityHelper.setCommodity(this, commodityProperty));
 
-        customerProperty.addListener(c ->{
-            if (customerProperty.getValue()!=null)
+        customerProperty.addListener(c -> {
+            if (customerProperty.getValue() != null)
                 customerText.setText(customerProperty.getValue().getName());
         });
         commodityProperty.addListener(c -> commodityText.setText(commodityProperty.getValue().getName()));
 
-        customerText.textProperty().addListener(c-> {
-            if (customerText.getText().length()==0)
+        customerText.textProperty().addListener(c -> {
+            if (customerText.getText().length() == 0)
                 customerProperty.set(null);
         });
 

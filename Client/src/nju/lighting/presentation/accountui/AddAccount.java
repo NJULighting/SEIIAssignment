@@ -14,23 +14,22 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/26.
  * Description
- *
  * @author 陈俊宇
  */
 public class AddAccount implements Initializable {
 
 
     @FXML
-    JFXTextField idText,nameText,amountText;
+    JFXTextField idText, nameText, amountText;
 
     @FXML
     Label amountLabel;
 
     @FXML
-    VBox labelBox,textBox;
+    VBox labelBox, textBox;
 
-    AccountVO getAccount(){
-        if (idText.validate()&nameText.validate()&amountText.validate()){
+    AccountVO getAccount() {
+        if (idText.validate() & nameText.validate() & amountText.validate()) {
             return new AccountVO(
                     idText.getText(),
                     nameText.getText(),
@@ -41,16 +40,26 @@ public class AddAccount implements Initializable {
         return null;
     }
 
-    String getName(){return nameText.getText();}
-    String getId(){return idText.getText();}
-    Double getAmount(){return Double.parseDouble(amountText.getText());}
+    String getName() {
+        return nameText.getText();
+    }
+
+    String getId() {
+        return idText.getText();
+    }
+
+    Double getAmount() {
+        return Double.parseDouble(amountText.getText());
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         TextFieldHelper.addRequiredValidator(idText);
         TextFieldHelper.addRequiredValidator(nameText);
         TextFieldHelper.addDoubleValidator(amountText);
     }
-    void setModify(){
+
+    void setModify() {
         labelBox.getChildren().remove(amountLabel);
         textBox.getChildren().remove(amountText);
     }

@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
-<ScrollPane hbarPolicy="NEVER" prefHeight="557.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.GiftDoc">
-   <content>
-      <AnchorPane prefHeight="557.0" prefWidth="725.0" style="-fx-background-color: white;">
-         <children>
-            <VBox fx:id="container" alignment="CENTER" layoutX="90.0" layoutY="20.0">
-               <children>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <Label fx:id="title" alignment="CENTER" text="名字" textAlignment="CENTER">
-                           <font>
-                              <Font size="28.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-   </content>
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1" hbarPolicy="NEVER" prefHeight="557.0" prefWidth="725.0"
+            xmlns="http://javafx.com/javafx/8" fx:controller="nju.lighting.presentation.documentui.GiftDoc">
+    <content>
+        <AnchorPane prefHeight="557.0" prefWidth="725.0" style="-fx-background-color: white;">
+            <children>
+                <VBox fx:id="container" alignment="CENTER" layoutX="90.0" layoutY="20.0">
+                    <children>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label fx:id="title" alignment="CENTER" text="名字" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="28.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </content>
 </ScrollPane>

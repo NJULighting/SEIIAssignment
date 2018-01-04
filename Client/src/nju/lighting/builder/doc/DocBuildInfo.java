@@ -2,7 +2,6 @@ package nju.lighting.builder.doc;
 
 import nju.lighting.builder.Builder;
 import nju.lighting.po.doc.DocPO;
-import nju.lighting.vo.DocVO;
 import shared.DocType;
 
 import java.util.Date;

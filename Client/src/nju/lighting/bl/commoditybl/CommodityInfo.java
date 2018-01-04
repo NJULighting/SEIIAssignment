@@ -26,8 +26,6 @@ public interface CommodityInfo {
 
     double getCostAdjustRevenue();
 
-    List<RepositoryTableItemVO> getRepositoryTableItemList();
-
     ResultMessage changeCommodityNumber(String id, int count);
 
     void updateCommodityRecentSellPrice(String id, double price);

@@ -20,7 +20,6 @@ import nju.lighting.builder.Builder;
 import nju.lighting.builder.commodity.CommodityBuildInfo;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
-import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.Result;
@@ -37,9 +36,6 @@ import java.util.HashMap;
  */
 public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
     CommodityBLService commodityBLService;
-    private ContextMenu categoryMenu = new ContextMenu();
-    private ContextMenu commodityMenu = new ContextMenu();
-
     FXMLLoader loader;
     StackPane stackPane;
     MenuItem selectedMenuItem;
@@ -50,9 +46,11 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
     MenuItem deleteCategory = new MenuItem("删除分类");
     MenuItem refactorCommodity = new MenuItem("修改商品信息");
     MenuItem deleteCommodity = new MenuItem("删除商品");
-    MenuItem predicate=new MenuItem("趋势预测");
+    MenuItem predicate = new MenuItem("趋势预测");
     HashMap<MenuItem, String> hashMap = new HashMap<>();
     StringProperty keyWord;
+    private ContextMenu categoryMenu = new ContextMenu();
+    private ContextMenu commodityMenu = new ContextMenu();
 
 
     public MyTreeCell(StackPane stackPane, StringProperty keyWord, CommodityBLService commodityBLService) {
@@ -62,7 +60,7 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
 
         categoryMenu.getItems().addAll(addCommodity, addCategory, refactorCategory, deleteCategory);
 
-        commodityMenu.getItems().addAll(refactorCommodity, deleteCommodity,predicate);
+        commodityMenu.getItems().addAll(refactorCommodity, deleteCommodity, predicate);
 
 
         hashMap.put(addCommodity, "AddCommodity.fxml");
@@ -70,14 +68,14 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
         hashMap.put(deleteCategory, "Delete.fxml");
         hashMap.put(deleteCommodity, "Delete.fxml");
 
-        predicate.setOnAction(e->{
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("Predicate.fxml"));
+        predicate.setOnAction(e -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Predicate.fxml"));
             try {
                 DialogHelper.addDialog((Node) loader.load(), stackPane);
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-            Predicate controller=loader.getController();
+            Predicate controller = loader.getController();
             controller.init(((CommodityItemVO) getTreeTableItem().getValue().getItem()));
         });
         addCategory.setOnAction(event -> {

@@ -5,15 +5,15 @@ import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
+import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.bl.utils.DataServiceBiFunction;
 import nju.lighting.bl.utils.DataServiceFunction;
-import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
-import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
+import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import shared.*;
 
 import javax.naming.NamingException;
@@ -69,7 +69,7 @@ public enum DocManager {
                 .findAndFilterToList(userInfo.getIDOfSignedUser(), dataService::findByUserId,
                         docFactory::poToDoc, filter.getPredicateForDoc());
 
-        // Filter them and transform them to HistoryDocVO list
+        // Filter and transform them to list of HistoryDocVO
         return CollectionTransformer.toList(docList, Doc::toHistoryDocVO);
     }
 

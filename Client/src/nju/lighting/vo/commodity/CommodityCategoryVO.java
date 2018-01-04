@@ -4,7 +4,7 @@ import nju.lighting.blservice.commodityblservice.CommodityBLService;
 
 import java.util.List;
 
-public class CommodityCategoryVO  implements Nameable{
+public class CommodityCategoryVO implements Nameable {
 
     private final CommodityCategoryVO upperCategory;
     private List<CommodityCategoryVO> children;
@@ -15,15 +15,25 @@ public class CommodityCategoryVO  implements Nameable{
     /**
      * This constructor should be used by business logic module, it's used to build the vo tree of categories
      * @param upperCategory parent category
-     * @param id if of the category
-     * @param name name of the category
-     * @param isLeaf whether the category is a leaf node
+     * @param id            if of the category
+     * @param name          name of the category
+     * @param isLeaf        whether the category is a leaf node
      */
     public CommodityCategoryVO(CommodityCategoryVO upperCategory, int id, String name, boolean isLeaf) {
         this.upperCategory = upperCategory;
         this.id = id;
         this.name = name;
         this.isLeaf = isLeaf;
+    }
+
+    /**
+     * This constructor should be used by presentation module
+     * @param upperCategory parent category of the category you want to add
+     * @param name          name of the new category
+     */
+    public CommodityCategoryVO(CommodityCategoryVO upperCategory, String name) {
+        this.upperCategory = upperCategory;
+        this.name = name;
     }
 
     /**
@@ -41,16 +51,6 @@ public class CommodityCategoryVO  implements Nameable{
             curr = curr.upperCategory;
         }
         return parentPath.toString();
-    }
-
-    /**
-     * This constructor should be used by presentation module
-     * @param upperCategory parent category of the category you want to add
-     * @param name name of the new category
-     */
-    public CommodityCategoryVO(CommodityCategoryVO upperCategory, String name) {
-        this.upperCategory = upperCategory;
-        this.name = name;
     }
 
     /**

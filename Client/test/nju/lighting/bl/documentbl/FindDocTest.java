@@ -1,7 +1,6 @@
 package nju.lighting.bl.documentbl;
 
 import nju.lighting.bl.userbl.LoginTestHelper;
-import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +11,7 @@ import shared.DocumentFilter;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created on 2017/12/18.
@@ -34,7 +33,7 @@ public class FindDocTest {
     @Test
     public void findDocumentsTest0() throws Exception {
         builder.creatorID(LoginTestHelper.AUTHORIZED_USER);
-        DocumentFilter filter =  builder.build();
+        DocumentFilter filter = builder.build();
 
         List<HistoryDocVO> docVOList = manager.findDocuments(filter);
 

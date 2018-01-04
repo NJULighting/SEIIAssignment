@@ -2,7 +2,6 @@ package nju.lighting.bl.approvalbl;
 
 import nju.lighting.bl.documentbl.DocInfo;
 import nju.lighting.bl.documentbl.DocInfoImpl;
-import nju.lighting.bl.logbl.Log;
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
@@ -12,7 +11,6 @@ import shared.OPType;
 import shared.ResultMessage;
 
 import java.util.List;
-import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 

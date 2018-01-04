@@ -33,10 +33,10 @@
       <Label fx:id="noResult" layoutX="301.0" layoutY="31.0" text="无结果！" visible="false" />
       <TableView fx:id="tableView" layoutX="40.0" layoutY="70.0" prefHeight="525.0">
          <columns>
-            <TableColumn fx:id="customerId" editable="false" prefWidth="120.0" resizable="false" text="  用户名" />
-            <TableColumn fx:id="type" editable="false" prefWidth="120.0" resizable="false" sortable="false" text="身份" />
-            <TableColumn fx:id="name" editable="false" prefWidth="150.0" resizable="false" sortable="false" text="工号" />
-            <TableColumn fx:id="grade" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="权限" />
+            <TableColumn fx:id="userName" editable="false" prefWidth="120.0" resizable="false" text="  用户名" />
+            <TableColumn fx:id="identity" editable="false" prefWidth="120.0" resizable="false" sortable="false" text="身份" />
+            <TableColumn fx:id="jobNumber" editable="false" prefWidth="150.0" resizable="false" sortable="false" text="工号" />
+            <TableColumn fx:id="authority" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="权限" />
          </columns>
       </TableView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="70.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="490.0" />

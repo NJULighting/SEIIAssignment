@@ -11,7 +11,6 @@ import shared.Result;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
-import java.rmi.RemoteException;
 import java.util.List;
 
 public interface CommodityBLService {

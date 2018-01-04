@@ -40,7 +40,6 @@ import java.util.ResourceBundle;
  * @author 陈俊宇
  */
 public class Client extends Application {
-    UserBLService userBLService;
     private static UserVO userVO;
 
 

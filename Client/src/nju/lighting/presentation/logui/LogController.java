@@ -12,7 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.layout.HBox;
-import nju.lighting.bl.logbl.LogBLService_Stub;
 import nju.lighting.blservice.logblservice.LogBLService;
 import nju.lighting.presentation.factory.LogBLServiceFactory;
 import nju.lighting.presentation.utils.DateHelper;
@@ -26,7 +25,6 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/11/30.
  * Description
- *
  * @author 陈俊宇
  */
 public class LogController implements Initializable {
@@ -48,7 +46,7 @@ public class LogController implements Initializable {
     Pagination pagination;
 
     @FXML
-    JFXDatePicker startDatePicker,endDatePicker;
+    JFXDatePicker startDatePicker, endDatePicker;
 
     @FXML
     JFXButton okBtn;
@@ -70,7 +68,7 @@ public class LogController implements Initializable {
             behavior = new Label(currentLog.getBehavior());
             creator = new Label(currentLog.getCreator());
             identity = new Label(currentLog.getIdentity().toString());
-            listCell=new HBox(behavior,time,creator,identity);
+            listCell = new HBox(behavior, time, creator, identity);
             listCell.setSpacing(50);
             listView.getItems().add(listCell);
         }
@@ -96,9 +94,9 @@ public class LogController implements Initializable {
         okBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (startDatePicker.getValue()!=null&&endDatePicker.getValue()!=null){
-                    startDate=(DateHelper.localDateToDate(startDatePicker.getValue()));
-                    endDate=DateHelper.localDateToDate(endDatePicker.getValue());
+                if (startDatePicker.getValue() != null && endDatePicker.getValue() != null) {
+                    startDate = (DateHelper.localDateToDate(startDatePicker.getValue()));
+                    endDate = DateHelper.localDateToDate(endDatePicker.getValue());
 
                 }
             }

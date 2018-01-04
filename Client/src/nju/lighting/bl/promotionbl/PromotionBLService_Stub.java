@@ -18,7 +18,6 @@ import java.util.List;
 /**
  * Created on 2017/10/21.
  * Description
- *
  * @author 陈俊宇
  */
 public class PromotionBLService_Stub implements PromotionBLService {
@@ -81,11 +80,11 @@ public class PromotionBLService_Stub implements PromotionBLService {
     }
 
     @Override
-    public TwoTuple<ResultMessage, PromotionVO> commit(PromotionBuildInfo info) {
-        if (info.getType().equals(PromotionType.Combo))
-            return new TwoTuple<ResultMessage, PromotionVO>(ResultMessage.SUCCESS, getPromotionList().get(0));
+    public Result<PromotionVO> commit(PromotionBuildInfo.Builder builder) {
+        if (builder.build().getType().equals(PromotionType.Combo))
+            return new Result<>(ResultMessage.SUCCESS, getPromotionList().get(0));
         else
-            return new TwoTuple<ResultMessage, PromotionVO>(ResultMessage.FAILURE, getPromotionList().get(0));
+            return new Result<>(ResultMessage.FAILURE, getPromotionList().get(0));
     }
 
     @Override

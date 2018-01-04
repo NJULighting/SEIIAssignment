@@ -1,12 +1,11 @@
 package nju.lighting.bl.promotionbl;
 
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
-import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerGrade;
 import shared.PromotionBuildInfo;
+import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.util.List;
 
@@ -29,8 +28,8 @@ public class PromotionController implements PromotionBLService {
     }
 
     @Override
-    public TwoTuple<ResultMessage, PromotionVO> commit(PromotionBuildInfo info) {
-        return manager.commit(info);
+    public Result<PromotionVO> commit(PromotionBuildInfo.Builder builder) {
+        return manager.commit(builder);
     }
 
     @Override

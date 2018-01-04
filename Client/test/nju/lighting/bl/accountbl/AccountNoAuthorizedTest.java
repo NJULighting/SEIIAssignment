@@ -7,6 +7,7 @@ import org.junit.Test;
 import shared.ResultMessage;
 
 import static org.junit.Assert.assertEquals;
+
 /**
  * Created on 2017/12/1.
  * Description: This test is based on that the user is not authorized

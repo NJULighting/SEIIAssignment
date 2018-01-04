@@ -2,14 +2,12 @@ package nju.lighting.presentation.documentui.accountiodoc;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-import nju.lighting.presentation.accountui.Account;
 import nju.lighting.vo.account.AccountVO;
 import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 
 /**
  * Created on 2017/12/11.
  * Description
- *
  * @author 陈俊宇
  */
 public class AccountTransferItem {

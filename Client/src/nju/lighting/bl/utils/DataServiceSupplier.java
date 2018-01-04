@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 /**
  * Created on 2017/12/13.
@@ -17,6 +18,16 @@ public interface DataServiceSupplier<T> {
         try {
             List<PO> poList = supplier.get();
             return CollectionTransformer.toList(poList, poTransformer);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
+    static <VO, PO> List<VO> getAllAndFilter(DataServiceSupplier<List<PO>> supplier, Function<PO, VO> transformer, Predicate<PO> filter) {
+        try {
+            List<PO> poList = supplier.get();
+            return CollectionTransformer.filterToList(poList, transformer, filter);
         } catch (RemoteException e) {
             e.printStackTrace();
             return Collections.emptyList();

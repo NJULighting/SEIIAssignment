@@ -7,13 +7,7 @@ import nju.lighting.bl.commoditybl.CommodityInfoImpl;
 import nju.lighting.bl.userbl.LoginTestHelper;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
-import nju.lighting.dataservice.DataFactory;
-import nju.lighting.dataservice.documentdataservice.DocDataService;
-import nju.lighting.po.doc.DocPO;
-import nju.lighting.po.doc.accountiodoc.AccountIODocPO;
-import nju.lighting.po.doc.accountiodoc.AccountTransferItemPO;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;
 import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 import nju.lighting.vo.doc.alertdoc.AlertDocItemVO;
@@ -34,9 +28,13 @@ import org.junit.Before;
 import org.junit.Test;
 import shared.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created on 2017/12/18.
@@ -46,12 +44,10 @@ import static org.junit.Assert.*;
 public class CommitDocTest {
 
     private static String id = "0033029935110547923";
-
     private static final AccountTransferItemVO ITEM_0 = new AccountTransferItemVO(312.2, "Naive", id);
     private static final AccountTransferItemVO ITEM_1 = new AccountTransferItemVO(312.2, "Excited", id);
     private static final AccountTransferItemVO ITEM_2 = new AccountTransferItemVO(312.2, "Too Young", id);
     private static final List<AccountTransferItemVO> ITEM_LIST = Arrays.asList(ITEM_0, ITEM_1, ITEM_2);
-
     private DocManager manager = DocManager.INSTANCE;
     private UserInfo userInfo = new UserInfoImpl();
     private CommodityInfo commodityInfo = new CommodityInfoImpl();

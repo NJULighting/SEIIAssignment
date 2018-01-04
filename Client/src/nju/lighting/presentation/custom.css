@@ -55,7 +55,7 @@ root {
 }
 
 .scroll-bar .thumb {
-    -fx-background-color: lightgray;
+    -fx-background-color: lightgrey;
 
 }
 
@@ -594,7 +594,7 @@ root {
 
 .tree-table-view:focused .tree-table-row-cell:selected {
 
-    -fx-background-color: lightgray;
+    -fx-background-color: transparent;
 
     -fx-table-cell-border-color: transparent;
 
@@ -714,8 +714,12 @@ root {
     -fx-background-color: transparent;
 }
 
-.tree-table-row-cell:hover {
-    -fx-background-color: lightgrey;
+.tree-table-row-cell:hover .text{
+    -fx-font-weight: bold;
+}
+
+.tree-table-row-cell:selected .text{
+    -fx-font-weight: bold;
 }
 
 /*

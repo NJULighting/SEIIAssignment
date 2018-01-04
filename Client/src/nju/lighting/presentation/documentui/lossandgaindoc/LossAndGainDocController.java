@@ -29,8 +29,6 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class LossAndGainDocController implements Initializable {
-
-    CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
     UserBLService userBLService = UserBLServiceFactory.getUserBLService();
     LossAndGainDocVO lossAndGainDocVO;
 

@@ -2,16 +2,21 @@ package nju.lighting.presentation.commodityui;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
 import nju.lighting.bl.commoditybl.CommodityController;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
+import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.factory.CommodityBLServiceFactory;
+import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.vo.commodity.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -78,7 +83,7 @@ public class CommodityCategory implements Initializable {
 
     @FXML
     void refresh() {
-        root.setValue(new CommodityCategoryItem(categoriesTreeVO.getRoot()));
+        root.setValue(new CommodityCategoryItem(blService.getCommodityCategoriesTreeVO().getRoot()));
         root.setExpanded(true);
         root.getChildren().clear();
         buildTree(root, categoriesTreeVO.getRoot());
@@ -122,6 +127,10 @@ public class CommodityCategory implements Initializable {
         root = new TreeItem();
         refresh();
         commodityTreeTableView.setRoot(root);
+        searchText.textProperty().addListener(c->{
+            if (searchText.getText().length()==0)
+                refresh();
+        });
 
 
         name.setCellValueFactory(cellData ->
@@ -142,7 +151,35 @@ public class CommodityCategory implements Initializable {
         recentSellPrice.setCellValueFactory(cellData ->
                 cellData.getValue().getValue().recentSellPriceProperty().asObject());
 
-
+        name.setCellFactory(c->{
+            return new TreeTableCell<CommodityCategoryItem, String>(){
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty){
+                        setText(null);
+                        setGraphic(null);
+                    }else {
+                        setText(item);
+                        if (getTreeTableRow().getTreeItem()!=null
+                                &&!getTreeTableRow().getTreeItem().getValue().getItem().getClass().equals(CommodityCategoryVO.class)){
+                            MenuItem predicate=new MenuItem("预测趋势");
+                            setContextMenu(new ContextMenu(predicate));
+                            predicate.setOnAction(e->{
+                                FXMLLoader loader=new FXMLLoader(getClass().getResource("Predicate.fxml"));
+                                try {
+                                    DialogHelper.addDialog(loader.load(), MainUI.getStackPane());
+                                } catch (IOException e1) {
+                                    e1.printStackTrace();
+                                }
+                                Predicate controller=loader.getController();
+                                controller.init(((CommodityItemVO) getTreeTableRow().getTreeItem().getValue().getItem()));
+                            });
+                        }
+                    }
+                }
+            };
+        });
         id.setCellFactory(p -> new CommodityDetailTreeCell(keyWord));
         modelNumber.setCellFactory(p -> new CommodityDetailTreeCell(keyWord));
         repCount.setCellFactory(p -> new CommodityDetailTreeCell(keyWord));

@@ -15,7 +15,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <VBox layoutX="581.0" layoutY="470.0">
+      <VBox layoutX="631.0" layoutY="470.0">
          <children>
             <HBox alignment="CENTER" spacing="30.0">
                <children>
@@ -24,7 +24,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Line endX="100.0" stroke="#2675ae" strokeMiterLimit="5.0" strokeWidth="3.0" />
+                  <Line endX="50.0" stroke="#2675ae" strokeMiterLimit="5.0" strokeWidth="3.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="30.0">
@@ -34,7 +34,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Line endX="100.0" stroke="#2ca227" strokeWidth="3.0" />
+                  <Line endX="50.0" stroke="#2ca227" strokeWidth="3.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="30.0">
@@ -44,7 +44,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Line endX="100.0" stroke="#ff7e08" strokeWidth="3.0" />
+                  <Line endX="50.0" stroke="#ff7e08" strokeWidth="3.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="30.0">
@@ -54,7 +54,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Line endX="100.0" stroke="#d8252b" strokeWidth="3.0" />
+                  <Line endX="50.0" stroke="#d8252b" strokeWidth="3.0" />
                </children>
             </HBox>
          </children>

@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.BusinessConditionTable">
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.BusinessConditionTable">
    <children>
       <Line endX="300.0" layoutX="130.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />
       <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />
@@ -125,12 +125,12 @@
                                           </Line>
                                           <HBox alignment="BOTTOM_LEFT">
                                              <children>
-                                                <Label text="￥" textFill="#5599ff">
+                                                <Label text="￥">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="salesRevenueText" text="2000.00" textFill="#5599ff">
+                                                <Label fx:id="salesRevenueText" text="2000.00">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -158,88 +158,76 @@
                                              </VBox.margin>
                                           </Line>
                                           <Label text="商品报溢输入" />
-                                          <HBox>
+                                          <HBox alignment="TOP_RIGHT">
                                              <children>
-                                                <Label text="￥" textFill="#5599ff">
+                                                <Label text="￥">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="commodityGainRevenueText" text="2000.00" textFill="#5599ff">
+                                                <Label fx:id="commodityGainRevenueText" text="2000.00">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
                                              </children>
-                                          </HBox>
-                                          <HBox alignment="BOTTOM_RIGHT">
-                                             <children>
-                                                <Label text="折" textFill="#797979" />
-                                                <Label text="2000.00" textFill="#797979" />
-                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
                                           </HBox>
                                           <Label text="成本调价输入" />
-                                          <HBox>
+                                          <HBox alignment="TOP_RIGHT">
                                              <children>
-                                                <Label text="￥" textFill="#5599ff">
+                                                <Label text="￥">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="costAdjustRevenueText" text="2000.00" textFill="#5599ff">
+                                                <Label fx:id="costAdjustRevenueText" text="2000.00">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
                                              </children>
-                                          </HBox>
-                                          <HBox alignment="BOTTOM_RIGHT">
-                                             <children>
-                                                <Label text="折" textFill="#797979" />
-                                                <Label text="2000.00" textFill="#797979" />
-                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
                                           </HBox>
                                           <Label text="进退货差价" />
-                                          <HBox>
+                                          <HBox alignment="TOP_RIGHT">
                                              <children>
-                                                <Label text="￥" textFill="#5599ff">
+                                                <Label text="￥">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="spreadRevenueText" text="2000.00" textFill="#5599ff">
+                                                <Label fx:id="spreadRevenueText" text="2000.00">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
                                              </children>
-                                          </HBox>
-                                          <HBox alignment="BOTTOM_RIGHT">
-                                             <children>
-                                                <Label text="折" textFill="#797979" />
-                                                <Label text="2000.00" textFill="#797979" />
-                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
                                           </HBox>
                                           <Label text="代金券差额" />
-                                          <HBox>
+                                          <HBox alignment="TOP_RIGHT">
                                              <children>
-                                                <Label text="￥" textFill="#5599ff">
+                                                <Label text="￥">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="voucherCausedRevenueText" text="2000.00" textFill="#5599ff">
+                                                <Label fx:id="voucherCausedRevenueText" text="2000.00">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
                                              </children>
-                                          </HBox>
-                                          <HBox alignment="BOTTOM_RIGHT">
-                                             <children>
-                                                <Label text="折" textFill="#797979" />
-                                                <Label text="2000.00" textFill="#797979" />
-                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
                                           </HBox>
                                        </children>
                                     </VBox>
@@ -285,22 +273,16 @@
                                           </Line>
                                           <HBox>
                                              <children>
-                                                <Label text="￥" textFill="#5599ff">
+                                                <Label text="￥">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="costExpenditureText" text="2000.00" textFill="#5599ff">
+                                                <Label fx:id="costExpenditureText" text="2000.00">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="BOTTOM_RIGHT">
-                                             <children>
-                                                <Label text="折" textFill="#797979" />
-                                                <Label text="2000.00" textFill="#797979" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -318,46 +300,40 @@
                                              </VBox.margin>
                                           </Line>
                                           <Label text="商品报损支出" />
-                                          <HBox>
+                                          <HBox alignment="TOP_RIGHT">
                                              <children>
-                                                <Label text="￥" textFill="#5599ff">
+                                                <Label text="￥">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="commodityLossExpenditureText" text="2000.00" textFill="#5599ff">
+                                                <Label fx:id="commodityLossExpenditureText" text="2000.00">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
                                              </children>
-                                          </HBox>
-                                          <HBox alignment="BOTTOM_RIGHT">
-                                             <children>
-                                                <Label text="折" textFill="#797979" />
-                                                <Label text="2000.00" textFill="#797979" />
-                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
                                           </HBox>
                                           <Label text="商品赠出支出" />
-                                          <HBox>
+                                          <HBox alignment="TOP_RIGHT">
                                              <children>
-                                                <Label text="￥" textFill="#5599ff">
+                                                <Label text="￥">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="giftExpenditureText" text="2000.00" textFill="#5599ff">
+                                                <Label fx:id="giftExpenditureText" text="2000.00">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
                                              </children>
-                                          </HBox>
-                                          <HBox alignment="BOTTOM_RIGHT">
-                                             <children>
-                                                <Label text="折" textFill="#797979" />
-                                                <Label text="2000.00" textFill="#797979" />
-                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
                                           </HBox>
                                        </children>
                                     </VBox>

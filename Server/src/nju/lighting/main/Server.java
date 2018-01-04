@@ -38,7 +38,7 @@ public class Server {
     public static void main(String[] args) {
 
         System.out.println("Constructing server implementation");
-        new Analysis();
+    //    new Analysis();
         try {
             AccountDataService accountDataService = new AccountData();
             UserDataService userDataService = new UserData();

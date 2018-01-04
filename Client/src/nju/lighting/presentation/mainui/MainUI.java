@@ -3,9 +3,8 @@ package nju.lighting.presentation.mainui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import shared.Identity;
 
@@ -66,19 +65,38 @@ public class MainUI {
 //    }
 
     public BorderPane root= new BorderPane();
+    private static StackPane stackPane;
     public Pane up;
     public VBox left;
     public Node[] center;
+    Stage stage =new Stage();
+    TitleController titleController;
+
+    public void setStage(){
+        Client.setPrimaryStage(stage);
+        titleController.setStage(stage);
+    }
 
     public MainUI(Identity identity) throws IOException{
-        Stage stage =new Stage();
-        Client.setPrimaryStage(stage);
+
+
 
         FXMLLoader loader=new FXMLLoader(getClass().getResource(hashMap.get(identity)));
 
-        up=FXMLLoader.load(getClass().getResource("Title.fxml"));
+        FXMLLoader titleLoader=new FXMLLoader(getClass().getResource("Title.fxml"));
+        up=titleLoader.load();
+        titleController=titleLoader.getController();
         root.setTop(up);
 
+
+        Image background = new Image("images/待选背景/蓝色水2.jpg",1280,720,false,true);
+
+        BackgroundImage backgroundImage = new BackgroundImage(background,
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+
+//then you set to your node
+        root.setBackground(new Background(backgroundImage));
 
 
 
@@ -96,10 +114,16 @@ public class MainUI {
         //}else
         //   root.setRight(loader.load());
 
-        stage.setScene(new Scene(root));
+        stackPane=new StackPane(root);
+        stage.setScene(new Scene(stackPane));
         stage.getScene().getStylesheets().add(Client.class.getResource("../custom.css").toExternalForm());
 
+        Image icon = new Image("images/待选背景/简约灯泡.png");
+        stage.getIcons().add(icon);
 
     }
 
+    public static StackPane getStackPane() {
+        return stackPane;
+    }
 }

@@ -35,15 +35,20 @@ public class TitleController extends CommonFather{
 
     public void exit() throws IOException{
         Stage stage =new Stage();
-        Client.setPrimaryStage(stage);
         AnchorPane root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         stage.setScene(new Scene(root));
+        Client.setPrimaryStage(stage);
+    }
+
+    public void setStage(Stage stage){
+        this.stage=stage;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttons=new Button[]{close,mini,exit};
         stage=Client.primaryStage;
+        System.out.println(stage+"");
         super.initialize(location, resources);
         userName.setText(Client.getUserVO().getUsername());
         userID.setText(Client.getUserVO().getID());

@@ -76,8 +76,8 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
     @Override
     public TwoTuple<ResultMessage, InitPO> createInit(String userId, Date date) throws RemoteException {
         TwoTuple<ResultMessage, InitPO> result = new TwoTuple<>();
-        String url = "F:\\" + date.toString().replace(" ", "_").replace(":", "");
-
+        String url = date.toString().replace(" ", "");
+        url = url.replace(":", "");
         try {
             createCSVFile(url);
         } catch (Exception e) {
@@ -89,7 +89,7 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
             return result;
         }
         zip(new File(url), url + ".zip");
-        InitPO initPO = new InitPO(date, userId, url + ".zip");
+        InitPO initPO = new InitPO(date, userId, "http://localhost:8080/Server/" + url + ".zip");
         System.out.println("Before Return");
         result.t = commonOperation.add(initPO);
         result.r = initPO;

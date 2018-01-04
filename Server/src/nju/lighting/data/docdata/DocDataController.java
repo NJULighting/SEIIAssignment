@@ -42,7 +42,7 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
 
     private static final String suffix;
 
-    private static final String absoluteMailScriptAddress = "\\Users\\liao\\Documents\\SEIIAssignment\\python\\mail\\send_mail.py";
+    private static final String absoluteMailScriptAddress = "/Users/iznauy/SEIIAssignment/python/mail/send_mail.py";
 
     private static HashMap<DocType, TwoTuple<String, String>> typeToName = new HashMap<>();
 
@@ -195,7 +195,7 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
     public void sentMail(String creatorId, String header, String content) throws RemoteException {
         new Thread(()-> {
             String mailAddress = creatorId + suffix;
-            String command = "C:\\Python27\\python.exe " + absoluteMailScriptAddress + " " + mailAddress + " " + header + " " + content;
+            String command = "python " + absoluteMailScriptAddress + " " + mailAddress + " " + header + " " + content;
             System.out.println(command);
             try {
                 Process process = Runtime.getRuntime().exec(command);
@@ -203,6 +203,6 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }).run();
+        }).start();
     }
 }

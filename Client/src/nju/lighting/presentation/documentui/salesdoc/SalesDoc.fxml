@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.giftdoc.GiftDocController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.salesdoc.SalesDocController">
    <children>
       <ScrollPane fx:id="scrollpaneMain" hbarPolicy="NEVER" hmax="0.0" prefHeight="560.0" prefWidth="700.0">
          <content>
@@ -33,7 +33,7 @@
                                     <Font name="Bauhaus 93" size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="某客户名">
+                              <Label fx:id="customer" text="某客户名">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -48,7 +48,7 @@
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </Label>
-                              <Label text="业务员名">
+                              <Label fx:id="salesman" text="业务员名">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -65,32 +65,14 @@
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </Label>
-                              <Label text="仓库名">
+                              <Label fx:id="repository" text="仓库名">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" hmax="0.0" prefHeight="292.0" prefWidth="700.0" vbarPolicy="NEVER" vmax="0.0">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0">
-                                 <children>
-                                    <TableView fx:id="giftTableView">
-                                       <columns>
-                                          <TableColumn fx:id="id" editable="false" prefWidth="120.0" text="商品编号" />
-                                          <TableColumn fx:id="commodityName" editable="false" prefWidth="120.0" sortable="false" text="名称" />
-                                          <TableColumn editable="false" prefWidth="120.0" text="型号" />
-                                          <TableColumn fx:id="price" editable="false" prefWidth="100.0" text="单价" />
-                                          <TableColumn fx:id="count" editable="false" prefWidth="100.0" text="数量" />
-                                          <TableColumn fx:id="subtotal" editable="false" prefWidth="100.0" text="小计" />
-                                          <TableColumn fx:id="subtotal1" editable="false" prefWidth="200.0" sortable="false" text="备注" />
-                                       </columns>
-                                    </TableView>
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </ScrollPane>
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
                         <HBox alignment="CENTER_RIGHT" spacing="10.0">
                            <children>
                               <Label text="折让前总额">
@@ -98,7 +80,7 @@
                                     <Font name="System Italic" size="15.0" />
                                  </font>
                               </Label>
-                              <Label text="2400.00">
+                              <Label fx:id="accountBefore" text="2400.00">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -115,7 +97,7 @@
                                     <Font name="System Italic" size="15.0" />
                                  </font>
                               </Label>
-                              <Label text="200.00">
+                              <Label fx:id="discount" text="200.00">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -132,7 +114,7 @@
                                     <Font name="System Italic" size="15.0" />
                                  </font>
                               </Label>
-                              <Label text="200.00">
+                              <Label fx:id="vouther" text="200.00">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -149,7 +131,7 @@
                                     <Font name="System Italic" size="15.0" />
                                  </font>
                               </Label>
-                              <Label style="-fx-text-fill: #5599ff;" text="2000.00">
+                              <Label fx:id="account" style="-fx-text-fill: #5599ff;" text="2000.00">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -165,7 +147,7 @@
                         <HBox alignment="BOTTOM_CENTER">
                            <children>
                               <Label text="————" textFill="#838383" />
-                              <Label text="2017年12月26日" textFill="#838383" />
+                              <Label fx:id="date" text="2017年12月26日" textFill="#838383" />
                               <Label text="————" textFill="#838383" />
                            </children>
                            <VBox.margin>
@@ -179,7 +161,7 @@
                                     <Font name="Bauhaus 93" size="18.0" />
                                  </font>
                               </Label>
-                              <Label text="某制定人名" textFill="#838383" />
+                              <Label fx:id="maker" text="未注明制定人" textFill="#838383" />
                            </children>
                            <VBox.margin>
                               <Insets />
@@ -195,7 +177,6 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <JFXSlider fx:id="slider" layoutX="10.0" layoutY="125.0" />
                </children>
             </AnchorPane>
          </content>

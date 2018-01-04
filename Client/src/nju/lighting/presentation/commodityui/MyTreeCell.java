@@ -78,7 +78,7 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
                 e1.printStackTrace();
             }
             Predicate controller=loader.getController();
-            controller.init(((CommodityItemVO) getTreeTableItem().getValue().getItem()).toBasicCommodityItem());
+            controller.init(((CommodityItemVO) getTreeTableItem().getValue().getItem()));
         });
         addCategory.setOnAction(event -> {
             selectedMenuItem = addCategory;

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -18,9 +17,9 @@
                <children>
                   <VBox fx:id="vbox" alignment="TOP_CENTER" prefWidth="700.0" stylesheets="@../../custom.css">
                      <children>
-                        <ImageView fitHeight="45.0" fitWidth="120.0">
+                        <ImageView fitHeight="45.0" fitWidth="183.0">
                            <image>
-                              <Image url="@../../../../../images/字/进货单.png" />
+                              <Image url="@../../../../../images/字/进货退货单.png" />
                            </image>
                            <VBox.margin>
                               <Insets />

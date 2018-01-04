@@ -28,7 +28,7 @@ public class AccountManagerController extends MainUIController{
     public void initialize(URL location, ResourceBundle resources){
         buttons = new Button[]{accountManage,makeAccountIODoc,makeCostDoc,businessConditionBtn,salesConditionBtn,businessHistoryBtn,
                 initaccountBtn,logBtn};
-        urls = new String[]{"../accountui/Account.fxml","../documentui/accountiodoc/AddAccountIODoc.fxml","../documentui/CostDoc.fxml",
+        urls = new String[]{"../accountui/Account.fxml","../documentui/accountiodoc/AddAccountIODoc.fxml","../documentui/costdoc/CreateCostDoc.fxml",
                 "../documentui/BusinessConditionTable.fxml","../documentui/SalesConditionTable.fxml","../documentui/HistoryDoc",
                 "../initui/InitAccount.fxml","../logui/Log.fxml"};
         MAIN_BUTTON_SIZE = 8;

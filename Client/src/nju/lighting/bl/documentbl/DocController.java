@@ -5,10 +5,11 @@ import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
+import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
-import nju.lighting.vo.viewtables.SalesDetailItemVO;
-import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.BusinessConditionTableVO;
+import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
+import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import shared.DocumentFilter;
 import shared.ResultMessage;
 import shared.TwoTuple;
@@ -48,6 +49,11 @@ public class DocController implements DocBLService {
     public BusinessConditionTableVO findRevenueAndExpenditure(Date startDate, Date endDate) {
         SalesDetailTable table = new SalesDetailTable(startDate, endDate);
         return table.getSalesDetailTable();
+    }
+
+    @Override
+    public ResultMessage expireAlertDoc(AlertDocVO alertDocVO) {
+        return manager.expireAlertDoc(alertDocVO);
     }
 
     @Override

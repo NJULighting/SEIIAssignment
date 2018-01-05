@@ -13,13 +13,15 @@ import java.util.List;
  * @author Liao
  */
 public class LogController implements LogBLService {
+    private LogManager manager = LogManager.INSTANCE;
+
     @Override
     public List<LogVO> getLogListByTime(Date from, Date to) {
-        return null;
+        return manager.getLogListByTime(from, to);
     }
 
     @Override
     public List<LogVO> findLogs(LogFilter filter) {
-        return null;
+        return manager.findLogs(filter);
     }
 }

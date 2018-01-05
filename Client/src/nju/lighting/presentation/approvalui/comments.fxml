@@ -4,17 +4,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane   prefHeight="253.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.approvalui.CommentsController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="253.0" prefWidth="525.0"
+            xmlns="http://javafx.com/javafx/8.0.112" fx:controller="nju.lighting.presentation.approvalui.CommentsController">
     <children>
         <JFXTextArea fx:id="comment" layoutX="30.0" layoutY="96.0" prefHeight="145.0" prefWidth="470.0">
             <font>
-                <Font size="18.0" />
+                <Font size="18.0"/>
             </font>
         </JFXTextArea>
         <Label layoutX="30.0" layoutY="32.0" text="审批意见：">
             <font>
-                <Font size="24.0" />
+                <Font size="24.0"/>
             </font>
         </Label>
     </children>

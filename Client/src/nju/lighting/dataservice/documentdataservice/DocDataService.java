@@ -1,11 +1,13 @@
 package nju.lighting.dataservice.documentdataservice;
 
 import nju.lighting.po.doc.DocPO;
-import shared.*;
+import shared.DocState;
+import shared.DocType;
+import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

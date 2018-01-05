@@ -1,13 +1,9 @@
 package nju.lighting.presentation.mainui;
 
-import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import nju.lighting.bl.userbl.UserController;
@@ -19,16 +15,14 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/11/27.
  * Description 所有界面的公共父类，提供了关闭、最小化窗口，拖动，按钮高光等方法
- *
- *
  * @author 陈俊宇
  */
 public abstract class CommonFather implements Initializable {
     public Stage stage;
     public Button[] buttons;
+    public Double MISS_OPACITY = 0.45;
     private double XOffset;
     private double YOffSet;
-    public Double MISS_OPACITY = 0.45;
 
     //关闭程序
     @FXML

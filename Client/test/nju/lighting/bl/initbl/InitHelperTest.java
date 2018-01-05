@@ -2,7 +2,6 @@ package nju.lighting.bl.initbl;
 
 import nju.lighting.bl.userbl.LoginTestHelper;
 import nju.lighting.blservice.initblservice.InitializationBLService;
-import nju.lighting.po.init.InitPO;
 import nju.lighting.vo.InitVO;
 import org.junit.Before;
 import org.junit.Test;

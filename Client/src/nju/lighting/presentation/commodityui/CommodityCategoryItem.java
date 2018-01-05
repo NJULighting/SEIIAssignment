@@ -3,7 +3,6 @@ package nju.lighting.presentation.commodityui;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import nju.lighting.vo.commodity.Nameable;
 
@@ -11,7 +10,6 @@ import nju.lighting.vo.commodity.Nameable;
  * Created on 2017/12/25.
  * Description
  * 商品管理界面树表视图所需要的value
- *
  * @author 陈俊宇
  */
 public class CommodityCategoryItem {
@@ -27,7 +25,7 @@ public class CommodityCategoryItem {
 
 
     public CommodityCategoryItem(Nameable item) {
-        this.item=item;
+        this.item = item;
         name.set(item.getName());
         if (item.getClass().equals(CommodityItemVO.class)) {
             CommodityItemVO vo = (CommodityItemVO) item;
@@ -42,109 +40,110 @@ public class CommodityCategoryItem {
     }
 
 
-    public CommodityCategoryItem(String name){
+    public CommodityCategoryItem(String name) {
         this.name.set(name);
-        item=new Nameable() {
+        item = new Nameable() {
             @Override
             public String getName() {
                 return name;
             }
         };
     }
+
     public String getName() {
         return name.get();
-    }
-
-    public SimpleStringProperty nameProperty() {
-        return name;
     }
 
     public void setName(String name) {
         this.name.set(name);
     }
 
-    public String getId() {
-        return id.get();
+    public SimpleStringProperty nameProperty() {
+        return name;
     }
 
-    public SimpleStringProperty idProperty() {
-        return id;
+    public String getId() {
+        return id.get();
     }
 
     public void setId(String id) {
         this.id.set(id);
     }
 
-    public String getModelNumber() {
-        return modelNumber.get();
+    public SimpleStringProperty idProperty() {
+        return id;
     }
 
-    public SimpleStringProperty modelNumberProperty() {
-        return modelNumber;
+    public String getModelNumber() {
+        return modelNumber.get();
     }
 
     public void setModelNumber(String modelNumber) {
         this.modelNumber.set(modelNumber);
     }
 
-    public int getRepCount() {
-        return repCount.get();
+    public SimpleStringProperty modelNumberProperty() {
+        return modelNumber;
     }
 
-    public SimpleIntegerProperty repCountProperty() {
-        return repCount;
+    public int getRepCount() {
+        return repCount.get();
     }
 
     public void setRepCount(int repCount) {
         this.repCount.set(repCount);
     }
 
-    public double getInPrice() {
-        return inPrice.get();
+    public SimpleIntegerProperty repCountProperty() {
+        return repCount;
     }
 
-    public SimpleDoubleProperty inPriceProperty() {
-        return inPrice;
+    public double getInPrice() {
+        return inPrice.get();
     }
 
     public void setInPrice(double inPrice) {
         this.inPrice.set(inPrice);
     }
 
-    public double getSellPrice() {
-        return sellPrice.get();
+    public SimpleDoubleProperty inPriceProperty() {
+        return inPrice;
     }
 
-    public SimpleDoubleProperty sellPriceProperty() {
-        return sellPrice;
+    public double getSellPrice() {
+        return sellPrice.get();
     }
 
     public void setSellPrice(double sellPrice) {
         this.sellPrice.set(sellPrice);
     }
 
-    public double getRecentInPrice() {
-        return recentInPrice.get();
+    public SimpleDoubleProperty sellPriceProperty() {
+        return sellPrice;
     }
 
-    public SimpleDoubleProperty recentInPriceProperty() {
-        return recentInPrice;
+    public double getRecentInPrice() {
+        return recentInPrice.get();
     }
 
     public void setRecentInPrice(double recentInPrice) {
         this.recentInPrice.set(recentInPrice);
     }
 
+    public SimpleDoubleProperty recentInPriceProperty() {
+        return recentInPrice;
+    }
+
     public double getRecentSellPrice() {
         return recentSellPrice.get();
     }
 
-    public SimpleDoubleProperty recentSellPriceProperty() {
-        return recentSellPrice;
-    }
-
     public void setRecentSellPrice(double recentSellPrice) {
         this.recentSellPrice.set(recentSellPrice);
+    }
+
+    public SimpleDoubleProperty recentSellPriceProperty() {
+        return recentSellPrice;
     }
 
     public Nameable getItem() {

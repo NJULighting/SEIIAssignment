@@ -4,7 +4,6 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import nju.lighting.presentation.commodityui.Commodity;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
@@ -12,7 +11,6 @@ import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
 /**
  * Created on 2017/12/10.
  * Description
- *
  * @author 陈俊宇
  */
 public class CommodityItem {
@@ -29,7 +27,7 @@ public class CommodityItem {
 
     //创建时只需要商品和数量
     public CommodityItem(BasicCommodityItemVO commodity, int count) {
-        this.commodity=commodity;
+        this.commodity = commodity;
         this.count.set(count);
         init(commodity);
     }
@@ -67,6 +65,10 @@ public class CommodityItem {
         return gift.get();
     }
 
+    public void setGift(boolean gift) {
+        this.gift.set(gift);
+    }
+
     public SimpleBooleanProperty giftProperty() {
         return gift;
     }
@@ -75,6 +77,9 @@ public class CommodityItem {
         return price.get();
     }
 
+    public void setPrice(double price) {
+        this.price.set(price);
+    }
 
     public SimpleDoubleProperty subtotalProperty() {
         return subtotal;
@@ -84,42 +89,36 @@ public class CommodityItem {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price.set(price);
-    }
-
     public int getCount() {
         return count.get();
-    }
-
-    public SimpleIntegerProperty countProperty() {
-        return count;
     }
 
     public void setCount(int count) {
         this.count.set(count);
     }
 
-    public String getName() {
-        return name.get();
+    public SimpleIntegerProperty countProperty() {
+        return count;
     }
 
-
-    public SimpleStringProperty nameProperty() {
-        return name;
+    public String getName() {
+        return name.get();
     }
 
     public void setName(String name) {
         this.name.set(name);
     }
 
-    public void setGift(boolean gift) {
-        this.gift.set(gift);
+    public SimpleStringProperty nameProperty() {
+        return name;
     }
-
 
     public String getComments() {
         return comments.get();
+    }
+
+    public void setComments(String comments) {
+        this.comments.set(comments);
     }
 
     public SimpleStringProperty commentsProperty() {
@@ -132,10 +131,6 @@ public class CommodityItem {
 
     public SimpleStringProperty modelNumProperty() {
         return modelNum;
-    }
-
-    public void setComments(String comments) {
-        this.comments.set(comments);
     }
 
     public String getId() {

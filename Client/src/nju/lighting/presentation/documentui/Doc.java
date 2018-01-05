@@ -1,9 +1,6 @@
 package nju.lighting.presentation.documentui;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.Pane;
-import nju.lighting.presentation.mainui.CommonFather;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
 
@@ -16,18 +13,35 @@ import java.util.HashMap;
  *
  * @author 陈俊宇
  */
-public class Doc{
-    public static DocVO doc;
-    static HashMap<DocType,String> map=new HashMap<>();
+public class Doc {
+    private static DocVO doc;
+    private static HashMap<DocType, String> map = new HashMap<>();
+
     static {
         map.put(DocType.GIFT, "giftdoc/GiftDoc.fxml");
-        map.put(DocType.ACCOUNT_IN,"AccountIODoc.fxml");
-        map.put(DocType.LOSS_AND_GAIN,"lossandgaindoc/LossAndGainDoc.fxml");
+        map.put(DocType.ACCOUNT_IN, "accountiodoc/AccountIODoc.fxml");
+        map.put(DocType.ACCOUNT_OUT, "accountiodoc/AccountIODoc.fxml");
+        map.put(DocType.LOSS_AND_GAIN, "lossandgaindoc/LossAndGainDoc.fxml");
+        map.put(DocType.SALES, "salesdoc/SalesDoc.fxml");
+        map.put(DocType.SALES_RETURN, "salesdoc/SalesReturnDoc.fxml");
+        map.put(DocType.STOCK, "stockdoc/StockDoc.fxml");
+        map.put(DocType.STOCK_RETURN, "stockdoc/StockReturnDoc.fxml");
+        map.put(DocType.ALERT, "alertdoc/AlertDoc.fxml");
+        map.put(DocType.COST, "costdoc/CostDoc.fxml");
+
+
     }
 
 
-
     public static FXMLLoader getLoader() throws IOException {
-        return  new FXMLLoader(Doc.class.getResource(map.get(doc.getType())));
+        return new FXMLLoader(Doc.class.getResource(map.get(doc.getType())));
+    }
+
+    public static DocVO getDoc() {
+        return doc;
+    }
+
+    public static void setDoc(DocVO doc) {
+        Doc.doc = doc;
     }
 }

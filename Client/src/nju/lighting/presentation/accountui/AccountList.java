@@ -15,7 +15,6 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
-import nju.lighting.bl.accountbl.AccountBLService_Stub;
 import nju.lighting.blservice.accountblservice.AccountBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.DialogUI.ValidateEventHandle;
@@ -32,10 +31,10 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/27.
  * Description
- *
  * @author 陈俊宇
  */
-public class AccountList implements Initializable {
+public class
+AccountList implements Initializable {
     AccountBLService blService = AccountBLServiceFactory.getAccountBLService();
 
     @FXML

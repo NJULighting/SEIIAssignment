@@ -12,18 +12,18 @@ import java.util.Date;
 public class LogVO {
     private Date time;
     private String behavior;
-    private String creator;
+    private String creatorId;
     private Identity identity;
 
-    public LogVO(Date time, String behavior, String creator, Identity identity) {
+    public LogVO(Date time, String behavior, String creatorId, Identity identity) {
         this.time = time;
         this.behavior = behavior;
-        this.creator = creator;
+        this.creatorId = creatorId;
         this.identity = identity;
     }
 
-    public String getCreator() {
-        return creator;
+    public String getCreatorId() {
+        return creatorId;
     }
 
     public Identity getIdentity() {
@@ -34,12 +34,7 @@ public class LogVO {
         return time;
     }
 
-
     public String getBehavior() {
         return behavior;
-    }
-
-    public void setBehavior(String behavior) {
-        this.behavior = behavior;
     }
 }

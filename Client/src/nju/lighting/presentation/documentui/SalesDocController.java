@@ -19,7 +19,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import nju.lighting.bl.documentbl.DocController;
-import nju.lighting.bl.promotionbl.PromotionBLService_Stub;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.presentation.factory.PromotionBLServiceFactory;
@@ -46,55 +45,38 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class SalesDocController implements Initializable, Upper {
-    private CustomerVO customerVO;
-
-    private String salesDocID;
     PromotionBLService promotionBLService = PromotionBLServiceFactory.getPromotionBLService();
-
+    @FXML
+    HBox container, promotionBox;
+    @FXML
+    VBox verticalVBox;
+    @FXML
+    Pane mainPane, commodityContainer;
+    private ObservableList<BasicCommodityItemVO> commodityList = FXCollections.observableArrayList();
+    private ObservableList<CommodityItem> docItemList;
+    private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
+    private SimpleObjectProperty<PromotionVO> promotionProperty = new SimpleObjectProperty<>();
+    private CommodityList commodityListController;
+    private PromotionVO promotionVO;
+    private CustomerType type = CustomerType.SALESPERSON;
+    private CustomerVO customerVO;
+    private String salesDocID;
     private double accountBeforeDisNum = 0;
-
     private double discountNum = 0;
-
     private double voucherNum = 0;
-
     private double accountNum = 0;
-
     private DocBLService docBLService = new DocController();
-
     @FXML
     private Button choseCustomBtn, finishBtn, promotionBtn;
-
     @FXML
     private JFXButton commodityBtn;
-
     @FXML
     private JFXTextField customer, salesman, userman, repository, accountBeforeDis, discount,
             voucher, account, promotionText;
-
     @FXML
     private TextArea remarks;
-
     @FXML
     private Label failMessage, failDisCount, failVoucher, failCustomer, sub, title;
-
-    @FXML
-    HBox container, promotionBox;
-
-    @FXML
-    VBox verticalVBox;
-
-    @FXML
-    Pane mainPane, commodityContainer;
-
-    ObservableList<BasicCommodityItemVO> commodityList = FXCollections.observableArrayList();
-    ObservableList<CommodityItem> docItemList;
-    SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
-    SimpleObjectProperty<PromotionVO> promotionProperty = new SimpleObjectProperty<>();
-
-
-    CommodityList commodityListController;
-    PromotionVO promotionVO;
-    CustomerType type = CustomerType.SALESPERSON;
 
     public void chooseCommodity() {
         CommodityHelper.chooseCommodity(this, commodityList);
@@ -190,11 +172,11 @@ public class SalesDocController implements Initializable, Upper {
 
         commodityListController = loader.getController();
         commodityListController.setEditable();
-        commodityListController.setMaxSize(480,700);
+        commodityListController.setMaxSize(480, 700);
 
         docItemList = commodityListController.getGiftObservableList();
 
-        customer.textProperty().addListener(c-> {
+        customer.textProperty().addListener(c -> {
             if (customer.getText() != "")
                 promotionBtn.setDisable(false);
         });
@@ -261,7 +243,7 @@ public class SalesDocController implements Initializable, Upper {
         voucher.textProperty().addListener(changeListener);
         //promotionOff.textProperty().addListener(changeListener);
 
-        accountBeforeDis.textProperty().addListener(c->{
+        accountBeforeDis.textProperty().addListener(c -> {
             clearPromotion();
             account.setText("" + (
                     Double.parseDouble(accountBeforeDis.textProperty().get())
@@ -279,5 +261,28 @@ public class SalesDocController implements Initializable, Upper {
         verticalVBox.getChildren().remove(promotionBox);
     }
 
+    public ObservableList<BasicCommodityItemVO> getCommodityList() {
+        return commodityList;
+    }
 
+    public ObservableList<CommodityItem> getDocItemList() {
+        return docItemList;
+    }
+
+    public SimpleObjectProperty<CustomerVO>
+    getCustomerProperty() {
+        return customerProperty;
+    }
+
+    public SimpleObjectProperty<CustomerVO> customerPropertyProperty() {
+        return customerProperty;
+    }
+
+    public CommodityList getCommodityListController() {
+        return commodityListController;
+    }
+
+    public CustomerType getType() {
+        return type;
+    }
 }

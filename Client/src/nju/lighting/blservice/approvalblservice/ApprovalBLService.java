@@ -13,14 +13,14 @@ import java.util.List;
  * @author 陈俊宇
  */
 public interface ApprovalBLService {
-    List<DocVO> getDocumentList() ;
+    List<DocVO> getDocumentList();
 
-    ResultMessage approve(HistoryDocVO vo) ;
+    ResultMessage approve(HistoryDocVO vo);
 
-    ResultMessage approveAll(List<HistoryDocVO> voList) ;
+    ResultMessage approveAll(List<HistoryDocVO> voList);
 
-    ResultMessage reject(HistoryDocVO vo) ;
+    ResultMessage reject(HistoryDocVO vo);
 
-    ResultMessage save(HistoryDocVO vo) ;
+    ResultMessage save(HistoryDocVO vo);
 
 }

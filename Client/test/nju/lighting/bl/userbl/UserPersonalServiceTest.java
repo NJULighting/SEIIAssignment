@@ -1,10 +1,11 @@
 package nju.lighting.bl.userbl;
 
 import nju.lighting.blservice.userblservice.UserPersonalService;
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import shared.ResultMessage;
+
+import static org.junit.Assert.*;
 
 /**
  * Created on 2017/12/3.

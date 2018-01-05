@@ -41,10 +41,6 @@ public class SalesDocVO extends DocVO {
         finalAmount = beforeDiscountAmount * (1 - discount) - voucher;
     }
 
-    private double calculateBeforeDiscount() {
-        return items.stream().mapToDouble(SalesDocItemVO::getTotalAmount).sum();
-    }
-
     /**
      * Constructor for bl
      */
@@ -79,6 +75,10 @@ public class SalesDocVO extends DocVO {
         this.discount = discount;
         this.voucher = voucher;
         this.finalAmount = finalAmount;
+    }
+
+    private double calculateBeforeDiscount() {
+        return items.stream().mapToDouble(SalesDocItemVO::getTotalAmount).sum();
     }
 
     public int getCustomerId() {

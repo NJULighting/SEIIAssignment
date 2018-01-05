@@ -4,7 +4,6 @@ import nju.lighting.po.doc.DocPO;
 import shared.DocState;
 import shared.DocType;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

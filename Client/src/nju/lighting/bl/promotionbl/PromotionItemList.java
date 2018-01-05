@@ -1,12 +1,11 @@
 package nju.lighting.bl.promotionbl;
 
-import nju.lighting.bl.commoditybl.CommodityInfo;
-import nju.lighting.bl.commoditybl.CommodityInfoImpl;
+import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.po.promotion.PromotionPackageItemPO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/7.
@@ -14,27 +13,29 @@ import java.util.stream.Collectors;
  * @author Liao
  */
 class PromotionItemList {
-    private List<GiftItemVO> goods;
-
-    PromotionItemList() {
-    }
-
-    PromotionItemList(List<GiftItemVO> goods) {
-        this.goods = goods;
-    }
+    private List<PromotionItem> itemList = new ArrayList<>();
 
     List<PromotionPackageItemPO> toPOList(int promotionID) {
-        return goods.stream()
-                .map(giftItemVO -> new PromotionPackageItemPO(giftItemVO.getCommodityID(), promotionID, giftItemVO.getCount()))
-                .collect(Collectors.toList());
+        return CollectionTransformer.toList(itemList, item -> item.toPO(promotionID));
     }
 
-    void addAll(List<PromotionPackageItemPO> goods) {
-        // TODO: 2017/12/8 commodity info
-        CommodityInfo commodityInfo = new CommodityInfoImpl();
+    List<GiftItemVO> toVOList() {
+        return CollectionTransformer.toList(itemList, PromotionItem::toVO);
     }
 
-    List<GiftItemVO> getGoods() {
-        return goods;
+    void addAllVO(List<GiftItemVO> goods) {
+        goods.forEach(this::add);
+    }
+
+    void addAllPO(List<PromotionPackageItemPO> goods) {
+        goods.forEach(this::add);
+    }
+
+    private void add(GiftItemVO itemVO) {
+        itemList.add(new PromotionItem(itemVO));
+    }
+
+    private void add(PromotionPackageItemPO itemPO) {
+        itemList.add(new PromotionItem(itemPO));
     }
 }

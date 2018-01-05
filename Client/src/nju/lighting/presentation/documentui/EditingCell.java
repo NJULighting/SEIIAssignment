@@ -13,30 +13,31 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.input.KeyCode;
-import nju.lighting.presentation.utils.TextFieldHelper;
 
 /**
  * Created on 2017/12/10.
  * Description
  * 表格中可编辑的cell， 在这里定义cell的外观与行为
- *
  * @author 陈俊宇
  */
-public class EditingCell<T,S> extends TableCell<T, S> {
+public class EditingCell<T, S> extends TableCell<T, S> {
 
-    private JFXTextField textField;
     String type;
     ValidatorBase validator;
+    private JFXTextField textField;
 
-    public EditingCell(String type){
-        this.type=type;
-        switch (type){
+    public EditingCell(String type) {
+        this.type = type;
+        switch (type) {
             case "int":
-                validator=new NumberValidator();break;
+                validator = new NumberValidator();
+                break;
             case "double":
-                validator=new DoubleValidator();break;
+                validator = new DoubleValidator();
+                break;
             default:
-                validator=new RequiredFieldValidator();break;
+                validator = new RequiredFieldValidator();
+                break;
         }
     }
 
@@ -44,14 +45,14 @@ public class EditingCell<T,S> extends TableCell<T, S> {
     public void startEdit() {
         System.out.println("start Edit");
         if (!isEmpty()) {
-           // CommodityItem commodityItem = getTableView().getItems().get(getIndex());
+            // CommodityItem commodityItem = getTableView().getItems().get(getIndex());
 //            if (!commodityItem.isGift()) {
-                super.startEdit();
-                createTextField();
-                setText(null);
-                setGraphic(textField);
-                textField.selectAll();
-           // }
+            super.startEdit();
+            createTextField();
+            setText(null);
+            setGraphic(textField);
+            textField.selectAll();
+            // }
 
         }
     }
@@ -73,14 +74,13 @@ public class EditingCell<T,S> extends TableCell<T, S> {
         } else {
             //CommodityItem commodityItem = getTableView().getItems().get(getIndex());
             //if (isEditing() && !commodityItem.isGift()) {
-            if (isEditing()){
+            if (isEditing()) {
                 if (textField != null) {
                     textField.setText(getString());
                 }
                 setText(null);
                 setGraphic(textField);
-            }
-             else {
+            } else {
                 setText(getString());
                 setGraphic(null);
             }
@@ -99,16 +99,14 @@ public class EditingCell<T,S> extends TableCell<T, S> {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if (!newValue) {
-                    if (textField.validate()){
+                    if (textField.validate()) {
                         if (type.equals("double"))
-                            commitEdit((S)(new Double(Double.parseDouble(textField.getText()))));
+                            commitEdit((S) (new Double(Double.parseDouble(textField.getText()))));
                         else if (type.equals("int"))
-                            commitEdit((S)(new Integer(Integer.parseInt(textField.getText()))));
+                            commitEdit((S) (new Integer(Integer.parseInt(textField.getText()))));
                         else
-                            commitEdit((S)textField.getText());
-                    }
-
-                    else
+                            commitEdit((S) textField.getText());
+                    } else
                         cancelEdit();
                 }
             }

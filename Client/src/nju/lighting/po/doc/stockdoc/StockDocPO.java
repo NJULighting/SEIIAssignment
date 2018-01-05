@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class StockDocPO extends DocPO implements Serializable{
+public class StockDocPO extends DocPO implements Serializable {
 
     private static final long serialVersionUID = 108990321444431827L;
     private String customerId;

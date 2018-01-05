@@ -21,7 +21,7 @@ public interface InitializationBLService {
     /**
      * Execute initialization
      * @return <code>SUCCESS</code> if build successfully<br>
-     *     <code>FAILURE</code> if there's an exception when create the information file or the network fails
+     * <code>FAILURE</code> if there's an exception when create the information file or the network fails
      */
     TwoTuple<ResultMessage, InitVO> initiateAccount();
 }

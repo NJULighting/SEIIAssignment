@@ -13,8 +13,8 @@ public interface UserPersonalService {
      * @param oldPassword the old password of the user
      * @param newPassword new password of the user
      * @return <code>ResultMessage.SUCCESS</code> if password is not empty<br>
-     *     <code>ResultMessage.FAILURE</code> if oldPassword is wrong<br>
-     *         <code>ResultMessage.NETWORK_FAIL</code> if network fails
+     * <code>ResultMessage.FAILURE</code> if oldPassword is wrong<br>
+     * <code>ResultMessage.NETWORK_FAIL</code> if network fails
      */
     ResultMessage userChangePassword(String oldPassword, String newPassword);
 

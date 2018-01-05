@@ -1,56 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.shape.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <TextField fx:id="search" layoutX="40.0" layoutY="21.0" promptText="输入关键词" />
-      <Button fx:id="searchBtn" layoutX="241.0" layoutY="6.0" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../../../../images/搜索.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <JFXButton fx:id="addCustomerBtn" layoutX="890.0" layoutY="1.0" prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="新建促销策略" textFill="WHITE">
-         <contextMenu>
-            <ContextMenu>
-              <items>
-                <MenuItem mnemonicParsing="false" text="组合商品降价" />
-                  <MenuItem mnemonicParsing="false" text="针对不同总价" />
-                  <MenuItem mnemonicParsing="false" text="针对不同级别用户" />
-              </items>
-            </ContextMenu>
-         </contextMenu></JFXButton>
-      <Button fx:id="deleteSearch" disable="true" layoutX="199.0" layoutY="4.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" visible="false">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../../../../images/详情关闭.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Label fx:id="noResult" layoutX="301.0" layoutY="31.0" text="无结果！" visible="false" />
-      <TableView fx:id="tableView" layoutX="64.0" layoutY="70.0" prefHeight="525.0">
-         <columns>
-            <TableColumn fx:id="customerId" editable="false" prefWidth="200.0" resizable="false" text="促销策略名称" />
-            <TableColumn fx:id="type" editable="false" prefWidth="200.0" resizable="false" sortable="false" text="类型" />
-            <TableColumn fx:id="type2" editable="false" prefWidth="120.0" resizable="false" sortable="false" text="制定人" />
-            <TableColumn fx:id="name" editable="false" prefWidth="200.0" resizable="false" sortable="false" text="起止时间" />
-            <TableColumn fx:id="type1" editable="false" prefWidth="100.0" resizable="false" sortable="false" />
-            <TableColumn fx:id="openBtn" prefWidth="150.0" text="" />
-         </columns>
-      </TableView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="70.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="1000.0" />
-   </children>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css"
+      xmlns="http://javafx.com/javafx/8">
+    <children>
+        <TextField fx:id="search" layoutX="40.0" layoutY="21.0" promptText="输入关键词"/>
+        <Button fx:id="searchBtn" layoutX="241.0" layoutY="6.0" mnemonicParsing="false"
+                style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/搜索.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <JFXButton fx:id="addCustomerBtn" layoutX="890.0" layoutY="1.0" prefHeight="40.0" prefWidth="150.0"
+                   ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="新建促销策略" textFill="WHITE">
+            <contextMenu>
+                <ContextMenu>
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="组合商品降价"/>
+                        <MenuItem mnemonicParsing="false" text="针对不同总价"/>
+                        <MenuItem mnemonicParsing="false" text="针对不同级别用户"/>
+                    </items>
+                </ContextMenu>
+            </contextMenu>
+        </JFXButton>
+        <Button fx:id="deleteSearch" disable="true" layoutX="199.0" layoutY="4.0" mnemonicParsing="false"
+                prefHeight="50.0" prefWidth="35.0"
+                style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" visible="false">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/详情关闭.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Label fx:id="noResult" layoutX="301.0" layoutY="31.0" text="无结果！" visible="false"/>
+        <TableView fx:id="tableView" layoutX="64.0" layoutY="70.0" prefHeight="525.0">
+            <columns>
+                <TableColumn fx:id="customerId" editable="false" prefWidth="200.0" resizable="false" text="促销策略名称"/>
+                <TableColumn fx:id="type" editable="false" prefWidth="200.0" resizable="false" sortable="false"
+                             text="类型"/>
+                <TableColumn fx:id="type2" editable="false" prefWidth="120.0" resizable="false" sortable="false"
+                             text="制定人"/>
+                <TableColumn fx:id="name" editable="false" prefWidth="200.0" resizable="false" sortable="false"
+                             text="起止时间"/>
+                <TableColumn fx:id="type1" editable="false" prefWidth="100.0" resizable="false" sortable="false"/>
+                <TableColumn fx:id="openBtn" prefWidth="150.0" text=""/>
+            </columns>
+        </TableView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="70.0"
+                   stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="1000.0"/>
+    </children>
 </Pane>

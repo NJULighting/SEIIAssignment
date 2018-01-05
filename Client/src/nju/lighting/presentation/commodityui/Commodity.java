@@ -12,15 +12,14 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/14.
  * Description
- *
  * @author 陈俊宇
  */
-public class Commodity implements Initializable{
+public class Commodity implements Initializable {
     private static CommodityItemVO commodity;
 
 
     @FXML
-    Label id,name,modelNumber,repCount,inPrice,sellPrice,recentInPrice,recentSellPrice;
+    Label id, name, modelNumber, repCount, inPrice, sellPrice, recentInPrice, recentSellPrice;
 
     public static void setCommodity(CommodityItemVO commodity) {
         Commodity.commodity = commodity;
@@ -31,10 +30,10 @@ public class Commodity implements Initializable{
         id.setText(commodity.getId());
         name.setText(commodity.getName());
         modelNumber.setText(commodity.getModelNumber());
-        repCount.setText(commodity.getRepCount()+"");
-        inPrice.setText(commodity.getInPrice()+"");
-        sellPrice.setText(commodity.getSellPrice()+"");
-        recentInPrice.setText(commodity.getRecentInPrice()+"");
-        recentSellPrice.setText(commodity.getRecentSellPrice()+"");
+        repCount.setText(commodity.getRepCount() + "");
+        inPrice.setText(commodity.getInPrice() + "");
+        sellPrice.setText(commodity.getSellPrice() + "");
+        recentInPrice.setText(commodity.getRecentInPrice() + "");
+        recentSellPrice.setText(commodity.getRecentSellPrice() + "");
     }
 }

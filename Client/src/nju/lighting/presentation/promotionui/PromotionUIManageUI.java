@@ -14,10 +14,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
-import nju.lighting.bl.promotionbl.PromotionBLService_Stub;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
 import nju.lighting.presentation.factory.PromotionBLServiceFactory;
 import nju.lighting.presentation.mainui.Upper;
@@ -36,7 +34,6 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/28.
  * Description
- *
  * @author 陈俊宇
  */
 public class PromotionUIManageUI implements Initializable, Upper {
@@ -149,15 +146,10 @@ public class PromotionUIManageUI implements Initializable, Upper {
                             setText(null);
                             setGraphic(null);
                         } else {
-//                            setText(DateHelper.approximateTime(getItem()));
-//                            if (getItem().before(new Date()))
-//                                setTextFill(Color.RED);
-//                            else
-                            // setTextFill(Color.BLACK);
                             setText(null);
-                            Label label=new Label(DateHelper.approximateTime(getItem()));
+                            Label label = new Label(DateHelper.approximateTime(getItem()));
                             if (getItem().before(new Date()))
-                               label.setTextFill(Color.RED);
+                                label.setTextFill(Color.RED);
                             else
                                 label.setTextFill(Color.BLACK);
 
@@ -193,9 +185,7 @@ public class PromotionUIManageUI implements Initializable, Upper {
                             setGraphic(buttonBox);
                             setText(null);
 
-
-                            getTableRow().setOnMouseExited(e -> buttonBox.setVisible(false));
-                            getTableRow().setOnMouseEntered(e -> buttonBox.setVisible(true));
+                            TableViewHelper.setNodeVisibleOnlyMouseEntered(getTableRow(),buttonBox);
 
 
                             invalidate.setOnAction(e -> {

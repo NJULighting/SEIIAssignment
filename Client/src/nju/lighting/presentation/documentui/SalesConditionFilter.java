@@ -11,19 +11,17 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/9.
  * Description
- *
  * @author 陈俊宇
  */
-public class SalesConditionFilter implements Initializable{
+public class SalesConditionFilter implements Initializable {
+    @FXML
+    JFXButton okBtn;
     private SalesDetailTable salesConditionTable;
 
     @FXML
-    JFXButton okBtn;
-
-    @FXML
-    void ok(){
+    void ok() {
         salesConditionTable.getNodesList().animateList(false);
-        HamburgerBasicCloseTransition burgTask= salesConditionTable.getBurgTask();
+        HamburgerBasicCloseTransition burgTask = salesConditionTable.getBurgTask();
         burgTask.setRate(burgTask.getRate() * -1);
 
         burgTask.play();

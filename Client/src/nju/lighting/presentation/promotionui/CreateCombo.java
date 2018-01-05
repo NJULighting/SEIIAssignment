@@ -11,17 +11,16 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/28.
  * Description
- *
  * @author 陈俊宇
  */
-public class CreateCombo implements Initializable{
+public class CreateCombo implements Initializable {
 
     @FXML
     JFXTextField offText;
 
 
     public double getOff() {
-       return TextFieldHelper.getDouble(offText);
+        return TextFieldHelper.getDouble(offText);
     }
 
     @Override

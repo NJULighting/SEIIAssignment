@@ -1,19 +1,17 @@
 package nju.lighting.blservice.promotionblservice;
 
 
-import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerGrade;
 import shared.PromotionBuildInfo;
+import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.util.List;
 
 /**
  * Created on 2017/10/21.
  * Description
- *
  * @author 陈俊宇
  */
 public interface PromotionBLService {
@@ -22,7 +20,7 @@ public interface PromotionBLService {
 
     List<PromotionVO> getPromotionList();
 
-    TwoTuple<ResultMessage, PromotionVO> commit(PromotionBuildInfo info);
+    Result<PromotionVO> commit(PromotionBuildInfo.Builder builder);
 
     ResultMessage modify(PromotionVO vo);
 

@@ -6,10 +6,7 @@ import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.salesdoc.SalesDocItemPO;
 import nju.lighting.po.doc.salesdoc.SalesDocPO;
-import nju.lighting.vo.DocVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
-import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
-import nju.lighting.vo.doc.salesdoc.SalesDocVO;
 import shared.DocType;
 
 import java.util.ArrayList;
@@ -21,7 +18,7 @@ import java.util.List;
  * Description:
  * @author Liao
  */
-public class SalesDocBuildInfo extends DocBuildInfo{
+public class SalesDocBuildInfo extends DocBuildInfo {
     private final int customerId;
     private final String salesman;
     private final String repository;

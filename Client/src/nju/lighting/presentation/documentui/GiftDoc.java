@@ -15,21 +15,17 @@ import java.util.stream.Collectors;
 /**
  * Created on 2017/12/4.
  * Description
- *
  * @author 陈俊宇
  */
 public class GiftDoc implements Initializable {
     @FXML
+    VBox container;
+    GiftDocVO giftDocVO;
+    @FXML
     private Label title;
 
-    @FXML
-    VBox container;
-
-
-    GiftDocVO giftDocVO;
-
-    public GiftDoc(){
-        giftDocVO=(GiftDocVO)Doc.doc;
+    public GiftDoc() {
+        giftDocVO = (GiftDocVO) Doc.getDoc();
     }
 
     @Override
@@ -38,13 +34,13 @@ public class GiftDoc implements Initializable {
 
         title.setText(giftDocVO.getDocId());
         try {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("CommodityList.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CommodityList.fxml"));
             container.getChildren().add(loader.load());
-            listController=loader.getController();
+            listController = loader.getController();
             listController.getGiftObservableList().addAll(
                     giftDocVO.getGifts().stream()
-                    .map(x-> new CommodityItem(x))
-                    .collect(Collectors.toList())
+                            .map(x -> new CommodityItem(x))
+                            .collect(Collectors.toList())
             );
 
         } catch (IOException e) {

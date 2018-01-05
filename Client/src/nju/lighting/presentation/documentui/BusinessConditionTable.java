@@ -26,28 +26,22 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/29.
  * Description
- *
  * @author 陈俊宇
  */
 public class BusinessConditionTable implements Initializable {
-
-    private DocBLService blService = DocBLServiceFactory.getDocBLService();
-    private BusinessConditionTableVO businessConditionTable;
 
     @FXML
     Label salesRevenueText, commodityGainRevenueText, costAdjustRevenueText, spreadRevenueText,
             voucherCausedRevenueText, salesRevenueOffText, costExpenditureText, giftExpenditureText,
             commodityLossExpenditureText, profitText, revenueText, expenditureText;
-
     @FXML
     JFXButton exportBtn, searchBtn, todayBtn, weekBtn, monthBtn, threeMonthBtn, halfYearBtn, yearBtn;
-
     @FXML
     JFXDatePicker startDate, endDate;
-
     @FXML
     PieChart revenuePieChart, expenditurePieChart;
-
+    private DocBLService blService = DocBLServiceFactory.getDocBLService();
+    private BusinessConditionTableVO businessConditionTable;
     private ObservableList<PieChart.Data> revenueData = FXCollections.observableArrayList(),
             expenditureData = FXCollections.observableArrayList();
 
@@ -74,7 +68,7 @@ public class BusinessConditionTable implements Initializable {
         end.setDate(end.getDate() + 1);
         businessConditionTable = blService.findRevenueAndExpenditure(
                 DateHelper.localDateToDate(startDate.getValue()),
-               end);
+                end);
 
 
         salesRevenue.set(businessConditionTable.getSalesRevenue());
@@ -126,8 +120,8 @@ public class BusinessConditionTable implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        DateHelper.setDefaultTime(startDate,DateHelper.weekAgo());
-        DateHelper.setDefaultTime(endDate,DateHelper.dateToLocalDate(new Date()));
+        DateHelper.setDefaultTime(startDate, DateHelper.weekAgo());
+        DateHelper.setDefaultTime(endDate, DateHelper.dateToLocalDate(new Date()));
         refresh();
 
         revenuePieChart.setData(revenueData);
@@ -153,9 +147,9 @@ public class BusinessConditionTable implements Initializable {
         todayBtn.setOnAction(e -> setTime(DateHelper.dateToLocalDate(new Date())));
         weekBtn.setOnAction(e -> setTime(DateHelper.weekAgo()));
         monthBtn.setOnAction(e -> setTime(DateHelper.monthAgo()));
-        threeMonthBtn.setOnAction(e->setTime(DateHelper.threeMonthsAgo()));
-        halfYearBtn.setOnAction(e-> setTime(DateHelper.halfYearAgo()));
-        yearBtn.setOnAction(e-> setTime(DateHelper.yearAgo()));
+        threeMonthBtn.setOnAction(e -> setTime(DateHelper.threeMonthsAgo()));
+        halfYearBtn.setOnAction(e -> setTime(DateHelper.halfYearAgo()));
+        yearBtn.setOnAction(e -> setTime(DateHelper.yearAgo()));
 
 
         exportBtn.setOnAction(e -> {

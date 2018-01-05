@@ -4,8 +4,6 @@ import com.jfoenix.controls.JFXToggleButton;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,9 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-
 import javafx.scene.layout.StackPane;
-import nju.lighting.presentation.accountui.AccountList;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.AccountHelper;
 import nju.lighting.presentation.utils.CustomerHelper;
@@ -32,10 +28,9 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/26.
  * Description
- *
  * @author 陈俊宇
  */
-public class AddAccountIODoc implements Initializable,Upper {
+public class AddAccountIODoc implements Initializable, Upper {
 
     @FXML
     JFXToggleButton toggleBtn;
@@ -44,7 +39,7 @@ public class AddAccountIODoc implements Initializable,Upper {
     Pane mainPane;
 
     @FXML
-    HBox container,tableContainer;
+    HBox container, tableContainer;
 
     @FXML
     Label sub;
@@ -58,33 +53,32 @@ public class AddAccountIODoc implements Initializable,Upper {
     @FXML
     StackPane stackPane;
 
-    SimpleObjectProperty<AccountVO> accountProperty=new SimpleObjectProperty<>();
+    SimpleObjectProperty<AccountVO> accountProperty = new SimpleObjectProperty<>();
     ObservableList<AccountTransferItem> itemList;
 
 
-    SimpleObjectProperty<CustomerVO> customerProperty=new SimpleObjectProperty<>();
+    SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
 
     @FXML
-    void commit(){
+    void commit() {
 
     }
 
     @FXML
-    void chooseCustomer(){
-        CustomerHelper.setCustomer(this,customerProperty);
+    void chooseCustomer() {
+        CustomerHelper.setCustomer(this, customerProperty);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
 
-
         try {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("AccountTransferList.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountTransferList.fxml"));
             tableContainer.getChildren().add(loader.load());
-            AccountTransferList controller= loader.getController();
+            AccountTransferList controller = loader.getController();
             controller.setEditable();
-            itemList=controller.getObservableList();
+            itemList = controller.getObservableList();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -96,8 +90,8 @@ public class AddAccountIODoc implements Initializable,Upper {
             }
         });
 
-        addTransferItemBtn.setOnAction(e->{
-            AccountHelper.addAccount(stackPane,accountProperty);
+        addTransferItemBtn.setOnAction(e -> {
+            AccountHelper.addAccount(stackPane, accountProperty);
         });
 
         customerProperty.addListener(new ChangeListener<CustomerVO>() {
@@ -110,9 +104,9 @@ public class AddAccountIODoc implements Initializable,Upper {
         toggleBtn.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(newValue){
+                if (newValue) {
                     toggleBtn.setText("收款单");
-                }else
+                } else
                     toggleBtn.setText("付款单");
             }
         });
@@ -120,14 +114,13 @@ public class AddAccountIODoc implements Initializable,Upper {
 
 
     public void back() {
-        setChildren(mainPane,"");
+        setChildren(mainPane, "");
     }
 
     public void setChildren(Node node, String title) {
         container.getChildren().setAll(node);
         sub.setText(title);
     }
-
 
 
 }

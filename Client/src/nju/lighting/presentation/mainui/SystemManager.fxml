@@ -1,32 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import com.jfoenix.controls.JFXListView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-
-<VBox prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.SystemManagerController">
-   <children>
-      <JFXButton fx:id="userManageBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="系统用户管理">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../../../../images/账户管理.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="logBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="日志">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../../../../images/日志.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-   </children>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: transparent;"
+      xmlns="http://javafx.com/javafx/8" fx:controller="nju.lighting.presentation.mainui.SystemManagerController">
+    <children>
+        <JFXButton fx:id="userManageBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="系统用户管理">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/账户管理.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="logBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="日志">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0">
+                    <image>
+                        <Image url="@../../../../images/日志.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+    </children>
 </VBox>

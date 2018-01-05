@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 /**
  * Created on 2017/12/18.
  * Description
- *
  * @author 陈俊宇
  */
 public class Delete extends Dialog {
@@ -14,7 +13,7 @@ public class Delete extends Dialog {
     @FXML
     Label label;
 
-    void setText(String text){
+    void setText(String text) {
         label.setText(text);
     }
 }

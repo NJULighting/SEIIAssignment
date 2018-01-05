@@ -131,4 +131,22 @@ public class PromotionVO {
     public void setVouchersEndDate(Date vouchersEndDate) {
         this.vouchersEndDate = vouchersEndDate;
     }
+
+    @Override
+    public String toString() {
+        return "PromotionVO{" +
+                "id=" + id +
+                ", creator=" + creator +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", level=" + level +
+                ", goods=" + goods +
+                ", price=" + price +
+                ", off=" + off +
+                ", vouchers=" + vouchers +
+                ", vouchersEndDate=" + vouchersEndDate +
+                '}';
+    }
 }

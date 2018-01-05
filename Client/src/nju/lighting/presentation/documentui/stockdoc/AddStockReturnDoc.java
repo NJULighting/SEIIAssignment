@@ -1,9 +1,10 @@
-package nju.lighting.presentation.documentui;
+package nju.lighting.presentation.documentui.stockdoc;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
+import nju.lighting.presentation.documentui.stockdoc.AddStockDoc;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,10 +13,9 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/24.
  * Description
- *
  * @author 陈俊宇
  */
-public class StockReturnDoc implements Initializable {
+public class AddStockReturnDoc implements Initializable {
 
     @FXML
     Pane container;
@@ -23,7 +23,7 @@ public class StockReturnDoc implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("StockDoc.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("StockDoc.fxml"));
 
         try {
             container.getChildren().add(loader.load());
@@ -32,7 +32,7 @@ public class StockReturnDoc implements Initializable {
         }
 
 
-        StockDoc controller = loader.getController();
+        AddStockDoc controller = loader.getController();
         controller.setReturn();
     }
 }

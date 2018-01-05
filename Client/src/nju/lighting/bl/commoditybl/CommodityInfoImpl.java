@@ -6,19 +6,16 @@ import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.utils.CommodityPathParser;
 import nju.lighting.bl.utils.DataServiceFunction;
-import nju.lighting.bl.utils.DataServiceSupplier;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
-import nju.lighting.vo.repository.RepositoryTableItemVO;
 import shared.OPType;
 import shared.ResultMessage;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.function.BiConsumer;
@@ -90,16 +87,12 @@ public class CommodityInfoImpl implements CommodityInfo {
         if (categoryId == -1)
             return CommodityCategoriesTree.ROOT_NAME;
 
-        return Optional.ofNullable(DataServiceFunction.findByToEntity(categoryId, dataService::findCategoryById))
-                .map(CommodityCategoryPO::getName)
-                .orElseThrow(NoSuchElementException::new);
+        return DataServiceFunction.findByToEntity(categoryId, dataService::findCategoryById, CommodityCategoryPO::getName);
     }
 
     @Override
     public double getCommodityInPrice(String id) {
-        return Optional.ofNullable(DataServiceFunction.findByToEntity(id, dataService::findById))
-                .map(CommodityItemPO::getInPrice)
-                .orElseThrow(NoSuchElementException::new);
+        return DataServiceFunction.findByToEntity(id, dataService::findById, CommodityItemPO::getInPrice);
     }
 
     @Override
@@ -112,15 +105,6 @@ public class CommodityInfoImpl implements CommodityInfo {
             e.printStackTrace();
             return 0;
         }
-    }
-
-    @Override
-    public List<RepositoryTableItemVO> getRepositoryTableItemList() {
-        Function<CommodityItemPO, RepositoryTableItemVO> poTransformer = itemPO -> new RepositoryTableItemVO(itemPO.getId(), itemPO.getModelNumber(),
-                itemPO.getName(), itemPO.getRepCount(), itemPO.getRecentInPrice(),
-                itemPO.getBatch(), itemPO.getBatchNumber(), itemPO.getDateOfProduction());
-        // Get commodity whose count is nonzero
-        return DataServiceSupplier.getAll(dataService::getAllCommodity, poTransformer);
     }
 
     @Override

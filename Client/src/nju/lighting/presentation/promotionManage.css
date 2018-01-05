@@ -1,22 +1,25 @@
-.pagination{
+.pagination {
     -fx-base: white; /*主色调*/
     -fx-background-color: white;
 }
-.pagination .toggle-button{
-    -fx-shape:"m61.73247,191.50499l-6.00997,5.7599m69.1152,-5.50928l5.75948,5.50928m-5.75948,-68.6145l5.75948,-6.01002m-68.86471,5.75976l-5.75947,-5.50913m5.75947,5.38381l63.10523,0l0,63.10521l-63.10523,0l0,-63.10521zm-5.88478,-5.88481l74.87482,0l0,74.87489l-74.87482,0l0,-74.87489z";
-    -fx-background-insets: 0, -0.5 6.5 -0.5 6.5,0 7 0 7;
-    -fx-padding:0px;
+
+.pagination .toggle-button {
+    -fx-shape: "m61.73247,191.50499l-6.00997,5.7599m69.1152,-5.50928l5.75948,5.50928m-5.75948,-68.6145l5.75948,-6.01002m-68.86471,5.75976l-5.75947,-5.50913m5.75947,5.38381l63.10523,0l0,63.10521l-63.10523,0l0,-63.10521zm-5.88478,-5.88481l74.87482,0l0,74.87489l-74.87482,0l0,-74.87489z";
+    -fx-background-insets: 0, -0.5 6.5 -0.5 6.5, 0 7 0 7;
+    -fx-padding: 0px;
     -fx-pref-width: 30px;
     -fx-text-fill: white;
 
-    -fx-background-radius:0px;
+    -fx-background-radius: 0px;
 }
-.pagination .toggle-button:selected{
+
+.pagination .toggle-button:selected {
     -fx-base: #5599ff;
 }
-.pagination .control-box{
-    -fx-background-color:linear-gradient(to bottom,black,transparent);;
-    -fx-padding:-11 0 0 0px;
+
+.pagination .control-box {
+    -fx-background-color: linear-gradient(to bottom, black, transparent);;
+    -fx-padding: -11 0 0 0px;
 }
 
 .pagination .label {

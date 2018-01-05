@@ -49,6 +49,19 @@ public class AlertDoc extends Doc {
         alertDocPO.getItemPOS().forEach(itemList::add);
     }
 
+    /**
+     * This constructor is used for expiring this doc
+     */
+    public AlertDoc(AlertDocVO docVO) {
+        super(docVO);
+        comment = docVO.getComment();
+        triggered = docVO.isTriggered();
+        expired = docVO.isExpired();
+
+        itemList = new AlertDocItemList();
+        docVO.getItems().forEach(itemList::add);
+    }
+
     public void triggerAlert(String commodityId, int count) {
         if (!expired) {
             triggered = itemList.triggered(commodityId, count);
@@ -62,6 +75,17 @@ public class AlertDoc extends Doc {
             } catch (NamingException | RemoteException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public ResultMessage expireAlert() {
+        try {
+            expired = true;
+            DocDataService dataService = DataFactory.getDataBase(DocDataService.class);
+            return dataService.updateDoc(toPO());
+        } catch (NamingException | RemoteException e) {
+            e.printStackTrace();
+            return ResultMessage.NETWORK_FAIL;
         }
     }
 

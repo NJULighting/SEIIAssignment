@@ -1,5 +1,6 @@
 package nju.lighting.bl.documentbl;
 
+import nju.lighting.bl.documentbl.alertdoc.AlertDoc;
 import nju.lighting.bl.documentbl.salesdoc.SalesDoc;
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
@@ -11,6 +12,7 @@ import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.SalesDetailItemVO;
@@ -98,5 +100,10 @@ public enum DocManager {
                 dataService::findByTime, factory::poToDoc, filter.getPredicateForDoc());
 
         return CollectionTransformer.toList(docList, Doc::toBusinessHistoryItemVO);
+    }
+
+    public ResultMessage expireAlertDoc(AlertDocVO docVO) {
+        AlertDoc alertDoc = new AlertDoc(docVO);
+        return alertDoc.expireAlert();
     }
 }

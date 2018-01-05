@@ -61,4 +61,8 @@ public class AlertDocVO extends DocVO {
     public boolean isExpired() {
         return expired;
     }
+
+    public void setExpired(boolean expired) {
+        this.expired = expired;
+    }
 }

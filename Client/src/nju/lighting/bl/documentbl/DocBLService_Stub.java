@@ -3,6 +3,7 @@ package nju.lighting.bl.documentbl;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
+import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessConditionTableVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
@@ -73,6 +74,11 @@ public class DocBLService_Stub implements DocBLService {
             return new BusinessConditionTableVO(160, 213, 124,
                     25, 624, 23, 234,
                     643, 123);
+    }
+
+    @Override
+    public ResultMessage expireAlertDoc(AlertDocVO alertDocVO) {
+        return null;
     }
 
     @Override

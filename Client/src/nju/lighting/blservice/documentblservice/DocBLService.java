@@ -2,6 +2,7 @@ package nju.lighting.blservice.documentblservice;
 
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
+import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessConditionTableVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
@@ -18,7 +19,7 @@ public interface DocBLService {
     /**
      * Commit a document. If commit successfully, it'll return a tuple contains
      * id and <tt>ResultMessage.SUCCESS</tt>. Otherwise, it'll return a tuple
-     * contains <tt>ResulMessage.FAILURE</tt> and a null id;
+     * contains <tt>ResultMessage.FAILURE</tt> and a null id;
      * @param doc doc to be committed
      * @return <tt>[ID,SUCCESS]</tt> if commit successfully
      */
@@ -40,6 +41,8 @@ public interface DocBLService {
     BusinessConditionTableVO findRevenueAndExpenditure(Date startDate, Date endDate);
 
     ResultMessage redFlush(DocVO docVO);
+
+    ResultMessage expireAlertDoc(AlertDocVO alertDocVO);
 
     DocVO redFlushAndCopy(DocVO target);
 

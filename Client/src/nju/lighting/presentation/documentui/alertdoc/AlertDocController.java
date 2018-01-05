@@ -25,7 +25,7 @@ public class AlertDocController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("../LossAndGainList.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("../lossandgaindoc/LossAndGainList.fxml"));
         try {
             tableContainer.getChildren().add(loader.load());
         } catch (IOException e) {
@@ -35,6 +35,6 @@ public class AlertDocController implements Initializable {
         listController.getData().setAll(alertDoc.getItems().stream()
         .map(x-> new LossAndGainItem(x))
         .collect(Collectors.toList()));
-
+        listController.setAlert();
     }
 }

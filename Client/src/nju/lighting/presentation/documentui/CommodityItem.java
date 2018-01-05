@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.giftdoc.GiftItemVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
+import nju.lighting.vo.doc.stockdoc.StockDocItemVO;
 
 /**
  * Created on 2017/12/10.
@@ -34,6 +35,12 @@ public class CommodityItem {
 
     //查看单据时由SalesDocItem 或GiftDocItem 构造
     public CommodityItem(SalesDocItemVO vo) {
+        comments.set(vo.getRemarks());
+        count.set(vo.getNumber());
+        init(vo.getCommodity());
+    }
+
+    public CommodityItem(StockDocItemVO vo){
         comments.set(vo.getRemarks());
         count.set(vo.getNumber());
         init(vo.getCommodity());

@@ -52,6 +52,7 @@ public class SalesDocController implements Initializable, Upper {
     VBox verticalVBox;
     @FXML
     Pane mainPane, commodityContainer;
+
     private ObservableList<BasicCommodityItemVO> commodityList = FXCollections.observableArrayList();
     private ObservableList<CommodityItem> docItemList;
     private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
@@ -76,7 +77,7 @@ public class SalesDocController implements Initializable, Upper {
     @FXML
     private TextArea remarks;
     @FXML
-    private Label failMessage, failDisCount, failVoucher, failCustomer, sub, title;
+    private Label sub, title;
 
     public void chooseCommodity() {
         CommodityHelper.chooseCommodity(this, commodityList);
@@ -113,39 +114,25 @@ public class SalesDocController implements Initializable, Upper {
     //完成并提交
     public void finish() {
 
-        if (customerVO == null) {
-            failCustomer.setVisible(true); //未选择客户
-        } else {
 
-            DocVO salesDocVO = new SalesDocVO(new Date(), Client.getUserVO().getID(), null, DocType.SALES
-                    , customerVO.getID(), customerVO.getSalesman(), repository.getText(), remarks.getText(),
-                    Double.parseDouble(accountBeforeDis.getText()), Double.parseDouble(discount.getText()),
-                    Double.parseDouble(voucher.getText()), Double.parseDouble(account.getText()));
+        DocVO salesDocVO = new SalesDocVO(new Date(), Client.getUserVO().getID(), null, DocType.SALES
+                , customerVO.getID(), customerVO.getSalesman(), repository.getText(), remarks.getText(),
+                Double.parseDouble(accountBeforeDis.getText()), Double.parseDouble(discount.getText()),
+                Double.parseDouble(voucher.getText()), Double.parseDouble(account.getText()));
 
-            TwoTuple<ResultMessage, String> result = docBLService.commitDoc(salesDocVO);
-            switch (result.t) {
-                case SUCCESS:
-                    salesDocID = result.r;
-                    successtoCommit();
-                    break;
-                case FAILURE:
-                    failtoCommit();
-                    break;
-                default:
-                    failtoCommit();
-                    break;
-            }
-        }
+        TwoTuple<ResultMessage, String> result = docBLService.commitDoc(salesDocVO);
+
+        salesDocID = result.r;
+        successtoCommit();
+
 
     }
+
 
     public void successtoCommit() {
 
     }
 
-    public void failtoCommit() {
-        failMessage.setVisible(true);
-    }
 
     //当重要参数发生变化时清除正在作用的promotion
     void clearPromotion() {
@@ -261,28 +248,6 @@ public class SalesDocController implements Initializable, Upper {
         verticalVBox.getChildren().remove(promotionBox);
     }
 
-    public ObservableList<BasicCommodityItemVO> getCommodityList() {
-        return commodityList;
-    }
 
-    public ObservableList<CommodityItem> getDocItemList() {
-        return docItemList;
-    }
 
-    public SimpleObjectProperty<CustomerVO>
-    getCustomerProperty() {
-        return customerProperty;
-    }
-
-    public SimpleObjectProperty<CustomerVO> customerPropertyProperty() {
-        return customerProperty;
-    }
-
-    public CommodityList getCommodityListController() {
-        return commodityListController;
-    }
-
-    public CustomerType getType() {
-        return type;
-    }
 }

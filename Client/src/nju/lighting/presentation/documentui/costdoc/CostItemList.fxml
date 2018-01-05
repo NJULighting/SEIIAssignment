@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+
+<TableView fx:id="tableView" prefHeight="565.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.costdoc.CostItemList">
+   <columns>
+      <TableColumn fx:id="item" editable="false" prefWidth="200.0" resizable="false" text="  条目" />
+      <TableColumn fx:id="amount" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="金额" />
+      <TableColumn fx:id="comments" editable="false" prefWidth="250.0" resizable="false" sortable="false" text="备注" />
+      <TableColumn fx:id="deleteBtn" prefWidth="150.0" text="" />
+   </columns>
+</TableView>

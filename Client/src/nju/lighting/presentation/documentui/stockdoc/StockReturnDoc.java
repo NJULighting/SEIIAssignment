@@ -9,7 +9,7 @@ import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
 import nju.lighting.presentation.documentui.Doc;
 import nju.lighting.presentation.utils.DateHelper;
-import nju.lighting.vo.doc.stockdoc.StockDocVO;
+import nju.lighting.vo.doc.stockdoc.StockReturnDocVO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,7 +22,8 @@ import java.util.stream.Collectors;
  *
  * @author 陈俊宇
  */
-public class StockDoc implements Initializable {
+public class StockReturnDoc implements Initializable {
+
 
     @FXML
     Label customer, repository, comments, total, creator, time;
@@ -30,31 +31,32 @@ public class StockDoc implements Initializable {
     @FXML
     HBox tableContainer;
 
-    private StockDocVO stockDocVO;
+    private StockReturnDocVO stockReturnDocVO;
 
-    public StockDoc() {
-        stockDocVO = (StockDocVO) Doc.getDoc();
+    public StockReturnDoc() {
+        stockReturnDocVO = (StockReturnDocVO) Doc.getDoc();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        customer.setText(stockDocVO.getCustomerId());
-        comments.setText(stockDocVO.getRemarks());
-        total.setText(stockDocVO.getTotalAmount()+"");
-        time.setText(DateHelper.approximateTime(stockDocVO.getTime()));
-        creator.setText(stockDocVO.getCreatorId());
+        customer.setText(stockReturnDocVO.getCustomerId());
+        comments.setText(stockReturnDocVO.getRemarks());
+        total.setText(stockReturnDocVO.getTotalAmount() + "");
+        time.setText(DateHelper.approximateTime(stockReturnDocVO.getTime()));
+        creator.setText(stockReturnDocVO.getCreatorId());
 
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
         try {
 
             tableContainer.getChildren().add(loader.load());
-            ((CommodityList)loader.getController()).getGiftObservableList().addAll(
-                    stockDocVO.getItems().stream()
-                    .map(x-> new CommodityItem(x))
-                    .collect(Collectors.toList())
+            ((CommodityList) loader.getController()).getGiftObservableList().addAll(
+                    stockReturnDocVO.getItems().stream()
+                            .map(x -> new CommodityItem(x))
+                            .collect(Collectors.toList())
             );
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 }
+

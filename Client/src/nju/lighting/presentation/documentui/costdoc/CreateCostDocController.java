@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.documentui.BtnCell;
@@ -31,17 +32,6 @@ import java.util.ResourceBundle;
 public class CreateCostDocController implements Initializable {
 
 
-    @FXML
-    TableView<CostDocItemVO> tableView;
-
-    @FXML
-    TableColumn<CostDocItemVO,String> item,comments;
-
-    @FXML
-    TableColumn<CostDocItemVO,Double> amount;
-
-    @FXML
-    TableColumn deleteBtn;
 
     @FXML
     Button addItemBtn,addAccountBtn,commitBtn;
@@ -50,11 +40,14 @@ public class CreateCostDocController implements Initializable {
     JFXTextField accountText,balanceText,totalText;
 
     @FXML
+    HBox tableContainer;
+
+    @FXML
     StackPane stackPane;
 
     private SimpleObjectProperty<AccountVO> accountProperty=new SimpleObjectProperty<>();
 
-    private ObservableList<CostDocItemVO> observableList= FXCollections.observableArrayList();
+    private ObservableList<CostDocItemVO> observableList;
 
     private SimpleDoubleProperty totalProperty=new SimpleDoubleProperty();
 
@@ -62,18 +55,18 @@ public class CreateCostDocController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         addAccountBtn.setOnAction(e-> AccountHelper.addAccount(stackPane,accountProperty));
 
-        tableView.setItems(observableList);
-        item.setCellValueFactory(c->
-        new SimpleStringProperty(CostDocHelper.typeToString(c.getValue().getType())));
+        FXMLLoader tableLoader=new FXMLLoader(getClass().getResource("CostItemList.fxml"));
 
-        comments.setCellValueFactory(c->
-        new SimpleStringProperty(c.getValue().getComment()));
+        try {
+            tableContainer.getChildren().add(tableLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        amount.setCellValueFactory(c->
-        new SimpleDoubleProperty(c.getValue().getAmount()).asObject());
+        CostItemList tableController=tableLoader.getController();
+        tableController.setEditable();
 
-        deleteBtn.setCellFactory(p->
-        new BtnCell<>());
+        observableList=tableController.getObservableList();
 
         accountProperty.addListener(c->{
             balanceText.setText(accountProperty.getValue().getAmount()+"");
@@ -90,8 +83,9 @@ public class CreateCostDocController implements Initializable {
 
 
         addItemBtn.setOnAction(e->{
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("AddItem.fxml"));
+
             try {
+                FXMLLoader loader=new FXMLLoader(getClass().getResource("AddItem.fxml"));
                 Node node =loader.load();
                 AddItem controller=loader.getController();
                 DialogHelper.addDialog(node,stackPane,controller.AddItem(observableList));

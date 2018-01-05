@@ -124,7 +124,7 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         items.add(lossItemVO1);
         items.add(lossItemVO2);
         items.add(lossItemVO3);
-        LossAndGainDocVO lossAndGainDocVO = new LossAndGainDocVO(null, "00001", "BSBY_01", DocType.LOSS_AND_GAIN, items, "我就觉得好玩然后创建了一个:)");
+        LossAndGainDocVO lossAndGainDocVO = new LossAndGainDocVO(new Date(), "00001", "BSBY_01", DocType.LOSS_AND_GAIN, items, "我就觉得好玩然后创建了一个:)");
 
         //销售单
         ArrayList<SalesDocItemVO> salesDocItem = new ArrayList<>();
@@ -134,7 +134,7 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         salesDocItem.add(salesDocItemVO1);
         salesDocItem.add(salesDocItemVO2);
         salesDocItem.add(salesDocItemVO3);
-        SalesDocVO salesDocVO = new SalesDocVO(null, "00001", 1, "王大卫", "默认仓库", "这个销售单很重要，要好好保密",
+        SalesDocVO salesDocVO = new SalesDocVO(new Date(), "00001", 1, "王大卫", "默认仓库", "这个销售单很重要，要好好保密",
                 144.3, 19, salesDocItem);
 
         //销售退货单
@@ -146,9 +146,9 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         StockDocItemVO stockDocItemVO1 = new StockDocItemVO(commodityVO1,233,"我说没有备注就没有备注");
         StockDocItemVO stockDocItemVO2 = new StockDocItemVO(commodityVO2,109,":)");
         StockDocItemVO stockDocItemVO3 = new StockDocItemVO(commodityVO3 ,100,"");
-        salesDocItem.add(salesDocItemVO1);
-        salesDocItem.add(salesDocItemVO2);
-        salesDocItem.add(salesDocItemVO3);
+        stockDocItem.add(stockDocItemVO1);
+        stockDocItem.add(stockDocItemVO2);
+        stockDocItem.add(stockDocItemVO3);
         StockDocVO stockDocVO = new StockDocVO(new Date(),"00001","1","默认仓库","记得在货里藏点那东西",stockDocItem);
 
         //进货退货单
@@ -205,6 +205,7 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
         DocVOs.add(stockDocVO);
         DocVOs.add(stockReturnDocVO);
         DocVOs.add(alertDocVO);
+        DocVOs.add(costDocVO);
 
 
         return DocVOs;

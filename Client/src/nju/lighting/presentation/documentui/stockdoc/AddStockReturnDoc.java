@@ -23,7 +23,7 @@ public class AddStockReturnDoc implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("StockDoc.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddStockDoc.fxml"));
 
         try {
             container.getChildren().add(loader.load());

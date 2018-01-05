@@ -62,13 +62,4 @@ public class RepositoryData extends UnicastRemoteObject implements RepositoryDat
         return changePOCommonOperation.add(repositoryChangePO);
     }
 
-    @Override
-    public byte[] exportExcel() throws RemoteException {
-        RepositoryTablePO repositoryTablePO = getRepositoryTable();
-        List<RepositoryTableItemPO> items = repositoryTablePO.getRepositoryTableItemPOS();
-        String head = "库存盘点";
-        int headSize = 4;
-        File file = new File("");
-        return null;
-    }
 }

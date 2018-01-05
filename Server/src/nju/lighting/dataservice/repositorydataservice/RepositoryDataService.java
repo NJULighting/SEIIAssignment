@@ -17,6 +17,4 @@ public interface RepositoryDataService extends Remote {
 
     ResultMessage changeRepository(RepositoryChangePO changePO) throws RemoteException;
 
-    byte[] exportExcel() throws RemoteException;
-
 }

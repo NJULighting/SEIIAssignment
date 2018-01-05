@@ -27,7 +27,7 @@ public class BtnCell<T, S> extends TableCell<T, S> {
             public void handle(ActionEvent t) {
                 TableView tableView = getTableView();
                 tableView.getItems().remove(getTableRow().getIndex());
-            }
+        }
         });
     }
 

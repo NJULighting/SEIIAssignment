@@ -141,7 +141,7 @@ public class ApprovalUIController implements Initializable {
 
         try {
             FXMLLoader loader = Doc.getLoader();
-            Pane doc = loader.load();
+            Node doc = loader.load();
             detail.getChildren().add(doc);
         } catch (IOException e) {
             e.printStackTrace();
@@ -177,7 +177,7 @@ public class ApprovalUIController implements Initializable {
                             setText(null);
                             setGraphic(null);
                         } else {
-                            setText(((DocVO) item).getDocId());
+                            setText(((DocVO) item).getType().toString());
                         }
                     }
                 };

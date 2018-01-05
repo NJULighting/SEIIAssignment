@@ -9,6 +9,8 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -19,6 +21,9 @@ import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
 import nju.lighting.presentation.documentui.SalesDocController;
 import nju.lighting.presentation.mainui.Client;
+import nju.lighting.presentation.mainui.Upper;
+import nju.lighting.presentation.utils.CommodityHelper;
+import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import shared.CustomerType;
@@ -31,9 +36,10 @@ import java.util.stream.Collectors;
 /**
  * Created on 2017/12/24.
  * Description
+ *
  * @author 陈俊宇
  */
-public class AddStockDoc extends SalesDocController {
+public class AddStockDoc implements Initializable,Upper {
     @FXML
     HBox container;
     @FXML
@@ -41,7 +47,7 @@ public class AddStockDoc extends SalesDocController {
     @FXML
     Pane mainPane, commodityContainer;
     @FXML
-    private Button choseCustomBtn, finishBtn;
+    private Button chooseCustomerBtn, chooseCommodityBtn;
     @FXML
     private JFXTextField customer, salesman, user, account;
     @FXML
@@ -49,15 +55,20 @@ public class AddStockDoc extends SalesDocController {
     @FXML
     private Label sub, title;
 
-    private CustomerType type=getType();
-    private CommodityList controller=getCommodityListController();
-    private ObservableList<CommodityItem> docItemList= FXCollections.observableArrayList();
-    private SimpleObjectProperty<CustomerVO> customerProperty=getCustomerProperty();
-    private ObservableList<BasicCommodityItemVO> commodityList=getCommodityList();
+    private CustomerType type = CustomerType.SUPPLIER;
+    private ObservableList<CommodityItem> docItemList = FXCollections.observableArrayList();
+    private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
 
 
-    public AddStockDoc() {
-        type = CustomerType.SUPPLIER;
+
+    public void back() {
+        setChildren(mainPane, "");
+    }
+
+    @Override
+    public void setChildren(Node node, String title) {
+        container.getChildren().setAll(node);
+        sub.setText(title);
     }
 
     @Override
@@ -69,28 +80,26 @@ public class AddStockDoc extends SalesDocController {
             e.printStackTrace();
         }
 
-       controller = loader.getController();
+        CommodityList controller = loader.getController();
         controller.setEditable();
         controller.setMaxSize(480, 700);
 
         docItemList = controller.getGiftObservableList();
-        commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
-            @Override
-            public void onChanged(Change<? extends BasicCommodityItemVO> c) {
-                while (c.next()) {
-                    docItemList.addAll(c.getAddedSubList().stream()
-                            .map(x -> new CommodityItem(x, 1))
-                            .collect(Collectors.toList()));
-                }
+        ObservableList<BasicCommodityItemVO> commodityList=FXCollections.observableArrayList();
+        chooseCommodityBtn.setOnAction(e-> CommodityHelper.chooseCommodity(this,commodityList));
+
+        commodityList.addListener((ListChangeListener<? super BasicCommodityItemVO>) c->{
+            while (c.next()){
+                docItemList.addAll(c.getAddedSubList().stream()
+                .map(x-> new CommodityItem(x,1))
+                .collect(Collectors.toList()));
             }
         });
 
-        customerProperty.addListener(new ChangeListener<CustomerVO>() {
-            @Override
-            public void changed(ObservableValue<? extends CustomerVO> observable, CustomerVO oldValue, CustomerVO newValue) {
-                customer.setText(customerProperty.getValue().getName());
-            }
-        });
+
+        chooseCustomerBtn.setOnAction(e-> CustomerHelper.setCustomer(this,customerProperty));
+        customerProperty.addListener(c-> customer.setText(customerProperty.getValue().getName()));
+
 
         user.setText(Client.getUserVO().getUsername());
 
@@ -100,4 +109,6 @@ public class AddStockDoc extends SalesDocController {
     void setReturn() {
         title.setText("制定进货退货单");
     }
+
+
 }

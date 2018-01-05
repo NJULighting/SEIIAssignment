@@ -101,7 +101,7 @@ public class CommodityList implements Initializable {
 
 
         TableViewHelper.commonSet(giftTableView);
-        TableViewHelper.setHeight(giftTableView, 1.2);
+       // TableViewHelper.setHeight(giftTableView, 1.2);
 
         calculateTotal();
 

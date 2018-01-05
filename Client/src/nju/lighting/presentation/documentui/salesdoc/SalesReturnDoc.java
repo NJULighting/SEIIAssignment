@@ -9,7 +9,7 @@ import javafx.scene.layout.HBox;
 import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
 import nju.lighting.presentation.documentui.Doc;
-import nju.lighting.vo.doc.salesdoc.SalesDocVO;
+import nju.lighting.vo.doc.salesdoc.SalesReturnDocVO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,43 +22,38 @@ import java.util.stream.Collectors;
  *
  * @author 陈俊宇
  */
-public class SalesDoc implements Initializable {
-    @FXML
-    ImageView returnImage, saleImage;
+public class SalesReturnDoc implements Initializable {
 
     @FXML
-    HBox imageBox, tableContainer;
+    HBox  tableContainer;
 
     @FXML
     Label customer, creator, salesman, repository, comments,accountBefore,discount,voucher,account;
 
 
-    private SalesDocVO salesDocVO;
-
-    public SalesDoc() {
-        salesDocVO = (SalesDocVO) Doc.getDoc();
+    SalesReturnDocVO salesReturnDocVO;
+    public SalesReturnDoc() {
+        salesReturnDocVO = (SalesReturnDocVO) Doc.getDoc();
     }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
-        customer.setText(salesDocVO.getCustomerId() + "");
-        creator.setText(salesDocVO.getCreatorId());
-        salesman.setText(salesDocVO.getSalesman());
-//        repository.setText(salesDocVO.getRepository());
-        comments.setText(salesDocVO.getRemarks());
-        account.setText(salesDocVO.getFinalAmount()+"");
-        accountBefore.setText(salesDocVO.getBeforeDiscountAmount()+"");
-        discount.setText(salesDocVO.getDiscount()+"");
-        voucher.setText(salesDocVO.getVoucher()+"");
+        customer.setText(salesReturnDocVO.getCustomerId() + "");
+        creator.setText(salesReturnDocVO.getCreatorId());
+        salesman.setText(salesReturnDocVO.getSalesman());
+//        repository.setText(salesReturnDocVO.getRepository());
+        comments.setText(salesReturnDocVO.getRemarks());
+        account.setText(salesReturnDocVO.getFinalAmount()+"");
+        accountBefore.setText(salesReturnDocVO.getBeforeDiscountAmount()+"");
+        discount.setText(salesReturnDocVO.getDiscount()+"");
+        voucher.setText(salesReturnDocVO.getVoucher()+"");
 
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
         try {
             tableContainer.getChildren().add(loader.load());
             ((CommodityList) loader.getController()).getGiftObservableList()
-                    .addAll(salesDocVO.getItems().stream()
+                    .addAll(salesReturnDocVO.getItems().stream()
                             .map(x -> new CommodityItem(x))
                             .collect(Collectors.toList()));
 
@@ -66,7 +61,6 @@ public class SalesDoc implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
     }
 }

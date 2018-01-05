@@ -20,7 +20,7 @@ public class RepositoryManagerController extends MainUIController {
         buttons = new Button[]{historyBtn, commodityBtn, repositoryViewBtn, repositoryCountingBtn, lossAndGainDoc, alertDoc};
         urls = new String[]{"../documentui/HistoryDoc.fxml", "../commodityui/CommodityManage.fxml",
                 "../repositoryui/RepositoryView.fxml", "../repositoryui/RepositoryCounting.fxml",
-                "../documentui/LossAndGainDocMain.fxml", "../documentui/AlertDocMain.fxml"};
+                "../documentui/lossandgaindoc/AddLossAndGainDocMain.fxml", "../documentui/alertdoc/AddAlertDocMain.fxml"};
         MAIN_BUTTON_SIZE = urls.length;
         super.initialize(location, resources);
     }

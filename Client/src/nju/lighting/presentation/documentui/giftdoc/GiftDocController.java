@@ -48,7 +48,7 @@ public class GiftDocController implements Initializable {
 
 
     public GiftDocController() {
-        giftDocVO = (GiftDocVO) Doc.doc;
+        giftDocVO = (GiftDocVO) Doc.getDoc();
     }
 
     @Override

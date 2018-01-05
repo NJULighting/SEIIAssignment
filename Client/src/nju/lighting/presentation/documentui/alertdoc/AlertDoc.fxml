@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8"
-      fx:controller="nju.lighting.presentation.documentui.giftdoc.GiftDocController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.alertdoc.AlertDocController">
     <children>
         <ScrollPane fx:id="scrollpaneMain" hbarPolicy="NEVER" hmax="0.0" prefHeight="560.0" prefWidth="700.0">
             <content>
@@ -18,59 +21,50 @@
                             <children>
                                 <ImageView fitHeight="45.0" fitWidth="120.0">
                                     <image>
-                                        <Image url="@../../../../../images/字/报警单.png"/>
+                                        <Image url="@../../../../../images/字/报警单.png" />
                                     </image>
                                     <VBox.margin>
-                                        <Insets bottom="20.0"/>
+                                        <Insets bottom="20.0" />
                                     </VBox.margin>
                                 </ImageView>
-                                <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" hmax="0.0" prefWidth="700.0"
-                                            vbarPolicy="NEVER" vmax="0.0">
+                                <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" hmax="0.0" prefWidth="700.0" vbarPolicy="NEVER" vmax="0.0">
                                     <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0">
                                             <children>
-                                                <TableView layoutX="100.0" stylesheets="@../../custom.css">
-                                                    <columns>
-                                                        <TableColumn prefWidth="200.0" text="商品名称"/>
-                                                        <TableColumn prefWidth="90.0" text="编号"/>
-                                                        <TableColumn prefWidth="90.0" text="警戒数量"/>
-                                                        <TableColumn prefWidth="90.0" text="当前库存"/>
-                                                        <TableColumn prefWidth="60.0"/>
-                                                    </columns>
-                                                </TableView>
+                                    <HBox fx:id="tableContainer" layoutX="100.0" />
                                             </children>
                                         </AnchorPane>
                                     </content>
                                 </ScrollPane>
                                 <HBox alignment="BOTTOM_CENTER">
                                     <children>
-                                        <Label text="————" textFill="#838383"/>
-                                        <Label text="2017年12月26日" textFill="#838383"/>
-                                        <Label text="————" textFill="#838383"/>
+                                        <Label text="————" textFill="#838383" />
+                                        <Label text="2017年12月26日" textFill="#838383" />
+                                        <Label text="————" textFill="#838383" />
                                     </children>
                                     <VBox.margin>
-                                        <Insets top="40.0"/>
+                                        <Insets top="40.0" />
                                     </VBox.margin>
                                 </HBox>
                                 <HBox alignment="TOP_CENTER" spacing="10.0">
                                     <children>
                                         <Label text="Made by" textFill="#838383">
                                             <font>
-                                                <Font name="Bauhaus 93" size="18.0"/>
+                                                <Font name="Bauhaus 93" size="18.0" />
                                             </font>
                                         </Label>
-                                        <Label text="未注明制定人" textFill="#838383"/>
+                                        <Label text="未注明制定人" textFill="#838383" />
                                     </children>
                                     <VBox.margin>
-                                        <Insets/>
+                                        <Insets />
                                     </VBox.margin>
                                 </HBox>
                                 <HBox alignment="CENTER">
                                     <children>
-                                        <Label fx:id="totalLabel" text="BJD-XXXX-XXXXX" textFill="#838383"/>
+                                        <Label fx:id="totalLabel" text="BJD-XXXX-XXXXX" textFill="#838383" />
                                     </children>
                                     <VBox.margin>
-                                        <Insets top="20.0"/>
+                                        <Insets top="20.0" />
                                     </VBox.margin>
                                 </HBox>
                             </children>

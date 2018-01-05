@@ -52,13 +52,13 @@ public class SalesDocController implements Initializable, Upper {
     VBox verticalVBox;
     @FXML
     Pane mainPane, commodityContainer;
-    ObservableList<BasicCommodityItemVO> commodityList = FXCollections.observableArrayList();
-    ObservableList<CommodityItem> docItemList;
-    SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
-    SimpleObjectProperty<PromotionVO> promotionProperty = new SimpleObjectProperty<>();
-    CommodityList commodityListController;
-    PromotionVO promotionVO;
-    CustomerType type = CustomerType.SALESPERSON;
+    private ObservableList<BasicCommodityItemVO> commodityList = FXCollections.observableArrayList();
+    private ObservableList<CommodityItem> docItemList;
+    private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
+    private SimpleObjectProperty<PromotionVO> promotionProperty = new SimpleObjectProperty<>();
+    private CommodityList commodityListController;
+    private PromotionVO promotionVO;
+    private CustomerType type = CustomerType.SALESPERSON;
     private CustomerVO customerVO;
     private String salesDocID;
     private double accountBeforeDisNum = 0;
@@ -261,5 +261,28 @@ public class SalesDocController implements Initializable, Upper {
         verticalVBox.getChildren().remove(promotionBox);
     }
 
+    public ObservableList<BasicCommodityItemVO> getCommodityList() {
+        return commodityList;
+    }
 
+    public ObservableList<CommodityItem> getDocItemList() {
+        return docItemList;
+    }
+
+    public SimpleObjectProperty<CustomerVO>
+    getCustomerProperty() {
+        return customerProperty;
+    }
+
+    public SimpleObjectProperty<CustomerVO> customerPropertyProperty() {
+        return customerProperty;
+    }
+
+    public CommodityList getCommodityListController() {
+        return commodityListController;
+    }
+
+    public CustomerType getType() {
+        return type;
+    }
 }

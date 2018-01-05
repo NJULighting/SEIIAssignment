@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111"
-      fx:controller="nju.lighting.presentation.documentui.StockDoc">
+      fx:controller="nju.lighting.presentation.documentui.stockdoc.AddStockDoc">
     <children>
         <Line endX="300.0" layoutX="130.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35"/>
         <HBox layoutX="30.0" layoutY="14.0">
@@ -46,7 +46,7 @@
                                             <graphic>
                                                 <ImageView fitHeight="40.0" fitWidth="40.0">
                                                     <image>
-                                                        <Image url="@../../../../images/添加.png"/>
+                                                        <Image url="@../../../../../images/添加.png"/>
                                                     </image>
                                                 </ImageView>
                                             </graphic>
@@ -94,7 +94,7 @@
                         <Line layoutX="1.0" layoutY="-48.0" startX="-0.0" stroke="#00000033"/>
                         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="41.0" layoutY="16.0">
                             <image>
-                                <Image url="@../../../../images/飞翔的订单.png"/>
+                                <Image url="@../../../../../images/飞翔的订单.png"/>
                             </image>
                         </ImageView>
                         <Pane fx:id="commodityContainer" layoutX="48.0" layoutY="56.0" prefHeight="535.0"
@@ -106,7 +106,7 @@
                             <graphic>
                                 <ImageView fitHeight="40.0" fitWidth="40.0">
                                     <image>
-                                        <Image url="@../../../../images/添加.png"/>
+                                        <Image url="@../../../../../images/添加.png"/>
                                     </image>
                                 </ImageView>
                             </graphic>

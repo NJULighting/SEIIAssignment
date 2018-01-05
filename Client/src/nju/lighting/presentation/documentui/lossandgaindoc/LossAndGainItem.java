@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
+import nju.lighting.vo.doc.alertdoc.AlertDocItemVO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocItemVO;
 import shared.LossAndGainItemType;
 
@@ -36,6 +37,14 @@ public class LossAndGainItem {
         id.set(vo.getCommodity().getId());
         repCount.set(vo.getCommodity().getRepCount());
         type.set(vo.getType());
+    }
+
+    public LossAndGainItem(AlertDocItemVO alertDocItemVO){
+        name.set(alertDocItemVO.getCommodity().getName());
+        count.set(alertDocItemVO.getCount());
+        id.set(alertDocItemVO.getCommodity().getId());
+        repCount.set(alertDocItemVO.getCommodity().getRepCount());
+
     }
 
     public LossAndGainDocItemVO toLossAndGainDocItemVO() {

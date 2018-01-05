@@ -1,9 +1,12 @@
-package nju.lighting.presentation.documentui;
+package nju.lighting.presentation.documentui.stockdoc;
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -12,6 +15,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import nju.lighting.presentation.documentui.CommodityItem;
+import nju.lighting.presentation.documentui.CommodityList;
+import nju.lighting.presentation.documentui.SalesDocController;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
@@ -27,7 +33,7 @@ import java.util.stream.Collectors;
  * Description
  * @author 陈俊宇
  */
-public class StockDoc extends SalesDocController {
+public class AddStockDoc extends SalesDocController {
     @FXML
     HBox container;
     @FXML
@@ -43,24 +49,31 @@ public class StockDoc extends SalesDocController {
     @FXML
     private Label sub, title;
 
-    public StockDoc() {
+    private CustomerType type=getType();
+    private CommodityList controller=getCommodityListController();
+    private ObservableList<CommodityItem> docItemList= FXCollections.observableArrayList();
+    private SimpleObjectProperty<CustomerVO> customerProperty=getCustomerProperty();
+    private ObservableList<BasicCommodityItemVO> commodityList=getCommodityList();
+
+
+    public AddStockDoc() {
         type = CustomerType.SUPPLIER;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CommodityList.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
         try {
             commodityContainer.getChildren().add(loader.load());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        commodityListController = loader.getController();
-        commodityListController.setEditable();
-        commodityListController.setMaxSize(480, 700);
+       controller = loader.getController();
+        controller.setEditable();
+        controller.setMaxSize(480, 700);
 
-        docItemList = commodityListController.getGiftObservableList();
+        docItemList = controller.getGiftObservableList();
         commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
             @Override
             public void onChanged(Change<? extends BasicCommodityItemVO> c) {
@@ -76,13 +89,12 @@ public class StockDoc extends SalesDocController {
             @Override
             public void changed(ObservableValue<? extends CustomerVO> observable, CustomerVO oldValue, CustomerVO newValue) {
                 customer.setText(customerProperty.getValue().getName());
-                clearPromotion();
             }
         });
 
         user.setText(Client.getUserVO().getUsername());
 
-        account.textProperty().bind(commodityListController.getTotal().asString());
+        account.textProperty().bind(controller.getTotal().asString());
     }
 
     void setReturn() {

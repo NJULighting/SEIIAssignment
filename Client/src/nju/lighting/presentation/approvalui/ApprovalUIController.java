@@ -137,7 +137,7 @@ public class ApprovalUIController implements Initializable {
         if (detail.getChildren().size() > 0)
             detail.getChildren().remove(detail.getChildren().size() - 1);
 
-        Doc.doc = clicked;
+        Doc.setDoc(clicked);
 
         try {
             FXMLLoader loader = Doc.getLoader();

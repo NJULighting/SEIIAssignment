@@ -39,7 +39,7 @@ public class LossAndGainDocController implements Initializable {
 
 
     public LossAndGainDocController() {
-        lossAndGainDocVO = (LossAndGainDocVO) Doc.doc;
+        lossAndGainDocVO = (LossAndGainDocVO) Doc.getDoc();
     }
 
     @Override

@@ -1,104 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<ScrollPane xmlns:fx="http://javafx.com/fxml/1" hbarPolicy="NEVER" prefHeight="610.0"
-            style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111"
-            fx:controller="nju.lighting.presentation.documentui.accountiodoc.AccountIODoc">
-    <content>
-        <AnchorPane maxHeight="1.7976931348623157E308" prefHeight="608.0" prefWidth="850.0"
-                    style="-fx-background-color: white;">
-            <children>
-                <VBox layoutX="56.0" layoutY="39.0" maxHeight="1.7976931348623157E308" prefWidth="734.0" spacing="50.0">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.accountiodoc.AccountIODoc">
+    <children>
+        <ScrollPane fx:id="scrollpaneMain" hbarPolicy="NEVER" hmax="0.0" prefHeight="560.0" prefWidth="700.0">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
                     <children>
-                        <HBox alignment="CENTER">
+                        <VBox fx:id="vbox" alignment="TOP_CENTER" prefWidth="700.0" stylesheets="@../../custom.css">
                             <children>
-                                <Label text="收款单">
-                                    <font>
-                                        <Font size="25.0"/>
-                                    </font>
-                                </Label>
-                            </children>
+                        <HBox fx:id="imageContainer" alignment="CENTER">
+                           <children>
+                              <ImageView fx:id="outImage" fitHeight="45.0" fitWidth="120.0">
+                                 <image>
+                                    <Image url="@../../../../../images/字/付款单.png" />
+                                 </image>
+                              </ImageView>
+                                      <ImageView fx:id="inImage" fitHeight="45.0" fitWidth="120.0">
+                                          <image>
+                                              <Image url="@../../../../../images/字/收款单.png" />
+                                          </image>
+                                      </ImageView>
+                           </children>
                         </HBox>
-                        <VBox maxWidth="1.7976931348623157E308" spacing="30.0">
-                            <children>
-                                <VBox maxWidth="1.7976931348623157E308" spacing="30.0">
+                                <HBox alignment="CENTER" spacing="10.0">
                                     <children>
-                                        <HBox spacing="30.0">
-                                            <children>
-                                                <Label text="单据编号">
-                                                    <font>
-                                                        <Font size="25.0"/>
-                                                    </font>
-                                                </Label>
-                                                <Label text="收款单">
-                                                    <font>
-                                                        <Font size="25.0"/>
-                                                    </font>
-                                                </Label>
-                                            </children>
-                                        </HBox>
-                                        <HBox spacing="55.0">
-                                            <children>
-                                                <Label text="供应商">
-                                                    <font>
-                                                        <Font size="25.0"/>
-                                                    </font>
-                                                </Label>
-                                                <Label text="收款单">
-                                                    <font>
-                                                        <Font size="25.0"/>
-                                                    </font>
-                                                </Label>
-                                            </children>
-                                        </HBox>
-                                        <HBox spacing="55.0">
-                                            <children>
-                                                <Label text="销售商">
-                                                    <font>
-                                                        <Font size="25.0"/>
-                                                    </font>
-                                                </Label>
-                                                <Label text="收款单">
-                                                    <font>
-                                                        <Font size="25.0"/>
-                                                    </font>
-                                                </Label>
-                                            </children>
-                                        </HBox>
-                                        <HBox spacing="55.0">
-                                            <children>
-                                                <Label text="操作员">
-                                                    <font>
-                                                        <Font size="25.0"/>
-                                                    </font>
-                                                </Label>
-                                                <Label text="收款单">
-                                                    <font>
-                                                        <Font size="25.0"/>
-                                                    </font>
-                                                </Label>
-                                            </children>
-                                        </HBox>
-                                        <HBox fx:id="listBox" maxHeight="1.7976931348623157E308"
-                                              maxWidth="1.7976931348623157E308"/>
+                                        <Label text="for">
+                                            <font>
+                                                <Font name="Bauhaus 93" size="24.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="customerNameLabel" text="某客户名">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
                                     </children>
-                                </VBox>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" top="20.0" />
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox fx:id="tableContainer" />
+                                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                    <children>
+                                        <Label text="总额">
+                                            <font>
+                                                <Font name="System Italic" size="15.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="totalLabel" style="-fx-text-fill: #5599ff;" text="2000.00">
+                                            <font>
+                                                <Font size="24.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets right="18.0" />
+                                            </HBox.margin>
+                                        </Label>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="5.0" />
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox alignment="BOTTOM_CENTER">
+                                    <children>
+                                        <Label text="————" textFill="#838383" />
+                                        <Label fx:id="createTimeLabel" text="2017年12月26日" textFill="#838383" />
+                                        <Label text="————" textFill="#838383" />
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="40.0" />
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox alignment="TOP_CENTER" spacing="10.0">
+                                    <children>
+                                        <Label text="Made by" textFill="#838383">
+                                            <font>
+                                                <Font name="Bauhaus 93" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="creatorLabel" text="" textFill="#838383" />
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox alignment="CENTER">
+                                    <children>
+                                        <Label fx:id="totalLabel" text="FKD-XXXX-XXXXX" textFill="#838383" />
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="20.0" />
+                                    </VBox.margin>
+                                </HBox>
                             </children>
                         </VBox>
-                        <HBox alignment="CENTER_RIGHT">
-                            <children>
-                                <Label fx:id="total" text="总额">
-                                    <font>
-                                        <Font size="25.0"/>
-                                    </font>
-                                </Label>
-                            </children>
-                        </HBox>
                     </children>
-                </VBox>
-            </children>
-        </AnchorPane>
-    </content>
-</ScrollPane>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </children>
+</Pane>

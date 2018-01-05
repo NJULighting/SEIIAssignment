@@ -10,10 +10,10 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="stackPane" xmlns="http://javafx.com/javafx/8"
-           fx:controller="nju.lighting.presentation.documentui.LossAndGainDocMain">
+           fx:controller="nju.lighting.presentation.documentui.lossandgaindoc.AddLossAndGainDocMain">
     <children>
         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0"
-              prefWidth="1080.0" stylesheets="@../custom.css">
+              prefWidth="1080.0" stylesheets="@../../custom.css">
             <children>
                 <Line endX="300.0" layoutX="130.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT"
                       strokeWidth="0.35"/>
@@ -34,7 +34,7 @@
                             <graphic>
                                 <ImageView fitHeight="30.0" fitWidth="30.0">
                                     <image>
-                                        <Image url="@../../../../images/刷新.png"/>
+                                        <Image url="@../../../../../images/刷新.png"/>
                                     </image>
                                 </ImageView>
                             </graphic>

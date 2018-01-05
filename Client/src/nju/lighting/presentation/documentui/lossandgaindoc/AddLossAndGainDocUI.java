@@ -1,4 +1,4 @@
-package nju.lighting.presentation.documentui;
+package nju.lighting.presentation.documentui.lossandgaindoc;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -13,8 +13,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
-import nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainItem;
-import nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainList;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.utils.CommodityHelper;
@@ -35,9 +33,9 @@ import java.util.stream.Collectors;
  * Description
  * @author 陈俊宇
  */
-public class LossAndGainDocUI implements Initializable {
+public class AddLossAndGainDocUI implements Initializable {
 
-    LossAndGainDocMain main;
+    AddLossAndGainDocMain main;
     ObservableList<BasicCommodityItemVO> commodities = FXCollections.observableArrayList();
     ObservableList<LossAndGainItem> docItemList;
 
@@ -63,7 +61,7 @@ public class LossAndGainDocUI implements Initializable {
     TextArea comments;
 
 
-    public void setMain(LossAndGainDocMain main) {
+    public void setMain(AddLossAndGainDocMain main) {
         this.main = main;
     }
 
@@ -91,7 +89,7 @@ public class LossAndGainDocUI implements Initializable {
         });
 
         creatorText.setText(Client.getUserVO().getUsername());
-        loader = new FXMLLoader(getClass().getResource("lossandgaindoc/LossAndGainList.fxml"));
+        loader = new FXMLLoader(getClass().getResource("LossAndGainList.fxml"));
         try {
             tableContainer.getChildren().add(loader.load());
         } catch (IOException e) {

@@ -8,7 +8,7 @@
 <?import javafx.scene.text.*?>
 <Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8"
-      fx:controller="nju.lighting.presentation.documentui.giftdoc.GiftDocController">
+      fx:controller="nju.lighting.presentation.documentui.stockdoc.AddStockDoc">
     <children>
         <ScrollPane fx:id="scrollpaneMain" hbarPolicy="NEVER" hmax="0.0" prefHeight="560.0" prefWidth="700.0">
             <content>

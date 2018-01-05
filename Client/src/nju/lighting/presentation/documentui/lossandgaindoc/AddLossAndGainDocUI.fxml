@@ -10,15 +10,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
 <Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css"
-      xmlns="http://javafx.com/javafx/8.0.112" fx:controller="nju.lighting.presentation.documentui.LossAndGainDocUI">
+      prefHeight="630.0" prefWidth="1080.0" stylesheets="@../../custom.css"
+      xmlns="http://javafx.com/javafx/8.0.112" fx:controller="nju.lighting.presentation.documentui.lossandgaindoc.AddLossAndGainDocUI">
     <children>
         <Button fx:id="chooseCommodityBtn" layoutX="720.0" layoutY="27.0" mnemonicParsing="false" prefHeight="1.0"
                 prefWidth="1.0" style="-fx-background-color: transparent;">
             <graphic>
                 <ImageView fitHeight="37.0" fitWidth="40.0">
                     <image>
-                        <Image url="@../../../../images/商品.png"/>
+                        <Image url="@../../../../../images/商品.png"/>
                     </image>
                 </ImageView>
             </graphic>

@@ -25,7 +25,7 @@ public class GiftDoc implements Initializable {
     private Label title;
 
     public GiftDoc() {
-        giftDocVO = (GiftDocVO) Doc.doc;
+        giftDocVO = (GiftDocVO) Doc.getDoc();
     }
 
     @Override

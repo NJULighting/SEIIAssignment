@@ -1,4 +1,4 @@
-package nju.lighting.presentation.documentui;
+package nju.lighting.presentation.documentui.lossandgaindoc;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
  * 制定报损报溢单的主界面，库存人员界面上制定报损报溢单即跳转到此界面
  * @author 陈俊宇
  */
-public class LossAndGainDocMain implements Initializable, Upper {
+public class AddLossAndGainDocMain implements Initializable, Upper {
     @FXML
     HBox container;
 
@@ -29,7 +29,7 @@ public class LossAndGainDocMain implements Initializable, Upper {
 
     Pane mainPane;
 
-    LossAndGainDocUI controller;
+    AddLossAndGainDocUI controller;
 
     @FXML
     StackPane stackPane;
@@ -57,7 +57,7 @@ public class LossAndGainDocMain implements Initializable, Upper {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LossAndGainDocUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddLossAndGainDocUI.fxml"));
         try {
             mainPane = loader.load();
         } catch (IOException e) {

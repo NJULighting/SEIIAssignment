@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8"
-      fx:controller="nju.lighting.presentation.documentui.salesdoc.SalesDocController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <ScrollPane fx:id="scrollpaneMain" hbarPolicy="NEVER" hmax="0.0" prefHeight="560.0" prefWidth="700.0">
             <content>
@@ -18,72 +20,86 @@
                             <children>
                                 <ImageView fitHeight="45.0" fitWidth="186.0">
                                     <image>
-                                        <Image url="@../../../../../images/字/销售退货单.png"/>
+                                        <Image url="@../../../../../images/字/销售退货单.png" />
                                     </image>
                                     <VBox.margin>
-                                        <Insets/>
+                                        <Insets />
                                     </VBox.margin>
                                 </ImageView>
                                 <HBox alignment="CENTER" spacing="10.0">
                                     <children>
                                         <Label text="for">
                                             <font>
-                                                <Font name="Bauhaus 93" size="24.0"/>
+                                                <Font name="Bauhaus 93" size="24.0" />
                                             </font>
                                         </Label>
                                         <Label fx:id="customer" text="某客户名">
                                             <font>
-                                                <Font size="18.0"/>
+                                                <Font size="18.0" />
                                             </font>
                                         </Label>
                                         <Label text="/">
                                             <font>
-                                                <Font name="System Bold" size="18.0"/>
+                                                <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Label>
                                         <Label text="业务员">
                                             <font>
-                                                <Font name="System Bold" size="17.0"/>
+                                                <Font name="System Bold" size="17.0" />
                                             </font>
                                         </Label>
                                         <Label fx:id="salesman" text="业务员名">
                                             <font>
-                                                <Font size="18.0"/>
+                                                <Font size="18.0" />
                                             </font>
                                         </Label>
                                     </children>
                                     <VBox.margin>
-                                        <Insets bottom="10.0" top="20.0"/>
+                                        <Insets bottom="10.0" top="20.0" />
                                     </VBox.margin>
                                 </HBox>
                                 <HBox alignment="CENTER" spacing="10.0">
                                     <children>
                                         <Label text="仓库">
                                             <font>
-                                                <Font name="System Bold" size="17.0"/>
+                                                <Font name="System Bold" size="17.0" />
                                             </font>
                                         </Label>
                                         <Label fx:id="repository" text="仓库名">
                                             <font>
-                                                <Font size="18.0"/>
+                                                <Font size="18.0" />
                                             </font>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <HBox prefHeight="100.0" prefWidth="200.0"/>
+                                <HBox prefHeight="100.0" prefWidth="200.0" />
+                        <VBox alignment="CENTER">
+                           <children>
+                              <Label text="备注">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <JFXTextArea editable="false" focusColor="#405aa800" prefHeight="100.0" prefWidth="300.0" unFocusColor="#4d4d4d00" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                                 <HBox alignment="CENTER_RIGHT" spacing="10.0">
                                     <children>
                                         <Label text="折让前总额">
                                             <font>
-                                                <Font name="System Italic" size="15.0"/>
+                                                <Font name="System Italic" size="15.0" />
                                             </font>
                                         </Label>
                                         <Label fx:id="accountBefore" text="2400.00">
                                             <font>
-                                                <Font size="18.0"/>
+                                                <Font size="18.0" />
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="18.0"/>
+                                                <Insets right="18.0" />
                                             </HBox.margin>
                                         </Label>
                                     </children>
@@ -92,15 +108,15 @@
                                     <children>
                                         <Label text="折让">
                                             <font>
-                                                <Font name="System Italic" size="15.0"/>
+                                                <Font name="System Italic" size="15.0" />
                                             </font>
                                         </Label>
                                         <Label fx:id="discount" text="200.00">
                                             <font>
-                                                <Font size="18.0"/>
+                                                <Font size="18.0" />
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="18.0"/>
+                                                <Insets right="18.0" />
                                             </HBox.margin>
                                         </Label>
                                     </children>
@@ -109,15 +125,15 @@
                                     <children>
                                         <Label text="代金券">
                                             <font>
-                                                <Font name="System Italic" size="15.0"/>
+                                                <Font name="System Italic" size="15.0" />
                                             </font>
                                         </Label>
                                         <Label fx:id="vouther" text="200.00">
                                             <font>
-                                                <Font size="18.0"/>
+                                                <Font size="18.0" />
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="18.0"/>
+                                                <Insets right="18.0" />
                                             </HBox.margin>
                                         </Label>
                                     </children>
@@ -126,51 +142,51 @@
                                     <children>
                                         <Label text="总额">
                                             <font>
-                                                <Font name="System Italic" size="15.0"/>
+                                                <Font name="System Italic" size="15.0" />
                                             </font>
                                         </Label>
                                         <Label fx:id="account" style="-fx-text-fill: #5599ff;" text="2000.00">
                                             <font>
-                                                <Font size="24.0"/>
+                                                <Font size="24.0" />
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="18.0"/>
+                                                <Insets right="18.0" />
                                             </HBox.margin>
                                         </Label>
                                     </children>
                                     <VBox.margin>
-                                        <Insets/>
+                                        <Insets />
                                     </VBox.margin>
                                 </HBox>
                                 <HBox alignment="BOTTOM_CENTER">
                                     <children>
-                                        <Label text="————" textFill="#838383"/>
-                                        <Label fx:id="date" text="2017年12月26日" textFill="#838383"/>
-                                        <Label text="————" textFill="#838383"/>
+                                        <Label text="————" textFill="#838383" />
+                                        <Label fx:id="date" text="2017年12月26日" textFill="#838383" />
+                                        <Label text="————" textFill="#838383" />
                                     </children>
                                     <VBox.margin>
-                                        <Insets top="40.0"/>
+                                        <Insets top="40.0" />
                                     </VBox.margin>
                                 </HBox>
                                 <HBox alignment="TOP_CENTER" spacing="10.0">
                                     <children>
                                         <Label text="Made by" textFill="#838383">
                                             <font>
-                                                <Font name="Bauhaus 93" size="18.0"/>
+                                                <Font name="Bauhaus 93" size="18.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="maker" text="未注明制定人" textFill="#838383"/>
+                                        <Label fx:id="maker" text="未注明制定人" textFill="#838383" />
                                     </children>
                                     <VBox.margin>
-                                        <Insets/>
+                                        <Insets />
                                     </VBox.margin>
                                 </HBox>
                                 <HBox alignment="CENTER">
                                     <children>
-                                        <Label fx:id="totalLabel" text="ZPD-XXXX-XXXXX" textFill="#838383"/>
+                                        <Label fx:id="totalLabel" text="ZPD-XXXX-XXXXX" textFill="#838383" />
                                     </children>
                                     <VBox.margin>
-                                        <Insets top="20.0"/>
+                                        <Insets top="20.0" />
                                     </VBox.margin>
                                 </HBox>
                             </children>

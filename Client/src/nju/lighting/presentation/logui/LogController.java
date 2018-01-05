@@ -66,7 +66,7 @@ public class LogController implements Initializable {
             LogVO currentLog = logVOArrayList.get(i);
             time = new Label(DateHelper.accurateTime(currentLog.getTime()));
             behavior = new Label(currentLog.getBehavior());
-            creator = new Label(currentLog.getCreator());
+            creator = new Label(currentLog.getCreatorId());
             identity = new Label(currentLog.getIdentity().toString());
             listCell = new HBox(behavior, time, creator, identity);
             listCell.setSpacing(50);

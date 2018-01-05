@@ -1,6 +1,7 @@
 package nju.lighting.presentation.factory;
 
 import nju.lighting.bl.logbl.LogBLService_Stub;
+import nju.lighting.bl.logbl.LogController;
 import nju.lighting.blservice.logblservice.LogBLService;
 
 /**

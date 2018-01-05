@@ -1,6 +1,7 @@
 package nju.lighting.bl.userbl;
 
 import nju.lighting.vo.UserVO;
+import shared.Identity;
 
 /**
  * Created on 2017/11/14.
@@ -20,6 +21,8 @@ public interface UserInfo {
      * @return name of the user if id is valid, <code>null</code> otherwise
      */
     String getNameByID(String userID);
+
+    Identity getIdentityById(String userId);
 
     /**
      * Get current user who's signed in now

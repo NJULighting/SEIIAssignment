@@ -6,6 +6,7 @@ import shared.TwoTuple;
 import java.rmi.RemoteException;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -31,23 +32,11 @@ public interface DataServiceFunction<T, R> {
         try {
             PO po = function.apply(condition);
             if (po == null)
-                return null;
+                throw new NoSuchElementException();
             return poTransformer.apply(po);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return null;
-        }
-    }
-
-    static <C, PO> PO findByToEntity(C condition, DataServiceFunction<C, PO> function) {
-        try {
-            PO po = function.apply(condition);
-            if (po == null)
-                return null;
-            return po;
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
+            throw new IllegalStateException("Net work fail");
         }
     }
 

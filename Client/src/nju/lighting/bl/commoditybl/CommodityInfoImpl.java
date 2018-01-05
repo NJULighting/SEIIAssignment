@@ -87,16 +87,12 @@ public class CommodityInfoImpl implements CommodityInfo {
         if (categoryId == -1)
             return CommodityCategoriesTree.ROOT_NAME;
 
-        return Optional.ofNullable(DataServiceFunction.findByToEntity(categoryId, dataService::findCategoryById))
-                .map(CommodityCategoryPO::getName)
-                .orElseThrow(NoSuchElementException::new);
+        return DataServiceFunction.findByToEntity(categoryId, dataService::findCategoryById, CommodityCategoryPO::getName);
     }
 
     @Override
     public double getCommodityInPrice(String id) {
-        return Optional.ofNullable(DataServiceFunction.findByToEntity(id, dataService::findById))
-                .map(CommodityItemPO::getInPrice)
-                .orElseThrow(NoSuchElementException::new);
+        return DataServiceFunction.findByToEntity(id, dataService::findById, CommodityItemPO::getInPrice);
     }
 
     @Override

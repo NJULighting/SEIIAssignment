@@ -6,14 +6,11 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -32,14 +29,11 @@ import nju.lighting.vo.UserVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import shared.DocType;
 import shared.DocumentFilter;
-import shared.Identity;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.Stack;
 
 /**
  * Created on 2018/1/5.
@@ -74,7 +68,7 @@ public class BusinessHistoryTable implements Initializable, Upper {
     JFXTextField customerText;
 
     @FXML
-    HBox container,labelBox;
+    HBox container, labelBox;
 
     @FXML
     AnchorPane mainPane;
@@ -89,35 +83,41 @@ public class BusinessHistoryTable implements Initializable, Upper {
     Button setCustomerBtn;
 
     @FXML
+    JFXButton okBtn;
+
+    @FXML
     JFXHamburger hamburger;
 
     private ObservableList<BusinessHistoryItemVO> observableList = FXCollections.observableArrayList();
 
     private DocBLService blService = DocBLServiceFactory.getDocBLService();
 
-    private DocumentFilter.Builder builder ;
+    private DocumentFilter.Builder builder;
 
-    private SimpleObjectProperty<CustomerVO> customerProperty=new SimpleObjectProperty<>();
+    private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
 
     private HamburgerBasicCloseTransition burgerTask = new HamburgerBasicCloseTransition();
 
     private JFXNodesList nodesList = new JFXNodesList();
 
 
+
     private DocumentFilter.Builder getBuilder() {
-        builder=new DocumentFilter.Builder();
+        builder = new DocumentFilter.Builder();
         builder.startDate(DateHelper.localDateToDate(startDate.getValue()))
                 .endDate(DateHelper.localDateToDate(endDate.getValue()))
-        .docType(typeBox.getValue())
-        .creatorID(creatorBox.getValue().getID())
-        .customer(customerProperty.getValue().getID()+"");
+                .docType(typeBox.getValue());
+        if (creatorBox.getValue() != null)
+            builder.creatorID(creatorBox.getValue().getID());
+        if (customerProperty.getValue() != null)
+            builder.customer(customerProperty.getValue().getID() + "");
 
         return builder;
     }
 
-    private Upper upper=this;
+    private Upper upper = this;
 
-    private ObservableList<Node> list=FXCollections.observableArrayList();
+    private ObservableList<Node> list = FXCollections.observableArrayList();
 
     void refresh() {
         observableList.setAll(blService.findBusinessHistory(getBuilder().build()));
@@ -127,18 +127,26 @@ public class BusinessHistoryTable implements Initializable, Upper {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        okBtn.setOnAction(e-> {
+            refresh();
+            DocHelper.search(nodesList,burgerTask);
+            container.getChildren().setAll(mainPane);
+            labelBox.getChildren().clear();
+            list.clear();
+        });
+
         DateHelper.setDefaultTime(startDate, DateHelper.weekAgo());
         DateHelper.setDefaultTime(endDate, DateHelper.dateToLocalDate(new Date()));
 
-        creatorBox.getItems().add(new UserVO("无",null,null,false));
-        creatorBox.getItems().addAll(UserBLServiceFactory.getUserBLService().getUserList(Identity.GENERAL));
+        creatorBox.getItems().add(new UserVO("无", null, null, false));
+        creatorBox.getItems().addAll(UserBLServiceFactory.getUserBLService().getUserList());
 
         typeBox.getItems().add(null);
         typeBox.getItems().addAll(DocType.values());
 
-        setCustomerBtn.setOnAction(e-> CustomerHelper.setCustomer(this,customerProperty));
+        setCustomerBtn.setOnAction(e -> CustomerHelper.setCustomer(this, customerProperty));
 
-        customerProperty.addListener(c-> customerText.setText(customerProperty.getValue().getName()));
+        customerProperty.addListener(c -> customerText.setText(customerProperty.getValue().getName()));
 
 
         tableView.setItems(observableList);
@@ -173,11 +181,11 @@ public class BusinessHistoryTable implements Initializable, Upper {
                         openBtn.setOnAction(e -> {
                             DocVO docVO = ((BusinessHistoryItemVO) getTableView().getItems().get(getIndex()))
                                     .getDocVO();
-                            FXMLLoader loader=new FXMLLoader(getClass().getResource("BusinessHistoryDetail.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("BusinessHistoryDetail.fxml"));
 
                             try {
                                 setChildren(loader.load(), ">单据详情");
-                                ((BusinessHistoryDetail)loader.getController()).init(docVO,upper);
+                                ((BusinessHistoryDetail) loader.getController()).init(docVO, upper);
                             } catch (IOException e1) {
                                 e1.printStackTrace();
                             }
@@ -197,30 +205,30 @@ public class BusinessHistoryTable implements Initializable, Upper {
     }
 
     @FXML
-    void backToMain(){
+    void backToMain() {
         list.clear();
-       labelBox.getChildren().clear();
-       container.getChildren().setAll(mainPane);
+        labelBox.getChildren().clear();
+        container.getChildren().setAll(mainPane);
     }
 
     @Override
     public void back() {
-        labelBox.getChildren().remove(labelBox.getChildren().get(labelBox.getChildren().size()-1));
-        container.getChildren().setAll(list.get(list.size()-2));
-        list.remove(list.size()-1);
+        labelBox.getChildren().remove(labelBox.getChildren().get(labelBox.getChildren().size() - 1));
+        container.getChildren().setAll(list.get(list.size() - 2));
+        list.remove(list.size() - 1);
     }
 
     @Override
     public void setChildren(Node node, String title) {
         list.add(node);
         container.getChildren().setAll(node);
-        Label label=new Label(title);
+        Label label = new Label(title);
         label.setFont(Font.font(20));
-        label.setOnMouseClicked(e->{
+        label.setOnMouseClicked(e -> {
             container.getChildren().setAll(node);
-            labelBox.getChildren().remove(labelBox.getChildren().indexOf(label)+1,
+            labelBox.getChildren().remove(labelBox.getChildren().indexOf(label) + 1,
                     labelBox.getChildren().size());
-            list.remove(list.indexOf(node)+1,list.size());
+            list.remove(list.indexOf(node) + 1, list.size());
         });
 
         labelBox.getChildren().add(label);

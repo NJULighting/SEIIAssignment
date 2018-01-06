@@ -79,7 +79,7 @@ public class UserMainController implements Initializable {
                 new SimpleStringProperty(c.getValue().getID()));
 
         identity.setCellValueFactory(c ->
-                new SimpleStringProperty(UserHelper.identityToString(c.getValue().getIdentity())));
+                new SimpleStringProperty(c.getValue().getIdentity().toString()));
 
         authority.setCellValueFactory(c ->
                 new SimpleStringProperty(c.getValue().isAuthority() ? "最高权限" : "非最高权限"));

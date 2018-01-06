@@ -2,26 +2,38 @@ package nju.lighting.presentation.customerui;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
+import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.factory.CustomerBLServiceFactory;
+import nju.lighting.presentation.factory.UserBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
+import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.TextFieldHelper;
+import nju.lighting.presentation.utils.UserHelper;
 import nju.lighting.vo.CustomerVO;
+import nju.lighting.vo.UserVO;
 import shared.*;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/22.
  * Description
+ *
  * @author 陈俊宇
  */
 public class CustomerDetail {
@@ -36,8 +48,11 @@ public class CustomerDetail {
     private CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
     @FXML
     private JFXComboBox<String> typeBox, gradeBox;
+
     @FXML
-    private JFXTextField idText, nameText, receiveText, payText, receiveLimitText, salesmanText, telephoneText,
+    JFXComboBox<UserVO> salesman;
+    @FXML
+    private JFXTextField idText, nameText, receiveText, payText, receiveLimitText, telephoneText,
             postageText, emailText, addressText;
     private CustomerSearchListController controller;
     private CustomerVO customerVO;
@@ -46,11 +61,14 @@ public class CustomerDetail {
     private boolean add;
 
     void init(boolean add) {
+
+        UserHelper.intiUserBox(salesman);
+
         this.add = add;
         textFields.add(nameText);
         textFields.add(receiveText);
         textFields.add(payText);
-        textFields.add(salesmanText);
+
         textFields.add(telephoneText);
         textFields.add(postageText);
         textFields.add(emailText);
@@ -61,7 +79,6 @@ public class CustomerDetail {
         TextFieldHelper.addDoubleValidator(payText);
         TextFieldHelper.addDoubleValidator(receiveText);
         TextFieldHelper.addRequiredValidator(nameText);
-        TextFieldHelper.addRequiredValidator(salesmanText);
         TextFieldHelper.addRequiredValidator(telephoneText);
         TextFieldHelper.addRequiredValidator(addressText);
         TextFieldHelper.addRequiredValidator(postageText);
@@ -95,8 +112,10 @@ public class CustomerDetail {
             receiveText.setText(String.valueOf(customerVO.getReceivable()));
             payText.setText(String.valueOf(customerVO.getPayable()));
             receiveLimitText.setText(String.valueOf(customerVO.getReceivableLimit()));
+
+            salesman.setValue(UserHelper.getSalesman(salesman,customerVO.getSalesman()));
+
             telephoneText.setText(customerVO.getTelephone());
-            salesmanText.setText(customerVO.getSalesman());
 
             postageText.setText(customerVO.getPostage());
             emailText.setText(customerVO.getEmail());
@@ -129,9 +148,9 @@ public class CustomerDetail {
 
     public void save() {
         if (receiveText.validate() & payText.validate() & receiveLimitText.validate() &
-                nameText.validate() & salesmanText.validate() & salesmanText.validate() &
-                telephoneText.validate() & emailText.validate() & postageText.validate() &
-                receiveLimitText.validate() & addressText.validate()) {
+                nameText.validate() & telephoneText.validate() & salesman.getValue() != null
+                & emailText.validate() & postageText.validate()
+                & receiveLimitText.validate() & addressText.validate()) {
             if (add)
                 saveNew();
             else
@@ -152,39 +171,39 @@ public class CustomerDetail {
     }
 
     private void saveModification() {
-        //更改客户信息 需要调用需要实际的PO，先阶段不能用
-//        try {
-//            CustomerChangeInfo.Builder builder = new CustomerChangeInfo.Builder(customerVO.getID());
-//            builder.changeAddress(addressText.getText())
-//                    .changeEmail(emailText.getText())
-//                    .changeGrade(CustomerHelper.stringToGrade(gradeBox.getValue()))
-//                    .changePostage(postageText.getText())
-//                    .changeName(nameText.getText())
-//                    .changeSalesMan(salesmanText.getText())
-//                    .changeTelephone(telephoneText.getText())
-//                    .changeType(CustomerHelper.stringToType(typeBox.getValue()));
-//
-//            customerBLService.changeCustomer(builder.build());
+        try {
+            CustomerChangeInfo.Builder builder = new CustomerChangeInfo.Builder(customerVO.getID());
+            builder.changeAddress(addressText.getText())
+                    .changeEmail(emailText.getText())
+                    .changeGrade(CustomerHelper.stringToGrade(gradeBox.getValue()))
+                    .changePostage(postageText.getText())
+                    .changeName(nameText.getText())
+                    .changeSalesMan(salesman.getValue().getID())
+                    .changeTelephone(telephoneText.getText())
+                    .changeType(CustomerHelper.stringToType(typeBox.getValue()));
 
-//        }catch (RemoteException e){
-//            e.printStackTrace();
-//            failSave();
-//        }
+            ResultMessage result = customerBLService.changeCustomer(builder.build());
+            DialogHelper.dialog("修改客户", result, MainUI.getStackPane());
+            if (result == ResultMessage.SUCCESS) {
+                TableView tableView = controller.getTableView();
+                int index = tableView.getItems().indexOf(customerVO);
+                CustomerVO afterChanged= getCurrentCustomer();
+                afterChanged.setID(customerVO.getID());
+                tableView.getItems().set(index, afterChanged);
+                back();
+            }
 
-        setEditable(false);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
-        // 为了 在界面中可以看到
-        TableView tableView = controller.getTableView();
-        int index = tableView.getItems().indexOf(customerVO);
-        tableView.getItems().set(index, getCurrentCustomer());
+
     }
 
 
     //得到现在界面中的客户，用于修改或新建客户
     private CustomerVO getCurrentCustomer() {
-        int id = (customerVO == null) ? controller.getTableView().getItems().size() + 1 : customerVO.getID();
         return new CustomerVO(
-                id,
                 CustomerHelper.stringToType(typeBox.getValue()),
                 CustomerHelper.stringToGrade(gradeBox.getValue()),
                 nameText.getText(),
@@ -195,7 +214,9 @@ public class CustomerDetail {
                 Double.parseDouble(receiveLimitText.getText()),
                 Double.parseDouble(receiveText.getText()),
                 Double.parseDouble(payText.getText()),
-                salesmanText.getText());
+                salesman.getValue().getID()
+        );
+
     }
 
     public void modify() {
@@ -217,16 +238,12 @@ public class CustomerDetail {
         }
         gradeBox.setDisable(!editable);
         typeBox.setDisable(!editable);
+        salesman.setDisable(!editable);
     }
 
     public void delete() {
-        ResultMessage resultMessage = customerBLService.deleteCustomer(customerVO.getID());
-        if (resultMessage == ResultMessage.SUCCESS) {
-            back();
-            controller.getTableView().getItems().remove(customerVO);
-        } else {
-            //删除失败
-        }
+        controller.delete(customerVO);
+
     }
 
 

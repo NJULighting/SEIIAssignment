@@ -30,12 +30,10 @@ import nju.lighting.presentation.factory.PromotionBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
-import nju.lighting.presentation.utils.CommodityHelper;
-import nju.lighting.presentation.utils.CustomerHelper;
-import nju.lighting.presentation.utils.PromotionHelper;
-import nju.lighting.presentation.utils.TextFieldHelper;
+import nju.lighting.presentation.utils.*;
 import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocVO;
@@ -66,8 +64,11 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     @FXML
     private JFXButton commodityBtn;
     @FXML
-    private JFXTextField customer, salesman, accountBeforeDis, discount,
+    private JFXTextField customer, accountBeforeDis, discount,
             voucher, account, promotionText;
+
+    @FXML
+    private JFXComboBox<UserVO> salesmanBox;
 
     @FXML
     JFXComboBox repositoryBox;
@@ -83,7 +84,6 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     private SimpleObjectProperty<PromotionVO> promotionProperty = new SimpleObjectProperty<>();
     private CommodityList commodityListController;
     private PromotionVO promotionVO;
-    private CustomerType type = CustomerType.SALESPERSON;
     private DocBLService docBLService = new DocController();
     private Upper upper = this;
 
@@ -92,7 +92,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     }
 
     public void chooseCustomer() {
-        CustomerHelper.setCustomer(upper, customerProperty, CustomerType.SUPPLIER);
+        CustomerHelper.setCustomer(upper, customerProperty, CustomerType.SALESPERSON);
     }
 
 
@@ -119,9 +119,9 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     }
 
     private SalesDocVO getDoc() {
-        if (customer.validate() & salesman.validate() & docItemList.size() > 0)
+        if (customer.validate()  & docItemList.size() > 0)
             return new SalesDocVO(new Date(), Client.getUserVO().getID(), customerProperty.getValue().getID(),
-                    salesman.getText(), repositoryBox.getValue().toString(), remarks.getText(),
+                    salesmanBox.getValue().getID(), repositoryBox.getValue().toString(), remarks.getText(),
                     Double.parseDouble(discount.getText()),
                     Double.parseDouble(voucher.getText()),
                     docItemList.stream()
@@ -160,6 +160,10 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
         repositoryBox.getItems().add("仓库一");
         repositoryBox.setValue(repositoryBox.getItems().get(0));
 
+
+        UserHelper.intiUserBox(salesmanBox);
+
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
         try {
             commodityContainer.getChildren().add(loader.load());
@@ -189,12 +193,10 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
             }
         });
 
-        customerProperty.addListener(new ChangeListener<CustomerVO>() {
-            @Override
-            public void changed(ObservableValue<? extends CustomerVO> observable, CustomerVO oldValue, CustomerVO newValue) {
-                customer.setText(customerProperty.getValue().getName());
-                clearPromotion();
-            }
+        customerProperty.addListener(c-> {
+            customer.setText(customerProperty.getValue().getName());
+            salesmanBox.setValue(UserHelper.getSalesman(salesmanBox,customerProperty.getValue().getSalesman()));
+            clearPromotion();
         });
 
         promotionProperty.addListener(new ChangeListener<PromotionVO>() {
@@ -250,7 +252,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
             ));
         });
 
-        TextFieldHelper.addRequiredValidator(salesman);
+
         TextFieldHelper.addRequiredValidator(customer);
 
 

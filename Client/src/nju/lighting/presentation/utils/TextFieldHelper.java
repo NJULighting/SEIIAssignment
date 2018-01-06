@@ -56,7 +56,7 @@ public class TextFieldHelper {
                 try {
                     double target = Double.parseDouble(textField.getText());
                     System.out.println("target" + target);
-                    if (target > 0)
+                    if (target >=0)
                         this.hasErrors.set(false);
                     else this.hasErrors.set(true);
                 } catch (Exception var3) {

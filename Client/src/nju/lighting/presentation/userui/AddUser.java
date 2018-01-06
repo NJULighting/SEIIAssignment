@@ -46,7 +46,7 @@ public class AddUser implements Initializable {
     JFXPasswordField passwordText, passwordVerifyText;
 
     @FXML
-    JFXComboBox<String> identityBox;
+    JFXComboBox<Identity> identityBox;
 
     @FXML
     JFXCheckBox authorityBox;
@@ -71,7 +71,7 @@ public class AddUser implements Initializable {
     ValidateEventHandle changeHandler(ObservableList<UserVO> userList, UserVO user) {
         userNameText.setText(user.getUsername());
         idText.setText(user.getID());
-        identityBox.setValue(UserHelper.identityToString(user.getIdentity()));
+        identityBox.setValue(user.getIdentity());
         authorityBox.setSelected(user.isAuthority());
 
         idText.setEditable(false);
@@ -92,7 +92,7 @@ public class AddUser implements Initializable {
                         e.printStackTrace();
                     }
                     builder.changeAuthorized(authorityBox.isSelected())
-                            .changeIdentity(UserHelper.stringToIdentity(identityBox.getValue()));
+                            .changeIdentity(identityBox.getValue());
 
                     if (verifyPassword())
                         builder.changePassword(passwordText.getText());
@@ -100,7 +100,7 @@ public class AddUser implements Initializable {
 
                     if (resultMessage == ResultMessage.SUCCESS) {
                         user.setAuthority(authorityBox.isSelected());
-                        user.setIdentity(UserHelper.stringToIdentity(identityBox.getValue()));
+                        user.setIdentity(identityBox.getValue());
                         userList.set(userList.indexOf(user), user);
                         return true;
                     } else
@@ -121,14 +121,14 @@ public class AddUser implements Initializable {
                 if (verify())
                     resultMessage = blService.addUser(idText.getText(),
                             passwordText.getText(),
-                            UserHelper.stringToIdentity(identityBox.getValue()),
+                            identityBox.getValue(),
                             userNameText.getText(),
                             authorityBox.isSelected()
                     );
                 if (resultMessage == ResultMessage.SUCCESS) {
                     userVOList.add(new UserVO(userNameText.getText(),
                             idText.getText(),
-                            UserHelper.stringToIdentity(identityBox.getValue()),
+                            identityBox.getValue(),
                             authorityBox.isSelected()));
                     return true;
                 } else
@@ -147,7 +147,7 @@ public class AddUser implements Initializable {
         TextFieldHelper.addSameValidator(passwordVerifyText, passwordText);
         TextFieldHelper.addIdValidator(idText);
 
-        identityBox.getItems().addAll("总经理", "财务人员", "库存人员", "销售人员", "销售经理");
+       identityBox.getItems().addAll(Identity.values());
         authorityBox.setText("");
     }
 }

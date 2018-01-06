@@ -16,7 +16,6 @@ public class DeleteUser {
     Label userText;
 
     void init(UserVO user){
-        userText.setText(user.getUsername()+"("+
-                UserHelper.identityToString(user.getIdentity())+")?");
+        userText.setText(user.toString()+"?");
     }
 }

@@ -83,7 +83,6 @@ public class SalesDetailTable implements Initializable, Upper {
 
     public void back() {
         setChildren(mainPane, "");
-
     }
 
     @Override
@@ -107,11 +106,6 @@ public class SalesDetailTable implements Initializable, Upper {
 
     void refresh() {
         observableList.setAll(blService.findSaleRecords(getBuilder().build()));
-        back();
-        nodesList.animateList(false);
-        burgerTask.setRate(burgerTask.getRate() * -1);
-
-        burgerTask.play();
     }
 
     private DocumentFilter.Builder getBuilder() {
@@ -174,6 +168,8 @@ public class SalesDetailTable implements Initializable, Upper {
 
         okBtn.setOnAction(e -> {
             refresh();
+            DocHelper.search(nodesList,burgerTask);
+            back();
         });
 
     }

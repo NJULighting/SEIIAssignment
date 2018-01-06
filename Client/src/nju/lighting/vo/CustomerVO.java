@@ -34,6 +34,20 @@ public class CustomerVO {
         this.salesman = salesman;
     }
 
+    public CustomerVO(CustomerType type, CustomerGrade grade, String name, String telephone, String address, String postage, String email, double receivableLimit, double receivable, double payable, String salesman) {
+        this.type = type;
+        this.grade = grade;
+        this.name = name;
+        this.telephone = telephone;
+        this.address = address;
+        this.postage = postage;
+        this.email = email;
+        this.receivableLimit = receivableLimit;
+        this.receivable = receivable;
+        this.payable = payable;
+        this.salesman = salesman;
+    }
+
     public int getID() {
         return ID;
     }

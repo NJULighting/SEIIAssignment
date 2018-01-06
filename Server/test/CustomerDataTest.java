@@ -3,6 +3,7 @@ import nju.lighting.po.customer.CustomerPO;
 import org.junit.Test;
 import shared.CustomerGrade;
 import shared.CustomerType;
+import shared.Result;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
@@ -33,12 +34,12 @@ public class CustomerDataTest {
                 50, 0, null);
         CustomerPO po3 = new CustomerPO(CustomerType.SALESPERSON, CustomerGrade.FIVE, "刘钦", "99999",
                 null, null, null, 0, 0, 10000, null);
-        ResultMessage resultMessage1 = customerData.insertCustomer(po1).t;
-        assertEquals(ResultMessage.SUCCESS, resultMessage1);
-        ResultMessage resultMessage2 = customerData.insertCustomer(po2).t;
-        assertEquals(ResultMessage.SUCCESS, resultMessage2);
-        ResultMessage resultMessage3 = customerData.insertCustomer(po3).t;
-        assertEquals(ResultMessage.SUCCESS, resultMessage3);
+        Result<Integer> resultMessage1 = customerData.insertCustomer(po1);
+        assertEquals(ResultMessage.SUCCESS, resultMessage1.getResultMessage());
+        Result<Integer> resultMessage2 = customerData.insertCustomer(po2);
+        assertEquals(ResultMessage.SUCCESS, resultMessage2.getResultMessage());
+        Result<Integer> resultMessage3 = customerData.insertCustomer(po3);
+        assertEquals(ResultMessage.SUCCESS, resultMessage3.getResultMessage());
     }
 
     @Test

@@ -23,7 +23,7 @@ public class GetUserTest {
 
     @Test
     public void getUserListTest() throws Exception {
-        List<UserVO> vos = userBLService.getUserList(Identity.FINANCE);
+        List<UserVO> vos = userBLService.getUserList();
         assertEquals(USER_LIST_SIZE, vos.size());
         assertEquals(VALID_ID, vos.get(2).getID());
     }

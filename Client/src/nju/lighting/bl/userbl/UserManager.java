@@ -2,8 +2,8 @@ package nju.lighting.bl.userbl;
 
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
-import nju.lighting.bl.utils.CollectionTransformer;
 import nju.lighting.bl.utils.DataServiceFunction;
+import nju.lighting.bl.utils.DataServiceSupplier;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
@@ -16,9 +16,7 @@ import shared.UserChangeInfo;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created on 2017/11/6.
@@ -42,19 +40,10 @@ enum UserManager {
 
     /**
      * Get all users
-     * @param identity identity of target users
      * @return User's list
      */
-    public List<UserVO> getUserList(Identity identity) {
-        try {
-            List<UserPO> userPOs = userDataService.getAll().stream()
-                    .filter(userPO -> userPO.getIdentity() == identity)
-                    .collect(Collectors.toList());
-            return CollectionTransformer.toList(userPOs, userPO -> new User(userPO).toVO());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return Collections.emptyList();
-        }
+    public List<UserVO> getUserList() {
+        return DataServiceSupplier.getAll(userDataService::getAll, po -> new User(po).toVO());
     }
 
     /**

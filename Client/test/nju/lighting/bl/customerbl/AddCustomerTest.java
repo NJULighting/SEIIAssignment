@@ -4,10 +4,7 @@ import nju.lighting.bl.userbl.LoginTestHelper;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
 import nju.lighting.vo.CustomerVO;
 import org.junit.Test;
-import shared.CustomerGrade;
-import shared.CustomerType;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -29,10 +26,9 @@ public class AddCustomerTest {
         CustomerVO customerVO = new CustomerVO(0, CustomerType.SALESPERSON, CustomerGrade.FIVE, "VeryNaive", "6666666",
                 "上海交通大学", "210046", "excited@naivemail.com", 666666, 0, 0, "LittleFrog");
 
-        TwoTuple<ResultMessage, Integer> addResult = customerBLService.createCustomer(customerVO);
-        ResultMessage res = addResult.t;
-        System.out.println(addResult.r);
+        Result<CustomerVO> addResult = customerBLService.createCustomer(customerVO);
+        System.out.println(addResult.getValue());
 
-        assertEquals(ResultMessage.SUCCESS, res);
+        assertEquals(ResultMessage.SUCCESS, addResult.getResultMessage());
     }
 }

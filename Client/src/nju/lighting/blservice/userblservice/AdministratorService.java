@@ -15,10 +15,9 @@ import java.util.List;
 public interface AdministratorService {
     /**
      * Get users of the identity you passed
-     * @param userIdentity identity of target users
      * @return User's list
      */
-    List<UserVO> getUserList(Identity userIdentity);
+    List<UserVO> getUserList();
 
     /**
      * Add a new user, the id, username, identity, authorized and password mustn't be null

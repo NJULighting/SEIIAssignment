@@ -2,10 +2,7 @@ package nju.lighting.bl.customerbl;
 
 import nju.lighting.blservice.customerblservice.CustomerBLService;
 import nju.lighting.vo.CustomerVO;
-import shared.CustomerChangeInfo;
-import shared.CustomerType;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.*;
 
 import java.util.List;
 
@@ -18,7 +15,7 @@ class CustomerController implements CustomerBLService {
     }
 
     @Override
-    public TwoTuple<ResultMessage, Integer> createCustomer(CustomerVO vo) {
+    public Result<CustomerVO> createCustomer(CustomerVO vo) {
         return manager.createCustomer(vo);
     }
 

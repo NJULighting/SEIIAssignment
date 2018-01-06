@@ -1,7 +1,6 @@
 package nju.lighting.builder.commodity;
 
 import nju.lighting.bl.utils.CommodityPathParser;
-import nju.lighting.builder.Builder;
 import nju.lighting.po.commodity.CommodityItemPO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
@@ -58,7 +57,7 @@ public class CommodityBuildInfo {
                 batch, batchNumber, dateOfProduction);
     }
 
-    public static class CommodityBuilder implements Builder<CommodityBuildInfo> {
+    public static class CommodityBuilder {
         private final String categoryPath;
         private String name;
         private String modelNumber;
@@ -129,7 +128,6 @@ public class CommodityBuildInfo {
             return this;
         }
 
-        @Override
         public CommodityBuildInfo build() {
             return new CommodityBuildInfo(this);
         }

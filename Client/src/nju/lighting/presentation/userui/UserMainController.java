@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,12 +17,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import nju.lighting.blservice.userblservice.UserBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
-import nju.lighting.presentation.commodityui.Delete;
 import nju.lighting.presentation.factory.UserBLServiceFactory;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.presentation.utils.UserHelper;
 import nju.lighting.vo.UserVO;
-import org.apache.poi.ss.formula.functions.T;
 import shared.Identity;
 import shared.ResultMessage;
 
@@ -56,7 +53,7 @@ public class UserMainController implements Initializable {
 
     @FXML
     void refresh() {
-        userList.setAll(blService.getUserList(null));
+        userList.setAll(blService.getUserList());
     }
 
 

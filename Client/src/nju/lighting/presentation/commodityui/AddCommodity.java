@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import nju.lighting.builder.Builder;
 import nju.lighting.builder.commodity.CommodityBuildInfo;
 import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
@@ -55,7 +54,7 @@ public class AddCommodity extends Dialog implements Initializable {
         recentSellPrice.setText(commodity.getRecentSellPrice() + "");
     }
 
-    Builder<CommodityBuildInfo> getCommodityItem(CommodityCategoryVO parentCategory) {
+    CommodityBuildInfo.CommodityBuilder getCommodityItem(CommodityCategoryVO parentCategory) {
         if (verify()) {
             CommodityBuildInfo.CommodityBuilder builder = new CommodityBuildInfo.CommodityBuilder(parentCategory);
             builder.name(name.getText()).modelNumber(modelNumber.getText()).repCount(parseInt(repCount.getText()))

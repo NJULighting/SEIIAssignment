@@ -16,7 +16,6 @@ import javafx.scene.control.TreeTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
-import nju.lighting.builder.Builder;
 import nju.lighting.builder.commodity.CommodityBuildInfo;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
@@ -143,7 +142,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
             AddCommodity addCommodityController = ((AddCommodity) dialogController);
 
             button.setOnAction(e -> {
-                Builder<CommodityBuildInfo> builder = addCommodityController
+                CommodityBuildInfo.CommodityBuilder builder = addCommodityController
                         .getCommodityItem(((CommodityCategoryVO) getTreeTableItem().getValue().getItem()));
 
                 if (builder != null) {

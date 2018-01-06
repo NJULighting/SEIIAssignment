@@ -10,13 +10,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -30,7 +28,6 @@ import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import shared.DocumentFilter;
-import shared.Identity;
 
 import java.net.URL;
 import java.util.Date;
@@ -171,7 +168,7 @@ public class SalesDetailTable implements Initializable, Upper {
                 customerProperty.set(null);
         });
 
-        creatorBox.getItems().addAll(UserBLServiceFactory.getUserBLService().getUserList(Identity.SYSTEM_ADMIN));
+        creatorBox.getItems().addAll(UserBLServiceFactory.getUserBLService().getUserList());
 
         DocHelper.addFilter(burgerTask,hamburger,nodesList,filterBox,pane);
 

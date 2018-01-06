@@ -1,5 +1,6 @@
 package nju.lighting.bl.utils;
 
+import shared.Result;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
@@ -66,6 +67,15 @@ public interface DataServiceFunction<T, R> {
             e.printStackTrace();
         }
         return commitResult;
+    }
+
+    static <Target, Ret> Result<Ret> addToDataBase(Target target, DataServiceFunction<Target, Result<Ret>> function) {
+        try {
+            return function.apply(target);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return new Result<>(ResultMessage.NETWORK_FAIL, null);
+        }
     }
 
     R apply(T t) throws RemoteException;

@@ -9,7 +9,6 @@ import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.util.List;
 
@@ -62,7 +61,7 @@ public class CommodityController implements CommodityBLService {
     }
 
     @Override
-    public TwoTuple<ResultMessage, Integer> addCategory(CommodityCategoryVO newCategory) {
+    public Result<CommodityCategoryVO> addCategory(CommodityCategoryVO newCategory) {
         return manager.addCategory(newCategory);
     }
 

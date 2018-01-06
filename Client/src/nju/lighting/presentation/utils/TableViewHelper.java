@@ -3,17 +3,15 @@ package nju.lighting.presentation.utils;
 import com.jfoenix.controls.JFXSlider;
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import javafx.beans.binding.Bindings;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.util.Callback;
-import nju.lighting.presentation.documentui.CommodityItem;
-import nju.lighting.presentation.documentui.EditingCell;
 
 /**
  * Created on 2017/12/10.

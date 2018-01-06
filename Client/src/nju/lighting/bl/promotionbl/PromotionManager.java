@@ -39,17 +39,17 @@ enum PromotionManager {
     Result<PromotionVO> commit(PromotionBuildInfo.Builder builder) {
         // Commit and get result
         Promotion promotion = new Promotion(builder.build());
-        TwoTuple<ResultMessage, Integer> commitResult = DataServiceFunction.commit(promotion.toPO(), dataService::insert);
+        Result<Integer> commitResult = DataServiceFunction.addToDataBase(promotion.toPO(), dataService::insert);
 
         // Commit successfully
-        if (commitResult.t.success()) {
-            logger.add(OPType.ADD, "创建促销策略" + commitResult.r);
-            promotion.setId(commitResult.r);
-            return new Result<>(commitResult.t, promotion.toVO());
+        if (commitResult.hasValue()) {
+            logger.add(OPType.ADD, "创建促销策略" + commitResult.getValue());
+            promotion.setId(commitResult.getValue());
+            return new Result<>(commitResult.getResultMessage(), promotion.toVO());
         }
 
         // Failed to commit
-        return new Result<>(commitResult.t, null);
+        return new Result<>(commitResult.getResultMessage(), null);
     }
 
     /**

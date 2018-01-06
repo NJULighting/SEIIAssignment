@@ -14,23 +14,19 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import nju.lighting.bl.documentbl.lossandgaindoc.LossAndGainDoc;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
-import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CommodityHelper;
 import nju.lighting.presentation.utils.DocHelper;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
-import nju.lighting.vo.doc.costdoc.CostDocVO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocVO;
 import shared.LossAndGainItemType;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.Result;
 
 import java.io.IOException;
 import java.net.URL;
@@ -116,8 +112,8 @@ public class AddLossAndGainDoc implements Initializable, Upper, Modifiable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commitBtn.setOnAction(e -> {
-            TwoTuple<ResultMessage, String> res = blService.commitDoc(getDoc());
-            DialogHelper.dialog(res.t, stackPane);
+            Result<DocVO> res = blService.commitDoc(getDoc());
+            DialogHelper.dialog(res.getResultMessage(), stackPane);
         });
 
         chooseCommodityBtn.setOnAction(event -> {

@@ -8,8 +8,8 @@ import nju.lighting.vo.viewtables.BusinessConditionTableVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import shared.DocumentFilter;
+import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.util.Date;
 import java.util.List;
@@ -23,7 +23,7 @@ public interface DocBLService {
      * @param doc doc to be committed
      * @return <tt>[ID,SUCCESS]</tt> if commit successfully
      */
-    TwoTuple<ResultMessage, String> commitDoc(DocVO doc);
+    Result<DocVO> commitDoc(DocVO doc);
 
     /**
      * Find documents with the constraints the filter defined. The user can only

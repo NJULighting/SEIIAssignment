@@ -11,7 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.util.Date;
 
@@ -81,7 +80,7 @@ public class AdditionTest {
         CommodityCategoryVO parent = treeVO.getRoot().findChild(3); // Get a category already contains items
         CommodityCategoryVO addition = new CommodityCategoryVO(parent, "Excited Light");
 
-        ResultMessage res = manager.addCategory(addition).t;
+        ResultMessage res = manager.addCategory(addition).getResultMessage();
 
         assertEquals(ResultMessage.FAILURE, res);
     }
@@ -93,7 +92,7 @@ public class AdditionTest {
         CommodityCategoryVO father = new CommodityCategoryVO(grandfather, 2, "Naive", true);
         CommodityCategoryVO addition = new CommodityCategoryVO(father, "Excited");
 
-        ResultMessage res = manager.addCategory(addition).t;
+        ResultMessage res = manager.addCategory(addition).getResultMessage();
 
         assertEquals(ResultMessage.FAILURE, res);
     }
@@ -104,9 +103,9 @@ public class AdditionTest {
         CommodityCategoriesTreeVO treeVO = manager.getCommodityCategoriesTreeVO();
         CommodityCategoryVO addition = new CommodityCategoryVO(treeVO.getRoot(), "TooYoungLight");
 
-        TwoTuple<ResultMessage, Integer> addResult = manager.addCategory(addition);
-        ResultMessage res1 = addResult.t;
-        System.out.println(addResult.r);
+        Result<CommodityCategoryVO> addResult = manager.addCategory(addition);
+        ResultMessage res1 = addResult.getResultMessage();
+        System.out.println(addResult.getValue());
         // Update the tree
         treeVO = manager.getCommodityCategoriesTreeVO();
         addition = treeVO.getRoot().findChild(CURRENT_INDEX_OF_CATEGORIES);
@@ -132,7 +131,7 @@ public class AdditionTest {
         Result<CommodityItemVO> result = manager.addCommodity(builder);
 
         // Add category
-        ResultMessage res2 = manager.addCategory(addition).t;
+        ResultMessage res2 = manager.addCategory(addition).getResultMessage();
 
         assertTrue(result.hasValue());
         assertEquals(ResultMessage.FAILURE, res2);

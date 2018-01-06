@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import shared.Identity;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**

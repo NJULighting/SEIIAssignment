@@ -3,8 +3,8 @@ package nju.lighting.bl.initbl;
 import nju.lighting.bl.userbl.UserBLServie_Stub;
 import nju.lighting.blservice.initblservice.InitializationBLService;
 import nju.lighting.vo.InitVO;
+import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,9 +27,9 @@ public class InitializationBLService_Stub implements InitializationBLService {
     }
 
     @Override
-    public TwoTuple<ResultMessage, InitVO> initiateAccount() {
+    public Result<InitVO> initiateAccount() {
 
-        return new TwoTuple<>(ResultMessage.SUCCESS, new InitVO(
+        return new Result<>(ResultMessage.SUCCESS, new InitVO(
                 new Date(), "http://www.bing.com/", new UserBLServie_Stub().getUser("1")));
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface DocDataService extends Remote {
 
-    TwoTuple<ResultMessage, String> commitDoc(DocPO doc) throws RemoteException;
+    Result<String> commitDoc(DocPO doc) throws RemoteException;
 
     ResultMessage updateDoc(DocPO doc) throws RemoteException;
 

@@ -10,7 +10,6 @@ import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -128,7 +127,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public TwoTuple<ResultMessage, Integer> addCategory(CommodityCategoryVO newCategory) {
+    public Result<CommodityCategoryVO> addCategory(CommodityCategoryVO newCategory) {
 
         String name = newCategory.getName();
 
@@ -137,7 +136,8 @@ public class CommodityBLService_Stub implements CommodityBLService {
 //        else if (name.equals("2"))
 //            return ResultMessage.FAILURE;
 //        else return ResultMessage.SUCCESS;
-        return new TwoTuple<>(ResultMessage.SUCCESS, 1);
+        newCategory.setId(1);
+        return new Result<>(ResultMessage.SUCCESS, newCategory);
     }
 
     @Override

@@ -2,7 +2,10 @@ package nju.lighting.bl.customerbl;
 
 import nju.lighting.blservice.customerblservice.CustomerBLService;
 import nju.lighting.vo.CustomerVO;
-import shared.*;
+import shared.CustomerChangeInfo;
+import shared.CustomerType;
+import shared.Result;
+import shared.ResultMessage;
 
 import java.util.List;
 

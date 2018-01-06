@@ -18,8 +18,7 @@ import nju.lighting.presentation.factory.InitializationBLServiceFactory;
 import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.InitVO;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.Result;
 
 import java.awt.*;
 import java.io.IOException;
@@ -43,10 +42,10 @@ public class InitAccountController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         init.setOnAction(e -> {
-            TwoTuple<ResultMessage, InitVO> res = blService.initiateAccount();
-            DialogHelper.dialog(res.t, stackPane);
-            if (res.t == ResultMessage.SUCCESS)
-                data.add(res.r);
+            Result<InitVO> res = blService.initiateAccount();
+            DialogHelper.dialog(res.getResultMessage(), stackPane);
+            if (res.hasValue())
+                data.add(res.getValue());
         });
 
 

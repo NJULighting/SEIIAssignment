@@ -8,7 +8,6 @@ import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.util.List;
 
@@ -87,7 +86,7 @@ public interface CommodityBLService {
      * @return <tt>SUCCESS</tt> if add successfully,
      * <tt>FAILURE</tt> if parent category don't exists any more or it contains commodity items.
      */
-    TwoTuple<ResultMessage, Integer> addCategory(CommodityCategoryVO newCategory);
+    Result<CommodityCategoryVO> addCategory(CommodityCategoryVO newCategory);
 
     /**
      * Delete a category. The id of the category can be obtained from the vo.

@@ -10,8 +10,7 @@ import nju.lighting.dataservice.initdataservice.InitDataService;
 import nju.lighting.po.init.InitPO;
 import nju.lighting.vo.InitVO;
 import shared.OPType;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.Result;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
@@ -59,22 +58,20 @@ enum InitHelper {
      * @return <code>SUCCESS</code> if build successfully<br>
      * <code>FAILURE</code> if there's an exception when create the information file or the network fails
      */
-    TwoTuple<ResultMessage, InitVO> createInit() {
-        TwoTuple<ResultMessage, InitVO> createResult = new TwoTuple<>();
+    Result<InitVO> createInit() {
         UserInfo userInfo = new UserInfoImpl();
 
-        TwoTuple<ResultMessage, InitPO> addResult =
-                DataServiceBiFunction.commit(userInfo.getIDOfSignedUser(), new Date(), dataService::createInit);
+        Result<InitPO> addResult =
+                DataServiceBiFunction.addToDataBase(userInfo.getIDOfSignedUser(), new Date(), dataService::createInit);
 
-        if (addResult.t == ResultMessage.SUCCESS) {
-            logger.add(OPType.ADD, "完成期初建账");
-            InitPO po = addResult.r;
-            createResult.r = new InitVO(po.getId(), po.getTime(), po.getUrl(), userInfo.getUserVOByID(po.getUserID()));
+        if (addResult.hasValue()) {
+            InitPO po = addResult.getValue();
+            logger.add(OPType.ADD, "完成期初建账" + po.getId() + "；地址为：" + po.getUrl());
+            InitVO ret = new InitVO(po.getId(), po.getTime(), po.getUrl(), userInfo.getUserVOByID(po.getUserID()));
+            return new Result<>(addResult.getResultMessage(), ret);
         }
 
-        createResult.t = addResult.t;
-
-        return createResult;
+        return new Result<>(addResult.getResultMessage(), null);
     }
 
     /**

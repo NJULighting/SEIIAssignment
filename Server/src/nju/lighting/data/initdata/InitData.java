@@ -11,16 +11,15 @@ import nju.lighting.po.commodity.CommodityItemPO;
 import nju.lighting.po.customer.CustomerPO;
 import nju.lighting.po.init.InitPO;
 import shared.CSVable;
+import shared.Result;
 import shared.ResultMessage;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
 import java.util.List;
-import org.apache.tools.zip.ZipEntry;
-import org.apache.tools.zip.ZipOutputStream;
-import shared.TwoTuple;
 
 /**
  * Created on 2017/11/27.
@@ -75,8 +74,7 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
     }
 
     @Override
-    public TwoTuple<ResultMessage, InitPO> createInit(String userId, Date date) throws RemoteException {
-        TwoTuple<ResultMessage, InitPO> result = new TwoTuple<>();
+    public Result<InitPO> createInit(String userId, Date date) throws RemoteException {
         String url = date.toString().replace(" ", "");
         url = url.replace(":", "");
         try {
@@ -86,21 +84,19 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
             File file = new File(url);
             if (file.exists())
                 file.delete();
-            result.t = ResultMessage.FAILURE;
-            return result;
+            return new Result<>(ResultMessage.FAILURE, null);
         }
         Zipper zipper = new Zipper(url + ".zip", url);
         try {
             zipper.zip();
         } catch (Exception e) {
             e.printStackTrace();
-            return new TwoTuple<>(ResultMessage.FAILURE, null);
+            return new Result<>(ResultMessage.FAILURE, null);
         }
         InitPO initPO = new InitPO(date, userId, "http://localhost:8080/Server/" + url + ".zip");
         System.out.println("Before Return");
-        result.t = commonOperation.add(initPO);
-        result.r = initPO;
-        return result;
+        ResultMessage resultMessage = commonOperation.add(initPO);
+        return new Result<>(resultMessage, initPO);
     }
 
     @Override

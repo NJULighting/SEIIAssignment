@@ -15,7 +15,10 @@ import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.CustomerVO;
-import shared.*;
+import shared.CustomerGrade;
+import shared.CustomerType;
+import shared.Result;
+import shared.ResultMessage;
 
 import java.util.ArrayList;
 

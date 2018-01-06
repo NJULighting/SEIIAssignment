@@ -1,10 +1,7 @@
 package nju.lighting.bl.commoditybl;
 
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
-import nju.lighting.vo.repository.RepositoryTableItemVO;
 import shared.ResultMessage;
-
-import java.util.List;
 
 public interface CommodityInfo {
 

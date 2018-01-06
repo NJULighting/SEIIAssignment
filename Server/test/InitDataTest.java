@@ -26,7 +26,7 @@ public class InitDataTest {
 
     @Test
     public void createInit() throws Exception {
-        ResultMessage resultMessage = initData.createInit("161250220", new Date()).t;
+        ResultMessage resultMessage = initData.createInit("161250220", new Date()).getResultMessage();
         assertEquals(ResultMessage.SUCCESS, resultMessage);
     }
 

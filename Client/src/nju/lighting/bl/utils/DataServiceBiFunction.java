@@ -1,7 +1,7 @@
 package nju.lighting.bl.utils;
 
+import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.rmi.RemoteException;
 import java.util.Collections;
@@ -42,21 +42,13 @@ public interface DataServiceBiFunction<T, R, Y> {
         }
     }
 
-    static <Target1, Target2, Result> TwoTuple<ResultMessage, Result> commit(Target1 target1, Target2 target2,
-                                                                             DataServiceBiFunction<Target1, Target2, TwoTuple<ResultMessage, Result>> function) {
-        TwoTuple<ResultMessage, Result> commitResult = new TwoTuple<>();
-        commitResult.t = ResultMessage.FAILURE;
-
+    static <Target1, Target2, Ret> Result<Ret> addToDataBase(Target1 target1, Target2 target2, DataServiceBiFunction<Target1, Target2, Result<Ret>> function) {
         try {
-            TwoTuple<ResultMessage, Result> res = function.apply(target1, target2);
-            if (res.t == ResultMessage.SUCCESS) {
-                commitResult.t = res.t;
-                commitResult.r = res.r;
-            }
+            return function.apply(target1, target2);
         } catch (RemoteException e) {
             e.printStackTrace();
+            return new Result<>(ResultMessage.NETWORK_FAIL, null);
         }
-        return commitResult;
     }
 
     Y apply(T t, R r) throws RemoteException;

@@ -1,9 +1,6 @@
 package nju.lighting.presentation.documentui;
 
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.validation.DoubleValidator;
-import com.jfoenix.validation.NumberValidator;
-import com.jfoenix.validation.RequiredFieldValidator;
 import com.jfoenix.validation.base.ValidatorBase;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

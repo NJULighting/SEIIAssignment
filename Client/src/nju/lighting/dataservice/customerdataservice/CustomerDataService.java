@@ -3,7 +3,6 @@ package nju.lighting.dataservice.customerdataservice;
 import nju.lighting.po.customer.CustomerPO;
 import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

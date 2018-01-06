@@ -2,8 +2,7 @@ package nju.lighting.bl.initbl;
 
 import nju.lighting.blservice.initblservice.InitializationBLService;
 import nju.lighting.vo.InitVO;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.Result;
 
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class InitController implements InitializationBLService {
     }
 
     @Override
-    public TwoTuple<ResultMessage, InitVO> initiateAccount() {
+    public Result<InitVO> initiateAccount() {
         return initHelper.createInit();
     }
 }

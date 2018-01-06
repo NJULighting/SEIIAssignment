@@ -50,11 +50,14 @@ public enum DocManager {
      * @param doc doc to be committed
      * @return <tt>[ID,SUCCESS]</tt> if commit successfully
      */
-    public TwoTuple<ResultMessage, String> commitDoc(DocVO doc) {
-        TwoTuple<ResultMessage, String> res = DataServiceFunction.commit(doc.toPO(), dataService::commitDoc);
-        if (res.t == ResultMessage.SUCCESS)
-            logger.add(OPType.ADD, "提交单据" + res.r);
-        return res;
+    public Result<DocVO> commitDoc(DocVO doc) {
+        Result<String> res = DataServiceFunction.addToDataBase(doc.toPO(), dataService::commitDoc);
+        if (res.hasValue()) {
+            logger.add(OPType.ADD, "提交单据" + res.getValue());
+            doc.setDocId(res.getValue());
+            return new Result<>(res.getResultMessage(), doc);
+        }
+        return new Result<>(res.getResultMessage(), null);
     }
 
     /**

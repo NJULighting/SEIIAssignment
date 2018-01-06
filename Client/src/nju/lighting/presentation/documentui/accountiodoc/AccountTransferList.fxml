@@ -2,8 +2,7 @@
 
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-
-<TableView fx:id="accountItemTable" editable="true" fixedCellSize="40.0"  prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.accountiodoc.AccountTransferList">
+<TableView fx:id="accountItemTable" editable="true" fixedCellSize="40.0" prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.accountiodoc.AccountTransferList">
     <columns>
         <TableColumn fx:id="account" editable="false" prefWidth="200.0" sortable="false" text="银行账户" />
         <TableColumn fx:id="amount" minWidth="0.0" prefWidth="100.0" sortable="false" text="转账金额" />

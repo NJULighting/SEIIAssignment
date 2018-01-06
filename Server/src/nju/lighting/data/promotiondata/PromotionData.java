@@ -4,8 +4,8 @@ import nju.lighting.data.utils.CommonOperation;
 import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
 import nju.lighting.po.promotion.PromotionPO;
 import nju.lighting.po.promotion.PromotionPackageItemPO;
+import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -42,18 +42,18 @@ public class PromotionData extends UnicastRemoteObject implements PromotionDataS
     }
 
     @Override
-    public TwoTuple<ResultMessage, Integer> insert(PromotionPO po) throws RemoteException {
+    public Result<Integer> insert(PromotionPO po) throws RemoteException {
         ResultMessage resultMessage =  commonOperation.add(po);
         if (resultMessage == ResultMessage.FAILURE)
-            return new TwoTuple<>(ResultMessage.FAILURE, -1);
+            return new Result<>(ResultMessage.FAILURE, -1);
         List<PromotionPackageItemPO> itemPOS = po.getGoods();
         int promotionId = po.getId();
         if (itemPOS == null)
-            return new TwoTuple<>(ResultMessage.SUCCESS, promotionId);
+            return new Result<>(ResultMessage.SUCCESS, promotionId);
         for (PromotionPackageItemPO itemPO: itemPOS) {
             itemPO.setPromotionId(promotionId);
         }
-        return new TwoTuple<>(itemPOCommonOperation.addList(itemPOS), promotionId);
+        return new Result<>(itemPOCommonOperation.addList(itemPOS), promotionId);
     }
 
     @Override

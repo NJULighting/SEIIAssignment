@@ -41,8 +41,7 @@ import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerType;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.Result;
 
 import java.io.IOException;
 import java.net.URL;
@@ -133,8 +132,8 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     @FXML
     private void commit() {
         if (getDoc() != null) {
-            TwoTuple<ResultMessage, String> res = docBLService.commitDoc(getDoc());
-            DialogHelper.dialog(res.t, MainUI.getStackPane());
+            Result<DocVO> res = docBLService.commitDoc(getDoc());
+            DialogHelper.dialog(res.getResultMessage(), MainUI.getStackPane());
         }
 
     }

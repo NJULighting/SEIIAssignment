@@ -3,6 +3,7 @@ import nju.lighting.data.commoditydata.CommodityData;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 import org.junit.Test;
+import shared.Result;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
@@ -100,8 +101,8 @@ public class CommodityDataTest {
     @Test
     public void addCategory() throws Exception {
         CommodityCategoryPO categoryPO = new CommodityCategoryPO ("意大利炮", -1);
-        ResultMessage message = commodityData.add(categoryPO).t;
-        assertEquals(ResultMessage.SUCCESS, message);
+        Result<Integer> message = commodityData.add(categoryPO);
+        assertEquals(ResultMessage.SUCCESS, message.getResultMessage());
     }
 
     @Test

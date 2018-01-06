@@ -1,11 +1,8 @@
 package nju.lighting.presentation.documentui.costdoc;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,26 +10,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
-import nju.lighting.presentation.documentui.BtnCell;
 import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.AccountHelper;
-import nju.lighting.presentation.utils.CostDocHelper;
 import nju.lighting.presentation.utils.DocHelper;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.account.AccountVO;
 import nju.lighting.vo.doc.costdoc.CostDocItemVO;
 import nju.lighting.vo.doc.costdoc.CostDocVO;
-import shared.Result;
 
 import java.io.IOException;
 import java.net.URL;

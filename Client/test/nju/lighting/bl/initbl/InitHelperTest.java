@@ -5,8 +5,8 @@ import nju.lighting.blservice.initblservice.InitializationBLService;
 import nju.lighting.vo.InitVO;
 import org.junit.Before;
 import org.junit.Test;
+import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.util.List;
 
@@ -28,10 +28,10 @@ public class InitHelperTest {
     public void createInitTest() throws Exception {
         InitHelper helper = InitHelper.INSTANCE;
 
-        TwoTuple<ResultMessage, InitVO> res = helper.createInit();
+        Result<InitVO> res = helper.createInit();
 
-        assertEquals(ResultMessage.SUCCESS, res.t);
-        assertNotNull(res.r);
+        assertEquals(ResultMessage.SUCCESS, res.getResultMessage());
+        assertNotNull(res.getValue());
     }
 
     @Test

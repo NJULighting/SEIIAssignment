@@ -28,14 +28,14 @@ public class AccountManagerTest {
     public void getAllAccounts() throws Exception {
         List<AccountVO> voList = manager.getAccountList();
         assert voList != null;
-        assertEquals(4, voList.size());
+        assertEquals(13, voList.size());
         assertNotNull(voList.get(0).getAccountLogs());
         assertEquals("BbidA的建设银行卡", voList.get(1).getName());
     }
 
     @Test
     public void addAccountRepetitionTest() throws Exception {
-        assertEquals(manager.addAccount("284983325", "whatever", 11.0), ResultMessage.DUPLICATE);
+        assertEquals(manager.addAccount("0655367629469011294", "whatever", 11.0), ResultMessage.DUPLICATE);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class AccountManagerTest {
     @Test
     public void getAccountSucceedTest() throws Exception {
         AccountVO target = manager.getAccount("284983325");
-        assertEquals("284983325", target.getId());
+        assertEquals("0655367629469011294", target.getId());
         assertTrue(target.getAccountLogs().isEmpty());
     }
 

@@ -19,7 +19,7 @@ public class CustomerSearchingTest {
 
     @Test
     public void test0() throws Exception {
-        testHelper("五", 7);
+        testHelper("五", 9);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class CustomerSearchingTest {
 
     @Test
     public void test2() throws Exception {
-        testHelper("naive", 7);
+        testHelper("naive", 9);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class CustomerSearchingTest {
 
     @Test
     public void test4() throws Exception {
-        testHelper("excited", 7);
+        testHelper("excited", 9);
     }
 
     private void testHelper(String keyword, int expectSize) {

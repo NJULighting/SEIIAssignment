@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
 
@@ -16,12 +17,12 @@ import static org.junit.Assert.*;
 public class CommoditySearchingTest {
     private static final CommodityItemVO TARGET_COMMODITY = new CommodityItemVO("Frog", "4W", 10, 10,
             20, 10, 20, "第一批", "001", new Date());
-    private static final String RIGHT_COMMODITY_ID = "1-4-2";
+    private static final String RIGHT_COMMODITY_ID = "1-101";
     private static final String WRONG_COMMODITY_ID = "1-4-3-2";
     private static final String COMMODITY_NAME = "Frog";
     private static final String NONEXISTENT_COMMODITY_NAME = "Excited";
     private static final int CATEGORY_ID = 3;
-    private static final int COMMODITY_NUMBER = 2;
+    private static final int COMMODITY_NUMBER = 119;
     private static final int NONEXISTENT_CATEGORY_ID = 200;
 
     private CommodityManager manager = CommodityManager.INSTANCE;
@@ -44,7 +45,7 @@ public class CommoditySearchingTest {
     public void findCommodityVOByNameTest0() throws Exception {
         List<CommodityItemVO> voList = manager.findCommodityVOByName(COMMODITY_NAME);
 
-        assertEquals(10, voList.size());
+        assertEquals(15, voList.size());
     }
 
     @Test
@@ -63,7 +64,7 @@ public class CommoditySearchingTest {
         assertEquals(TARGET_COMMODITY.getName(), target.getName());
     }
 
-    @Test
+    @Test(expected = NoSuchElementException.class)
     public void findCommodityVOByIdTest1() throws Exception {
         // Wrong id test
         CommodityItemVO target = manager.findCommodityVOById(WRONG_COMMODITY_ID);
@@ -73,12 +74,12 @@ public class CommoditySearchingTest {
 
     @Test
     public void searchingTest0() throws Exception {
-        searchingHelper("W", 504);
+        searchingHelper("W", 518);
     }
 
     @Test
     public void searchingTest1() throws Exception {
-        searchingHelper("10", 7);
+        searchingHelper("10", 148);
     }
 
     private void searchingHelper(String keyword, int expectedSize) {

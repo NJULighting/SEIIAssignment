@@ -29,8 +29,8 @@ public class ChangeCustomerTest {
     private static final String NEW_SALESMAN = "UltimateLittleFrog";
     private static final CustomerGrade NEW_GRADE = CustomerGrade.THREE;
     private static final double NEW_LIMIT = 123456;
-    private static final int CUSTOMER_ID = 10;
-    private static final int INVALID_CUSTOMER_ID = 4;
+    private static final int CUSTOMER_ID = 1;
+    private static final int INVALID_CUSTOMER_ID = 90;
 
     private CustomerBLService customerBLService;
     private CustomerDataService dataService;

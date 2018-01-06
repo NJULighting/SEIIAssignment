@@ -4,6 +4,7 @@ import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.UserVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import shared.DocState;
@@ -11,6 +12,7 @@ import shared.DocType;
 import shared.ResultMessage;
 
 import java.util.Date;
+import java.util.Optional;
 
 /**
  * Created on 2017/11/11.
@@ -124,8 +126,9 @@ public abstract class Doc {
 
     HistoryDocVO toHistoryDocVO() {
         UserInfo userInfo = new UserInfoImpl();
+        UserVO approver = Optional.ofNullable(approvalId).map(userInfo::getUserVOByID).orElse(null);
         return new HistoryDocVO(userInfo.getUserVOByID(userId), toVO(), approvalComment, state,
-                checkTime, userInfo.getUserVOByID(approvalId));
+                checkTime, approver);
     }
 
     BusinessHistoryItemVO toBusinessHistoryItemVO() {

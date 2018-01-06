@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 public class LoginTest {
     private static final String USER_ID = "161250068";
     private static final String WRONG_ID = "1111111";
-    private static final String RIGHT_PASSWORD = "2333";
+    private static final String RIGHT_PASSWORD = "1";
     private static final String WRONG_PASSWORD = "Excited";
 
     private LoginService userBLService = new UserController();

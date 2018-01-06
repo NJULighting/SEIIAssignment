@@ -17,8 +17,8 @@ import static org.junit.Assert.*;
 public class GetCustomersTest {
 
     private static final int CUSTOMER_NUMBER = 4;
-    private static final int CUSTOMER_ID = 10;
-    private static final int INVALID_CUSTOMER_ID = 5;
+    private static final int CUSTOMER_ID = 1;
+    private static final int INVALID_CUSTOMER_ID = 100;
     private static final String CUSTOMER_NAME = "SuperFrog";
 
     private CustomerBLService blService = new CustomerController();
@@ -51,6 +51,6 @@ public class GetCustomersTest {
     public void findCustomerByTypeTest() throws Exception {
         List<CustomerVO> voList = blService.findCustomerByType(CustomerType.SALESPERSON);
 
-        assertEquals(2, voList.size());
+        assertEquals(10, voList.size());
     }
 }

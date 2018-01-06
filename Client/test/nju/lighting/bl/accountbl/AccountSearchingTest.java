@@ -17,7 +17,7 @@ public class AccountSearchingTest {
 
     @Test
     public void test0() throws Exception {
-        List<AccountVO> accountList = accountManager.findAccounts("34");
+        List<AccountVO> accountList = accountManager.findAccounts("33");
 
         assertEquals(3, accountList.size());
     }

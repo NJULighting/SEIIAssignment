@@ -41,14 +41,14 @@ public class FindSaleRecordsTest {
 
         List<SalesDetailItemVO> itemList = manager.findSaleRecords(builder.build());
 
-        assertEquals(1, itemList.size());
+        assertEquals(0, itemList.size());
     }
 
     @Test
     public void test1() throws Exception {
         builder.creatorID(LoginTestHelper.AUTHORIZED_USER);
 
-        assertEquals(2, manager.findSaleRecords(builder.build()).size());
+        assertEquals(8, manager.findSaleRecords(builder.build()).size());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class FindSaleRecordsTest {
 
         List<BusinessHistoryItemVO> itemList = manager.findBusinessHistory(builder.build());
 
-        assertEquals(6, itemList.size());
+        assertEquals(10, itemList.size());
     }
 
     @Test
@@ -71,7 +71,7 @@ public class FindSaleRecordsTest {
     @After
     public void tearDown() throws Exception {
         DocumentFilter.Builder builder = new DocumentFilter.Builder();
-        builder.customer("Frog").creatorID("161250068").docState(DocState.UN_CHECKED)
+        builder.customer("2").creatorID("161250068").docState(DocState.UN_CHECKED)
                 .docType(DocType.SALES).docType(DocType.GIFT);
 
         List<HistoryDocVO> voList = manager.findDocuments(builder.build());

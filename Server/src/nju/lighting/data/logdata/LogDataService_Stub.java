@@ -1,8 +1,8 @@
 package nju.lighting.data.logdata;
 
-import shared.Identity;
 import nju.lighting.dataservice.logdataservice.LogDataService;
 import nju.lighting.po.log.LogPO;
+import shared.Identity;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;

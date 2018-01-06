@@ -2,10 +2,10 @@ package nju.lighting.data.commoditydata;
 
 import javafx.scene.image.Image;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
-import shared.Result;
-import shared.ResultMessage;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
+import shared.Result;
+import shared.ResultMessage;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

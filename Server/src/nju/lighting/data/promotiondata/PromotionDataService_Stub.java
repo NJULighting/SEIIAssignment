@@ -1,7 +1,6 @@
 package nju.lighting.data.promotiondata;
 
 import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
-
 import nju.lighting.po.promotion.PromotionPO;
 import shared.Result;
 import shared.ResultMessage;

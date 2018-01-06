@@ -1,9 +1,7 @@
 package nju.lighting.data.docdata;
 
-import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.po.doc.accountiodoc.AccountIODocPO;
 import nju.lighting.po.doc.accountiodoc.AccountOutDocPO;
-import nju.lighting.po.doc.alertdoc.AlertDocItemPO;
 import nju.lighting.po.doc.alertdoc.AlertDocPO;
 import nju.lighting.po.doc.costdoc.CostDocPO;
 import nju.lighting.po.doc.giftdoc.GiftDocPO;
@@ -12,7 +10,6 @@ import nju.lighting.po.doc.salesdoc.SalesDocPO;
 import nju.lighting.po.doc.salesdoc.SalesReturnDocPO;
 import nju.lighting.po.doc.stockdoc.StockDocPO;
 import nju.lighting.po.doc.stockdoc.StockReturnDocPO;
-import org.hibernate.Session;
 import shared.DocType;
 import shared.TwoTuple;
 

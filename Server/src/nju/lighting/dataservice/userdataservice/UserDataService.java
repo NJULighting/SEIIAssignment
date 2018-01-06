@@ -1,7 +1,6 @@
 package nju.lighting.dataservice.userdataservice;
 
 import nju.lighting.po.user.UserPO;
-import shared.Identity;
 import shared.LoginReturnState;
 import shared.ResultMessage;
 import shared.TwoTuple;

@@ -81,11 +81,14 @@ public class AddStockDoc implements Initializable, Upper, Modifiable {
     private ObservableList<CommodityItem> docItemList = FXCollections.observableArrayList();
     private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
     private DocBLService blService= DocBLServiceFactory.getDocBLService();
+    private ObservableList<BasicCommodityItemVO> commodityList = FXCollections.observableArrayList();
 
 
     public void back() {
         setChildren(mainPane, "");
     }
+
+
 
     @Override
     public void setChildren(Node node, String title) {
@@ -138,7 +141,7 @@ public class AddStockDoc implements Initializable, Upper, Modifiable {
         controller.setMaxSize(480, 700);
 
         docItemList = controller.getGiftObservableList();
-        ObservableList<BasicCommodityItemVO> commodityList = FXCollections.observableArrayList();
+
         chooseCommodityBtn.setOnAction(e -> CommodityHelper.chooseCommodity(upper, commodityList));
 
         commodityList.addListener((ListChangeListener<? super BasicCommodityItemVO>) c -> {
@@ -170,6 +173,7 @@ public class AddStockDoc implements Initializable, Upper, Modifiable {
 
     void setReturn() {
         title.setText("制定进货退货单");
+
         commitBtn.setOnAction(e -> {
             if (getReturnDoc()!=null){
                 Result<DocVO> result =blService.commitDoc(getReturnDoc());

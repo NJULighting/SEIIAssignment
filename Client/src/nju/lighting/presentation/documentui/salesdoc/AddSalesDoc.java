@@ -97,6 +97,18 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
         CustomerHelper.setCustomer(upper, customerProperty, CustomerType.SALESPERSON);
     }
 
+    private void bindCommodityList(boolean hasMax){
+        commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
+            @Override
+            public void onChanged(Change<? extends BasicCommodityItemVO> c) {
+                while (c.next()) {
+                    docItemList.addAll(c.getAddedSubList().stream()
+                            .map(x -> new CommodityItem(x, 1,hasMax))
+                            .collect(Collectors.toList()));
+                }
+            }
+        });
+    }
 
     public void choosePromotion() throws IOException {
         PromotionHelper.setPromotion(upper, promotionProperty, promotionBLService.getBenefitsPlan(
@@ -196,16 +208,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
                 promotionBtn.setDisable(false);
         });
 
-        commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
-            @Override
-            public void onChanged(Change<? extends BasicCommodityItemVO> c) {
-                while (c.next()) {
-                    docItemList.addAll(c.getAddedSubList().stream()
-                            .map(x -> new CommodityItem(x, 1))
-                            .collect(Collectors.toList()));
-                }
-            }
-        });
+       bindCommodityList(true);
 
         customerProperty.addListener(c-> {
             customer.setText(customerProperty.getValue().getName());
@@ -275,6 +278,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     void setReturn() {
         title.setText("制定销售退货单");
         verticalVBox.getChildren().remove(promotionBox);
+        bindCommodityList(false);
         commitBtn.setOnAction(e -> {
             if (getReturnDoc()!=null){
                 Result<DocVO> result= docBLService.commitDoc(getReturnDoc());
@@ -284,10 +288,10 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     }
 
     void init(Upper upper,List<SalesDocItemVO> itemList, int customerID, String remarks,
-              String voucher, String discount) {
+              String voucher, String discount,boolean hasMax) {
         this.upper=upper;
         docItemList.setAll(itemList.stream()
-                .map(CommodityItem::new)
+                .map(x-> new CommodityItem(x,hasMax))
                 .collect(Collectors.toList()));
 
         customerProperty.set(CustomerHelper.getCustomer(customerID));
@@ -304,7 +308,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
         SalesDocVO salesDocVO = (SalesDocVO) docVO;
         init(upper,salesDocVO.getItems(), salesDocVO.getCustomerId(),
                 salesDocVO.getRemarks(), salesDocVO.getVoucher() + "",
-                salesDocVO.getDiscount() + "");
+                salesDocVO.getDiscount() + "",true);
 
     }
 

@@ -24,6 +24,7 @@ import nju.lighting.presentation.utils.CommodityHelper;
 import nju.lighting.presentation.utils.DocHelper;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
+import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocVO;
 import shared.LossAndGainItemType;
 import shared.Result;
@@ -92,9 +93,26 @@ public class AddLossAndGainDoc implements Initializable, Upper, Modifiable {
         sub.setText(title);
     }
 
+    private AlertDocVO getAlertDoc(){
+        if (docItemList.size()!=0)
+            return new AlertDocVO(
+                    Client.getUserVO().getID(),
+                    new Date(),
+                    docItemList.stream()
+                            .map(x -> x.toAlertDocItemVO())
+                            .collect(Collectors.toList()),
+                    comments.getText());
+        else return null;
+    }
     public void setAlert() {
         title.setText("制定报警单");
         listController.setAlert();
+        commitBtn.setOnAction(e->{
+          if (getAlertDoc()!=null){
+              Result<DocVO> res = blService.commitDoc(getAlertDoc());
+              DialogHelper.dialog("提交报警单",res.getResultMessage(), stackPane);
+          }
+        });
     }
 
     @FXML
@@ -103,19 +121,23 @@ public class AddLossAndGainDoc implements Initializable, Upper, Modifiable {
     }
 
     private LossAndGainDocVO getDoc(){
+        if (docItemList.size()!=0)
         return new LossAndGainDocVO(new Date(),
                 Client.getUserVO().getID(),
                 docItemList.stream()
                         .map(x -> x.toLossAndGainDocItemVO())
                         .collect(Collectors.toList()),
                 comments.getText());
+        else return null;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commitBtn.setOnAction(e -> {
-            Result<DocVO> res = blService.commitDoc(getDoc());
-            DialogHelper.dialog("提交报损报溢单",res.getResultMessage(), stackPane);
+            if (getDoc()!=null){
+                Result<DocVO> res = blService.commitDoc(getDoc());
+                DialogHelper.dialog("提交报损报溢单",res.getResultMessage(), stackPane);
+            }
         });
 
         chooseCommodityBtn.setOnAction(event -> {

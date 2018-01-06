@@ -6,10 +6,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.layout.StackPane;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.DialogUI.ValidateEventHandle;
 import nju.lighting.presentation.accountui.AccountList;
+import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.vo.account.AccountVO;
 
 import java.io.IOException;
@@ -17,14 +17,15 @@ import java.io.IOException;
 /**
  * Created on 2017/12/27.
  * Description
+ *
  * @author 陈俊宇
  */
 public class AccountHelper {
 
 
-    public static void addAccount(StackPane stackPane, ObservableList<AccountVO> accountList) {
+    public static void addAccount(ObservableList<AccountVO> accountList) {
         SimpleObjectProperty<AccountVO> account = new SimpleObjectProperty<>();
-        loadAccount(stackPane, account);
+        loadAccount(account);
         account.addListener(new ChangeListener<AccountVO>() {
             @Override
             public void changed(ObservableValue<? extends AccountVO> observable, AccountVO oldValue, AccountVO newValue) {
@@ -33,11 +34,11 @@ public class AccountHelper {
         });
     }
 
-    public static void addAccount(StackPane stackPane, SimpleObjectProperty<AccountVO> account) {
-        loadAccount(stackPane, account);
+    public static void addAccount(SimpleObjectProperty<AccountVO> account) {
+        loadAccount(account);
     }
 
-    private static void loadAccount(StackPane stackPane, SimpleObjectProperty<AccountVO> account) {
+    private static void loadAccount(SimpleObjectProperty<AccountVO> account) {
         FXMLLoader loader = new FXMLLoader(AccountHelper.class.getResource("../accountui/AccountList.fxml"));
         try {
             Node node = loader.load();
@@ -54,7 +55,7 @@ public class AccountHelper {
                     }
                 }
             };
-            DialogHelper.addDialog(node, stackPane, eventHandle);
+            DialogHelper.addDialog(node, MainUI.getStackPane(), eventHandle);
         } catch (IOException e) {
             e.printStackTrace();
         }

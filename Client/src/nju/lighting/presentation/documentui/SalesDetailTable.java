@@ -24,10 +24,7 @@ import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.factory.UserBLServiceFactory;
 import nju.lighting.presentation.mainui.Upper;
-import nju.lighting.presentation.utils.CommodityHelper;
-import nju.lighting.presentation.utils.CustomerHelper;
-import nju.lighting.presentation.utils.DateHelper;
-import nju.lighting.presentation.utils.TableViewHelper;
+import nju.lighting.presentation.utils.*;
 import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
@@ -76,9 +73,8 @@ public class SalesDetailTable implements Initializable, Upper {
     TableColumn openBtn;
     @FXML
     TableView<SalesDetailItemVO> tableView;
-    //    private JFXNodesList nodeList;
-//
-    private HamburgerBasicCloseTransition burgerTask;
+
+    private HamburgerBasicCloseTransition burgerTask =new HamburgerBasicCloseTransition();
     private JFXNodesList nodesList = new JFXNodesList();
     private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
     private SimpleObjectProperty<UserVO> creatorProperty = new SimpleObjectProperty<>();
@@ -177,30 +173,7 @@ public class SalesDetailTable implements Initializable, Upper {
 
         creatorBox.getItems().addAll(UserBLServiceFactory.getUserBLService().getUserList(Identity.SYSTEM_ADMIN));
 
-        burgerTask = new HamburgerBasicCloseTransition(hamburger);
-
-        burgerTask.setRate(-1);
-
-        hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-
-            burgerTask.setRate(burgerTask.getRate() * -1);
-
-            burgerTask.play();
-
-            System.out.println(nodesList.isExpanded());
-        });
-
-        nodesList.setSpacing(30);
-
-        nodesList.getChildren().clear();
-        nodesList.addAnimatedNode(hamburger);
-        nodesList.addAnimatedNode(filterBox);
-
-        nodesList.setMargin(hamburger, new Insets(0, 0, 0, 990));
-        nodesList.setMargin(filterBox, new Insets(-20, 0, 0, 20));
-        nodesList.setPadding(new Insets(25, 0, 0, 40));
-        pane.getChildren().add(nodesList);
-
+        DocHelper.addFilter(burgerTask,hamburger,nodesList,filterBox,pane);
 
         okBtn.setOnAction(e -> {
             refresh();

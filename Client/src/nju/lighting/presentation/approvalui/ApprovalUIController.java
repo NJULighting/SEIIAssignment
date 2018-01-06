@@ -140,9 +140,7 @@ public class ApprovalUIController implements Initializable {
         Doc.setDoc(clicked);
 
         try {
-            FXMLLoader loader = Doc.getLoader();
-            Node doc = loader.load();
-            detail.getChildren().add(doc);
+            detail.getChildren().add(Doc.getLoader().load());
         } catch (IOException e) {
             e.printStackTrace();
         }

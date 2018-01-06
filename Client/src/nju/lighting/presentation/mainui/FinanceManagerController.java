@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AccountManagerController extends MainUIController {
+public class FinanceManagerController extends MainUIController {
     @FXML
     private Button accountManage;
     @FXML
@@ -26,12 +26,13 @@ public class AccountManagerController extends MainUIController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttons = new Button[]{accountManage, makeAccountIODoc, makeCostDoc, businessConditionBtn, salesConditionBtn, businessHistoryBtn,
-                initaccountBtn, logBtn};
-        urls = new String[]{"../accountui/Account.fxml", "../documentui/accountiodoc/AddAccountIODoc.fxml", "../documentui/costdoc/CreateCostDoc.fxml",
-                "../documentui/BusinessConditionTable.fxml", "../documentui/SalesConditionTable.fxml", "../documentui/HistoryDoc",
+        buttons = new Button[]{accountManage, makeAccountIODoc, makeCostDoc, businessConditionBtn,
+                salesConditionBtn, businessHistoryBtn, initaccountBtn, logBtn};
+        urls = new String[]{"../accountui/Account.fxml", "../documentui/accountiodoc/AddAccountIODoc.fxml",
+                "../documentui/costdoc/AddCostDoc.fxml", "../documentui/BusinessConditionTable.fxml",
+                "../documentui/SalesDetailTable.fxml", "../documentui/BusinessHistoryTable.fxml",
                 "../initui/InitAccount.fxml", "../logui/Log.fxml"};
-        MAIN_BUTTON_SIZE = 8;
+        MAIN_BUTTON_SIZE = urls.length;
         super.initialize(location, resources);
     }
 }

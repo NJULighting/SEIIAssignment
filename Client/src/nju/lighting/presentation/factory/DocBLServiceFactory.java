@@ -1,5 +1,6 @@
 package nju.lighting.presentation.factory;
 
+import nju.lighting.bl.documentbl.DocBLService_Stub;
 import nju.lighting.bl.documentbl.DocController;
 import nju.lighting.blservice.documentblservice.DocBLService;
 
@@ -9,7 +10,7 @@ import nju.lighting.blservice.documentblservice.DocBLService;
  * @author 陈俊宇
  */
 public class DocBLServiceFactory {
-    private static DocBLService docBLService = new DocController();
+    private static DocBLService docBLService = new DocBLService_Stub();
 
     public static DocBLService getDocBLService() {
         return docBLService;

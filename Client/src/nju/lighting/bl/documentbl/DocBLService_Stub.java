@@ -1,5 +1,6 @@
 package nju.lighting.bl.documentbl;
 
+import nju.lighting.bl.approvalbl.ApprovalBLService_Stub;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
@@ -15,6 +16,7 @@ import shared.TwoTuple;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/30.
@@ -61,7 +63,11 @@ public class DocBLService_Stub implements DocBLService {
 
     @Override
     public List<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) {
-        return null;
+
+        return new ApprovalBLService_Stub().getDocumentList().stream()
+                .map(x-> new BusinessHistoryItemVO(x.getTime(),x.getType(),x,null,
+                        x.getCreatorId(),null))
+                .collect(Collectors.toList());
     }
 
     @Override

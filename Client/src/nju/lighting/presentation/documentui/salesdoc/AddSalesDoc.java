@@ -1,4 +1,4 @@
-package nju.lighting.presentation.documentui;
+package nju.lighting.presentation.documentui.salesdoc;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -21,6 +21,8 @@ import javafx.scene.layout.VBox;
 import nju.lighting.bl.documentbl.DocController;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
+import nju.lighting.presentation.documentui.CommodityItem;
+import nju.lighting.presentation.documentui.CommodityList;
 import nju.lighting.presentation.factory.PromotionBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.Upper;
@@ -44,7 +46,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class SalesDocController implements Initializable, Upper {
+public class AddSalesDoc implements Initializable, Upper {
     PromotionBLService promotionBLService = PromotionBLServiceFactory.getPromotionBLService();
     @FXML
     HBox container, promotionBox;

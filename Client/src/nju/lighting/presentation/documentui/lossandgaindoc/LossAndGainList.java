@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
+import nju.lighting.presentation.documentui.BtnCell;
 import nju.lighting.presentation.documentui.EditingCell;
 import nju.lighting.presentation.utils.ImageViewHelper;
 import nju.lighting.presentation.utils.RepositoryHelper;
@@ -163,6 +164,9 @@ public class LossAndGainList implements Initializable {
     public void setAlert() {
         count.setText("警戒数量");
         tableView.getColumns().remove(type);
+        TableColumn delete=new TableColumn();
+        delete.setCellFactory(p-> new BtnCell());
+        tableView.getColumns().add(delete);
     }
 
 

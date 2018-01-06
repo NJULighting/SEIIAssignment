@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
  */
 public class AddLossAndGainDocUI implements Initializable {
 
-    AddLossAndGainDocMain main;
+    AddLossAndGainDoc main;
     ObservableList<BasicCommodityItemVO> commodities = FXCollections.observableArrayList();
     ObservableList<LossAndGainItem> docItemList;
 
@@ -45,8 +45,7 @@ public class AddLossAndGainDocUI implements Initializable {
 
     @FXML
     HBox tableContainer;
-    @FXML
-    JFXTextField creatorText;
+
 
     LossAndGainList listController;
 
@@ -61,7 +60,7 @@ public class AddLossAndGainDocUI implements Initializable {
     TextArea comments;
 
 
-    public void setMain(AddLossAndGainDocMain main) {
+    public void setMain(AddLossAndGainDoc main) {
         this.main = main;
     }
 
@@ -88,7 +87,6 @@ public class AddLossAndGainDocUI implements Initializable {
 
         });
 
-        creatorText.setText(Client.getUserVO().getUsername());
         loader = new FXMLLoader(getClass().getResource("LossAndGainList.fxml"));
         try {
             tableContainer.getChildren().add(loader.load());
@@ -121,10 +119,16 @@ public class AddLossAndGainDocUI implements Initializable {
         listController.setAlert();
     }
 
+    public String getComments(){return comments.getText();}
+
+    public void setComments(String comments){this.comments.setText(comments);}
 
     public ObservableList<BasicCommodityItemVO> getCommodities() {
         return commodities;
     }
 
 
+    public JFXButton getCommitBtn() {
+        return commitBtn;
+    }
 }

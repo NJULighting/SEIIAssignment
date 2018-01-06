@@ -17,19 +17,27 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.documentui.BtnCell;
+import nju.lighting.presentation.documentui.Modifiable;
+import nju.lighting.presentation.factory.DocBLServiceFactory;
+import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.utils.AccountHelper;
 import nju.lighting.presentation.utils.CostDocHelper;
+import nju.lighting.presentation.utils.DocHelper;
+import nju.lighting.vo.DocVO;
 import nju.lighting.vo.account.AccountVO;
 import nju.lighting.vo.doc.costdoc.CostDocItemVO;
+import nju.lighting.vo.doc.costdoc.CostDocVO;
 import shared.Result;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
-public class CreateCostDocController implements Initializable {
+public class AddCostDocController implements Initializable,Modifiable {
 
 
 
@@ -51,9 +59,11 @@ public class CreateCostDocController implements Initializable {
 
     private SimpleDoubleProperty totalProperty=new SimpleDoubleProperty();
 
+    private DocBLService docBLService= DocBLServiceFactory.getDocBLService();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        addAccountBtn.setOnAction(e-> AccountHelper.addAccount(stackPane,accountProperty));
+        addAccountBtn.setOnAction(e-> AccountHelper.addAccount(accountProperty));
 
         FXMLLoader tableLoader=new FXMLLoader(getClass().getResource("CostItemList.fxml"));
 
@@ -96,8 +106,25 @@ public class CreateCostDocController implements Initializable {
         });
 
         commitBtn.setOnAction(e-> {
-           //提交现金费用单
+           docBLService.commitDoc(getDoc());
         });
     }
 
+    CostDocVO getDoc(){
+        return new CostDocVO(new Date(), Client.getUserVO().getID(),
+                accountProperty.getValue(), observableList);
+    }
+
+    @Override
+    public void modify(DocVO docVO, boolean redFlush) {
+        CostDocVO costDocVO=(CostDocVO)docVO;
+
+        accountProperty.set(costDocVO.getAccount());
+        observableList.setAll(costDocVO.getItemList());
+        totalProperty.set(costDocVO.getTotal());
+
+        if (!redFlush){
+            commitBtn.setOnAction(e-> DocHelper.saveAndApprove(getDoc()));
+        }
+    }
 }

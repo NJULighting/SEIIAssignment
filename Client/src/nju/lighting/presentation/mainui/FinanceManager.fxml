@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: transparent;"
-      xmlns="http://javafx.com/javafx/8" fx:controller="nju.lighting.presentation.mainui.AccountManagerController">
+      xmlns="http://javafx.com/javafx/8" fx:controller="nju.lighting.presentation.mainui.FinanceManagerController">
     <children>
         <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="首页">
             <graphic>

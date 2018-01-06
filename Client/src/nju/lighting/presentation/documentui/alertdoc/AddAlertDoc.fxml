@@ -3,5 +3,5 @@
 <?import javafx.scene.layout.Pane?>
 <Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
       minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" stylesheets="@../../custom.css"
-      xmlns="http://javafx.com/javafx/8" fx:controller="nju.lighting.presentation.documentui.alertdoc.AddAlertDocMain">
+      xmlns="http://javafx.com/javafx/8" fx:controller="nju.lighting.presentation.documentui.alertdoc.AddAlertDoc">
 </Pane>

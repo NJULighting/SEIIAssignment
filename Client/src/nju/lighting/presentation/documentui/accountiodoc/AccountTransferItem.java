@@ -2,6 +2,8 @@ package nju.lighting.presentation.documentui.accountiodoc;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import nju.lighting.blservice.accountblservice.AccountBLService;
+import nju.lighting.presentation.factory.AccountBLServiceFactory;
 import nju.lighting.vo.account.AccountVO;
 import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 
@@ -14,17 +16,24 @@ public class AccountTransferItem {
     SimpleStringProperty accountName = new SimpleStringProperty();
     SimpleStringProperty comments = new SimpleStringProperty();
     SimpleDoubleProperty amount = new SimpleDoubleProperty();
+    AccountVO accountVO;
 
     public AccountTransferItem(AccountTransferItemVO vo) {
-        accountName.set(vo.getAccountID());
+        accountVO=AccountBLServiceFactory.getAccountBLService().getAccount(vo.getAccountID());
+        accountName.set(accountVO.getName());
         comments.set(vo.getComments());
         amount.set(vo.getAmount());
 
     }
 
     public AccountTransferItem(AccountVO account) {
+        accountVO=account;
         accountName.set(account.getName());
 
+    }
+
+    public AccountTransferItemVO toTransferItem(){
+        return new AccountTransferItemVO(amount.getValue(),comments.getValue(),accountVO.getId());
     }
 
     public String getAccountName() {

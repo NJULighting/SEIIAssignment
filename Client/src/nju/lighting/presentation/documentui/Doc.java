@@ -23,7 +23,7 @@ public class Doc {
         map.put(DocType.ACCOUNT_OUT, "accountiodoc/AccountIODoc.fxml");
         map.put(DocType.LOSS_AND_GAIN, "lossandgaindoc/LossAndGainDoc.fxml");
         map.put(DocType.SALES, "salesdoc/SalesDoc.fxml");
-        map.put(DocType.SALES_RETURN, "salesdoc/SalesReturnDoc.fxml");
+        map.put(DocType.SALES_RETURN, "salesdoc/AddSalesReturnDoc.fxml");
         map.put(DocType.STOCK, "stockdoc/StockDoc.fxml");
         map.put(DocType.STOCK_RETURN, "stockdoc/StockReturnDoc.fxml");
         map.put(DocType.ALERT, "alertdoc/AlertDoc.fxml");

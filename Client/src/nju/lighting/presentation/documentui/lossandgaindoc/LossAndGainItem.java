@@ -48,7 +48,11 @@ public class LossAndGainItem {
     }
 
     public LossAndGainDocItemVO toLossAndGainDocItemVO() {
-        return new LossAndGainDocItemVO(commodity, count.getValue(), type.getValue());
+        return new LossAndGainDocItemVO(commodity, getCount(), getType());
+    }
+
+    public AlertDocItemVO toAlertDocItemVO(){
+        return new AlertDocItemVO(commodity,getCount());
     }
 
     public String getName() {

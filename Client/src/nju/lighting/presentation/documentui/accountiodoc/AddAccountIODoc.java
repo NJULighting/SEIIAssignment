@@ -1,5 +1,6 @@
 package nju.lighting.presentation.documentui.accountiodoc;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
@@ -15,22 +16,38 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import nju.lighting.blservice.approvalblservice.ApprovalBLService;
+import nju.lighting.blservice.documentblservice.DocBLService;
+import nju.lighting.presentation.documentui.Modifiable;
+import nju.lighting.presentation.factory.ApprovalBLServiceFactory;
+import nju.lighting.presentation.factory.CustomerBLServiceFactory;
+import nju.lighting.presentation.factory.DocBLServiceFactory;
+import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.AccountHelper;
 import nju.lighting.presentation.utils.CustomerHelper;
+import nju.lighting.presentation.utils.DocHelper;
 import nju.lighting.vo.CustomerVO;
+import nju.lighting.vo.DocVO;
 import nju.lighting.vo.account.AccountVO;
+import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;
+import nju.lighting.vo.doc.historydoc.HistoryDocVO;
+import shared.DocState;
+import shared.DocType;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/26.
  * Description
+ *
  * @author 陈俊宇
  */
-public class AddAccountIODoc implements Initializable, Upper {
+public class AddAccountIODoc implements Initializable, Upper, Modifiable {
 
     @FXML
     JFXToggleButton toggleBtn;
@@ -48,20 +65,39 @@ public class AddAccountIODoc implements Initializable, Upper {
     TextField customerText;
 
     @FXML
-    Button addTransferItemBtn;
+    Button addTransferItemBtn, chooseCustomerBtn;
+
+    @FXML
+    JFXButton commitBtn;
 
     @FXML
     StackPane stackPane;
 
-    SimpleObjectProperty<AccountVO> accountProperty = new SimpleObjectProperty<>();
-    ObservableList<AccountTransferItem> itemList;
+    private SimpleObjectProperty<AccountVO> accountProperty = new SimpleObjectProperty<>();
+
+    private ObservableList<AccountTransferItem> itemList;
+
+    private DocBLService docBLService = DocBLServiceFactory.getDocBLService();
+
+    private ApprovalBLService approvalBLService = ApprovalBLServiceFactory.getApprovalBLService();
+
+    private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
+
+    private DocType type = DocType.ACCOUNT_OUT;
 
 
-    SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
+    private AccountIODocVO getDoc() {
+        return new AccountIODocVO(new Date(), type,
+                customerProperty.getValue().getID() + "",
+                Client.getUserVO().getID(),
+                itemList.stream()
+                        .map(AccountTransferItem::toTransferItem)
+                        .collect(Collectors.toList()));
+    }
 
     @FXML
     void commit() {
-
+        docBLService.commitDoc(getDoc());
     }
 
     @FXML
@@ -91,7 +127,7 @@ public class AddAccountIODoc implements Initializable, Upper {
         });
 
         addTransferItemBtn.setOnAction(e -> {
-            AccountHelper.addAccount(stackPane, accountProperty);
+            AccountHelper.addAccount(accountProperty);
         });
 
         customerProperty.addListener(new ChangeListener<CustomerVO>() {
@@ -105,9 +141,14 @@ public class AddAccountIODoc implements Initializable, Upper {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if (newValue) {
-                    toggleBtn.setText("收款单");
-                } else
+                    {
+                        toggleBtn.setText("收款单");
+                        type = DocType.ACCOUNT_IN;
+                    }
+                } else {
                     toggleBtn.setText("付款单");
+                    type = DocType.ACCOUNT_OUT;
+                }
             }
         });
     }
@@ -123,4 +164,29 @@ public class AddAccountIODoc implements Initializable, Upper {
     }
 
 
+    @Override
+    public void modify(DocVO docVO, boolean redFlush) {
+        AccountIODocVO accountIODocVO = (AccountIODocVO) docVO;
+
+        itemList.setAll(accountIODocVO.getTransferAccountList().stream()
+                .map(AccountTransferItem::new)
+                .collect(Collectors.toList()));
+
+        toggleBtn.selectedProperty().setValue(docVO.getType() == DocType.ACCOUNT_IN);
+        toggleBtn.setDisable(true);
+
+        customerProperty.set(CustomerBLServiceFactory.getCustomerBLService().findCustomerByID(
+                Integer.parseInt(accountIODocVO.getCustomer())
+        ));
+        customerText.setEditable(false);
+        chooseCustomerBtn.setDisable(true);
+
+
+        if (!redFlush) {
+            commitBtn.setOnAction(e -> {
+                DocHelper.saveAndApprove(getDoc());
+            });
+        }
+
+    }
 }

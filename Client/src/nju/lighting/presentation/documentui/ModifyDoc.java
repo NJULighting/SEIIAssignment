@@ -1,0 +1,49 @@
+package nju.lighting.presentation.documentui;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import nju.lighting.vo.DocVO;
+import shared.DocType;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+/**
+ * Created on 2018/1/6.
+ * Description
+ *
+ * @author 陈俊宇
+ */
+public class ModifyDoc {
+
+    private static HashMap<DocType,String> typeStringHashMap=new HashMap<>();
+
+    static {
+        //typeStringHashMap.put(DocType.GIFT, "giftdoc/GiftDoc.fxml");
+        typeStringHashMap.put(DocType.ACCOUNT_IN, "accountiodoc/AddAccountIODoc.fxml");
+        typeStringHashMap.put(DocType.ACCOUNT_OUT, "accountiodoc/AddAccountIODoc.fxml");
+        typeStringHashMap.put(DocType.LOSS_AND_GAIN, "lossandgaindoc/AddLossAndGainDoc.fxml");
+        typeStringHashMap.put(DocType.SALES, "salesdoc/AddSalesDoc.fxml");
+        typeStringHashMap.put(DocType.SALES_RETURN, "salesdoc/AddSalesReturnDoc.fxml");
+        typeStringHashMap.put(DocType.STOCK, "stockdoc/AddStockDoc.fxml");
+        typeStringHashMap.put(DocType.STOCK_RETURN, "stockdoc/AddStockReturnDoc.fxml");
+        typeStringHashMap.put(DocType.ALERT, "alertdoc/AddAlertDoc.fxml");
+        typeStringHashMap.put(DocType.COST, "costdoc/AddCostDoc.fxml");
+    }
+
+
+    public static Node getNode(DocVO docVO,boolean redFlush){
+        FXMLLoader loader=new FXMLLoader(ModifyDoc.class.getResource(typeStringHashMap.get(docVO.getType())));
+
+        try {
+            Node node=loader.load();
+            Modifiable controller=loader.getController();
+            controller.modify(docVO, redFlush);
+            return node;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+}

@@ -35,7 +35,7 @@ public class MainUI {
         hashMap.put(Identity.REPOSITORY, "RepositoryManager.fxml");
         hashMap.put(Identity.SALE, "SalesManager.fxml");
         hashMap.put(Identity.SALE_MANAGER, "SalesManager.fxml");
-        hashMap.put(Identity.FINANCE, "AccountManager.fxml");
+        hashMap.put(Identity.FINANCE, "FinanceManager.fxml");
         hashMap.put(Identity.SYSTEM_ADMIN, "SystemManager.fxml");
     }
 

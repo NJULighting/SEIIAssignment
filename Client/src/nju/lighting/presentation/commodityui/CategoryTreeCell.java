@@ -16,14 +16,13 @@ import javafx.scene.control.TreeTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
-import nju.lighting.builder.commodity.CommodityBuildInfo;
+import shared.CommodityBuildInfo;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.io.IOException;
 import java.util.HashMap;

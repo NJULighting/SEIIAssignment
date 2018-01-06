@@ -1,4 +1,4 @@
-package nju.lighting.builder.commodity;
+package shared;
 
 import nju.lighting.bl.utils.CommodityPathParser;
 import nju.lighting.po.commodity.CommodityItemPO;

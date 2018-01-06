@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import nju.lighting.builder.commodity.CommodityBuildInfo;
+import shared.CommodityBuildInfo;
 import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;

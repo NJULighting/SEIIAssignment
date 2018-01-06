@@ -2,7 +2,7 @@ package nju.lighting.bl.commoditybl;
 
 import javafx.scene.image.Image;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
-import nju.lighting.builder.commodity.CommodityBuildInfo;
+import shared.CommodityBuildInfo;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;

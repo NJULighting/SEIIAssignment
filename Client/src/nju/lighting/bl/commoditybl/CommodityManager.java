@@ -7,7 +7,7 @@ import nju.lighting.bl.utils.CommodityPathParser;
 import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.bl.utils.FuzzySeekingHelper;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
-import nju.lighting.builder.commodity.CommodityBuildInfo;
+import shared.CommodityBuildInfo;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.po.commodity.CommodityCategoryPO;

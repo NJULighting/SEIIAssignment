@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import nju.lighting.presentation.DialogUI.DialogHelper;
+import nju.lighting.presentation.documentui.Doc;
 import nju.lighting.presentation.factory.ApprovalBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.MainUI;
@@ -16,6 +17,7 @@ import shared.DocState;
 import shared.DocType;
 import shared.ResultMessage;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -28,6 +30,7 @@ import java.util.HashMap;
 public class DocHelper {
     private static HashMap<DocType,String> typeStringHashMap=new HashMap<>();
     private static HashMap<String,DocType> stringTypeHasMap=new HashMap<>();
+    private static HashMap<DocState,String> stateStringHashMap=new HashMap<>();
 
     static {
         typeStringHashMap.put(DocType.ACCOUNT_OUT,"付款单");
@@ -51,6 +54,11 @@ public class DocHelper {
         stringTypeHasMap.put("销售退货单",DocType.SALES_RETURN);
         stringTypeHasMap.put("进货单",DocType.STOCK);
         stringTypeHasMap.put("进货退货单",DocType.STOCK_RETURN);
+
+        stateStringHashMap.put(DocState.APPROVAL,"审批通过");
+        stateStringHashMap.put(DocState.DISAPPROVAL,"审批不通过");
+        stateStringHashMap.put(DocState.UN_CHECKED,"待审批");
+
     }
 
     public static String typeToString(DocType type){return typeStringHashMap.get(type);}
@@ -91,5 +99,22 @@ public class DocHelper {
                         DocState.APPROVAL,new Date())
         );
         DialogHelper.dialog(resultMessage, MainUI.getStackPane());
+    }
+
+    public static String stateToString(DocState state){return stateStringHashMap.get(state);}
+
+    public static void showDoc(DocVO docVO, Pane container){
+
+        if (container.getChildren().size() > 0)
+            container.getChildren().remove(container.getChildren().size() - 1);
+
+        Doc.setDoc(docVO);
+
+        try {
+            container.getChildren().add(Doc.getLoader().load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

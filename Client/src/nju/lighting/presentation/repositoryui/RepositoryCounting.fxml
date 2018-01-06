@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
-<ScrollPane xmlns:fx="http://javafx.com/fxml/1" hbarPolicy="NEVER" prefHeight="680.0" prefWidth="1080.0"
-            xmlns="http://javafx.com/javafx/8.0.111"
-            fx:controller="nju.lighting.presentation.repositoryui.RepositoryCounting">
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane hbarPolicy="NEVER" prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.repositoryui.RepositoryCounting">
     <content>
         <Pane minHeight="678.0" prefWidth="1078.0">
             <children>
-                <TableView fx:id="tableView" fixedCellSize="30" layoutX="38.0" layoutY="54.0" prefHeight="200.0">
+                <TableView fx:id="tableView" fixedCellSize="40" layoutX="50.0" layoutY="60.0" prefHeight="602.0" prefWidth="1002.0">
                     <columns>
-                        <TableColumn fx:id="index" editable="false" prefWidth="50.0" resizable="false"
-                                     sortable="false"/>
-                        <TableColumn fx:id="commodity" editable="false" prefWidth="150.0" resizable="false" text="商品"/>
-                        <TableColumn fx:id="modelNumber" prefWidth="150.0" resizable="false" text="型号"/>
-                        <TableColumn fx:id="repCount" prefWidth="100.0" resizable="false" text="库存数量"/>
-                        <TableColumn fx:id="recentInPrice" prefWidth="100.0" resizable="false" text="库存均价"/>
-                        <TableColumn fx:id="batch" prefWidth="150.0" resizable="false" text="批次"/>
-                        <TableColumn fx:id="batchNumber" prefWidth="150.0" resizable="false" text="批号"/>
-                        <TableColumn fx:id="dateOfProduction" prefWidth="150.0" resizable="false" text="出厂日期"/>
+                        <TableColumn fx:id="index" editable="false" prefWidth="50.0" resizable="true" sortable="false" />
+                        <TableColumn fx:id="commodity" editable="false" prefWidth="334.5" resizable="true" text="商品" />
+                        <TableColumn fx:id="modelNumber" prefWidth="234.0" resizable="true" text="型号" />
+                        <TableColumn fx:id="repCount" prefWidth="185.0" resizable="true" text="库存数量" />
+                        <TableColumn fx:id="recentInPrice" prefWidth="197.0" resizable="true" text="库存均价" />
                     </columns>
                 </TableView>
+            <Line endX="300.0" layoutX="125.0" layoutY="42.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />
+            <Label layoutX="25.0" layoutY="14.0" text="今日库存盘点">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="exportBtn" layoutX="992.0" layoutY="13.0" prefHeight="27.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="导出" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
             </children>
         </Pane>
     </content>

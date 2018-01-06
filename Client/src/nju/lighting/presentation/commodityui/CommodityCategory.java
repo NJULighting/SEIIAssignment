@@ -192,7 +192,7 @@ public class CommodityCategory implements Initializable {
         name.setCellFactory(new Callback<TreeTableColumn<CommodityCategoryItem, String>, TreeTableCell<CommodityCategoryItem, String>>() {
             @Override
             public TreeTableCell<CommodityCategoryItem, String> call(TreeTableColumn<CommodityCategoryItem, String> param) {
-                return new MyTreeCell(stackPane, keyWord, blService);
+                return new CategoryTreeCell(stackPane, keyWord, blService);
             }
         });
 

@@ -2,8 +2,6 @@ package nju.lighting.presentation.utils;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.validation.DoubleValidator;
-import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
 import com.jfoenix.validation.base.ValidatorBase;
 import javafx.beans.value.ChangeListener;
@@ -52,16 +50,42 @@ public class TextFieldHelper {
     }
 
     public static void addDoubleValidator(JFXTextField textField, String message) {
-        DoubleValidator validator = new DoubleValidator();
+        ValidatorBase validator = new ValidatorBase() {
+            @Override
+            protected void eval() {
+                try {
+                    double target = Double.parseDouble(textField.getText());
+                    System.out.println("target" + target);
+                    if (target > 0)
+                        this.hasErrors.set(false);
+                    else this.hasErrors.set(true);
+                } catch (Exception var3) {
+                    this.hasErrors.set(true);
+                }
+            }
+        };
         binds(textField, validator, message);
     }
 
     public static void addNumberValidator(JFXTextField textField) {
-        addDoubleValidator(textField, "请输入整数");
+        addNumberValidator(textField, "请输入整数");
     }
 
     public static void addNumberValidator(JFXTextField textField, String message) {
-        NumberValidator validator = new NumberValidator();
+        ValidatorBase validator = new ValidatorBase() {
+            @Override
+            protected void eval() {
+                try {
+                    int target = Integer.parseInt(textField.getText());
+                    if (target > 0)
+                        this.hasErrors.set(false);
+                    else
+                        this.hasErrors.set(true);
+                } catch (Exception var3) {
+                    this.hasErrors.set(true);
+                }
+            }
+        };
         binds(textField, validator, message);
     }
 
@@ -73,9 +97,6 @@ public class TextFieldHelper {
         RequiredFieldValidator validator = new RequiredFieldValidator();
         binds(textField, validator, message);
     }
-
-
-
 
 
     public static void addRequiredValidator(JFXPasswordField passwordField) {
@@ -94,11 +115,11 @@ public class TextFieldHelper {
             }
         };
 
-        binds(passwordField,validatorBase,"两次输入密码不一致");
+        binds(passwordField, validatorBase, "两次输入密码不一致");
     }
 
-    public static void addNameValidator(JFXTextField textField){
-        ValidatorBase validatorBase=new ValidatorBase() {
+    public static void addNameValidator(JFXTextField textField) {
+        ValidatorBase validatorBase = new ValidatorBase() {
             @Override
             protected void eval() {
                 if (NameChecker.validName(textField.getText()))
@@ -107,11 +128,11 @@ public class TextFieldHelper {
             }
         };
 
-        binds(textField,validatorBase,"格式不正确");
+        binds(textField, validatorBase, "格式不正确");
     }
 
-    public static void addIdValidator(JFXTextField textField){
-        ValidatorBase validatorBase=new ValidatorBase() {
+    public static void addIdValidator(JFXTextField textField) {
+        ValidatorBase validatorBase = new ValidatorBase() {
             @Override
             protected void eval() {
                 if (NameChecker.validID(textField.getText()))
@@ -120,7 +141,7 @@ public class TextFieldHelper {
                     this.hasErrors.set(true);
             }
         };
-        binds(textField,validatorBase,"格式不正确");
+        binds(textField, validatorBase, "格式不正确");
     }
 
     public static double getDouble(JFXTextField textField) {

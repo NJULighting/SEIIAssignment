@@ -9,15 +9,10 @@ import javafx.fxml.FXML;
  * @author 陈俊宇
  */
 public class CommentsController {
-
-
     @FXML
     JFXTextArea comment;
-
 
     String getComments() {
         return comment.getText();
     }
-
-
 }

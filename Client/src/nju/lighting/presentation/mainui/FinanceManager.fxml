@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: transparent;"
-      xmlns="http://javafx.com/javafx/8" fx:controller="nju.lighting.presentation.mainui.FinanceManagerController">
+
+<VBox prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.mainui.FinanceManagerController">
     <children>
-        <JFXButton alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="首页">
+        <JFXButton fx:id="home" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="首页">
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0">
                     <image>
-                        <Image url="@../../../../images/个人.png"/>
+                        <Image url="@../../../../images/个人.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -19,7 +20,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0">
                     <image>
-                        <Image url="@../../../../images/账户管理.png"/>
+                        <Image url="@../../../../images/账户管理.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -28,7 +29,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0">
                     <image>
-                        <Image url="@../../../../images/收付款单.png"/>
+                        <Image url="@../../../../images/收付款单.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -37,27 +38,25 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0">
                     <image>
-                        <Image url="@../../../../images/现金费用单.png"/>
+                        <Image url="@../../../../images/现金费用单.png" />
                     </image>
                 </ImageView>
             </graphic>
         </JFXButton>
-        <JFXButton fx:id="businessHistoryBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0"
-                   text="查看经营历程表">
+        <JFXButton fx:id="businessHistoryBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="查看经营历程表">
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0">
                     <image>
-                        <Image url="@../../../../images/查看经营历程表.png"/>
+                        <Image url="@../../../../images/查看经营历程表.png" />
                     </image>
                 </ImageView>
             </graphic>
         </JFXButton>
-        <JFXButton fx:id="businessConditionBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0"
-                   text="查看经营情况表">
+        <JFXButton fx:id="businessConditionBtn" alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="200.0" text="查看经营情况表">
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0">
                     <image>
-                        <Image url="@../../../../images/查看经营情况表.png"/>
+                        <Image url="@../../../../images/查看经营情况表.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -66,7 +65,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0">
                     <image>
-                        <Image url="@../../../../images/销售明细表.png"/>
+                        <Image url="@../../../../images/销售明细表.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -75,7 +74,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0">
                     <image>
-                        <Image url="@../../../../images/期初建账.png"/>
+                        <Image url="@../../../../images/期初建账.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -84,7 +83,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0">
                     <image>
-                        <Image url="@../../../../images/日志.png"/>
+                        <Image url="@../../../../images/日志.png" />
                     </image>
                 </ImageView>
             </graphic>

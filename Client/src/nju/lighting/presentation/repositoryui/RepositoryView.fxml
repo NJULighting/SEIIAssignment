@@ -2,23 +2,25 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="680.0" prefWidth="1080.0"
-            xmlns="http://javafx.com/javafx/8.0.121" fx:controller="nju.lighting.presentation.repositoryui.RepositoryView">
+
+<AnchorPane prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.repositoryui.RepositoryView">
     <children>
-        <Pagination fx:id="pagination" layoutX="15.0" layoutY="614.0" prefHeight="52.0" prefWidth="1059.0"/>
-        <TableView fx:id="tableView" fixedCellSize="30.0" layoutX="65.0" layoutY="126.0" minHeight="0.0"
-                   prefWidth="950.0">
+        <Pagination fx:id="pagination" layoutX="15.0" layoutY="614.0" prefHeight="52.0" prefWidth="1059.0" />
+        <TableView fx:id="tableView" fixedCellSize="30.0" layoutX="65.0" layoutY="126.0" minHeight="0.0" prefWidth="950.0">
             <columns>
-                <TableColumn fx:id="commodity" prefWidth="250.0" text="商品"/>
-                <TableColumn fx:id="type" prefWidth="150.0" text="库存变化类型"/>
-                <TableColumn fx:id="count" prefWidth="200.0" text="数量"/>
-                <TableColumn fx:id="amount" prefWidth="200.0" text="金额"/>
-                <TableColumn fx:id="date" prefWidth="150.0" text="日期"/>
+                <TableColumn fx:id="commodity" prefWidth="250.0" text="商品" />
+                <TableColumn fx:id="type" prefWidth="150.0" text="库存变化类型" />
+                <TableColumn fx:id="count" prefWidth="200.0" text="数量" />
+                <TableColumn fx:id="amount" prefWidth="200.0" text="金额" />
+                <TableColumn fx:id="date" prefWidth="150.0" text="日期" />
             </columns>
         </TableView>
         <HBox layoutX="116.0" layoutY="76.0" spacing="80.0">
@@ -27,30 +29,34 @@
                     <children>
                         <Label text="起始时间">
                             <font>
-                                <Font size="18.0"/>
+                                <Font size="18.0" />
                             </font>
                         </Label>
-                        <JFXDatePicker fx:id="startDate"/>
+                        <JFXDatePicker fx:id="startDate" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" spacing="50.0">
                     <children>
                         <Label text="终止时间">
                             <font>
-                                <Font size="18.0"/>
+                                <Font size="18.0" />
                             </font>
                         </Label>
-                        <JFXDatePicker fx:id="endDate"/>
+                        <JFXDatePicker fx:id="endDate" />
                     </children>
                 </HBox>
-                <JFXButton fx:id="refreshBtn" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #5599FF;"
-                           text="确认" textFill="WHITE">
+                <JFXButton fx:id="refreshBtn" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #5599FF;" text="确认" textFill="WHITE">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </JFXButton>
             </children>
         </HBox>
-        <Line endX="100.0" layoutX="130.0" layoutY="15.0" startX="-100.0" strokeWidth="0.35"/>
+        <Line endX="300.0" layoutX="132.0" layoutY="42.0" startX="-100.0" strokeWidth="0.35" />
+      <Label layoutX="32.0" layoutY="10.0" text="库存查看">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

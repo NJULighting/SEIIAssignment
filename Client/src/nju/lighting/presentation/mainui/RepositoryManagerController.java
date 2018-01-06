@@ -18,7 +18,7 @@ public class RepositoryManagerController extends MainUIController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttons = new Button[]{historyBtn, commodityBtn, repositoryViewBtn, repositoryCountingBtn, lossAndGainDoc, alertDoc};
-        urls = new String[]{"../documentui/HistoryDoc.fxml", "../commodityui/CommodityManage.fxml",
+        urls = new String[]{"../homeui/HomePage.fxml", "../commodityui/CommodityManage.fxml",
                 "../repositoryui/RepositoryView.fxml", "../repositoryui/RepositoryCounting.fxml",
                 "../documentui/lossandgaindoc/AddLossAndGainDoc.fxml", "../documentui/alertdoc/AddAlertDoc.fxml"};
         MAIN_BUTTON_SIZE = urls.length;

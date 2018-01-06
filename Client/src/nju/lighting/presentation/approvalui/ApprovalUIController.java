@@ -22,6 +22,7 @@ import nju.lighting.presentation.DialogUI.ValidateEventHandle;
 import nju.lighting.presentation.documentui.Doc;
 import nju.lighting.presentation.factory.ApprovalBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
+import nju.lighting.presentation.utils.DocHelper;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.DocState;
@@ -36,13 +37,14 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/11/28.
  * Description
+ *
  * @author 陈俊宇
  */
 public class ApprovalUIController implements Initializable {
-    ApprovalBLService approvalBLService = ApprovalBLServiceFactory.getApprovalBLService();
-    List<DocVO> docs;
-    ObservableList<DocVO> selectedDocList;
-    String comment;
+    private ApprovalBLService approvalBLService = ApprovalBLServiceFactory.getApprovalBLService();
+    private List<DocVO> docs;
+    private ObservableList<DocVO> selectedDocList;
+    private String comment;
 
 
     @FXML
@@ -132,19 +134,7 @@ public class ApprovalUIController implements Initializable {
 
     //显示所选的单据
     void showSelectedDoc() {
-        DocVO clicked = (DocVO) docList.getSelectionModel().getSelectedItems().get(0);
-
-        if (detail.getChildren().size() > 0)
-            detail.getChildren().remove(detail.getChildren().size() - 1);
-
-        Doc.setDoc(clicked);
-
-        try {
-            detail.getChildren().add(Doc.getLoader().load());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        DocHelper.showDoc((DocVO) docList.getSelectionModel().getSelectedItems().get(0),detail);
     }
 
 

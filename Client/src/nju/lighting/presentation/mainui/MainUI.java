@@ -29,6 +29,7 @@ public class MainUI {
 
 
     static HashMap<Identity, String> hashMap = new HashMap<>();
+    private static MainUIController controller;
 
     static {
         hashMap.put(Identity.GENERAL, "GeneralManager.fxml");
@@ -76,7 +77,7 @@ public class MainUI {
         left = loader.load();
 
         root.setLeft(left);
-        MainUIController controller = loader.getController();
+        controller = loader.getController();
         center = new Node[controller.MAIN_BUTTON_SIZE];
         controller.setMainUI(this);
 //            for (int i=0;i<center.length;i++){
@@ -95,5 +96,9 @@ public class MainUI {
 
     public static StackPane getStackPane() {
         return stackPane;
+    }
+
+    public static void backToMain(){
+        controller.jumpTo(0);
     }
 }

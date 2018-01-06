@@ -27,6 +27,7 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/25.
  * Description
+ *
  * @author 陈俊宇
  */
 public class LossAndGainList implements Initializable {
@@ -156,7 +157,14 @@ public class LossAndGainList implements Initializable {
         count.setOnEditCommit((TableColumn.CellEditEvent<LossAndGainItem, Integer> t) -> {
             LossAndGainItem selected = t.getTableView().getItems().get(
                     t.getTablePosition().getRow());
-            selected.setCount(t.getNewValue());
+            int newValue = t.getNewValue();
+            if (selected.getType() == LossAndGainItemType.LOSS)
+                selected.setCount(newValue > selected.getRepCount() ?
+                        selected.getRepCount() : newValue);
+            else
+                selected.setCount(newValue);
+            tableView.refresh();
+
 
         });
     }
@@ -164,8 +172,8 @@ public class LossAndGainList implements Initializable {
     public void setAlert() {
         count.setText("警戒数量");
         tableView.getColumns().remove(type);
-        TableColumn delete=new TableColumn();
-        delete.setCellFactory(p-> new BtnCell());
+        TableColumn delete = new TableColumn();
+        delete.setCellFactory(p -> new BtnCell());
         tableView.getColumns().add(delete);
     }
 

@@ -32,9 +32,10 @@ import java.util.HashMap;
 /**
  * Created on 2017/12/17.
  * Description
+ *
  * @author 陈俊宇
  */
-public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
+public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
     CommodityBLService commodityBLService;
     FXMLLoader loader;
     StackPane stackPane;
@@ -53,7 +54,7 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
     private ContextMenu commodityMenu = new ContextMenu();
 
 
-    public MyTreeCell(StackPane stackPane, StringProperty keyWord, CommodityBLService commodityBLService) {
+    public CategoryTreeCell(StackPane stackPane, StringProperty keyWord, CommodityBLService commodityBLService) {
         this.stackPane = stackPane;
         this.keyWord = keyWord;
         this.commodityBLService = commodityBLService;
@@ -235,51 +236,6 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
         );
     }
 
-    //树状图拖拽的功能
-//    void setDrag(){
-//        setOnDragDetected(e->{
-//            currentItem=getTreeItem();
-//            System.out.println("detected"+getItem().getName());
-//            Dragboard dragboard=startDragAndDrop(TransferMode.ANY);
-//            ClipboardContent content= new ClipboardContent();
-//
-//          //  content.putImage(new Image("/images/close.png"));
-//            content.putString(getItem().getName());
-//            dragboard.setContent(content);
-//            dragboard.setDragView(new Image("/images/close.png"));
-//            e.consume();
-//        });
-//
-//        setOnDragEntered(e -> {
-//            System.out.println(" Entered ");
-//            getTreeView().getSelectionModel().select(getIndex());
-//            e.consume();
-//        });
-//
-//        setOnDragDone(e -> {
-//
-//            System.out.println(" Done at "+getItem().getName());
-//            e.consume();
-//        });
-//        setOnDragDropped(e -> {
-//            System.out.println(" Dropped at " +getItem().getName());
-//            e.setDropCompleted(true);
-//            e.consume();
-//        });
-//        setOnDragExited(e -> {
-//            System.out.println(" Exited ");
-//
-//            getTreeView().getSelectionModel().clearSelection();
-//            e.consume();
-//        });
-//        setOnDragOver(event -> {
-//
-//            System.out.println(getItem().getName());
-//            event.consume();
-//        });
-//    }
-
-
     JFXDialog createDialog() {
 
         JFXDialog dialog = new JFXDialog(null, null, JFXDialog.DialogTransition.CENTER);
@@ -333,6 +289,9 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
 
                 setContextMenu(categoryMenu);
                 TreeItem<CommodityCategoryItem> treeItem = getTreeTableItem();
+
+
+
                 //如果该分类不是叶节点，添加商品就不可用
                 if (treeItem.getChildren().size() != 0 &&
                         getTreeTableItem().getChildren().get(0).getValue().getItem().getClass().equals(CommodityCategoryVO.class)) {
@@ -343,8 +302,8 @@ public class MyTreeCell extends TreeTableCell<CommodityCategoryItem, String> {
                     addCategory.setDisable(true);
                 } else
                     addCategory.setDisable(false);
-                //如果是根节点，删除分类不可用
-                if (treeItem.getParent() == null) {
+                //如果是根节点 或者 不为叶节点，删除分类不可用
+                if (treeItem.getParent() == null||treeItem.getChildren().size()!=0) {
                     deleteCategory.setDisable(true);
                 } else
                     deleteCategory.setDisable(false);

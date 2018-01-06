@@ -1,5 +1,6 @@
 package nju.lighting.presentation.repositoryui;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -50,13 +51,7 @@ public class RepositoryCounting implements Initializable {
     TableColumn<RepositoryTableItemVO, Double> recentInPrice;
 
     @FXML
-    TableColumn<RepositoryTableItemVO, String> batch;
-
-    @FXML
-    TableColumn<RepositoryTableItemVO, String> batchNumber;
-
-    @FXML
-    TableColumn<RepositoryTableItemVO, String> dateOfProduction;
+    JFXButton exportBtn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -69,12 +64,6 @@ public class RepositoryCounting implements Initializable {
                 new SimpleIntegerProperty(cellData.getValue().getRepCount()).asObject());
         recentInPrice.setCellValueFactory(cellData ->
                 new SimpleDoubleProperty(cellData.getValue().getRecentInPrice()).asObject());
-        batch.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getBatch()));
-        batchNumber.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getBatchNumber()));
-        dateOfProduction.setCellValueFactory(cellData ->
-                new SimpleStringProperty(DateHelper.approximateTime(cellData.getValue().getDateOfProduction())));
 
         index.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override

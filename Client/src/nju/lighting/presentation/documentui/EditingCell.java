@@ -13,6 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.input.KeyCode;
+import nju.lighting.presentation.utils.TextFieldHelper;
 
 /**
  * Created on 2017/12/10.
@@ -28,17 +29,7 @@ public class EditingCell<T, S> extends TableCell<T, S> {
 
     public EditingCell(String type) {
         this.type = type;
-        switch (type) {
-            case "int":
-                validator = new NumberValidator();
-                break;
-            case "double":
-                validator = new DoubleValidator();
-                break;
-            default:
-                validator = new RequiredFieldValidator();
-                break;
-        }
+
     }
 
     @Override
@@ -89,10 +80,21 @@ public class EditingCell<T, S> extends TableCell<T, S> {
 
     private void createTextField() {
         textField = new JFXTextField(getString());
+
         textField.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
 
+        switch (type) {
+            case "int":
+                TextFieldHelper.addNameValidator(textField);
+                break;
+            case "double":
+                TextFieldHelper.addDoubleValidator(textField);
+                break;
+            default:
+                TextFieldHelper.addRequiredValidator(textField);
+                break;
+        }
 
-        textField.getValidators().add(validator);
 
 
         ChangeListener<? super Boolean> changeListener = new ChangeListener<Boolean>() {
@@ -125,7 +127,6 @@ public class EditingCell<T, S> extends TableCell<T, S> {
 
     @Override
     public void commitEdit(S item) {
-
         if (isEditing()) {
             super.commitEdit(item);
         } else {

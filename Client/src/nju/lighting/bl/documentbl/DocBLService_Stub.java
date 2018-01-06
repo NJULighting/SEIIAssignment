@@ -1,6 +1,7 @@
 package nju.lighting.bl.documentbl;
 
 import nju.lighting.bl.approvalbl.ApprovalBLService_Stub;
+import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
@@ -9,6 +10,7 @@ import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessConditionTableVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.SalesDetailItemVO;
+import shared.DocState;
 import shared.DocumentFilter;
 import shared.ResultMessage;
 import shared.TwoTuple;
@@ -32,7 +34,18 @@ public class DocBLService_Stub implements DocBLService {
 
     @Override
     public List<HistoryDocVO> findDocuments(DocumentFilter filter) {
-        return null;
+        List<HistoryDocVO> list=new ArrayList<>();
+
+        ApprovalBLService approvalBLService=new ApprovalBLService_Stub();
+        list.add(new HistoryDocVO(null,approvalBLService.getDocumentList().get(0),
+                null, DocState.UN_CHECKED,null,null));
+        list.add(new HistoryDocVO(null,approvalBLService.getDocumentList().get(8),
+                null,DocState.APPROVAL,new Date(),null));
+
+        list.add(new HistoryDocVO(null,approvalBLService.getDocumentList().get(9),
+                "-1s",DocState.DISAPPROVAL,new Date(),null));
+
+        return list;
     }
 
     @Override

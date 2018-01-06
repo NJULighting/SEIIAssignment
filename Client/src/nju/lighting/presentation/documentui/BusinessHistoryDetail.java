@@ -30,8 +30,16 @@ public class BusinessHistoryDetail {
     @FXML
     JFXButton redFlushBtn,redFlushAndCopyBtn;
 
+    private DocVO docVO;
+
+    void redFlush(){
+        ResultMessage resultMessage=blService.redFlush(docVO);
+        DialogHelper.dialog(resultMessage, MainUI.getStackPane());
+    }
+
 
     public void init(DocVO doc, Upper upper){
+        docVO=doc;
         Doc.setDoc(doc);
         try {
             docContainer.getChildren().add(Doc.getLoader().load());
@@ -43,11 +51,11 @@ public class BusinessHistoryDetail {
             buttonBox.setVisible(false);
         else {
             redFlushBtn.setOnAction(e->{
-                ResultMessage resultMessage=blService.redFlush(doc);
-                DialogHelper.dialog(resultMessage, MainUI.getStackPane());
+                redFlush();
             });
 
             redFlushAndCopyBtn.setOnAction(e->{
+                redFlush();
                 upper.setChildren(ModifyDoc.getNode(upper,doc,true),">红冲并复制");
             });
         }

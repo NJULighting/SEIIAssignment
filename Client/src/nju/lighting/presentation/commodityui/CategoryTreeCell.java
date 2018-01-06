@@ -91,14 +91,12 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
                 AddCategoryDialog addCategoryController = (AddCategoryDialog) dialogController;
 
                 CommodityCategoryVO categoryVO = new CommodityCategoryVO(upperCategory, addCategoryController.getText());
-                TwoTuple<ResultMessage, Integer> res = commodityBLService.addCategory(categoryVO);
-                ResultMessage resultMessage = res.t;
-                if (resultMessage == ResultMessage.SUCCESS) {
-                    categoryVO.setId(res.r);
-                    upper.getChildren().add(new TreeItem<CommodityCategoryItem>(new CommodityCategoryItem(categoryVO)));
+                Result<CommodityCategoryVO> res = commodityBLService.addCategory(categoryVO);
+                if (res.hasValue()) {
+                    upper.getChildren().add(new TreeItem<>(new CommodityCategoryItem(res.getValue())));
                     dialog.close();
                 } else {
-                    DialogHelper.dialog("添加商品分类",resultMessage, stackPane);
+                    DialogHelper.dialog("添加商品分类",res.getResultMessage(), stackPane);
                 }
 
             });

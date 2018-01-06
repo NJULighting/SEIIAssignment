@@ -131,7 +131,7 @@ public class BusinessHistoryTable implements Initializable, Upper {
         DateHelper.setDefaultTime(endDate, DateHelper.dateToLocalDate(new Date()));
 
         creatorBox.getItems().add(new UserVO("无",null,null,false));
-        creatorBox.getItems().addAll(UserBLServiceFactory.getUserBLService().getUserList(Identity.GENERAL));
+        creatorBox.getItems().addAll(UserBLServiceFactory.getUserBLService().getUserList());
 
         typeBox.getItems().add(null);
         typeBox.getItems().addAll(DocType.values());

@@ -106,11 +106,6 @@ public class DocBLService_Stub implements DocBLService {
     }
 
     @Override
-    public DocVO redFlushAndCopy(DocVO target) {
-        return null;
-    }
-
-    @Override
     public UserVO getCreatorInfo(String creatorID) {
         return null;
     }

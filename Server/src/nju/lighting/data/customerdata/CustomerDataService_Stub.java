@@ -2,10 +2,7 @@ package nju.lighting.data.customerdata;
 
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
 import nju.lighting.po.customer.CustomerPO;
-import shared.CustomerGrade;
-import shared.CustomerType;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.*;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -58,7 +55,7 @@ public class CustomerDataService_Stub implements CustomerDataService {
     }
 
     @Override
-    public TwoTuple<ResultMessage, Integer> insertCustomer(CustomerPO po) throws RemoteException {
+    public Result<Integer> insertCustomer(CustomerPO po) throws RemoteException {
         return null;
     }
 

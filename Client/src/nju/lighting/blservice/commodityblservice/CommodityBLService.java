@@ -1,7 +1,6 @@
 package nju.lighting.blservice.commodityblservice;
 
 import javafx.scene.image.Image;
-import nju.lighting.builder.Builder;
 import nju.lighting.builder.commodity.CommodityBuildInfo;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
@@ -30,10 +29,10 @@ public interface CommodityBLService {
     /**
      * Add a new commodity to the system. You need to pass category's id for the new commodity,
      * 'cause <tt>CommodityVO</tt> doesn't contains its category's id.
-     * @param builder new commodity's vo
+     * @param builder new commodity's builder
      * @return <tt>[SUCCESS, ID]</tt> if category's id is right and database works well, <tt>[FAILURE, null]</tt> otherwise
      */
-    Result<CommodityItemVO> addCommodity(Builder<CommodityBuildInfo> builder);
+    Result<CommodityItemVO> addCommodity(CommodityBuildInfo.CommodityBuilder builder);
 
     /**
      * Find commodities by id of its parent category

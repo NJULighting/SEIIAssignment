@@ -16,8 +16,8 @@ public class UserController implements UserBLService {
     private UserManager userManager = UserManager.INSTANCE;
 
     @Override
-    public List<UserVO> getUserList(Identity userIdentity) {
-        return userManager.getUserList(userIdentity);
+    public List<UserVO> getUserList() {
+        return userManager.getUserList();
     }
 
     @Override

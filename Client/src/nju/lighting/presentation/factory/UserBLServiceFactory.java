@@ -10,7 +10,7 @@ import nju.lighting.blservice.userblservice.UserBLService;
  * @author 陈俊宇
  */
 public class UserBLServiceFactory {
-    private static UserBLService userBLService = new UserBLServie_Stub();
+    private static UserBLService userBLService = new UserController();
 
     public static UserBLService getUserBLService() {
         return userBLService;

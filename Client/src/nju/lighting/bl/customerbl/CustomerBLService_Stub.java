@@ -35,7 +35,7 @@ public class CustomerBLService_Stub implements CustomerBLService {
 
 
     //增加客户
-    public TwoTuple<ResultMessage, Integer> createCustomer(CustomerVO vo) {
+    public Result<CustomerVO> createCustomer(CustomerVO vo) {
         return null;
     }
 

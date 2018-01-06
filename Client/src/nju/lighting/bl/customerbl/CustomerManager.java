@@ -104,13 +104,15 @@ enum CustomerManager {
      * <code>FAILURE</code> if there's an exception in database
      * <code>NETWORK_FAIL</code> if network fails
      */
-    TwoTuple<ResultMessage, Integer> createCustomer(CustomerVO vo) {
+    Result<CustomerVO> createCustomer(CustomerVO vo) {
         Customer customer = new Customer(vo);
-        TwoTuple<ResultMessage, Integer> createResult =
-                DataServiceFunction.commit(customer.toPO(), dataService::insertCustomer);
-        if (createResult.t == ResultMessage.SUCCESS)
+        Result<Integer> createResult =
+                DataServiceFunction.addToDataBase(customer.toPO(), dataService::insertCustomer);
+        if (createResult.hasValue()) {
             logger.add(OPType.ADD, "添加客户" + vo.getName() + "成功");
-        return createResult;
+            vo.setID(createResult.getValue());
+        }
+        return new Result<>(createResult.getResultMessage(), vo);
     }
 
     /**

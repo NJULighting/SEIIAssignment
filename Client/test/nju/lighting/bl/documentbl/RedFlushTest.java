@@ -37,7 +37,6 @@ public class RedFlushTest {
         System.out.println(voList.get(0));
 
         RedFlush redFlush = new RedFlush();
-        DocVO copy = redFlush.redFlushAndCopy(voList.get(1).getDocVO());
         ResultMessage res = redFlush.redFlush(voList.get(0).getDocVO());
         assertEquals(ResultMessage.SUCCESS, res);
     }

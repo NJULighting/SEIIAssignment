@@ -2,7 +2,6 @@ package nju.lighting.bl.commoditybl;
 
 import javafx.scene.image.Image;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
-import nju.lighting.builder.Builder;
 import nju.lighting.builder.commodity.CommodityBuildInfo;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
@@ -73,7 +72,7 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public Result<CommodityItemVO> addCommodity(Builder<CommodityBuildInfo> builder) {
+    public Result<CommodityItemVO> addCommodity(CommodityBuildInfo.CommodityBuilder builder) {
         return new Result<CommodityItemVO>(
                 ResultMessage.SUCCESS, builder.build().toVO("11")
         );

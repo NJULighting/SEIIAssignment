@@ -16,7 +16,7 @@ import java.util.List;
 public class UserBLServie_Stub implements UserBLService {
 
     @Override
-    public List<UserVO> getUserList(Identity userIdentity) {
+    public List<UserVO> getUserList() {
         ArrayList<UserVO> userList = new ArrayList<>();
         userList.add(getUser("0"));
         userList.add(getUser("1"));
@@ -35,7 +35,7 @@ public class UserBLServie_Stub implements UserBLService {
     @Override
     public List<UserVO> findUsers(String keyword) {
 
-        return getUserList(Identity.FINANCE);
+        return getUserList();
     }
 
     @Override

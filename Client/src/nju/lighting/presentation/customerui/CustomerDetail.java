@@ -15,10 +15,7 @@ import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.CustomerVO;
-import shared.CustomerGrade;
-import shared.CustomerType;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.*;
 
 import java.util.ArrayList;
 
@@ -144,12 +141,12 @@ public class CustomerDetail {
 
     private void saveNew() {
         CustomerVO customerVO = getCurrentCustomer();
-        TwoTuple<ResultMessage, Integer> addResult = customerBLService.createCustomer(customerVO);
-        if (addResult.t == ResultMessage.SUCCESS) {
-            customerVO.setID(addResult.r);
+        Result<CustomerVO> addResult = customerBLService.createCustomer(customerVO);
+        if (addResult.hasValue()) {
+            customerVO = addResult.getValue();
         }
         TableView tableView = controller.getTableView();
-        tableView.getItems().add(getCurrentCustomer());
+        tableView.getItems().add(customerVO);
         back();
 
     }

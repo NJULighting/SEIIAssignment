@@ -7,7 +7,6 @@ import nju.lighting.bl.utils.CommodityPathParser;
 import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.bl.utils.FuzzySeekingHelper;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
-import nju.lighting.builder.Builder;
 import nju.lighting.builder.commodity.CommodityBuildInfo;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
@@ -56,7 +55,7 @@ enum CommodityManager {
     }
 
 
-    Result<CommodityItemVO> addCommodity(Builder<CommodityBuildInfo> builder) {
+    Result<CommodityItemVO> addCommodity(CommodityBuildInfo.CommodityBuilder builder) {
         updateFromDatabase();
 
         CommodityBuildInfo buildInfo = builder.build();

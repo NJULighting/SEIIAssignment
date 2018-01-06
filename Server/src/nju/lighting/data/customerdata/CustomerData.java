@@ -4,6 +4,7 @@ import nju.lighting.data.utils.CommonOperation;
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
 import nju.lighting.po.customer.CustomerPO;
 import shared.CustomerGrade;
+import shared.Result;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
@@ -32,10 +33,11 @@ public class CustomerData extends UnicastRemoteObject implements CustomerDataSer
     }
 
     @Override
-    public TwoTuple<ResultMessage, Integer> insertCustomer(CustomerPO po) throws RemoteException {
+    public Result<Integer> insertCustomer(CustomerPO po) throws RemoteException {
         ResultMessage res = commonOperation.add(po);
-        return new TwoTuple<>(res, po.getID());
+        return new Result<>(res, po.getID());
     }
+
 
     @Override
     public ResultMessage deleteCustomer(int id) throws RemoteException {

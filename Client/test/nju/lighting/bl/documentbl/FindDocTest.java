@@ -65,7 +65,7 @@ public class FindDocTest {
 
         List<HistoryDocVO> docVOS = manager.findDocuments(builder.build());
 
-        assertEquals(5, docVOS.size());
+        assertEquals(0, docVOS.size());
     }
 
     @Test

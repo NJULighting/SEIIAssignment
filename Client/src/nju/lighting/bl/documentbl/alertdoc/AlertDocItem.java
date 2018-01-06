@@ -63,4 +63,9 @@ public class AlertDocItem implements DocItem {
     public ResultMessage approve() {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 }

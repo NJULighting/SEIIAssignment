@@ -4,7 +4,10 @@ import nju.lighting.po.doc.DocPO;
 import shared.DocState;
 import shared.DocType;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

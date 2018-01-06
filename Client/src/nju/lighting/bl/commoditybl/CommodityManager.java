@@ -7,7 +7,7 @@ import nju.lighting.bl.utils.CommodityPathParser;
 import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.bl.utils.FuzzySeekingHelper;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
-import nju.lighting.builder.commodity.CommodityBuildInfo;
+import shared.CommodityBuildInfo;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
@@ -19,7 +19,6 @@ import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.OPType;
 import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
@@ -156,26 +155,26 @@ enum CommodityManager {
      * @return <tt>SUCCESS</tt> if add successfully,
      * <tt>FAILURE</tt> if parent category don't exists any more or it contains commodity items.
      */
-    TwoTuple<ResultMessage, Integer> addCategory(CommodityCategoryVO newCategory) {
+    Result<CommodityCategoryVO> addCategory(CommodityCategoryVO newCategory) {
         // Update and check
         updateFromDatabase();
-        TwoTuple<ResultMessage, Integer> res = new TwoTuple<>();
         if (!commodityTree.contains(newCategory.getParentPath())
                 || containsItem(newCategory.getUpperCategory().getId())) {
-            res.t = ResultMessage.FAILURE;
-            return res;
+            return new Result<>(ResultMessage.FAILURE, null);
         }
 
         // Add to the database
         CommodityCategoryPO categoryPO = new CommodityCategoryPO(newCategory.getName(),
                 newCategory.getUpperCategory().getId());
-        res = DataServiceFunction.commit(categoryPO, dataService::add);
+        Result<Integer> addResult = DataServiceFunction.addToDataBase(categoryPO, dataService::add);
 
-        if (res.t == ResultMessage.SUCCESS) {
+        if (addResult.hasValue()) {
             logger.add(OPType.ADD, "添加商品目录 " + newCategory.getName());
+            newCategory.setId(addResult.getValue());
+            return new Result<>(addResult.getResultMessage(), newCategory);
         }
 
-        return res;
+        return new Result<>(addResult.getResultMessage(), null);
     }
 
     private boolean containsItem(int category) {

@@ -14,10 +14,10 @@ import static org.junit.Assert.*;
  */
 public class UserPersonalServiceTest {
     private static final String USER_ID = "161250068";
-    private static final String PASSWORD = "2333";
+    private static final String PASSWORD = "1";
     private static final String INVALID_PASSWORD = "2312";
     private static final String NEW_NAME = "Excited";
-    private static final String NEW_PASSWORD = "123456";
+    private static final String NEW_PASSWORD = "1";
 
     private UserPersonalService personalService = new UserController();
 

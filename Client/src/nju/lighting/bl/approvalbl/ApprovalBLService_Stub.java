@@ -1,10 +1,7 @@
 package nju.lighting.bl.approvalbl;
 
-import javafx.scene.control.Alert;
-import nju.lighting.bl.documentbl.costdoc.CostDocItem;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.account.AccountLogVO;
 import nju.lighting.vo.account.AccountVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;

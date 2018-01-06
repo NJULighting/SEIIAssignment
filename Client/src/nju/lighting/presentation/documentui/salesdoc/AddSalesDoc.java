@@ -39,6 +39,7 @@ import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerType;
+import shared.Result;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
@@ -133,8 +134,8 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     @FXML
     private void commit() {
         if (getDoc() != null) {
-            TwoTuple<ResultMessage, String> res = docBLService.commitDoc(getDoc());
-            DialogHelper.dialog("提交销售单",res.t, MainUI.getStackPane());
+            Result<DocVO> res = docBLService.commitDoc(getDoc());
+            DialogHelper.dialog("提交销售单",res.getResultMessage(), MainUI.getStackPane());
         }
 
     }

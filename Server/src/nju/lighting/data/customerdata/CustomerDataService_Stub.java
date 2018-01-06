@@ -2,7 +2,10 @@ package nju.lighting.data.customerdata;
 
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
 import nju.lighting.po.customer.CustomerPO;
-import shared.*;
+import shared.CustomerGrade;
+import shared.CustomerType;
+import shared.Result;
+import shared.ResultMessage;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

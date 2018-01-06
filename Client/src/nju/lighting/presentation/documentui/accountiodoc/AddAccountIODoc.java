@@ -31,8 +31,6 @@ import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.account.AccountVO;
 import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;
-import nju.lighting.vo.doc.historydoc.HistoryDocVO;
-import shared.DocState;
 import shared.DocType;
 
 import java.io.IOException;

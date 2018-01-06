@@ -2,14 +2,15 @@ package nju.lighting.bl.documentbl;
 
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
+import nju.lighting.bl.utils.DataServiceFunction;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.documentdataservice.DocDataService;
 import nju.lighting.vo.DocVO;
 import shared.OPType;
+import shared.Result;
 import shared.ResultMessage;
 
 import javax.naming.NamingException;
-import java.rmi.RemoteException;
 
 /**
  * Created on 2017/11/7.
@@ -42,15 +43,13 @@ public class RedFlush {
     public ResultMessage redFlush(DocVO docVO) {
         Doc doc = factory.voToDoc(docVO);
         doc.executeRedFlush();
-        try {
-            ResultMessage res = dataService.commitDoc(doc.toPO()).t;
-            if (res == ResultMessage.SUCCESS)
-                logger.add(OPType.ADD, "红冲单据" + doc.getId());
-            return res;
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return ResultMessage.NETWORK_FAIL;
+
+        // Commit and log
+        Result<String> commitResult = DataServiceFunction.addToDataBase(doc.toPO(), dataService::commitDoc);
+        if (commitResult.hasValue()) {
+            logger.add(OPType.ADD, "红冲单据" + doc.getId() + " 红冲单据id为：" + commitResult.getValue());
         }
+        return commitResult.getResultMessage();
     }
 
 }

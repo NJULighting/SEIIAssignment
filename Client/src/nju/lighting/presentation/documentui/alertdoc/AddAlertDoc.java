@@ -8,15 +8,11 @@ import javafx.scene.layout.Pane;
 import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.documentui.lossandgaindoc.AddLossAndGainDoc;
 import nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainItem;
-import nju.lighting.presentation.factory.ApprovalBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.DocHelper;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.alertdoc.AlertDocVO;
-import nju.lighting.vo.doc.historydoc.HistoryDocVO;
-import shared.DocState;
-import shared.ResultMessage;
 
 import java.io.IOException;
 import java.net.URL;

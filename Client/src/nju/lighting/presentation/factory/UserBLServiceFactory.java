@@ -1,6 +1,5 @@
 package nju.lighting.presentation.factory;
 
-import nju.lighting.bl.userbl.UserBLServie_Stub;
 import nju.lighting.bl.userbl.UserController;
 import nju.lighting.blservice.userblservice.UserBLService;
 

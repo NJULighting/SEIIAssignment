@@ -3,10 +3,7 @@ import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.alertdoc.AlertDocItemPO;
 import nju.lighting.po.doc.alertdoc.AlertDocPO;
 import org.junit.Test;
-import shared.DocState;
-import shared.DocType;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.*;
 
 import java.rmi.RemoteException;
 import java.time.Duration;
@@ -41,9 +38,9 @@ public class DocDataControllerTest {
         alertDocItemPOS.add(alertDocItemPO2);
         AlertDocPO alertDocPO = new AlertDocPO(DocType.ALERT, "161250220", new Date(), null,
                 false, false, alertDocItemPOS);
-        TwoTuple<ResultMessage, String> tuple = docDataController.commitDoc(alertDocPO);
-        String id = tuple.r;
-        ResultMessage resultMessage1 = tuple.t;
+        Result<String> tuple = docDataController.commitDoc(alertDocPO);
+        String id = tuple.getValue();
+        ResultMessage resultMessage1 = tuple.getResultMessage();
         System.out.println(id);
         assertEquals(ResultMessage.SUCCESS, resultMessage1);
     }

@@ -16,14 +16,13 @@ import javafx.scene.control.TreeTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
-import nju.lighting.builder.commodity.CommodityBuildInfo;
+import shared.CommodityBuildInfo;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -91,14 +90,12 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
                 AddCategoryDialog addCategoryController = (AddCategoryDialog) dialogController;
 
                 CommodityCategoryVO categoryVO = new CommodityCategoryVO(upperCategory, addCategoryController.getText());
-                TwoTuple<ResultMessage, Integer> res = commodityBLService.addCategory(categoryVO);
-                ResultMessage resultMessage = res.t;
-                if (resultMessage == ResultMessage.SUCCESS) {
-                    categoryVO.setId(res.r);
-                    upper.getChildren().add(new TreeItem<CommodityCategoryItem>(new CommodityCategoryItem(categoryVO)));
+                Result<CommodityCategoryVO> res = commodityBLService.addCategory(categoryVO);
+                if (res.hasValue()) {
+                    upper.getChildren().add(new TreeItem<>(new CommodityCategoryItem(res.getValue())));
                     dialog.close();
                 } else {
-                    DialogHelper.dialog("添加商品分类",resultMessage, stackPane);
+                    DialogHelper.dialog("添加商品分类",res.getResultMessage(), stackPane);
                 }
 
             });

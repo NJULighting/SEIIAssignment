@@ -19,7 +19,6 @@ import javafx.util.Callback;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.DialogUI.ValidateEventHandle;
-import nju.lighting.presentation.documentui.Doc;
 import nju.lighting.presentation.factory.ApprovalBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.utils.DocHelper;

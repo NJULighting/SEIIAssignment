@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import nju.lighting.presentation.documentui.Modifiable;
-import nju.lighting.presentation.documentui.stockdoc.AddStockDoc;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.stockdoc.StockReturnDocVO;

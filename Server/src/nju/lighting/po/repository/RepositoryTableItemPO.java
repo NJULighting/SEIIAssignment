@@ -1,6 +1,5 @@
 package nju.lighting.po.repository;
 
-import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
 
 import java.io.Serializable;

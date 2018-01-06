@@ -1,7 +1,6 @@
 package nju.lighting.presentation.factory;
 
 import nju.lighting.bl.approvalbl.ApprovalBLService_Stub;
-import nju.lighting.bl.approvalbl.ApprovalController;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 
 /**

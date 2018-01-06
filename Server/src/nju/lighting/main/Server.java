@@ -1,7 +1,6 @@
 package nju.lighting.main;
 
 import nju.lighting.data.accountdata.AccountData;
-import nju.lighting.data.analysis.Analysis;
 import nju.lighting.data.commoditydata.CommodityData;
 import nju.lighting.data.customerdata.CustomerData;
 import nju.lighting.data.docdata.DocDataController;

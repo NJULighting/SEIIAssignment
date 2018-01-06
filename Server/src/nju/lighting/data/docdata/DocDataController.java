@@ -67,19 +67,19 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
     }
 
     @Override
-    public TwoTuple<ResultMessage, String> commitDoc(DocPO doc) throws RemoteException {
+    public Result<String> commitDoc(DocPO doc) throws RemoteException {
         DocIdGenerator docIdGenerator = new DocIdGenerator(doc.getDocType());
         String id = docIdGenerator.generateId();
         doc.setId(id);
         ResultMessage resultMessage = docOperation.add(doc);
         if (resultMessage == ResultMessage.FAILURE)
-            return new TwoTuple<>(ResultMessage.FAILURE, null);
+            return new Result<>(ResultMessage.FAILURE, null);
         List<Object> items = doc.getItems();
         for (Object o: items) {
             ((Item) o).setDocId(id);
         }
         ResultMessage result = docOperation.addItemsList(items);
-        return new TwoTuple<>(result, id);
+        return new Result<>(result, id);
     }
 
     @Override

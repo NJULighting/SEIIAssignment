@@ -3,17 +3,13 @@ package nju.lighting.data.repositorydata;
 import nju.lighting.data.commoditydata.CommodityData;
 import nju.lighting.data.commoditydata.CommodityService;
 import nju.lighting.data.utils.CommonOperation;
-import nju.lighting.data.utils.HibernateUtils;
 import nju.lighting.dataservice.repositorydataservice.RepositoryDataService;
 import nju.lighting.po.commodity.CommodityItemPO;
 import nju.lighting.po.repository.RepositoryChangePO;
 import nju.lighting.po.repository.RepositoryTableItemPO;
 import nju.lighting.po.repository.RepositoryTablePO;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 import shared.ResultMessage;
 
-import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;

@@ -6,6 +6,7 @@ import org.junit.Test;
 import shared.Identity;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
 
@@ -17,7 +18,7 @@ import static org.junit.Assert.*;
 public class GetUserTest {
     private static final String VALID_ID = "161250068";
     private static final String INVALID_ID = "";
-    private static final int USER_LIST_SIZE = 3;
+    private static final int USER_LIST_SIZE = 4;
 
     private UserBLService userBLService = new UserController();
 
@@ -28,7 +29,7 @@ public class GetUserTest {
         assertEquals(VALID_ID, vos.get(2).getID());
     }
 
-    @Test
+    @Test(expected = NoSuchElementException.class)
     public void getUserFailTest() throws Exception {
         UserVO target = userBLService.getUser(INVALID_ID);
 

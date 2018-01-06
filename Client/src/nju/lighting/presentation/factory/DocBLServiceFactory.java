@@ -1,7 +1,6 @@
 package nju.lighting.presentation.factory;
 
 import nju.lighting.bl.documentbl.DocBLService_Stub;
-import nju.lighting.bl.documentbl.DocController;
 import nju.lighting.blservice.documentblservice.DocBLService;
 
 /**

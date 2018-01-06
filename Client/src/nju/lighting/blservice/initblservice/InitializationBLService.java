@@ -1,8 +1,7 @@
 package nju.lighting.blservice.initblservice;
 
 import nju.lighting.vo.InitVO;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.Result;
 
 import java.util.List;
 
@@ -23,5 +22,5 @@ public interface InitializationBLService {
      * @return <code>SUCCESS</code> if build successfully<br>
      * <code>FAILURE</code> if there's an exception when create the information file or the network fails
      */
-    TwoTuple<ResultMessage, InitVO> initiateAccount();
+    Result<InitVO> initiateAccount();
 }

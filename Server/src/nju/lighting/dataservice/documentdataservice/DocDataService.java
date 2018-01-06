@@ -1,7 +1,10 @@
 package nju.lighting.dataservice.documentdataservice;
 
 import nju.lighting.po.doc.DocPO;
-import shared.*;
+import shared.DocState;
+import shared.DocType;
+import shared.Result;
+import shared.ResultMessage;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -10,7 +13,7 @@ import java.util.List;
 
 public interface DocDataService extends Remote {
 
-    TwoTuple<ResultMessage, String> commitDoc(DocPO doc) throws RemoteException;
+    Result<String> commitDoc(DocPO doc) throws RemoteException;
 
     ResultMessage updateDoc(DocPO doc) throws RemoteException;
 

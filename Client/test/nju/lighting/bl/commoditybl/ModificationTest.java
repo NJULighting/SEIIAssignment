@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
  * @author Liao
  */
 public class ModificationTest {
-    private static final String TARGET_COMMODITY_ID = "3-0";
+    private static final String TARGET_COMMODITY_ID = "1-90";
     private static final int TARGET_CATEGORY_ID = 3;
     private static final String TARGET_CATEGORY_NEW_NAME = "LifeExperience";
 

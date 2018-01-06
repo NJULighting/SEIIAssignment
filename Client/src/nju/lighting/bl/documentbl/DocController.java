@@ -11,8 +11,8 @@ import nju.lighting.vo.viewtables.BusinessConditionTableVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import shared.DocumentFilter;
+import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.util.Date;
 import java.util.List;
@@ -26,7 +26,7 @@ public class DocController implements DocBLService {
     private DocManager manager = DocManager.INSTANCE;
 
     @Override
-    public TwoTuple<ResultMessage, String> commitDoc(DocVO doc) {
+    public Result<DocVO> commitDoc(DocVO doc) {
         return manager.commitDoc(doc);
     }
 

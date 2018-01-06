@@ -17,7 +17,6 @@ import shared.ResultMessage;
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 

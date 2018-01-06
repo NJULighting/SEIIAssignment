@@ -5,7 +5,6 @@ import nju.lighting.po.repository.RepositoryChangePO;
 import nju.lighting.po.repository.RepositoryTablePO;
 import shared.ResultMessage;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 

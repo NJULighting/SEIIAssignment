@@ -102,4 +102,9 @@ public class SalesDocItem implements DocItem {
 
         return repositoryInfo.changeRepository(commodityID, number, totalAmount, repositoryChangeType);
     }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 }

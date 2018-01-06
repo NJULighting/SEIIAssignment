@@ -1,7 +1,6 @@
 package nju.lighting.presentation.factory;
 
 import nju.lighting.bl.commoditybl.CommodityBLService_Stub;
-import nju.lighting.bl.commoditybl.CommodityController;
 import nju.lighting.blservice.commodityblservice.CommodityBLService;
 
 /**

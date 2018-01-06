@@ -26,6 +26,7 @@ import nju.lighting.vo.DocVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocVO;
 import shared.LossAndGainItemType;
+import shared.Result;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
@@ -113,8 +114,8 @@ public class AddLossAndGainDoc implements Initializable, Upper, Modifiable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commitBtn.setOnAction(e -> {
-            TwoTuple<ResultMessage, String> res = blService.commitDoc(getDoc());
-            DialogHelper.dialog("提交报损报溢单",res.t, stackPane);
+            Result<DocVO> res = blService.commitDoc(getDoc());
+            DialogHelper.dialog("提交报损报溢单",res.getResultMessage(), stackPane);
         });
 
         chooseCommodityBtn.setOnAction(event -> {

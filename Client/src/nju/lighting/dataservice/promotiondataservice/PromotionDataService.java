@@ -1,8 +1,8 @@
 package nju.lighting.dataservice.promotiondataservice;
 
 import nju.lighting.po.promotion.PromotionPO;
+import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -17,7 +17,7 @@ public interface PromotionDataService extends Remote {
 
     List<PromotionPO> getPromotionList() throws RemoteException;
 
-    TwoTuple<ResultMessage, Integer> insert(PromotionPO po) throws RemoteException;
+    Result<Integer> insert(PromotionPO po) throws RemoteException;
 
     ResultMessage update(PromotionPO po) throws RemoteException;
 

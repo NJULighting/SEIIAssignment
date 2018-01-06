@@ -47,8 +47,8 @@ public class PromotionDataTest {
                 CustomerGrade.FIVE, 1000, null, 0.1, 10000, voucherEndTime);
         PromotionPO promotionPO2 = new PromotionPO("161250220", "老板带着小姨子跑了，清仓大处理", PromotionType.Combo,
                 beginTime, endTime, createTime, CustomerGrade.FIVE, 1000, itemPOS, 0.1, 10000, voucherEndTime);
-        ResultMessage resultMessage1 = promotionData.insert(promotionPO1).t;
-        ResultMessage resultMessage2 = promotionData.insert(promotionPO2).t;
+        ResultMessage resultMessage1 = promotionData.insert(promotionPO1).getResultMessage();
+        ResultMessage resultMessage2 = promotionData.insert(promotionPO2).getResultMessage();
         assertEquals(ResultMessage.SUCCESS, resultMessage1);
         assertEquals(ResultMessage.SUCCESS, resultMessage2);
     }

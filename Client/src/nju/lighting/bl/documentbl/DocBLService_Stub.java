@@ -12,8 +12,8 @@ import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import shared.DocState;
 import shared.DocumentFilter;
+import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,23 +27,23 @@ import java.util.stream.Collectors;
  */
 public class DocBLService_Stub implements DocBLService {
     @Override
-    public TwoTuple<ResultMessage, String> commitDoc(DocVO doc) {
-        return
-                new TwoTuple<>(ResultMessage.SUCCESS, "");
+    public Result<DocVO> commitDoc(DocVO doc) {
+        doc.setDocId("FKD-19260817-00001");
+        return new Result<>(ResultMessage.SUCCESS, doc);
     }
 
     @Override
     public List<HistoryDocVO> findDocuments(DocumentFilter filter) {
-        List<HistoryDocVO> list=new ArrayList<>();
+        List<HistoryDocVO> list = new ArrayList<>();
 
-        ApprovalBLService approvalBLService=new ApprovalBLService_Stub();
-        list.add(new HistoryDocVO(null,approvalBLService.getDocumentList().get(0),
-                null, DocState.UN_CHECKED,null,null));
-        list.add(new HistoryDocVO(null,approvalBLService.getDocumentList().get(8),
-                null,DocState.APPROVAL,new Date(),null));
+        ApprovalBLService approvalBLService = new ApprovalBLService_Stub();
+        list.add(new HistoryDocVO(null, approvalBLService.getDocumentList().get(0),
+                null, DocState.UN_CHECKED, null, null));
+        list.add(new HistoryDocVO(null, approvalBLService.getDocumentList().get(8),
+                null, DocState.APPROVAL, new Date(), null));
 
-        list.add(new HistoryDocVO(null,approvalBLService.getDocumentList().get(9),
-                "-1s",DocState.DISAPPROVAL,new Date(),null));
+        list.add(new HistoryDocVO(null, approvalBLService.getDocumentList().get(9),
+                "-1s", DocState.DISAPPROVAL, new Date(), null));
 
         return list;
     }
@@ -78,8 +78,8 @@ public class DocBLService_Stub implements DocBLService {
     public List<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) {
 
         return new ApprovalBLService_Stub().getDocumentList().stream()
-                .map(x-> new BusinessHistoryItemVO(x.getTime(),x.getType(),x,null,
-                        x.getCreatorId(),null))
+                .map(x -> new BusinessHistoryItemVO(x.getTime(), x.getType(), x, null,
+                        x.getCreatorId(), null))
                 .collect(Collectors.toList());
     }
 

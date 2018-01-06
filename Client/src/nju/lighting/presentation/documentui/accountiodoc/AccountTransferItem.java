@@ -2,7 +2,6 @@ package nju.lighting.presentation.documentui.accountiodoc;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-import nju.lighting.blservice.accountblservice.AccountBLService;
 import nju.lighting.presentation.factory.AccountBLServiceFactory;
 import nju.lighting.vo.account.AccountVO;
 import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;

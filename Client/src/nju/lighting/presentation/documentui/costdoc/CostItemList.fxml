@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 
-
+<?import javafx.scene.control.*?>
 <TableView fx:id="tableView" prefHeight="565.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.costdoc.CostItemList">
    <columns>
       <TableColumn fx:id="item" editable="false" prefWidth="200.0" resizable="false" text="  条目" />

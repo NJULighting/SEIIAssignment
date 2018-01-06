@@ -6,7 +6,6 @@ import nju.lighting.po.customer.CustomerPO;
 import shared.CustomerGrade;
 import shared.Result;
 import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

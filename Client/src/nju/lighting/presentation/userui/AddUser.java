@@ -104,7 +104,7 @@ public class AddUser implements Initializable {
                         userList.set(userList.indexOf(user), user);
                         return true;
                     } else
-                        DialogHelper.dialog(resultMessage, MainUI.getStackPane());
+                        DialogHelper.dialog("修改",resultMessage, MainUI.getStackPane());
 
                 }
                 return false;

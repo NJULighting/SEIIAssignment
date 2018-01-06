@@ -106,7 +106,7 @@ public class DialogHelper {
         layout.setActions(button);
     }
 
-    public static void dialog(ResultMessage resultMessage, StackPane stackPane) {
+    public static void dialog(String title,ResultMessage resultMessage, StackPane stackPane) {
 
 
         JFXDialogLayout layout = new JFXDialogLayout();
@@ -121,7 +121,7 @@ public class DialogHelper {
         }
         DialogPane controller = loader.getController();
         Label label = controller.getLabel();
-        label.setText(hashMap.get(resultMessage));
+        label.setText(title+hashMap.get(resultMessage));
 
 
         JFXDialog dialog = new JFXDialog(stackPane, layout, JFXDialog.DialogTransition.BOTTOM);

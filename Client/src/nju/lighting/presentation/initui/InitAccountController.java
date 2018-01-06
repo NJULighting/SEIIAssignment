@@ -44,7 +44,7 @@ public class InitAccountController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         init.setOnAction(e -> {
             TwoTuple<ResultMessage, InitVO> res = blService.initiateAccount();
-            DialogHelper.dialog(res.t, stackPane);
+            DialogHelper.dialog("期初建账",res.t, stackPane);
             if (res.t == ResultMessage.SUCCESS)
                 data.add(res.r);
         });

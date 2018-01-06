@@ -51,4 +51,9 @@ public class UserVO {
     public void setAuthority(boolean authority) {
         this.authority = authority;
     }
+
+    @Override
+    public String toString() {
+        return username;
+    }
 }

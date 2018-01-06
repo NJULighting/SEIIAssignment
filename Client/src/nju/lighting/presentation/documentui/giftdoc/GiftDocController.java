@@ -23,9 +23,9 @@ import java.util.stream.Collectors;
 
 public class GiftDocController implements Initializable {
 
-    CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
-    UserBLService userBLService = UserBLServiceFactory.getUserBLService();
-    GiftDocVO giftDocVO;
+    private CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
+    private UserBLService userBLService = UserBLServiceFactory.getUserBLService();
+    private GiftDocVO giftDocVO;
 
     @FXML
     AnchorPane tablePane;
@@ -38,13 +38,6 @@ public class GiftDocController implements Initializable {
 
     @FXML
     private ScrollPane scrollpane;
-/*
-    @FXML
-    private JFXSlider slider;
-
-    @FXML
-    private ScrollPane scrollpaneMain;
-*/
 
 
     public GiftDocController() {

@@ -99,7 +99,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
                     upper.getChildren().add(new TreeItem<CommodityCategoryItem>(new CommodityCategoryItem(categoryVO)));
                     dialog.close();
                 } else {
-                    DialogHelper.dialog(resultMessage, stackPane);
+                    DialogHelper.dialog("添加商品分类",resultMessage, stackPane);
                 }
 
             });
@@ -123,7 +123,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
                     dialog.close();
                     setText(category.getName());
                 } else
-                    DialogHelper.dialog(resultMessage, stackPane);
+                    DialogHelper.dialog("修改商品名称",resultMessage, stackPane);
 
 
             });
@@ -153,7 +153,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
                                 new TreeItem<>(new CommodityCategoryItem(result.getValue())));
                         dialog.close();
                     } else
-                        DialogHelper.dialog(result.getResultMessage(), stackPane);
+                        DialogHelper.dialog("添加商品",result.getResultMessage(), stackPane);
                 }
             });
         });
@@ -182,7 +182,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
                         dialog.close();
 
                     } else
-                        DialogHelper.dialog(resultMessage, stackPane);
+                        DialogHelper.dialog("修改商品信息",resultMessage, stackPane);
                 }
 
 
@@ -231,7 +231,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
                         getTreeTableItem().getParent().getChildren().remove(getTreeTableItem());
                         dialog.close();
                     } else
-                        DialogHelper.dialog(resultMessage, stackPane);
+                        DialogHelper.dialog("删除",resultMessage, stackPane);
                 }
         );
     }

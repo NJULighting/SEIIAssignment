@@ -20,7 +20,7 @@ public class ModifyDoc {
     private static HashMap<DocType,String> typeStringHashMap=new HashMap<>();
 
     static {
-        //typeStringHashMap.put(DocType.GIFT, "giftdoc/GiftDoc.fxml");
+        typeStringHashMap.put(DocType.GIFT, "giftdoc/AddGiftDoc.fxml");
         typeStringHashMap.put(DocType.ACCOUNT_IN, "accountiodoc/AddAccountIODoc.fxml");
         typeStringHashMap.put(DocType.ACCOUNT_OUT, "accountiodoc/AddAccountIODoc.fxml");
         typeStringHashMap.put(DocType.LOSS_AND_GAIN, "lossandgaindoc/AddLossAndGainDoc.fxml");

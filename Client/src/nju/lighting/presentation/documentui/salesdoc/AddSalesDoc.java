@@ -134,7 +134,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     private void commit() {
         if (getDoc() != null) {
             TwoTuple<ResultMessage, String> res = docBLService.commitDoc(getDoc());
-            DialogHelper.dialog(res.t, MainUI.getStackPane());
+            DialogHelper.dialog("提交销售单",res.t, MainUI.getStackPane());
         }
 
     }

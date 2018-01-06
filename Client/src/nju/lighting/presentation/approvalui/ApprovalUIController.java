@@ -89,7 +89,7 @@ public class ApprovalUIController implements Initializable {
                         controller.getComments(),
                         selectedDocList.get(0), DocState.DISAPPROVAL, new Date()
                 ));
-                DialogHelper.dialog(resultMessage, stackPane);
+                DialogHelper.dialog("驳回单据",resultMessage, stackPane);
                 if (resultMessage == ResultMessage.SUCCESS) {
                     refresh();
                     return true;

@@ -1,6 +1,7 @@
 package nju.lighting.presentation.documentui.salesdoc;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
@@ -21,10 +22,13 @@ import javafx.scene.layout.VBox;
 import nju.lighting.bl.documentbl.DocController;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
+import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
+import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.factory.PromotionBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
+import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CommodityHelper;
 import nju.lighting.presentation.utils.CustomerHelper;
@@ -33,27 +37,45 @@ import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
+import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerType;
-import shared.DocType;
 import shared.ResultMessage;
 import shared.TwoTuple;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class AddSalesDoc implements Initializable, Upper {
-    PromotionBLService promotionBLService = PromotionBLServiceFactory.getPromotionBLService();
+public class AddSalesDoc implements Initializable, Upper, Modifiable {
+    private PromotionBLService promotionBLService =
+            PromotionBLServiceFactory.getPromotionBLService();
     @FXML
-    HBox container, promotionBox;
+    private HBox container, promotionBox;
     @FXML
-    VBox verticalVBox;
+    private VBox verticalVBox;
     @FXML
-    Pane mainPane, commodityContainer;
+    private Pane mainPane, commodityContainer;
+
+    @FXML
+    private Button choseCustomBtn, commitBtn, promotionBtn;
+    @FXML
+    private JFXButton commodityBtn;
+    @FXML
+    private JFXTextField customer, salesman, accountBeforeDis, discount,
+            voucher, account, promotionText;
+
+    @FXML
+    JFXComboBox repositoryBox;
+    @FXML
+    private TextArea remarks;
+    @FXML
+    private Label sub, title;
+
 
     private ObservableList<BasicCommodityItemVO> commodityList = FXCollections.observableArrayList();
     private ObservableList<CommodityItem> docItemList;
@@ -62,39 +84,23 @@ public class AddSalesDoc implements Initializable, Upper {
     private CommodityList commodityListController;
     private PromotionVO promotionVO;
     private CustomerType type = CustomerType.SALESPERSON;
-    private CustomerVO customerVO;
-    private String salesDocID;
-    private double accountBeforeDisNum = 0;
-    private double discountNum = 0;
-    private double voucherNum = 0;
-    private double accountNum = 0;
     private DocBLService docBLService = new DocController();
-    @FXML
-    private Button choseCustomBtn, finishBtn, promotionBtn;
-    @FXML
-    private JFXButton commodityBtn;
-    @FXML
-    private JFXTextField customer, salesman, userman, repository, accountBeforeDis, discount,
-            voucher, account, promotionText;
-    @FXML
-    private TextArea remarks;
-    @FXML
-    private Label sub, title;
+    private Upper upper = this;
 
     public void chooseCommodity() {
-        CommodityHelper.chooseCommodity(this, commodityList);
+        CommodityHelper.chooseCommodity(upper, commodityList);
     }
 
     public void chooseCustomer() {
-        CustomerHelper.setCustomer(this, customerProperty, CustomerType.SUPPLIER);
+        CustomerHelper.setCustomer(upper, customerProperty, CustomerType.SUPPLIER);
     }
 
 
     public void choosePromotion() throws IOException {
-        PromotionHelper.setPromotion(this, promotionProperty, promotionBLService.getBenefitsPlan(
+        PromotionHelper.setPromotion(upper, promotionProperty, promotionBLService.getBenefitsPlan(
                 customerProperty.getValue().getGrade(),
                 commodityList.stream()
-                        .map(x -> x.getId())
+                        .map(BasicCommodityItemVO::getId)
                         .collect(Collectors.toList()),
                 commodityListController.getTotal().doubleValue()
         ));
@@ -112,32 +118,30 @@ public class AddSalesDoc implements Initializable, Upper {
         sub.setText(title);
     }
 
-
-    //完成并提交
-    public void finish() {
-
-
-        DocVO salesDocVO = new SalesDocVO(new Date(), Client.getUserVO().getID(), null, DocType.SALES
-                , customerVO.getID(), customerVO.getSalesman(), repository.getText(), remarks.getText(),
-                Double.parseDouble(accountBeforeDis.getText()), Double.parseDouble(discount.getText()),
-                Double.parseDouble(voucher.getText()), Double.parseDouble(account.getText()));
-
-        TwoTuple<ResultMessage, String> result = docBLService.commitDoc(salesDocVO);
-
-        salesDocID = result.r;
-        successtoCommit();
-
-
+    private SalesDocVO getDoc() {
+        if (customer.validate() & salesman.validate() & docItemList.size() > 0)
+            return new SalesDocVO(new Date(), Client.getUserVO().getID(), customerProperty.getValue().getID(),
+                    salesman.getText(), repositoryBox.getValue().toString(), remarks.getText(),
+                    Double.parseDouble(discount.getText()),
+                    Double.parseDouble(voucher.getText()),
+                    docItemList.stream()
+                            .map(CommodityItem::toSalesDocItem)
+                            .collect(Collectors.toList()));
+        else return null;
     }
 
-
-    public void successtoCommit() {
+    @FXML
+    private void commit() {
+        if (getDoc() != null) {
+            TwoTuple<ResultMessage, String> res = docBLService.commitDoc(getDoc());
+            DialogHelper.dialog(res.t, MainUI.getStackPane());
+        }
 
     }
 
 
     //当重要参数发生变化时清除正在作用的promotion
-    void clearPromotion() {
+    private void clearPromotion() {
 //        commodityList.removeAll(
 //                commodityList.stream()
 //                .filter(x-> x.isGift())
@@ -152,7 +156,11 @@ public class AddSalesDoc implements Initializable, Upper {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CommodityList.fxml"));
+
+        repositoryBox.getItems().add("仓库一");
+        repositoryBox.setValue(repositoryBox.getItems().get(0));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
         try {
             commodityContainer.getChildren().add(loader.load());
         } catch (IOException e) {
@@ -242,14 +250,47 @@ public class AddSalesDoc implements Initializable, Upper {
             ));
         });
 
+        TextFieldHelper.addRequiredValidator(salesman);
+        TextFieldHelper.addRequiredValidator(customer);
+
 
     }
 
     void setReturn() {
         title.setText("制定销售退货单");
         verticalVBox.getChildren().remove(promotionBox);
+        commitBtn.setOnAction(e -> {
+
+        });
     }
 
+    void init(Upper upper,List<SalesDocItemVO> itemList, int customerID, String remarks,
+              String voucher, String discount) {
+        this.upper=upper;
+        docItemList.setAll(itemList.stream()
+                .map(CommodityItem::new)
+                .collect(Collectors.toList()));
 
+        customerProperty.set(CustomerHelper.getCustomer(customerID));
 
+        this.remarks.setText(remarks);
+
+        this.voucher.setText(voucher);
+
+        this.discount.setText(discount);
+    }
+
+    @Override
+    public void modify(Upper upper, DocVO docVO, boolean redFlush) {
+        SalesDocVO salesDocVO = (SalesDocVO) docVO;
+        init(upper,salesDocVO.getItems(), salesDocVO.getCustomerId(),
+                salesDocVO.getRemarks(), salesDocVO.getVoucher() + "",
+                salesDocVO.getDiscount() + "");
+
+    }
+
+    @Override
+    public Node getMainPane() {
+        return mainPane;
+    }
 }

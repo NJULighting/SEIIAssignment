@@ -165,7 +165,7 @@ public class AddAccountIODoc implements Initializable, Upper, Modifiable {
 
 
     @Override
-    public void modify(DocVO docVO, boolean redFlush) {
+    public void modify(Upper upper,DocVO docVO, boolean redFlush) {
         AccountIODocVO accountIODocVO = (AccountIODocVO) docVO;
 
         itemList.setAll(accountIODocVO.getTransferAccountList().stream()
@@ -188,5 +188,10 @@ public class AddAccountIODoc implements Initializable, Upper, Modifiable {
             });
         }
 
+    }
+
+    @Override
+    public Node getMainPane() {
+        return mainPane;
     }
 }

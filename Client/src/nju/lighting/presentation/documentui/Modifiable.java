@@ -1,5 +1,7 @@
 package nju.lighting.presentation.documentui;
 
+import javafx.scene.Node;
+import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.DocVO;
 
 /**
@@ -9,5 +11,7 @@ import nju.lighting.vo.DocVO;
  * @author 陈俊宇
  */
 public interface Modifiable {
-    public void modify(DocVO docVO,boolean redFlush);
+    public void modify(Upper upper, DocVO docVO, boolean redFlush);
+
+    public Node getMainPane();
 }

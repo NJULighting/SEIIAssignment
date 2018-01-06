@@ -2,6 +2,7 @@ package nju.lighting.presentation.documentui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.DocVO;
 import shared.DocType;
 
@@ -32,14 +33,15 @@ public class ModifyDoc {
     }
 
 
-    public static Node getNode(DocVO docVO,boolean redFlush){
+    public static Node getNode(Upper upper, DocVO docVO, boolean redFlush){
+
         FXMLLoader loader=new FXMLLoader(ModifyDoc.class.getResource(typeStringHashMap.get(docVO.getType())));
 
         try {
-            Node node=loader.load();
+            loader.load();
             Modifiable controller=loader.getController();
-            controller.modify(docVO, redFlush);
-            return node;
+            controller.modify(upper,docVO, redFlush);
+            return controller.getMainPane();
         } catch (IOException e) {
             e.printStackTrace();
         }

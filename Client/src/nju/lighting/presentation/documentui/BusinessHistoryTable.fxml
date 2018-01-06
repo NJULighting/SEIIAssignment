@@ -147,16 +147,12 @@
       </HBox>
       <HBox layoutX="30.0" layoutY="10.0">
          <children>
-            <Label fx:id="title" onMouseClicked="#back" text="查看经营历程表">
+            <Label fx:id="title" onMouseClicked="#backToMain" text="查看经营历程表">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="sub">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
+            <HBox fx:id="labelBox" />
          </children>
       </HBox>
       <Line endX="300.0" layoutX="123.0" layoutY="41.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />

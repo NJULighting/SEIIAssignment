@@ -68,6 +68,10 @@ public class CommodityItem {
         subtotal.bind(price.multiply(count));
     }
 
+    public SalesDocItemVO toSalesDocItem(){
+        return new SalesDocItemVO(getCount(),getComments(),getCommodity(),getPrice());
+    }
+
     public boolean isGift() {
         return gift.get();
     }

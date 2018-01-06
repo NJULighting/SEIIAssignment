@@ -3,6 +3,7 @@ package nju.lighting.presentation.utils;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
 import nju.lighting.presentation.customerui.CustomerSearchListController;
+import nju.lighting.presentation.factory.CustomerBLServiceFactory;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.CustomerVO;
 import shared.CustomerGrade;
@@ -14,6 +15,7 @@ import java.util.HashMap;
 /**
  * Created on 2017/12/22.
  * Description
+ *
  * @author 陈俊宇
  */
 public class CustomerHelper {
@@ -86,5 +88,9 @@ public class CustomerHelper {
         }
 
         return (CustomerSearchListController) loader.getController();
+    }
+
+    public static CustomerVO getCustomer(int id) {
+        return CustomerBLServiceFactory.getCustomerBLService().findCustomerByID(id);
     }
 }

@@ -107,7 +107,7 @@ public class ApprovalBLService_Stub implements ApprovalBLService {
 
 
         AccountIODocVO accountIODocVO = new AccountIODocVO(new Date(), "00001", "SKD-20171211-00001",
-                DocType.ACCOUNT_IN, "刘钦", accountTransferItemVOList);
+                DocType.ACCOUNT_IN, "000001", accountTransferItemVOList);
 
         GiftDocVO vo1 = new GiftDocVO(new Date(), "00001", "ZPD-20171021-0009", gifts1, 1, 1);
         GiftDocVO vo2 = new GiftDocVO(new Date(), "00001", "ZPD-20171021-0010", gifts2, 3, 2);

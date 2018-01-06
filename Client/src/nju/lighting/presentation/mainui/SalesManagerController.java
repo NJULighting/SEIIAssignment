@@ -28,7 +28,8 @@ public class SalesManagerController extends MainUIController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttons = new Button[]{mainBtn, customerManageBtn, makeSalesDocBtn, makeSalesReturnDocBtn, makeStockDocBtn, makeStockReturnBtn};
-        urls = new String[]{"../homeui/SalesManagerHome.fxml", "../customerui/CustomerManageUI.fxml", "../documentui/SalesDoc.fxml", "../documentui/AddSalesReturnDoc.fxml",
+        urls = new String[]{"../homeui/SalesManagerHome.fxml", "../customerui/CustomerManageUI.fxml",
+                "../documentui/salesdoc/AddSalesDoc.fxml", "../documentui/salesDoc/AddSalesReturnDoc.fxml",
                 "../documentui/stockdoc/AddStockDoc.fxml", "../documentui/stockdoc/AddStockReturnDoc.fxml",};
         MAIN_BUTTON_SIZE = urls.length;
         super.initialize(location, resources);

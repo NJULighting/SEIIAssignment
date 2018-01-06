@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
@@ -23,6 +24,7 @@ import nju.lighting.presentation.documentui.BtnCell;
 import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
+import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.AccountHelper;
 import nju.lighting.presentation.utils.CostDocHelper;
 import nju.lighting.presentation.utils.DocHelper;
@@ -52,6 +54,9 @@ public class AddCostDocController implements Initializable,Modifiable {
 
     @FXML
     StackPane stackPane;
+
+    @FXML
+    Pane mainPane;
 
     private SimpleObjectProperty<AccountVO> accountProperty=new SimpleObjectProperty<>();
 
@@ -116,7 +121,7 @@ public class AddCostDocController implements Initializable,Modifiable {
     }
 
     @Override
-    public void modify(DocVO docVO, boolean redFlush) {
+    public void modify(Upper upper, DocVO docVO, boolean redFlush) {
         CostDocVO costDocVO=(CostDocVO)docVO;
 
         accountProperty.set(costDocVO.getAccount());
@@ -126,5 +131,10 @@ public class AddCostDocController implements Initializable,Modifiable {
         if (!redFlush){
             commitBtn.setOnAction(e-> DocHelper.saveAndApprove(getDoc()));
         }
+    }
+
+    @Override
+    public Node getMainPane() {
+        return mainPane ;
     }
 }

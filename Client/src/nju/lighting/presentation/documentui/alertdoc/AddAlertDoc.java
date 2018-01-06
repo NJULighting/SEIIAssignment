@@ -3,12 +3,14 @@ package nju.lighting.presentation.documentui.alertdoc;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.documentui.lossandgaindoc.AddLossAndGainDoc;
 import nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainItem;
 import nju.lighting.presentation.factory.ApprovalBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
+import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.DocHelper;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.alertdoc.AlertDocVO;
@@ -57,7 +59,7 @@ public class AddAlertDoc implements Initializable, Modifiable {
     }
 
     @Override
-    public void modify(DocVO docVO, boolean redFlush) {
+    public void modify(Upper upper, DocVO docVO, boolean redFlush) {
         AlertDocVO alertDoc=(AlertDocVO)docVO;
         controller.getObservableList().setAll(alertDoc.getItems().stream()
         .map(LossAndGainItem::new)
@@ -68,5 +70,10 @@ public class AddAlertDoc implements Initializable, Modifiable {
            controller.getCommitBtn().setOnAction(e-> DocHelper.saveAndApprove(getDoc()));
         }
 
+    }
+
+    @Override
+    public Node getMainPane() {
+        return controller.getMainPane();
     }
 }

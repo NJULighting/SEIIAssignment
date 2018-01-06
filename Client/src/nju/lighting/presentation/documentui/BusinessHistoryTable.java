@@ -5,6 +5,8 @@ import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,9 +15,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.mainui.Upper;
@@ -28,8 +32,10 @@ import shared.DocumentFilter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.Stack;
 
 /**
  * Created on 2018/1/5.
@@ -58,7 +64,7 @@ public class BusinessHistoryTable implements Initializable, Upper {
     JFXTextField customerText;
 
     @FXML
-    HBox container;
+    HBox container,labelBox;
 
     @FXML
     AnchorPane mainPane;
@@ -87,6 +93,8 @@ public class BusinessHistoryTable implements Initializable, Upper {
     }
 
     private Upper upper=this;
+
+    private ObservableList<Node> list=FXCollections.observableArrayList();
 
     void refresh() {
         observableList.setAll(blService.findBusinessHistory(getBuilder().build()));
@@ -154,15 +162,33 @@ public class BusinessHistoryTable implements Initializable, Upper {
 
     }
 
+    @FXML
+    void backToMain(){
+        list.clear();
+       labelBox.getChildren().clear();
+       container.getChildren().setAll(mainPane);
+    }
+
     @Override
     public void back() {
-        setChildren(mainPane, "");
-        refresh();
+        labelBox.getChildren().remove(labelBox.getChildren().get(labelBox.getChildren().size()-1));
+        container.getChildren().setAll(list.get(list.size()-2));
+        list.remove(list.size()-1);
     }
 
     @Override
     public void setChildren(Node node, String title) {
+        list.add(node);
         container.getChildren().setAll(node);
-        sub.setText(title);
+        Label label=new Label(title);
+        label.setFont(Font.font(20));
+        label.setOnMouseClicked(e->{
+            container.getChildren().setAll(node);
+            labelBox.getChildren().remove(labelBox.getChildren().indexOf(label)+1,
+                    labelBox.getChildren().size());
+            list.remove(list.indexOf(node)+1,list.size());
+        });
+
+        labelBox.getChildren().add(label);
     }
 }

@@ -48,7 +48,7 @@ public class BusinessHistoryDetail {
             });
 
             redFlushAndCopyBtn.setOnAction(e->{
-                upper.setChildren(ModifyDoc.getNode(doc,true),">红冲并复制");
+                upper.setChildren(ModifyDoc.getNode(upper,doc,true),">红冲并复制");
             });
         }
     }

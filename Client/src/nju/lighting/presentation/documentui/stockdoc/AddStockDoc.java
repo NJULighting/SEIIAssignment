@@ -17,16 +17,21 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
+import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CommodityHelper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.vo.CustomerVO;
+import nju.lighting.vo.DocVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
+import nju.lighting.vo.doc.stockdoc.StockDocItemVO;
+import nju.lighting.vo.doc.stockdoc.StockDocVO;
 import shared.CustomerType;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -36,7 +41,7 @@ import java.util.stream.Collectors;
  *
  * @author 陈俊宇
  */
-public class AddStockDoc implements Initializable,Upper {
+public class AddStockDoc implements Initializable, Upper, Modifiable {
     @FXML
     HBox container;
     @FXML
@@ -52,10 +57,11 @@ public class AddStockDoc implements Initializable,Upper {
     @FXML
     private Label sub, title;
 
+    private Upper upper = this;
+
     private CustomerType type = CustomerType.SUPPLIER;
     private ObservableList<CommodityItem> docItemList = FXCollections.observableArrayList();
     private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
-
 
 
     public void back() {
@@ -82,20 +88,20 @@ public class AddStockDoc implements Initializable,Upper {
         controller.setMaxSize(480, 700);
 
         docItemList = controller.getGiftObservableList();
-        ObservableList<BasicCommodityItemVO> commodityList=FXCollections.observableArrayList();
-        chooseCommodityBtn.setOnAction(e-> CommodityHelper.chooseCommodity(this,commodityList));
+        ObservableList<BasicCommodityItemVO> commodityList = FXCollections.observableArrayList();
+        chooseCommodityBtn.setOnAction(e -> CommodityHelper.chooseCommodity(upper, commodityList));
 
-        commodityList.addListener((ListChangeListener<? super BasicCommodityItemVO>) c->{
-            while (c.next()){
+        commodityList.addListener((ListChangeListener<? super BasicCommodityItemVO>) c -> {
+            while (c.next()) {
                 docItemList.addAll(c.getAddedSubList().stream()
-                .map(x-> new CommodityItem(x,1))
-                .collect(Collectors.toList()));
+                        .map(x -> new CommodityItem(x, 1))
+                        .collect(Collectors.toList()));
             }
         });
 
 
-        chooseCustomerBtn.setOnAction(e-> CustomerHelper.setCustomer(this,customerProperty));
-        customerProperty.addListener(c-> customer.setText(customerProperty.getValue().getName()));
+        chooseCustomerBtn.setOnAction(e -> CustomerHelper.setCustomer(upper, customerProperty));
+        customerProperty.addListener(c -> customer.setText(customerProperty.getValue().getName()));
 
 
         user.setText(Client.getUserVO().getUsername());
@@ -107,5 +113,27 @@ public class AddStockDoc implements Initializable,Upper {
         title.setText("制定进货退货单");
     }
 
+    void init(Upper upper,List<StockDocItemVO> itemList, String customerID, String remarks) {
+        this.upper=upper;
+        docItemList.setAll(itemList.stream()
+                .map(CommodityItem::new)
+                .collect(Collectors.toList()));
 
+        customerProperty.set(CustomerHelper.getCustomer(Integer.parseInt(customerID)));
+
+        this.remarks.setText(remarks);
+
+    }
+
+    @Override
+    public void modify(Upper upper, DocVO docVO, boolean redFlush) {
+        StockDocVO stockDoc = (StockDocVO) docVO;
+
+        init(upper,(stockDoc).getItems(), stockDoc.getCustomerId(), stockDoc.getRemarks());
+    }
+
+    @Override
+    public Node getMainPane() {
+        return mainPane;
+    }
 }

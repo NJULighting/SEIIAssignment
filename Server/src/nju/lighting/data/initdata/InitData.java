@@ -4,6 +4,7 @@ import nju.lighting.data.accountdata.AccountData;
 import nju.lighting.data.commoditydata.CommodityData;
 import nju.lighting.data.customerdata.CustomerData;
 import nju.lighting.data.utils.CommonOperation;
+import nju.lighting.data.utils.Zipper;
 import nju.lighting.dataservice.initdataservice.InitDataService;
 import nju.lighting.po.account.AccountPO;
 import nju.lighting.po.commodity.CommodityItemPO;
@@ -88,7 +89,13 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
             result.t = ResultMessage.FAILURE;
             return result;
         }
-        zip(new File(url), url + ".zip");
+        Zipper zipper = new Zipper(url + ".zip", url);
+        try {
+            zipper.zip();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new TwoTuple<>(ResultMessage.FAILURE, null);
+        }
         InitPO initPO = new InitPO(date, userId, "http://localhost:8080/Server/" + url + ".zip");
         System.out.println("Before Return");
         result.t = commonOperation.add(initPO);
@@ -101,53 +108,5 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
         return commonOperation.getAll();
     }
 
-    /**
-     * 以下代码为网上抄的压缩文件代码
-     * @param inputFile
-     * @param zipFileName
-     */
-    public static void zip(File inputFile, String zipFileName) {
-        try {
-            FileOutputStream out = new FileOutputStream(
-                    new String(zipFileName.getBytes("UTF-8")));
-            ZipOutputStream zOut = new ZipOutputStream(out);
-            zip(zOut, inputFile, "");
-            zOut.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    private static void zip(ZipOutputStream zOut, File file, String base) {
-        try {
-            if (file.isDirectory()) {
-                File[] listFiles = file.listFiles();
-                zOut.putNextEntry(new ZipEntry(base + "/"));
-                base = (base.length() == 0 ? "" : base + "/");
-                for (int i = 0; i < listFiles.length; i++) {
-                    zip(zOut, listFiles[i], base + listFiles[i].getName());
-                }
-            }
-            else {
-                if (base == "") {
-                    base = file.getName();
-                }
-                zOut.putNextEntry(new ZipEntry(base));
-                writeFile(zOut,file);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    private static void writeFile(ZipOutputStream zOut,File file) throws IOException {
-        FileInputStream in = new FileInputStream(file);
-        int len;
-        while ((len = in.read()) != -1)
-            zOut.write(len);
-        in.close();
-    }
 
 }

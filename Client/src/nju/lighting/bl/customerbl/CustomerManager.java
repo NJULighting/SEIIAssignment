@@ -6,6 +6,7 @@ import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.bl.utils.DataServiceFunction;
+import nju.lighting.bl.utils.DataServiceSupplier;
 import nju.lighting.bl.utils.FuzzySeekingHelper;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.customerdataservice.CustomerDataService;
@@ -16,6 +17,7 @@ import shared.*;
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -29,6 +31,7 @@ enum CustomerManager {
     private CustomerDataService dataService;
     private Logger logger;
     private FuzzySeekingHelper<CustomerPO, CustomerVO> seekingHelper;
+    private Function<CustomerPO, CustomerVO> poTransformer = po -> new Customer(po).toVO();
 
     CustomerManager() {
         try {
@@ -53,10 +56,8 @@ enum CustomerManager {
      */
     ResultMessage changeCustomer(CustomerChangeInfo changeInfo) {
         try {
-            CustomerPO po = dataService.getCustomerById(changeInfo.id);
-            if (po == null)
-                return ResultMessage.FAILURE;
-            Customer target = new Customer(po);
+            Customer target = DataServiceFunction
+                    .findByToEntity(changeInfo.id, dataService::getCustomerById, Customer::new);
             target.changeInfo(changeInfo);
             logger.add(OPType.MODIFY, "修改客户信息 " + changeInfo.toString());
             return ResultMessage.SUCCESS;
@@ -87,13 +88,7 @@ enum CustomerManager {
      * @return a vo list contains all customers
      */
     List<CustomerVO> getCustomerVOList() {
-        try {
-            List<CustomerPO> poList = dataService.getAllCustomer();
-            return poList.stream().map(Customer::new).map(Customer::toVO).collect(Collectors.toList());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return DataServiceSupplier.getAll(dataService::getAllCustomer, poTransformer);
     }
 
 
@@ -122,19 +117,7 @@ enum CustomerManager {
      * or <code>null</code> if network fails
      */
     CustomerVO findCustomerByID(int id) {
-        try {
-            // Get po and check
-            CustomerPO po = dataService.getCustomerById(id);
-            if (po == null)
-                return null;
-
-            // Transfer
-            Customer customer = new Customer(po);
-            return customer.toVO();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return DataServiceFunction.findByToEntity(id, dataService::getCustomerById, poTransformer);
     }
 
     /**
@@ -144,14 +127,11 @@ enum CustomerManager {
      * or <code>null</code> if network fails
      */
     List<CustomerVO> findCustomerByType(CustomerType type) {
-        try {
-            List<CustomerPO> poList = dataService.getAllCustomer();
-            return poList.stream().filter(po -> po.getType() == type)
-                    .map(po -> new Customer(po).toVO()).collect(Collectors.toList());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
-        }
+        if (type == CustomerType.ALL)
+            return getCustomerVOList();
+
+        return DataServiceSupplier.getAllAndFilter(dataService::getAllCustomer,
+                poTransformer, po -> po.getType() == type);
     }
 
     /**

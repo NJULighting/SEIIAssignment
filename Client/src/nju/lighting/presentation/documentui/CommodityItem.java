@@ -72,6 +72,10 @@ public class CommodityItem {
         return new SalesDocItemVO(getCount(),getComments(),getCommodity(),getPrice());
     }
 
+    public StockDocItemVO toStockDocItem(){
+        return new StockDocItemVO(commodity,getCount(),getComments());
+    }
+
     public GiftItemVO toGiftItem(){
         return new GiftItemVO(commodity,getCount());
     }

@@ -9,7 +9,7 @@ import shared.ResultMessage;
 
 import java.util.List;
 
-class CustomerController implements CustomerBLService {
+public class CustomerController implements CustomerBLService {
     private CustomerManager manager = CustomerManager.INSTANCE;
 
     @Override

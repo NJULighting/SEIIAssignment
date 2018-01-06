@@ -37,6 +37,7 @@ import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocItemVO;
 import nju.lighting.vo.doc.salesdoc.SalesDocVO;
+import nju.lighting.vo.doc.salesdoc.SalesReturnDocVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerType;
 import shared.Result;
@@ -122,6 +123,18 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     private SalesDocVO getDoc() {
         if (customer.validate()  & docItemList.size() > 0)
             return new SalesDocVO(new Date(), Client.getUserVO().getID(), customerProperty.getValue().getID(),
+                    salesmanBox.getValue().getID(), repositoryBox.getValue().toString(), remarks.getText(),
+                    Double.parseDouble(discount.getText()),
+                    Double.parseDouble(voucher.getText()),
+                    docItemList.stream()
+                            .map(CommodityItem::toSalesDocItem)
+                            .collect(Collectors.toList()));
+        else return null;
+    }
+
+    private SalesReturnDocVO getReturnDoc(){
+        if (customer.validate()  & docItemList.size() > 0)
+            return new SalesReturnDocVO(new Date(), Client.getUserVO().getID(), customerProperty.getValue().getID(),
                     salesmanBox.getValue().getID(), repositoryBox.getValue().toString(), remarks.getText(),
                     Double.parseDouble(discount.getText()),
                     Double.parseDouble(voucher.getText()),
@@ -263,7 +276,10 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
         title.setText("制定销售退货单");
         verticalVBox.getChildren().remove(promotionBox);
         commitBtn.setOnAction(e -> {
-
+            if (getReturnDoc()!=null){
+                Result<DocVO> result= docBLService.commitDoc(getReturnDoc());
+                DialogHelper.dialog("提交销售退货单",result.getResultMessage(), MainUI.getStackPane());
+            }
         });
     }
 

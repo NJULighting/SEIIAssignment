@@ -45,8 +45,10 @@ public class HomePage implements Initializable {
     private DocumentFilter.Builder builder = new DocumentFilter.Builder();
 
 
-
+    @FXML
     void refresh() {
+        System.out.println("refresh");
+        builder.endDate(new Date());
         observableList.setAll(blService.findDocuments(builder.build()));
     }
 
@@ -54,6 +56,7 @@ public class HomePage implements Initializable {
     void clicked(){
         HistoryDocVO historyDocVO=listView.getSelectionModel()
                 .getSelectedItems().get(0);
+        System.out.println("comments"+ historyDocVO.getComment());
         DocHelper.showDoc(historyDocVO.getDocVO(),docContainer);
         comments.setText(getComments(historyDocVO.getComment()));
     }

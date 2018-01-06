@@ -23,6 +23,7 @@ import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
 import shared.Result;
 import shared.ResultMessage;
+import shared.TwoTuple;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -90,12 +91,14 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
                 AddCategoryDialog addCategoryController = (AddCategoryDialog) dialogController;
 
                 CommodityCategoryVO categoryVO = new CommodityCategoryVO(upperCategory, addCategoryController.getText());
-                Result<CommodityCategoryVO> res = commodityBLService.addCategory(categoryVO);
-                if (res.hasValue()) {
-                    upper.getChildren().add(new TreeItem<>(new CommodityCategoryItem(res.getValue())));
+                TwoTuple<ResultMessage, Integer> res = commodityBLService.addCategory(categoryVO);
+                ResultMessage resultMessage = res.t;
+                if (resultMessage == ResultMessage.SUCCESS) {
+                    categoryVO.setId(res.r);
+                    upper.getChildren().add(new TreeItem<CommodityCategoryItem>(new CommodityCategoryItem(categoryVO)));
                     dialog.close();
                 } else {
-                    DialogHelper.dialog(res.getResultMessage(), stackPane);
+                    DialogHelper.dialog("添加商品分类",resultMessage, stackPane);
                 }
 
             });
@@ -119,7 +122,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
                     dialog.close();
                     setText(category.getName());
                 } else
-                    DialogHelper.dialog(resultMessage, stackPane);
+                    DialogHelper.dialog("修改商品名称",resultMessage, stackPane);
 
 
             });
@@ -149,7 +152,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
                                 new TreeItem<>(new CommodityCategoryItem(result.getValue())));
                         dialog.close();
                     } else
-                        DialogHelper.dialog(result.getResultMessage(), stackPane);
+                        DialogHelper.dialog("添加商品",result.getResultMessage(), stackPane);
                 }
             });
         });
@@ -178,7 +181,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
                         dialog.close();
 
                     } else
-                        DialogHelper.dialog(resultMessage, stackPane);
+                        DialogHelper.dialog("修改商品信息",resultMessage, stackPane);
                 }
 
 
@@ -227,7 +230,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
                         getTreeTableItem().getParent().getChildren().remove(getTreeTableItem());
                         dialog.close();
                     } else
-                        DialogHelper.dialog(resultMessage, stackPane);
+                        DialogHelper.dialog("删除",resultMessage, stackPane);
                 }
         );
     }

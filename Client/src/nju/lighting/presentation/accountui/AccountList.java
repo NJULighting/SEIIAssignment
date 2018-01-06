@@ -87,7 +87,7 @@ AccountList implements Initializable {
                     if (resultMessage == ResultMessage.SUCCESS) {
                         accountVOObservableList.remove(accountVO);
                     } else
-                        DialogHelper.dialog(resultMessage, stackPane);
+                        DialogHelper.dialog("删除",resultMessage, stackPane);
                 }
             };
             DialogHelper.addDialog("你确定要删除账户" + accountVO.getName() + "?",
@@ -115,7 +115,7 @@ AccountList implements Initializable {
                                     accountVO);
                             return true;
                         } else
-                            DialogHelper.dialog(resultMessage, stackPane);
+                            DialogHelper.dialog("修改信息",resultMessage, stackPane);
 
                         return false;
                     }

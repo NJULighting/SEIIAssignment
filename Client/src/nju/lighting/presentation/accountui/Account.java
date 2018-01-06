@@ -140,7 +140,7 @@ public class Account implements Initializable {
                                     return true;
                                 }
                             } else
-                                DialogHelper.dialog(resultMessage, stackPane);
+                                DialogHelper.dialog("添加账户",resultMessage, stackPane);
 
                         }
                         return false;

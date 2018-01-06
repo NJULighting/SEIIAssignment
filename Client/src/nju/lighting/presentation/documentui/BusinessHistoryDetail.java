@@ -34,7 +34,7 @@ public class BusinessHistoryDetail {
 
     void redFlush(){
         ResultMessage resultMessage=blService.redFlush(docVO);
-        DialogHelper.dialog(resultMessage, MainUI.getStackPane());
+        DialogHelper.dialog("红冲",resultMessage, MainUI.getStackPane());
     }
 
 

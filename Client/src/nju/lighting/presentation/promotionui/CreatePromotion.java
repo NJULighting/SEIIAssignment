@@ -134,7 +134,7 @@ public class CreatePromotion implements Initializable {
                         upper.getPromotionList().add(res.getValue());
                         upper.backToMain();
                     } else
-                        DialogHelper.dialog(res.getResultMessage(), stackPane);
+                        DialogHelper.dialog("提交促销策略",res.getResultMessage(), stackPane);
                 }
             }
         });

@@ -102,7 +102,7 @@ public class DocBLService_Stub implements DocBLService {
 
     @Override
     public ResultMessage redFlush(DocVO docVO) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override

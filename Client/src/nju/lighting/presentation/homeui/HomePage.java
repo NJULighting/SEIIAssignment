@@ -83,7 +83,7 @@ public class HomePage implements Initializable {
                             setText(null);
                             setGraphic(null);
                         }else {
-                            Label type=new Label(DocHelper.typeToString(getItem().getDocVO().getType()));
+                            Label type=new Label(getItem().getDocVO().getType().toString());
                             type.setPrefSize(80,30);
                             type.setFont(Font.font(14));
                             Label state=new Label(DocHelper.stateToString(getItem().getState()));

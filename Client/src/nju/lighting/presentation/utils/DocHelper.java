@@ -61,7 +61,7 @@ public class DocHelper {
 
     }
 
-    public static String typeToString(DocType type){return typeStringHashMap.get(type);}
+ //   public static String typeToString(DocType type){return typeStringHashMap.get(type);}
 
     public static DocType stringToType(String string){return stringTypeHasMap.get(string);}
 
@@ -98,7 +98,7 @@ public class DocHelper {
                 new HistoryDocVO(Client.getUserVO(),"",docVO,
                         DocState.APPROVAL,new Date())
         );
-        DialogHelper.dialog(resultMessage, MainUI.getStackPane());
+        DialogHelper.dialog("保存并通过",resultMessage, MainUI.getStackPane());
     }
 
     public static String stateToString(DocState state){return stateStringHashMap.get(state);}

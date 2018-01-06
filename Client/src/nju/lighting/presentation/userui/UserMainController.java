@@ -125,7 +125,7 @@ public class UserMainController implements Initializable {
                                                     ResultMessage resultMessage = blService.deleteUser(userVO.getID());
                                                     if (resultMessage==ResultMessage.SUCCESS)
                                                         userList.remove(userVO);
-                                                    DialogHelper.dialog(resultMessage, stackPane);
+                                                    DialogHelper.dialog("删除用户",resultMessage, stackPane);
                                                 }
                                             });
                                     ResultMessage resultMessage = blService.deleteUser(userVO.getID());

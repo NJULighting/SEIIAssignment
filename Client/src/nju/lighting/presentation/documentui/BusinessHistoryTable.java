@@ -2,35 +2,44 @@ package nju.lighting.presentation.documentui;
 
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
+import nju.lighting.presentation.factory.UserBLServiceFactory;
 import nju.lighting.presentation.mainui.Upper;
+import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.presentation.utils.DocHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
+import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.UserVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
+import shared.DocType;
 import shared.DocumentFilter;
+import shared.Identity;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.Stack;
 
 /**
  * Created on 2018/1/5.
@@ -53,7 +62,13 @@ public class BusinessHistoryTable implements Initializable, Upper {
     JFXDatePicker startDate, endDate;
 
     @FXML
-    JFXComboBox typeBox, creatorBox, repositoryBox;
+    JFXComboBox<DocType> typeBox;
+
+    @FXML
+    JFXComboBox repositoryBox;
+
+    @FXML
+    JFXComboBox<UserVO> creatorBox;
 
     @FXML
     JFXTextField customerText;
@@ -71,19 +86,32 @@ public class BusinessHistoryTable implements Initializable, Upper {
     Label sub;
 
     @FXML
+    Button setCustomerBtn;
+
+    @FXML
     JFXHamburger hamburger;
 
     private ObservableList<BusinessHistoryItemVO> observableList = FXCollections.observableArrayList();
 
     private DocBLService blService = DocBLServiceFactory.getDocBLService();
 
-    private DocumentFilter.Builder builder = new DocumentFilter.Builder();
+    private DocumentFilter.Builder builder ;
+
+    private SimpleObjectProperty<CustomerVO> customerProperty=new SimpleObjectProperty<>();
 
     private HamburgerBasicCloseTransition burgerTask = new HamburgerBasicCloseTransition();
 
     private JFXNodesList nodesList = new JFXNodesList();
 
+
     private DocumentFilter.Builder getBuilder() {
+        builder=new DocumentFilter.Builder();
+        builder.startDate(DateHelper.localDateToDate(startDate.getValue()))
+                .endDate(DateHelper.localDateToDate(endDate.getValue()))
+        .docType(typeBox.getValue())
+        .creatorID(creatorBox.getValue().getID())
+        .customer(customerProperty.getValue().getID()+"");
+
         return builder;
     }
 
@@ -102,12 +130,23 @@ public class BusinessHistoryTable implements Initializable, Upper {
         DateHelper.setDefaultTime(startDate, DateHelper.weekAgo());
         DateHelper.setDefaultTime(endDate, DateHelper.dateToLocalDate(new Date()));
 
+        creatorBox.getItems().add(new UserVO("无",null,null,false));
+        creatorBox.getItems().addAll(UserBLServiceFactory.getUserBLService().getUserList(Identity.GENERAL));
+
+        typeBox.getItems().add(null);
+        typeBox.getItems().addAll(DocType.values());
+
+        setCustomerBtn.setOnAction(e-> CustomerHelper.setCustomer(this,customerProperty));
+
+        customerProperty.addListener(c-> customerText.setText(customerProperty.getValue().getName()));
+
+
         tableView.setItems(observableList);
 
         refresh();
 
         type.setCellValueFactory(c ->
-                new SimpleStringProperty(DocHelper.typeToString(c.getValue().getType())));
+                new SimpleStringProperty(c.getValue().getType().toString()));
 
         customer.setCellValueFactory(c ->
                 new SimpleStringProperty(c.getValue().getCustomer()));

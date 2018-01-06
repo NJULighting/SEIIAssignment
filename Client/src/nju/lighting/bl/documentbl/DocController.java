@@ -63,12 +63,6 @@ public class DocController implements DocBLService {
     }
 
     @Override
-    public DocVO redFlushAndCopy(DocVO target) {
-        RedFlush redFlush = new RedFlush();
-        return redFlush.redFlushAndCopy(target);
-    }
-
-    @Override
     public UserVO getCreatorInfo(String creatorID) {
         UserInfo userInfo = new UserInfoImpl();
         return userInfo.getUserVOByID(creatorID);

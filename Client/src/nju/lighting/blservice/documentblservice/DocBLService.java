@@ -44,7 +44,5 @@ public interface DocBLService {
 
     ResultMessage expireAlertDoc(AlertDocVO alertDocVO);
 
-    DocVO redFlushAndCopy(DocVO target);
-
     UserVO getCreatorInfo(String creatorID);
 }

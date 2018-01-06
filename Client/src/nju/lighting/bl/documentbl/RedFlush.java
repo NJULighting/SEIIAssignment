@@ -53,15 +53,4 @@ public class RedFlush {
         }
     }
 
-    /**
-     * 红冲并复制功能
-     * @param target 需要进行红冲并复制的单据对象
-     * @return 相应的进行红冲过的对象
-     */
-    DocVO redFlushAndCopy(DocVO target) {
-        Doc doc = factory.voToDoc(target);
-        doc.redFlush();
-        logger.add(OPType.ADD, "对单据" + doc.getId() + "使用了红冲并复制操作");
-        return doc.toVO();
-    }
 }

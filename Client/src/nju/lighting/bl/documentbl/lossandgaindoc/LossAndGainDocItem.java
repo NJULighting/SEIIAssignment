@@ -105,4 +105,9 @@ class LossAndGainDocItem implements DocItem {
                 RepositoryChangeType.LOSS : RepositoryChangeType.GAIN;
         return repositoryInfo.changeRepository(commodityId, count, getAmount(), repositoryChangeType);
     }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 }

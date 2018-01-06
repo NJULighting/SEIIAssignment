@@ -100,7 +100,7 @@ public enum DocManager {
     List<BusinessHistoryItemVO> findBusinessHistory(DocumentFilter filter) {
         DocFactory factory = DocFactory.INSTANT;
         List<Doc> docList = DataServiceBiFunction.findAndFilterToList(filter.getStart(), filter.getEnd(),
-                dataService::findByTime, factory::poToDoc, filter.getPredicateForDoc());
+                dataService::findByTime, factory::poToDoc, filter.getPredicateForDoc().and(doc -> doc.getDocType() != DocType.ALERT));
 
         return CollectionTransformer.toList(docList, Doc::toBusinessHistoryItemVO);
     }

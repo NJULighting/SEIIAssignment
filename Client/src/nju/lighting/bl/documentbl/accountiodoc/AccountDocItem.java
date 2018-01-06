@@ -74,4 +74,9 @@ class AccountDocItem implements DocItem {
         double amountChange = ioType == AccountIOType.IN ? amount : -amount;
         return accountInfo.updateAmount(accountID, amountChange);
     }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 }

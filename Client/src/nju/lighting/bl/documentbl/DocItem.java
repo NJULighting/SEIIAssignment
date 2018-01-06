@@ -11,4 +11,6 @@ public interface DocItem {
     void redFlush();
 
     ResultMessage approve();
+
+    void setId(int id);
 }

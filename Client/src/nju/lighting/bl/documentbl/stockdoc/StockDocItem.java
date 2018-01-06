@@ -46,6 +46,7 @@ public class StockDocItem implements DocItem {
         return id;
     }
 
+    @Override
     public void setId(int id) {
         this.id = id;
     }

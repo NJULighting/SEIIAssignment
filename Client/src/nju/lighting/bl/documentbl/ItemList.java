@@ -49,7 +49,11 @@ public class ItemList<Item extends DocItem> {
     }
 
     public void redFlush() {
-        items.forEach(Item::redFlush);
+        // Set id to 0 so that it can be added to the database successfully
+        items.forEach(item -> {
+            item.setId(0);
+            item.redFlush();
+        });
     }
 
     public ResultMessage approve() {

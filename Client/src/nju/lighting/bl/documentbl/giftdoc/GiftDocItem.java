@@ -81,4 +81,9 @@ public class GiftDocItem implements DocItem {
         RepositoryInfo repositoryInfo = new RepositoryInfoImpl();
         return repositoryInfo.changeRepository(commodityId, count, subtotal, RepositoryChangeType.GIFT);
     }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 }

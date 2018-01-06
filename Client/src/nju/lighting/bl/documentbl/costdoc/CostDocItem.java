@@ -56,4 +56,9 @@ public class CostDocItem implements DocItem {
     public ResultMessage approve() {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 }

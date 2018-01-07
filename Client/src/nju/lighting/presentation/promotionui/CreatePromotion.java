@@ -99,7 +99,8 @@ public class CreatePromotion implements Initializable {
         PromotionBuildInfo.Builder builder = createBuilder(PromotionType.CustomerOriented);
 
         if (itemList.size() != 0 || controller.getOff() > 0 || controller.getVoucherEndDate() != null) {
-            builder.goods(getGiftList())
+            builder.level(controller.getLevel())
+                    .goods(getGiftList())
                     .off(controller.getOff())
                     .vouchers(controller.getVoucher(), controller.getVoucherEndDate());
 

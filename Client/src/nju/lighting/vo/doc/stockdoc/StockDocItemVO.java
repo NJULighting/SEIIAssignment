@@ -27,6 +27,12 @@ public class StockDocItemVO {
         this.totalAmount = number * commodity.getRecentInPrice();
     }
 
+    public StockDocItemVO(BasicCommodityItemVO commodity, int number, String remarks,double price) {
+     this(commodity, number, remarks);
+     totalAmount=price*number;
+    }
+
+
 
     public StockDocItemVO(int id, BasicCommodityItemVO commodity, int number, double totalAmount, String remarks) {
         this.id = id;

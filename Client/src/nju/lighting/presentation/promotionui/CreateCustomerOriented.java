@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
  */
 public class CreateCustomerOriented implements Initializable {
     @FXML
-    JFXComboBox<String> gradePicker;
+    JFXComboBox<CustomerGrade> gradePicker;
 
     @FXML
     JFXTextField offText, voucherText;
@@ -33,14 +33,9 @@ public class CreateCustomerOriented implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        gradePicker.getItems().addAll(CustomerHelper.gradeToString(CustomerGrade.ONE),
-                CustomerHelper.gradeToString(CustomerGrade.TWO),
-                CustomerHelper.gradeToString(CustomerGrade.THREE),
-                CustomerHelper.gradeToString(CustomerGrade.FOUR),
-                CustomerHelper.gradeToString(CustomerGrade.FIVE)
-        );
+        gradePicker.getItems().addAll(CustomerGrade.values());
 
-        gradePicker.setValue(CustomerHelper.gradeToString(CustomerGrade.ONE));
+        gradePicker.setValue(gradePicker.getItems().get(0));
         TextFieldHelper.addDoubleValidator(offText);
     }
 
@@ -51,6 +46,8 @@ public class CreateCustomerOriented implements Initializable {
     public double getVoucher() {
         return TextFieldHelper.getDouble(voucherText);
     }
+
+    public CustomerGrade getLevel(){return  gradePicker.getValue();}
 
 
     public Date getVoucherEndDate() {

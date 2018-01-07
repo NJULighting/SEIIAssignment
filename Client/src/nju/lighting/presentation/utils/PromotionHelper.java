@@ -41,6 +41,8 @@ public class PromotionHelper {
     }
 
     public static void setPromotion(Upper upper, SimpleObjectProperty<PromotionVO> promotionProperty, List<PromotionVO> list) {
+        list.stream().forEach(x->
+        System.out.println("PromotionLevel"+x.getLevel()));
         FXMLLoader loader = new FXMLLoader(CustomerHelper.class.getResource("../promotionui/BenefitsPlan.fxml"));
         try {
             upper.setChildren(loader.load(), ">选择促销策略");

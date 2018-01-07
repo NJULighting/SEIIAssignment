@@ -39,31 +39,37 @@ public class CommodityItem {
         this.count.set(count);
         this.hasMax.setValue(hasMax);
         init(commodity);
+
     }
 
     //查看单据时由SalesDocItem 或GiftDocItem 构造
     public CommodityItem(SalesDocItemVO vo) {
+        System.out.println("item totalAmount"+ vo.getTotalAmount());
         comments.set(vo.getRemarks());
         count.set(vo.getNumber());
         init(vo.getCommodity());
+        price.set(vo.getTotalAmount()/getCount());
     }
     public CommodityItem(SalesDocItemVO vo,boolean hasMax) {
         comments.set(vo.getRemarks());
         count.set(vo.getNumber());
         this.hasMax.setValue(hasMax);
         init(vo.getCommodity());
+        price.set(vo.getTotalAmount()/getCount());
     }
 
     public CommodityItem(StockDocItemVO vo) {
         comments.set(vo.getRemarks());
         count.set(vo.getNumber());
         init(vo.getCommodity());
+        price.set(vo.getTotalAmount()/getCount());
     }
 
     public CommodityItem(GiftItemVO vo, boolean gift) {
         count.set(vo.getCount());
         init(vo.getCommodity());
         price.set(vo.getPrice());
+
 
     }
 
@@ -87,7 +93,7 @@ public class CommodityItem {
     }
 
     public StockDocItemVO toStockDocItem() {
-        return new StockDocItemVO(commodity, getCount(), getComments());
+        return new StockDocItemVO(commodity, getCount(), getComments(),getPrice());
     }
 
     public GiftItemVO toGiftItem() {

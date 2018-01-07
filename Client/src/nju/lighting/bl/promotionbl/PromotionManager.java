@@ -98,8 +98,8 @@ enum PromotionManager {
      */
     private boolean containsItemOfList(List<String> commodityIDList, PromotionPO po) {
         return po.getGoods() != null
-                && po.getGoods().stream().map(PromotionPackageItemPO::getCommodityId)
-                .collect(Collectors.toList()).containsAll(commodityIDList);
+                && commodityIDList.containsAll(po.getGoods().stream().map(PromotionPackageItemPO::getCommodityId)
+                .collect(Collectors.toList()));
     }
 
     ResultMessage modify(PromotionVO vo) {

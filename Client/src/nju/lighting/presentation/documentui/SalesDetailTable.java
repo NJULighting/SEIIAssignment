@@ -199,57 +199,11 @@ public class SalesDetailTable implements Initializable, Upper {
 
 
     public void exportExcel(){
-
-        String[] head=new String[]{"商品","型号","数量","单价","总额","时间"};
-
-        int tableSize = observableList.size();
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("选择保存路径");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLS Files", "*.xls"));
-        File file = fileChooser.showSaveDialog(new Stage());
-
-
-        WritableWorkbook theNew= null;
-
-        if (file != null) {
-            try {
-
-                theNew = Workbook.createWorkbook(file);
-                WritableSheet sheet=theNew.createSheet("sheet 1",0);
-
-                //设置第一行即表头
-                for(int i=0;i<head.length;i++){
-                    sheet.addCell(new jxl.write.Label(i,0,head[i]));
-                }
-
-                //一行一行设置
-                for(int i=0;i<tableSize;i++){
-                    sheet.addCell(new jxl.write.Label(0,i+1,observableList.get(i).getName()));
-                    sheet.addCell(new jxl.write.Label(1,i+1,observableList.get(i).getCommodityType().toString()));
-                    sheet.addCell(new jxl.write.Label(2,i+1,String.valueOf(observableList.get(i).getNumber())));
-                    sheet.addCell(new jxl.write.Label(3,i+1,String.valueOf(observableList.get(i).getSalePrice())));
-                    sheet.addCell(new jxl.write.Label(4,i+1,String.valueOf(observableList.get(i).getTotalAmount())));
-                    sheet.addCell(new jxl.write.Label(1,i+1,observableList.get(i).getDate().toString()));
-                }
-
-                theNew.write();
-                theNew.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (RowsExceededException e) {
-                e.printStackTrace();
-            } catch (WriteException e) {
-                e.printStackTrace();
-            }
-
+        if(ExportExcelHelper.salesDetailTable(observableList)==ResultMessage.SUCCESS){
             DialogHelper.dialog("导出表格", ResultMessage.SUCCESS,stackPane);
         }
         else{
             DialogHelper.dialog("导出表格", ResultMessage.FAILURE,stackPane);
         }
-
-
-
     }
 }

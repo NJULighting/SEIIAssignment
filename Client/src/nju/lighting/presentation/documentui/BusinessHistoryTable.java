@@ -261,53 +261,10 @@ public class BusinessHistoryTable implements Initializable, Upper {
 
     public void exportExcel() {
 
-        String[] head = new String[]{"单据类型", "客户", "创建人", "创建时间", "业务员"};
-
-        int tableSize = observableList.size();
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("选择保存路径");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLS Files", "*.xls"));
-        File file = fileChooser.showSaveDialog(new Stage());
-
-
-        WritableWorkbook theNew = null;
-
-        if (file != null) {
-            try {
-
-                theNew = Workbook.createWorkbook(file);
-                WritableSheet sheet = theNew.createSheet("sheet 1", 0);
-
-                //设置第一行即表头
-                for (int i = 0; i < head.length; i++) {
-                    sheet.addCell(new jxl.write.Label(i, 0, head[i]));
-                }
-
-                //一行一行设置
-                for (int i = 0; i < tableSize; i++) {
-                    sheet.addCell(new jxl.write.Label(0, i + 1, observableList.get(i).getDocVO().getType().toString()));
-                    sheet.addCell(new jxl.write.Label(1, i + 1, observableList.get(i).getCustomer().toString()));
-                    sheet.addCell(new jxl.write.Label(2, i + 1, observableList.get(i).getDocVO().getCreatorId().toString()));
-                    sheet.addCell(new jxl.write.Label(3, i + 1, observableList.get(i).getDate().toString()));
-                    sheet.addCell(new jxl.write.Label(4, i + 1, observableList.get(i).getSalesman().toString()));
-                }
-
-                theNew.write();
-                theNew.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (RowsExceededException e) {
-                e.printStackTrace();
-            } catch (WriteException e) {
-                e.printStackTrace();
-            }
-
+        if(ExportExcelHelper.businessHistoryTable(observableList)==ResultMessage.SUCCESS){
             DialogHelper.dialog("导出表格", ResultMessage.SUCCESS, stackPane);
         } else {
             DialogHelper.dialog("导出表格", ResultMessage.FAILURE, stackPane);
         }
-
-
     }
 }

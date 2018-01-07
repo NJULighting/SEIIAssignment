@@ -266,8 +266,8 @@ public class BusinessHistoryTable implements Initializable, Upper {
         int tableSize = observableList.size();
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Excel");
-        fileChooser.setInitialFileName("经营历程表.xls");
+        fileChooser.setTitle("选择保存路径");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLS Files", "*.xls"));
         File file = fileChooser.showSaveDialog(new Stage());
 
 

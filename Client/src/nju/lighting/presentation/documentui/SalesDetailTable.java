@@ -205,8 +205,8 @@ public class SalesDetailTable implements Initializable, Upper {
         int tableSize = observableList.size();
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Excel");
-        fileChooser.setInitialFileName("销售明细表.xls");
+        fileChooser.setTitle("选择保存路径");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLS Files", "*.xls"));
         File file = fileChooser.showSaveDialog(new Stage());
 
 

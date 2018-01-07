@@ -10,13 +10,21 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import jxl.Workbook;
+import jxl.write.*;
+import jxl.write.biff.RowsExceededException;
 import nju.lighting.blservice.documentblservice.DocBLService;
+import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.vo.viewtables.BusinessConditionTableVO;
+import shared.ResultMessage;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Date;
@@ -29,6 +37,9 @@ import java.util.ResourceBundle;
  * @author 陈俊宇
  */
 public class BusinessConditionTable implements Initializable {
+
+    @FXML
+    StackPane stackPane;
 
     @FXML
     Label salesRevenueText, commodityGainRevenueText, costAdjustRevenueText, spreadRevenueText,
@@ -152,11 +163,99 @@ public class BusinessConditionTable implements Initializable {
         yearBtn.setOnAction(e -> setTime(DateHelper.yearAgo()));
 
 
-        exportBtn.setOnAction(e -> {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("选择保存路径");
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLS Files", "*.xls"));
-            fileChooser.showSaveDialog(new Stage());
-        });
+    }
+
+    public void exportExcel(){
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("选择保存路径");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLS Files", "*.xls"));
+        File file = fileChooser.showSaveDialog(new Stage());
+
+
+        WritableWorkbook theNew= null;
+
+        if (file != null) {
+            try {
+
+                theNew = Workbook.createWorkbook(file);
+                WritableSheet sheet=theNew.createSheet("sheet 1",0);
+
+                //单元格格式和字体
+                WritableCellFormat format = new WritableCellFormat(new WritableFont(WritableFont.TIMES, 10, WritableFont.NO_BOLD));
+                //把水平对齐方式指定为居中
+                format.setAlignment(jxl.format.Alignment.CENTRE);
+                //把垂直对齐方式指定为居中
+                format.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
+                //设置自动换行
+                format.setWrap(true);
+
+                //宽度和合并单元格设置
+                sheet.setColumnView(0, 8);
+                sheet.setColumnView(1, 14);
+                sheet.setColumnView(2, 18);
+                sheet.setColumnView(3, 14);
+                sheet.mergeCells(0, 0, 0, 5);
+                sheet.mergeCells(0, 7, 0, 10);
+                sheet.mergeCells(1, 1, 1, 4);
+                sheet.mergeCells(1, 8, 1, 9);
+                sheet.mergeCells(0, 0, 0, 5);
+                sheet.mergeCells(0, 6, 3, 6);
+                sheet.mergeCells(0, 11, 3, 11);
+
+                //各大小标题
+                sheet.addCell(new jxl.write.Label(0,0,"收入",format));
+                sheet.addCell(new jxl.write.Label(0,7,"支出",format));
+                sheet.addCell(new jxl.write.Label(0,12,"利润",format));
+                sheet.addCell(new jxl.write.Label(1,0,"销售收入",format));
+                sheet.addCell(new jxl.write.Label(1,1,"商品类收入",format));
+                sheet.addCell(new jxl.write.Label(1,5,"总额",format));
+                sheet.addCell(new jxl.write.Label(1,7,"销售成本",format));
+                sheet.addCell(new jxl.write.Label(1,8,"商品类支出",format));
+                sheet.addCell(new jxl.write.Label(1,10,"总额",format));
+                sheet.addCell(new jxl.write.Label(2,1,"商品报溢收入",format));
+                sheet.addCell(new jxl.write.Label(2,2,"成本调价收入",format));
+                sheet.addCell(new jxl.write.Label(2,3,"进退货差额",format));
+                sheet.addCell(new jxl.write.Label(2,4,"代金券差额",format));
+                sheet.addCell(new jxl.write.Label(2,8,"商品报损支出",format));
+                sheet.addCell(new jxl.write.Label(2,9,"商品增出支出",format));
+                sheet.addCell(new jxl.write.Label(4,0,"折让",format));
+
+                //各数据
+                sheet.addCell(new jxl.write.Label(3,0,salesRevenueText.getText()));
+                sheet.addCell(new jxl.write.Label(3,1,commodityGainRevenueText.getText()));
+                sheet.addCell(new jxl.write.Label(3,2,costAdjustRevenueText.getText()));
+                sheet.addCell(new jxl.write.Label(3,3,spreadRevenueText.getText()));
+                sheet.addCell(new jxl.write.Label(3,4,voucherCausedRevenueText.getText()));
+                sheet.addCell(new jxl.write.Label(3,5,revenueText.getText()));
+                sheet.addCell(new jxl.write.Label(3,7,costExpenditureText.getText()));
+                sheet.addCell(new jxl.write.Label(3,8,commodityLossExpenditureText.getText()));
+                sheet.addCell(new jxl.write.Label(3,9,giftExpenditureText.getText()));
+                sheet.addCell(new jxl.write.Label(3,10,expenditureText.getText()));
+                sheet.addCell(new jxl.write.Label(3,12,profitText.getText()));
+
+                sheet.addCell(new jxl.write.Label(5,0,salesRevenueOffText.getText()));
+
+
+                theNew.write();
+                theNew.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (RowsExceededException e) {
+                e.printStackTrace();
+            } catch (WriteException e) {
+                e.printStackTrace();
+            }
+
+            DialogHelper.dialog("导出表格", ResultMessage.SUCCESS,stackPane);
+            System.out.println("import success!");
+        }
+        else{
+            DialogHelper.dialog("导出表格", ResultMessage.FAILURE,stackPane);
+            System.out.println("import fail!");
+        }
+
+
+
     }
 }

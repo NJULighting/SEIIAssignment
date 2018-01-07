@@ -8,9 +8,11 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.TableViewHelper;
@@ -55,8 +57,6 @@ public class CommodityList implements Initializable {
         total.set(giftObservableList.stream()
                 .mapToDouble(x -> ((x).subtotal.getValue()))
                 .sum());
-        //totalLabel.setText(total+ "");
-
     }
 
     @Override
@@ -173,6 +173,12 @@ public class CommodityList implements Initializable {
         subtotal.setPrefWidth(100);
         count.setPrefWidth(100);
 
+    }
+
+    public void setGift(double width){
+        setGift();
+        giftTableView.setPrefWidth(width);
+        TableViewHelper.setHeight(giftTableView,1.2);
     }
 
     public void setGiftAndEditable() {

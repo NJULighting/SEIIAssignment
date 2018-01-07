@@ -10,7 +10,9 @@ import javafx.scene.layout.HBox;
 import nju.lighting.blservice.userblservice.UserBLService;
 import nju.lighting.presentation.documentui.Doc;
 import nju.lighting.presentation.factory.UserBLServiceFactory;
+import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.presentation.utils.ScrollPaneHelper;
+import nju.lighting.presentation.utils.UserHelper;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocVO;
 
 import java.io.IOException;
@@ -47,10 +49,10 @@ public class LossAndGainDocController implements Initializable {
 
         id.setText(lossAndGainDocVO.getDocId());
         if (lossAndGainDocVO.getTime() != null) {
-            date.setText(lossAndGainDocVO.getTime().toString());
+            date.setText(DateHelper.approximateTime(lossAndGainDocVO.getTime()));
         }
         if (userBLService.getUser(lossAndGainDocVO.getCreatorId()) != null) {
-            maker.setText(userBLService.getUser(lossAndGainDocVO.getCreatorId()).getUsername());
+            maker.setText(UserHelper.getUserString(lossAndGainDocVO.getCreatorId()));
         }
 
 

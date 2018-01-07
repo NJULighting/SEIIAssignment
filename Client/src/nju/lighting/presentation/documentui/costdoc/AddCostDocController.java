@@ -18,6 +18,7 @@ import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
+import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.AccountHelper;
 import nju.lighting.presentation.utils.DocHelper;
@@ -25,21 +26,21 @@ import nju.lighting.vo.DocVO;
 import nju.lighting.vo.account.AccountVO;
 import nju.lighting.vo.doc.costdoc.CostDocItemVO;
 import nju.lighting.vo.doc.costdoc.CostDocVO;
+import shared.Result;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class AddCostDocController implements Initializable,Modifiable {
-
+public class AddCostDocController implements Initializable, Modifiable {
 
 
     @FXML
-    Button addItemBtn,addAccountBtn,commitBtn;
+    Button addItemBtn, addAccountBtn, commitBtn;
 
     @FXML
-    JFXTextField accountText,balanceText,totalText;
+    JFXTextField accountText, balanceText, totalText;
 
     @FXML
     HBox tableContainer;
@@ -50,19 +51,27 @@ public class AddCostDocController implements Initializable,Modifiable {
     @FXML
     Pane mainPane;
 
-    private SimpleObjectProperty<AccountVO> accountProperty=new SimpleObjectProperty<>();
+    private SimpleObjectProperty<AccountVO> accountProperty = new SimpleObjectProperty<>();
 
     private ObservableList<CostDocItemVO> observableList;
 
-    private SimpleDoubleProperty totalProperty=new SimpleDoubleProperty();
+    private SimpleDoubleProperty totalProperty = new SimpleDoubleProperty();
 
-    private DocBLService docBLService= DocBLServiceFactory.getDocBLService();
+    private DocBLService docBLService = DocBLServiceFactory.getDocBLService();
+
+    private CostDocVO getDoc() {
+        if (accountProperty.getValue() != null && observableList.size() != 0) {
+            return new CostDocVO(new Date(), Client.getUserVO().getID(),
+                    accountProperty.getValue(), observableList);
+        } else
+            return null;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        addAccountBtn.setOnAction(e-> AccountHelper.addAccount(accountProperty));
+        addAccountBtn.setOnAction(e -> AccountHelper.addAccount(accountProperty));
 
-        FXMLLoader tableLoader=new FXMLLoader(getClass().getResource("CostItemList.fxml"));
+        FXMLLoader tableLoader = new FXMLLoader(getClass().getResource("CostItemList.fxml"));
 
         try {
             tableContainer.getChildren().add(tableLoader.load());
@@ -70,63 +79,63 @@ public class AddCostDocController implements Initializable,Modifiable {
             e.printStackTrace();
         }
 
-        CostItemList tableController=tableLoader.getController();
+        CostItemList tableController = tableLoader.getController();
         tableController.setEditable();
 
-        observableList=tableController.getObservableList();
+        observableList = tableController.getObservableList();
 
-        accountProperty.addListener(c->{
-            balanceText.setText(accountProperty.getValue().getAmount()+"");
+        accountProperty.addListener(c -> {
+            balanceText.setText(accountProperty.getValue().getAmount() + "");
             accountText.setText(accountProperty.getValue().getName());
         });
 
-        observableList.addListener((ListChangeListener<? super CostDocItemVO>) c->{
+        observableList.addListener((ListChangeListener<? super CostDocItemVO>) c -> {
             totalProperty.set(observableList.stream()
-            .mapToDouble(x-> x.getAmount())
-            .sum());
+                    .mapToDouble(x -> x.getAmount())
+                    .sum());
         });
 
         totalText.textProperty().bind(totalProperty.asString());
 
 
-        addItemBtn.setOnAction(e->{
+        addItemBtn.setOnAction(e -> {
 
             try {
-                FXMLLoader loader=new FXMLLoader(getClass().getResource("AddItem.fxml"));
-                Node node =loader.load();
-                AddItem controller=loader.getController();
-                DialogHelper.addDialog(node,stackPane,controller.AddItem(observableList));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AddItem.fxml"));
+                Node node = loader.load();
+                AddItem controller = loader.getController();
+                DialogHelper.addDialog(node, stackPane, controller.AddItem(observableList));
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
 
         });
 
-        commitBtn.setOnAction(e-> {
-           docBLService.commitDoc(getDoc());
+        commitBtn.setOnAction(e -> {
+            if (getDoc() != null){
+                Result<DocVO> result= docBLService.commitDoc(getDoc());
+                DialogHelper.dialog("提交现金费用单",result.getResultMessage(), MainUI.getStackPane());
+            }
+
         });
     }
 
-    CostDocVO getDoc(){
-        return new CostDocVO(new Date(), Client.getUserVO().getID(),
-                accountProperty.getValue(), observableList);
-    }
 
     @Override
     public void modify(Upper upper, DocVO docVO, boolean redFlush) {
-        CostDocVO costDocVO=(CostDocVO)docVO;
+        CostDocVO costDocVO = (CostDocVO) docVO;
 
         accountProperty.set(costDocVO.getAccount());
         observableList.setAll(costDocVO.getItemList());
         totalProperty.set(costDocVO.getTotal());
 
-        if (!redFlush){
-            commitBtn.setOnAction(e-> DocHelper.saveAndApprove(getDoc()));
+        if (!redFlush) {
+            commitBtn.setOnAction(e -> DocHelper.saveAndApprove(getDoc()));
         }
     }
 
     @Override
     public Node getMainPane() {
-        return mainPane ;
+        return mainPane;
     }
 }

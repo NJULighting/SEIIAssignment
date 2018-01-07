@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.salesdoc.SalesReturnDoc">
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" stylesheets="@../../custom.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.salesdoc.SalesReturnDoc">
     <children>
         <ScrollPane fx:id="scrollpaneMain" hbarPolicy="NEVER" hmax="0.0" prefHeight="560.0" prefWidth="700.0">
             <content>
@@ -180,7 +185,7 @@
                                 </HBox>
                                 <HBox alignment="CENTER">
                                     <children>
-                                        <Label fx:id="totalLabel" text="ZPD-XXXX-XXXXX" textFill="#838383" />
+                                        <Label fx:id="idLabel" text="ZPD-XXXX-XXXXX" textFill="#838383" />
                                     </children>
                                     <VBox.margin>
                                         <Insets top="20.0" />

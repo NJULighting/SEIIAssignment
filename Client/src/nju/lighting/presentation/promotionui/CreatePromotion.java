@@ -41,6 +41,7 @@ import java.util.stream.Collectors;
 /**
  * Created on 2017/12/28.
  * Description
+ *
  * @author 陈俊宇
  */
 public class CreatePromotion implements Initializable {
@@ -74,7 +75,7 @@ public class CreatePromotion implements Initializable {
         PromotionBuildInfo.Builder builder = createBuilder(PromotionType.PriceOriented);
         CreatePriceOriented controller = typeLoader.getController();
         if (itemList.size() != 0 || (controller.getVoucherEndDate() != null)) {
-            builder.off(controller.getPrice())
+            builder.price(controller.getPrice())
                     .goods(getGiftList())
                     .vouchers(controller.getVoucher(), controller.getVoucherEndDate());
             System.out.println("succ commit");
@@ -134,7 +135,7 @@ public class CreatePromotion implements Initializable {
                         upper.getPromotionList().add(res.getValue());
                         upper.backToMain();
                     } else
-                        DialogHelper.dialog("提交促销策略",res.getResultMessage(), stackPane);
+                        DialogHelper.dialog("提交促销策略", res.getResultMessage(), stackPane);
                 }
             }
         });

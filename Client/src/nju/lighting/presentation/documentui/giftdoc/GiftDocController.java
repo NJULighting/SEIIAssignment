@@ -13,7 +13,9 @@ import nju.lighting.presentation.documentui.CommodityList;
 import nju.lighting.presentation.documentui.Doc;
 import nju.lighting.presentation.factory.CustomerBLServiceFactory;
 import nju.lighting.presentation.factory.UserBLServiceFactory;
+import nju.lighting.presentation.utils.DateHelper;
 import nju.lighting.presentation.utils.ScrollPaneHelper;
+import nju.lighting.presentation.utils.UserHelper;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
 
 import java.io.IOException;
@@ -34,7 +36,7 @@ public class GiftDocController implements Initializable {
     private AnchorPane anchorPane;
 
     @FXML
-    private Label customer, id, date, maker, account;
+    private Label customer, id, maker, account, time;
 
     @FXML
     private ScrollPane scrollpane;
@@ -50,14 +52,13 @@ public class GiftDocController implements Initializable {
 
         CommodityList listController;
 
+        time.setText(DateHelper.approximateTime(giftDocVO.getTime()));
+
         customer.setText(customerBLService.findCustomerByID(giftDocVO.getCustomerID()).getName());
         id.setText(giftDocVO.getDocId());
-        if (giftDocVO.getTime() != null) {
-            date.setText(giftDocVO.getTime().toString());
-        }
-        if (userBLService.getUser(giftDocVO.getCreatorId()) != null) {
-            maker.setText(userBLService.getUser(giftDocVO.getCreatorId()).getUsername());
-        }
+
+        maker.setText(UserHelper.getUserString(giftDocVO.getCreatorId()));
+
 
         account.setText(String.valueOf(giftDocVO.getTotal()));
 

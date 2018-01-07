@@ -8,7 +8,9 @@ import javafx.scene.layout.HBox;
 import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
 import nju.lighting.presentation.documentui.Doc;
+import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.DateHelper;
+import nju.lighting.presentation.utils.UserHelper;
 import nju.lighting.vo.doc.stockdoc.StockReturnDocVO;
 
 import java.io.IOException;
@@ -39,12 +41,11 @@ public class StockReturnDoc implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        customer.setText(stockReturnDocVO.getCustomerId());
+        customer.setText(CustomerHelper.getCustomer(Integer.parseInt(stockReturnDocVO.getCustomerId())).getName());
         comments.setText(stockReturnDocVO.getRemarks());
-        total.setText(stockReturnDocVO.getTotalAmount() + "");
+        total.setText(stockReturnDocVO.getTotalAmount()+"");
         time.setText(DateHelper.approximateTime(stockReturnDocVO.getTime()));
-        creator.setText(stockReturnDocVO.getCreatorId());
-
+        creator.setText(UserHelper.getUserString(stockReturnDocVO.getCreatorId()));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
         try {
 

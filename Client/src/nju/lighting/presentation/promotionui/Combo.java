@@ -36,7 +36,6 @@ public class Combo implements Initializable {
         off.setText("" + promotion.getOff());
 
         List<GiftItemVO> giftItemListVO = promotion.getGoods();
-        GiftListController.setGiftItemListVO(giftItemListVO);
         combo.getChildren().add(PromotionHelper.loadGiftList(giftItemListVO.stream()
                 .map(x -> new CommodityItem(x))
                 .collect(Collectors.toList())));

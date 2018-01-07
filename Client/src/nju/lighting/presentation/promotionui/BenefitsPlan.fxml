@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="630.0" prefWidth="1080.0"
-            xmlns="http://javafx.com/javafx/8.0.111" fx:controller="nju.lighting.presentation.promotionui.BenefitsPlan">
+
+<AnchorPane prefHeight="630.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.promotionui.BenefitsPlan">
     <children>
-        <Pagination fx:id="pagination" layoutX="10.0" layoutY="52.0" prefHeight="578.0" prefWidth="1060.0"/>
-        <JFXButton layoutX="990.0" layoutY="11.0" onAction="#ok" prefHeight="41.0" prefWidth="69.0"
-                   style="-fx-background-color: #5599ff;" text="确认" textFill="WHITE">
+        <Pagination fx:id="pagination" layoutX="10.0" layoutY="60.0" prefHeight="570.0" prefWidth="1060.0" />
+        <JFXButton layoutX="990.0" layoutY="11.0" onAction="#ok" prefHeight="41.0" prefWidth="69.0" style="-fx-background-color: #5599ff;" text="确认" textFill="WHITE">
             <font>
-                <Font size="16.0"/>
+                <Font size="16.0" />
             </font>
         </JFXButton>
     </children>

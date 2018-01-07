@@ -7,7 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import nju.lighting.presentation.documentui.Doc;
+import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.DateHelper;
+import nju.lighting.presentation.utils.UserHelper;
 import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;
 import shared.DocType;
 
@@ -24,7 +26,7 @@ import java.util.stream.Collectors;
  */
 public class AccountIODoc implements Initializable {
     @FXML
-    Label creatorLabel, customerNameLabel, createTimeLabel,totalLabel;
+    Label creatorLabel, customerNameLabel, createTimeLabel,totalLabel,idLabel;
 
     @FXML
     ImageView inImage,outImage;
@@ -40,13 +42,16 @@ public class AccountIODoc implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         accountIODocVO = (AccountIODocVO) Doc.getDoc();
 
+        idLabel.setText(accountIODocVO.getDocId());
+
         if (accountIODocVO.getType()== DocType.ACCOUNT_IN)
             imageContainer.getChildren().remove(outImage);
         else
             imageContainer.getChildren().remove(inImage);
 
-        creatorLabel.setText(accountIODocVO.getCreatorId());
-        customerNameLabel.setText(accountIODocVO.getCustomer());
+        creatorLabel.setText(UserHelper.getUser(accountIODocVO.getCreatorId()).toString());
+        customerNameLabel.setText(CustomerHelper.getCustomer
+                (Integer.parseInt(accountIODocVO.getCustomer())).getName());
         createTimeLabel.setText(DateHelper.approximateTime(accountIODocVO.getTime()));
         totalLabel.setText(accountIODocVO.getTotal()+"");
 

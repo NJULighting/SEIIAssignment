@@ -42,6 +42,8 @@ public class DateHelper {
     }
 
     public static String approximateTime(Date date) {
+        if (date==null)
+            return "";
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(date).toString();
     }

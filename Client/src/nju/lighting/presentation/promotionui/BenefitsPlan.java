@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.HBox;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.promotion.PromotionVO;
 
@@ -19,6 +20,9 @@ import java.util.List;
 public class BenefitsPlan {
     @FXML
     Pagination pagination;
+
+    @FXML
+    HBox promotionContainer;
 
     List<PromotionVO> promotionList;
 
@@ -41,11 +45,14 @@ public class BenefitsPlan {
         scrollPane.setPrefSize(600, 600);
         Promotion.promotion = promotion;
         try {
-            scrollPane.setContent(FXMLLoader.load(getClass().getResource(Promotion.hashMap.get(promotion.getType()))));
-
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("Promotion.fxml"));
+            scrollPane.setContent(loader.load());
+            ((Promotion) loader.getController()).init(promotion);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
         return scrollPane;
     }
 
@@ -60,15 +67,5 @@ public class BenefitsPlan {
 
     }
 
-    public boolean isCanceled() {
-        return canceled;
-    }
 
-    public void setCanceled(boolean canceled) {
-        this.canceled = canceled;
-    }
-
-    public PromotionVO getPromotionVO() {
-        return promotionVO;
-    }
 }

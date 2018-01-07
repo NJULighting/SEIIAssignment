@@ -73,7 +73,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     private JFXComboBox<UserVO> salesmanBox;
 
     @FXML
-    JFXComboBox repositoryBox;
+    JFXComboBox<String> repositoryBox;
     @FXML
     private TextArea remarks;
     @FXML
@@ -147,7 +147,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     private SalesReturnDocVO getReturnDoc() {
         if (customer.validate() & docItemList.size() > 0)
             return new SalesReturnDocVO(new Date(), Client.getUserVO().getID(), customerProperty.getValue().getID(),
-                    salesmanBox.getValue().getID(), repositoryBox.getValue().toString(), remarks.getText(),
+                    salesmanBox.getValue().getID(), repositoryBox.getValue(), remarks.getText(),
                     Double.parseDouble(discount.getText()),
                     Double.parseDouble(voucher.getText()),
                     docItemList.stream()
@@ -193,7 +193,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        repositoryBox.getItems().add("仓库一");
+        repositoryBox.getItems().add("默认仓库");
         repositoryBox.setValue(repositoryBox.getItems().get(0));
 
 

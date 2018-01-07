@@ -4,32 +4,32 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" prefWidth="540.0" spacing="30.0"
-      xmlns="http://javafx.com/javafx/8.0.111" fx:controller="nju.lighting.presentation.promotionui.Combo">
+
+<VBox maxHeight="1.7976931348623157E308" prefWidth="540.0" spacing="30.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.promotionui.Combo">
     <children>
-        <HBox>
-            <children>
-                <Label text="触发条件：当订单中含以下商品时">
-                    <font>
-                        <Font size="18.0"/>
-                    </font>
-                </Label>
-            </children>
-        </HBox>
-        <VBox fx:id="combo" spacing="30.0"/>
         <HBox spacing="10.0">
             <children>
                 <Label text="价格折让： ">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <Label fx:id="off" text="Label">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
             </children>
         </HBox>
+        <HBox>
+            <children>
+                <Label text="触发条件：当订单中含以下商品时">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <VBox fx:id="combo" spacing="30.0" />
     </children>
 </VBox>

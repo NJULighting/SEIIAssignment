@@ -31,8 +31,8 @@ public class SalesDocItem implements DocItem {
         number = po.getNumber();
         remarks = po.getRemarks();
         this.itemType = itemType;
-
-        updatePriceAndTotal();
+        totalAmount = po.getTotalAmount();
+        salePrice = totalAmount / number;
     }
 
     SalesDocItem(SalesDocItemVO vo, SalesDocItemType itemType) {
@@ -41,14 +41,14 @@ public class SalesDocItem implements DocItem {
         number = vo.getNumber();
         remarks = vo.getRemarks();
         this.itemType = itemType;
+        totalAmount = vo.getTotalAmount();
 
-        updatePriceAndTotal();
+        updateSalePrice();
     }
 
-    private void updatePriceAndTotal() {
+    private void updateSalePrice() {
         CommodityInfo commodityInfo = new CommodityInfoImpl();
         salePrice = commodityInfo.getCommodityRecentSellPrice(commodityID);
-        totalAmount = salePrice * number;
     }
 
     public int getId() {

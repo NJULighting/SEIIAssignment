@@ -119,14 +119,20 @@ public class SalesDetailTable implements Initializable, Upper {
     }
 
     void refresh() {
+
         observableList.setAll(blService.findSaleRecords(getBuilder().build()));
     }
 
     private DocumentFilter.Builder getBuilder() {
+        Date end=DateHelper.localDateToDate(endDate.getValue());
+        end.setDate(end.getDate()+1);
+
         DocumentFilter.Builder builder = new DocumentFilter.Builder();
         builder.startDate(DateHelper.localDateToDate(startDate.getValue()))
-                .endDate(DateHelper.localDateToDate(endDate.getValue()))
+                .endDate(end)
                 .commodity(commodityText.getText());
+        if (commodityText.getText().length()==0)
+            builder.commodity(null);
         if (customerProperty.getValue() != null)
             builder.customer(customerProperty.getValue().getID() + "");
         if (creatorProperty.getValue() != null)
@@ -138,6 +144,9 @@ public class SalesDetailTable implements Initializable, Upper {
 
 
     public void initialize(URL location, ResourceBundle resources) {
+
+        TextFieldHelper.addDeleteMenuItem(customerText,customerProperty);
+        TextFieldHelper.addDeleteMenuItem(commodityText,commodityProperty);
 
         commodity.setCellValueFactory(c ->
                 new SimpleStringProperty(c.getValue().getName()));
@@ -196,8 +205,8 @@ public class SalesDetailTable implements Initializable, Upper {
         int tableSize = observableList.size();
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Excel");
-        fileChooser.setInitialFileName("销售明细表.xls");
+        fileChooser.setTitle("选择保存路径");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLS Files", "*.xls"));
         File file = fileChooser.showSaveDialog(new Stage());
 
 

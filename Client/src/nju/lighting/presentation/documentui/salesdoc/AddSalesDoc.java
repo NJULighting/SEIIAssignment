@@ -44,6 +44,7 @@ import shared.CustomerType;
 import shared.PromotionType;
 import shared.Result;
 
+import javax.xml.soap.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -192,6 +193,9 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        TextFieldHelper.addDeleteMenuItem(customer,customerProperty);
+        TextFieldHelper.addDeleteMenuItem(promotionText,promotionProperty);
 
         repositoryBox.getItems().add("默认仓库");
         repositoryBox.setValue(repositoryBox.getItems().get(0));

@@ -67,12 +67,17 @@ enum PromotionManager {
         }
 
         Date currentDate = new Date();
-        Predicate<PromotionPO> filter =
-                promotionPO -> promotionPO.getEndDate().after(currentDate)
-                        && promotionPO.getStartDate().before(currentDate)
-                        && (promotionPO.getLevel().compareTo(customerLevel) <= 0
-                        || containsItemOfList(commodityIDList, promotionPO)
-                        || promotionPO.getTotal() < total);
+        Predicate<PromotionPO> timeFilter = po -> po.getEndDate().after(currentDate)
+                && po.getStartDate().before(currentDate);
+        Predicate<PromotionPO> promotionFilter = po -> {
+            if (po.getType() == PromotionType.Combo)
+                return containsItemOfList(commodityIDList, po);
+            else if (po.getType() == PromotionType.CustomerOriented)
+                return po.getLevel().compareTo(customerLevel) <= 0;
+            else
+                return po.getTotal() < total;
+        };
+        Predicate<PromotionPO> filter = timeFilter.and(promotionFilter);
 
         return DataServiceSupplier.getAllAndFilter(dataService::getPromotionList, po -> new Promotion(po).toVO(), filter);
 

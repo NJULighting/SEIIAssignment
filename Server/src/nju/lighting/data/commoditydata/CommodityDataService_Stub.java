@@ -1,6 +1,5 @@
 package nju.lighting.data.commoditydata;
 
-import javafx.scene.image.Image;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
@@ -176,8 +175,4 @@ public class CommodityDataService_Stub implements CommodityDataService {
         return null;
     }
 
-    @Override
-    public Image getTrend(String commodityId) throws RemoteException {
-        return null;
-    }
 }

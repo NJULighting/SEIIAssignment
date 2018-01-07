@@ -19,10 +19,10 @@ CREATE TABLE COMMODITY (
 	CATEGORY_ID integer,
 	MODEL_NUMBER varchar(36) not null,
 	REP_COUNT integer not null,
-	SELL_PRICE float(8) not null,
-	RECENT_SELL_PRICE float(8) not null,
-	IN_PRICE float(8) not null,
-	RECENT_IN_PRICE float(8) not null,
+	SELL_PRICE double not null,
+	RECENT_SELL_PRICE double not null,
+	IN_PRICE double not null,
+	RECENT_IN_PRICE double not null,
 	BATCH varchar(40) not null,
 	BATCH_NUMBER varchar(40) not null,
 	DATA_OF_PRODUCTION DATETIME not null,
@@ -35,7 +35,7 @@ CREATE TABLE REPOSITORY_CHANGE (
 	COMMODITY_ID varchar(50) not null,
 	TYPE varchar(20) not null,
 	COUNT integer not null,
-	AMOUNT float(8) not null,
+	AMOUNT double not null,
 	CHANGE_TIME DATETIME not null,
 	primary key(ID)
 );
@@ -91,7 +91,7 @@ CREATE TABLE LOSS_AND_GAIN_DOC_ITEM (
 CREATE TABLE ACCOUNT (
 	ID varchar(20) not null,
 	NAME varchar(40) not null,
-	AMOUNT float(8) not null,
+	AMOUNT double not null,
 	primary key(ID)
 );
 
@@ -101,8 +101,8 @@ CREATE TABLE ACCOUNT_CHANGE (
 	ACCOUNT_ID varchar(20) not null,
 	ACCOUNT_CHANGE_TYPE varchar(20) not null,
 	CHANGE_TIME DATETIME not null,
-	DELTA float(8) not null,
-	AMOUNT float(8) not null,
+	DELTA double not null,
+	AMOUNT double not null,
 	primary key(ID)
 );
 
@@ -116,7 +116,7 @@ CREATE TABLE ACCOUNT_IO_DOC (
 	CHECK_TIME DATETIME,
 	CREATE_TIME DATETIME not null,
 	CUSTOMER_ID varchar(30) not null,
-	TOTAL float(8) not null,
+	TOTAL double not null,
 	primary key(ID)
 );
 
@@ -129,7 +129,7 @@ CREATE TABLE ACCOUNT_OUT_DOC (
 	CHECK_TIME DATETIME,
 	CREATE_TIME DATETIME not null,
 	CUSTOMER_ID varchar(30) not null,
-	TOTAL float(8) not null,
+	TOTAL double not null,
 	primary key(ID)
 );
 
@@ -138,7 +138,7 @@ CREATE TABLE ACCOUNT_TRANSFER (
 	ID int,
 	ACCOUNT_IO_DOC_ID varchar(36) not null,
 	ACCOUNT_ID varchar(20) not null,
-	AMOUNT float(8) not null,
+	AMOUNT double not null,
 	COMMENT varchar(300),
 	primary key(ID)
 );
@@ -153,7 +153,7 @@ CREATE TABLE COST_DOC (
 	CHECK_TIME DATETIME,
 	CREATE_TIME DATETIME not null,
 	ACCOUNT_ID varchar(20) not null,
-	TOTAL float(8) not null,
+	TOTAL double not null,
 	primary key(ID)
 );
 
@@ -162,7 +162,7 @@ CREATE TABLE COST_DOC_ITEM (
 	ID int,
 	COST_DOC_ID varchar(36) not null,
 	TYPE varchar(20) not null,
-	AMOUNT float(8) not null,
+	AMOUNT double not null,
 	COMMENT varchar(300),
 	primary key(ID)
 );
@@ -207,7 +207,7 @@ CREATE TABLE GIFT_DOC (
 	PROMOTION_ID int not null,
 	REPOSITORY_ID varchar(5),
 	CUSTOMER_ID int not null,
-	TOTAL float(8) not null,
+	TOTAL double not null,
 	primary key(ID)
 );
 
@@ -217,7 +217,7 @@ CREATE TABLE GIFT_DOC_ITEM (
 	GIFT_DOC_ID varchar(36) not null,
 	COMMODITY_ID varchar(36) not null,
 	COUNT integer not null,
-	SUB_TOTAL float(8) not null,
+	SUB_TOTAL double not null,
 	primary key(ID)
 );
 
@@ -231,9 +231,9 @@ CREATE TABLE CUSTOMER (
 	ADDRESS varchar(20),
 	POSTAGE varchar(20),
 	EMAIL varchar(40),
-	RECEIVABLE_LIMIT float(8) not null,
-	RECEIVE_AMOUNT float(8) not null,
-	PAY_AMOUNT float(8) not NULL,
+	RECEIVABLE_LIMIT double not null,
+	RECEIVE_AMOUNT double not null,
+	PAY_AMOUNT double not NULL,
 	SALES_MAN varchar(20),
 	primary key(ID)
 );
@@ -248,9 +248,9 @@ CREATE TABLE PROMOTION (
 	START_TIME DATETIME NOT NULL,
 	END_TIME DATETIME NOT NULL,
 	CUSTOMER_GRADE varchar(20) not null,
-	TOTAL float(8) NOT NULL,
-	OFF float(8) NOT NULL,
-	VOUCHER float(8) NOT NULL,
+	TOTAL double NOT NULL,
+	OFF double NOT NULL,
+	VOUCHER double NOT NULL,
 	VOUCHER_END_DATE DATETIME NOT NULL,
 	primary key(ID)
 );
@@ -276,9 +276,9 @@ CREATE TABLE SALES_DOC (
 	SALES_MAN varchar(20),
 	REPOSITORY_ID varchar(5), 
 	REMARKS varchar(300),
-	DISCOUNT float(8) NOT NULL, 
-	VOUCHER float(8),
-	FINAL_AMOUNT float(8) NOT NULL,
+	DISCOUNT double NOT NULL, 
+	VOUCHER double,
+	FINAL_AMOUNT double NOT NULL,
 	primary key(ID)
 );
 
@@ -295,9 +295,9 @@ CREATE TABLE SALES_RETURN_DOC (
 	SALES_MAN varchar(20),
 	REPOSITORY_ID varchar(5), 
 	REMARKS varchar(300),
-	DISCOUNT float(8) NOT NULL, 
-	VOUCHER float(8),
-	FINAL_AMOUNT float(8) NOT NULL,
+	DISCOUNT double NOT NULL, 
+	VOUCHER double,
+	FINAL_AMOUNT double NOT NULL,
 	primary key(ID)
 );
 
@@ -313,7 +313,7 @@ CREATE TABLE STOCK_DOC (
 	CUSTOMER_ID varchar(20) NOT NULL,
 	REPOSITORY_ID varchar(5), 
 	REMARKS varchar(300),
-	TOTAL_AMOUNT float(8) NOT NULL,
+	TOTAL_AMOUNT double NOT NULL,
 	primary key(ID)
 );
 
@@ -329,7 +329,7 @@ CREATE TABLE STOCK_RETURN_DOC (
 	CUSTOMER_ID varchar(20) NOT NULL,
 	REPOSITORY_ID varchar(5), 
 	REMARKS varchar(300),
-	TOTAL_AMOUNT float(8) NOT NULL,
+	TOTAL_AMOUNT double NOT NULL,
 	primary key(ID)
 );
 
@@ -339,7 +339,7 @@ CREATE TABLE STOCK_DOC_ITEM (
 	STOCK_DOC_ID varchar(36) NOT NULL,
 	COMMODITY_ID varchar(36) NOT NULL,
 	COUNT integer NOT NULL,
-	TOTAL_AMOUNT float(8) NOT null,
+	TOTAL_AMOUNT double NOT null,
 	REMARKS varchar(300),
 	primary key(ID)
 );
@@ -350,7 +350,7 @@ CREATE TABLE SALES_DOC_ITEM (
 	SALES_DOC_ID varchar(36) NOT NULL,
 	COMMODITY_ID varchar(36) NOT NULL,
 	COUNT integer NOT NULL,
-	TOTAL_AMOUNT float(8) NOT null,
+	TOTAL_AMOUNT double NOT null,
 	REMARKS varchar(300),
 	primary key(ID)
 );

@@ -29,6 +29,11 @@ public class CustomerInfoImpl implements CustomerInfo {
     @Override
     public ResultMessage changeReceivable(int customerId, double amount) {
         try {
+            double receivable = dataService.getCustomerById(customerId).getReceivable();
+            if (receivable + amount < 0) {
+                dataService.changeReceivable(customerId, -receivable);
+                return dataService.changePayable(customerId, -receivable - amount);
+            }
             return dataService.changeReceivable(customerId, amount);
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -39,6 +44,11 @@ public class CustomerInfoImpl implements CustomerInfo {
     @Override
     public ResultMessage changePayable(int customerId, double amount) {
         try {
+            double payable = dataService.getCustomerById(customerId).getPayable();
+            if (payable + amount < 0) {
+                dataService.changePayable(customerId, -payable);
+                return dataService.changeReceivable(customerId, -amount - payable);
+            }
             return dataService.changePayable(customerId, amount);
         } catch (RemoteException e) {
             e.printStackTrace();

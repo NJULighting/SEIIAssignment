@@ -65,6 +65,13 @@ public class DocHelper {
 
     public static DocType stringToType(String string){return stringTypeHasMap.get(string);}
 
+    public static void search(JFXNodesList nodesList,HamburgerBasicCloseTransition burgerTask){
+        nodesList.animateList(false);
+        burgerTask.setRate(burgerTask.getRate() * -1);
+
+        burgerTask.play();
+    }
+
     public static void addFilter(HamburgerBasicCloseTransition burgerTask, JFXHamburger hamburger,
                                  JFXNodesList nodesList, Pane filterBox, Pane container){
 
@@ -77,7 +84,6 @@ public class DocHelper {
 
             burgerTask.play();
 
-            System.out.println(nodesList.isExpanded());
         });
 
         nodesList.setSpacing(30);

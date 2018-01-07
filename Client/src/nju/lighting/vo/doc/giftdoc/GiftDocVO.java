@@ -25,12 +25,18 @@ public class GiftDocVO extends DocVO {
     /**
      * Constructor for promotion
      */
-    public GiftDocVO(Date time, String creatorId, List<GiftItemVO> gifts, int customerID, int promotionID) {
+    public GiftDocVO(Date time, String creatorId, List<GiftItemVO> gifts, int customerID) {
         super(time, DocType.GIFT, creatorId);
         this.gifts = gifts;
         this.customerID = customerID;
-        this.promotionID = promotionID;
 
+        total = gifts.stream().mapToDouble(GiftItemVO::getSubtotal).sum();
+    }
+
+
+    public GiftDocVO(Date time, String creatorId, List<GiftItemVO> gifts, int customerID, int promotionID) {
+        this(time, creatorId, gifts, customerID);
+        this.promotionID=promotionID;
         total = gifts.stream().mapToDouble(GiftItemVO::getSubtotal).sum();
     }
 

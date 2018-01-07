@@ -54,6 +54,6 @@ public class UserVO {
 
     @Override
     public String toString() {
-        return username;
+        return username+"("+identity.toString()+")";
     }
 }

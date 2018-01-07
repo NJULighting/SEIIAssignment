@@ -45,7 +45,7 @@ public class AddSalesReturnDoc implements Initializable,Modifiable {
 
         controller.init(upper,salesReturnDocVO.getItems(), salesReturnDocVO.getCustomerId(),
                 salesReturnDocVO.getRemarks(), salesReturnDocVO.getVoucher() + "",
-                salesReturnDocVO.getDiscount() + "");
+                salesReturnDocVO.getDiscount() + "",false);
 
     }
 

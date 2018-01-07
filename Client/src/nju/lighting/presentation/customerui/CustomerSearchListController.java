@@ -8,6 +8,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,10 +17,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
+import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.factory.CustomerBLServiceFactory;
+import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
+import nju.lighting.presentation.utils.UserHelper;
 import nju.lighting.vo.CustomerVO;
 import shared.CustomerType;
 import shared.ResultMessage;
@@ -53,14 +57,6 @@ public class CustomerSearchListController implements Initializable {
     TableColumn<CustomerVO, String> salesman;
     @FXML
     TableColumn<CustomerVO, String> openBtn;
-    ObservableList<CustomerVO> observableList = FXCollections.observableArrayList();
-    StringProperty keyWord = new SimpleStringProperty();
-    HBox father;
-    private CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
-    private List<CustomerVO> customerVOList;
-    private CustomerSearchListController customerSearchListController = this;
-    private Upper upper;
-    private CustomerVO selectedCustomer;
     @FXML
     private TableView<CustomerVO> tableView;
     @FXML
@@ -73,10 +69,17 @@ public class CustomerSearchListController implements Initializable {
     private Button deleteSearch;
     @FXML
     private Button addCustomerBtn;
-    @FXML
-    private Pagination customerList;
-    @FXML
-    private Label noResult;
+
+    private ObservableList<CustomerVO> observableList = FXCollections.observableArrayList();
+    private StringProperty keyWord = new SimpleStringProperty();
+    HBox father;
+    private CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
+    private CustomerSearchListController customerSearchListController = this;
+    private Upper upper;
+    private CustomerVO selectedCustomer;
+
+    private CustomerType customerType= CustomerType.ALL;
+
 
     //清除搜索，列表显示所有客户
     public void setDeleteSearch() {
@@ -95,13 +98,12 @@ public class CustomerSearchListController implements Initializable {
     public void search() {
         String keywords = search.getText();
         if (keywords == null || keywords.length() == 0) {//无关键词，则显示所有列表
-
-
+            refresh();
         } else {//有关键词，删除搜索键可见
             deleteSearch.setDisable(false);
             deleteSearch.setVisible(true);
 
-            List list = customerBLService.search(keywords, CustomerType.ALL);
+            List list = customerBLService.search(keywords, customerType);
             System.out.println(list);
             if (list == null)
                 observableList.clear();
@@ -111,11 +113,27 @@ public class CustomerSearchListController implements Initializable {
     }
 
     void refresh() {
-        customerVOList = customerBLService.getCustomerList();
+        List<CustomerVO> customerVOList = customerBLService.findCustomerByType(customerType);
         observableList.setAll(customerVOList.stream()
                 .collect(Collectors.toList()));
     }
+    void delete(CustomerVO customerVO){
+        DialogHelper.addDialog("你确定要删除用户" + customerVO.getName() + "?",
+                MainUI.getStackPane(),
+                new EventHandler() {
+                    @Override
+                    public void handle(Event event) {
+                        ResultMessage resultMessage = customerBLService.deleteCustomer(customerVO.getID());
+                        if (resultMessage == ResultMessage.SUCCESS) {
+                            upper.back();
+                            getTableView().getItems().remove(customerVO);
+                        }
+                        DialogHelper.dialog("删除用户",resultMessage,MainUI.getStackPane());
+                    }
+                }
+        );
 
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -167,7 +185,7 @@ public class CustomerSearchListController implements Initializable {
         telephone.setCellFactory(p -> new HighLightCell(keyWord));
 
         salesman.setCellValueFactory(p ->
-                new SimpleStringProperty(p.getValue().getSalesman()));
+                new SimpleStringProperty(UserHelper.getUser(p.getValue().getSalesman()).toString()));
         salesman.setCellFactory(p -> new HighLightCell(keyWord));
 
         openBtn.setCellValueFactory(p ->
@@ -207,8 +225,7 @@ public class CustomerSearchListController implements Initializable {
                             });
 
                             deleteBtn.setOnAction(e -> {
-                                ResultMessage resultMessage = customerBLService.deleteCustomer(customerVO.getID());
-                                getTableView().getItems().remove(customerVO);
+                                delete(customerVO);
                             });
                         }
                     }
@@ -262,10 +279,13 @@ public class CustomerSearchListController implements Initializable {
 
 
         });
+
+        refresh();
     }
 
     public void setReadOnly(Upper upper, SimpleObjectProperty<CustomerVO> customer, CustomerType type) {
         setReadOnly(upper, customer);
+        customerType=type;
 
     }
 

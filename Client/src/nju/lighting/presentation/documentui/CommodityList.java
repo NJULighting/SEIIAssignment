@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/10.
  * Description
+ *
  * @author 陈俊宇
  */
 public class CommodityList implements Initializable {
@@ -49,16 +50,9 @@ public class CommodityList implements Initializable {
     private ObservableList<CommodityItem> giftObservableList;
     private Upper upper;
 
-    public void refresh() {
-
-//        giftObservableList.setAll(giftsVO.stream()
-//                .map(x -> new CommodityItem(x))
-//                .collect(Collectors.toList()));
-    }
 
     public void calculateTotal() {
         total.set(giftObservableList.stream()
-                .filter(x -> !x.isGift())
                 .mapToDouble(x -> ((x).subtotal.getValue()))
                 .sum());
         //totalLabel.setText(total+ "");
@@ -101,7 +95,7 @@ public class CommodityList implements Initializable {
 
 
         TableViewHelper.commonSet(giftTableView);
-       // TableViewHelper.setHeight(giftTableView, 1.2);
+        // TableViewHelper.setHeight(giftTableView, 1.2);
 
         calculateTotal();
 
@@ -137,6 +131,13 @@ public class CommodityList implements Initializable {
                     CommodityItem selected = t.getTableView().getItems().get(
                             t.getTablePosition().getRow());
                     selected.setCount(t.getNewValue());
+                    int newValue = t.getNewValue();
+                    if (selected.isHasMax()) {
+                        selected.setCount(newValue > selected.getCommodity().getRepCount() ?
+                                selected.getCommodity().getRepCount() : newValue);
+                        giftTableView.refresh();
+                    } else
+                        selected.setCount(newValue);
 
                     calculateTotal();
 
@@ -186,6 +187,7 @@ public class CommodityList implements Initializable {
 
     /**
      * 设置商品列表的最大高度以及宽度
+     *
      * @param maxHeight 最大高度
      * @param maxWidth  最大宽度
      */

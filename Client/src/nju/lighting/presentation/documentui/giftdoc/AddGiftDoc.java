@@ -1,5 +1,6 @@
 package nju.lighting.presentation.documentui.giftdoc;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -13,9 +14,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import nju.lighting.blservice.documentblservice.DocBLService;
+import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
 import nju.lighting.presentation.documentui.Modifiable;
+import nju.lighting.presentation.factory.DocBLServiceFactory;
+import nju.lighting.presentation.mainui.Client;
+import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CommodityHelper;
 import nju.lighting.presentation.utils.CustomerHelper;
@@ -23,9 +29,11 @@ import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.giftdoc.GiftDocVO;
+import shared.Result;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -53,6 +61,9 @@ public class AddGiftDoc implements Initializable, Upper, Modifiable {
     @FXML
     JFXTextField customerText;
 
+    @FXML
+    JFXButton commitBtn;
+
 
     private Upper upper = this;
 
@@ -62,6 +73,20 @@ public class AddGiftDoc implements Initializable, Upper, Modifiable {
 
     private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
 
+    private DocBLService blService= DocBLServiceFactory.getDocBLService();
+
+    private GiftDocVO getDoc() {
+        if (customerProperty.getValue()!=null&&itemList.size()!=0){
+            return new GiftDocVO(new Date(),
+                    Client.getUserVO().getID(),
+                    itemList.stream()
+                            .map(CommodityItem::toGiftItem)
+                            .collect(Collectors.toList()),
+                    customerProperty.getValue().getID());
+        }
+        else return null;
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -79,7 +104,7 @@ public class AddGiftDoc implements Initializable, Upper, Modifiable {
         commodityList.addListener((ListChangeListener<? super BasicCommodityItemVO>) c -> {
             while (c.next()) {
                 itemList.addAll(c.getAddedSubList().stream()
-                        .map(x -> new CommodityItem(x, 1))
+                        .map(x -> new CommodityItem(x, 1,true))
                         .collect(Collectors.toList()));
             }
         });
@@ -90,7 +115,12 @@ public class AddGiftDoc implements Initializable, Upper, Modifiable {
 
         chooseCustomerBtn.setOnAction(e -> CustomerHelper.setCustomer(upper, customerProperty));
 
-
+    commitBtn.setOnAction(e->{
+        if (getDoc()!=null){
+            Result<DocVO> result= blService.commitDoc(getDoc());
+            DialogHelper.dialog("提交赠品单",result.getResultMessage(), MainUI.getStackPane());
+        }
+    });
     }
 
     @Override

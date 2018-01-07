@@ -52,7 +52,7 @@
                                 <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">
                                     <children>
                                         <Label prefWidth="80.0" text="业务员" />
-                                        <JFXTextField fx:id="salesman" focusColor="#5599ff" prefWidth="150.0" />
+                              <JFXComboBox fx:id="salesmanBox" prefHeight="23.0" prefWidth="155.0" />
                                     </children>
                                 </HBox>
                                 <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="260.0" spacing="5.0">

@@ -12,6 +12,7 @@ import nju.lighting.vo.doc.stockdoc.StockDocItemVO;
 /**
  * Created on 2017/12/10.
  * Description
+ *
  * @author 陈俊宇
  */
 public class CommodityItem {
@@ -19,7 +20,7 @@ public class CommodityItem {
     SimpleIntegerProperty count = new SimpleIntegerProperty();
     SimpleStringProperty name = new SimpleStringProperty();
     SimpleDoubleProperty subtotal = new SimpleDoubleProperty();
-    SimpleBooleanProperty gift = new SimpleBooleanProperty(false);
+    SimpleBooleanProperty hasMax = new SimpleBooleanProperty(false);
     SimpleStringProperty comments = new SimpleStringProperty();
     SimpleStringProperty modelNum = new SimpleStringProperty();
     SimpleStringProperty id = new SimpleStringProperty();
@@ -33,14 +34,27 @@ public class CommodityItem {
         init(commodity);
     }
 
+    public CommodityItem(BasicCommodityItemVO commodity, int count, boolean hasMax) {
+        this.commodity = commodity;
+        this.count.set(count);
+        this.hasMax.setValue(hasMax);
+        init(commodity);
+    }
+
     //查看单据时由SalesDocItem 或GiftDocItem 构造
     public CommodityItem(SalesDocItemVO vo) {
         comments.set(vo.getRemarks());
         count.set(vo.getNumber());
         init(vo.getCommodity());
     }
+    public CommodityItem(SalesDocItemVO vo,boolean hasMax) {
+        comments.set(vo.getRemarks());
+        count.set(vo.getNumber());
+        this.hasMax.setValue(hasMax);
+        init(vo.getCommodity());
+    }
 
-    public CommodityItem(StockDocItemVO vo){
+    public CommodityItem(StockDocItemVO vo) {
         comments.set(vo.getRemarks());
         count.set(vo.getNumber());
         init(vo.getCommodity());
@@ -50,7 +64,6 @@ public class CommodityItem {
         count.set(vo.getCount());
         init(vo.getCommodity());
         price.set(vo.getPrice());
-        this.gift.setValue(gift);
 
     }
 
@@ -58,6 +71,7 @@ public class CommodityItem {
         count.set(vo.getCount());
         init(vo.getCommodity());
         price.set(vo.getPrice());
+        hasMax.setValue(true);
     }
 
     void init(BasicCommodityItemVO commodity) {
@@ -68,25 +82,18 @@ public class CommodityItem {
         subtotal.bind(price.multiply(count));
     }
 
-    public SalesDocItemVO toSalesDocItem(){
-        return new SalesDocItemVO(getCount(),getComments(),getCommodity(),getPrice());
+    public SalesDocItemVO toSalesDocItem() {
+        return new SalesDocItemVO(getCount(), getComments(), getCommodity(), getPrice());
     }
 
-    public GiftItemVO toGiftItem(){
-        return new GiftItemVO(commodity,getCount());
+    public StockDocItemVO toStockDocItem() {
+        return new StockDocItemVO(commodity, getCount(), getComments());
     }
 
-    public boolean isGift() {
-        return gift.get();
+    public GiftItemVO toGiftItem() {
+        return new GiftItemVO(commodity, getCount());
     }
 
-    public void setGift(boolean gift) {
-        this.gift.set(gift);
-    }
-
-    public SimpleBooleanProperty giftProperty() {
-        return gift;
-    }
 
     public double getPrice() {
         return price.get();
@@ -158,5 +165,13 @@ public class CommodityItem {
 
     public BasicCommodityItemVO getCommodity() {
         return commodity;
+    }
+
+    public boolean isHasMax() {
+        return hasMax.get();
+    }
+
+    public SimpleBooleanProperty hasMaxProperty() {
+        return hasMax;
     }
 }

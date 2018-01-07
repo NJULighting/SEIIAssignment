@@ -5,8 +5,6 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -15,23 +13,20 @@ import javafx.scene.layout.HBox;
 import nju.lighting.blservice.logblservice.LogBLService;
 import nju.lighting.presentation.factory.LogBLServiceFactory;
 import nju.lighting.presentation.utils.DateHelper;
+import nju.lighting.presentation.utils.UserHelper;
 import nju.lighting.vo.LogVO;
 
 import java.net.URL;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 
 /**
  * Created on 2017/11/30.
  * Description
+ *
  * @author 陈俊宇
  */
 public class LogController implements Initializable {
-    Date startDate;
-    Date endDate;
-
-    List<LogVO> logVOArrayList;
 
     /*
     logVOArrayList中存储10页的内容，用CurrentListLevel标记当前logVOArrayList所含是第几个十页的，如一到十页level就为0
@@ -39,8 +34,9 @@ public class LogController implements Initializable {
     并赋值给logVoArrayList，更新currentListLevel的值
      */
     int currentListLevel = 0;
-    int itemsPerPage = 15;
-    LogBLService logBLService = LogBLServiceFactory.getLogBLService();
+    private int itemsPerPage = 15;
+    private LogBLService logBLService = LogBLServiceFactory.getLogBLService();
+    ObservableList<LogVO> logList = FXCollections.observableArrayList();
 
     @FXML
     Pagination pagination;
@@ -51,56 +47,60 @@ public class LogController implements Initializable {
     @FXML
     JFXButton okBtn;
 
+    @FXML
+    JFXListView listView;
 
-    JFXListView createPage(int pageIndex) {
-        ObservableList logList = FXCollections.observableArrayList();
-        int left = logVOArrayList.size() - pageIndex * itemsPerPage;
+
+    HBox createPage(int pageIndex) {
+
+        int left = logList.size() - pageIndex * itemsPerPage;
         int max = (left > itemsPerPage) ? itemsPerPage : left;
 //        int level = pageIndex / 10;
 
         HBox listCell;
+        listView.getItems().clear();
         Label time, behavior, creator, identity;
-        JFXListView listView = new JFXListView();
-
         for (int i = 0; i < max; i++) {
-            LogVO currentLog = logVOArrayList.get(i);
+            LogVO currentLog = logList.get(pageIndex * itemsPerPage + i);
             time = new Label(DateHelper.accurateTime(currentLog.getTime()));
+            time.setPrefWidth(150);
             behavior = new Label(currentLog.getBehavior());
-            creator = new Label(currentLog.getCreatorId());
+            behavior.setPrefWidth(550);
+            creator = new Label(UserHelper.getUser(currentLog.getCreatorId()).toString());
+            creator.setPrefWidth(100);
             identity = new Label(currentLog.getIdentity().toString());
+            identity.setPrefWidth(150);
             listCell = new HBox(behavior, time, creator, identity);
-            listCell.setSpacing(50);
+            listCell.setSpacing(10);
             listView.getItems().add(listCell);
         }
 
-        return listView;
+        return new HBox();
     }
 
+    void refresh() {
+        Date endDate = DateHelper.localDateToDate(endDatePicker.getValue());
+        endDate.setDate(endDate.getDate() + 1);
+        logList.setAll(logBLService.getLogListByTime(
+                DateHelper.localDateToDate(startDatePicker.getValue()),
+                endDate));
+    }
 
     void initPagination() {
-        logVOArrayList = logBLService.getLogListByTime(startDate, endDate);
-        pagination.setPageCount(logVOArrayList.size() / itemsPerPage + 1);
+        refresh();
+        pagination.setPageCount(logList.size() / itemsPerPage + 1);
         pagination.setPageFactory((Integer index) -> createPage(index));
+        pagination.setCurrentPageIndex(0);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        startDate = new Date();
+        DateHelper.setDefaultTime(startDatePicker, DateHelper.weekAgo());
+        DateHelper.setDefaultTime(endDatePicker, DateHelper.dateToLocalDate(new Date()));
 
-        //endDate = DateHelper.weekAgo();
         initPagination();
 
 
-        okBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if (startDatePicker.getValue() != null && endDatePicker.getValue() != null) {
-                    startDate = (DateHelper.localDateToDate(startDatePicker.getValue()));
-                    endDate = DateHelper.localDateToDate(endDatePicker.getValue());
-
-                }
-            }
-        });
+        okBtn.setOnAction(e -> initPagination());
     }
-
 }

@@ -14,10 +14,20 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import jxl.Workbook;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 import nju.lighting.blservice.documentblservice.DocBLService;
+import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.factory.UserBLServiceFactory;
+import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.DateHelper;
@@ -29,7 +39,9 @@ import nju.lighting.vo.UserVO;
 import nju.lighting.vo.viewtables.BusinessHistoryItemVO;
 import shared.DocType;
 import shared.DocumentFilter;
+import shared.ResultMessage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -77,13 +89,16 @@ public class BusinessHistoryTable implements Initializable, Upper {
     Pane filterBox, pane;
 
     @FXML
+    StackPane stackPane;
+
+    @FXML
     Label sub;
 
     @FXML
     Button setCustomerBtn;
 
     @FXML
-    JFXButton okBtn;
+    JFXButton okBtn,export;
 
     @FXML
     JFXHamburger hamburger;
@@ -213,9 +228,13 @@ public class BusinessHistoryTable implements Initializable, Upper {
 
     @Override
     public void back() {
-        labelBox.getChildren().remove(labelBox.getChildren().get(labelBox.getChildren().size() - 1));
-        container.getChildren().setAll(list.get(list.size() - 2));
-        list.remove(list.size() - 1);
+       if (labelBox.getChildren().size()==1)
+           backToMain();
+       else {
+           labelBox.getChildren().remove(labelBox.getChildren().get(labelBox.getChildren().size() - 1));
+           container.getChildren().setAll(list.get(list.size() - 2));
+           list.remove(list.size() - 1);
+       }
     }
 
     @Override
@@ -232,5 +251,59 @@ public class BusinessHistoryTable implements Initializable, Upper {
         });
 
         labelBox.getChildren().add(label);
+    }
+
+    public void exportExcel(){
+
+        String[] head=new String[]{"单据类型","客户","创建人","创建时间","业务员"};
+
+        int tableSize = observableList.size();
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Excel");
+        fileChooser.setInitialFileName("经营历程表.xls");
+        File file = fileChooser.showSaveDialog(new Stage());
+
+
+        WritableWorkbook theNew= null;
+
+        if (file != null) {
+            try {
+
+                theNew = Workbook.createWorkbook(file);
+                WritableSheet sheet=theNew.createSheet("sheet 1",0);
+
+                //设置第一行即表头
+                for(int i=0;i<head.length;i++){
+                    sheet.addCell(new jxl.write.Label(i,0,head[i]));
+                }
+
+                //一行一行设置
+                for(int i=0;i<tableSize;i++){
+                    sheet.addCell(new jxl.write.Label(0,i+1,observableList.get(i).getDocVO().getType().toString()));
+                    sheet.addCell(new jxl.write.Label(1,i+1,observableList.get(i).getCustomer().toString()));
+                    sheet.addCell(new jxl.write.Label(2,i+1,observableList.get(i).getDocVO().getCreatorId().toString()));
+                    sheet.addCell(new jxl.write.Label(3,i+1,observableList.get(i).getDate().toString()));
+                    sheet.addCell(new jxl.write.Label(4,i+1,observableList.get(i).getSalesman().toString()));
+                }
+
+                theNew.write();
+                theNew.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (RowsExceededException e) {
+                e.printStackTrace();
+            } catch (WriteException e) {
+                e.printStackTrace();
+            }
+
+            DialogHelper.dialog("导出表格", ResultMessage.SUCCESS,stackPane);
+        }
+        else{
+            DialogHelper.dialog("导出表格", ResultMessage.FAILURE,stackPane);
+        }
+
+
+
     }
 }

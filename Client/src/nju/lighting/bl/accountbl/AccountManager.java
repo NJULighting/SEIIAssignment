@@ -4,6 +4,8 @@ import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.userbl.UserInfo;
 import nju.lighting.bl.userbl.UserInfoImpl;
+import nju.lighting.bl.utils.DataServiceFunction;
+import nju.lighting.bl.utils.DataServiceSupplier;
 import nju.lighting.bl.utils.FuzzySeekingHelper;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.accountdataservice.AccountDataService;
@@ -17,6 +19,7 @@ import javax.naming.NamingException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * Created on 2017/11/6.
@@ -32,6 +35,7 @@ enum AccountManager {
     private AccountDataService accountDataService;
     private Logger logger;
     private FuzzySeekingHelper<AccountPO, AccountVO> helper;
+    private Function<AccountPO, AccountVO> poTransformer = po -> new Account(po).toVO();
 
     AccountManager() {
         try {
@@ -99,18 +103,7 @@ enum AccountManager {
      * account with this id if it exists
      */
     AccountVO getAccount(String id) {
-        try {
-            AccountPO po = accountDataService.get(id);
-            // If not found
-            if (po == null)
-                return null;
-            // Create Account object
-            Account target = new Account(po);
-            return target.toVO();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return DataServiceFunction.findByToEntity(id, accountDataService::get, poTransformer);
     }
 
     /**
@@ -119,19 +112,7 @@ enum AccountManager {
      * <code>null</code> if any exception happens
      */
     List<AccountVO> getAccountList() {
-        try {
-            List<AccountPO> poList = accountDataService.getAll();
-            // Transform
-            List<AccountVO> res = new ArrayList<>();
-            for (AccountPO po : poList) {
-                res.add(new Account(po).toVO());
-            }
-            return res;
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        // Error happen
-        return null;
+        return DataServiceSupplier.getAll(accountDataService::getAll, poTransformer);
     }
 
     /**

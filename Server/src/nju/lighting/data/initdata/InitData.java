@@ -77,13 +77,17 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
     public Result<InitPO> createInit(String userId, Date date) throws RemoteException {
         String url = date.toString().replace(" ", "");
         url = url.replace(":", "");
+
+        InitPO initPO = new InitPO(date, userId, "http://localhost:8080/init/" + url + ".zip");
+        url = "C:\\Users\\liao\\Desktop\\init\\" + url;
         try {
             createCSVFile(url);
         } catch (Exception e) {
             e.printStackTrace();
             File file = new File(url);
-            if (file.exists())
+            if (file.exists()) {
                 file.delete();
+            }
             return new Result<>(ResultMessage.FAILURE, null);
         }
         Zipper zipper = new Zipper(url + ".zip", url);
@@ -93,7 +97,6 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
             e.printStackTrace();
             return new Result<>(ResultMessage.FAILURE, null);
         }
-        InitPO initPO = new InitPO(date, userId, "http://localhost:8080/Server/" + url + ".zip");
         System.out.println("Before Return");
         ResultMessage resultMessage = commonOperation.add(initPO);
         return new Result<>(resultMessage, initPO);

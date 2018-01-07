@@ -15,7 +15,7 @@ public class Analysis {
 
         @Override
         public void run() {
-            String command = "python " + "/Users/iznauy/SEIIAssignment/python/analysis/main.py";
+            String command = "python " + "C:\\Users\\liao\\Desktop\\python\\analysis\\main.py";
             System.out.println(command);
             try {
                 Process process = Runtime.getRuntime().exec(command);
@@ -30,7 +30,7 @@ public class Analysis {
 
     public Analysis() {
         timer = new Timer();
-        timer.schedule(new PythonExecutor(), 0L, 3600 * 24 * 1000);
+        timer.schedule(new PythonExecutor(), 3600 * 24 * 1000L, 3600 * 24 * 1000);
     }
 
     public Timer getTimer() {

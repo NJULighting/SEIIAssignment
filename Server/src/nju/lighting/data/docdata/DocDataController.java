@@ -42,7 +42,7 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
 
     private static final String suffix;
 
-    private static final String absoluteMailScriptAddress = "/Users/iznauy/SEIIAssignment/python/mail/send_mail.py";
+    private static final String absoluteMailScriptAddress = "C:\\Users\\liao\\Desktop\\python\\mail\\send_mail.py";
 
     private static HashMap<DocType, TwoTuple<String, String>> typeToName = new HashMap<>();
 

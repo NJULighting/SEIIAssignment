@@ -4,7 +4,6 @@ import nju.lighting.bl.approvalbl.ApprovalBLService_Stub;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.UserVO;
 import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessConditionTableVO;
@@ -105,8 +104,4 @@ public class DocBLService_Stub implements DocBLService {
         return ResultMessage.SUCCESS;
     }
 
-    @Override
-    public UserVO getCreatorInfo(String creatorID) {
-        return null;
-    }
 }

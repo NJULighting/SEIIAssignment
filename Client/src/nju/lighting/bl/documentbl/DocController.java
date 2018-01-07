@@ -1,10 +1,7 @@
 package nju.lighting.bl.documentbl;
 
-import nju.lighting.bl.userbl.UserInfo;
-import nju.lighting.bl.userbl.UserInfoImpl;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.vo.DocVO;
-import nju.lighting.vo.UserVO;
 import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import nju.lighting.vo.viewtables.BusinessConditionTableVO;
@@ -62,9 +59,4 @@ public class DocController implements DocBLService {
         return redFlush.redFlush(docVO);
     }
 
-    @Override
-    public UserVO getCreatorInfo(String creatorID) {
-        UserInfo userInfo = new UserInfoImpl();
-        return userInfo.getUserVOByID(creatorID);
-    }
 }

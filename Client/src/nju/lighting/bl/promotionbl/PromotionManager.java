@@ -7,6 +7,7 @@ import nju.lighting.bl.utils.DataServiceSupplier;
 import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.promotiondataservice.PromotionDataService;
 import nju.lighting.po.promotion.PromotionPO;
+import nju.lighting.po.promotion.PromotionPackageItemPO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.*;
 
@@ -15,6 +16,7 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Created on 2017/11/14.
@@ -96,8 +98,8 @@ enum PromotionManager {
      */
     private boolean containsItemOfList(List<String> commodityIDList, PromotionPO po) {
         return po.getGoods() != null
-                && po.getGoods().stream().anyMatch(item -> commodityIDList.contains(item.getCommodityId()));
-
+                && po.getGoods().stream().map(PromotionPackageItemPO::getCommodityId)
+                .collect(Collectors.toList()).containsAll(commodityIDList);
     }
 
     ResultMessage modify(PromotionVO vo) {

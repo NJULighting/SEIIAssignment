@@ -13,8 +13,8 @@ content = sys.argv[3] # 第四个命令行参数，表示内容
 subject = sys.argv[2] # 第三个命令行参数，表示邮件主题
 
 if __name__ == '__main__':
-    msg = MIMEText(content, 'plain', 'utf-8')
-    msg['Subject'] = Header(subject, 'utf-8')
+    msg = MIMEText(content, 'plain', 'gbk')
+    msg['Subject'] = Header(subject, 'gbk')
     msg['From'] = author_mail
     msg['To'] = receiver
     smtp = smtplib.SMTP()

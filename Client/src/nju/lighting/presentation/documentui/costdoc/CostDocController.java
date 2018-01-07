@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import nju.lighting.presentation.documentui.Doc;
 import nju.lighting.presentation.utils.DateHelper;
+import nju.lighting.presentation.utils.UserHelper;
 import nju.lighting.vo.doc.costdoc.CostDocVO;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class CostDocController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         account.setText(costDocVO.getAccount().getId());
         total.setText(costDocVO.getTotal()+"");
-        creator.setText(costDocVO.getCreatorId());
+        creator.setText(UserHelper.getUserString(costDocVO.getCreatorId()));
         id.setText(costDocVO.getDocId());
         time.setText(DateHelper.approximateTime(costDocVO.getTime()));
 

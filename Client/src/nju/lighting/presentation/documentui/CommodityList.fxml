@@ -1,22 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" minHeight="0.0" minWidth="0.0" stylesheets="@../custom.css"
-            xmlns="http://javafx.com/javafx/8" fx:controller="nju.lighting.presentation.documentui.CommodityList">
-    <children>
-        <TableView fx:id="giftTableView" editable="true" fixedCellSize="55.0" focusTraversable="false"
-                   snapToPixel="false">
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox alignment="TOP_RIGHT" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.CommodityList">
+   <children>
+        <TableView fx:id="giftTableView" editable="true" fixedCellSize="55.0" focusTraversable="false" snapToPixel="false">
             <columns>
-                <TableColumn fx:id="id" editable="false" prefWidth="100.0" sortable="false" text="  编号"/>
-                <TableColumn fx:id="commodityName" editable="false" prefWidth="120.0" sortable="false" text="商品名"/>
-                <TableColumn fx:id="modelNum" editable="false" prefWidth="100.0" sortable="false" text="型号"/>
-                <TableColumn fx:id="count" editable="true" sortable="false" text="数量"/>
-                <TableColumn fx:id="price" minWidth="0.0" sortable="false" text="单价"/>
-                <TableColumn fx:id="subtotal" editable="false" prefWidth="100.0" sortable="false" text="小计"/>
-                <TableColumn fx:id="comments" prefWidth="130.0" sortable="false" text="备注"/>
-                <TableColumn fx:id="deleteBtn" editable="false" prefWidth="50.0" sortable="false"/>
+                <TableColumn fx:id="id" editable="false" prefWidth="100.0" sortable="false" text="  编号" />
+                <TableColumn fx:id="commodityName" editable="false" prefWidth="120.0" sortable="false" text="商品名" />
+                <TableColumn fx:id="modelNum" editable="false" prefWidth="100.0" sortable="false" text="型号" />
+                <TableColumn fx:id="count" editable="true" sortable="false" text="数量" />
+                <TableColumn fx:id="price" minWidth="0.0" sortable="false" text="单价" />
+                <TableColumn fx:id="subtotal" editable="false" prefWidth="100.0" sortable="false" text="小计" />
+                <TableColumn fx:id="comments" prefWidth="130.0" sortable="false" text="备注" />
+                <TableColumn fx:id="deleteBtn" editable="false" prefWidth="50.0" sortable="false" />
             </columns>
         </TableView>
-    </children>
-</AnchorPane>
+      <HBox fx:id="totalBox" alignment="TOP_RIGHT" visible="false">
+         <children>
+            <Label text="总额：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="totalLabel" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</VBox>

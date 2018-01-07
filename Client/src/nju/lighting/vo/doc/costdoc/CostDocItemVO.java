@@ -27,6 +27,10 @@ public class CostDocItemVO {
         this.comment = comment;
     }
 
+    public CostDocItemVO toCostDocItem(){
+        return new CostDocItemVO(getType(),getAmount(),getComment());
+    }
+
     public CostDocItemType getType() {
         return type;
     }

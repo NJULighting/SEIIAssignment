@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<ScrollPane fx:id="scrollpaneMain" hbarPolicy="NEVER" hmax="0.0" prefHeight="560.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.salesdoc.SalesDoc">
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fx:id="scrollpaneMain" hbarPolicy="NEVER" hmax="0.0" prefHeight="560.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.salesdoc.SalesDoc">
       <content>
           <AnchorPane minHeight="0.0" minWidth="0.0">
               <children>
@@ -51,7 +55,7 @@
                           </HBox>
                           <HBox alignment="CENTER" spacing="10.0">
                               <children>
-                                  <Label text="仓库">
+                                  <Label fx:id="repository" text="仓库">
                                       <font>
                                           <Font name="System Bold" size="17.0" />
                                       </font>
@@ -170,7 +174,7 @@
                           </HBox>
                           <HBox alignment="CENTER">
                               <children>
-                                  <Label fx:id="totalLabel" text="ZPD-XXXX-XXXXX" textFill="#838383" />
+                                  <Label fx:id="idLabel" text="ZPD-XXXX-XXXXX" textFill="#838383" />
                               </children>
                               <VBox.margin>
                                   <Insets top="20.0" />

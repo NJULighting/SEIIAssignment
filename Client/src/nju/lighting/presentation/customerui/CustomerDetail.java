@@ -66,8 +66,6 @@ public class CustomerDetail {
 
         this.add = add;
         textFields.add(nameText);
-        textFields.add(receiveText);
-        textFields.add(payText);
 
         textFields.add(telephoneText);
         textFields.add(postageText);
@@ -113,7 +111,7 @@ public class CustomerDetail {
             payText.setText(String.valueOf(customerVO.getPayable()));
             receiveLimitText.setText(String.valueOf(customerVO.getReceivableLimit()));
 
-            salesman.setValue(UserHelper.getSalesman(salesman,customerVO.getSalesman()));
+            salesman.setValue(UserHelper.getSalesman(salesman, customerVO.getSalesman()));
 
             telephoneText.setText(customerVO.getTelephone());
 
@@ -123,6 +121,8 @@ public class CustomerDetail {
             setEditable(false);
         } else {
             setEditable(true);
+            payText.setText("0.0");
+            receiveText.setText("0.0");
             buttonBox.getChildren().remove(deleteButton);
             receiveLimitText.setText("" + DEFAULT_LIMIT);
             container.getChildren().remove(idBox);
@@ -187,7 +187,7 @@ public class CustomerDetail {
             if (result == ResultMessage.SUCCESS) {
                 TableView tableView = controller.getTableView();
                 int index = tableView.getItems().indexOf(customerVO);
-                CustomerVO afterChanged= getCurrentCustomer();
+                CustomerVO afterChanged = getCurrentCustomer();
                 afterChanged.setID(customerVO.getID());
                 tableView.getItems().set(index, afterChanged);
                 back();
@@ -231,11 +231,17 @@ public class CustomerDetail {
         for (TextField textField : textFields) {
             textField.setEditable(editable);
         }
-        if (Client.getUserVO().isAuthority()) {
-            receiveLimitText.setEditable(editable);
-        } else {
-            receiveLimitText.setEditable(!editable);
+
+        if (!editable)
+            receiveLimitText.setEditable(false);
+        else {
+            if (Client.getUserVO().isAuthority()) {
+                receiveLimitText.setEditable(editable);
+            } else {
+                receiveLimitText.setEditable(!editable);
+            }
         }
+
         gradeBox.setDisable(!editable);
         typeBox.setDisable(!editable);
         salesman.setDisable(!editable);

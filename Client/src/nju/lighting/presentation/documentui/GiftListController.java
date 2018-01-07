@@ -1,7 +1,9 @@
 package nju.lighting.presentation.documentui;
 
 
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -36,7 +38,7 @@ public class GiftListController implements Initializable {
     @FXML
     public TableColumn<CommodityItem, Double> subtotal;
     ObservableList<CommodityItem> giftObservableList = FXCollections.observableArrayList();
-    private double total = 0;
+    private SimpleDoubleProperty totalProperty=new SimpleDoubleProperty();
 
     public static void setGiftItemListVO(List<GiftItemVO> giftItemListVO) {
         giftsVO = giftItemListVO;
@@ -46,17 +48,15 @@ public class GiftListController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        if (giftsVO != null) {
-            total = giftsVO.stream()
-                    .mapToDouble(GiftItemVO::getSubtotal)
-                    .sum();
-
-
-            giftObservableList.addAll(giftsVO.stream()
-                    .map(x -> new CommodityItem(x))
-                    .collect(Collectors.toList())
-            );
-        }
+        giftObservableList.addListener((ListChangeListener<? super CommodityItem>) c -> {
+            if (giftObservableList.size() != 0)
+                totalProperty.set(giftObservableList.stream()
+                        .mapToDouble(x -> ((x).subtotal.getValue()))
+                        .sum());
+            else {
+                totalProperty.set(0);
+            }
+        });
 
 
         commodityName.setCellValueFactory(cellData ->
@@ -73,7 +73,7 @@ public class GiftListController implements Initializable {
         TableViewHelper.commonSet(giftTableView);
 
 
-        totalLabel.setText(total + "");
+        totalLabel.textProperty().bind(totalProperty.asString());
     }
 
 

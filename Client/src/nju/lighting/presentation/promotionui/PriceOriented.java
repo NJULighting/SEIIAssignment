@@ -36,6 +36,7 @@ public class PriceOriented implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
         trigger.setText("当总价大于" + promotion.getPrice() + "时");
         if (promotion.getVouchers() == 0)
             container.getChildren().remove(voucherBox);

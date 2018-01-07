@@ -78,7 +78,7 @@ public class CustomerSearchListController implements Initializable {
     private Upper upper;
     private CustomerVO selectedCustomer;
 
-    private CustomerType customerType= CustomerType.ALL;
+    private CustomerType customerType = CustomerType.ALL;
 
 
     //清除搜索，列表显示所有客户
@@ -114,10 +114,14 @@ public class CustomerSearchListController implements Initializable {
 
     void refresh() {
         List<CustomerVO> customerVOList = customerBLService.findCustomerByType(customerType);
-        observableList.setAll(customerVOList.stream()
-                .collect(Collectors.toList()));
+        if (customerVOList!=null&&customerVOList.size() != 0)
+            observableList.setAll(customerVOList.stream()
+                    .collect(Collectors.toList()));
+        else
+            observableList.clear();
     }
-    void delete(CustomerVO customerVO){
+
+    void delete(CustomerVO customerVO) {
         DialogHelper.addDialog("你确定要删除用户" + customerVO.getName() + "?",
                 MainUI.getStackPane(),
                 new EventHandler() {
@@ -128,7 +132,7 @@ public class CustomerSearchListController implements Initializable {
                             upper.back();
                             getTableView().getItems().remove(customerVO);
                         }
-                        DialogHelper.dialog("删除用户",resultMessage,MainUI.getStackPane());
+                        DialogHelper.dialog("删除用户", resultMessage, MainUI.getStackPane());
                     }
                 }
         );
@@ -185,7 +189,7 @@ public class CustomerSearchListController implements Initializable {
         telephone.setCellFactory(p -> new HighLightCell(keyWord));
 
         salesman.setCellValueFactory(p ->
-                new SimpleStringProperty(UserHelper.getUser(p.getValue().getSalesman()).toString()));
+                new SimpleStringProperty(UserHelper.getUserString(p.getValue().getSalesman())));
         salesman.setCellFactory(p -> new HighLightCell(keyWord));
 
         openBtn.setCellValueFactory(p ->
@@ -285,7 +289,7 @@ public class CustomerSearchListController implements Initializable {
 
     public void setReadOnly(Upper upper, SimpleObjectProperty<CustomerVO> customer, CustomerType type) {
         setReadOnly(upper, customer);
-        customerType=type;
+        customerType = type;
 
     }
 

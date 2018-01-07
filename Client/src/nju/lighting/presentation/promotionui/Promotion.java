@@ -47,9 +47,11 @@ public class Promotion {
 
         try {
             container.getChildren().add(FXMLLoader.load(getClass().getResource(hashMap.get(promotion.getType()))));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
     }
 }

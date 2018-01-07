@@ -18,7 +18,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import jxl.Workbook;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 import nju.lighting.blservice.documentblservice.DocBLService;
+import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.factory.UserBLServiceFactory;
 import nju.lighting.presentation.mainui.Upper;
@@ -28,7 +37,10 @@ import nju.lighting.vo.UserVO;
 import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import shared.DocumentFilter;
+import shared.ResultMessage;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -39,6 +51,8 @@ import java.util.ResourceBundle;
  * @author 陈俊宇
  */
 public class SalesDetailTable implements Initializable, Upper {
+    @FXML
+    StackPane stackPane;
     @FXML
     AnchorPane mainPane;
     @FXML
@@ -175,4 +189,58 @@ public class SalesDetailTable implements Initializable, Upper {
     }
 
 
+    public void exportExcel(){
+
+        String[] head=new String[]{"商品","型号","数量","单价","总额","时间"};
+
+        int tableSize = observableList.size();
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Excel");
+        fileChooser.setInitialFileName("销售明细表.xls");
+        File file = fileChooser.showSaveDialog(new Stage());
+
+
+        WritableWorkbook theNew= null;
+
+        if (file != null) {
+            try {
+
+                theNew = Workbook.createWorkbook(file);
+                WritableSheet sheet=theNew.createSheet("sheet 1",0);
+
+                //设置第一行即表头
+                for(int i=0;i<head.length;i++){
+                    sheet.addCell(new jxl.write.Label(i,0,head[i]));
+                }
+
+                //一行一行设置
+                for(int i=0;i<tableSize;i++){
+                    sheet.addCell(new jxl.write.Label(0,i+1,observableList.get(i).getName()));
+                    sheet.addCell(new jxl.write.Label(1,i+1,observableList.get(i).getCommodityType().toString()));
+                    sheet.addCell(new jxl.write.Label(2,i+1,String.valueOf(observableList.get(i).getNumber())));
+                    sheet.addCell(new jxl.write.Label(3,i+1,String.valueOf(observableList.get(i).getSalePrice())));
+                    sheet.addCell(new jxl.write.Label(4,i+1,String.valueOf(observableList.get(i).getTotalAmount())));
+                    sheet.addCell(new jxl.write.Label(1,i+1,observableList.get(i).getDate().toString()));
+                }
+
+                theNew.write();
+                theNew.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (RowsExceededException e) {
+                e.printStackTrace();
+            } catch (WriteException e) {
+                e.printStackTrace();
+            }
+
+            DialogHelper.dialog("导出表格", ResultMessage.SUCCESS,stackPane);
+        }
+        else{
+            DialogHelper.dialog("导出表格", ResultMessage.FAILURE,stackPane);
+        }
+
+
+
+    }
 }

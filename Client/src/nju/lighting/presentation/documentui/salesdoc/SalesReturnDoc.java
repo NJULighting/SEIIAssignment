@@ -8,6 +8,8 @@ import javafx.scene.layout.HBox;
 import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
 import nju.lighting.presentation.documentui.Doc;
+import nju.lighting.presentation.utils.CustomerHelper;
+import nju.lighting.presentation.utils.UserHelper;
 import nju.lighting.vo.doc.salesdoc.SalesReturnDocVO;
 
 import java.io.IOException;
@@ -27,7 +29,7 @@ public class SalesReturnDoc implements Initializable {
     HBox  tableContainer;
 
     @FXML
-    Label customer, creator, salesman, repository, comments,accountBefore,discount,voucher,account;
+    Label customer, creator, salesman, repository, comments,accountBefore,discount,voucher,account,idLabel;
 
 
     SalesReturnDocVO salesReturnDocVO;
@@ -37,16 +39,16 @@ public class SalesReturnDoc implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        customer.setText(salesReturnDocVO.getCustomerId() + "");
-        creator.setText(salesReturnDocVO.getCreatorId());
-        salesman.setText(salesReturnDocVO.getSalesman());
-//        repository.setText(salesReturnDocVO.getRepository());
+        customer.setText(CustomerHelper.getCustomer(salesReturnDocVO.getCustomerId()).getName());
+        creator.setText(UserHelper.getUserString(salesReturnDocVO.getCreatorId()));
+        salesman.setText(UserHelper.getUserString(salesReturnDocVO.getSalesman()));
+        repository.setText(salesReturnDocVO.getRepository());
         comments.setText(salesReturnDocVO.getRemarks());
         account.setText(salesReturnDocVO.getFinalAmount()+"");
         accountBefore.setText(salesReturnDocVO.getBeforeDiscountAmount()+"");
         discount.setText(salesReturnDocVO.getDiscount()+"");
         voucher.setText(salesReturnDocVO.getVoucher()+"");
-
+        idLabel.setText(salesReturnDocVO.getDocId());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
         try {

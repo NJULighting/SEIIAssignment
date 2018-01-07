@@ -122,20 +122,27 @@ public class CustomerSearchListController implements Initializable {
     }
 
     void delete(CustomerVO customerVO) {
-        DialogHelper.addDialog("你确定要删除用户" + customerVO.getName() + "?",
-                MainUI.getStackPane(),
-                new EventHandler() {
-                    @Override
-                    public void handle(Event event) {
-                        ResultMessage resultMessage = customerBLService.deleteCustomer(customerVO.getID());
-                        if (resultMessage == ResultMessage.SUCCESS) {
-                            upper.back();
-                            getTableView().getItems().remove(customerVO);
+        //如果存在应收应付，则不可删除
+        if(customerVO.getPayable()!=0||customerVO.getReceivable()!=0){
+            Label cannot = new Label("客户尚有应收应付，不可删除");
+            DialogHelper.addDialog(cannot,MainUI.getStackPane());
+
+        }else {
+            DialogHelper.addDialog("你确定要删除用户" + customerVO.getName() + "?",
+                    MainUI.getStackPane(),
+                    new EventHandler() {
+                        @Override
+                        public void handle(Event event) {
+                            ResultMessage resultMessage = customerBLService.deleteCustomer(customerVO.getID());
+                            if (resultMessage == ResultMessage.SUCCESS) {
+                                upper.back();
+                                getTableView().getItems().remove(customerVO);
+                            }
+                            DialogHelper.dialog("删除用户", resultMessage, MainUI.getStackPane());
                         }
-                        DialogHelper.dialog("删除用户", resultMessage, MainUI.getStackPane());
                     }
-                }
-        );
+            );
+        }
 
     }
 

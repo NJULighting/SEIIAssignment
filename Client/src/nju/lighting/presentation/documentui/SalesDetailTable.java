@@ -119,14 +119,20 @@ public class SalesDetailTable implements Initializable, Upper {
     }
 
     void refresh() {
+
         observableList.setAll(blService.findSaleRecords(getBuilder().build()));
     }
 
     private DocumentFilter.Builder getBuilder() {
+        Date end=DateHelper.localDateToDate(endDate.getValue());
+        end.setDate(end.getDate()+1);
+
         DocumentFilter.Builder builder = new DocumentFilter.Builder();
         builder.startDate(DateHelper.localDateToDate(startDate.getValue()))
-                .endDate(DateHelper.localDateToDate(endDate.getValue()))
+                .endDate(end)
                 .commodity(commodityText.getText());
+        if (commodityText.getText().length()==0)
+            builder.commodity(null);
         if (customerProperty.getValue() != null)
             builder.customer(customerProperty.getValue().getID() + "");
         if (creatorProperty.getValue() != null)
@@ -138,6 +144,9 @@ public class SalesDetailTable implements Initializable, Upper {
 
 
     public void initialize(URL location, ResourceBundle resources) {
+
+        TextFieldHelper.addDeleteMenuItem(customerText,customerProperty);
+        TextFieldHelper.addDeleteMenuItem(commodityText,commodityProperty);
 
         commodity.setCellValueFactory(c ->
                 new SimpleStringProperty(c.getValue().getName()));
@@ -190,57 +199,11 @@ public class SalesDetailTable implements Initializable, Upper {
 
 
     public void exportExcel(){
-
-        String[] head=new String[]{"商品","型号","数量","单价","总额","时间"};
-
-        int tableSize = observableList.size();
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Excel");
-        fileChooser.setInitialFileName("销售明细表.xls");
-        File file = fileChooser.showSaveDialog(new Stage());
-
-
-        WritableWorkbook theNew= null;
-
-        if (file != null) {
-            try {
-
-                theNew = Workbook.createWorkbook(file);
-                WritableSheet sheet=theNew.createSheet("sheet 1",0);
-
-                //设置第一行即表头
-                for(int i=0;i<head.length;i++){
-                    sheet.addCell(new jxl.write.Label(i,0,head[i]));
-                }
-
-                //一行一行设置
-                for(int i=0;i<tableSize;i++){
-                    sheet.addCell(new jxl.write.Label(0,i+1,observableList.get(i).getName()));
-                    sheet.addCell(new jxl.write.Label(1,i+1,observableList.get(i).getCommodityType().toString()));
-                    sheet.addCell(new jxl.write.Label(2,i+1,String.valueOf(observableList.get(i).getNumber())));
-                    sheet.addCell(new jxl.write.Label(3,i+1,String.valueOf(observableList.get(i).getSalePrice())));
-                    sheet.addCell(new jxl.write.Label(4,i+1,String.valueOf(observableList.get(i).getTotalAmount())));
-                    sheet.addCell(new jxl.write.Label(1,i+1,observableList.get(i).getDate().toString()));
-                }
-
-                theNew.write();
-                theNew.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (RowsExceededException e) {
-                e.printStackTrace();
-            } catch (WriteException e) {
-                e.printStackTrace();
-            }
-
+        if(ExportExcelHelper.salesDetailTable(observableList)==ResultMessage.SUCCESS){
             DialogHelper.dialog("导出表格", ResultMessage.SUCCESS,stackPane);
         }
         else{
             DialogHelper.dialog("导出表格", ResultMessage.FAILURE,stackPane);
         }
-
-
-
     }
 }

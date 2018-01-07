@@ -51,7 +51,7 @@ public class DocumentFilter {
 
         // Generate type filter
         Predicate<Doc> typeFilter;
-        if (docTypes.size() == 0) {
+        if (docTypes.size() == 0 || docTypes.contains(DocType.ALL)) {
             typeFilter = generatePredicateByEqual(null, Doc::getDocType);
         } else {
             typeFilter = po -> false;

@@ -21,8 +21,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.BusinessHistoryTable">
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.BusinessHistoryTable">
    <children>
       <Pane fx:id="pane" prefHeight="680.0" prefWidth="1080.0">
          <children>
@@ -36,7 +35,7 @@
                               <TableColumn fx:id="customer" prefWidth="120.0" resizable="false" text="客户" />
                               <TableColumn fx:id="creator" prefWidth="150.0" resizable="false" text="创建人" />
                               <TableColumn fx:id="time" prefWidth="150.0" resizable="false" text="创建时间" />
-                               <TableColumn fx:id="repository" prefWidth="150.0" resizable="false" text="业务员" />
+                               <TableColumn fx:id="salesman" prefWidth="150.0" resizable="false" text="业务员" />
                               <TableColumn fx:id="btn" prefWidth="150.0" />
                            </columns>
                         </TableView>

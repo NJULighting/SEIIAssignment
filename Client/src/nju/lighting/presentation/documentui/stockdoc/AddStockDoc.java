@@ -28,6 +28,7 @@ import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CommodityHelper;
 import nju.lighting.presentation.utils.CustomerHelper;
+import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.presentation.utils.UserHelper;
 import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.DocVO;
@@ -124,6 +125,8 @@ public class AddStockDoc implements Initializable, Upper, Modifiable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        TextFieldHelper.addDeleteMenuItem(customer,customerProperty);
 
         UserHelper.intiUserBox(salesmanBox);
         repositoryBox.getItems().add("默认仓库");

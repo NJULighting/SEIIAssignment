@@ -10,13 +10,22 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import jxl.Workbook;
+import jxl.write.*;
+import jxl.write.biff.RowsExceededException;
 import nju.lighting.blservice.documentblservice.DocBLService;
+import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.utils.DateHelper;
+import nju.lighting.presentation.utils.ExportExcelHelper;
 import nju.lighting.vo.viewtables.BusinessConditionTableVO;
+import shared.ResultMessage;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Date;
@@ -29,6 +38,9 @@ import java.util.ResourceBundle;
  * @author 陈俊宇
  */
 public class BusinessConditionTable implements Initializable {
+
+    @FXML
+    StackPane stackPane;
 
     @FXML
     Label salesRevenueText, commodityGainRevenueText, costAdjustRevenueText, spreadRevenueText,
@@ -152,11 +164,15 @@ public class BusinessConditionTable implements Initializable {
         yearBtn.setOnAction(e -> setTime(DateHelper.yearAgo()));
 
 
-        exportBtn.setOnAction(e -> {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("选择保存路径");
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLS Files", "*.xls"));
-            fileChooser.showSaveDialog(new Stage());
-        });
+    }
+
+    public void exportExcel(){
+        if(ExportExcelHelper.businessConditionTable(businessConditionTable)==ResultMessage.SUCCESS){
+            DialogHelper.dialog("导出表格", ResultMessage.SUCCESS,stackPane);
+        }
+        else{
+            DialogHelper.dialog("导出表格", ResultMessage.FAILURE,stackPane);
+        }
+
     }
 }

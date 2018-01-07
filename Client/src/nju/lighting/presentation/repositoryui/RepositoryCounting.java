@@ -11,11 +11,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import nju.lighting.blservice.repositoryblservice.RepositoryBLService;
+import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.factory.RepositoryBLServiceFactory;
+import nju.lighting.presentation.utils.ExportExcelHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.repository.RepositoryTableItemVO;
+import shared.ResultMessage;
 
 import java.net.URL;
 import java.util.List;
@@ -31,6 +35,8 @@ public class RepositoryCounting implements Initializable {
     RepositoryBLService blService = RepositoryBLServiceFactory.getRepositoryBLService();
     List<RepositoryTableItemVO> repositoryTableList = blService.getRepositoryTable().getRepositoryTableItemVOS();
 
+    @FXML
+    StackPane stackPane;
 
     @FXML
     TableView tableView;
@@ -91,5 +97,15 @@ public class RepositoryCounting implements Initializable {
 
         TableViewHelper.commonSet(tableView);
         tableView.getStylesheets().add(getClass().getResource("../repository.css").toExternalForm());
+    }
+
+
+    public void exportExcel() {
+
+        if(ExportExcelHelper.repositoryCounting(repositoryTableList)== ResultMessage.SUCCESS){
+            DialogHelper.dialog("导出表格", ResultMessage.SUCCESS, stackPane);
+        } else {
+            DialogHelper.dialog("导出表格", ResultMessage.FAILURE, stackPane);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package nju.lighting.presentation.factory;
 
 import nju.lighting.bl.logbl.LogBLService_Stub;
+import nju.lighting.bl.logbl.LogController;
 import nju.lighting.blservice.logblservice.LogBLService;
 
 /**
@@ -9,7 +10,7 @@ import nju.lighting.blservice.logblservice.LogBLService;
  * @author 陈俊宇
  */
 public class LogBLServiceFactory {
-    private static LogBLService logBLService = new LogBLService_Stub();
+    private static LogBLService logBLService = new LogController();
 
     public static LogBLService getLogBLService() {
         return logBLService;

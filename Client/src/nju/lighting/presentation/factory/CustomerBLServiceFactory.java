@@ -1,6 +1,7 @@
 package nju.lighting.presentation.factory;
 
 import nju.lighting.bl.customerbl.CustomerBLService_Stub;
+import nju.lighting.bl.customerbl.CustomerController;
 import nju.lighting.blservice.customerblservice.CustomerBLService;
 
 /**
@@ -9,7 +10,7 @@ import nju.lighting.blservice.customerblservice.CustomerBLService;
  * @author 陈俊宇
  */
 public class CustomerBLServiceFactory {
-    private static CustomerBLService customerBLService = new CustomerBLService_Stub();
+    private static CustomerBLService customerBLService = new CustomerController();
 
     public static CustomerBLService getCustomerBLService() {
         return customerBLService;

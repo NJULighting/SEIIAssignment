@@ -22,5 +22,6 @@
     <orderEntry type="library" name="poi-3" level="project" />
     <orderEntry type="library" name="commons-beanutils-1.9" level="project" />
     <orderEntry type="library" name="commons-logging-1" level="project" />
+    <orderEntry type="library" name="jxl" level="project" />
   </component>
 </module>

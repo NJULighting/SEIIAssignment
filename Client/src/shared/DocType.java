@@ -10,7 +10,8 @@ public enum DocType {
     SALES("销售单"),
     SALES_RETURN("销售退货单"),
     STOCK("进货单"),
-    STOCK_RETURN("进货退货单");
+    STOCK_RETURN("进货退货单"),
+    ALL("所有");
 
 
     private final String text;

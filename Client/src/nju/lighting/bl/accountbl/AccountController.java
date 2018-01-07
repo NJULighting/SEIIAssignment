@@ -12,7 +12,6 @@ import java.util.List;
  * @author Liao
  */
 public class AccountController implements AccountBLService {
-    // TODO: 2017/11/28 Replace real logger 
     private AccountManager accountManager = AccountManager.getInstance();
 
     @Override

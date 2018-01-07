@@ -4,8 +4,11 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
 import com.jfoenix.validation.base.ValidatorBase;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 
 /**
  * Created on 2017/12/23.
@@ -15,6 +18,16 @@ import javafx.beans.value.ObservableValue;
  */
 public class TextFieldHelper {
 
+    public static void addDeleteMenuItem(JFXTextField textField, SimpleObjectProperty objectProperty){
+        MenuItem delete=new MenuItem("清除");
+        delete.setOnAction(e->{
+            textField.setText("");
+            objectProperty.set(null);
+        });
+
+        textField.setContextMenu(new ContextMenu(delete));
+
+    }
 
     private static void binds(JFXTextField textField, ValidatorBase validator, String message) {
         validator.setMessage(message);

@@ -5,6 +5,7 @@ import shared.Identity;
 /**
  * Created on 2017/10/21.
  * Description:
+ *
  * @author Liao
  */
 public class UserVO {
@@ -54,6 +55,8 @@ public class UserVO {
 
     @Override
     public String toString() {
-        return username+"("+identity.toString()+")";
+        if (identity != null)
+            return username + "(" + identity.toString() + ")";
+        else return username;
     }
 }

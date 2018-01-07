@@ -27,12 +27,8 @@ import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.factory.UserBLServiceFactory;
-import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.Upper;
-import nju.lighting.presentation.utils.CustomerHelper;
-import nju.lighting.presentation.utils.DateHelper;
-import nju.lighting.presentation.utils.DocHelper;
-import nju.lighting.presentation.utils.TableViewHelper;
+import nju.lighting.presentation.utils.*;
 import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
@@ -56,7 +52,7 @@ import java.util.ResourceBundle;
 public class BusinessHistoryTable implements Initializable, Upper {
 
     @FXML
-    TableColumn<BusinessHistoryItemVO, String> type, customer, creator, time, repository;
+    TableColumn<BusinessHistoryItemVO, String> type, customer, creator, time, salesman;
 
     @FXML
     TableColumn btn;
@@ -98,7 +94,7 @@ public class BusinessHistoryTable implements Initializable, Upper {
     Button setCustomerBtn;
 
     @FXML
-    JFXButton okBtn,export;
+    JFXButton okBtn, export;
 
     @FXML
     JFXHamburger hamburger;
@@ -116,16 +112,19 @@ public class BusinessHistoryTable implements Initializable, Upper {
     private JFXNodesList nodesList = new JFXNodesList();
 
 
-
     private DocumentFilter.Builder getBuilder() {
         builder = new DocumentFilter.Builder();
+        Date end = DateHelper.localDateToDate(endDate.getValue());
+        end.setDate(end.getDate() + 1);
         builder.startDate(DateHelper.localDateToDate(startDate.getValue()))
-                .endDate(DateHelper.localDateToDate(endDate.getValue()))
+                .endDate(end)
                 .docType(typeBox.getValue());
         if (creatorBox.getValue() != null)
             builder.creatorID(creatorBox.getValue().getID());
+        else builder.creatorID(null);
         if (customerProperty.getValue() != null)
             builder.customer(customerProperty.getValue().getID() + "");
+        else builder.customer(null);
 
         return builder;
     }
@@ -142,9 +141,9 @@ public class BusinessHistoryTable implements Initializable, Upper {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        okBtn.setOnAction(e-> {
+        okBtn.setOnAction(e -> {
             refresh();
-            DocHelper.search(nodesList,burgerTask);
+            DocHelper.search(nodesList, burgerTask);
             container.getChildren().setAll(mainPane);
             labelBox.getChildren().clear();
             list.clear();
@@ -156,8 +155,8 @@ public class BusinessHistoryTable implements Initializable, Upper {
         creatorBox.getItems().add(new UserVO("无", null, null, false));
         creatorBox.getItems().addAll(UserBLServiceFactory.getUserBLService().getUserList());
 
-        typeBox.getItems().add(null);
         typeBox.getItems().addAll(DocType.values());
+        typeBox.setValue(typeBox.getItems().get(0));
 
         setCustomerBtn.setOnAction(e -> CustomerHelper.setCustomer(this, customerProperty));
 
@@ -180,8 +179,11 @@ public class BusinessHistoryTable implements Initializable, Upper {
         time.setCellValueFactory(c ->
                 new SimpleStringProperty(DateHelper.accurateTime(c.getValue().getDate())));
 
-        repository.setCellValueFactory(c ->
-                new SimpleStringProperty(c.getValue().getRepository()));
+        salesman.setCellValueFactory(c ->
+                new SimpleStringProperty(UserHelper.getUserString(c.getValue().getSalesman())));
+
+        TextFieldHelper.addDeleteMenuItem(customerText,customerProperty);
+
 
         btn.setCellFactory(p -> {
             return new TableCell() {
@@ -224,21 +226,25 @@ public class BusinessHistoryTable implements Initializable, Upper {
         list.clear();
         labelBox.getChildren().clear();
         container.getChildren().setAll(mainPane);
+        nodesList.setVisible(true);
     }
 
     @Override
     public void back() {
-       if (labelBox.getChildren().size()==1)
-           backToMain();
-       else {
-           labelBox.getChildren().remove(labelBox.getChildren().get(labelBox.getChildren().size() - 1));
-           container.getChildren().setAll(list.get(list.size() - 2));
-           list.remove(list.size() - 1);
-       }
+        if (labelBox.getChildren().size() == 1)
+            backToMain();
+        else {
+            labelBox.getChildren().remove(labelBox.getChildren().get(labelBox.getChildren().size() - 1));
+            container.getChildren().setAll(list.get(list.size() - 2));
+            list.remove(list.size() - 1);
+        }
     }
 
     @Override
     public void setChildren(Node node, String title) {
+        if (node.equals(mainPane))
+            nodesList.setVisible(true);
+        else nodesList.setVisible(false);
         list.add(node);
         container.getChildren().setAll(node);
         Label label = new Label(title);
@@ -253,9 +259,9 @@ public class BusinessHistoryTable implements Initializable, Upper {
         labelBox.getChildren().add(label);
     }
 
-    public void exportExcel(){
+    public void exportExcel() {
 
-        String[] head=new String[]{"单据类型","客户","创建人","创建时间","业务员"};
+        String[] head = new String[]{"单据类型", "客户", "创建人", "创建时间", "业务员"};
 
         int tableSize = observableList.size();
 
@@ -265,26 +271,26 @@ public class BusinessHistoryTable implements Initializable, Upper {
         File file = fileChooser.showSaveDialog(new Stage());
 
 
-        WritableWorkbook theNew= null;
+        WritableWorkbook theNew = null;
 
         if (file != null) {
             try {
 
                 theNew = Workbook.createWorkbook(file);
-                WritableSheet sheet=theNew.createSheet("sheet 1",0);
+                WritableSheet sheet = theNew.createSheet("sheet 1", 0);
 
                 //设置第一行即表头
-                for(int i=0;i<head.length;i++){
-                    sheet.addCell(new jxl.write.Label(i,0,head[i]));
+                for (int i = 0; i < head.length; i++) {
+                    sheet.addCell(new jxl.write.Label(i, 0, head[i]));
                 }
 
                 //一行一行设置
-                for(int i=0;i<tableSize;i++){
-                    sheet.addCell(new jxl.write.Label(0,i+1,observableList.get(i).getDocVO().getType().toString()));
-                    sheet.addCell(new jxl.write.Label(1,i+1,observableList.get(i).getCustomer().toString()));
-                    sheet.addCell(new jxl.write.Label(2,i+1,observableList.get(i).getDocVO().getCreatorId().toString()));
-                    sheet.addCell(new jxl.write.Label(3,i+1,observableList.get(i).getDate().toString()));
-                    sheet.addCell(new jxl.write.Label(4,i+1,observableList.get(i).getSalesman().toString()));
+                for (int i = 0; i < tableSize; i++) {
+                    sheet.addCell(new jxl.write.Label(0, i + 1, observableList.get(i).getDocVO().getType().toString()));
+                    sheet.addCell(new jxl.write.Label(1, i + 1, observableList.get(i).getCustomer().toString()));
+                    sheet.addCell(new jxl.write.Label(2, i + 1, observableList.get(i).getDocVO().getCreatorId().toString()));
+                    sheet.addCell(new jxl.write.Label(3, i + 1, observableList.get(i).getDate().toString()));
+                    sheet.addCell(new jxl.write.Label(4, i + 1, observableList.get(i).getSalesman().toString()));
                 }
 
                 theNew.write();
@@ -297,12 +303,10 @@ public class BusinessHistoryTable implements Initializable, Upper {
                 e.printStackTrace();
             }
 
-            DialogHelper.dialog("导出表格", ResultMessage.SUCCESS,stackPane);
+            DialogHelper.dialog("导出表格", ResultMessage.SUCCESS, stackPane);
+        } else {
+            DialogHelper.dialog("导出表格", ResultMessage.FAILURE, stackPane);
         }
-        else{
-            DialogHelper.dialog("导出表格", ResultMessage.FAILURE,stackPane);
-        }
-
 
 
     }

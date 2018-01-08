@@ -61,6 +61,11 @@ public class AccountDataService_Stub extends UnicastRemoteObject implements Acco
     }
 
     @Override
+    public List<AccountPO> fuzzySearchByName(String key) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public List<AccountPO> fuzzySearchById(String key) throws RemoteException {
         return null;
     }

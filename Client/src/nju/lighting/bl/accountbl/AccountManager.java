@@ -45,6 +45,7 @@ enum AccountManager {
             // Initialize fuzzy seeking helper
             helper = new FuzzySeekingHelper<>(po -> new Account(po).toVO());
             helper.registerFunctionForString(accountDataService::fuzzySearchById);
+            helper.registerFunctionForString(accountDataService::fuzzySearchByName);
         } catch (NamingException e) {
             e.printStackTrace();
         }

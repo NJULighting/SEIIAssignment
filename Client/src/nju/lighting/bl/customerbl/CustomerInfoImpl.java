@@ -29,26 +29,35 @@ public class CustomerInfoImpl implements CustomerInfo {
     @Override
     public ResultMessage changeReceivable(int customerId, double amount) {
         try {
-            double receivable = dataService.getCustomerById(customerId).getReceivable();
+            CustomerPO customer = dataService.getCustomerById(customerId);
+            double receivable = customer.getReceivable();
+
+            // See whether the final amount will be negative or exceed the limit of receivable
             if (receivable + amount < 0) {
                 dataService.changeReceivable(customerId, -receivable);
                 return dataService.changePayable(customerId, -receivable - amount);
+            } else if (receivable + amount > customer.getReceivableLimit()) {
+                return ResultMessage.FAILURE;
             }
+
             return dataService.changeReceivable(customerId, amount);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.FAILURE;
+            return ResultMessage.NETWORK_FAIL;
         }
     }
 
     @Override
     public ResultMessage changePayable(int customerId, double amount) {
         try {
-            double payable = dataService.getCustomerById(customerId).getPayable();
+            CustomerPO customer = dataService.getCustomerById(customerId);
+            double payable = customer.getPayable();
+
             if (payable + amount < 0) {
                 dataService.changePayable(customerId, -payable);
                 return dataService.changeReceivable(customerId, -amount - payable);
             }
+
             return dataService.changePayable(customerId, amount);
         } catch (RemoteException e) {
             e.printStackTrace();

@@ -28,20 +28,20 @@ public class UserDataTest {
 
     @Test
     public void insert() throws Exception {
-        UserPO userPO = new UserPO("iznauy", "iznauy", "161250220", Identity.GENERAL, false);
+        UserPO userPO = new UserPO("iznauy", "iznauy", "161250000", Identity.GENERAL, false);
         ResultMessage resultMessage = userData.insert(userPO);
         assertEquals(ResultMessage.SUCCESS, resultMessage);
     }
 
     @Test
     public void get() throws Exception {
-        UserPO po = userData.get("161250220");
+        UserPO po = userData.get("161250000");
         System.out.println(po);
     }
 
     @Test
     public void login1() throws Exception {
-        String id = "161250220";
+        String id = "161250000";
         String password = "iznauy";
         TwoTuple<UserPO, LoginReturnState> tuple = userData.login(id, password);
         System.out.println(tuple.t);
@@ -51,7 +51,7 @@ public class UserDataTest {
 
     @Test
     public void login2() throws Exception {
-        String id = "161250220";
+        String id = "161250000";
         String password = "ziyuan";
         TwoTuple<UserPO, LoginReturnState> tuple = userData.login(id, password);
         assertEquals(null, tuple.t);
@@ -60,14 +60,14 @@ public class UserDataTest {
 
     @Test
     public void update() throws Exception {
-        UserPO userPO = new UserPO("iznauy", "iznauy", "161250220", Identity.GENERAL, true);
+        UserPO userPO = new UserPO("iznauy", "iznauy", "161250000", Identity.GENERAL, true);
         ResultMessage resultMessage = userData.update(userPO);
         assertEquals(ResultMessage.SUCCESS, resultMessage);
     }
 
     @Test
     public void delete() throws Exception {
-        ResultMessage resultMessage = userData.delete("161250220");
+        ResultMessage resultMessage = userData.delete("161250000");
         assertEquals(ResultMessage.SUCCESS, resultMessage);
     }
 

@@ -1,5 +1,5 @@
-package nju.lighting.data.logdata;
 
+import nju.lighting.data.logdata.LogData;
 import nju.lighting.po.log.LogPO;
 import org.junit.Test;
 import shared.Identity;

@@ -32,7 +32,7 @@ public class CustomerDataTest {
         CustomerPO po2 = new CustomerPO(CustomerType.SUPPLIER, CustomerGrade.ONE, "宋抟",
                 "899999", null, null, null, 100,
                 50, 0, null);
-        CustomerPO po3 = new CustomerPO(CustomerType.SALESPERSON, CustomerGrade.FIVE, "刘钦", "99999",
+        CustomerPO po3 = new CustomerPO(CustomerType.SALESPERSON, CustomerGrade.FIVE, "刘钦老师", "99999",
                 null, null, null, 0, 0, 10000, null);
         Result<Integer> resultMessage1 = customerData.insertCustomer(po1);
         assertEquals(ResultMessage.SUCCESS, resultMessage1.getResultMessage());

@@ -32,15 +32,15 @@ public class PromotionDataTest {
     @Test
     public void insert() throws Exception {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2017, 10, 10);
+        calendar.set(2018, 10, 10);
         Date beginTime = calendar.getTime();
         Date createTime = calendar.getTime();
-        calendar.set(2017, 12, 10);
+        calendar.set(2018, 12, 10);
         Date endTime = calendar.getTime();
         Date voucherEndTime = calendar.getTime();
         List<PromotionPackageItemPO> itemPOS = new ArrayList<>();
-        PromotionPackageItemPO promotionPackageItemPO1 = new PromotionPackageItemPO("1-1-00001");
-        PromotionPackageItemPO promotionPackageItemPO2 = new PromotionPackageItemPO("4-00001");
+        PromotionPackageItemPO promotionPackageItemPO1 = new PromotionPackageItemPO("1-1");
+        PromotionPackageItemPO promotionPackageItemPO2 = new PromotionPackageItemPO("4-1");
         itemPOS.add(promotionPackageItemPO1);
         itemPOS.add(promotionPackageItemPO2);
         PromotionPO promotionPO1 = new PromotionPO("161250220", "光棍节大促销", PromotionType.CustomerOriented, beginTime, endTime, createTime,
@@ -68,7 +68,7 @@ public class PromotionDataTest {
 
     @Test
     public void getPromotionById() throws Exception {
-        PromotionPO promotionPO = promotionData.getPromotionById(11);
+        PromotionPO promotionPO = promotionData.getPromotionById(1);
         System.out.println(promotionPO);
     }
 

@@ -72,7 +72,7 @@ class AccountDocItem implements DocItem {
         AccountInfo accountInfo = new AccountInfoImpl();
         // If the io type is IN, increase the account amount. Otherwise, decrease the account balance
         double amountChange = ioType == AccountIOType.IN ? amount : -amount;
-        return accountInfo.updateAmount(accountID, amountChange);
+        return accountInfo.addAmount(accountID, amountChange);
     }
 
     @Override

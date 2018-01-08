@@ -78,7 +78,10 @@ class Account {
         return logList;
     }
 
-    ResultMessage updateAmount(double total) {
+    ResultMessage addAmount(double total) {
+        if (amount + total < 0)
+            return ResultMessage.FAILURE;
+
         amount += total;
         try {
             AccountDataService dataService = DataFactory.getDataBase(AccountDataService.class);
@@ -86,7 +89,7 @@ class Account {
             return dataService.update(toPO());
         } catch (NamingException | RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.FAILURE;
+            return ResultMessage.NETWORK_FAIL;
         }
     }
 }

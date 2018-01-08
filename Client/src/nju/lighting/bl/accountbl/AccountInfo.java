@@ -10,7 +10,7 @@ import shared.ResultMessage;
  */
 public interface AccountInfo {
 
-    ResultMessage updateAmount(String accountId, double total);
+    ResultMessage addAmount(String accountId, double total);
 
     AccountVO getAccountByID(String accountID);
 }

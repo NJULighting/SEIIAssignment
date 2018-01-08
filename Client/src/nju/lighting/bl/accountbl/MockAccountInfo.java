@@ -11,7 +11,7 @@ import shared.ResultMessage;
 public class MockAccountInfo implements AccountInfo {
 
     @Override
-    public ResultMessage updateAmount(String accountId, double total) {
+    public ResultMessage addAmount(String accountId, double total) {
         return ResultMessage.SUCCESS;
     }
 

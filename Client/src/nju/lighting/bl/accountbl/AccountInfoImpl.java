@@ -26,13 +26,13 @@ public class AccountInfoImpl implements AccountInfo {
     }
 
     @Override
-    public ResultMessage updateAmount(String accountId, double total) {
+    public ResultMessage addAmount(String accountId, double total) {
         try {
             Account account = new Account(dataService.get(accountId));
-            return account.updateAmount(total);
+            return account.addAmount(total);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.FAILURE;
+            return ResultMessage.NETWORK_FAIL;
         }
     }
 

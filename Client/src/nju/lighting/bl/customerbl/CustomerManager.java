@@ -57,7 +57,7 @@ enum CustomerManager {
     ResultMessage changeCustomer(CustomerChangeInfo changeInfo) {
         try {
             Customer target = DataServiceFunction
-                    .findByToEntity(changeInfo.id, dataService::getCustomerById, Customer::new);
+                    .findToEntity(changeInfo.id, dataService::getCustomerById, Customer::new);
             target.changeInfo(changeInfo);
             logger.add(OPType.MODIFY, "修改客户信息 " + changeInfo.toString());
             return ResultMessage.SUCCESS;
@@ -117,7 +117,7 @@ enum CustomerManager {
      * or <code>null</code> if network fails
      */
     CustomerVO findCustomerByID(int id) {
-        return DataServiceFunction.findByToEntity(id, dataService::getCustomerById, poTransformer);
+        return DataServiceFunction.findToEntity(id, dataService::getCustomerById, poTransformer);
     }
 
     /**

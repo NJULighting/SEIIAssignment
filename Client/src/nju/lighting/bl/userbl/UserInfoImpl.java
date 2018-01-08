@@ -49,7 +49,7 @@ public class UserInfoImpl implements UserInfo {
 
     @Override
     public Identity getIdentityById(String userId) {
-        return DataServiceFunction.findByToEntity(userId, dataService::get, UserPO::getIdentity);
+        return DataServiceFunction.findToEntity(userId, dataService::get, UserPO::getIdentity);
     }
 
     @Override
@@ -59,6 +59,6 @@ public class UserInfoImpl implements UserInfo {
 
     @Override
     public UserVO getUserVOByID(String userID) {
-        return DataServiceFunction.findByToEntity(userID, dataService::get, po -> new User(po).toVO());
+        return DataServiceFunction.findToEntity(userID, dataService::get, po -> new User(po).toVO());
     }
 }

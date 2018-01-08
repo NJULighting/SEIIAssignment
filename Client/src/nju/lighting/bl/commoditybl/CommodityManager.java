@@ -217,7 +217,7 @@ enum CommodityManager {
     }
 
     private <C> CommodityItemVO findByToEntity(C condition, DataServiceFunction<C, CommodityItemPO> function) {
-        return DataServiceFunction.findByToEntity(condition, function, po -> new CommodityItem(po).toVO());
+        return DataServiceFunction.findToEntity(condition, function, po -> new CommodityItem(po).toVO());
     }
 
     /**

@@ -38,7 +38,7 @@ public class AccountInfoImpl implements AccountInfo {
 
     @Override
     public AccountVO getAccountByID(String accountID) {
-        return DataServiceFunction.findByToEntity(accountID, dataService::get,
+        return DataServiceFunction.findToEntity(accountID, dataService::get,
                 accountPO -> new Account(accountPO).toVO());
     }
 }

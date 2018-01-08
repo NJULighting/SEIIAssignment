@@ -17,7 +17,6 @@ import shared.ResultMessage;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
@@ -44,8 +43,7 @@ enum AccountManager {
 
             // Initialize fuzzy seeking helper
             helper = new FuzzySeekingHelper<>(po -> new Account(po).toVO());
-            helper.registerFunctionForString(accountDataService::fuzzySearchById);
-            helper.registerFunctionForString(accountDataService::fuzzySearchByName);
+            helper.registerFunctionForString(accountDataService::fuzzySearchById, accountDataService::fuzzySearchByName);
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -104,7 +102,7 @@ enum AccountManager {
      * account with this id if it exists
      */
     AccountVO getAccount(String id) {
-        return DataServiceFunction.findByToEntity(id, accountDataService::get, poTransformer);
+        return DataServiceFunction.findToEntity(id, accountDataService::get, poTransformer);
     }
 
     /**

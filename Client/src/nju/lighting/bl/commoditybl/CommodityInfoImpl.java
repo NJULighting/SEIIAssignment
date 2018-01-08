@@ -41,7 +41,7 @@ public class CommodityInfoImpl implements CommodityInfo {
 
     @Override
     public BasicCommodityItemVO getBasicCommodityItemVO(String id) {
-        return DataServiceFunction.findByToEntity(id, dataService::findById,
+        return DataServiceFunction.findToEntity(id, dataService::findById,
                 itemPO -> new BasicCommodityItemVO(id, itemPO.getName(), itemPO.getRepCount(),
                         itemPO.getRecentInPrice(), itemPO.getRecentSellPrice(), itemPO.getModelNumber()));
     }
@@ -86,12 +86,12 @@ public class CommodityInfoImpl implements CommodityInfo {
         if (categoryId == -1)
             return CommodityCategoriesTree.ROOT_NAME;
 
-        return DataServiceFunction.findByToEntity(categoryId, dataService::findCategoryById, CommodityCategoryPO::getName);
+        return DataServiceFunction.findToEntity(categoryId, dataService::findCategoryById, CommodityCategoryPO::getName);
     }
 
     @Override
     public double getCommodityInPrice(String id) {
-        return DataServiceFunction.findByToEntity(id, dataService::findById, CommodityItemPO::getInPrice);
+        return DataServiceFunction.findToEntity(id, dataService::findById, CommodityItemPO::getInPrice);
     }
 
     @Override

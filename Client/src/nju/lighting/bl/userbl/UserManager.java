@@ -52,7 +52,7 @@ enum UserManager {
      * @return VO object which denote this user, <code>null</code> if id didn't match any user
      */
     public UserVO getUser(String id) {
-        return DataServiceFunction.findByToEntity(id, userDataService::get, userPO -> new User(userPO).toVO());
+        return DataServiceFunction.findToEntity(id, userDataService::get, userPO -> new User(userPO).toVO());
     }
 
     /**

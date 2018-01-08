@@ -1,3 +1,5 @@
+package nju.lighting.data.docdata;
+
 import nju.lighting.data.docdata.DocDataController;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.alertdoc.AlertDocItemPO;
@@ -31,8 +33,8 @@ public class DocDataControllerTest {
 
     @Test
     public void commitDoc() throws Exception {
-        AlertDocItemPO alertDocItemPO1 = new AlertDocItemPO("1-1", 5);
-        AlertDocItemPO alertDocItemPO2 = new AlertDocItemPO("4-1", 5);
+        AlertDocItemPO alertDocItemPO1 = new AlertDocItemPO("1-4-0001", 5);
+        AlertDocItemPO alertDocItemPO2 = new AlertDocItemPO("4-0001", 5);
         List<AlertDocItemPO> alertDocItemPOS = new ArrayList<>();
         alertDocItemPOS.add(alertDocItemPO1);
         alertDocItemPOS.add(alertDocItemPO2);
@@ -47,8 +49,8 @@ public class DocDataControllerTest {
 
     @Test
     public void updateDoc() throws Exception {
-        AlertDocItemPO alertDocItemPO1 = new AlertDocItemPO(1, "BJD-20171130-00001","1-1", 3);
-        AlertDocItemPO alertDocItemPO2 = new AlertDocItemPO(2, "BJD-20171130-00001","4-1", 3);
+        AlertDocItemPO alertDocItemPO1 = new AlertDocItemPO(1, "BJD-20171130-00001","1-4-0001", 3);
+        AlertDocItemPO alertDocItemPO2 = new AlertDocItemPO(2, "BJD-20171130-00001","4-0001", 3);
         List<AlertDocItemPO> alertDocItemPOS = new ArrayList<>();
         alertDocItemPOS.add(alertDocItemPO1);
         alertDocItemPOS.add(alertDocItemPO2);
@@ -91,7 +93,6 @@ public class DocDataControllerTest {
         for (DocPO docPO: docPOS) {
             System.out.println(docPOS);
         }
-        docPOS.forEach(System.out::println);
     }
 
     @Test

@@ -60,13 +60,13 @@ public class CommodityDataTest {
 
     @Test
     public void findCommodityById() throws Exception {
-        CommodityItemPO commodityItemPO = commodityData.findById("3-0001");
+        CommodityItemPO commodityItemPO = commodityData.findById("3-1");
         System.out.println(commodityItemPO);
     }
 
     @Test
     public void findCommodityByName() throws Exception {
-        List<CommodityItemPO> commodityItemPOList = commodityData.findByName("质量堪忧的LED5W灯泡");
+        List<CommodityItemPO> commodityItemPOList = commodityData.findByName("坑人的5W的节能灯");
         assertEquals(1, commodityItemPOList.size());
         for (CommodityItemPO itemPO: commodityItemPOList) {
             System.out.println(itemPO.toString());
@@ -75,7 +75,7 @@ public class CommodityDataTest {
 
     @Test
     public void add() throws Exception {
-        CommodityItemPO po = new CommodityItemPO("2-0009", "美国大燃油灯", 2, "燃油",
+        CommodityItemPO po = new CommodityItemPO("4-32", "美国大燃油灯", 4, "燃油",
                 100, 100, 1000,
                 1000, 1000, "第三批", "003", new Date());
         ResultMessage message = commodityData.add(po);
@@ -84,7 +84,7 @@ public class CommodityDataTest {
 
     @Test
     public void update() throws Exception {
-        CommodityItemPO po = new CommodityItemPO("2-0009", "美国燃油灯", 2, "燃油",
+        CommodityItemPO po = new CommodityItemPO("4-32", "美国燃油灯", 4, "燃油",
                 1000, 1000, 1000,
                 1000, 1000, "第三批", "003", new Date());
         ResultMessage message = commodityData.update(po);
@@ -93,7 +93,7 @@ public class CommodityDataTest {
 
     @Test
     public void deleteCommodity() throws Exception {
-        String id = "2-0007";
+        String id = "4-32";
         ResultMessage message = commodityData.deleteCommodity(id);
         assertEquals(ResultMessage.SUCCESS, message);
     }
@@ -107,7 +107,7 @@ public class CommodityDataTest {
 
     @Test
     public void deleteCategory() throws Exception {
-        int id = 3;
+        int id = 5;
         ResultMessage message = commodityData.deleteCategory(id);
         assertEquals(ResultMessage.SUCCESS, message);
     }

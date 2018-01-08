@@ -29,7 +29,7 @@ public class AccountDataTest {
     @Test
     public void insert() throws RemoteException {
         List<AccountLogPO> itemList = new ArrayList<>();
-        itemList.add(new AccountLogPO(new Date(), 300, 100, AccountChangeType.IN, "284asda83325"));
+        itemList.add(new AccountLogPO(new Date(), 300, 2333, AccountChangeType.IN, "16125ada009068"));
         AccountPO accountPO = new AccountPO("16125ada009068", "BbidA的校园卡", 2333, itemList);
         ResultMessage resultMessage = accountData.insert(accountPO);
         assertEquals(ResultMessage.SUCCESS, resultMessage);

@@ -46,7 +46,7 @@ public class RepositoryDataTest {
 
     @Test
     public void changeRepository() throws Exception {
-        RepositoryChangePO changePO = new RepositoryChangePO("1-4-0001", RepositoryChangeType.LOSS, 10, 10, new Date());
+        RepositoryChangePO changePO = new RepositoryChangePO("1-1", RepositoryChangeType.LOSS, 10, 10, new Date());
         ResultMessage resultMessage = repositoryData.changeRepository(changePO);
         assertEquals(ResultMessage.SUCCESS, resultMessage);
     }

@@ -107,14 +107,19 @@ public class CommodityInfoImpl implements CommodityInfo {
     }
 
     @Override
-    public ResultMessage changeCommodityNumber(String id, int count) {
+    public ResultMessage addCommodityNumber(String id, int count) {
         try {
             CommodityItemPO item = dataService.findById(id);
-            item.addRepositoryCount(count);
 
+            // Check whether the number of the commodity is positive
+            if (item.getRepCount() + count < 0)
+                return ResultMessage.FAILURE;
+
+            // Update number of the commodity
+            item.addRepositoryCount(count);
             ResultMessage res = dataService.update(item);
 
-            if (res == ResultMessage.SUCCESS) {
+            if (res.success()) {
                 // See whether triggered an alert document
                 DocInfo docInfo = new DocInfoImpl();
                 docInfo.triggerAlertDoc(id, item.getRepCount());
@@ -123,7 +128,7 @@ public class CommodityInfoImpl implements CommodityInfo {
             return res;
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.FAILURE;
+            return ResultMessage.NETWORK_FAIL;
         }
     }
 

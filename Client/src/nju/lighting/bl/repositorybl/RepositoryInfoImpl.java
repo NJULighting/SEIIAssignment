@@ -38,12 +38,12 @@ public class RepositoryInfoImpl implements RepositoryInfo {
         RepositoryChange change = new RepositoryChange(commodityID, type, count, amount, new Date());
         try {
             // Change the number of corresponding commodity
-            if (changeCommodityNumber(commodityID, count, type) != ResultMessage.SUCCESS)
+            if (!changeCommodityNumber(commodityID, count, type).success())
                 return ResultMessage.FAILURE;
 
             // Add repository change information to database
             ResultMessage res = dataService.changeRepository(change.toPOForCreation());
-            if (res == ResultMessage.SUCCESS) {
+            if (res.success()) {
                 logger.add(OPType.ADD, "商品" + commodityID + "库存被修改，详情");
             }
             return res;
@@ -57,8 +57,8 @@ public class RepositoryInfoImpl implements RepositoryInfo {
         CommodityInfo commodityInfo = new CommodityInfoImpl();
         if (type == RepositoryChangeType.GIFT || type == RepositoryChangeType.SELL
                 || type == RepositoryChangeType.LOSS || type == RepositoryChangeType.RETURN) {
-            return commodityInfo.changeCommodityNumber(commodityID, -count);
+            return commodityInfo.addCommodityNumber(commodityID, -count);
         } else
-            return commodityInfo.changeCommodityNumber(commodityID, count);
+            return commodityInfo.addCommodityNumber(commodityID, count);
     }
 }

@@ -71,7 +71,7 @@ public class MockCommodity implements CommodityInfo {
     }
 
     @Override
-    public ResultMessage changeCommodityNumber(String id, int count) {
+    public ResultMessage addCommodityNumber(String id, int count) {
         return ResultMessage.SUCCESS;
     }
 

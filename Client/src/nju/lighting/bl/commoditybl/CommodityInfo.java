@@ -23,7 +23,7 @@ public interface CommodityInfo {
 
     double getCostAdjustRevenue();
 
-    ResultMessage changeCommodityNumber(String id, int count);
+    ResultMessage addCommodityNumber(String id, int count);
 
     void updateCommodityRecentSellPrice(String id, double price);
 

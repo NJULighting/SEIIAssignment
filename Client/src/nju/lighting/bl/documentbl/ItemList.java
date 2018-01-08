@@ -57,12 +57,13 @@ public class ItemList<Item extends DocItem> {
     }
 
     public ResultMessage approve() {
+        ResultMessage res = ResultMessage.FAILURE;
         for (Item i : items) {
-            if (i.approve() != ResultMessage.SUCCESS)
-                return ResultMessage.FAILURE;
+            if (!(res = i.approve()).success())
+               break;
         }
 
-        return ResultMessage.SUCCESS;
+        return res;
     }
 
     public List<Item> getItems() {

@@ -142,9 +142,6 @@ public class CustomerDetail {
         upper.back();
     }
 
-    //保存失败
-    private void failSave() {
-    }
 
     public void save() {
         if (receiveText.validate() & payText.validate() & receiveLimitText.validate() &

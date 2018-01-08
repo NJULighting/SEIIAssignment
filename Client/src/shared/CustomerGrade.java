@@ -9,6 +9,8 @@ public enum CustomerGrade {
         chineseRepresentation = s;
     }
 
+
+
     public static CustomerGrade get(String name) {
         for (CustomerGrade grade : values()) {
             if (grade.chineseRepresentation.equals(name)) {
@@ -16,5 +18,10 @@ public enum CustomerGrade {
             }
         }
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return chineseRepresentation;
     }
 }

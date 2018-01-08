@@ -89,6 +89,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     private PromotionVO promotionVO;
     private DocBLService docBLService = new DocController();
     private Upper upper = this;
+    private boolean hasMax=true;
 
     public void chooseCommodity() {
         CommodityHelper.chooseCommodity(upper, commodityList);
@@ -98,20 +99,18 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
         CustomerHelper.setCustomer(upper, customerProperty, CustomerType.SALESPERSON);
     }
 
-    private void bindCommodityList(boolean hasMax) {
-        commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
-            @Override
-            public void onChanged(Change<? extends BasicCommodityItemVO> c) {
-                while (c.next()) {
-                    docItemList.addAll(c.getAddedSubList().stream()
-                            .map(x -> new CommodityItem(x, 1, hasMax))
-                            .collect(Collectors.toList()));
-                }
-            }
-        });
-    }
+
 
     public void choosePromotion() throws IOException {
+        List<PromotionVO> list=promotionBLService.getBenefitsPlan(
+                customerProperty.getValue().getGrade(),
+                commodityList.stream()
+                        .map(BasicCommodityItemVO::getId)
+                        .collect(Collectors.toList()),
+                commodityListController.getTotal().doubleValue()
+        );
+
+        System.out.println(" customer level :"+ customerProperty.getValue().getGrade());
         PromotionHelper.setPromotion(upper, promotionProperty, promotionBLService.getBenefitsPlan(
                 customerProperty.getValue().getGrade(),
                 commodityList.stream()
@@ -160,6 +159,9 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     @FXML
     private void commit() {
         if (getDoc() != null) {
+            System.out.println("final"+getDoc().getFinalAmount()
+            +"\n beforeDiscount"+ getDoc().getBeforeDiscountAmount());
+
             Result<DocVO> res = docBLService.commitDoc(getDoc());
             DialogHelper.dialog("提交销售单", res.getResultMessage(), MainUI.getStackPane());
             PromotionVO promotion = promotionProperty.getValue();
@@ -222,7 +224,16 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
                 promotionBtn.setDisable(false);
         });
 
-        bindCommodityList(true);
+        commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
+            @Override
+            public void onChanged(Change<? extends BasicCommodityItemVO> c) {
+                while (c.next()) {
+                    docItemList.addAll(c.getAddedSubList().stream()
+                            .map(x -> new CommodityItem(x, 1, hasMax))
+                            .collect(Collectors.toList()));
+                }
+            }
+        });
 
         customerProperty.addListener(c -> {
             customer.setText(customerProperty.getValue().getName());
@@ -292,7 +303,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     void setReturn() {
         title.setText("制定销售退货单");
         verticalVBox.getChildren().remove(promotionBox);
-        bindCommodityList(false);
+        hasMax=false;
         commitBtn.setOnAction(e -> {
             if (getReturnDoc() != null) {
                 Result<DocVO> result = docBLService.commitDoc(getReturnDoc());

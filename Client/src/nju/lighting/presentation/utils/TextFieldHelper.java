@@ -90,7 +90,7 @@ public class TextFieldHelper {
             protected void eval() {
                 try {
                     int target = Integer.parseInt(textField.getText());
-                    if (target > 0)
+                    if (target >= 0)
                         this.hasErrors.set(false);
                     else
                         this.hasErrors.set(true);

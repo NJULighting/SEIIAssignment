@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
+import nju.lighting.presentation.documentui.AddDoc;
 import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.documentui.lossandgaindoc.AddLossAndGainDoc;
 import nju.lighting.presentation.documentui.lossandgaindoc.LossAndGainItem;
@@ -12,6 +13,7 @@ import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.DocHelper;
 import nju.lighting.vo.DocVO;
+import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;
 import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 
 import java.io.IOException;
@@ -26,7 +28,7 @@ import java.util.stream.Collectors;
  *
  * @author 陈俊宇
  */
-public class AddAlertDoc implements Initializable, Modifiable {
+public class AddAlertDoc extends AddDoc implements Initializable {
     @FXML
     Pane container;
 
@@ -52,6 +54,8 @@ public class AddAlertDoc implements Initializable, Modifiable {
         }
         controller = loader.getController();
         controller.setAlert();
+        commitBtn=controller.getCommitBtn();
+
     }
 
     @Override
@@ -61,10 +65,7 @@ public class AddAlertDoc implements Initializable, Modifiable {
         .map(LossAndGainItem::new)
         .collect(Collectors.toList()));
         controller.setComments(((AlertDocVO) docVO).getComment());
-
-        if (!redFlush){
-           controller.getCommitBtn().setOnAction(e-> DocHelper.saveAndApprove(getDoc()));
-        }
+        super.modify(upper, docVO, redFlush);
 
     }
 

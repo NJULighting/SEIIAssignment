@@ -56,7 +56,7 @@ public class SalesReturnDocVO extends DocVO {
         this.beforeDiscountAmount = calculateBeforeDiscount();
         this.discount = discount;
         this.voucher = voucher;
-        this.finalAmount = beforeDiscountAmount * (1 - discount) - voucher;
+        this.finalAmount = beforeDiscountAmount  - discount - voucher;
     }
 
     private double calculateBeforeDiscount() {

@@ -29,13 +29,11 @@ public class CommodityItem {
 
     //创建时只需要商品和数量
     public CommodityItem(BasicCommodityItemVO commodity, int count) {
-        this.commodity = commodity;
         this.count.set(count);
         init(commodity);
     }
 
     public CommodityItem(BasicCommodityItemVO commodity, int count, boolean hasMax) {
-        this.commodity = commodity;
         this.count.set(count);
         this.hasMax.setValue(hasMax);
         init(commodity);
@@ -44,7 +42,6 @@ public class CommodityItem {
 
     //查看单据时由SalesDocItem 或GiftDocItem 构造
     public CommodityItem(SalesDocItemVO vo) {
-        System.out.println("item totalAmount"+ vo.getTotalAmount());
         comments.set(vo.getRemarks());
         count.set(vo.getNumber());
         init(vo.getCommodity());
@@ -81,6 +78,7 @@ public class CommodityItem {
     }
 
     void init(BasicCommodityItemVO commodity) {
+        this.commodity=commodity;
         price.set(commodity.getRecentSellPrice());
         name.set(commodity.getName());
         id.set(commodity.getId());

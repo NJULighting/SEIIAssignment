@@ -169,12 +169,16 @@ public class LossAndGainList implements Initializable {
         });
     }
 
-    public void setAlert() {
-        count.setText("警戒数量");
-        tableView.getColumns().remove(type);
+    public void setAlertAndEditable(){
+        setAlert();
         TableColumn delete = new TableColumn();
         delete.setCellFactory(p -> new BtnCell());
         tableView.getColumns().add(delete);
+    }
+
+    public void setAlert() {
+        count.setText("警戒数量");
+        tableView.getColumns().remove(type);
     }
 
 

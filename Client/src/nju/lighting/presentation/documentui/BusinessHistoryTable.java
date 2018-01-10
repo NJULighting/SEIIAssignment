@@ -15,14 +15,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Font;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import jxl.Workbook;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
-import jxl.write.WriteException;
-import jxl.write.biff.RowsExceededException;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
@@ -37,7 +29,6 @@ import shared.DocType;
 import shared.DocumentFilter;
 import shared.ResultMessage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -171,10 +162,10 @@ public class BusinessHistoryTable implements Initializable, Upper {
                 new SimpleStringProperty(c.getValue().getType().toString()));
 
         customer.setCellValueFactory(c ->
-                new SimpleStringProperty(c.getValue().getCustomer()));
+                new SimpleStringProperty(CustomerHelper.getCustomerString(c.getValue().getCustomer())));
 
         creator.setCellValueFactory(c ->
-                new SimpleStringProperty(c.getValue().getSalesman()));
+                new SimpleStringProperty(UserHelper.getUserString(c.getValue().getSalesman())));
 
         time.setCellValueFactory(c ->
                 new SimpleStringProperty(DateHelper.accurateTime(c.getValue().getDate())));
@@ -182,7 +173,7 @@ public class BusinessHistoryTable implements Initializable, Upper {
         salesman.setCellValueFactory(c ->
                 new SimpleStringProperty(UserHelper.getUserString(c.getValue().getSalesman())));
 
-        TextFieldHelper.addDeleteMenuItem(customerText,customerProperty);
+        TextFieldHelper.addDeleteMenuItem(customerText, customerProperty);
 
 
         btn.setCellFactory(p -> {
@@ -223,9 +214,7 @@ public class BusinessHistoryTable implements Initializable, Upper {
 
     @FXML
     void backToMain() {
-        list.clear();
-        labelBox.getChildren().clear();
-        container.getChildren().setAll(mainPane);
+        Helper.bakToMain(container,labelBox,list,mainPane);
         nodesList.setVisible(true);
     }
 
@@ -233,11 +222,8 @@ public class BusinessHistoryTable implements Initializable, Upper {
     public void back() {
         if (labelBox.getChildren().size() == 1)
             backToMain();
-        else {
-            labelBox.getChildren().remove(labelBox.getChildren().get(labelBox.getChildren().size() - 1));
-            container.getChildren().setAll(list.get(list.size() - 2));
-            list.remove(list.size() - 1);
-        }
+        else
+            Helper.clearTitleLabel(container, labelBox, list);
     }
 
     @Override
@@ -247,21 +233,12 @@ public class BusinessHistoryTable implements Initializable, Upper {
         else nodesList.setVisible(false);
         list.add(node);
         container.getChildren().setAll(node);
-        Label label = new Label(title);
-        label.setFont(Font.font(20));
-        label.setOnMouseClicked(e -> {
-            container.getChildren().setAll(node);
-            labelBox.getChildren().remove(labelBox.getChildren().indexOf(label) + 1,
-                    labelBox.getChildren().size());
-            list.remove(list.indexOf(node) + 1, list.size());
-        });
-
-        labelBox.getChildren().add(label);
+        labelBox.getChildren().add(Helper.getTitleLabel(title, container, labelBox, node, list));
     }
 
     public void exportExcel() {
 
-        if(ExportExcelHelper.businessHistoryTable(observableList)==ResultMessage.SUCCESS){
+        if (ExportExcelHelper.businessHistoryTable(observableList) == ResultMessage.SUCCESS) {
             DialogHelper.dialog("导出表格", ResultMessage.SUCCESS, stackPane);
         } else {
             DialogHelper.dialog("导出表格", ResultMessage.FAILURE, stackPane);

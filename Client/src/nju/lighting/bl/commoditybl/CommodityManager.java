@@ -1,6 +1,8 @@
 package nju.lighting.bl.commoditybl;
 
 import javafx.scene.image.Image;
+import nju.lighting.bl.documentbl.DocInfo;
+import nju.lighting.bl.documentbl.DocInfoImpl;
 import nju.lighting.bl.logbl.Logger;
 import nju.lighting.bl.logbl.UserLogger;
 import nju.lighting.bl.utils.CommodityPathParser;
@@ -140,8 +142,13 @@ enum CommodityManager {
 
             CommodityItem item = new CommodityItem(commodity, po.getCategoryId());
             ResultMessage res = dataService.update(item.toPO());
-            if (res == ResultMessage.SUCCESS)
+            if (res.success()) {
                 logger.add(OPType.MODIFY, "修改商品 " + commodity.getId());
+
+                // Trigger alert document
+                DocInfo docInfo = new DocInfoImpl();
+                docInfo.triggerAlertDoc(commodity.getId(), commodity.getRepCount());
+            }
             return res;
         } catch (RemoteException e) {
             e.printStackTrace();

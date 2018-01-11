@@ -51,7 +51,7 @@ public class AlertDocItem implements DocItem {
     }
 
     boolean triggered(String commodityId, int count) {
-        return this.commodityId.equals(commodityId) && this.count <= count;
+        return this.commodityId.equals(commodityId) && this.count >= count;
     }
 
     @Override

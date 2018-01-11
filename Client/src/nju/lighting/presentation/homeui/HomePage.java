@@ -110,15 +110,13 @@ public class HomePage implements Initializable {
 
                             MenuItem discard = new MenuItem("丢弃报警单");
                             discard.setOnAction(e -> {
-                                EventHandler eventHandler = new EventHandler() {
-                                    @Override
-                                    public void handle(Event event) {
-                                        ResultMessage resultMessage = blService.expireAlertDoc((AlertDocVO) item.getDocVO());
-                                        DialogHelper.dialog("丢弃", resultMessage, MainUI.getStackPane());
-                                        if (resultMessage == ResultMessage.SUCCESS)
-                                            refresh();
-                                    }
+                                EventHandler eventHandler = event -> {
+                                    ResultMessage resultMessage = blService.expireAlertDoc((AlertDocVO) item.getDocVO());
+                                    DialogHelper.dialog("丢弃", resultMessage, MainUI.getStackPane());
+                                    if (resultMessage.success())
+                                        refresh();
                                 };
+
                                 Label label = new Label("你确定要删除该报警单？");
                                 label.setFont(Font.font(18));
                                 DialogHelper.addDialog(label, MainUI.getStackPane(), eventHandler);

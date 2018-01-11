@@ -15,25 +15,25 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
+import nju.lighting.presentation.documentui.AddDoc;
 import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
-import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.AccountHelper;
 import nju.lighting.presentation.utils.DocHelper;
+import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.account.AccountVO;
 import nju.lighting.vo.doc.costdoc.CostDocItemVO;
 import nju.lighting.vo.doc.costdoc.CostDocVO;
-import shared.Result;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class AddCostDocController implements Initializable, Modifiable {
+public class AddCostDocController extends AddDoc implements Initializable {
 
 
     @FXML
@@ -59,7 +59,7 @@ public class AddCostDocController implements Initializable, Modifiable {
 
     private DocBLService docBLService = DocBLServiceFactory.getDocBLService();
 
-    private CostDocVO getDoc() {
+    protected CostDocVO getDoc() {
         if (accountProperty.getValue() != null && observableList.size() != 0) {
             return new CostDocVO(new Date(), Client.getUserVO().getID(),
                     accountProperty.getValue(), observableList);
@@ -85,8 +85,12 @@ public class AddCostDocController implements Initializable, Modifiable {
         observableList = tableController.getObservableList();
 
         accountProperty.addListener(c -> {
-            balanceText.setText(accountProperty.getValue().getAmount() + "");
-            accountText.setText(accountProperty.getValue().getName());
+            if (accountProperty.getValue()!=null){
+                balanceText.setText(accountProperty.getValue().getAmount() + "");
+                accountText.setText(accountProperty.getValue().getName());
+            }else
+                balanceText.setText("0.0");
+
         });
 
         observableList.addListener((ListChangeListener<? super CostDocItemVO>) c -> {
@@ -112,12 +116,10 @@ public class AddCostDocController implements Initializable, Modifiable {
         });
 
         commitBtn.setOnAction(e -> {
-            if (getDoc() != null){
-                Result<DocVO> result= docBLService.commitDoc(getDoc());
-                DialogHelper.dialog("提交现金费用单",result.getResultMessage(), MainUI.getStackPane());
-            }
-
+            DocHelper.commitDoc(getDoc());
         });
+
+        TextFieldHelper.addDeleteMenuItem(accountText,accountProperty);
     }
 
 
@@ -129,13 +131,8 @@ public class AddCostDocController implements Initializable, Modifiable {
         observableList.setAll(costDocVO.getItemList());
         totalProperty.set(costDocVO.getTotal());
 
-        if (!redFlush) {
-            commitBtn.setOnAction(e -> DocHelper.saveAndApprove(getDoc()));
-        }
+        super.modify(upper, docVO, redFlush);
+
     }
 
-    @Override
-    public Node getMainPane() {
-        return mainPane;
-    }
 }

@@ -3,25 +3,29 @@ package nju.lighting.presentation.approvalui;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import javafx.util.Callback;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.DialogUI.ValidateEventHandle;
+import nju.lighting.presentation.documentui.ModifyDoc;
 import nju.lighting.presentation.factory.ApprovalBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
+import nju.lighting.presentation.mainui.MainUI;
+import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.DocHelper;
+import nju.lighting.presentation.utils.Helper;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.DocState;
@@ -29,6 +33,7 @@ import shared.ResultMessage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -39,11 +44,12 @@ import java.util.ResourceBundle;
  *
  * @author 陈俊宇
  */
-public class ApprovalUIController implements Initializable {
+public class ApprovalUIController implements Initializable,Upper {
     private ApprovalBLService approvalBLService = ApprovalBLServiceFactory.getApprovalBLService();
     private List<DocVO> docs;
     private ObservableList<DocVO> selectedDocList;
-    private String comment;
+    private ObservableList<Node> list= FXCollections.observableArrayList();
+    private Upper upper=this;
 
 
     @FXML
@@ -55,10 +61,16 @@ public class ApprovalUIController implements Initializable {
 
     @FXML
     JFXButton approveBtn, rejectBtn;
-    @FXML
-    StackPane stackPane;
+
     @FXML
     private Button refreshBtn;
+
+    @FXML
+    Pane mainPane;
+
+    @FXML
+    HBox labelBox,container;
+
 
     @FXML
     void approve() {
@@ -88,7 +100,7 @@ public class ApprovalUIController implements Initializable {
                         controller.getComments(),
                         selectedDocList.get(0), DocState.DISAPPROVAL, new Date()
                 ));
-                DialogHelper.dialog("驳回单据",resultMessage, stackPane);
+                DialogHelper.dialog("驳回单据",resultMessage, MainUI.getStackPane());
                 if (resultMessage == ResultMessage.SUCCESS) {
                     refresh();
                     return true;
@@ -98,12 +110,12 @@ public class ApprovalUIController implements Initializable {
 
             ;
         };
-        DialogHelper.addDialog(node, stackPane, rejectHandler);
+        DialogHelper.addDialog(node, MainUI.getStackPane(), rejectHandler);
     }
 
 
     void refresh() {
-        docList.getItems().removeAll(selectedDocList);
+        docList.getItems().setAll(approvalBLService.getDocumentList());
 
         if (docList.getItems().size() > 0) {
             docList.getSelectionModel().clearAndSelect(0);
@@ -137,9 +149,6 @@ public class ApprovalUIController implements Initializable {
     }
 
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -153,6 +162,7 @@ public class ApprovalUIController implements Initializable {
             docList.getItems().add(docs.get(i));
         }
 
+
         docList.setCellFactory(new Callback<ListView<DocVO>, ListCell<DocVO>>() {
             @Override
             public ListCell<DocVO> call(ListView<DocVO> param) {
@@ -163,8 +173,12 @@ public class ApprovalUIController implements Initializable {
                         if (empty) {
                             setText(null);
                             setGraphic(null);
+                            setContextMenu(null);
                         } else {
-                            setText(((DocVO) item).getType().toString());
+                            setText( item.getType().toString());
+                            MenuItem modify=new MenuItem("修改单据");
+                            modify.setOnAction(e->setChildren(ModifyDoc.getNode(upper,item,false),">红冲并复制"));
+                            setContextMenu(new ContextMenu(modify));
                         }
                     }
                 };
@@ -174,5 +188,25 @@ public class ApprovalUIController implements Initializable {
         docList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
+    @FXML
+    private void backToMain(){
+        Helper.bakToMain(container,labelBox,list,mainPane);
+        refresh();
+    }
 
+
+    @Override
+    public void back() {
+        if (labelBox.getChildren().size() == 1)
+            backToMain();
+        else
+            Helper.clearTitleLabel(container,labelBox,list);
+    }
+
+    @Override
+    public void setChildren(Node node, String title) {
+        list.add(node);
+        container.getChildren().setAll(node);
+        labelBox.getChildren().add(Helper.getTitleLabel(title,container,labelBox,node,list));
+    }
 }

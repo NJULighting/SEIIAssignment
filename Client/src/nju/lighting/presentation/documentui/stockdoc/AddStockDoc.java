@@ -18,18 +18,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import nju.lighting.blservice.documentblservice.DocBLService;
-import nju.lighting.presentation.DialogUI.DialogHelper;
+import nju.lighting.presentation.DialogUI.ValidateEventHandle;
+import nju.lighting.presentation.documentui.AddDoc;
 import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
 import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
-import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
-import nju.lighting.presentation.utils.CommodityHelper;
-import nju.lighting.presentation.utils.CustomerHelper;
-import nju.lighting.presentation.utils.TextFieldHelper;
-import nju.lighting.presentation.utils.UserHelper;
+import nju.lighting.presentation.utils.*;
 import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.UserVO;
@@ -38,7 +35,6 @@ import nju.lighting.vo.doc.stockdoc.StockDocItemVO;
 import nju.lighting.vo.doc.stockdoc.StockDocVO;
 import nju.lighting.vo.doc.stockdoc.StockReturnDocVO;
 import shared.CustomerType;
-import shared.Result;
 
 import java.io.IOException;
 import java.net.URL;
@@ -53,13 +49,13 @@ import java.util.stream.Collectors;
  *
  * @author 陈俊宇
  */
-public class AddStockDoc implements Initializable, Upper, Modifiable {
+public class AddStockDoc extends AddDoc implements Initializable, Upper {
     @FXML
     HBox container;
     @FXML
     VBox verticalVBox;
     @FXML
-    Pane mainPane, commodityContainer;
+    Pane  commodityContainer;
     @FXML
     private Button chooseCustomerBtn, chooseCommodityBtn;
     @FXML
@@ -75,22 +71,19 @@ public class AddStockDoc implements Initializable, Upper, Modifiable {
     @FXML
     JFXComboBox<String> repositoryBox;
 
-    @FXML
-    JFXButton commitBtn;
+
 
     private Upper upper = this;
     private ObservableList<CommodityItem> docItemList = FXCollections.observableArrayList();
     private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
-    private DocBLService blService= DocBLServiceFactory.getDocBLService();
+    private DocBLService blService = DocBLServiceFactory.getDocBLService();
     private ObservableList<BasicCommodityItemVO> commodityList = FXCollections.observableArrayList();
-    boolean hasMax=false;
+    boolean hasMax = false;
 
 
     public void back() {
         setChildren(mainPane, "");
     }
-
-
 
 
     @Override
@@ -99,7 +92,7 @@ public class AddStockDoc implements Initializable, Upper, Modifiable {
         sub.setText(title);
     }
 
-    private StockDocVO getDoc() {
+     protected StockDocVO getDoc() {
         if (customerProperty.getValue() != null && docItemList.size() != 0)
             return new StockDocVO(new Date(), Client.getUserVO().getID(),
                     customerProperty.getValue().getID() + "",
@@ -112,7 +105,7 @@ public class AddStockDoc implements Initializable, Upper, Modifiable {
         else return null;
     }
 
-    private StockReturnDocVO getReturnDoc(){
+    StockReturnDocVO getReturnDoc() {
         if (customerProperty.getValue() != null && docItemList.size() != 0)
             return new StockReturnDocVO(new Date(), Client.getUserVO().getID(),
                     customerProperty.getValue().getID() + "",
@@ -128,7 +121,7 @@ public class AddStockDoc implements Initializable, Upper, Modifiable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        TextFieldHelper.addDeleteMenuItem(customer,customerProperty);
+        TextFieldHelper.addDeleteMenuItem(customer, customerProperty);
 
         UserHelper.intiUserBox(salesmanBox);
         repositoryBox.getItems().add("默认仓库");
@@ -149,45 +142,36 @@ public class AddStockDoc implements Initializable, Upper, Modifiable {
 
         chooseCommodityBtn.setOnAction(e -> CommodityHelper.chooseCommodity(upper, commodityList));
 
-        commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
-            @Override
-            public void onChanged(Change<? extends BasicCommodityItemVO> c) {
-                while (c.next()) {
-                    docItemList.addAll(c.getAddedSubList().stream()
-                            .map(x -> new CommodityItem(x, 1, hasMax))
-                            .collect(Collectors.toList()));
-                }
+        commodityList.addListener((ListChangeListener<? super BasicCommodityItemVO>) c->{
+            while (c.next()) {
+                docItemList.addAll(c.getAddedSubList().stream()
+                        .map(x -> new CommodityItem(x, 1, hasMax))
+                        .collect(Collectors.toList()));
             }
         });
 
 
         chooseCustomerBtn.setOnAction(e -> CustomerHelper.setCustomer(upper, customerProperty, CustomerType.SUPPLIER));
-        customerProperty.addListener(c ->{
-            customer.setText(customerProperty.getValue().getName());
-            salesmanBox.setValue(UserHelper.getSalesman(salesmanBox,customerProperty.getValue().getSalesman()));
+        customerProperty.addListener(c -> {
+            if (customerProperty.getValue()!=null){
+                customer.setText(customerProperty.getValue().getName());
+                salesmanBox.setValue(UserHelper.getSalesman(salesmanBox, customerProperty.getValue().getSalesman()));
+            }else {
+                customer.setText("");
+                salesmanBox.setValue(null);
+            }
         });
 
 
         amount.textProperty().bind(controller.getTotal().asString());
 
-        commitBtn.setOnAction(e -> {
-            if (getDoc()!=null){
-                Result<DocVO> result =blService.commitDoc(getDoc());
-                DialogHelper.dialog("提交进货单",result.getResultMessage(), MainUI.getStackPane());
-            }
-
-        });
+        commitBtn.setOnAction(e -> DocHelper.commitDoc(getDoc()));
     }
 
     void setReturn() {
         title.setText("制定进货退货单");
-       hasMax=true;
-        commitBtn.setOnAction(e -> {
-            if (getReturnDoc()!=null){
-                Result<DocVO> result =blService.commitDoc(getReturnDoc());
-                DialogHelper.dialog("提交进货退货单",result.getResultMessage(), MainUI.getStackPane());
-            }
-        });
+        hasMax = true;
+        commitBtn.setOnAction(e -> DocHelper.commitDoc(getReturnDoc()));
     }
 
     void init(Upper upper, List<StockDocItemVO> itemList, String customerID, String remarks) {
@@ -197,6 +181,7 @@ public class AddStockDoc implements Initializable, Upper, Modifiable {
                 .collect(Collectors.toList()));
 
         customerProperty.set(CustomerHelper.getCustomer(Integer.parseInt(customerID)));
+        TextFieldHelper.addDeleteMenuItem(customer,customerProperty);
 
         this.remarks.setText(remarks);
 
@@ -207,10 +192,10 @@ public class AddStockDoc implements Initializable, Upper, Modifiable {
         StockDocVO stockDoc = (StockDocVO) docVO;
 
         init(upper, (stockDoc).getItems(), stockDoc.getCustomerId(), stockDoc.getRemarks());
+        super.modify(upper, docVO, redFlush);
     }
 
-    @Override
-    public Node getMainPane() {
-        return mainPane;
+    public Button getCommitBtn() {
+        return commitBtn;
     }
 }

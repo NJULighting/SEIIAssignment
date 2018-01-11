@@ -29,16 +29,7 @@
                <children>
                   <AnchorPane fx:id="mainPane" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0">
                      <children>
-                        <TableView fx:id="tableView" fixedCellSize="45" layoutX="38.0" layoutY="14.0" maxHeight="600.0" prefHeight="592.0" prefWidth="990.0" stylesheets="@../custom.css">
-                           <columns>
-                              <TableColumn fx:id="type" editable="false" prefWidth="150.0" resizable="false" text="单据类型" />
-                              <TableColumn fx:id="customer" prefWidth="120.0" resizable="false" text="客户" />
-                              <TableColumn fx:id="creator" prefWidth="150.0" resizable="false" text="创建人" />
-                              <TableColumn fx:id="time" prefWidth="150.0" resizable="false" text="创建时间" />
-                               <TableColumn fx:id="salesman" prefWidth="150.0" resizable="false" text="业务员" />
-                              <TableColumn fx:id="btn" prefWidth="150.0" />
-                           </columns>
-                        </TableView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="35.0" layoutY="15.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="1000.0" />
                         <Pane fx:id="filterBox" layoutX="45.0" layoutY="430.0">
                            <children>
                               <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="200.0" stroke="WHITE" strokeType="INSIDE" width="800.0" />
@@ -143,7 +134,16 @@
                            </children>
                         </Pane>
                         <JFXHamburger fx:id="hamburger" layoutX="924.0" layoutY="538.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="35.0" layoutY="15.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="1000.0" />
+                        <TableView fx:id="tableView" fixedCellSize="45" layoutX="38.0" layoutY="14.0" maxHeight="600.0" prefHeight="592.0" prefWidth="990.0" stylesheets="@../custom.css">
+                           <columns>
+                              <TableColumn fx:id="type" editable="false" prefWidth="150.0" resizable="false" text="单据类型" />
+                              <TableColumn fx:id="customer" prefWidth="120.0" resizable="false" text="客户" />
+                              <TableColumn fx:id="creator" prefWidth="150.0" resizable="false" text="创建人" />
+                              <TableColumn fx:id="time" prefWidth="150.0" resizable="false" text="创建时间" />
+                               <TableColumn fx:id="salesman" prefWidth="150.0" resizable="false" text="业务员" />
+                              <TableColumn fx:id="btn" prefWidth="150.0" />
+                           </columns>
+                        </TableView>
                      </children>
                   </AnchorPane>
                </children>

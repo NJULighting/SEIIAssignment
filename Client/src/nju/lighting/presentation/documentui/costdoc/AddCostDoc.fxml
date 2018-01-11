@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.costdoc.AddCostDocController">
    <children>
-      <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" stylesheets="@../../custom.css">
+      <Pane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" stylesheets="@../../custom.css">
          <children>
             <Line endX="300.0" layoutX="130.0" layoutY="46.0" startX="-100.0" strokeLineCap="BUTT" strokeWidth="0.35" />
             <Line layoutY="680.0" startX="-0.0" startY="-680.0" stroke="#00000033" />

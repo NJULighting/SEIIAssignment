@@ -1,6 +1,5 @@
 package nju.lighting.presentation.documentui.salesdoc;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.SimpleObjectProperty;
@@ -22,13 +21,11 @@ import javafx.scene.layout.VBox;
 import nju.lighting.bl.documentbl.DocController;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.blservice.promotionblservice.PromotionBLService;
-import nju.lighting.presentation.DialogUI.DialogHelper;
+import nju.lighting.presentation.documentui.AddDoc;
 import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
-import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.factory.PromotionBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
-import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.*;
 import nju.lighting.vo.CustomerVO;
@@ -42,9 +39,7 @@ import nju.lighting.vo.doc.salesdoc.SalesReturnDocVO;
 import nju.lighting.vo.promotion.PromotionVO;
 import shared.CustomerType;
 import shared.PromotionType;
-import shared.Result;
 
-import javax.xml.soap.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -52,7 +47,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class AddSalesDoc implements Initializable, Upper, Modifiable {
+public class AddSalesDoc extends AddDoc implements Initializable, Upper {
     private PromotionBLService promotionBLService =
             PromotionBLServiceFactory.getPromotionBLService();
     @FXML
@@ -60,12 +55,11 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     @FXML
     private VBox verticalVBox;
     @FXML
-    private Pane mainPane, commodityContainer;
+    private Pane commodityContainer;
 
     @FXML
-    private Button choseCustomBtn, commitBtn, promotionBtn;
-    @FXML
-    private JFXButton commodityBtn;
+    private Button choseCustomBtn, promotionBtn;
+
     @FXML
     private JFXTextField customer, accountBeforeDis, discount,
             voucher, account, promotionText;
@@ -89,7 +83,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     private PromotionVO promotionVO;
     private DocBLService docBLService = new DocController();
     private Upper upper = this;
-    private boolean hasMax=true;
+    private boolean hasMax = true;
 
     public void chooseCommodity() {
         CommodityHelper.chooseCommodity(upper, commodityList);
@@ -100,9 +94,8 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     }
 
 
-
     public void choosePromotion() throws IOException {
-        List<PromotionVO> list=promotionBLService.getBenefitsPlan(
+        List<PromotionVO> list = promotionBLService.getBenefitsPlan(
                 customerProperty.getValue().getGrade(),
                 commodityList.stream()
                         .map(BasicCommodityItemVO::getId)
@@ -110,7 +103,6 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
                 commodityListController.getTotal().doubleValue()
         );
 
-        System.out.println(" customer level :"+ customerProperty.getValue().getGrade());
         PromotionHelper.setPromotion(upper, promotionProperty, promotionBLService.getBenefitsPlan(
                 customerProperty.getValue().getGrade(),
                 commodityList.stream()
@@ -132,7 +124,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
         sub.setText(title);
     }
 
-    private SalesDocVO getDoc() {
+    protected SalesDocVO getDoc() {
         if (customer.validate() & docItemList.size() > 0)
             return new SalesDocVO(new Date(), Client.getUserVO().getID(), customerProperty.getValue().getID(),
                     salesmanBox.getValue().getID(), repositoryBox.getValue(), remarks.getText(),
@@ -144,7 +136,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
         else return null;
     }
 
-    private SalesReturnDocVO getReturnDoc() {
+    SalesReturnDocVO getReturnDoc() {
         if (customer.validate() & docItemList.size() > 0)
             return new SalesReturnDocVO(new Date(), Client.getUserVO().getID(), customerProperty.getValue().getID(),
                     salesmanBox.getValue().getID(), repositoryBox.getValue(), remarks.getText(),
@@ -156,26 +148,21 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
         else return null;
     }
 
-    @FXML
-    private void commit() {
-        if (getDoc() != null) {
-            System.out.println("final"+getDoc().getFinalAmount()
-            +"\n beforeDiscount"+ getDoc().getBeforeDiscountAmount());
 
-            Result<DocVO> res = docBLService.commitDoc(getDoc());
-            DialogHelper.dialog("提交销售单", res.getResultMessage(), MainUI.getStackPane());
-            PromotionVO promotion = promotionProperty.getValue();
-            if (promotion != null
-                    && promotion.getType() != PromotionType.Combo
-                    && promotion.getGoods() != null
-                    && promotion.getGoods().size() != 0) {
-                docBLService.commitDoc(new GiftDocVO(new Date(),
-                        promotion.getCreator().getID(),
-                        promotion.getGoods(),
-                        customerProperty.getValue().getID()));
-            }
+    /**
+     * 提交赠品单
+     */
+    private void commitGift() {
+        PromotionVO promotion = promotionProperty.getValue();
+        if (promotion != null
+                && promotion.getType() != PromotionType.Combo
+                && promotion.getGoods() != null
+                && promotion.getGoods().size() != 0) {
+            docBLService.commitDoc(new GiftDocVO(new Date(),
+                    promotion.getCreator().getID(),
+                    promotion.getGoods(),
+                    customerProperty.getValue().getID()));
         }
-
     }
 
 
@@ -196,8 +183,8 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        TextFieldHelper.addDeleteMenuItem(customer,customerProperty);
-        TextFieldHelper.addDeleteMenuItem(promotionText,promotionProperty);
+        TextFieldHelper.addDeleteMenuItem(customer, customerProperty);
+        TextFieldHelper.addDeleteMenuItem(promotionText, promotionProperty);
 
         repositoryBox.getItems().add("默认仓库");
         repositoryBox.setValue(repositoryBox.getItems().get(0));
@@ -236,29 +223,28 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
         });
 
         customerProperty.addListener(c -> {
-            customer.setText(customerProperty.getValue().getName());
-            salesmanBox.setValue(UserHelper.getSalesman(salesmanBox, customerProperty.getValue().getSalesman()));
+            if (customerProperty.getValue() != null) {
+                customer.setText(customerProperty.getValue().getName());
+                salesmanBox.setValue(UserHelper.getSalesman(salesmanBox, customerProperty.getValue().getSalesman()));
+
+            } else {
+                customer.setText("");
+                salesmanBox.setValue(null);
+            }
             clearPromotion();
+
         });
 
-        promotionProperty.addListener(new ChangeListener<PromotionVO>() {
-            @Override
-            public void changed(ObservableValue<? extends PromotionVO> observable, PromotionVO oldValue, PromotionVO newValue) {
-                clearPromotion();
+        promotionProperty.addListener(c -> {
+            clearPromotion();
+            if (promotionProperty.getValue() != null) {
                 promotionVO = promotionProperty.getValue();
-                // promotionOff.setText(promotionVO.getOff() + "");
                 promotionText.setText(promotionVO.getName());
-
-
-//                if (promotionVO.getType() != PromotionType.Combo&& promotionVO.getGoods()!=null)
-//
-//                    commodityList.addAll(
-//                            promotionVO.getGoods().stream()
-//                                    .map(x-> x.getCommodity())
-//                                    .collect(Collectors.toList())
-//                    );
-
+            } else {
+                promotionText.setText("");
             }
+
+
         });
 
         //监听，如果价总价变化 account跟着变化
@@ -297,19 +283,20 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
 
         TextFieldHelper.addRequiredValidator(customer);
 
+        commitBtn.setOnAction(e -> {
+            DocHelper.commitDoc(getDoc());
+            commitGift();
+        });
 
+        TextFieldHelper.addDeleteMenuItem(customer, customerProperty);
+        TextFieldHelper.addDeleteMenuItem(promotionText, promotionProperty);
     }
 
     void setReturn() {
         title.setText("制定销售退货单");
         verticalVBox.getChildren().remove(promotionBox);
-        hasMax=false;
-        commitBtn.setOnAction(e -> {
-            if (getReturnDoc() != null) {
-                Result<DocVO> result = docBLService.commitDoc(getReturnDoc());
-                DialogHelper.dialog("提交销售退货单", result.getResultMessage(), MainUI.getStackPane());
-            }
-        });
+        hasMax = false;
+        commitBtn.setOnAction(e -> DocHelper.commitDoc(getReturnDoc()));
     }
 
     void init(Upper upper, List<SalesDocItemVO> itemList, int customerID, String remarks,
@@ -334,11 +321,14 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
         init(upper, salesDocVO.getItems(), salesDocVO.getCustomerId(),
                 salesDocVO.getRemarks(), salesDocVO.getVoucher() + "",
                 salesDocVO.getDiscount() + "", true);
-
+        verticalVBox.getChildren().remove(promotionBox);
+        super.modify(upper, docVO, redFlush);
     }
 
-    @Override
-    public Node getMainPane() {
-        return mainPane;
+
+    public Button getCommitBtn() {
+        return commitBtn;
     }
+
+
 }

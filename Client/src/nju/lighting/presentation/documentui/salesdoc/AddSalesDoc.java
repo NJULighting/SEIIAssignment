@@ -135,7 +135,7 @@ public class AddSalesDoc implements Initializable, Upper, Modifiable {
     private SalesDocVO getDoc() {
         if (customer.validate() & docItemList.size() > 0)
             return new SalesDocVO(new Date(), Client.getUserVO().getID(), customerProperty.getValue().getID(),
-                    salesmanBox.getValue().getID(), repositoryBox.getValue().toString(), remarks.getText(),
+                    salesmanBox.getValue().getID(), repositoryBox.getValue(), remarks.getText(),
                     Double.parseDouble(discount.getText()),
                     Double.parseDouble(voucher.getText()),
                     docItemList.stream()

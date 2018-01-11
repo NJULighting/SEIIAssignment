@@ -80,11 +80,11 @@ public abstract class SalesTypeDoc extends Doc {
     }
 
     double calculateBeforeDiscount() {
-        return (finalAmount + voucher) / (1 - discount);
+        return finalAmount + voucher + discount;
     }
 
     public double getDiscountAmount() {
-        return beforeDiscountAmount * discount;
+        return discount;
     }
 
     /**
@@ -92,7 +92,7 @@ public abstract class SalesTypeDoc extends Doc {
      * then we get a revenue of voucher's value minus value after discount
      */
     public double getVoucherCausedRevenue() {
-        double afterDiscount = beforeDiscountAmount * (1 - discount);
+        double afterDiscount = beforeDiscountAmount - discount;
         return voucher > afterDiscount ? voucher - afterDiscount : 0;
     }
 

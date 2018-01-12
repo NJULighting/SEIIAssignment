@@ -11,6 +11,7 @@ import shared.CustomerType;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 
 /**
  * Created on 2017/12/22.
@@ -101,12 +102,16 @@ public class CustomerHelper {
             return getCustomer(Integer.parseInt(id));
     }
 
-    public static String getCustomerString(int id){
-        return getCustomer(id).getName();
-    }
 
     public static String getCustomerString(String id){
-        CustomerVO customerVO= getCustomer(id);
+        System.out.println("id"+id);
+        CustomerVO customerVO=null;
+        try{
+            customerVO = getCustomer(id);
+        }catch (NoSuchElementException e){
+            return "佚名";
+        }
+
         if (customerVO!=null)
             return customerVO.getName();
         else

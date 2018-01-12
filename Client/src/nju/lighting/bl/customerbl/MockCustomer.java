@@ -5,6 +5,7 @@ import shared.ResultMessage;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 /**
  * Create on 11/21
  * Description:

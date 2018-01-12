@@ -5,6 +5,7 @@ import nju.lighting.presentation.factory.UserBLServiceFactory;
 import nju.lighting.vo.UserVO;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 /**
@@ -19,7 +20,12 @@ public class UserHelper {
     }
 
     public static String getUserString(String id){
-        UserVO userVO=getUser(id);
+        UserVO userVO=null;
+        try{
+            userVO=getUser(id);
+        }catch (NoSuchElementException e){
+            return "已离职";
+        }
         if (userVO==null)
             return "";
         else

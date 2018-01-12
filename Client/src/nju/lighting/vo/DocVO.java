@@ -49,12 +49,12 @@ public abstract class DocVO {
         return creatorId;
     }
 
-    public void setCreatorId(String creatorId) {
-        this.creatorId = creatorId;
-    }
-
     public String getDocId() {
         return docId;
+    }
+
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
     }
 
     public void setDocId(String docId) {

@@ -46,6 +46,7 @@ public abstract class Doc {
         docType = docVO.getType();
         userId = docVO.getCreatorId();
         createTime = docVO.getTime();
+        state = DocState.UN_CHECKED;
     }
 
     /**

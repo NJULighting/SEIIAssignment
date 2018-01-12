@@ -48,7 +48,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <JFXButton fx:id="commitBtn" layoutX="890.0" layoutY="1.0" onAction="#commit" prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
+                                <JFXButton fx:id="commitBtn" layoutX="890.0" layoutY="1.0"  prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="完成并提交" textFill="WHITE" />
                                 <Button fx:id="deleteSearch" disable="true" layoutX="199.0" layoutY="4.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" visible="false">
                                     <graphic>
                                         <ImageView fitHeight="40.0" fitWidth="40.0">

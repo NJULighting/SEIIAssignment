@@ -37,6 +37,7 @@ public class LossAndGainItem {
         id.set(vo.getCommodity().getId());
         repCount.set(vo.getCommodity().getRepCount());
         type.set(vo.getType());
+        commodity=vo.getCommodity();
     }
 
     public LossAndGainItem(AlertDocItemVO alertDocItemVO){
@@ -44,7 +45,7 @@ public class LossAndGainItem {
         count.set(alertDocItemVO.getCount());
         id.set(alertDocItemVO.getCommodity().getId());
         repCount.set(alertDocItemVO.getCommodity().getRepCount());
-
+        commodity=alertDocItemVO.getCommodity();
     }
 
     public LossAndGainDocItemVO toLossAndGainDocItemVO() {

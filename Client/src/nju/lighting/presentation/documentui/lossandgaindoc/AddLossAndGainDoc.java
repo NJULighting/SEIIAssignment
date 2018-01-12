@@ -14,10 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import nju.lighting.blservice.documentblservice.DocBLService;
-import nju.lighting.presentation.DialogUI.DialogHelper;
-import nju.lighting.presentation.documentui.Modifiable;
-import nju.lighting.presentation.factory.DocBLServiceFactory;
+import nju.lighting.presentation.documentui.AddDoc;
 import nju.lighting.presentation.mainui.Client;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.CommodityHelper;
@@ -27,9 +24,6 @@ import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.doc.alertdoc.AlertDocVO;
 import nju.lighting.vo.doc.lossandgaindoc.LossAndGainDocVO;
 import shared.LossAndGainItemType;
-import shared.Result;
-import shared.ResultMessage;
-import shared.TwoTuple;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,7 +38,7 @@ import java.util.stream.Collectors;
  *
  * @author 陈俊宇
  */
-public class AddLossAndGainDoc implements Initializable, Upper, Modifiable {
+public class AddLossAndGainDoc extends AddDoc implements Initializable, Upper {
     @FXML
     HBox container, tableContainer;
 
@@ -72,7 +66,6 @@ public class AddLossAndGainDoc implements Initializable, Upper, Modifiable {
     private ObservableList<BasicCommodityItemVO> commodities = FXCollections.observableArrayList();
     private ObservableList<LossAndGainItem> docItemList;
 
-    private DocBLService blService = DocBLServiceFactory.getDocBLService();
 
     private FXMLLoader loader;
 
@@ -93,8 +86,8 @@ public class AddLossAndGainDoc implements Initializable, Upper, Modifiable {
         sub.setText(title);
     }
 
-    private AlertDocVO getAlertDoc(){
-        if (docItemList.size()!=0)
+    private AlertDocVO getAlertDoc() {
+        if (docItemList.size() != 0)
             return new AlertDocVO(
                     Client.getUserVO().getID(),
                     new Date(),
@@ -104,14 +97,12 @@ public class AddLossAndGainDoc implements Initializable, Upper, Modifiable {
                     comments.getText());
         else return null;
     }
+
     public void setAlert() {
         title.setText("制定报警单");
-        listController.setAlert();
-        commitBtn.setOnAction(e->{
-          if (getAlertDoc()!=null){
-              Result<DocVO> res = blService.commitDoc(getAlertDoc());
-              DialogHelper.dialog("提交报警单",res.getResultMessage(), stackPane);
-          }
+        listController.setAlertAndEditable();
+        commitBtn.setOnAction(e -> {
+            DocHelper.commitDoc(getAlertDoc());
         });
     }
 
@@ -120,25 +111,21 @@ public class AddLossAndGainDoc implements Initializable, Upper, Modifiable {
         docItemList.clear();
     }
 
-    private LossAndGainDocVO getDoc(){
-        if (docItemList.size()!=0)
-        return new LossAndGainDocVO(new Date(),
-                Client.getUserVO().getID(),
-                docItemList.stream()
-                        .map(x -> x.toLossAndGainDocItemVO())
-                        .collect(Collectors.toList()),
-                comments.getText());
+    protected LossAndGainDocVO getDoc() {
+        if (docItemList.size() != 0)
+            return new LossAndGainDocVO(new Date(),
+                    Client.getUserVO().getID(),
+                    docItemList.stream()
+                            .map(x -> x.toLossAndGainDocItemVO())
+                            .collect(Collectors.toList()),
+                    comments.getText());
         else return null;
     }
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        commitBtn.setOnAction(e -> {
-            if (getDoc()!=null){
-                Result<DocVO> res = blService.commitDoc(getDoc());
-                DialogHelper.dialog("提交报损报溢单",res.getResultMessage(), stackPane);
-            }
-        });
+        commitBtn.setOnAction(e -> DocHelper.commitDoc(getDoc()));
 
         chooseCommodityBtn.setOnAction(event -> {
             CommodityHelper.chooseCommodity(this, commodities);
@@ -187,25 +174,18 @@ public class AddLossAndGainDoc implements Initializable, Upper, Modifiable {
     }
 
     @Override
-    public void modify(Upper upper,DocVO docVO, boolean redFlush) {
-        LossAndGainDocVO lossAndGainDoc= (LossAndGainDocVO) docVO;
+    public void modify(Upper upper, DocVO docVO, boolean redFlush) {
+        LossAndGainDocVO lossAndGainDoc = (LossAndGainDocVO) docVO;
 
         docItemList.setAll(lossAndGainDoc.getItems().stream()
-        .map(LossAndGainItem::new)
-        .collect(Collectors.toList()));
+                .map(LossAndGainItem::new)
+                .collect(Collectors.toList()));
 
         setComments(lossAndGainDoc.getComment());
 
-        if (!redFlush)
-        commitBtn.setOnAction(e -> {
-             DocHelper.saveAndApprove(getDoc());
-        });
+        super.modify(upper, docVO, redFlush);
     }
 
-    @Override
-    public Node getMainPane() {
-        return mainPane;
-    }
 
     public JFXButton getCommitBtn() {
         return commitBtn;

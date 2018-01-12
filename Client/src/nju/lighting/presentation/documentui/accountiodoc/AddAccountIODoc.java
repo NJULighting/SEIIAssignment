@@ -19,6 +19,7 @@ import javafx.scene.layout.StackPane;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
+import nju.lighting.presentation.documentui.AddDoc;
 import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.factory.ApprovalBLServiceFactory;
 import nju.lighting.presentation.factory.CustomerBLServiceFactory;
@@ -29,6 +30,7 @@ import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.AccountHelper;
 import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.DocHelper;
+import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.CustomerVO;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.account.AccountVO;
@@ -48,7 +50,7 @@ import java.util.stream.Collectors;
  *
  * @author 陈俊宇
  */
-public class AddAccountIODoc implements Initializable, Upper, Modifiable {
+public class AddAccountIODoc extends AddDoc implements Initializable, Upper {
 
     @FXML
     JFXToggleButton toggleBtn;
@@ -87,7 +89,7 @@ public class AddAccountIODoc implements Initializable, Upper, Modifiable {
     private DocType type = DocType.ACCOUNT_OUT;
 
 
-    private AccountIODocVO getDoc() {
+    protected AccountIODocVO getDoc() {
         return new AccountIODocVO(new Date(), type,
                 customerProperty.getValue().getID() + "",
                 Client.getUserVO().getID(),
@@ -96,11 +98,6 @@ public class AddAccountIODoc implements Initializable, Upper, Modifiable {
                         .collect(Collectors.toList()));
     }
 
-    @FXML
-    void commit() {
-        Result<DocVO> result =docBLService.commitDoc(getDoc());
-        DialogHelper.dialog("制定"+getDoc().getType().toString(),result.getResultMessage(), MainUI.getStackPane());
-    }
 
     @FXML
     void chooseCustomer() {
@@ -135,6 +132,7 @@ public class AddAccountIODoc implements Initializable, Upper, Modifiable {
         customerProperty.addListener(new ChangeListener<CustomerVO>() {
             @Override
             public void changed(ObservableValue<? extends CustomerVO> observable, CustomerVO oldValue, CustomerVO newValue) {
+                if (newValue!=null)
                 customerText.setText(customerProperty.getValue().getName());
             }
         });
@@ -153,6 +151,10 @@ public class AddAccountIODoc implements Initializable, Upper, Modifiable {
                 }
             }
         });
+
+        commitBtn.setOnAction(e-> DocHelper.commitDoc(getDoc()));
+
+        TextFieldHelper.addDeleteMenuItem(customerText,customerProperty);
 
 
     }
@@ -185,17 +187,8 @@ public class AddAccountIODoc implements Initializable, Upper, Modifiable {
         customerText.setEditable(false);
         chooseCustomerBtn.setDisable(true);
 
-
-        if (!redFlush) {
-            commitBtn.setOnAction(e -> {
-                DocHelper.saveAndApprove(getDoc());
-            });
-        }
+        super.modify(upper, docVO, redFlush);
 
     }
 
-    @Override
-    public Node getMainPane() {
-        return mainPane;
-    }
 }

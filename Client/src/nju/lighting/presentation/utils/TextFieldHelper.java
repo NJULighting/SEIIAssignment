@@ -9,6 +9,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 
 /**
  * Created on 2017/12/23.
@@ -18,7 +19,7 @@ import javafx.scene.control.MenuItem;
  */
 public class TextFieldHelper {
 
-    public static void addDeleteMenuItem(JFXTextField textField, SimpleObjectProperty objectProperty){
+    public static void addDeleteMenuItem(TextField textField, SimpleObjectProperty objectProperty){
         MenuItem delete=new MenuItem("清除");
         delete.setOnAction(e->{
             textField.setText("");
@@ -26,6 +27,7 @@ public class TextFieldHelper {
         });
 
         textField.setContextMenu(new ContextMenu(delete));
+        textField.setEditable(false);
 
     }
 

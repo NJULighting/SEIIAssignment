@@ -1,6 +1,7 @@
 package shared;
 
 import nju.lighting.bl.documentbl.Doc;
+import nju.lighting.bl.documentbl.alertdoc.AlertDoc;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -44,6 +45,7 @@ public class DocumentFilter {
         Predicate<Doc> creatorFilter = generatePredicateByEqual(creatorId, Doc::getUserId);
         Predicate<Doc> idFilter = generatePredicateByEqual(docId, Doc::getId);
         Predicate<Doc> stateFilter = generatePredicateByEqual(state, Doc::getState);
+        Predicate<Doc> expiredAlertDocFilter = doc -> doc.getDocType() != DocType.ALERT || !((AlertDoc) doc).isExpired();
 
         Predicate<Doc> customerFilter = generatePredicateByContain(customerId, Doc::containsCustomer);
         Predicate<Doc> commodityFilter = generatePredicateByContain(commodity, Doc::containsCommodity);
@@ -65,7 +67,7 @@ public class DocumentFilter {
         Predicate<Doc> dateFilter = endDateFilter.and(po -> start.before(po.getCreateTime()));
 
         return typeFilter.and(dateFilter).and(creatorFilter).and(idFilter).and(stateFilter)
-                .and(customerFilter).and(commodityFilter).and(repositoryFilter);
+                .and(customerFilter).and(commodityFilter).and(repositoryFilter).and(expiredAlertDocFilter);
     }
 
     public String getCommodity() {

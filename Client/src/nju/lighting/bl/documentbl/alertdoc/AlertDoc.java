@@ -89,6 +89,10 @@ public class AlertDoc extends Doc {
         }
     }
 
+    public boolean isExpired() {
+        return expired;
+    }
+
     @Override
     public ResultMessage approve() {
         throw new UnsupportedOperationException();

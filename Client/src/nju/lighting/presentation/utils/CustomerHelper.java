@@ -93,4 +93,23 @@ public class CustomerHelper {
     public static CustomerVO getCustomer(int id) {
         return CustomerBLServiceFactory.getCustomerBLService().findCustomerByID(id);
     }
+
+    public static CustomerVO getCustomer(String id) {
+        if (id == null || id.length() == 0)
+            return null;
+        else
+            return getCustomer(Integer.parseInt(id));
+    }
+
+    public static String getCustomerString(int id){
+        return getCustomer(id).getName();
+    }
+
+    public static String getCustomerString(String id){
+        CustomerVO customerVO= getCustomer(id);
+        if (customerVO!=null)
+            return customerVO.getName();
+        else
+            return "";
+    }
 }

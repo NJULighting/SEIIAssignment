@@ -86,34 +86,14 @@ public class CommodityBLService_Stub implements CommodityBLService {
     }
 
     @Override
-    public List<BasicCommodityItemVO> findBasicCommodityByCategory(int categoryID) {
+    public List<CommodityItemVO> findCommodityVOByName(String commodityName) {
         return null;
     }
 
-    @Override
-    public List<CommodityItemVO> findCommodityVOByName(String commodityName) {
-        ArrayList<CommodityItemVO> itemVOS = new ArrayList<>();
-        for (CommodityItem item : items) {
-            if (item.getName().contains(commodityName)) {
-                itemVOS.add(item.toVO());
-            }
-        }
-        return itemVOS;
-    }
 
     @Override
     public List<CommodityItemVO> searchCommodity(String keyword) {
         return findCommodityVOByName(keyword);
-    }
-
-    @Override
-    public CommodityItemVO findCommodityVOById(String id) {
-        for (CommodityItem item : items) {
-            if (item.getId().equals(id)) {
-                return item.toVO();
-            }
-        }
-        return null;
     }
 
     @Override
@@ -150,8 +130,4 @@ public class CommodityBLService_Stub implements CommodityBLService {
         return ResultMessage.SUCCESS;
     }
 
-    @Override
-    public Image getTrend(String commodityId) {
-        return null;
-    }
 }

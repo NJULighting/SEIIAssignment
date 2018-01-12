@@ -1,6 +1,5 @@
 package nju.lighting.bl.commoditybl;
 
-import javafx.scene.image.Image;
 import nju.lighting.bl.documentbl.DocInfo;
 import nju.lighting.bl.documentbl.DocInfoImpl;
 import nju.lighting.bl.logbl.Logger;
@@ -14,7 +13,6 @@ import nju.lighting.dataservice.DataFactory;
 import nju.lighting.dataservice.commoditydataservice.CommodityDataService;
 import nju.lighting.po.commodity.CommodityCategoryPO;
 import nju.lighting.po.commodity.CommodityItemPO;
-import nju.lighting.vo.commodity.BasicCommodityItemVO;
 import nju.lighting.vo.commodity.CommodityCategoriesTreeVO;
 import nju.lighting.vo.commodity.CommodityCategoryVO;
 import nju.lighting.vo.commodity.CommodityItemVO;
@@ -82,14 +80,6 @@ enum CommodityManager {
         }
     }
 
-    Image getTrend(String commodityId) {
-        try {
-            return dataService.getTrend(commodityId);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            throw new IllegalStateException();
-        }
-    }
 
 
     private String getCommodityId(String categoryPath) throws RemoteException {
@@ -106,11 +96,6 @@ enum CommodityManager {
 
     List<CommodityItemVO> findCommodityByCategory(int categoryID) {
         return findByToList(categoryID, dataService::findByCategory);
-    }
-
-    List<BasicCommodityItemVO> findBasicCommodityByCategory(int categoryID) {
-        return DataServiceFunction.findByToList(categoryID, dataService::findByCategory,
-                po -> new CommodityItem(po).toBasicCommodityItem().toVo());
     }
 
     List<CommodityItemVO> findCommodityVOByName(String commodityName) {

@@ -18,14 +18,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import nju.lighting.blservice.approvalblservice.ApprovalBLService;
 import nju.lighting.blservice.documentblservice.DocBLService;
-import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.documentui.AddDoc;
-import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.factory.ApprovalBLServiceFactory;
 import nju.lighting.presentation.factory.CustomerBLServiceFactory;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
-import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.AccountHelper;
 import nju.lighting.presentation.utils.CustomerHelper;
@@ -36,7 +33,6 @@ import nju.lighting.vo.DocVO;
 import nju.lighting.vo.account.AccountVO;
 import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;
 import shared.DocType;
-import shared.Result;
 
 import java.io.IOException;
 import java.net.URL;
@@ -89,13 +85,16 @@ public class AddAccountIODoc extends AddDoc implements Initializable, Upper {
     private DocType type = DocType.ACCOUNT_OUT;
 
 
+
     protected AccountIODocVO getDoc() {
-        return new AccountIODocVO(new Date(), type,
-                customerProperty.getValue().getID() + "",
-                Client.getUserVO().getID(),
-                itemList.stream()
-                        .map(AccountTransferItem::toTransferItem)
-                        .collect(Collectors.toList()));
+        if (customerProperty.getValue() != null && itemList.size() != 0) {
+            return new AccountIODocVO(new Date(), type,
+                    customerProperty.getValue().getID() + "",
+                    Client.getUserVO().getID(),
+                    itemList.stream()
+                            .map(AccountTransferItem::toTransferItem)
+                            .collect(Collectors.toList()));
+        } else return null;
     }
 
 
@@ -132,8 +131,8 @@ public class AddAccountIODoc extends AddDoc implements Initializable, Upper {
         customerProperty.addListener(new ChangeListener<CustomerVO>() {
             @Override
             public void changed(ObservableValue<? extends CustomerVO> observable, CustomerVO oldValue, CustomerVO newValue) {
-                if (newValue!=null)
-                customerText.setText(customerProperty.getValue().getName());
+                if (newValue != null)
+                    customerText.setText(customerProperty.getValue().getName());
             }
         });
 
@@ -152,9 +151,9 @@ public class AddAccountIODoc extends AddDoc implements Initializable, Upper {
             }
         });
 
-        commitBtn.setOnAction(e-> DocHelper.commitDoc(getDoc()));
+        commitBtn.setOnAction(e -> DocHelper.commitDoc(getDoc()));
 
-        TextFieldHelper.addDeleteMenuItem(customerText,customerProperty);
+        TextFieldHelper.addDeleteMenuItem(customerText, customerProperty);
 
 
     }
@@ -171,7 +170,7 @@ public class AddAccountIODoc extends AddDoc implements Initializable, Upper {
 
 
     @Override
-    public void modify(Upper upper,DocVO docVO, boolean redFlush) {
+    public void modify(Upper upper, DocVO docVO, boolean redFlush) {
         AccountIODocVO accountIODocVO = (AccountIODocVO) docVO;
 
         itemList.setAll(accountIODocVO.getTransferAccountList().stream()

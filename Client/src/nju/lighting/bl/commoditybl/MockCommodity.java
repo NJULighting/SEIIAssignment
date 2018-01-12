@@ -75,23 +75,4 @@ public class MockCommodity implements CommodityInfo {
         return ResultMessage.SUCCESS;
     }
 
-    @Override
-    public void updateCommodityRecentSellPrice(String id, double price) {
-
-    }
-
-    @Override
-    public void updateCommodityRecentInPrice(String id, double price) {
-
-    }
-
-    @Override
-    public boolean achieveAlertLimit(String commodityId, int count) {
-        return false;
-    }
-
-    @Override
-    public boolean reduceCommodityItem(String id, int count) {
-        return false;
-    }
 }

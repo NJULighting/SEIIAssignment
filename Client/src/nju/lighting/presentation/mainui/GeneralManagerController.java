@@ -42,9 +42,9 @@ public class GeneralManagerController extends MainUIController {
     public void initialize(URL location, ResourceBundle resources) {
         buttons = new Button[]{approvalBtn, promotionManageBtn,BusinessHistoryBtn, BusinessConditionBtn, SalesConditionBtn, logBtn,
         };
-        urls = new String[]{"../approvalui/Approval.fxml", "../promotionui/PromotionManageUI.fxml",
-                "../documentui/BusinessHistoryTable.fxml","../documentui/BusinessConditionTable.fxml",
-                "../documentui/SalesDetailTable.fxml", "../logui/log.fxml"};
+        urls = new String[]{"nju/lighting/presentation/approvalui/Approval.fxml", "nju/lighting/presentation/promotionui/PromotionManageUI.fxml",
+                "nju/lighting/presentation/documentui/BusinessHistoryTable.fxml","nju/lighting/presentation/documentui/BusinessConditionTable.fxml",
+                "nju/lighting/presentation/documentui/SalesDetailTable.fxml", "nju/lighting/presentation/logui/Log.fxml"};
         MAIN_BUTTON_SIZE = urls.length;
         super.initialize(location, resources);
     }

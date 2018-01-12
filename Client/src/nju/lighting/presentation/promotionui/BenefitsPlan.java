@@ -63,7 +63,7 @@ public class BenefitsPlan {
         promotionList = list;
         pagination.setPageCount(promotionList.size());
         pagination.setPageFactory((Integer index) -> createPage(index));
-        pagination.getStylesheets().add(getClass().getResource("../benefitsplan.css").toExternalForm());
+        pagination.getStylesheets().add(getClass().getClassLoader().getResource("nju/lighting/presentation/benefitsplan.css").toExternalForm());
 
     }
 

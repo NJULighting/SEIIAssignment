@@ -109,7 +109,6 @@ public class LoginController extends CommonFather {
                             e.printStackTrace();
                         }
                         Platform.runLater(() -> {
-                            System.out.println("1");
                             mainUI.setStage();
                         });
                     }

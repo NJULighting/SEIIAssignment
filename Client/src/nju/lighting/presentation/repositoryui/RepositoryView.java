@@ -92,7 +92,7 @@ public class RepositoryView implements Initializable {
         repositoryChangeList = blService.getRepositoryChanges(DateHelper.localDateToDate(DateHelper.weekAgo()), new Date());
 
         pagination.setPageFactory((Integer index) -> createPage(index));
-        pagination.getStylesheets().add(getClass().getResource("../repository.css").toExternalForm());
+        pagination.getStylesheets().add(getClass().getClassLoader().getResource("nju/lighting/presentation/repository.css").toExternalForm());
 
         commodity.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getCommodityName()));

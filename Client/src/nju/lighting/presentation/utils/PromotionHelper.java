@@ -43,7 +43,7 @@ public class PromotionHelper {
     public static void setPromotion(Upper upper, SimpleObjectProperty<PromotionVO> promotionProperty, List<PromotionVO> list) {
         list.stream().forEach(x->
         System.out.println("PromotionLevel"+x.getLevel()));
-        FXMLLoader loader = new FXMLLoader(CustomerHelper.class.getResource("../promotionui/BenefitsPlan.fxml"));
+        FXMLLoader loader = new FXMLLoader(CustomerHelper.class.getClassLoader().getResource("nju/lighting/presentation/promotionui/BenefitsPlan.fxml"));
         try {
             upper.setChildren(loader.load(), ">选择促销策略");
         } catch (IOException e) {
@@ -59,7 +59,7 @@ public class PromotionHelper {
     public static Node loadGiftList(List<CommodityItem> commodityList) {
         Node res = null;
         try {
-            FXMLLoader loader = new FXMLLoader(PromotionHelper.class.getResource("../documentui/giftList.fxml"));
+            FXMLLoader loader = new FXMLLoader(PromotionHelper.class.getResource("nju/lighting/presentation/documentui/giftList.fxml"));
             res = loader.load();
             GiftListController controller = loader.getController();
             controller.getGiftObservableList().setAll(commodityList);

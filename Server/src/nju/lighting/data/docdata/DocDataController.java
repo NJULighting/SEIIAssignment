@@ -196,7 +196,6 @@ public class DocDataController extends UnicastRemoteObject implements DocDataSer
         new Thread(()-> {
             String mailAddress = creatorId + suffix;
             String command = "python " + absoluteMailScriptAddress + " " + mailAddress + " " + header + " " + content;
-            System.out.println(command);
             try {
                 Process process = Runtime.getRuntime().exec(command);
                 process.waitFor();

@@ -31,11 +31,6 @@ public class CommodityController implements CommodityBLService {
     }
 
     @Override
-    public List<BasicCommodityItemVO> findBasicCommodityByCategory(int categoryID) {
-        return manager.findBasicCommodityByCategory(categoryID);
-    }
-
-    @Override
     public List<CommodityItemVO> findCommodityVOByName(String commodityName) {
         return manager.findCommodityVOByName(commodityName);
     }
@@ -43,11 +38,6 @@ public class CommodityController implements CommodityBLService {
     @Override
     public List<CommodityItemVO> searchCommodity(String keyword) {
         return manager.searchCommodity(keyword);
-    }
-
-    @Override
-    public CommodityItemVO findCommodityVOById(String id) {
-        return manager.findCommodityVOById(id);
     }
 
     @Override
@@ -68,11 +58,6 @@ public class CommodityController implements CommodityBLService {
     @Override
     public ResultMessage deleteCategory(int id) {
         return manager.deleteCategory(id);
-    }
-
-    @Override
-    public Image getTrend(String commodityId) {
-        return manager.getTrend(commodityId);
     }
 
     @Override

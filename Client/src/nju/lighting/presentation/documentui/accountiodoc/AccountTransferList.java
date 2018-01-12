@@ -2,6 +2,7 @@ package nju.lighting.presentation.documentui.accountiodoc;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableCell;
@@ -59,24 +60,12 @@ public class AccountTransferList implements Initializable {
 
     public void setEditable() {
         TableColumn delete = new TableColumn();
-        delete.setCellFactory(new Callback<TableColumn, TableCell>() {
-            @Override
-            public TableCell call(TableColumn param) {
-                return new BtnCell();
-            }
-        });
+        delete.setCellFactory(p-> new BtnCell());
+
         accountItemTable.getColumns().add(delete);
-        amount.setCellFactory(new Callback<TableColumn<AccountTransferItem, Double>, TableCell<AccountTransferItem, Double>>() {
-            @Override
-            public TableCell<AccountTransferItem, Double> call(TableColumn<AccountTransferItem, Double> param) {
-                return new EditingCell<>("double");
-            }
-        });
-        comments.setCellFactory(new Callback<TableColumn<AccountTransferItem, String>, TableCell<AccountTransferItem, String>>() {
-            @Override
-            public TableCell<AccountTransferItem, String> call(TableColumn<AccountTransferItem, String> param) {
-                return new EditingCell<>("string");
-            }
-        });
+
+        amount.setCellFactory(p-> new  EditingCell<>("double"));
+
+        comments.setCellFactory(p-> new EditingCell<>("string"));
     }
 }

@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 enum RepositoryManager {
+    
     INSTANCE;
 
     private RepositoryDataService dataService;

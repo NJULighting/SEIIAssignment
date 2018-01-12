@@ -65,7 +65,6 @@ public class DocIdGenerator {
         int count = docOperation.countByTypeAndDate(begin, end, twoTuple.r) + 1;
         String countString = format(count);
         id += countString;
-        System.out.println("生成的ID：————————> " + id);
         return id;
     }
 

@@ -50,7 +50,7 @@ public class SalesReturnDoc implements Initializable {
         voucher.setText(salesReturnDocVO.getVoucher()+"");
         idLabel.setText(salesReturnDocVO.getDocId());
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("nju/lighting/presentation/documentui/CommodityList.fxml"));
         try {
             tableContainer.getChildren().add(loader.load());
             ((CommodityList) loader.getController()).getGiftObservableList()

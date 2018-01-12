@@ -132,19 +132,4 @@ public class CommodityInfoImpl implements CommodityInfo {
         }
     }
 
-    private ResultMessage updateRecentPrice(String id, double price, Function<CommodityItemPO, Double> getPrice,
-                                            BiConsumer<CommodityItemPO, Double> setPrice) {
-        try {
-            CommodityItemPO po = dataService.findById(id);
-            if (price == getPrice.apply(po))
-                return ResultMessage.FAILURE;
-
-            setPrice.accept(po, price);
-            return dataService.update(po);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return ResultMessage.FAILURE;
-        }
-    }
-
 }

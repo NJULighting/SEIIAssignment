@@ -2,9 +2,6 @@ package nju.lighting.bl.customerbl;
 
 import shared.ResultMessage;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Deprecated
 /**
  * Create on 11/21
@@ -29,14 +26,6 @@ public class MockCustomer implements CustomerInfo {
      */
     public ResultMessage changePayable(int customerId, double amount) {
         return ResultMessage.FAILURE;
-    }
-
-    /**
-     * 得到包含所有客户的列表
-     * @return 对应的客户列表
-     */
-    public List<Customer> getCustomerList() {
-        return new ArrayList<Customer>();
     }
 
 }

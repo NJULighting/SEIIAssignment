@@ -105,9 +105,6 @@ public abstract class SalesTypeDoc extends Doc {
     abstract public ResultMessage approve();
 
     @Override
-    abstract public ResultMessage modify();
-
-    @Override
     public boolean containsCustomer(String customerId) {
         return this.customerId == Integer.parseInt(customerId);
     }

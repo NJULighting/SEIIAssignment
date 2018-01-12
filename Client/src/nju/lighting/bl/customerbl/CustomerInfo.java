@@ -23,10 +23,4 @@ public interface CustomerInfo {
      * @param amount     amount of payable
      */
     ResultMessage changePayable(int customerId, double amount);
-
-    /**
-     * 得到包含所有客户的列表
-     * @return 对应的客户列表
-     */
-    List<Customer> getCustomerList();
 }

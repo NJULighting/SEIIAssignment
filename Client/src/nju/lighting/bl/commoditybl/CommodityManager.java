@@ -102,10 +102,6 @@ enum CommodityManager {
         return findByToList(commodityName, dataService::findByName);
     }
 
-    CommodityItemVO findCommodityVOById(String id) {
-        return findByToEntity(id, dataService::findById);
-    }
-
     ResultMessage deleteCommodity(String id) {
         try {
             ResultMessage res = dataService.deleteCommodity(id);

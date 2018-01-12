@@ -8,6 +8,7 @@ import shared.ResultMessage;
 import java.util.ArrayList;
 import java.util.Date;
 
+@Deprecated
 public class RepositoryDataService_Stub implements RepositoryDataService {
 
     @Override

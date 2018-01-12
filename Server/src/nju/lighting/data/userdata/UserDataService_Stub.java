@@ -2,10 +2,7 @@ package nju.lighting.data.userdata;
 
 import nju.lighting.dataservice.userdataservice.UserDataService;
 import nju.lighting.po.user.UserPO;
-import shared.Identity;
-import shared.LoginReturnState;
-import shared.ResultMessage;
-import shared.TwoTuple;
+import shared.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -16,6 +13,8 @@ import java.util.ArrayList;
  * Description:
  * @author Liao
  */
+
+@Deprecated
 public class UserDataService_Stub extends UnicastRemoteObject implements UserDataService {
 
     public UserDataService_Stub() throws RemoteException {
@@ -38,16 +37,19 @@ public class UserDataService_Stub extends UnicastRemoteObject implements UserDat
 
     @Override
     public ResultMessage delete(String id) throws RemoteException {
-        return null;
+        return id.equals("233") ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
     }
 
     @Override
     public ArrayList<UserPO> getAll() {
-        return null;
+        UserPO po = new UserPO("Frog", "Excited", "0000", Identity.GENERAL, false);
+        ArrayList<UserPO> arrayList = new ArrayList<>();
+        arrayList.add(po);
+        return arrayList;
     }
 
     @Override
     public TwoTuple<UserPO, LoginReturnState> login(String id, String password) throws RemoteException {
-        return null;
+        return new TwoTuple<>(null, LoginReturnState.INVALID_PASSWORD);
     }
 }

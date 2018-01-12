@@ -95,14 +95,6 @@ public class AddSalesDoc extends AddDoc implements Initializable, Upper {
 
 
     public void choosePromotion() throws IOException {
-        List<PromotionVO> list = promotionBLService.getBenefitsPlan(
-                customerProperty.getValue().getGrade(),
-                commodityList.stream()
-                        .map(BasicCommodityItemVO::getId)
-                        .collect(Collectors.toList()),
-                commodityListController.getTotal().doubleValue()
-        );
-
         PromotionHelper.setPromotion(upper, promotionProperty, promotionBLService.getBenefitsPlan(
                 customerProperty.getValue().getGrade(),
                 commodityList.stream()
@@ -168,12 +160,6 @@ public class AddSalesDoc extends AddDoc implements Initializable, Upper {
 
     //当重要参数发生变化时清除正在作用的promotion
     private void clearPromotion() {
-//        commodityList.removeAll(
-//                commodityList.stream()
-//                .filter(x-> x.isGift())
-//                .collect(Collectors.toList())
-//        );
-        //  promotionOff.setText(0+"");
         if (promotionText != null)
             promotionText.setText("");
         promotionVO = null;
@@ -211,16 +197,7 @@ public class AddSalesDoc extends AddDoc implements Initializable, Upper {
                 promotionBtn.setDisable(false);
         });
 
-        commodityList.addListener(new ListChangeListener<BasicCommodityItemVO>() {
-            @Override
-            public void onChanged(Change<? extends BasicCommodityItemVO> c) {
-                while (c.next()) {
-                    docItemList.addAll(c.getAddedSubList().stream()
-                            .map(x -> new CommodityItem(x, 1, hasMax))
-                            .collect(Collectors.toList()));
-                }
-            }
-        });
+        commodityList.addListener(CommodityHelper.getListChangeListener(docItemList,hasMax));
 
         customerProperty.addListener(c -> {
             if (customerProperty.getValue() != null) {
@@ -257,7 +234,6 @@ public class AddSalesDoc extends AddDoc implements Initializable, Upper {
                         Double.parseDouble(accountBeforeDis.textProperty().get())
                                 - Double.parseDouble(discount.textProperty().get())
                                 - Double.parseDouble(voucher.textProperty().get())
-                        // - Double.parseDouble(promotionOff.textProperty().get())
                 ));
             }
         };
@@ -268,15 +244,12 @@ public class AddSalesDoc extends AddDoc implements Initializable, Upper {
 
         discount.textProperty().addListener(changeListener);
         voucher.textProperty().addListener(changeListener);
-        //promotionOff.textProperty().addListener(changeListener);
-
         accountBeforeDis.textProperty().addListener(c -> {
             clearPromotion();
             account.setText("" + (
                     Double.parseDouble(accountBeforeDis.textProperty().get())
                             - Double.parseDouble(discount.textProperty().get())
                             - Double.parseDouble(voucher.textProperty().get())
-                    // - Double.parseDouble(promotionOff.textProperty().get())
             ));
         });
 

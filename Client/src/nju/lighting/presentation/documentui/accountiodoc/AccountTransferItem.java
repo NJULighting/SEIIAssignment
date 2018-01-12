@@ -63,4 +63,8 @@ public class AccountTransferItem {
     public AccountVO getAccountVO() {
         return accountVO;
     }
+
+    public void setAmount(double amount) {
+        this.amount.set(amount);
+    }
 }

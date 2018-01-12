@@ -168,7 +168,7 @@ public class CustomerSearchListController implements Initializable {
 
 
         type.setCellValueFactory(p ->
-                new SimpleStringProperty(CustomerHelper.typeToString(p.getValue().getType())));
+                new SimpleStringProperty(p.getValue().getType().toString()));
         type.setCellFactory(p -> new HighLightCell(keyWord));
 
         name.setCellValueFactory(p ->
@@ -176,7 +176,7 @@ public class CustomerSearchListController implements Initializable {
         name.setCellFactory(p -> new HighLightCell(keyWord));
 
         grade.setCellValueFactory(p ->
-                new SimpleStringProperty(CustomerHelper.gradeToString(p.getValue().getGrade())));
+                new SimpleStringProperty(p.getValue().getGrade().toString()));
         grade.setCellFactory(p -> new HighLightCell(keyWord));
 
         receive.setCellValueFactory(p ->

@@ -182,28 +182,11 @@ public class CreatePromotion implements Initializable {
         itemList = controller.getGiftObservableList();
         totalLabel.textProperty().bind(controller.getTotal().asString());
 
-        commodities.addListener(new ListChangeListener<BasicCommodityItemVO>() {
-            @Override
-            public void onChanged(Change<? extends BasicCommodityItemVO> c) {
-                while (c.next()) {
-                    itemList.addAll(c.getAddedSubList().stream()
-                            .map(x -> new CommodityItem(x, 1))
-                            .collect(Collectors.toList()));
-                }
-            }
-        });
+        commodities.addListener(CommodityHelper.getListChangeListener(itemList));
     }
 
     public void setUpper(PromotionUIManageUI upper) {
         this.upper = upper;
     }
 
-    public void setReadOnly(PromotionVO promotion) {
-        typeLoader = new FXMLLoader(getClass().getResource(typeToUrl.get(promotion.getType())));
-        try {
-            verticalBox.getChildren().add(typeLoader.load());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

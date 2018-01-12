@@ -1,7 +1,9 @@
 package nju.lighting.presentation.documentui.accountiodoc;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -72,13 +74,14 @@ public class AddAccountIODoc extends AddDoc implements Initializable, Upper {
     @FXML
     StackPane stackPane;
 
+    @FXML
+    JFXTextField totalText;
+
     private SimpleObjectProperty<AccountVO> accountProperty = new SimpleObjectProperty<>();
 
     private ObservableList<AccountTransferItem> itemList;
 
-    private DocBLService docBLService = DocBLServiceFactory.getDocBLService();
-
-    private ApprovalBLService approvalBLService = ApprovalBLServiceFactory.getApprovalBLService();
+    private SimpleDoubleProperty totalProperty=new SimpleDoubleProperty();
 
     private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
 
@@ -106,12 +109,13 @@ public class AddAccountIODoc extends AddDoc implements Initializable, Upper {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        totalText.textProperty().bind(totalProperty.asString());
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountTransferList.fxml"));
             tableContainer.getChildren().add(loader.load());
             AccountTransferList controller = loader.getController();
-            controller.setEditable();
+            controller.setEditable(totalProperty);
             itemList = controller.getObservableList();
         } catch (IOException e) {
             e.printStackTrace();
@@ -136,18 +140,15 @@ public class AddAccountIODoc extends AddDoc implements Initializable, Upper {
             }
         });
 
-        toggleBtn.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (newValue) {
-                    {
-                        toggleBtn.setText("收款单");
-                        type = DocType.ACCOUNT_IN;
-                    }
-                } else {
-                    toggleBtn.setText("付款单");
-                    type = DocType.ACCOUNT_OUT;
+        toggleBtn.selectedProperty().addListener(c->{
+            if (toggleBtn.isSelected()) {
+                {
+                    toggleBtn.setText("收款单");
+                    type = DocType.ACCOUNT_IN;
                 }
+            } else {
+                toggleBtn.setText("付款单");
+                type = DocType.ACCOUNT_OUT;
             }
         });
 

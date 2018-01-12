@@ -164,7 +164,7 @@ public class CommodityList implements Initializable {
         giftTableView.getColumns().removeAll(comments, deleteBtn);
         price.setEditable(false);
         id.setPrefWidth(100);
-        commodityName.setPrefWidth(230);
+        commodityName.setPrefWidth(200);
         modelNum.setPrefWidth(70);
         price.setPrefWidth(100);
         subtotal.setPrefWidth(100);
@@ -182,7 +182,7 @@ public class CommodityList implements Initializable {
         setEditable();
         setGift();
         giftTableView.getColumns().add(deleteBtn);
-        commodityName.setPrefWidth(commodityName.getPrefWidth() + 40);
+
         modelNum.setPrefWidth(modelNum.getPrefWidth() + 30);
         TableViewHelper.setHeight(giftTableView, 0.9);
 
@@ -202,9 +202,6 @@ public class CommodityList implements Initializable {
         return giftObservableList;
     }
 
-    public void setSilder(JFXSlider silder) {
-        TableViewHelper.setSliderMarch(silder, giftTableView);
-    }
 
     public SimpleDoubleProperty getTotal() {
         return total;

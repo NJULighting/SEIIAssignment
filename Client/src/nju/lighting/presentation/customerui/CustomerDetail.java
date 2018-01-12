@@ -47,7 +47,10 @@ public class CustomerDetail {
     HBox idBox, buttonBox;
     private CustomerBLService customerBLService = CustomerBLServiceFactory.getCustomerBLService();
     @FXML
-    private JFXComboBox<String> typeBox, gradeBox;
+    private JFXComboBox<CustomerType> typeBox;
+
+    @FXML
+    private JFXComboBox<CustomerGrade> gradeBox;
 
     @FXML
     JFXComboBox<UserVO> salesman;
@@ -84,29 +87,17 @@ public class CustomerDetail {
 
 
         //初始化JFXComboBox
-        typeBox.getItems().addAll(
-                "销售商",
-                "供应商"
-        );
+        typeBox.getItems().addAll(CustomerType.SALESPERSON,CustomerType.SUPPLIER);
 
-        gradeBox.getItems().addAll(
-                "一级",
-                "二级",
-                "三级",
-                "四级",
-                "五级(vip)"
-        );
+        gradeBox.getItems().addAll(CustomerGrade.values() );
 
         //按照item填写每个信息
         if (!add) {
             idText.setText(String.format("%06d", customerVO.getID()));
 
-            if (customerVO.getType() == CustomerType.SALESPERSON)
-                typeBox.setValue("销售商");
-            else
-                typeBox.setValue("供应商");
+            typeBox.setValue(customerVO.getType());
             nameText.setText(customerVO.getName());
-            gradeBox.setValue(CustomerHelper.gradeToString(customerVO.getGrade()));
+            gradeBox.setValue(customerVO.getGrade());
             receiveText.setText(String.valueOf(customerVO.getReceivable()));
             payText.setText(String.valueOf(customerVO.getPayable()));
             receiveLimitText.setText(String.valueOf(customerVO.getReceivableLimit()));
@@ -126,8 +117,8 @@ public class CustomerDetail {
             buttonBox.getChildren().remove(deleteButton);
             receiveLimitText.setText("" + DEFAULT_LIMIT);
             container.getChildren().remove(idBox);
-            typeBox.setValue(CustomerHelper.typeToString(CustomerType.SALESPERSON));
-            gradeBox.setValue(CustomerHelper.gradeToString(CustomerGrade.ONE));
+            typeBox.setValue(CustomerType.SALESPERSON);
+            gradeBox.setValue(CustomerGrade.ONE);
         }
 
 
@@ -172,12 +163,12 @@ public class CustomerDetail {
             CustomerChangeInfo.Builder builder = new CustomerChangeInfo.Builder(customerVO.getID());
             builder.changeAddress(addressText.getText())
                     .changeEmail(emailText.getText())
-                    .changeGrade(CustomerHelper.stringToGrade(gradeBox.getValue()))
+                    .changeGrade(gradeBox.getValue())
                     .changePostage(postageText.getText())
                     .changeName(nameText.getText())
                     .changeSalesMan(salesman.getValue().getID())
                     .changeTelephone(telephoneText.getText())
-                    .changeType(CustomerHelper.stringToType(typeBox.getValue()));
+                    .changeType(typeBox.getValue());
 
             ResultMessage result = customerBLService.changeCustomer(builder.build());
             DialogHelper.dialog("修改客户", result, MainUI.getStackPane());
@@ -201,8 +192,8 @@ public class CustomerDetail {
     //得到现在界面中的客户，用于修改或新建客户
     private CustomerVO getCurrentCustomer() {
         return new CustomerVO(
-                CustomerHelper.stringToType(typeBox.getValue()),
-                CustomerHelper.stringToGrade(gradeBox.getValue()),
+                typeBox.getValue(),
+                gradeBox.getValue(),
                 nameText.getText(),
                 telephoneText.getText(),
                 addressText.getText(),

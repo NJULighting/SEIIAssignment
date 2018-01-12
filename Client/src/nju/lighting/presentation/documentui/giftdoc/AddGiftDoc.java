@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import nju.lighting.blservice.documentblservice.DocBLService;
+import nju.lighting.presentation.commodityui.Commodity;
 import nju.lighting.presentation.documentui.AddDoc;
 import nju.lighting.presentation.documentui.CommodityItem;
 import nju.lighting.presentation.documentui.CommodityList;
@@ -101,13 +102,7 @@ public class AddGiftDoc extends AddDoc implements Initializable, Upper {
 
         itemList = listController.getGiftObservableList();
 
-        commodityList.addListener((ListChangeListener<? super BasicCommodityItemVO>) c -> {
-            while (c.next()) {
-                itemList.addAll(c.getAddedSubList().stream()
-                        .map(x -> new CommodityItem(x, 1, true))
-                        .collect(Collectors.toList()));
-            }
-        });
+        commodityList.addListener(CommodityHelper.getListChangeListener(itemList,true));
 
         chooseCommodityBtn.setOnAction(e -> CommodityHelper.chooseCommodity(upper, commodityList));
 

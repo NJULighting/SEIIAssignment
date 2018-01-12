@@ -82,7 +82,7 @@ public class EditingCell<T, S> extends TableCell<T, S> {
 
         switch (type) {
             case "int":
-                TextFieldHelper.addNameValidator(textField);
+                TextFieldHelper.addNumberValidator(textField);
                 break;
             case "double":
                 TextFieldHelper.addDoubleValidator(textField);

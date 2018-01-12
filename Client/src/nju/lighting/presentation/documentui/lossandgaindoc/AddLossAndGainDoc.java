@@ -149,6 +149,9 @@ public class AddLossAndGainDoc extends AddDoc implements Initializable, Upper {
                     if (c.wasAdded()) {
                         docItemList.addAll(
                                 c.getAddedSubList().stream()
+                                        .filter(x -> docItemList.stream()
+                                                .filter(y -> x.getId().equals(y.getCommodity().getId()))
+                                                .count() == 0)
                                         .map(x -> new LossAndGainItem(x, 1, LossAndGainItemType.LOSS))
                                         .collect(Collectors.toList())
                         );

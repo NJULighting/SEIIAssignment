@@ -78,7 +78,7 @@ public class AddStockDoc extends AddDoc implements Initializable, Upper {
     private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
     private DocBLService blService = DocBLServiceFactory.getDocBLService();
     private ObservableList<BasicCommodityItemVO> commodityList = FXCollections.observableArrayList();
-    boolean hasMax = false;
+    private boolean hasMax = false;
 
 
     public void back() {
@@ -142,13 +142,7 @@ public class AddStockDoc extends AddDoc implements Initializable, Upper {
 
         chooseCommodityBtn.setOnAction(e -> CommodityHelper.chooseCommodity(upper, commodityList));
 
-        commodityList.addListener((ListChangeListener<? super BasicCommodityItemVO>) c->{
-            while (c.next()) {
-                docItemList.addAll(c.getAddedSubList().stream()
-                        .map(x -> new CommodityItem(x, 1, hasMax))
-                        .collect(Collectors.toList()));
-            }
-        });
+        commodityList.addListener(CommodityHelper.getListChangeListener(docItemList,hasMax));
 
 
         chooseCustomerBtn.setOnAction(e -> CustomerHelper.setCustomer(upper, customerProperty, CustomerType.SUPPLIER));

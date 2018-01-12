@@ -1,5 +1,6 @@
 package nju.lighting.presentation.documentui.accountiodoc;
 
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import java.util.ResourceBundle;
  * Created on 2017/12/11.
  * Description
  * 收付款单的转账列表的 controller
+ *
  * @author 陈俊宇
  */
 public class AccountTransferList implements Initializable {
@@ -55,14 +57,20 @@ public class AccountTransferList implements Initializable {
     }
 
 
-    public void setEditable() {
+    public void setEditable(SimpleDoubleProperty totalProperty) {
         TableColumn delete = new TableColumn();
-        delete.setCellFactory(p-> new DeleteBtnCell());
+        delete.setCellFactory(p -> new DeleteBtnCell());
 
         accountItemTable.getColumns().add(delete);
 
-        amount.setCellFactory(p-> new  EditingCell<>("double"));
+        amount.setCellFactory(p -> new EditingCell<>("double"));
+        amount.setOnEditCommit(p -> {
+            p.getTableView().getItems().get(p.getTablePosition().getRow()).setAmount(p.getNewValue());
+            totalProperty.set(observableList.stream()
+                    .mapToDouble(x -> x.getAmount())
+                    .sum());
+        });
 
-        comments.setCellFactory(p-> new EditingCell<>("string"));
+        comments.setCellFactory(p -> new EditingCell<>("string"));
     }
 }

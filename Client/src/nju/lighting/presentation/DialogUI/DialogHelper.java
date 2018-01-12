@@ -100,6 +100,7 @@ public class DialogHelper {
         dialog.show();
 
         button.setOnAction(e -> {
+            if (eventHandler!=null)
             eventHandler.handle(e);
             dialog.close();
         });

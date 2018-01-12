@@ -6,6 +6,7 @@ import shared.Result;
 import shared.ResultMessage;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,21 +15,23 @@ import java.util.List;
  *
  * @author 陈俊宇
  */
+
+@Deprecated
 public class PromotionDataService_Stub implements PromotionDataService {
 
     @Override
     public List<PromotionPO> getPromotionList() throws RemoteException {
-        return null;
+        return new ArrayList<>();
     }
 
     @Override
     public Result<Integer> insert(PromotionPO po) throws RemoteException {
-        return null;
+        return po == null ? null : new Result<>(ResultMessage.FAILURE, 233);
     }
 
     @Override
     public ResultMessage update(PromotionPO po) throws RemoteException {
-        return null;
+        return po == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
     }
 
     @Override

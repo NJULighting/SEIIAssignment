@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 
 /**
  * Created on 2017/12/4.
- * Description
+ * Description 填写审批单据界面的控制类
  * @author 陈俊宇
  */
 public class CommentsController {

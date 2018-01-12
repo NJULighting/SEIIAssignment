@@ -15,7 +15,9 @@ import java.util.List;
  * Description:
  * @author Liao
  */
+@Deprecated
 public class AccountDataService_Stub extends UnicastRemoteObject implements AccountDataService {
+
     public AccountDataService_Stub() throws RemoteException {}
 
     @Override
@@ -57,16 +59,22 @@ public class AccountDataService_Stub extends UnicastRemoteObject implements Acco
 
     @Override
     public ResultMessage add(AccountLogPO logPO) {
-        return null;
+        return logPO == null ? ResultMessage.SUCCESS : ResultMessage.FAILURE;
     }
 
     @Override
     public List<AccountPO> fuzzySearchByName(String key) throws RemoteException {
-        return null;
+        AccountPO accountPO0 = new AccountPO("0000", key, 10000, null);
+        ArrayList<AccountPO> accountPOS = new ArrayList<>();
+        accountPOS.add(accountPO0);
+        return accountPOS;
     }
 
     @Override
     public List<AccountPO> fuzzySearchById(String key) throws RemoteException {
-        return null;
+        AccountPO accountPO0 = new AccountPO(key, "key", 10000, null);
+        ArrayList<AccountPO> accountPOS = new ArrayList<>();
+        accountPOS.add(accountPO0);
+        return accountPOS;
     }
 }

@@ -10,13 +10,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.repositoryui.RepositoryCounting">
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.repositoryui.RepositoryCounting">
    <children>
       <ScrollPane hbarPolicy="NEVER" prefHeight="680.0" prefWidth="1080.0">
           <content>
               <Pane minHeight="678.0" prefWidth="1078.0">
                   <children>
-                      <TableView fx:id="tableView" fixedCellSize="40" layoutX="50.0" layoutY="60.0" prefHeight="602.0" prefWidth="1002.0">
+                      <TableView fx:id="tableView" fixedCellSize="40" layoutX="50.0" layoutY="73.0" prefHeight="589.0" prefWidth="1002.0">
                           <columns>
                               <TableColumn fx:id="index" editable="false" prefWidth="50.0" resizable="true" sortable="false" />
                               <TableColumn fx:id="commodity" editable="false" prefWidth="334.5" resizable="true" text="商品" />

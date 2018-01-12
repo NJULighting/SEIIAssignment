@@ -8,11 +8,9 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.TableViewHelper;
@@ -81,8 +79,7 @@ public class CommodityList implements Initializable {
         subtotal.setCellValueFactory(cellData ->
                 cellData.getValue().subtotalProperty().asObject());
         price.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
-//        deleteBtn.setCellValueFactory(cellData ->
-//                cellData.getValue().giftProperty());
+
         modelNum.setCellValueFactory(cellData ->
                 cellData.getValue().modelNumProperty());
         comments.setCellValueFactory(cellData ->
@@ -95,7 +92,7 @@ public class CommodityList implements Initializable {
 
 
         TableViewHelper.commonSet(giftTableView);
-        // TableViewHelper.setHeight(giftTableView, 1.2);
+
 
         calculateTotal();
 
@@ -105,7 +102,7 @@ public class CommodityList implements Initializable {
     public void setEditable() {
         Callback<TableColumn<CommodityItem, Boolean>,
                 TableCell<CommodityItem, Boolean>> cellFactory
-                = (TableColumn<CommodityItem, Boolean> p) -> new BtnCell();
+                = (TableColumn<CommodityItem, Boolean> p) -> new DeleteBtnCell();
 
         deleteBtn.setCellFactory(cellFactory);
 

@@ -2,15 +2,19 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.repositoryui.RepositoryView">
+
+<AnchorPane prefHeight="680.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.repositoryui.RepositoryView">
     <children>
         <Pagination fx:id="pagination" layoutX="15.0" layoutY="614.0" prefHeight="52.0" prefWidth="1059.0" />
-        <TableView fx:id="tableView" fixedCellSize="30.0" layoutX="65.0" layoutY="126.0" minHeight="0.0" prefWidth="950.0">
+        <TableView fx:id="tableView" fixedCellSize="30.0" layoutX="65.0" layoutY="126.0" minHeight="0.0" prefHeight="482.0" prefWidth="950.0">
             <columns>
                 <TableColumn fx:id="commodity" prefWidth="250.0" text="商品" />
                 <TableColumn fx:id="type" prefWidth="150.0" text="库存变化类型" />

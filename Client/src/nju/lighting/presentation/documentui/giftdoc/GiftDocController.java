@@ -63,7 +63,7 @@ public class GiftDocController implements Initializable {
         account.setText(String.valueOf(giftDocVO.getTotal()));
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("nju/lighting/presentation/documentui/CommodityList.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("nju/lighting/presentation/documentui/CommodityList.fxml"));
             tablePane.getChildren().add(loader.load());
             listController = loader.getController();
             listController.setGift();
@@ -83,11 +83,6 @@ public class GiftDocController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        /*
-        //滑块不离开界面
-        ScrollPaneHelper.sliderFload(slider,scrollpaneMain,anchorPane,prePosition,557);
-        */
-
 
     }
 }

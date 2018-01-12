@@ -17,8 +17,7 @@ import java.util.List;
  *
  * @author iznauy
  */
-public class
-PromotionData extends UnicastRemoteObject implements PromotionDataService {
+public class PromotionData extends UnicastRemoteObject implements PromotionDataService {
 
     private CommonOperation<PromotionPO> commonOperation;
 

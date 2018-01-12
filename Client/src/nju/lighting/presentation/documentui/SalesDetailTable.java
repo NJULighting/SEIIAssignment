@@ -19,13 +19,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import jxl.Workbook;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
-import jxl.write.WriteException;
-import jxl.write.biff.RowsExceededException;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
@@ -39,8 +32,6 @@ import nju.lighting.vo.viewtables.SalesDetailItemVO;
 import shared.DocumentFilter;
 import shared.ResultMessage;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -48,6 +39,7 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/9.
  * Description
+ *
  * @author 陈俊宇
  */
 public class SalesDetailTable implements Initializable, Upper {
@@ -66,7 +58,9 @@ public class SalesDetailTable implements Initializable, Upper {
     @FXML
     Button setCommodityBtn, setCustomerBtn;
     @FXML
-    JFXComboBox creatorBox;
+    JFXComboBox<UserVO> creatorBox;
+    @FXML
+    JFXComboBox<String> repositoryBox;
     @FXML
     Pane filterBox, pane;
     @FXML
@@ -85,7 +79,7 @@ public class SalesDetailTable implements Initializable, Upper {
     @FXML
     TableView<SalesDetailItemVO> tableView;
 
-    private HamburgerBasicCloseTransition burgerTask =new HamburgerBasicCloseTransition();
+    private HamburgerBasicCloseTransition burgerTask = new HamburgerBasicCloseTransition();
     private JFXNodesList nodesList = new JFXNodesList();
     private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
     private SimpleObjectProperty<UserVO> creatorProperty = new SimpleObjectProperty<>();
@@ -108,6 +102,13 @@ public class SalesDetailTable implements Initializable, Upper {
         sub.setText(title);
     }
 
+    @FXML
+    private void clear(){
+        customerProperty.set(null);
+        creatorBox.setValue(null);
+        commodityProperty.set(null);
+    }
+
 
     public JFXNodesList getNodesList() {
         return nodesList;
@@ -118,20 +119,22 @@ public class SalesDetailTable implements Initializable, Upper {
         return burgerTask;
     }
 
-    void refresh() {
+    private void refresh() {
 
         observableList.setAll(blService.findSaleRecords(getBuilder().build()));
     }
 
+
+
     private DocumentFilter.Builder getBuilder() {
-        Date end=DateHelper.localDateToDate(endDate.getValue());
-        end.setDate(end.getDate()+1);
+        Date end = DateHelper.localDateToDate(endDate.getValue());
+        end.setDate(end.getDate() + 1);
 
         DocumentFilter.Builder builder = new DocumentFilter.Builder();
         builder.startDate(DateHelper.localDateToDate(startDate.getValue()))
                 .endDate(end)
                 .commodity(commodityText.getText());
-        if (commodityText.getText().length()==0)
+        if (commodityText.getText().length() == 0)
             builder.commodity(null);
         if (customerProperty.getValue() != null)
             builder.customer(customerProperty.getValue().getID() + "");
@@ -145,8 +148,8 @@ public class SalesDetailTable implements Initializable, Upper {
 
     public void initialize(URL location, ResourceBundle resources) {
 
-        TextFieldHelper.addDeleteMenuItem(customerText,customerProperty);
-        TextFieldHelper.addDeleteMenuItem(commodityText,commodityProperty);
+        TextFieldHelper.addDeleteMenuItem(customerText, customerProperty);
+        TextFieldHelper.addDeleteMenuItem(commodityText, commodityProperty);
 
         commodity.setCellValueFactory(c ->
                 new SimpleStringProperty(c.getValue().getName()));
@@ -177,6 +180,8 @@ public class SalesDetailTable implements Initializable, Upper {
         customerProperty.addListener(c -> {
             if (customerProperty.getValue() != null)
                 customerText.setText(customerProperty.getValue().getName());
+            else
+                customerText.setText(null);
         });
         commodityProperty.addListener(c -> commodityText.setText(commodityProperty.getValue().getName()));
 
@@ -185,25 +190,30 @@ public class SalesDetailTable implements Initializable, Upper {
                 customerProperty.set(null);
         });
 
+        creatorBox.getItems().add(new UserVO("无", null, null, false));
         creatorBox.getItems().addAll(UserBLServiceFactory.getUserBLService().getUserList());
+        creatorBox.setValue(creatorBox.getItems().get(0));
 
-        DocHelper.addFilter(burgerTask,hamburger,nodesList,filterBox,pane);
+
+        repositoryBox.setValue("默认仓库");
+
+
+        DocHelper.addFilter(burgerTask, hamburger, nodesList, filterBox, pane);
 
         okBtn.setOnAction(e -> {
             refresh();
-            DocHelper.search(nodesList,burgerTask);
+            DocHelper.search(nodesList, burgerTask);
             back();
         });
 
     }
 
 
-    public void exportExcel(){
-        if(ExportExcelHelper.salesDetailTable(observableList)==ResultMessage.SUCCESS){
-            DialogHelper.dialog("导出表格", ResultMessage.SUCCESS,stackPane);
-        }
-        else{
-            DialogHelper.dialog("导出表格", ResultMessage.FAILURE,stackPane);
+    public void exportExcel() {
+        if (ExportExcelHelper.salesDetailTable(observableList) == ResultMessage.SUCCESS) {
+            DialogHelper.dialog("导出表格", ResultMessage.SUCCESS, stackPane);
+        } else {
+            DialogHelper.dialog("导出表格", ResultMessage.FAILURE, stackPane);
         }
     }
 }

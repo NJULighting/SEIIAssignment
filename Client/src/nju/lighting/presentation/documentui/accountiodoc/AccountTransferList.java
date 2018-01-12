@@ -2,14 +2,11 @@ package nju.lighting.presentation.documentui.accountiodoc;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.util.Callback;
-import nju.lighting.presentation.documentui.BtnCell;
+import nju.lighting.presentation.documentui.DeleteBtnCell;
 import nju.lighting.presentation.documentui.EditingCell;
 import nju.lighting.presentation.utils.TableViewHelper;
 
@@ -60,7 +57,7 @@ public class AccountTransferList implements Initializable {
 
     public void setEditable() {
         TableColumn delete = new TableColumn();
-        delete.setCellFactory(p-> new BtnCell());
+        delete.setCellFactory(p-> new DeleteBtnCell());
 
         accountItemTable.getColumns().add(delete);
 

@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 public class StockDoc implements Initializable {
 
     @FXML
-    Label customer, repository, comments, total, creator, time;
+    Label customer, repository, comments, total, creator, time,id;
 
     @FXML
     HBox tableContainer;
@@ -45,6 +45,8 @@ public class StockDoc implements Initializable {
         total.setText(stockDocVO.getTotalAmount()+"");
         time.setText(DateHelper.approximateTime(stockDocVO.getTime()));
         creator.setText(UserHelper.getUserString(stockDocVO.getCreatorId()));
+        id.setText(stockDocVO.getRepository());
+        repository.setText(stockDocVO.getRepository());
 
         FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("nju/lighting/presentation/documentui/CommodityList.fxml"));
         try {

@@ -2,6 +2,7 @@ package nju.lighting.bl.customerbl;
 
 import shared.ResultMessage;
 
+@Deprecated
 /**
  * Create on 11/21
  * Description:

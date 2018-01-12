@@ -16,16 +16,14 @@ public class SystemManagerController extends MainUIController {
     @FXML
     private Button userManageBtn;
 
-    @FXML
-    private Button logBtn;
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttons = new Button[]{userManageBtn, logBtn,
-        };
-        urls = new String[]{"nju/lighting/presentation/userui/UserMain.fxml", "nju/lighting/presentation/logui/Log.fxml"};
-        MAIN_BUTTON_SIZE = 2;
+        buttons = new Button[]{userManageBtn};
+        urls = new String[]{"nju/lighting/presentation/userui/UserMain.fxml"};
+        MAIN_BUTTON_SIZE = urls.length;
         super.initialize(location, resources);
     }
 }

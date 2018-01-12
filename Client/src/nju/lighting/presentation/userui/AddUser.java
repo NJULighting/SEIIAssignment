@@ -70,11 +70,14 @@ public class AddUser implements Initializable {
         identityBox.setValue(user.getIdentity());
         authorityBox.setSelected(user.isAuthority());
 
+
         idText.setEditable(false);
 
         if (user.getIdentity() == Identity.SYSTEM_ADMIN) {
-            identityBox.setDisable(false);
+            identityBox.setDisable(true);
             userNameText.setEditable(false);
+            idText.getValidators().clear();
+            userNameText.getValidators().clear();
         }
 
         return new ValidateEventHandle() {

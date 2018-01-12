@@ -40,5 +40,14 @@
             </columns>
         </TableView>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="70.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="1000.0" />
+      <Button fx:id="refreshBtn" layoutX="232.0" layoutY="8.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0">
+               <image>
+                  <Image url="@../../../../images/刷新.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
 </Pane>

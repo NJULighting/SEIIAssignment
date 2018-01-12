@@ -30,6 +30,7 @@ import shared.ResultMessage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -112,11 +113,11 @@ public class CustomerSearchListController implements Initializable {
         }
     }
 
+    @FXML
     void refresh() {
         List<CustomerVO> customerVOList = customerBLService.findCustomerByType(customerType);
         if (customerVOList!=null&&customerVOList.size() != 0)
-            observableList.setAll(customerVOList.stream()
-                    .collect(Collectors.toList()));
+            observableList.setAll(new ArrayList<>(customerVOList));
         else
             observableList.clear();
     }

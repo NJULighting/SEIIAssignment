@@ -22,21 +22,14 @@ import java.io.IOException;
  */
 public class AccountHelper {
 
-
-    public static void addAccount(ObservableList<AccountVO> accountList) {
-        SimpleObjectProperty<AccountVO> account = new SimpleObjectProperty<>();
-        loadAccount(account);
-        account.addListener(new ChangeListener<AccountVO>() {
-            @Override
-            public void changed(ObservableValue<? extends AccountVO> observable, AccountVO oldValue, AccountVO newValue) {
-                accountList.add(account.getValue());
-            }
-        });
-    }
-
+    /**
+     * 选择客户按钮注册的方法，加载选择用户界面以及将给界面的确认按钮注册方法
+     * @param account 调用者的property属性，可以通过对他的setValue 来触发调用者的一系列操作
+     */
     public static void addAccount(SimpleObjectProperty<AccountVO> account) {
         loadAccount(account);
     }
+
 
     private static void loadAccount(SimpleObjectProperty<AccountVO> account) {
         FXMLLoader loader = new FXMLLoader(AccountHelper.class.getClassLoader().getResource("nju/lighting/presentation/accountui/AccountList.fxml"));

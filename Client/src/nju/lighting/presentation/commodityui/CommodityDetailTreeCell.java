@@ -6,13 +6,13 @@ import nju.lighting.presentation.utils.TableViewHelper;
 
 /**
  * Created on 2017/12/25.
- * Description
+ * Description 商品管理界面 TreeTableView 右边（不是树节点）的普通cell 的 cell实现
  * @author 陈俊宇
  */
 public class CommodityDetailTreeCell extends TreeTableCell {
-    SimpleStringProperty keyWord;
+    private SimpleStringProperty keyWord;
 
-    public CommodityDetailTreeCell(SimpleStringProperty keyWord) {
+    CommodityDetailTreeCell(SimpleStringProperty keyWord) {
         this.keyWord = keyWord;
     }
 

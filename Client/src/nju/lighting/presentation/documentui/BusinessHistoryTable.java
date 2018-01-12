@@ -10,7 +10,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -36,7 +39,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2018/1/5.
- * Description
+ * Description 查看经营历程表的控制类
  *
  * @author 陈俊宇
  */
@@ -79,8 +82,6 @@ public class BusinessHistoryTable implements Initializable, Upper {
     @FXML
     StackPane stackPane;
 
-    @FXML
-    Label sub;
 
     @FXML
     Button setCustomerBtn;
@@ -95,8 +96,6 @@ public class BusinessHistoryTable implements Initializable, Upper {
 
     private DocBLService blService = DocBLServiceFactory.getDocBLService();
 
-    private DocumentFilter.Builder builder;
-
     private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();
 
     private HamburgerBasicCloseTransition burgerTask = new HamburgerBasicCloseTransition();
@@ -104,8 +103,13 @@ public class BusinessHistoryTable implements Initializable, Upper {
     private JFXNodesList nodesList = new JFXNodesList();
 
 
+    /**
+     * 根据筛选框中的条件生成builder
+     *
+     * @return 生成的builder
+     */
     private DocumentFilter.Builder getBuilder() {
-        builder = new DocumentFilter.Builder();
+        DocumentFilter.Builder builder = new DocumentFilter.Builder();
         Date end = DateHelper.localDateToDate(endDate.getValue());
         end.setDate(end.getDate() + 1);
         builder.startDate(DateHelper.localDateToDate(startDate.getValue()))
@@ -126,6 +130,9 @@ public class BusinessHistoryTable implements Initializable, Upper {
     private ObservableList<Node> list = FXCollections.observableArrayList();
 
 
+    /**
+     * 清除按钮绑定的方法
+     */
     @FXML
     private void clear() {
         customerProperty.set(null);
@@ -165,9 +172,9 @@ public class BusinessHistoryTable implements Initializable, Upper {
         setCustomerBtn.setOnAction(e -> CustomerHelper.setCustomer(this, customerProperty));
 
         customerProperty.addListener(c -> {
-            if (customerProperty.getValue()!=null){
+            if (customerProperty.getValue() != null) {
                 customerText.setText(customerProperty.getValue().getName());
-            }else
+            } else
                 customerText.setText("");
         });
 

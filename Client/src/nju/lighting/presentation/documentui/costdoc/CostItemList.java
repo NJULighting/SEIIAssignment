@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import nju.lighting.presentation.documentui.DeleteBtnCell;
-import nju.lighting.presentation.utils.CostDocHelper;
 import nju.lighting.vo.doc.costdoc.CostDocItemVO;
 
 import java.net.URL;
@@ -41,7 +40,7 @@ public class CostItemList  implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         tableView.setItems(observableList);
         item.setCellValueFactory(c->
-                new SimpleStringProperty(CostDocHelper.typeToString(c.getValue().getType())));
+                new SimpleStringProperty(c.getValue().getType().toString()));
 
         comments.setCellValueFactory(c->
                 new SimpleStringProperty(c.getValue().getComment()));

@@ -15,7 +15,7 @@ import nju.lighting.presentation.utils.ImageViewHelper;
  */
 
 public class DeleteBtnCell<T, S> extends TableCell<T, S> {
-    final Button cellButton = new Button("", ImageViewHelper.delete());
+    private final Button cellButton = new Button("", ImageViewHelper.delete());
 
 
     public DeleteBtnCell() {

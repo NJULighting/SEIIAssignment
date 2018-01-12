@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/6.
- * Description
+ * Description 标题栏的控制类
  * @author 高梦婷
  */
 public class TitleController extends CommonFather {
@@ -44,7 +44,6 @@ public class TitleController extends CommonFather {
     public void initialize(URL location, ResourceBundle resources) {
         buttons = new Button[]{close, mini, exit};
         stage = Client.primaryStage;
-        System.out.println(stage + "");
         super.initialize(location, resources);
         userName.setText(Client.getUserVO().getUsername());
         userID.setText(Client.getUserVO().getID());

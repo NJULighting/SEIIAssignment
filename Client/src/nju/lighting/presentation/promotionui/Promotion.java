@@ -14,13 +14,13 @@ import java.util.HashMap;
 
 /**
  * Created on 2017/12/5.
- * Description
+ * Description 查看促销策略的控制类，起根据类型分配url的作用
  * @author 陈俊宇
  */
 public class Promotion {
 
     static PromotionVO promotion;
-    static HashMap<PromotionType, String> hashMap = new HashMap<>();
+    private static HashMap<PromotionType, String> hashMap = new HashMap<>();
 
     static {
         hashMap.put(PromotionType.PriceOriented, "priceOriented.fxml");
@@ -34,11 +34,10 @@ public class Promotion {
     VBox container;
     @FXML
     ScrollPane scrollpane;
-    String validTimeStr;
 
     public void init(PromotionVO promotion) {
-        this.promotion = promotion;
-        validTimeStr = DateHelper.approximateTime(promotion.getStartDate()) + " - "
+        Promotion.promotion = promotion;
+        String validTimeStr = DateHelper.approximateTime(promotion.getStartDate()) + " - "
                 + DateHelper.approximateTime(promotion.getEndDate());
 
         title.setText(promotion.getName());

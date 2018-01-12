@@ -17,7 +17,6 @@ import javafx.util.Callback;
 import nju.lighting.presentation.documentui.DeleteBtnCell;
 import nju.lighting.presentation.documentui.EditingCell;
 import nju.lighting.presentation.utils.ImageViewHelper;
-import nju.lighting.presentation.utils.RepositoryHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import shared.LossAndGainItemType;
 
@@ -78,7 +77,7 @@ public class LossAndGainList implements Initializable {
                             setText(null);
                             setGraphic(null);
                         } else {
-                            setText(RepositoryHelper.lossAndGainTypeToString(getItem()));
+                            setText(getItem().toString());
                             setGraphic(null);
                         }
                     }

@@ -21,7 +21,6 @@ import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.factory.CustomerBLServiceFactory;
 import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
-import nju.lighting.presentation.utils.CustomerHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.presentation.utils.UserHelper;
 import nju.lighting.vo.CustomerVO;
@@ -33,8 +32,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
+/**
+ * Created on 2017/12/22.
+ * Description 客户列表的控制类
+ *
+ * @author 高梦婷
+ */
 public class CustomerSearchListController implements Initializable {
 
     Label title;
@@ -90,11 +94,6 @@ public class CustomerSearchListController implements Initializable {
         refresh();
     }
 
-    //关键字字数不超过8个字
-    public void keyTyped(Event e) {
-        String s = search.getText();
-        if (s.length() >= 8) e.consume();
-    }
 
     public void search() {
         String keywords = search.getText();
@@ -116,7 +115,7 @@ public class CustomerSearchListController implements Initializable {
     @FXML
     void refresh() {
         List<CustomerVO> customerVOList = customerBLService.findCustomerByType(customerType);
-        if (customerVOList!=null&&customerVOList.size() != 0)
+        if (customerVOList != null && customerVOList.size() != 0)
             observableList.setAll(new ArrayList<>(customerVOList));
         else
             observableList.clear();
@@ -124,11 +123,11 @@ public class CustomerSearchListController implements Initializable {
 
     void delete(CustomerVO customerVO) {
         //如果存在应收应付，则不可删除
-        if(customerVO.getPayable()!=0||customerVO.getReceivable()!=0){
+        if (customerVO.getPayable() != 0 || customerVO.getReceivable() != 0) {
             Label cannot = new Label("客户尚有应收应付，不可删除");
-            DialogHelper.addDialog(cannot,MainUI.getStackPane());
+            DialogHelper.addDialog(cannot, MainUI.getStackPane());
 
-        }else {
+        } else {
             DialogHelper.addDialog("你确定要删除用户" + customerVO.getName() + "?",
                     MainUI.getStackPane(),
                     new EventHandler() {
@@ -255,7 +254,13 @@ public class CustomerSearchListController implements Initializable {
 
     }
 
-    void customerDetail(boolean add, CustomerVO customerVO) {
+    /**
+     * 显示单据详情的方法， 加载CustomerDetail.fxml
+     *
+     * @param add        是否为新建客户
+     * @param customerVO 若为修改用户，需要修改的用户的
+     */
+    private void customerDetail(boolean add, CustomerVO customerVO) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerDetail.fxml"));
         father.getChildren().clear();
         try {
@@ -278,6 +283,12 @@ public class CustomerSearchListController implements Initializable {
 
     }
 
+    /**
+     * 选择客户时也覆用的这个界面，需要通过此方法去除掉一些可以编辑的元素（如查看 删除的 button）
+     *
+     * @param upper    选择客户的上一层界面
+     * @param customer 上一层界面的Property对象， 通过给这个对象setValue 可以触发上层界面做一些事情
+     */
     public void setReadOnly(Upper upper, SimpleObjectProperty<CustomerVO> customer) {
         tableView.getColumns().remove(openBtn);
         addCustomerBtn.setText("确定");
@@ -295,6 +306,13 @@ public class CustomerSearchListController implements Initializable {
         refresh();
     }
 
+    /**
+     * 带有 type 参数的设置制只读方法，因为 制定销售单等用例只可以看到一种类型的用户
+     *
+     * @param upper    见上一个方法
+     * @param customer 见上一个方法
+     * @param type     目标用户类型
+     */
     public void setReadOnly(Upper upper, SimpleObjectProperty<CustomerVO> customer, CustomerType type) {
         setReadOnly(upper, customer);
         customerType = type;

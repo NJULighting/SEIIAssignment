@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/11/27.
- * Description  销售进货人员的主界面
+ * Description  销售进货人员的功能栏的控制类
  * @author 高梦婷
  */
 public class SalesManagerController extends MainUIController {

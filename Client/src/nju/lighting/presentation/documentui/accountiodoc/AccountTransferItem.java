@@ -9,7 +9,7 @@ import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 
 /**
  * Created on 2017/12/11.
- * Description
+ * Description 收付款单的小项的值
  * @author 陈俊宇
  */
 public class AccountTransferItem {
@@ -18,7 +18,7 @@ public class AccountTransferItem {
     private SimpleDoubleProperty amount = new SimpleDoubleProperty();
     private AccountVO accountVO;
 
-    public AccountTransferItem(AccountTransferItemVO vo) {
+    AccountTransferItem(AccountTransferItemVO vo) {
         accountVO=AccountBLServiceFactory.getAccountBLService().getAccount(vo.getAccountID());
         accountName.set(accountVO.getName());
         comments.set(vo.getComments());
@@ -26,13 +26,13 @@ public class AccountTransferItem {
 
     }
 
-    public AccountTransferItem(AccountVO account) {
+    AccountTransferItem(AccountVO account) {
         accountVO=account;
         accountName.set(account.getName());
     }
 
 
-    public AccountTransferItemVO toTransferItem(){
+    AccountTransferItemVO toTransferItem(){
         return new AccountTransferItemVO(amount.getValue(),comments.getValue(),accountVO.getId());
     }
 
@@ -40,7 +40,7 @@ public class AccountTransferItem {
         return accountName.get();
     }
 
-    public SimpleStringProperty accountNameProperty() {
+    SimpleStringProperty accountNameProperty() {
         return accountName;
     }
 
@@ -48,7 +48,7 @@ public class AccountTransferItem {
         return comments.get();
     }
 
-    public SimpleStringProperty commentsProperty() {
+    SimpleStringProperty commentsProperty() {
         return comments;
     }
 
@@ -56,7 +56,7 @@ public class AccountTransferItem {
         return amount.get();
     }
 
-    public SimpleDoubleProperty amountProperty() {
+    SimpleDoubleProperty amountProperty() {
         return amount;
     }
 

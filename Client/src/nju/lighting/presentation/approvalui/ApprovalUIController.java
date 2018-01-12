@@ -46,7 +46,6 @@ import java.util.ResourceBundle;
  */
 public class ApprovalUIController implements Initializable,Upper {
     private ApprovalBLService approvalBLService = ApprovalBLServiceFactory.getApprovalBLService();
-    private List<DocVO> docs;
     private ObservableList<DocVO> selectedDocList;
     private ObservableList<Node> list= FXCollections.observableArrayList();
     private Upper upper=this;
@@ -166,7 +165,7 @@ public class ApprovalUIController implements Initializable,Upper {
             docList.getItems().setAll(approvalBLService.getDocumentList());
         });
 
-        docs = approvalBLService.getDocumentList();
+        List<DocVO> docs = approvalBLService.getDocumentList();
         for (int i = 0; i < docs.size(); i++) {
 
             docList.getItems().add(docs.get(i));

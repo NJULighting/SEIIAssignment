@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/28.
- * Description
+ * Description 创建针对用户的促销策略的控制类
  * @author 陈俊宇
  */
 public class CreateCustomerOriented implements Initializable {
@@ -47,10 +47,10 @@ public class CreateCustomerOriented implements Initializable {
         return TextFieldHelper.getDouble(voucherText);
     }
 
-    public CustomerGrade getLevel(){return  gradePicker.getValue();}
+    CustomerGrade getLevel(){return  gradePicker.getValue();}
 
 
-    public Date getVoucherEndDate() {
+    Date getVoucherEndDate() {
         if (voucherEndDatePicker.getValue() != null && getVoucher() > 0)
             return DateHelper.localDateToDate(voucherEndDatePicker.getValue());
         else

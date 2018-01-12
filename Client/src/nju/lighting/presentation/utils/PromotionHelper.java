@@ -28,18 +28,7 @@ import java.util.List;
  */
 public class PromotionHelper {
 
-    static HashMap<PromotionType, String> typeStringHashMap = new HashMap<>();
-
-    static {
-        typeStringHashMap.put(PromotionType.CustomerOriented, "针对客户");
-        typeStringHashMap.put(PromotionType.Combo, "组合商品降价");
-        typeStringHashMap.put(PromotionType.PriceOriented, "针对总价");
-    }
-
-    public static String typeToString(PromotionType type) {
-        return typeStringHashMap.get(type);
-    }
-
+    //选择促销策略，与选择商品/客户大致相同
     public static void setPromotion(Upper upper, SimpleObjectProperty<PromotionVO> promotionProperty, List<PromotionVO> list) {
         list.stream().forEach(x->
         System.out.println("PromotionLevel"+x.getLevel()));

@@ -38,7 +38,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/9.
- * Description
+ * Description 销售明细表的控制类
  *
  * @author 陈俊宇
  */
@@ -67,7 +67,7 @@ public class SalesDetailTable implements Initializable, Upper {
     JFXDatePicker startDate, endDate;
     @FXML
     JFXButton okBtn, resetBtn;
-    ObservableList<SalesDetailItemVO> observableList = FXCollections.observableArrayList();
+
     @FXML
     TableColumn<SalesDetailItemVO, String> commodity, modelNumber, time;
     @FXML
@@ -79,6 +79,7 @@ public class SalesDetailTable implements Initializable, Upper {
     @FXML
     TableView<SalesDetailItemVO> tableView;
 
+    private ObservableList<SalesDetailItemVO> observableList = FXCollections.observableArrayList();
     private HamburgerBasicCloseTransition burgerTask = new HamburgerBasicCloseTransition();
     private JFXNodesList nodesList = new JFXNodesList();
     private SimpleObjectProperty<CustomerVO> customerProperty = new SimpleObjectProperty<>();

@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 /**
  * Created on 2017/12/2.
- * Description
+ * Description 起到根据 type分配 url 的作用， 分配的是查看单据的url
  *
  * @author 陈俊宇
  */

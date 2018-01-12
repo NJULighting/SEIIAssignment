@@ -35,7 +35,7 @@ import java.util.ResourceBundle;
  */
 public class
 AccountList implements Initializable {
-    AccountBLService blService = AccountBLServiceFactory.getAccountBLService();
+    private AccountBLService blService = AccountBLServiceFactory.getAccountBLService();
 
     @FXML
     TableView<AccountVO> accountTableView;
@@ -51,11 +51,11 @@ AccountList implements Initializable {
     @FXML
     TextField searchText;
 
-    ObservableList<AccountVO> accountVOObservableList = FXCollections.observableArrayList();
-    ObservableList<AccountLogVO> logVOObservableList;
+    private ObservableList<AccountVO> accountVOObservableList = FXCollections.observableArrayList();
+    private ObservableList<AccountLogVO> logVOObservableList;
 
     @FXML
-    void search() {
+    private void search() {
         String keyWord = searchText.getText();
 
         if (keyWord != null && keyWord.length() != 0) {
@@ -164,7 +164,7 @@ AccountList implements Initializable {
     }
 
 
-    public ObservableList<AccountVO> getAccountVOObservableList() {
+    ObservableList<AccountVO> getAccountVOObservableList() {
         return accountVOObservableList;
     }
 

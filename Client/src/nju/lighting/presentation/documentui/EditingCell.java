@@ -20,8 +20,7 @@ import nju.lighting.presentation.utils.TextFieldHelper;
  */
 public class EditingCell<T, S> extends TableCell<T, S> {
 
-    String type;
-    ValidatorBase validator;
+    private String type;
     private JFXTextField textField;
 
     public EditingCell(String type) {

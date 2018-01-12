@@ -10,6 +10,7 @@ import nju.lighting.vo.commodity.Nameable;
  * Created on 2017/12/25.
  * Description
  * 商品管理界面树表视图所需要的value
+ *
  * @author 陈俊宇
  */
 public class CommodityCategoryItem {
@@ -58,7 +59,7 @@ public class CommodityCategoryItem {
         this.name.set(name);
     }
 
-    public SimpleStringProperty nameProperty() {
+    SimpleStringProperty nameProperty() {
         return name;
     }
 
@@ -70,7 +71,7 @@ public class CommodityCategoryItem {
         this.id.set(id);
     }
 
-    public SimpleStringProperty idProperty() {
+    SimpleStringProperty idProperty() {
         return id;
     }
 
@@ -82,7 +83,7 @@ public class CommodityCategoryItem {
         this.modelNumber.set(modelNumber);
     }
 
-    public SimpleStringProperty modelNumberProperty() {
+    SimpleStringProperty modelNumberProperty() {
         return modelNumber;
     }
 
@@ -94,7 +95,7 @@ public class CommodityCategoryItem {
         this.repCount.set(repCount);
     }
 
-    public SimpleIntegerProperty repCountProperty() {
+    SimpleIntegerProperty repCountProperty() {
         return repCount;
     }
 
@@ -106,7 +107,7 @@ public class CommodityCategoryItem {
         this.inPrice.set(inPrice);
     }
 
-    public SimpleDoubleProperty inPriceProperty() {
+    SimpleDoubleProperty inPriceProperty() {
         return inPrice;
     }
 
@@ -118,7 +119,7 @@ public class CommodityCategoryItem {
         this.sellPrice.set(sellPrice);
     }
 
-    public SimpleDoubleProperty sellPriceProperty() {
+    SimpleDoubleProperty sellPriceProperty() {
         return sellPrice;
     }
 
@@ -130,7 +131,7 @@ public class CommodityCategoryItem {
         this.recentInPrice.set(recentInPrice);
     }
 
-    public SimpleDoubleProperty recentInPriceProperty() {
+    SimpleDoubleProperty recentInPriceProperty() {
         return recentInPrice;
     }
 
@@ -142,7 +143,7 @@ public class CommodityCategoryItem {
         this.recentSellPrice.set(recentSellPrice);
     }
 
-    public SimpleDoubleProperty recentSellPriceProperty() {
+    SimpleDoubleProperty recentSellPriceProperty() {
         return recentSellPrice;
     }
 

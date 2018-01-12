@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/10.
- * Description
+ * Description 商品列表的容器类
  *
  * @author 陈俊宇
  */
@@ -53,7 +53,7 @@ public class CommodityList implements Initializable {
 
     public void calculateTotal() {
         total.set(giftObservableList.stream()
-                .mapToDouble(x -> ((x).subtotal.getValue()))
+                .mapToDouble(x -> ((x).subtotalProperty().getValue()))
                 .sum());
     }
 

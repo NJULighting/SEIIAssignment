@@ -11,20 +11,20 @@ import nju.lighting.vo.doc.stockdoc.StockDocItemVO;
 
 /**
  * Created on 2017/12/10.
- * Description
+ * Description 和商品有关的tableView 的值
  *
  * @author 陈俊宇
  */
 public class CommodityItem {
-    SimpleDoubleProperty price = new SimpleDoubleProperty();
-    SimpleIntegerProperty count = new SimpleIntegerProperty();
-    SimpleStringProperty name = new SimpleStringProperty();
-    SimpleDoubleProperty subtotal = new SimpleDoubleProperty();
-    SimpleBooleanProperty hasMax = new SimpleBooleanProperty(false);
-    SimpleStringProperty comments = new SimpleStringProperty();
-    SimpleStringProperty modelNum = new SimpleStringProperty();
-    SimpleStringProperty id = new SimpleStringProperty();
-    BasicCommodityItemVO commodity;
+    private SimpleDoubleProperty price = new SimpleDoubleProperty();
+    private SimpleIntegerProperty count = new SimpleIntegerProperty();
+    private SimpleStringProperty name = new SimpleStringProperty();
+    private SimpleDoubleProperty subtotal = new SimpleDoubleProperty();
+    private SimpleBooleanProperty hasMax = new SimpleBooleanProperty(false);
+    private SimpleStringProperty comments = new SimpleStringProperty();
+    private SimpleStringProperty modelNum = new SimpleStringProperty();
+    private SimpleStringProperty id = new SimpleStringProperty();
+    private BasicCommodityItemVO commodity;
 
 
     //创建时只需要商品和数量
@@ -77,7 +77,7 @@ public class CommodityItem {
         hasMax.setValue(true);
     }
 
-    void init(BasicCommodityItemVO commodity) {
+    private void init(BasicCommodityItemVO commodity) {
         this.commodity=commodity;
         price.set(commodity.getRecentSellPrice());
         name.set(commodity.getName());
@@ -107,11 +107,11 @@ public class CommodityItem {
         this.price.set(price);
     }
 
-    public SimpleDoubleProperty subtotalProperty() {
+    SimpleDoubleProperty subtotalProperty() {
         return subtotal;
     }
 
-    public SimpleDoubleProperty priceProperty() {
+    SimpleDoubleProperty priceProperty() {
         return price;
     }
 
@@ -123,7 +123,7 @@ public class CommodityItem {
         this.count.set(count);
     }
 
-    public SimpleIntegerProperty countProperty() {
+    SimpleIntegerProperty countProperty() {
         return count;
     }
 
@@ -135,7 +135,7 @@ public class CommodityItem {
         this.name.set(name);
     }
 
-    public SimpleStringProperty nameProperty() {
+    SimpleStringProperty nameProperty() {
         return name;
     }
 
@@ -147,7 +147,7 @@ public class CommodityItem {
         this.comments.set(comments);
     }
 
-    public SimpleStringProperty commentsProperty() {
+    SimpleStringProperty commentsProperty() {
         return comments;
     }
 
@@ -155,7 +155,7 @@ public class CommodityItem {
         return modelNum.get();
     }
 
-    public SimpleStringProperty modelNumProperty() {
+    SimpleStringProperty modelNumProperty() {
         return modelNum;
     }
 
@@ -163,7 +163,7 @@ public class CommodityItem {
         return id.get();
     }
 
-    public SimpleStringProperty idProperty() {
+    SimpleStringProperty idProperty() {
         return id;
     }
 
@@ -171,11 +171,17 @@ public class CommodityItem {
         return commodity;
     }
 
-    public boolean isHasMax() {
+    boolean isHasMax() {
         return hasMax.get();
     }
 
     public SimpleBooleanProperty hasMaxProperty() {
         return hasMax;
     }
+
+    public double getSubtotal() {
+        return subtotal.get();
+    }
+
+
 }

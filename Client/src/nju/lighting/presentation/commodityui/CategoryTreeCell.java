@@ -190,7 +190,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
 
     }
 
-    EventHandler deleteEventHandle(MenuItem deleteCategory) {
+    private EventHandler deleteEventHandle(MenuItem deleteCategory) {
         return new EventHandler() {
             @Override
             public void handle(Event event) {
@@ -203,7 +203,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
         };
     }
 
-    void delete(Delete deleteController, JFXDialog dialog) {
+    private void delete(Delete deleteController, JFXDialog dialog) {
         CommodityCategoryItem categoryItem = getTreeTableItem().getValue();
         boolean isCommodity = true;
         if (categoryItem.getItem().getClass().equals(CommodityCategoryVO.class))
@@ -232,7 +232,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
         );
     }
 
-    JFXDialog createDialog() {
+    private JFXDialog createDialog() {
 
         JFXDialog dialog = new JFXDialog(null, null, JFXDialog.DialogTransition.CENTER);
         dialog.setDialogContainer(stackPane);
@@ -272,13 +272,12 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
             setText(null);
         } else {
             String key = keyWord.getValue();
-            String itemStr = item.toString();
-            if (key != null && itemStr.contains(key)) {
-                setGraphic(TableViewHelper.getHighlightBox(itemStr, key));
+            if (key != null && item.contains(key)) {
+                setGraphic(TableViewHelper.getHighlightBox(item, key));
                 setText(null);
             } else {
                 setGraphic(null);
-                setText(itemStr);
+                setText(item);
             }
 
             if (getTreeTableItem().getValue().getItem().getClass().equals(CommodityCategoryVO.class)) {
@@ -316,7 +315,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
 
     }
 
-    TreeItem<CommodityCategoryItem> getTreeTableItem() {
+    private TreeItem<CommodityCategoryItem> getTreeTableItem() {
         return getTreeTableView().getTreeItem(getIndex());
     }
 

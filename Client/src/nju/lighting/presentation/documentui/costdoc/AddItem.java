@@ -7,15 +7,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import nju.lighting.presentation.DialogUI.ValidateEventHandle;
-import nju.lighting.presentation.utils.CostDocHelper;
 import nju.lighting.presentation.utils.TextFieldHelper;
 import nju.lighting.vo.doc.costdoc.CostDocItemVO;
 import shared.CostDocItemType;
 
 import java.net.URL;
-import java.util.Arrays;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 /**
  * Created on 2018/1/4.
@@ -26,7 +23,7 @@ import java.util.stream.Collectors;
 public class AddItem implements Initializable {
 
     @FXML
-    JFXComboBox<String> itemBox;
+    JFXComboBox<CostDocItemType> itemBox;
 
     @FXML
     JFXTextField amountText;
@@ -47,7 +44,7 @@ public class AddItem implements Initializable {
             public boolean validate() {
                 if (amountText.validate()) {
                     list.add(new CostDocItemVO(
-                            CostDocHelper.stringToType(itemBox.getValue()),
+                            itemBox.getValue(),
                             Double.parseDouble(amountText.getText()),
                             commentsText.getText()));
                     return true;
@@ -59,9 +56,7 @@ public class AddItem implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        itemBox.getItems().addAll(Arrays.stream(CostDocItemType.values())
-                .map(x -> CostDocHelper.typeToString(x))
-                .collect(Collectors.toList()));
+        itemBox.getItems().addAll(CostDocItemType.values());
 
 
         itemBox.setValue(itemBox.getItems().get(0));

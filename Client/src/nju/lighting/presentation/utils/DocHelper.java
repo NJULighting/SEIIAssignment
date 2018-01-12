@@ -84,6 +84,14 @@ public class DocHelper {
         burgerTask.play();
     }
 
+    /**
+     * 将筛选条件添加到目标容器中并设置好后置的事情
+     * @param burgerTask Hamburger的放映动画
+     * @param hamburger 目标 hamburg
+     * @param nodesList 目标筛选条件和hamburg的容器
+     * @param filterBox  筛选条件
+     * @param container 放置nodeList的容器
+     */
     public static void addFilter(HamburgerBasicCloseTransition burgerTask, JFXHamburger hamburger,
                                  JFXNodesList nodesList, Pane filterBox, Pane container) {
 

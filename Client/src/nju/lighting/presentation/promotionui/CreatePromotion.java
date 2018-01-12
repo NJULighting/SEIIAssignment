@@ -40,13 +40,11 @@ import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/28.
- * Description
+ * Description 创建促销策略的控制类，里面有所有促销策略相同的一部分，然后根据选择出啊关键的类型建在其他部分
  *
  * @author 陈俊宇
  */
 public class CreatePromotion implements Initializable {
-    //是否正确
-    boolean alright = false;
     @FXML
     VBox verticalBox;
     @FXML
@@ -71,7 +69,7 @@ public class CreatePromotion implements Initializable {
     private FXMLLoader typeLoader;
     private PromotionBLService blService = PromotionBLServiceFactory.getPromotionBLService();
 
-    Result<PromotionVO> commitPriceOriented() {
+    private Result<PromotionVO> commitPriceOriented() {
         PromotionBuildInfo.Builder builder = createBuilder(PromotionType.PriceOriented);
         CreatePriceOriented controller = typeLoader.getController();
         if (itemList.size() != 0 || (controller.getVoucherEndDate() != null)) {
@@ -83,7 +81,7 @@ public class CreatePromotion implements Initializable {
         } else return null;
     }
 
-    Result<PromotionVO> commitCombo() {
+    private Result<PromotionVO> commitCombo() {
         CreateCombo controller = typeLoader.getController();
         if (itemList.size() != 0 & controller.getOff() > 0) {
             PromotionBuildInfo.Builder builder = createBuilder(PromotionType.Combo);
@@ -93,7 +91,7 @@ public class CreatePromotion implements Initializable {
         } else return null;
     }
 
-    Result<PromotionVO> commitCustomerOriented() {
+    private Result<PromotionVO> commitCustomerOriented() {
         CreateCustomerOriented controller = typeLoader.getController();
 
         PromotionBuildInfo.Builder builder = createBuilder(PromotionType.CustomerOriented);
@@ -147,7 +145,7 @@ public class CreatePromotion implements Initializable {
         return nameText.validate() & startDatePicker.getValue() != null & endDatePicker.getValue() != null;
     }
 
-    PromotionBuildInfo.Builder createBuilder(PromotionType type) {
+    private PromotionBuildInfo.Builder createBuilder(PromotionType type) {
         return new PromotionBuildInfo.Builder(
                 nameText.getText(),
                 type,
@@ -155,7 +153,7 @@ public class CreatePromotion implements Initializable {
                 DateHelper.localDateToDate(endDatePicker.getValue()), Client.getUserVO());
     }
 
-    List<GiftItemVO> getGiftList() {
+    private List<GiftItemVO> getGiftList() {
         return itemList.stream()
                 .map(x -> new GiftItemVO(x.getCommodity(), x.getCount()))
                 .collect(Collectors.toList());

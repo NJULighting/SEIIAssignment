@@ -21,7 +21,6 @@ import java.util.ResourceBundle;
 public class AddCommodity extends Dialog implements Initializable {
 
 
-    JFXButton button;
 
     @FXML
     JFXTextField name, modelNumber, repCount, inPrice, sellPrice, recentInPrice, recentSellPrice;

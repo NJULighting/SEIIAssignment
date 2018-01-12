@@ -28,9 +28,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Created on 2018/1/4.
+ * Description 用户管理的控制类
+ *
+ * @author 陈俊宇
+ */
 public class UserMainController implements Initializable {
 
-    UserBLService blService = UserBLServiceFactory.getUserBLService();
+    private UserBLService blService = UserBLServiceFactory.getUserBLService();
 
     @FXML
     TableColumn<UserVO, String> userName, id, identity, authority;

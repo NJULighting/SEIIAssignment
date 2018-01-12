@@ -19,7 +19,6 @@ import nju.lighting.presentation.factory.RepositoryBLServiceFactory;
 import nju.lighting.presentation.utils.ExportExcelHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.repository.RepositoryTableItemVO;
-import shared.ResultMessage;
 
 import java.net.URL;
 import java.util.List;
@@ -28,12 +27,13 @@ import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/21.
- * Description
+ * Description 库存盘点的控制类
+ *
  * @author 陈俊宇
  */
 public class RepositoryCounting implements Initializable {
-    RepositoryBLService blService = RepositoryBLServiceFactory.getRepositoryBLService();
-    List<RepositoryTableItemVO> repositoryTableList = blService.getRepositoryTable().getRepositoryTableItemVOS();
+    private RepositoryBLService blService = RepositoryBLServiceFactory.getRepositoryBLService();
+    private List<RepositoryTableItemVO> repositoryTableList = blService.getRepositoryTable().getRepositoryTableItemVOS();
 
     @FXML
     StackPane stackPane;
@@ -101,11 +101,7 @@ public class RepositoryCounting implements Initializable {
 
 
     public void exportExcel() {
-
-        if(ExportExcelHelper.repositoryCounting(repositoryTableList)== ResultMessage.SUCCESS){
-            DialogHelper.dialog("导出表格", ResultMessage.SUCCESS, stackPane);
-        } else {
-            DialogHelper.dialog("导出表格", ResultMessage.FAILURE, stackPane);
-        }
+        DialogHelper.dialog("导出表格", ExportExcelHelper.repositoryCounting(repositoryTableList),
+                stackPane);
     }
 }

@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/7.
- * Description
+ * Description 查看组合包的控制类
  * @author 陈俊宇
  */
 public class Combo implements Initializable {

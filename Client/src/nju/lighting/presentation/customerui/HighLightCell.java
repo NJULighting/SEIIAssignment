@@ -8,7 +8,7 @@ import nju.lighting.presentation.utils.TableViewHelper;
 
 /**
  * Created on 2017/12/30.
- * Description
+ * Description 将搜索结果高光的单元格实现
  * @author 陈俊宇
  */
 public class HighLightCell extends TableCell {

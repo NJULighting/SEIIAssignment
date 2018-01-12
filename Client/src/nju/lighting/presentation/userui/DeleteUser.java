@@ -7,7 +7,7 @@ import nju.lighting.vo.UserVO;
 
 /**
  * Created on 2018/1/4.
- * Description
+ * Description 删除用户的控制类
  *
  * @author 陈俊宇
  */

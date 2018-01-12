@@ -17,29 +17,34 @@ import java.io.IOException;
 
 /**
  * Created on 2018/1/6.
- * Description
+ * Description 查看经营历程表中查看单据详情的控制类
  *
  * @author 陈俊宇
  */
 public class BusinessHistoryDetail {
-    DocBLService blService= DocBLServiceFactory.getDocBLService();
+    private DocBLService blService = DocBLServiceFactory.getDocBLService();
 
     @FXML
-    HBox docContainer,buttonBox;
+    HBox docContainer, buttonBox;
 
     @FXML
-    JFXButton redFlushBtn,redFlushAndCopyBtn;
+    JFXButton redFlushBtn, redFlushAndCopyBtn;
 
     private DocVO docVO;
 
-    void redFlush(){
-        ResultMessage resultMessage=blService.redFlush(docVO);
-        DialogHelper.dialog("红冲",resultMessage, MainUI.getStackPane());
+    private void redFlush() {
+        ResultMessage resultMessage = blService.redFlush(docVO);
+        DialogHelper.dialog("红冲", resultMessage, MainUI.getStackPane());
     }
 
-
-    public void init(DocVO doc, Upper upper){
-        docVO=doc;
+    /**
+     * 显示选中的单据
+     *
+     * @param doc   要显示的单据
+     * @param upper 上一层界面
+     */
+    public void init(DocVO doc, Upper upper) {
+        docVO = doc;
         Doc.setDoc(doc);
         try {
             docContainer.getChildren().add(Doc.getLoader().load());
@@ -47,16 +52,16 @@ public class BusinessHistoryDetail {
             e.printStackTrace();
         }
 
-        if (Client.getUserVO().getIdentity()== Identity.GENERAL)
+        if (Client.getUserVO().getIdentity() == Identity.GENERAL)
             buttonBox.setVisible(false);
         else {
-            redFlushBtn.setOnAction(e->{
+            redFlushBtn.setOnAction(e -> {
                 redFlush();
             });
 
-            redFlushAndCopyBtn.setOnAction(e->{
+            redFlushAndCopyBtn.setOnAction(e -> {
                 redFlush();
-                upper.setChildren(ModifyDoc.getNode(upper,doc,true),">红冲并复制");
+                upper.setChildren(ModifyDoc.getNode(upper, doc, true), ">红冲并复制");
             });
         }
     }

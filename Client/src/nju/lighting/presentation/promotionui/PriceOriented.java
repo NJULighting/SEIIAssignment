@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/4.
- * Description
+ * Description 查看针对总价的促销策略的控制类
  * @author 陈俊宇
  */
 public class PriceOriented implements Initializable {

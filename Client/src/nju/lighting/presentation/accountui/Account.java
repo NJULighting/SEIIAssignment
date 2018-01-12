@@ -66,8 +66,8 @@ public class Account implements Initializable {
     JFXButton addBtn;
 
 
-    ObservableList<AccountVO> accountVOObservableList;
-    ObservableList<AccountLogVO> logVOObservableList = FXCollections.observableArrayList();
+    private ObservableList<AccountVO> accountVOObservableList;
+    private ObservableList<AccountLogVO> logVOObservableList = FXCollections.observableArrayList();
 
 
     @Override
@@ -119,6 +119,9 @@ public class Account implements Initializable {
         logTableView.setItems(logVOObservableList);
 
 
+        /**
+         * 添加用户的按钮绑定方法
+         */
         addBtn.setOnAction(e -> {
 
             try {

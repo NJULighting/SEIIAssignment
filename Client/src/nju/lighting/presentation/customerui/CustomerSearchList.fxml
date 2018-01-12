@@ -13,7 +13,7 @@
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.customerui.CustomerSearchListController">
     <children>
-        <TextField fx:id="search" layoutX="40.0" layoutY="21.0" onAction="#search" onKeyTyped="#keyTyped" promptText="输入关键词" />
+        <TextField fx:id="search" layoutX="40.0" layoutY="21.0" onAction="#search"  promptText="输入关键词" />
         <JFXButton fx:id="addCustomerBtn" layoutX="890.0" layoutY="1.0" prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #5599FF;" text="增加客户" textFill="WHITE" />
         <Button fx:id="deleteSearch" disable="true" layoutX="199.0" layoutY="4.0" mnemonicParsing="false" onAction="#setDeleteSearch" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" visible="false">
             <graphic>

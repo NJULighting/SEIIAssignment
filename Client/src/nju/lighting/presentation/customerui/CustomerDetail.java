@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/22.
- * Description
+ * Description 客户详情查看/编辑客户的 控制类
  *
  * @author 陈俊宇
  */
@@ -76,6 +76,7 @@ public class CustomerDetail {
         textFields.add(addressText);
 
 
+        //给输入框添加验证器
         TextFieldHelper.addDoubleValidator(receiveLimitText);
         TextFieldHelper.addDoubleValidator(payText);
         TextFieldHelper.addDoubleValidator(receiveText);
@@ -146,6 +147,7 @@ public class CustomerDetail {
         }
     }
 
+    //如果是新建客户， 保存按钮注册到方法 saveNew
     private void saveNew() {
         CustomerVO customerVO = getCurrentCustomer();
         Result<CustomerVO> addResult = customerBLService.createCustomer(customerVO);
@@ -158,6 +160,7 @@ public class CustomerDetail {
 
     }
 
+    //如果是修改客户信息，保存按钮注册到方法 saveModification
     private void saveModification() {
         try {
             CustomerChangeInfo.Builder builder = new CustomerChangeInfo.Builder(customerVO.getID());
@@ -211,6 +214,8 @@ public class CustomerDetail {
         setEditable(true);
     }
 
+
+    //将整个界面设置为可编辑的一系列操作
     void setEditable(boolean editable) {
         modifyButton.setVisible(!editable);
         modifyButton.setDisable(editable);

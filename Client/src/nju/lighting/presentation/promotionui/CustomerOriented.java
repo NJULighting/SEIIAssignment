@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/7.
- * Description
+ * Description 查看针对客户的促销策略的控制类
  * @author 陈俊宇
  */
 public class CustomerOriented implements Initializable {
@@ -29,7 +29,6 @@ public class CustomerOriented implements Initializable {
     @FXML
     HBox offBox;
     private PromotionVO promotion;
-    private String validTimeStr;
 
 
     public CustomerOriented() {

@@ -7,7 +7,7 @@ import nju.lighting.vo.commodity.CommodityItemVO;
 
 /**
  * Created on 2018/1/1.
- * Description
+ * Description 商品预测的控制类
  * @author 陈俊宇
  */
 public class Predicate {

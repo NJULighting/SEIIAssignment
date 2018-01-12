@@ -16,7 +16,6 @@ import javafx.scene.layout.HBox;
 import nju.lighting.blservice.repositoryblservice.RepositoryBLService;
 import nju.lighting.presentation.factory.RepositoryBLServiceFactory;
 import nju.lighting.presentation.utils.DateHelper;
-import nju.lighting.presentation.utils.RepositoryHelper;
 import nju.lighting.presentation.utils.TableViewHelper;
 import nju.lighting.vo.repository.RepositoryChangeVO;
 
@@ -28,14 +27,14 @@ import java.util.ResourceBundle;
 /**
  * Created on 2017/12/21.
  * Description
- * 库存查看
+ * 库存查看的控制类
  * @author 陈俊宇
  */
 public class RepositoryView implements Initializable {
 
-    List<RepositoryChangeVO> repositoryChangeList;
-    RepositoryBLService blService = RepositoryBLServiceFactory.getRepositoryBLService();
-    int itemsPerPage = 15;
+    private List<RepositoryChangeVO> repositoryChangeList;
+    private RepositoryBLService blService = RepositoryBLServiceFactory.getRepositoryBLService();
+    private int itemsPerPage = 15;
 
     @FXML
     Pagination pagination;
@@ -63,7 +62,7 @@ public class RepositoryView implements Initializable {
     TableColumn<RepositoryChangeVO, String> date;
 
 
-    HBox createPage(int index) {
+    private HBox createPage(int index) {
 
         ObservableList<RepositoryChangeVO> data = FXCollections.observableArrayList();
 
@@ -82,7 +81,7 @@ public class RepositoryView implements Initializable {
     }
 
 
-    void refresh() {
+    private void refresh() {
         pagination.setPageCount(repositoryChangeList.size() / itemsPerPage + 1);
         pagination.setCurrentPageIndex(0);
     }
@@ -97,7 +96,7 @@ public class RepositoryView implements Initializable {
         commodity.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getCommodityName()));
         type.setCellValueFactory(cellData ->
-                new SimpleStringProperty(RepositoryHelper.typeToString(cellData.getValue().getType())));
+                new SimpleStringProperty(cellData.getValue().getType().toString()));
         count.setCellValueFactory(cellData ->
                 new SimpleIntegerProperty(cellData.getValue().getCount()).asObject());
         amount.setCellValueFactory(cellData ->

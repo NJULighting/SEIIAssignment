@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/28.
- * Description
+ * Description 创建组合包的控制类
  * @author 陈俊宇
  */
 public class CreateCombo implements Initializable {

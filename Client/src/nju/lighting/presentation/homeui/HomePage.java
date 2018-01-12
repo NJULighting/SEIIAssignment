@@ -35,7 +35,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2018/1/1.
- * Description
+ * Description 除总经理和系统管理员之外人的主页
  *
  * @author 陈俊宇
  */

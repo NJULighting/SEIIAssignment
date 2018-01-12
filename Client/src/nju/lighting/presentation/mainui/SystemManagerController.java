@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/18.
- * Description
+ * Description 系统管理员的功能栏的控制类
  * @author 陈俊宇
  */
 public class SystemManagerController extends MainUIController {

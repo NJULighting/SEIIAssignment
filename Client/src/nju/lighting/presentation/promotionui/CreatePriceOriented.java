@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/17.
- * Description
+ * Description 创建针对总价的促销的略的控制类
  * @author 陈俊宇
  */
 public class CreatePriceOriented implements Initializable {

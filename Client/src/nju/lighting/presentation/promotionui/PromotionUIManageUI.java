@@ -33,7 +33,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/28.
- * Description
+ * Description 促销策略管理的控制类
  * @author 陈俊宇
  */
 public class PromotionUIManageUI implements Initializable, Upper {
@@ -80,7 +80,7 @@ public class PromotionUIManageUI implements Initializable, Upper {
         subLabelBox.getChildren().remove(1, subLabelBox.getChildren().size());
     }
 
-    public void backToMain() {
+    void backToMain() {
         container.getChildren().setAll(mainPane);
         subLabelBox.getChildren().clear();
     }
@@ -99,7 +99,7 @@ public class PromotionUIManageUI implements Initializable, Upper {
 
     }
 
-    void loadCreatePromotion(PromotionType type) {
+    private void loadCreatePromotion(PromotionType type) {
         backToMain();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CreatePromotionUI.fxml"));
 
@@ -127,7 +127,7 @@ public class PromotionUIManageUI implements Initializable, Upper {
         promotionName.setCellValueFactory(c ->
                 new SimpleStringProperty(c.getValue().getName()));
         type.setCellValueFactory(c ->
-                new SimpleStringProperty(PromotionHelper.typeToString(c.getValue().getType())));
+                new SimpleStringProperty(c.getValue().getType().toString()));
         creator.setCellValueFactory(c ->
                 new SimpleStringProperty(c.getValue().getCreator().getUsername()));
         startDate.setCellValueFactory(c ->
@@ -209,9 +209,6 @@ public class PromotionUIManageUI implements Initializable, Upper {
             }
         });
 
-        typeToTitle.put(PromotionType.Combo, "制定促销策略（组合包）");
-        typeToTitle.put(PromotionType.PriceOriented, "制定促销策略（针对总价）");
-        typeToTitle.put(PromotionType.CustomerOriented, "制定促销策略（针对用户）");
 
         title.setOnMouseClicked(e -> {
             backToMain();
@@ -233,7 +230,7 @@ public class PromotionUIManageUI implements Initializable, Upper {
 
     }
 
-    public ObservableList<PromotionVO> getPromotionList() {
+    ObservableList<PromotionVO> getPromotionList() {
         return promotionList;
     }
 }

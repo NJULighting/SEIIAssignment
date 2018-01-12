@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/11/23.
- * Description
+ * Description 总经理的功能栏的控制类，决定了界面跳转
  * @author 陈俊宇
  */
 public class GeneralManagerController extends MainUIController {

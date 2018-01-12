@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * Created on 2017/12/20.
- * Description
+ * Description 显示符合条件的促销策略，用于制定销售单时
  * @author 陈俊宇
  */
 public class BenefitsPlan {

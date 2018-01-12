@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/29.
- * Description
+ * Description 查看经营情况表的控制类
  * @author 陈俊宇
  */
 public class BusinessConditionTable implements Initializable {

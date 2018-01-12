@@ -29,6 +29,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Created on 2018/1/1.
+ * Description 期初建账的控制类
+ *
+ * @author 陈俊宇
+ */
 public class InitAccountController implements Initializable {
     @FXML
     TableView<InitVO> tableView;

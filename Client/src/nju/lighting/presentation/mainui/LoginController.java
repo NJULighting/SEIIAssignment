@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/11/27.
- * Description
+ * Description 登陆界面的控制类
  * @author 陈俊宇
  */
 public class LoginController extends CommonFather {
@@ -93,13 +93,11 @@ public class LoginController extends CommonFather {
                 break;
 
             case SUCCESS:
-                System.out.println("Succ");
             {
                 Client.setUserVO(result.t);
                 mainPane.setEffect(new GaussianBlur());
                 spinner.setVisible(true);
                 MainUI mainUI = new MainUI(result.t.getIdentity());
-                System.out.println("start");
                 new Thread() {
                     @Override
                     public void run() {

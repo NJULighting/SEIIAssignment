@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created on 2017/11/27.
- * Description
+ * Description 赠品列表的控制类
  * @author 陈俊宇
  */
 public class GiftListController implements Initializable {
@@ -51,7 +51,7 @@ public class GiftListController implements Initializable {
         giftObservableList.addListener((ListChangeListener<? super CommodityItem>) c -> {
             if (giftObservableList.size() != 0)
                 totalProperty.set(giftObservableList.stream()
-                        .mapToDouble(x -> ((x).subtotal.getValue()))
+                        .mapToDouble(x -> ((x).subtotalProperty().getValue()))
                         .sum());
             else {
                 totalProperty.set(0);

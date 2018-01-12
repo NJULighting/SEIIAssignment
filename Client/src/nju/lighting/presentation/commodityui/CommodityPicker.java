@@ -13,14 +13,14 @@ import java.io.IOException;
 
 /**
  * Created on 2017/12/17.
- * Description
+ * Description 商品选择界面的控制类
  * @author 陈俊宇
  */
 public class CommodityPicker {
 
-    CommodityCategory category;
+    private CommodityCategory category;
 
-    Upper upper;
+    private Upper upper;
 
 
     @FXML

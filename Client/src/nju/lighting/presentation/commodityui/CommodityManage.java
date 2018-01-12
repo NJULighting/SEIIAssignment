@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/12/14.
- * Description
+ * Description 商品管理界面容器，用来加载 CommodityCategory
  * @author 陈俊宇
  */
 public class CommodityManage implements Initializable {

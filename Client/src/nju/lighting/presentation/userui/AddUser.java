@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2018/1/3.
- * Description
+ * Description 添加用户的控制类
  *
  * @author 陈俊宇
  */

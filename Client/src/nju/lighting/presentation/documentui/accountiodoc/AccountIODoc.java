@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created on 2018/1/5.
- * Description
+ * Description 查看收付款单的控制类
  *
  * @author 陈俊宇
  */
@@ -34,7 +34,7 @@ public class AccountIODoc implements Initializable {
     @FXML
     HBox tableContainer,imageContainer;
 
-    AccountIODocVO accountIODocVO;
+    private AccountIODocVO accountIODocVO;
 
 
 

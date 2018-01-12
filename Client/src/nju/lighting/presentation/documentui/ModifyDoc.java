@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 /**
  * Created on 2018/1/6.
- * Description
+ * Description 起到根据单据类型分配 url的作用， 分配到的url 是新建单据的界面 通过调用的他们的modify方法初始化
  *
  * @author 陈俊宇
  */

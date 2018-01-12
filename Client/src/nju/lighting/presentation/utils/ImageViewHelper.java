@@ -12,18 +12,6 @@ import javafx.scene.image.ImageView;
 public class ImageViewHelper {
 
 
-    public static ImageView circleClose() {
-        ImageView close = new ImageView(new Image("/images/关闭圆.png"));
-        unifySize(close, 40, 40);
-        return close;
-    }
-
-    public static ImageView circleOpen() {
-        ImageView open = new ImageView(new Image("/images/打开圆.png"));
-        unifySize(open, 40, 40);
-        return open;
-    }
-
     public static ImageView delete() {
         ImageView delete = new ImageView("/images/垃圾桶.png");
         unifySize(delete, 20, 20);

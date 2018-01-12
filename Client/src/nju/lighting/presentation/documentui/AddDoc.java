@@ -11,7 +11,7 @@ import nju.lighting.vo.DocVO;
 
 /**
  * Created on 2018/1/10.
- * Description
+ * Description  添加单据控制类的抽象父类，实现了修改的方法（包括红冲和总经理审批时修改）
  *
  * @author 陈俊宇
  */

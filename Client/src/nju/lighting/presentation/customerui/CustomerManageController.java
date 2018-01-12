@@ -12,6 +12,10 @@ import nju.lighting.presentation.mainui.Upper;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ *
+ */
+
 public class CustomerManageController implements Initializable, Upper {
 
     @FXML
@@ -25,14 +29,13 @@ public class CustomerManageController implements Initializable, Upper {
 
 
     public void back() {
-        child.getChildren().clear();
-        child.getChildren().add(mainPane);
-        sub.setText("");
+        setChildren(mainPane,"");
     }
 
     @Override
     public void setChildren(Node node, String title) {
-
+        child.getChildren().setAll(node);
+        sub.setText(title);
     }
 
     @Override

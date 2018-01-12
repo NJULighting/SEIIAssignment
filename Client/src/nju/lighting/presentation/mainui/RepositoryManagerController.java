@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created on 2017/11/26.
- * Description  库存管理人员的主界面
+ * Description  库存管理人员的功能栏控制类
  * @author 陈俊宇
  */
 public class RepositoryManagerController extends MainUIController {

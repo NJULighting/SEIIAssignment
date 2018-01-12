@@ -24,12 +24,13 @@ import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/25.
- * Description
+ * Description 商品管理的主要部分 即界面中间的树表视图的控制类
+ * 树表视图中左侧 的树节点使用CategoryCell, 右面的表视图使用
  * @author 陈俊宇
  */
 public class CommodityCategory implements Initializable {
-    CommodityBLService blService = CommodityBLServiceFactory.getCommodityBLService();
-    SimpleStringProperty keyWord = new SimpleStringProperty();
+    private CommodityBLService blService = CommodityBLServiceFactory.getCommodityBLService();
+    private SimpleStringProperty keyWord = new SimpleStringProperty();
     @FXML
     TreeTableView<CommodityCategoryItem> commodityTreeTableView;
     @FXML
@@ -55,7 +56,7 @@ public class CommodityCategory implements Initializable {
     private TreeItem root;
 
     @FXML
-    void search() {
+    private void search() {
 
         if (searchText.getText().length() == 0) {
             refresh();
@@ -78,7 +79,7 @@ public class CommodityCategory implements Initializable {
 
     }
 
-    void buildTree(TreeItem root, CommodityCategoryVO commodityCategoryVO) {
+    private void buildTree(TreeItem root, CommodityCategoryVO commodityCategoryVO) {
         List<CommodityCategoryVO> children = commodityCategoryVO.getChildren();
 
         for (CommodityCategoryVO commodityCategory : children) {
@@ -200,14 +201,14 @@ public class CommodityCategory implements Initializable {
 
     }
 
-    public List<BasicCommodityItemVO> getSelectedCommodities() {
+    List<BasicCommodityItemVO> getSelectedCommodities() {
         return commodityTreeTableView.getSelectionModel().getSelectedItems().stream()
                 .filter(x -> x.getValue().getItem().getClass().equals(CommodityItemVO.class))
                 .map(x -> ((CommodityItemVO) x.getValue().getItem()).toBasicCommodityItem())
                 .collect(Collectors.toList());
     }
 
-    public void setSingle() {
+    void setSingle() {
         commodityTreeTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
 }

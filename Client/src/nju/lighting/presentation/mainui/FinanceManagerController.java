@@ -6,6 +6,12 @@ import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Created on 2017/11/27.
+ * Description 财务人员的功能栏的控制类，决定了界面跳转
+ *
+ * @author 陈俊宇
+ */
 public class FinanceManagerController extends MainUIController {
     @FXML
     private Button accountManage,makeAccountIODoc,makeCostDoc,businessConditionBtn,

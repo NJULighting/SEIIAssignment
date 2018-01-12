@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Deprecated
 public class CommodityDataService_Stub implements CommodityDataService {
 
     private ArrayList<CommodityItemPO> commodityItemPOS;
@@ -125,13 +126,7 @@ public class CommodityDataService_Stub implements CommodityDataService {
 
     @Override
     public Result<Integer> add(CommodityCategoryPO commodityCategoryPO) {
-//        int catId = commodityCategoryPO.getId();
-//        for (int i = 0; i < commodityCategoryPOS.size(); i++) {
-//            if (commodityCategoryPOS.get(i).getId() == catId)
-//                return ResultMessage.FAILURE;
-//        }
-//        commodityCategoryPOS.add(commodityCategoryPO);
-        return null;
+        return new Result<>(ResultMessage.SUCCESS, 233);
     }
 
     @Override
@@ -162,17 +157,29 @@ public class CommodityDataService_Stub implements CommodityDataService {
 
     @Override
     public List<CommodityItemPO> fuzzySearchByName(String key) throws RemoteException {
-        return null;
+        CommodityItemPO com1 = new CommodityItemPO("01", key, 1, "2017",
+                100, 1000, 1000, 1000, 1000, "a", "01", new Date(111111111));
+        ArrayList<CommodityItemPO> items = new ArrayList<>();
+        items.add(com1);
+        return items;
     }
 
     @Override
     public List<CommodityItemPO> fuzzySearchById(String key) throws RemoteException {
-        return null;
+        CommodityItemPO com1 = new CommodityItemPO(key, "小天才宝贝电脑", 1, "2017",
+                100, 1000, 1000, 1000, 1000, "a", "01", new Date(111111111));
+        ArrayList<CommodityItemPO> items = new ArrayList<>();
+        items.add(com1);
+        return items;
     }
 
     @Override
     public List<CommodityItemPO> fuzzySearchByModel(String key) throws RemoteException {
-        return null;
+        CommodityItemPO com1 = new CommodityItemPO("01", "小天才宝贝电脑", 1, key,
+                100, 1000, 1000, 1000, 1000, "a", "01", new Date(111111111));
+        ArrayList<CommodityItemPO> items = new ArrayList<>();
+        items.add(com1);
+        return items;
     }
 
 }

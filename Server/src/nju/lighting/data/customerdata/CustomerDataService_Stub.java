@@ -11,6 +11,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class CustomerDataService_Stub implements CustomerDataService {
 
     ArrayList<CustomerPO> customerList = new ArrayList<CustomerPO>();
@@ -59,66 +60,68 @@ public class CustomerDataService_Stub implements CustomerDataService {
 
     @Override
     public Result<Integer> insertCustomer(CustomerPO po) throws RemoteException {
-        return null;
+       return new Result<>(ResultMessage.SUCCESS, 233);
     }
 
     @Override
     public ResultMessage deleteCustomer(int id) throws RemoteException {
-        return null;
+        return ResultMessage.FAILURE;
     }
 
     @Override
     public ResultMessage updateCustomer(CustomerPO po) throws RemoteException {
-        return null;
+        return po == null ? ResultMessage.FAILURE : ResultMessage.SUCCESS;
     }
 
     @Override
     public CustomerPO getCustomerById(int id) throws RemoteException {
-        return null;
+        return new CustomerPO(id, CustomerType.SALESPERSON, CustomerGrade.ONE,"许瑞"
+                ,"17015235309","江苏南京","210008","257649998@164.com"
+                ,1000,230,0,"黄海");
     }
 
     @Override
     public ResultMessage changeReceivable(int customerId, double amount) throws RemoteException {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
     public ResultMessage changePayable(int customerId, double amount) throws RemoteException {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
     public ResultMessage changeReceivableLimit(int customerId, double amount) throws RemoteException {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
     public List<CustomerPO> fuzzySearchByName(String key) throws RemoteException {
-        return null;
+        return customerList;
     }
 
     @Override
     public List<CustomerPO> fuzzySearchByTelephone(String key) throws RemoteException {
-        return null;
+        return customerList;
     }
 
     @Override
     public List<CustomerPO> fuzzySearchByAddress(String key) throws RemoteException {
-        return null;
+        return customerList;
     }
 
     @Override
     public List<CustomerPO> fuzzySearchByGrade(String key) throws RemoteException {
-        return null;
+        return customerList;
     }
 
     @Override
     public List<CustomerPO> fuzzySearchByEmail(String key) throws RemoteException {
-        return null;
+        return customerList;
     }
 
     @Override
     public List<CustomerPO> fuzzySearchById(Integer id) throws RemoteException {
-        return null;
+        return customerList;
     }
 }

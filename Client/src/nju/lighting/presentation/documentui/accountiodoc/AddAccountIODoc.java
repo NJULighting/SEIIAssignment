@@ -88,14 +88,22 @@ public class AddAccountIODoc extends AddDoc implements Initializable, Upper {
 
     private DocType type = DocType.ACCOUNT_OUT;
 
+    @FXML
+    private void clear(){
+        itemList.clear();
+        customerProperty.set(null);
+
+    }
 
     protected AccountIODocVO getDoc() {
-        return new AccountIODocVO(new Date(), type,
-                customerProperty.getValue().getID() + "",
-                Client.getUserVO().getID(),
-                itemList.stream()
-                        .map(AccountTransferItem::toTransferItem)
-                        .collect(Collectors.toList()));
+       if(customerProperty.getValue()!=null&&itemList.size()!=0){
+           return new AccountIODocVO(new Date(), type,
+                   customerProperty.getValue().getID() + "",
+                   Client.getUserVO().getID(),
+                   itemList.stream()
+                           .map(AccountTransferItem::toTransferItem)
+                           .collect(Collectors.toList()));
+       }else return null;
     }
 
 

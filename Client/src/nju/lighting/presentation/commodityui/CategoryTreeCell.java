@@ -303,7 +303,7 @@ public class CategoryTreeCell extends TreeTableCell<CommodityCategoryItem, Strin
                     deleteCategory.setDisable(true);
                 } else
                     deleteCategory.setDisable(false);
-            } else{
+            } else if (getTreeTableItem().getValue().getItem().getClass().equals(CommodityItemVO.class)){
                 setContextMenu(commodityMenu);
                 if (((CommodityItemVO)getTreeTableItem().getValue().getItem()).getRepCount()==0)
                     deleteCommodity.setDisable(false);

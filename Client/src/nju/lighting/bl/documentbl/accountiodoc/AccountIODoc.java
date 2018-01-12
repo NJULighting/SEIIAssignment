@@ -6,7 +6,6 @@ import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.accountiodoc.AccountIODocVO;
 import nju.lighting.vo.doc.accountiodoc.AccountTransferItemVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
-import shared.ResultMessage;
 
 import java.util.List;
 
@@ -70,11 +69,6 @@ abstract class AccountIODoc extends Doc {
     public void redFlush() {
         total = -total;
         itemList.redFlush();
-    }
-
-    @Override
-    public ResultMessage modify() {
-        return null;
     }
 
     @Override

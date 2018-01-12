@@ -104,11 +104,6 @@ public class AlertDoc extends Doc {
     }
 
     @Override
-    public ResultMessage modify() {
-        return null;
-    }
-
-    @Override
     public DocVO toVO() {
         return new AlertDocVO(createTime, userId, id, itemList.toVO(), comment, triggered, expired);
     }

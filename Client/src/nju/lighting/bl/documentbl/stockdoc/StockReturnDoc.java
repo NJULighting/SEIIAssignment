@@ -60,11 +60,6 @@ public class StockReturnDoc extends StockTypeDoc {
     }
 
     @Override
-    public ResultMessage modify() {
-        return null;
-    }
-
-    @Override
     public DocVO toVO() {
         return new StockReturnDocVO(createTime, userId, id, customerId,
                 repository, remarks, totalAmount, itemList.toVO());

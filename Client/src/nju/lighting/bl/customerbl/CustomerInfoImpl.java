@@ -7,8 +7,6 @@ import shared.ResultMessage;
 
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created on 2017/12/5.
@@ -65,14 +63,4 @@ public class CustomerInfoImpl implements CustomerInfo {
         }
     }
 
-    @Override
-    public List<Customer> getCustomerList() {
-        try {
-            List<CustomerPO> poList = dataService.getAllCustomer();
-            return poList.stream().map(Customer::new).collect(Collectors.toList());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 }

@@ -65,11 +65,6 @@ public class SalesDoc extends SalesTypeDoc {
         return customerInfo.changePayable(customerId, finalAmount);
     }
 
-    @Override
-    public ResultMessage modify() {
-        return null;
-    }
-
     public DocVO toVO() {
         return new SalesDocVO(createTime, userId, id, docType, customerId, salesman,
                 repository, remarks, beforeDiscountAmount, discount, voucher, finalAmount, itemList.toVO());

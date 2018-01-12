@@ -61,11 +61,6 @@ public class LossAndGainDoc extends Doc {
     }
 
     @Override
-    public ResultMessage modify() {
-        return null;
-    }
-
-    @Override
     public DocVO toVO() {
         return new LossAndGainDocVO(createTime, userId, id, docType, itemList.toVO(), comment);
     }

@@ -99,11 +99,6 @@ public abstract class Doc {
     abstract protected void redFlush();
 
     /**
-     * 保存修改后的单据，该方法在审批单据时调用
-     */
-    abstract public ResultMessage modify();
-
-    /**
      * 创建相应的VO对象
      * @return 对应的<code>DocVO</code>
      */

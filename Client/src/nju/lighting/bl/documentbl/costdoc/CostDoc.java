@@ -2,7 +2,6 @@ package nju.lighting.bl.documentbl.costdoc;
 
 import nju.lighting.bl.accountbl.AccountInfo;
 import nju.lighting.bl.accountbl.AccountInfoImpl;
-import nju.lighting.bl.accountbl.MockAccountInfo;
 import nju.lighting.bl.documentbl.Doc;
 import nju.lighting.po.doc.DocPO;
 import nju.lighting.po.doc.costdoc.CostDocPO;
@@ -59,11 +58,6 @@ public class CostDoc extends Doc {
     public void redFlush() {
         totalAmount = -totalAmount;
         itemList.redFlush();
-    }
-
-    @Override
-    public ResultMessage modify() {
-        return null;
     }
 
     @Override

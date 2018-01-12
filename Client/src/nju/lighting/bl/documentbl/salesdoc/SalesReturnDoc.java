@@ -62,11 +62,6 @@ public class SalesReturnDoc extends SalesTypeDoc {
     }
 
     @Override
-    public ResultMessage modify() {
-        return null;
-    }
-
-    @Override
     public DocVO toVO() {
         return new SalesReturnDocVO(createTime, userId, id, customerId, salesman, repository,
                 remarks, beforeDiscountAmount, discount, voucher, finalAmount, itemList.toVO());

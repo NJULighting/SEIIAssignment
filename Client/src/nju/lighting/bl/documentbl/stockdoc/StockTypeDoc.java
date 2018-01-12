@@ -83,9 +83,6 @@ abstract public class StockTypeDoc extends Doc {
     }
 
     @Override
-    abstract public ResultMessage modify();
-
-    @Override
     abstract public DocVO toVO();
 
     @Override

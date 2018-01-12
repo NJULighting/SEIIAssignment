@@ -1,6 +1,5 @@
 package nju.lighting.presentation.utils;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
@@ -20,72 +19,65 @@ import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.vo.DocVO;
 import nju.lighting.vo.doc.historydoc.HistoryDocVO;
 import shared.DocState;
-import shared.DocType;
 import shared.Result;
 import shared.ResultMessage;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.HashMap;
 
 /**
  * Created on 2018/1/5.
  * Description
- *
  * @author 陈俊宇
  */
 public class DocHelper {
 
 
-    public static void commitDoc(DocVO doc){
-        if (doc!=null){
-            Result<DocVO> result= DocBLServiceFactory.getDocBLService().commitDoc(doc);
-            DialogHelper.dialog("提交"+doc.getType(),result.getResultMessage(), MainUI.getStackPane());
+    public static void commitDoc(DocVO doc) {
+        if (doc != null) {
+            Result<DocVO> result = DocBLServiceFactory.getDocBLService().commitDoc(doc);
+            DialogHelper.dialog("提交" + doc.getType(), result.getResultMessage(), MainUI.getStackPane());
         }
     }
 
     public static void commitModifiedDoc(boolean redFlush, Button commitBtn, ValidateEventHandle eventHandle,
-                                              SimpleObjectProperty<DocVO> res, Upper upper ){
+                                         SimpleObjectProperty<DocVO> res, Upper upper) {
         if (redFlush)
-            commitBtn.setOnAction(e ->{
+            commitBtn.setOnAction(e -> {
                 if (eventHandle.validate())
                     commitInRedFlush(res.getValue(), upper);
             });
-        else{
+        else {
             commitBtn.setText("保存并通过");
-            commitBtn.setOnAction(e->{
+            commitBtn.setOnAction(e -> {
                 if (eventHandle.validate())
-                    saveAndApprove(commitBtn,res.getValue(),upper);
+                    saveAndApprove(commitBtn, res.getValue(), upper);
             });
         }
 
     }
 
-    public static void commitModifiedDoc(boolean redFlush,Button button,DocVO docVO,Upper upper){
+    public static void commitModifiedDoc(boolean redFlush, Button button, DocVO docVO, Upper upper) {
 
     }
 
-    private static void commitInRedFlush(DocVO doc, Upper upper){
+    private static void commitInRedFlush(DocVO doc, Upper upper) {
         commitDoc(doc);
         upper.back();
         upper.back();
     }
 
-    private static void saveAndApprove(Button commitBtn, DocVO docVO, Upper upper){
-        ResultMessage resultMessage= ApprovalBLServiceFactory.getApprovalBLService().save(
-                new HistoryDocVO(Client.getUserVO(),"",docVO,
-                        DocState.APPROVAL,new Date())
+    private static void saveAndApprove(Button commitBtn, DocVO docVO, Upper upper) {
+        ResultMessage resultMessage = ApprovalBLServiceFactory.getApprovalBLService().save(
+                new HistoryDocVO(Client.getUserVO(), "", docVO,
+                        DocState.APPROVAL, new Date())
         );
-        DialogHelper.dialog("保存并通过",resultMessage, MainUI.getStackPane());
+        DialogHelper.dialog("保存并通过", resultMessage, MainUI.getStackPane());
         upper.back();
     }
 
 
-
-
-
-
-    public static void search(JFXNodesList nodesList,HamburgerBasicCloseTransition burgerTask){
+    public static void search(JFXNodesList nodesList, HamburgerBasicCloseTransition burgerTask) {
         nodesList.animateList(false);
         burgerTask.setRate(burgerTask.getRate() * -1);
 
@@ -93,7 +85,7 @@ public class DocHelper {
     }
 
     public static void addFilter(HamburgerBasicCloseTransition burgerTask, JFXHamburger hamburger,
-                                 JFXNodesList nodesList, Pane filterBox, Pane container){
+                                 JFXNodesList nodesList, Pane filterBox, Pane container) {
 
         burgerTask.setRate(-1);
 
@@ -120,9 +112,7 @@ public class DocHelper {
     }
 
 
-
-
-    public static void showDoc(DocVO docVO, Pane container){
+    public static void showDoc(DocVO docVO, Pane container) {
 
         if (container.getChildren().size() > 0)
             container.getChildren().remove(container.getChildren().size() - 1);

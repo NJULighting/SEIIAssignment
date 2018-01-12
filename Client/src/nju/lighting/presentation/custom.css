@@ -43,7 +43,6 @@ root {
     -fx-text-fill: black;
 }
 
-/* scroll-bar Demo */
 .scroll-bar:vertical {
     -fx-background-color: transparent;
 
@@ -59,8 +58,6 @@ root {
 
 }
 
-/* scroll-pane Demo */
-
 .scroll-pane .viewport {
     -fx-background-color: transparent;
 }
@@ -68,27 +65,6 @@ root {
 .scroll-pane {
     -fx-background-color: transparent;
 }
-
-.jfx-hamburger {
-
-    -fx-spacing: 5;
-    -fx-cursor: hand;
-
-}
-
-.jfx-hamburger StackPane {
-
-    -fx-pref-width: 30px;
-
-    -fx-pref-height: 3px;
-
-    -fx-background-color: #5599FF;
-
-    -fx-background-radius: 5px;
-
-}
-
-/* table view Demo */
 
 .table-view {
 
@@ -208,12 +184,6 @@ root {
 
 }
 
-.jfx-text-area, .text-area {
-
-}
-
-/* jfx-text-field Demo */
-
 .jfx-text-field:error, .jfx-password-field:error, .jfx-text-area:error {
 
     -jfx-focus-color: #D34336;
@@ -238,7 +208,6 @@ root {
 
 }
 
-/* Progress Bar Demo */
 
 .progress-bar > .bar {
 
@@ -260,7 +229,6 @@ root {
 
 }
 
-/* Icons Demo */
 
 .icon {
 
@@ -300,8 +268,6 @@ root {
 
 }
 
-/* Button */
-
 .button {
 
     -fx-padding: 0.7em 0.57em;
@@ -313,9 +279,6 @@ root {
 
 .button:filled:hover {
     -fx-background-color: #44B449;
-}
-
-.button {
 }
 
 .button-raised {
@@ -334,87 +297,6 @@ root {
 
 }
 
-/* The main scrollbar **track** CSS class  */
-
-.mylistview .scroll-bar:horizontal .track,
-.mylistview .scroll-bar:vertical .track {
-
-    -fx-background-color: transparent;
-
-    -fx-border-color: transparent;
-
-    -fx-background-radius: 0em;
-
-    -fx-border-radius: 2em;
-
-}
-
-/* The increment and decrement button CSS class of scrollbar */
-
-.mylistview .scroll-bar:horizontal .increment-button,
-.mylistview .scroll-bar:horizontal .decrement-button {
-
-    -fx-background-color: transparent;
-
-    -fx-background-radius: 0em;
-
-    -fx-padding: 0 0 10 0;
-
-}
-
-/* The increment and decrement button CSS class of scrollbar */
-
-.mylistview .scroll-bar:vertical .increment-button,
-.mylistview .scroll-bar:vertical .decrement-button {
-
-    -fx-background-color: transparent;
-
-    -fx-background-radius: 0em;
-
-    -fx-padding: 0 10 0 0;
-
-}
-
-.mylistview .scroll-bar .increment-arrow,
-.mylistview .scroll-bar .decrement-arrow {
-
-    -fx-shape: " ";
-
-    -fx-padding: 0;
-
-}
-
-/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
-
-.mylistview .scroll-bar:horizontal .thumb,
-.mylistview .scroll-bar:vertical .thumb {
-
-    -fx-background-color: derive(black, 90%);
-
-    -fx-background-insets: 2, 0, 0;
-
-    -fx-background-radius: 2em;
-
-}
-
-.jfx-list-cell-container {
-
-    -fx-alignment: center-left;
-
-}
-
-/*.jfx-list-cell-container .label {*/
-
-/*-fx-text-fill: green;*/
-
-/*}*/
-
-/*.jfx-list-cell:selected > .jfx-rippler > StackPane, .jfx-list-cell:even:selected > .jfx-rippler > StackPane {*/
-
-/*-fx-background-color:#DCDCDC;*/
-/*-fx-text-fill:green;*/
-
-/*}*/
 .jfx-list-cell:filled:selected {
     -fx-background-color: #DCDCDC;
 }
@@ -450,16 +332,6 @@ root {
 .jfx-list-view {
 
     -fx-background-insets: 0;
-
-    /*-jfx-cell-horizontal-margin: 0.0;*/
-
-    /*-jfx-cell-vertical-margin: 5.0;*/
-
-    /*-jfx-vertical-gap: 10;*/
-
-    /*-jfx-expanded: false;*/
-
-    /*-fx-pref-width: 200;*/
 
 }
 
@@ -502,28 +374,6 @@ root {
 .jfx-popup-container {
 
     -fx-background-color: WHITE;
-
-}
-
-.jfx-snackbar-content {
-
-    -fx-background-color: #323232;
-
-    -fx-padding: 5;
-
-    -fx-spacing: 5;
-
-}
-
-.jfx-snackbar-toast {
-
-    -fx-text-fill: WHITE;
-
-}
-
-.jfx-snackbar-action {
-
-    -fx-text-fill: #ff4081;
 
 }
 
@@ -572,24 +422,6 @@ root {
     -fx-rippler-fill: #5264AE;
 
 }
-
-/*.combo-box .combo-box-button-container{
-
- 	-fx-border-color:BLACK;-fx-border-width: 0 0 1 0;
-
-}
-
-.combo-box .combo-box-selected-value-container{
-
-	-fx-border-color:BLACK;
-
-} */
-
-/*
-
- * TREE TABLE CSS
-
- */
 
 .tree-table-view:focused .tree-table-row-cell:selected {
 
@@ -719,64 +551,4 @@ root {
 
 .tree-table-row-cell:selected .text {
     -fx-font-weight: bold;
-}
-
-/*
-.tree-table-row-cell > .tree-disclosure-node > .arrow {
-
-    -fx-background-color: -fx-text-fill;
-
-    -fx-padding: 0.333333em 0.229em 0.333333em 0.229em; // 4
-
-    -fx-shape: "M 0 -3.5 L 4 0 L 0 3.5 z";
-
-}
-
-
-
-.tree-table-row-cell .jfx-text-field {
-
-    -fx-focus-color: rgba(240, 40, 40, 1);
-
-}
-
-
-
-.tree-table-row-cell:grouped {
-
-    -fx-background-color: rgba(230, 230, 230, 1);
-
-}
-*/
-
-.animated-option-button {
-
-    -fx-pref-width: 50px;
-
-    -fx-background-color: #44B449;
-
-    -fx-background-radius: 50px;
-
-    -fx-pref-height: 50px;
-
-    -fx-text-fill: white;
-
-    -fx-border-color: WHITE;
-
-    -fx-border-radius: 50px;
-
-    -fx-border-width: 4px;
-
-}
-
-.animated-option-sub-button {
-
-    -fx-background-color: #43609C;
-
-}
-
-.animated-option-sub-button2 {
-
-    -fx-background-color: rgb(203, 104, 96);
-
 }

@@ -79,7 +79,9 @@ public class ApprovalUIController implements Initializable,Upper {
             DocVO currentDoc;
             for (int i = 0; i < selectedDocList.size(); i++) {
                 currentDoc = selectedDocList.get(i);
-                approvalBLService.approve(new HistoryDocVO(Client.getUserVO(), "无可奉告", currentDoc, DocState.APPROVAL, new Date()));
+                ResultMessage resultMessage= approvalBLService.approve(new HistoryDocVO(Client.getUserVO(), "无可奉告", currentDoc, DocState.APPROVAL, new Date()));
+                if (resultMessage!=ResultMessage.SUCCESS)
+                    DialogHelper.dialog("审批单据",resultMessage,MainUI.getStackPane());
             }
         }
         refresh();
@@ -113,6 +115,9 @@ public class ApprovalUIController implements Initializable,Upper {
         DialogHelper.addDialog(node, MainUI.getStackPane(), rejectHandler);
     }
 
+    /**
+     * 刷新单据列表，如果列表中为空就把按钮设置为不可用， 否则自动选择显示第一个单据
+     */
 
     void refresh() {
         docList.getItems().setAll(approvalBLService.getDocumentList());
@@ -128,6 +133,11 @@ public class ApprovalUIController implements Initializable,Upper {
         }
     }
 
+
+    /**
+     * 点击列表后，会进行判断，若选中的单据个数唯一，则显示选中的单据，若选中单据有多个则将驳回按钮设置为不可用
+     * @param event
+     */
     @FXML
     public void clicked(MouseEvent event) {
         selectedDocList = docList.getSelectionModel().getSelectedItems();
@@ -177,7 +187,7 @@ public class ApprovalUIController implements Initializable,Upper {
                         } else {
                             setText( item.getType().toString());
                             MenuItem modify=new MenuItem("修改单据");
-                            modify.setOnAction(e->setChildren(ModifyDoc.getNode(upper,item,false),">红冲并复制"));
+                            modify.setOnAction(e->setChildren(ModifyDoc.getNode(upper,item,false),">修改单据"));
                             setContextMenu(new ContextMenu(modify));
                         }
                     }

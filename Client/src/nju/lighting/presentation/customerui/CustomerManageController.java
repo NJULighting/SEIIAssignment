@@ -38,7 +38,7 @@ public class CustomerManageController implements Initializable, Upper {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerSearchListUI.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerSearchList.fxml"));
             mainPane = loader.load();
             CustomerSearchListController controller = loader.getController();
             child.getChildren().add(mainPane);

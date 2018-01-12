@@ -1,58 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css"
-      xmlns="http://javafx.com/javafx/8.0.112" fx:controller="nju.lighting.presentation.commodityui.CommodityCategory">
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1080.0" stylesheets="@../custom.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.commodityui.CommodityCategory">
     <children>
-        <TextField fx:id="searchText" layoutX="40.0" layoutY="21.0" promptText="输入关键词"/>
-        <Button fx:id="searchBtn" layoutX="241.0" layoutY="6.0" mnemonicParsing="false"
-                style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;">
+        <TextField fx:id="searchText" layoutX="40.0" layoutY="21.0" promptText="输入关键词" />
+        <Button fx:id="deleteSearch" disable="true" layoutX="199.0" layoutY="4.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" visible="false">
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0">
                     <image>
-                        <Image url="@../../../../images/搜索.png"/>
+                        <Image url="@../../../../images/详情关闭.png" />
                     </image>
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="deleteSearch" disable="true" layoutX="199.0" layoutY="4.0" mnemonicParsing="false"
-                prefHeight="50.0" prefWidth="35.0"
-                style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" visible="false">
-            <graphic>
-                <ImageView fitHeight="40.0" fitWidth="40.0">
-                    <image>
-                        <Image url="@../../../../images/详情关闭.png"/>
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
-        <Label fx:id="noResult" layoutX="301.0" layoutY="31.0" text="无结果！" visible="false"/>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="70.0"
-                   stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="1000.0"/>
-        <ScrollPane layoutX="40.0" layoutY="70.0" prefHeight="525.0" prefWidth="1000.0"
-                    style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+        <Label fx:id="noResult" layoutX="301.0" layoutY="31.0" text="无结果！" visible="false" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="40.0" layoutY="70.0" stroke="#5599ff" strokeType="INSIDE" strokeWidth="2.0" width="1000.0" />
+        <ScrollPane layoutX="40.0" layoutY="70.0" prefHeight="525.0" prefWidth="1000.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
             <content>
-                <TreeTableView fx:id="commodityTreeTableView" prefHeight="507.0" prefWidth="998.0"
-                               style="-fx-background-color: transparent;" stylesheets="@../custom.css">
+                <TreeTableView fx:id="commodityTreeTableView" prefHeight="507.0" prefWidth="998.0" style="-fx-background-color: transparent;" stylesheets="@../custom.css">
                     <columns>
-                        <TreeTableColumn fx:id="name" prefWidth="198.0" text="  商品名称"/>
-                        <TreeTableColumn fx:id="id" prefWidth="100.0" text="编号"/>
-                        <TreeTableColumn fx:id="modelNumber" prefWidth="98.0" text="型号"/>
-                        <TreeTableColumn fx:id="repCount" prefWidth="100.0" text="库存数量"/>
-                        <TreeTableColumn fx:id="inPrice" prefWidth="100.0" text="进价"/>
-                        <TreeTableColumn fx:id="sellPrice" prefWidth="100.0" text="零售价"/>
-                        <TreeTableColumn fx:id="recentInPrice" prefWidth="100.0" text="最近进价"/>
-                        <TreeTableColumn fx:id="recentSellPrice" prefWidth="100.0" text="最近零进价"/>
+                        <TreeTableColumn fx:id="name" prefWidth="198.0" text="  商品名称" />
+                        <TreeTableColumn fx:id="id" prefWidth="100.0" text="编号" />
+                        <TreeTableColumn fx:id="modelNumber" prefWidth="98.0" text="型号" />
+                        <TreeTableColumn fx:id="repCount" prefWidth="100.0" text="库存数量" />
+                        <TreeTableColumn fx:id="inPrice" prefWidth="100.0" text="进价" />
+                        <TreeTableColumn fx:id="sellPrice" prefWidth="100.0" text="零售价" />
+                        <TreeTableColumn fx:id="recentInPrice" prefWidth="100.0" text="最近进价" />
+                        <TreeTableColumn fx:id="recentSellPrice" prefWidth="100.0" text="最近零进价" />
                     </columns>
                 </TreeTableView>
             </content>
         </ScrollPane>
-        <Button layoutX="327.0" layoutY="13.0" mnemonicParsing="false" onAction="#refresh"
-                style="-fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;" text="刷新"/>
+      <Button fx:id="refreshBtn" layoutX="242.0" layoutY="9.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0">
+               <image>
+                  <Image url="@../../../../images/刷新.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
 </Pane>

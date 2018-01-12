@@ -58,10 +58,11 @@ public class BusinessHistoryTable implements Initializable, Upper {
     JFXComboBox<DocType> typeBox;
 
     @FXML
-    JFXComboBox repositoryBox;
+    JFXComboBox<String> repositoryBox;
 
     @FXML
     JFXComboBox<UserVO> creatorBox;
+
 
     @FXML
     JFXTextField customerText;
@@ -124,7 +125,15 @@ public class BusinessHistoryTable implements Initializable, Upper {
 
     private ObservableList<Node> list = FXCollections.observableArrayList();
 
-    void refresh() {
+
+    @FXML
+    private void clear() {
+        customerProperty.set(null);
+        typeBox.setValue(typeBox.getItems().get(0));
+        creatorBox.setValue(creatorBox.getItems().get(0));
+    }
+
+    private void refresh() {
         observableList.setAll(blService.findBusinessHistory(getBuilder().build()));
     }
 
@@ -145,13 +154,22 @@ public class BusinessHistoryTable implements Initializable, Upper {
 
         creatorBox.getItems().add(new UserVO("无", null, null, false));
         creatorBox.getItems().addAll(UserBLServiceFactory.getUserBLService().getUserList());
+        creatorBox.setValue(creatorBox.getItems().get(0));
 
         typeBox.getItems().addAll(DocType.values());
         typeBox.setValue(typeBox.getItems().get(0));
 
+        repositoryBox.getItems().add("默认仓库");
+        repositoryBox.setValue(repositoryBox.getItems().get(0));
+
         setCustomerBtn.setOnAction(e -> CustomerHelper.setCustomer(this, customerProperty));
 
-        customerProperty.addListener(c -> customerText.setText(customerProperty.getValue().getName()));
+        customerProperty.addListener(c -> {
+            if (customerProperty.getValue()!=null){
+                customerText.setText(customerProperty.getValue().getName());
+            }else
+                customerText.setText("");
+        });
 
 
         tableView.setItems(observableList);
@@ -214,13 +232,13 @@ public class BusinessHistoryTable implements Initializable, Upper {
 
     @FXML
     void backToMain() {
-        Helper.bakToMain(container,labelBox,list,mainPane);
+        Helper.bakToMain(container, labelBox, list, mainPane);
         nodesList.setVisible(true);
     }
 
     @Override
     public void back() {
-        if (labelBox.getChildren().size() == 1)
+        if (labelBox.getChildren().size() <= 1)
             backToMain();
         else
             Helper.clearTitleLabel(container, labelBox, list);

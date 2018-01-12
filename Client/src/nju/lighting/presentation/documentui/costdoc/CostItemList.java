@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import nju.lighting.presentation.documentui.BtnCell;
+import nju.lighting.presentation.documentui.DeleteBtnCell;
 import nju.lighting.presentation.utils.CostDocHelper;
 import nju.lighting.vo.doc.costdoc.CostDocItemVO;
 
@@ -54,7 +54,7 @@ public class CostItemList  implements Initializable{
     public void setEditable(){
 
         deleteBtn.setCellFactory(p->
-                new BtnCell<>());
+                new DeleteBtnCell<>());
     }
 
     public ObservableList<CostDocItemVO> getObservableList() {

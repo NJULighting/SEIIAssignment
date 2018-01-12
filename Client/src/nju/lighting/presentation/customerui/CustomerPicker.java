@@ -26,7 +26,7 @@ public class CustomerPicker {
 
 
     public void init(Upper upper, SimpleObjectProperty<CustomerVO> customer, CustomerType type) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerSearchListUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerSearchList.fxml"));
         try {
             pane.getChildren().add(loader.load());
         } catch (IOException e) {

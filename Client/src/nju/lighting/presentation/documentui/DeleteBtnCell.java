@@ -14,11 +14,11 @@ import nju.lighting.presentation.utils.ImageViewHelper;
  * @author 陈俊宇
  */
 
-public class BtnCell<T, S> extends TableCell<T, S> {
+public class DeleteBtnCell<T, S> extends TableCell<T, S> {
     final Button cellButton = new Button("", ImageViewHelper.delete());
 
 
-    public BtnCell() {
+    public DeleteBtnCell() {
 
 
         cellButton.setOnAction(new EventHandler<ActionEvent>() {

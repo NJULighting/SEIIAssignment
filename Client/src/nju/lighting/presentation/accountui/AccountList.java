@@ -46,8 +46,7 @@ AccountList implements Initializable {
     @FXML
     TableColumn<AccountVO, Double> balance;
 
-    @FXML
-    Button searchBtn;
+
 
     @FXML
     TextField searchText;
@@ -71,6 +70,11 @@ AccountList implements Initializable {
 
     }
 
+    /**
+     * 查看账户和编辑账户时覆用了同一个界面，通过setEditable 来设定是否可编辑
+     * @param stackPane 进行增删改操作后后弹出 JFXDialog， Dialog 显示需要stackPane 这个容器
+     * @param logVOObservableList   账户交易记录的VO， 编辑界面可以在右面看到账户交易的记录
+     */
     void setEditable(StackPane stackPane, ObservableList<AccountLogVO> logVOObservableList) {
         SimpleObjectProperty<AccountVO> selected = new SimpleObjectProperty<>();
         this.logVOObservableList = logVOObservableList;
@@ -166,9 +170,6 @@ AccountList implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        searchBtn.setOnAction(e -> {
-            search();
-        });
         searchText.setOnAction(e -> {
             search();
         });

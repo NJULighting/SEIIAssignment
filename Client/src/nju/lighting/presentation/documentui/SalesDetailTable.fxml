@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.SalesDetailTable">
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nju.lighting.presentation.documentui.SalesDetailTable">
    <children>
       <Pane fx:id="pane" prefHeight="680.0" prefWidth="1080.0">
           <children>
@@ -134,14 +134,14 @@
                                                                       <Font size="14.0" />
                                                                   </font>
                                                               </Label>
-                                                              <JFXComboBox prefHeight="23.0" prefWidth="176.0" />
+                                                              <JFXComboBox fx:id="repositoryBox" prefHeight="23.0" prefWidth="176.0" />
                                                           </children>
                                                       </HBox>
                                                   </children>
                                               </VBox>
                                               <VBox prefHeight="29.0" prefWidth="55.0" spacing="15.0">
                                                   <children>
-                                                      <JFXButton fx:id="resetBtn" prefWidth="50.0" style="-fx-background-color: #5599FF;" text="清空" textFill="WHITE" />
+                                                      <JFXButton fx:id="resetBtn" onAction="#clear" prefWidth="50.0" style="-fx-background-color: #5599FF;" text="清空" textFill="WHITE" />
                                                       <JFXButton fx:id="okBtn" prefWidth="50.0" style="-fx-background-color: #5599FF;" text="确认" textFill="WHITE" />
                                                   </children>
                                                   <HBox.margin>

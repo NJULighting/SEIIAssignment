@@ -14,7 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
-import nju.lighting.presentation.documentui.BtnCell;
+import nju.lighting.presentation.documentui.DeleteBtnCell;
 import nju.lighting.presentation.documentui.EditingCell;
 import nju.lighting.presentation.utils.ImageViewHelper;
 import nju.lighting.presentation.utils.RepositoryHelper;
@@ -172,7 +172,7 @@ public class LossAndGainList implements Initializable {
     public void setAlertAndEditable(){
         setAlert();
         TableColumn delete = new TableColumn();
-        delete.setCellFactory(p -> new BtnCell());
+        delete.setCellFactory(p -> new DeleteBtnCell());
         tableView.getColumns().add(delete);
     }
 

@@ -59,7 +59,7 @@ public class PromotionHelper {
     public static Node loadGiftList(List<CommodityItem> commodityList) {
         Node res = null;
         try {
-            FXMLLoader loader = new FXMLLoader(PromotionHelper.class.getResource("nju/lighting/presentation/documentui/giftList.fxml"));
+            FXMLLoader loader = new FXMLLoader(PromotionHelper.class.getClassLoader().getResource("nju/lighting/presentation/documentui/giftList.fxml"));
             res = loader.load();
             GiftListController controller = loader.getController();
             controller.getGiftObservableList().setAll(commodityList);

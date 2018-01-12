@@ -16,9 +16,9 @@ import javafx.scene.layout.StackPane;
 import nju.lighting.blservice.documentblservice.DocBLService;
 import nju.lighting.presentation.DialogUI.DialogHelper;
 import nju.lighting.presentation.documentui.AddDoc;
-import nju.lighting.presentation.documentui.Modifiable;
 import nju.lighting.presentation.factory.DocBLServiceFactory;
 import nju.lighting.presentation.mainui.Client;
+import nju.lighting.presentation.mainui.MainUI;
 import nju.lighting.presentation.mainui.Upper;
 import nju.lighting.presentation.utils.AccountHelper;
 import nju.lighting.presentation.utils.DocHelper;
@@ -60,11 +60,19 @@ public class AddCostDocController extends AddDoc implements Initializable {
     private DocBLService docBLService = DocBLServiceFactory.getDocBLService();
 
     protected CostDocVO getDoc() {
-        if (accountProperty.getValue() != null && observableList.size() != 0) {
+        if (accountProperty.getValue() != null && observableList.size() != 0&&validate()) {
             return new CostDocVO(new Date(), Client.getUserVO().getID(),
                     accountProperty.getValue(), observableList);
         } else
             return null;
+    }
+
+    private boolean validate(){
+        if (accountProperty.getValue().getAmount() < (totalProperty.getValue())) {
+            DialogHelper.addDialog("提交现金费用单失败\n总额大于账户余额", MainUI.getStackPane(),null);
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -85,10 +93,10 @@ public class AddCostDocController extends AddDoc implements Initializable {
         observableList = tableController.getObservableList();
 
         accountProperty.addListener(c -> {
-            if (accountProperty.getValue()!=null){
+            if (accountProperty.getValue() != null) {
                 balanceText.setText(accountProperty.getValue().getAmount() + "");
                 accountText.setText(accountProperty.getValue().getName());
-            }else
+            } else
                 balanceText.setText("0.0");
 
         });
@@ -119,7 +127,7 @@ public class AddCostDocController extends AddDoc implements Initializable {
             DocHelper.commitDoc(getDoc());
         });
 
-        TextFieldHelper.addDeleteMenuItem(accountText,accountProperty);
+        TextFieldHelper.addDeleteMenuItem(accountText, accountProperty);
     }
 
 

@@ -38,12 +38,10 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
     private void createCSVFile(String url) throws Exception {
         File file = new File(url);
         if (file.exists()) {
-            System.out.println(url);
             return;
         }
         if (!file.mkdir())
             return;
-        System.out.println("---------------" + file.getAbsolutePath() + "-----------------");
         CommodityData commodityData = new CommodityData();
         List<CommodityItemPO> commodityItemPOS = commodityData.getAllCommodity();
         AccountData accountData = new AccountData();
@@ -90,6 +88,7 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
             }
             return new Result<>(ResultMessage.FAILURE, null);
         }
+
         Zipper zipper = new Zipper(url + ".zip", url);
         try {
             zipper.zip();
@@ -97,7 +96,6 @@ public class InitData extends UnicastRemoteObject implements InitDataService {
             e.printStackTrace();
             return new Result<>(ResultMessage.FAILURE, null);
         }
-        System.out.println("Before Return");
         ResultMessage resultMessage = commonOperation.add(initPO);
         return new Result<>(resultMessage, initPO);
     }

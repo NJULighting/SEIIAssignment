@@ -46,7 +46,7 @@ public class StockReturnDoc implements Initializable {
         total.setText(stockReturnDocVO.getTotalAmount()+"");
         time.setText(DateHelper.approximateTime(stockReturnDocVO.getTime()));
         creator.setText(UserHelper.getUserString(stockReturnDocVO.getCreatorId()));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("nju/lighting/presentation/documentui/CommodityList.fxml"));
         try {
 
             tableContainer.getChildren().add(loader.load());

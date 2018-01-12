@@ -96,7 +96,7 @@ public class RepositoryCounting implements Initializable {
         tableView.setItems(observableList);
 
         TableViewHelper.commonSet(tableView);
-        tableView.getStylesheets().add(getClass().getResource("../repository.css").toExternalForm());
+        tableView.getStylesheets().add(getClass().getClassLoader().getResource("nju/lighting/presentation/repository.css").toExternalForm());
     }
 
 

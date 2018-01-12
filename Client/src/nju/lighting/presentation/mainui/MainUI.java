@@ -86,7 +86,7 @@ public class MainUI {
 
         stackPane = new StackPane(root);
         stage.setScene(new Scene(stackPane));
-        stage.getScene().getStylesheets().add(Client.class.getResource("../custom.css").toExternalForm());
+        stage.getScene().getStylesheets().add(Client.class.getClassLoader().getResource("nju/lighting/presentation/custom.css").toExternalForm());
 
         Image icon = new Image("images/待选背景/简约灯泡.png");
         stage.getIcons().add(icon);

@@ -49,7 +49,7 @@ public class CommodityHelper {
     }
 
     private static CommodityPicker getPicker(Upper upper) {
-        FXMLLoader loader = new FXMLLoader(CommodityHelper.class.getResource("../commodityui/CommodityPicker.fxml"));
+        FXMLLoader loader = new FXMLLoader(CommodityHelper.class.getClassLoader().getResource("nju/lighting/presentation/commodityui/CommodityPicker.fxml"));
         try {
             upper.setChildren(loader.load(), ">选择商品");
         } catch (IOException e) {

@@ -24,7 +24,7 @@ public class SystemManagerController extends MainUIController {
     public void initialize(URL location, ResourceBundle resources) {
         buttons = new Button[]{userManageBtn, logBtn,
         };
-        urls = new String[]{"../userui/UserMain.fxml", "../logui/log.fxml"};
+        urls = new String[]{"nju/lighting/presentation/userui/UserMain.fxml", "nju/lighting/presentation/logui/Log.fxml"};
         MAIN_BUTTON_SIZE = 2;
         super.initialize(location, resources);
     }

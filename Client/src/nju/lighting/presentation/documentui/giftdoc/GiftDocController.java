@@ -63,7 +63,7 @@ public class GiftDocController implements Initializable {
         account.setText(String.valueOf(giftDocVO.getTotal()));
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("nju/lighting/presentation/documentui/CommodityList.fxml"));
             tablePane.getChildren().add(loader.load());
             listController = loader.getController();
             listController.setGift();

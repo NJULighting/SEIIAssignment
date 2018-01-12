@@ -39,7 +39,7 @@ public class AccountHelper {
     }
 
     private static void loadAccount(SimpleObjectProperty<AccountVO> account) {
-        FXMLLoader loader = new FXMLLoader(AccountHelper.class.getResource("../accountui/AccountList.fxml"));
+        FXMLLoader loader = new FXMLLoader(AccountHelper.class.getClassLoader().getResource("nju/lighting/presentation/accountui/AccountList.fxml"));
         try {
             Node node = loader.load();
             AccountList controller = loader.getController();

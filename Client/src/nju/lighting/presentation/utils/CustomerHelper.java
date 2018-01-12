@@ -80,7 +80,7 @@ public class CustomerHelper {
     }
 
     private static CustomerSearchListController loadCustomerPicker(Upper upper, SimpleObjectProperty<CustomerVO> customer) {
-        FXMLLoader loader = new FXMLLoader(CustomerHelper.class.getResource("../customerui/CustomerSearchListUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(CustomerHelper.class.getClassLoader().getResource("nju/lighting/presentation/customerui/CustomerSearchList.fxml"));
         try {
             upper.setChildren(loader.load(), ">选择客户");
         } catch (IOException e) {

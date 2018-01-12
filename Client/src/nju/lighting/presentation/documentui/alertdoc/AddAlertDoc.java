@@ -45,7 +45,7 @@ public class AddAlertDoc extends AddDoc implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../lossandgaindoc/AddLossAndGainDoc.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("nju/lighting/presentation/documentui/lossandgaindoc/AddLossAndGainDoc.fxml"));
         try {
             container.getChildren().add(loader.load());
 

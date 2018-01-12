@@ -90,7 +90,7 @@ public class AddGiftDoc extends AddDoc implements Initializable, Upper {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("nju/lighting/presentation/documentui/CommodityList.fxml"));
         try {
             tableContainer.getChildren().add(loader.load());
         } catch (IOException e) {

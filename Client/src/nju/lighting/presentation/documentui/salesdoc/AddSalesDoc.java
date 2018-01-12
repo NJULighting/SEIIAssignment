@@ -193,7 +193,7 @@ public class AddSalesDoc extends AddDoc implements Initializable, Upper {
         UserHelper.intiUserBox(salesmanBox);
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("nju/lighting/presentation/documentui/CommodityList.fxml"));
         try {
             commodityContainer.getChildren().add(loader.load());
         } catch (IOException e) {

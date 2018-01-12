@@ -126,7 +126,7 @@ public class AddStockDoc extends AddDoc implements Initializable, Upper {
         UserHelper.intiUserBox(salesmanBox);
         repositoryBox.getItems().add("默认仓库");
         repositoryBox.setValue(repositoryBox.getItems().get(0));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../CommodityList.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("nju/lighting/presentation/documentui/CommodityList.fxml"));
 
         try {
             commodityContainer.getChildren().add(loader.load());

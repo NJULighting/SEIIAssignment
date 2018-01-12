@@ -15,13 +15,13 @@ public class FinanceManagerController extends MainUIController {
     public void initialize(URL location, ResourceBundle resources) {
         buttons = new Button[]{home,accountManage, makeAccountIODoc, makeCostDoc, businessConditionBtn,
                 salesConditionBtn, businessHistoryBtn, initaccountBtn, logBtn};
-        urls = new String[]{"../homeui/HomePage.fxml","../accountui/Account.fxml",
-                "../documentui/accountiodoc/AddAccountIODoc.fxml",
-                "../documentui/costdoc/AddCostDoc.fxml",
-                "../documentui/BusinessConditionTable.fxml",
-                "../documentui/SalesDetailTable.fxml",
-                "../documentui/BusinessHistoryTable.fxml",
-                "../initui/InitAccount.fxml", "../logui/Log.fxml"};
+        urls = new String[]{"nju/lighting/presentation/homeui/HomePage.fxml","nju/lighting/presentation/accountui/Account.fxml",
+                "nju/lighting/presentation/documentui/accountiodoc/AddAccountIODoc.fxml",
+                "nju/lighting/presentation/documentui/costdoc/AddCostDoc.fxml",
+                "nju/lighting/presentation/documentui/BusinessConditionTable.fxml",
+                "nju/lighting/presentation/documentui/SalesDetailTable.fxml",
+                "nju/lighting/presentation/documentui/BusinessHistoryTable.fxml",
+                "nju/lighting/presentation/initui/InitAccount.fxml", "nju/lighting/presentation/logui/Log.fxml"};
         MAIN_BUTTON_SIZE = urls.length;
         super.initialize(location, resources);
     }

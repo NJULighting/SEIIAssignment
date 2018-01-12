@@ -171,7 +171,7 @@ public class CreatePromotion implements Initializable {
 
 
         chooseCommodityBtn.setOnAction(e -> CommodityHelper.chooseCommodity(upper, commodities));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../documentui/CommodityList.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("nju/lighting/presentation/documentui/CommodityList.fxml"));
         try {
             tableContainer.getChildren().add(loader.load());
         } catch (IOException e) {

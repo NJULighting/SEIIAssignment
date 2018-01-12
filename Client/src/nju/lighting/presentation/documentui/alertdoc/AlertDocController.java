@@ -35,7 +35,7 @@ public class AlertDocController implements Initializable {
         idLabel.setText(alertDoc.getDocId());
         timeLabel.setText(DateHelper.approximateTime(alertDoc.getTime()));
         creatorLabel.setText(UserHelper.getUserString(alertDoc.getCreatorId()));
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("../lossandgaindoc/LossAndGainList.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("nju/lighting/presentation/documentui/lossandgaindoc/AddLossAndGainDoc.fxml"));
         try {
             tableContainer.getChildren().add(loader.load());
         } catch (IOException e) {

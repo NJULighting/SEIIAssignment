@@ -78,10 +78,6 @@ class CommodityItem {
         return basicCommodityItem.getCategoryID();
     }
 
-    BasicCommodityItem toBasicCommodityItem() {
-        return basicCommodityItem;
-    }
-
     public CommodityItemPO toPO() {
         return new CommodityItemPO(getId(), getName(), getCategory(), modelNumber,
                 getRepCount(), inPrice, sellPrice, getRecentInPrice(),

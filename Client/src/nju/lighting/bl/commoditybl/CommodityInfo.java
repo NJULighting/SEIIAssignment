@@ -14,6 +14,7 @@ public interface CommodityInfo {
     /**
      * Get name of the commodity's category. If the commodity is the
      * child of the root category(id is -1), it won't query the database.
+     *
      * @param commodityID id of the commodity
      * @return name of the category
      */
@@ -24,12 +25,4 @@ public interface CommodityInfo {
     double getCostAdjustRevenue();
 
     ResultMessage addCommodityNumber(String id, int count);
-
-    void updateCommodityRecentSellPrice(String id, double price);
-
-    void updateCommodityRecentInPrice(String id, double price);
-
-    boolean reduceCommodityItem(String id, int count);
-
-    boolean achieveAlertLimit(String commodityId, int count);
 }

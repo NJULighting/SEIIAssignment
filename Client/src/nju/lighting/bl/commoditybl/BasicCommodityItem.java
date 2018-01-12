@@ -46,10 +46,6 @@ public class BasicCommodityItem {
         return categoryID;
     }
 
-    public void setCategoryID(int categoryID) {
-        this.categoryID = categoryID;
-    }
-
     public int getRepCount() {
         return repCount;
     }
@@ -78,7 +74,4 @@ public class BasicCommodityItem {
         return modelNumber;
     }
 
-    BasicCommodityItemVO toVo() {
-        return new BasicCommodityItemVO(id, name, repCount, recentInPrice, recentSellPrice, modelNumber);
-    }
 }

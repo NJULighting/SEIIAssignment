@@ -41,25 +41,11 @@ public interface CommodityBLService {
     List<CommodityItemVO> findCommodityByCategory(int categoryID);
 
     /**
-     * Basic commodity vo version of <tt>findCommodityByCategory(int)</tt>
-     * @param categoryID id of the category
-     * @return list of commodities(basic commodity vo) that belongs to the same category
-     */
-    List<BasicCommodityItemVO> findBasicCommodityByCategory(int categoryID);
-
-    /**
      * Find commodities by id of its parent category
      * @param commodityName name of the commodity
      * @return list of commodities with the same name
      */
     List<CommodityItemVO> findCommodityVOByName(String commodityName);
-
-    /**
-     * Get a commodity by passing its id
-     * @param id id of the commodity
-     * @return corresponding commodity vo if found, <tt>null</tt> otherwise
-     */
-    CommodityItemVO findCommodityVOById(String id);
 
 
     List<CommodityItemVO> searchCommodity(String keyword);
@@ -108,5 +94,4 @@ public interface CommodityBLService {
      */
     ResultMessage changeCategoryName(CommodityCategoryVO categoryVO);
 
-    Image getTrend(String commodityId);
 }

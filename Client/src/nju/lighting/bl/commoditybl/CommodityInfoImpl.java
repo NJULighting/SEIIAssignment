@@ -132,41 +132,6 @@ public class CommodityInfoImpl implements CommodityInfo {
         }
     }
 
-    @Override
-    public void updateCommodityRecentSellPrice(String id, double price) {
-        ResultMessage res = updateRecentPrice(id, price, CommodityItemPO::getRecentSellPrice,
-                CommodityItemPO::setRecentSellPrice);
-
-        if (res.success())
-            logger.add(OPType.MODIFY, "修改商品" + id + "的最近售价为" + price);
-
-    }
-
-    @Override
-    public void updateCommodityRecentInPrice(String id, double price) {
-        ResultMessage res = updateRecentPrice(id, price, CommodityItemPO::getRecentInPrice,
-                CommodityItemPO::setRecentInPrice);
-
-        if (res.success())
-            logger.add(OPType.MODIFY, "商品" + id + "的最近进价更新为");
-    }
-
-    @Override
-    public boolean reduceCommodityItem(String id, int count) {
-        return false;
-    }
-
-    @Override
-    public boolean achieveAlertLimit(String commodityId, int count) {
-        try {
-            CommodityItemPO item = dataService.findById(commodityId);
-            return item.getRepCount() >= count;
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
     private ResultMessage updateRecentPrice(String id, double price, Function<CommodityItemPO, Double> getPrice,
                                             BiConsumer<CommodityItemPO, Double> setPrice) {
         try {

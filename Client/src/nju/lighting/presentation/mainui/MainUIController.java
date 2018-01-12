@@ -37,7 +37,6 @@ public abstract class MainUIController extends CommonFather {
         //设置下半部分界面
         if (center == null) {
             try {
-                System.out.println(url);
                 center = (Node) FXMLLoader.load(getClass().getClassLoader().getResource(url));
             } catch (IOException e) {
                 e.printStackTrace();

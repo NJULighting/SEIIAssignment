@@ -29,6 +29,7 @@ public abstract class AddDoc implements Modifiable {
             public boolean validate() {
                 res.set(getDoc());
                 if (res.getValue()!=null){
+                    res.getValue().setCreatorId(docVO.getCreatorId());
                     res.getValue().setDocId(docVO.getDocId());
                     return true;
                 }

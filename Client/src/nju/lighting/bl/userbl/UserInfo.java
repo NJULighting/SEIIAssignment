@@ -15,13 +15,6 @@ public interface UserInfo {
      */
     boolean authorized();
 
-    /**
-     * Get user's name by passing id of this user
-     * @param userID id of the user
-     * @return name of the user if id is valid, <code>null</code> otherwise
-     */
-    String getNameByID(String userID);
-
     Identity getIdentityById(String userId);
 
     /**

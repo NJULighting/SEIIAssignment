@@ -221,6 +221,10 @@ enum CommodityManager {
         }
     }
 
+    CommodityItemVO findCommodityVOById(String id) {
+        return findByToEntity(id, dataService::findById);
+    }
+
     /**
      * Just rebuild the tree orz
      */

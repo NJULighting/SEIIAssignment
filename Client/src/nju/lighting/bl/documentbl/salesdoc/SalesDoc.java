@@ -62,7 +62,7 @@ public class SalesDoc extends SalesTypeDoc {
 
         // Change customer's payable
         CustomerInfo customerInfo = new CustomerInfoImpl();
-        return customerInfo.changePayable(customerId, finalAmount);
+        return customerInfo.changeReceivable(customerId, finalAmount);
     }
 
     public DocVO toVO() {

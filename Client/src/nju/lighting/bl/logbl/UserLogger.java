@@ -17,7 +17,6 @@ import java.util.Date;
  * @author Liao
  */
 public class UserLogger implements Logger {
-    // TODO: 2017/12/4 Refactor this class
     private LogDataService dataService;
 
     public UserLogger() {

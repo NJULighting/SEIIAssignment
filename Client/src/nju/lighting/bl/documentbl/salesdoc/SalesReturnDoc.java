@@ -58,7 +58,7 @@ public class SalesReturnDoc extends SalesTypeDoc {
 
         // Change Customers receivable
         CustomerInfo customerInfo = new CustomerInfoImpl();
-        return customerInfo.changeReceivable(customerId, finalAmount);
+        return customerInfo.changePayable(customerId, finalAmount);
     }
 
     @Override

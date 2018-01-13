@@ -56,7 +56,7 @@ public class StockDoc extends StockTypeDoc {
 
         // Change customer's receivable
         CustomerInfo customerInfo = new CustomerInfoImpl();
-        return customerInfo.changeReceivable(Integer.parseInt(customerId), totalAmount);
+        return customerInfo.changePayable(Integer.parseInt(customerId), totalAmount);
     }
 
     @Override

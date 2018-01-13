@@ -115,7 +115,8 @@ public class AddAccountIODoc extends AddDoc implements Initializable, Upper {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountTransferList.fxml"));
             tableContainer.getChildren().add(loader.load());
             AccountTransferList controller = loader.getController();
-            controller.setEditable(totalProperty);
+            controller.setEditable();
+            totalProperty.bind(controller.getTotalProperty());
             itemList = controller.getObservableList();
         } catch (IOException e) {
             e.printStackTrace();

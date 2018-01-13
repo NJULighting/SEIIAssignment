@@ -2,6 +2,7 @@ package nju.lighting.presentation.documentui.accountiodoc;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,7 +32,7 @@ public class AccountTransferList implements Initializable {
     @FXML
     TableView accountItemTable;
     private ObservableList<AccountTransferItem> observableList = FXCollections.observableArrayList();
-
+    private SimpleDoubleProperty totalProperty=new SimpleDoubleProperty();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -46,6 +47,9 @@ public class AccountTransferList implements Initializable {
 
         accountItemTable.setItems(observableList);
 
+        observableList.addListener((ListChangeListener<? super AccountTransferItem>) c->{
+            calculateTotal();
+        });
 
         TableViewHelper.commonSet(accountItemTable);
 
@@ -57,7 +61,7 @@ public class AccountTransferList implements Initializable {
     }
 
 
-    public void setEditable(SimpleDoubleProperty totalProperty) {
+    public void setEditable() {
         TableColumn delete = new TableColumn();
         delete.setCellFactory(p -> new DeleteBtnCell());
 
@@ -66,11 +70,17 @@ public class AccountTransferList implements Initializable {
         amount.setCellFactory(p -> new EditingCell<>("double"));
         amount.setOnEditCommit(p -> {
             p.getTableView().getItems().get(p.getTablePosition().getRow()).setAmount(p.getNewValue());
-            totalProperty.set(observableList.stream()
-                    .mapToDouble(x -> x.getAmount())
-                    .sum());
+            calculateTotal();
         });
 
         comments.setCellFactory(p -> new EditingCell<>("string"));
     }
+
+    private void calculateTotal(){
+        totalProperty.set(observableList.stream()
+                .mapToDouble(x -> x.getAmount())
+                .sum());
+    }
+
+    SimpleDoubleProperty getTotalProperty(){return totalProperty;}
 }

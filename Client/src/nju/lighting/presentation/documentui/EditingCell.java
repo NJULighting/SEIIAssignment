@@ -30,16 +30,13 @@ public class EditingCell<T, S> extends TableCell<T, S> {
 
     @Override
     public void startEdit() {
-        System.out.println("start Edit");
+
         if (!isEmpty()) {
-            // CommodityItem commodityItem = getTableView().getItems().get(getIndex());
-//            if (!commodityItem.isGift()) {
             super.startEdit();
             createTextField();
             setText(null);
             setGraphic(textField);
             textField.selectAll();
-            // }
 
         }
     }
@@ -59,8 +56,7 @@ public class EditingCell<T, S> extends TableCell<T, S> {
             setText(null);
             setGraphic(null);
         } else {
-            //CommodityItem commodityItem = getTableView().getItems().get(getIndex());
-            //if (isEditing() && !commodityItem.isGift()) {
+
             if (isEditing()) {
                 if (textField != null) {
                     textField.setText(getString());
@@ -114,7 +110,6 @@ public class EditingCell<T, S> extends TableCell<T, S> {
 
         textField.setOnKeyPressed((ke) -> {
             if (ke.getCode().equals(KeyCode.ESCAPE)) {
-                // textField.focusedProperty().removeListener(changeListener);
                 cancelEdit();
             } else if (ke.getCode().equals(KeyCode.ENTER))
                 getTableView().requestFocus();
